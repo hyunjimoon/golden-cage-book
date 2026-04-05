@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다/세 감정 궤적 — 엠마에서 방드르디로</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root {
+    --bg:#0a0e1a; --surface:#111827; --card:#1a2234;
+    --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b;
+    --ch1:#D4A574; --ch2:#8B8C2A; --ch3:#5B9A8B; --ch4:#3B5998;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;overflow-x:hidden;}
+
+  .header{text-align:center;padding:24px 16px 4px;}
+  .header h1{font-size:1.4em;font-weight:700;}
+  .header .sub{font-size:0.8em;color:var(--dim);margin-top:4px;}
+
+  /* Hypothesis Box */
+  .hypo{max-width:720px;margin:12px auto;padding:0 16px;}
+  .hypo-card{background:var(--card);border-radius:12px;padding:16px;font-size:0.82em;line-height:1.6;color:var(--text2);}
+  .hypo-card b{color:var(--text);}
+
+  /* Chapter Tabs */
+  .tabs{display:flex;justify-content:center;gap:4px;margin:16px 0 8px;}
+  .tab{padding:10px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-size:0.85em;font-weight:600;border:none;color:var(--dim);background:var(--surface);transition:all 0.2s;}
+  .tab.active{color:#fff;}
+  .tab[data-ch="1"].active{background:var(--ch1);} .tab[data-ch="2"].active{background:var(--ch2);}
+  .tab[data-ch="3"].active{background:var(--ch3);} .tab[data-ch="4"].active{background:var(--ch4);}
+
+  /* Main Container */
+  .container{max-width:720px;margin:0 auto;padding:0 16px 24px;}
+  .panel{background:var(--card);border-radius:0 12px 12px 12px;padding:20px;}
+
+  /* Character Gradient */
+  .gradient-section{margin-bottom:20px;}
+  .gradient-label{display:flex;justify-content:space-between;font-size:0.8em;color:var(--dim);margin-bottom:6px;}
+  .gradient-bar{height:32px;border-radius:8px;position:relative;overflow:hidden;}
+  .gradient-bar .marker{position:absolute;top:0;height:100%;width:3px;background:#fff;border-radius:2px;transition:left 0.6s ease;}
+  .gradient-bar .marker-label{position:absolute;top:-18px;font-size:0.7em;color:#fff;white-space:nowrap;transform:translateX(-50%);}
+  .char-name{font-size:0.95em;font-weight:600;margin-bottom:4px;}
+
+  /* Emotion Bars */
+  .emo-section{margin-top:16px;}
+  .emo-title{font-size:0.85em;font-weight:600;margin-bottom:8px;color:var(--text2);}
+  .emo-row{display:flex;align-items:center;gap:8px;margin:5px 0;}
+  .emo-name{font-size:0.75em;min-width:90px;color:var(--dim);text-align:right;}
+  .emo-track{flex:1;height:10px;background:rgba(255,255,255,0.05);border-radius:5px;overflow:hidden;}
+  .emo-fill{height:100%;border-radius:5px;transition:width 0.6s ease;}
+  .emo-val{font-size:0.75em;min-width:30px;font-family:'DM Mono',monospace;color:var(--dim);}
+
+  /* Quote */
+  .quote-box{margin-top:16px;padding:12px;background:var(--surface);border-radius:10px;font-size:0.82em;line-height:1.6;color:var(--text2);border-left:3px solid var(--dim);}
+  .quote-speaker{font-weight:600;color:var(--text);margin-bottom:4px;}
+
+  /* Convergence */
+  .convergence{margin-top:16px;text-align:center;}
+  .conv-label{font-size:0.75em;color:var(--dim);margin-bottom:4px;}
+  .conv-bar{display:flex;justify-content:center;gap:4px;align-items:center;}
+  .conv-dot{width:12px;height:12px;border-radius:50%;transition:all 0.6s;}
+  .conv-line{height:2px;background:rgba(255,255,255,0.1);transition:width 0.6s;}
+  .conv-text{font-size:0.8em;color:var(--text2);margin-top:6px;}
+
+  /* Insight */
+  .insight{margin-top:16px;padding:12px;background:var(--surface);border-radius:10px;font-size:0.8em;line-height:1.6;color:var(--text2);border-left:3px solid;}
+
+  .source{max-width:720px;margin:8px auto;padding:0 16px;font-size:0.7em;color:var(--dim);}
+  .source a{color:var(--dim);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>다/세 감정 궤적</h1>
+  <div class="sub">엠마 → 타루 / 살리나 → 리외 / 다+세 → 방드르디</div>
+</div>
+
+<div class="hypo">
+  <div class="hypo-card">
+    <b>가설</b>: Anthropic이 발견한 감정 벡터(171개)로 측정하면,<br>
+    <b>H1</b> 다(DA)는 desperate/self-deception에서 guilty/honest로 이동한다 (엠마→타루)<br>
+    <b>H2</b> 세(SE)는 detached/analytical에서 uncertain-but-acting으로 이동한다 (살리나→리외)<br>
+    <b>H3</b> 다+세의 감정 거리가 장마다 줄어들며, 4장에서 playful(방드르디)에 수렴한다
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-ch="1" onclick="setCh(1)">1장 🪞</button>
+  <button class="tab" data-ch="2" onclick="setCh(2)">2장 🔭</button>
+  <button class="tab" data-ch="3" onclick="setCh(3)">3장 💒</button>
+  <button class="tab" data-ch="4" onclick="setCh(4)">4장 ⏱️</button>
+</div>
+
+<div class="container">
+  <div class="panel" id="panel">
+    <!-- DA gradient -->
+    <div class="gradient-section">
+      <div class="char-name" id="daName">다(DA)</div>
+      <div class="gradient-label"><span>엠마</span><span>타루</span></div>
+      <div class="gradient-bar" id="daBar" style="background:linear-gradient(to right, var(--ch1), var(--ch3));">
+        <div class="marker" id="daMarker" style="left:10%;">
+          <span class="marker-label" id="daMarkerLabel">1장</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SE gradient -->
+    <div class="gradient-section">
+      <div class="char-name" id="seName">세(SE)</div>
+      <div class="gradient-label"><span>살리나</span><span>리외</span></div>
+      <div class="gradient-bar" id="seBar" style="background:linear-gradient(to right, var(--ch2), var(--ch3));">
+        <div class="marker" id="seMarker" style="left:10%;">
+          <span class="marker-label" id="seMarkerLabel">1장</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emotion vectors: DA -->
+    <div class="emo-section">
+      <div class="emo-title">다(DA) 감정 벡터</div>
+      <div id="daEmo"></div>
+    </div>
+
+    <!-- Emotion vectors: SE -->
+    <div class="emo-section">
+      <div class="emo-title">세(SE) 감정 벡터</div>
+      <div id="seEmo"></div>
+    </div>
+
+    <!-- Convergence -->
+    <div class="convergence">
+      <div class="conv-label">다↔세 감정 거리</div>
+      <div class="conv-bar">
+        <div class="conv-dot" id="convDa"></div>
+        <div class="conv-line" id="convLine"></div>
+        <div class="conv-dot" id="convSe"></div>
+      </div>
+      <div class="conv-text" id="convText"></div>
+    </div>
+
+    <!-- Representative quote -->
+    <div class="quote-box" id="quoteBox">
+      <div class="quote-speaker" id="quoteSpeaker"></div>
+      <div id="quoteText"></div>
+    </div>
+
+    <!-- Insight -->
+    <div class="insight" id="insight"></div>
+  </div>
+</div>
+
+<div class="source">
+  출처: <a href="https://www.anthropic.com/research/emotion-concepts-function" target="_blank">Anthropic — Emotion concepts and their function in a LLM (2026)</a>
+</div>
+
+<script>
+const COLORS = {1:'#D4A574',2:'#8B8C2A',3:'#5B9A8B',4:'#3B5998'};
+
+const EMOTIONS = ['desperate','self-deception','detached','guilty','calm-uncertain','playful'];
+const EMO_KR = {
+  'desperate':'절박함','self-deception':'자기기만',
+  'detached':'초연함','guilty':'죄책감',
+  'calm-uncertain':'차분한 불확실','playful':'장난기'
+};
+const EMO_COLORS = {
+  'desperate':'#e07a5f','self-deception':'#D4A574',
+  'detached':'#8B8C2A','guilty':'#5B9A8B',
+  'calm-uncertain':'#42a5f5','playful':'#ff9800'
+};
+
+// 장별 감정 데이터 (0-100)
+const DATA = {
+  1: {
+    da: {desperate:75,  'self-deception':80, detached:10, guilty:15,  'calm-uncertain':10, playful:20},
+    se: {desperate:5,   'self-deception':10, detached:85, guilty:5,   'calm-uncertain':15, playful:5},
+    daPos: 12, sePos: 8,
+    daQuote: {speaker:'다', text:'"두 번째 읽었을 때 무서웠어요. 나도 그렇게 살고 있었으니까."'},
+    seQuote: {speaker:'세', text:'"속도가 방향을 대체하는 거예요."'},
+    insight: 'H1 출발: 다는 엠마와 자신을 동일시한다(self-deception 80%). 세는 완전한 초연(detached 85%). 두 벡터의 거리가 최대.',
+    distance: 90
+  },
+  2: {
+    da: {desperate:50,  'self-deception':45, detached:15, guilty:30,  'calm-uncertain':25, playful:15},
+    se: {desperate:10,  'self-deception':5,  detached:60, guilty:10,  'calm-uncertain':35, playful:10},
+    daPos: 35, sePos: 30,
+    daQuote: {speaker:'다', text:'"이 문장 처음 읽었을 때 온몸에 소름이 돋았어요."'},
+    seQuote: {speaker:'세', text:'"안개 속에서 전진하는 법이었어요." — 세가 장면을 말하기 시작한다'},
+    insight: 'H1 진행: 다의 self-deception이 줄고 guilty가 올라온다(콘체타에서 눈물). H2: 세의 detached가 줄고 calm-uncertain이 올라온다(클라우제비츠의 안개를 받아들임).',
+    distance: 65
+  },
+  3: {
+    da: {desperate:30,  'self-deception':20, detached:10, guilty:65,  'calm-uncertain':40, playful:10},
+    se: {desperate:15,  'self-deception':5,  detached:30, guilty:35,  'calm-uncertain':60, playful:15},
+    daPos: 62, sePos: 58,
+    daQuote: {speaker:'다', text:'"나도 보균자였던 적이 있지 않을까." — 다가 타루의 고백을 자기에게 적용'},
+    seQuote: {speaker:'세', text:'"교정이 만능이면 왜 아내를 잃었어요?" — 5초 방송사고. 세가 처음으로 답을 못 한다'},
+    insight: 'H1 전환점: 다의 guilty가 65%로 급등 — "나는 보균자였다"를 인정. H2 전환점: 세의 calm-uncertain이 60%로 역전 — 자기 프레임워크에 대한 확신이 흔들림. 두 벡터가 급접근.',
+    distance: 35
+  },
+  4: {
+    da: {desperate:15,  'self-deception':10, detached:5,  guilty:50,  'calm-uncertain':45, playful:55},
+    se: {desperate:10,  'self-deception':5,  detached:15, guilty:40,  'calm-uncertain':50, playful:50},
+    daPos: 85, sePos: 82,
+    daQuote: {speaker:'다', text:'"우리 대화 자체가 접착제 레고예요." — 자기가 만든 것이 자기를 가둔다는 걸 안다'},
+    seQuote: {speaker:'세', text:'"새장을 설명하는 이론이 새장이 된다. 이걸 뭐라고 부르지. 아이러니? 아니다. 빚이다."'},
+    insight: 'H3 수렴: 다와 세 모두 playful이 50%+로 올라온다 — 방드르디의 벡터. 분석과 행동이 분리되지 않는 상태. guilty(빚 인정)와 playful(장난)이 공존하는 것이 "빈손이되 맨손이 아니다".',
+    distance: 10
+  }
+};
+
+let currentCh = 1;
+
+function setCh(ch) {
+  currentCh = ch;
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.toggle('active', parseInt(t.dataset.ch) === ch);
+  });
+  render();
+}
+
+function render() {
+  const d = DATA[currentCh];
+  const color = COLORS[currentCh];
+
+  // Gradient markers
+  document.getElementById('daMarker').style.left = d.daPos + '%';
+  document.getElementById('daMarkerLabel').textContent = currentCh + '장';
+  document.getElementById('seMarker').style.left = d.sePos + '%';
+  document.getElementById('seMarkerLabel').textContent = currentCh + '장';
+
+  // Emotion bars - DA
+  let daHtml = '';
+  EMOTIONS.forEach(e => {
+    const v = d.da[e];
+    daHtml += `<div class="emo-row">
+      <span class="emo-name">${EMO_KR[e]}</span>
+      <div class="emo-track"><div class="emo-fill" style="width:${v}%;background:${EMO_COLORS[e]}"></div></div>
+      <span class="emo-val">${v}%</span>
+    </div>`;
+  });
+  document.getElementById('daEmo').innerHTML = daHtml;
+
+  // Emotion bars - SE
+  let seHtml = '';
+  EMOTIONS.forEach(e => {
+    const v = d.se[e];
+    seHtml += `<div class="emo-row">
+      <span class="emo-name">${EMO_KR[e]}</span>
+      <div class="emo-track"><div class="emo-fill" style="width:${v}%;background:${EMO_COLORS[e]}"></div></div>
+      <span class="emo-val">${v}%</span>
+    </div>`;
+  });
+  document.getElementById('seEmo').innerHTML = seHtml;
+
+  // Convergence
+  const dist = d.distance;
+  document.getElementById('convDa').style.background = color;
+  document.getElementById('convDa').style.width = '14px';
+  document.getElementById('convDa').style.height = '14px';
+  document.getElementById('convSe').style.background = color;
+  document.getElementById('convSe').style.width = '14px';
+  document.getElementById('convSe').style.height = '14px';
+  document.getElementById('convLine').style.width = dist + 'px';
+  document.getElementById('convLine').style.background = color;
+
+  const convTexts = {
+    1: '최대 거리 — 다는 뛰고 세는 본다',
+    2: '접근 시작 — 세가 장면을 말하기 시작',
+    3: '급접근 — 둘 다 흔들린다',
+    4: '수렴 — 분석과 행동이 분리되지 않는다'
+  };
+  document.getElementById('convText').textContent = convTexts[currentCh];
+
+  // Quote
+  document.getElementById('quoteSpeaker').textContent = d.daQuote.speaker + '의 대사:';
+  document.getElementById('quoteText').innerHTML = d.daQuote.text + '<br><br>' +
+    '<span style="font-weight:600;color:var(--text)">' + d.seQuote.speaker + '의 대사:</span><br>' + d.seQuote.text;
+
+  // Insight
+  document.getElementById('insight').textContent = d.insight;
+  document.getElementById('insight').style.borderColor = color;
+
+  // Panel border
+  document.querySelector('.panel').style.borderTop = '3px solid ' + color;
+}
+
+render();
+</script>
+</body>
+</html>
