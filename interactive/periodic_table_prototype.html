@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>창업소설의 주기율표 — 프로토타입</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root {
+    --bg:#0a0e1a; --surface:#111827; --card:#1a2234;
+    --border:rgba(255,255,255,0.06);
+    --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b;
+    --ch1:#9B8EC1; --ch2:#4A6FA5; --ch3:#C9A96E; --ch4:#D4762C;
+    --ch1bg:rgba(155,142,193,0.25); --ch2bg:rgba(74,111,165,0.25);
+    --ch3bg:rgba(201,169,110,0.25); --ch4bg:rgba(212,118,44,0.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;}
+  .header{text-align:center;padding:24px 16px 8px;}
+  .header h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;}
+  .header .sub{font-size:0.85em;color:var(--dim);margin-top:4px;}
+  .mosaic-wrap{padding:8px 16px;}
+  .mosaic{display:grid;grid-template-columns:repeat(22,1fr);gap:2px;max-width:880px;margin:0 auto;}
+  .cell{
+    aspect-ratio:1;border-radius:3px;cursor:pointer;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,255,255,0.3);
+    transition:transform 0.15s,box-shadow 0.15s,opacity 0.3s;
+  }
+  .cell:hover{transform:scale(1.8);z-index:10;box-shadow:0 0 12px rgba(255,255,255,0.2);}
+  .cell-empty{background:#0f1525;}
+  .cell-nodata{background:#1a1f3a;}
+  .cell-ch1{background:var(--ch1bg);border:1px solid rgba(155,142,193,0.3);}
+  .cell-ch2{background:var(--ch2bg);border:1px solid rgba(74,111,165,0.3);}
+  .cell-ch3{background:var(--ch3bg);border:1px solid rgba(201,169,110,0.3);}
+  .cell-ch4{background:var(--ch4bg);border:1px solid rgba(212,118,44,0.3);}
+  .cell-selected{box-shadow:0 0 8px rgba(255,255,255,0.5)!important;transform:scale(1.5);z-index:11;}
+  .cell.dimmed{opacity:0.15;}
+  .legend{display:flex;justify-content:center;gap:16px;padding:8px 0;flex-wrap:wrap;}
+  .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--dim);cursor:pointer;}
+  .legend-item:hover{color:var(--text);}
+  .legend-dot{width:10px;height:10px;border-radius:2px;}
+
+  /* Analysis Panel */
+  .panel{max-width:880px;margin:16px auto;padding:0 16px;display:none;}
+  .panel.active{display:block;}
+  .panel-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;}
+  .panel-title{font-size:1.2em;font-weight:700;margin-bottom:4px;}
+  .panel-author{font-size:0.85em;color:var(--dim);margin-bottom:16px;}
+  .panel-tragedy{font-size:0.95em;line-height:1.7;color:var(--text2);margin-bottom:16px;padding:12px;background:var(--surface);border-radius:10px;border-left:3px solid var(--ch1);}
+  .panel-quote{font-style:italic;font-size:0.85em;color:var(--dim);margin-bottom:16px;}
+
+  /* Character Cards */
+  .char-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+  .char-card{padding:14px;background:var(--surface);border-radius:10px;}
+  .char-card h4{font-size:0.8em;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .char-card .val{font-size:1.05em;font-weight:600;}
+
+  /* Relation */
+  .relation-viz{text-align:center;padding:16px;background:var(--surface);border-radius:10px;margin-bottom:16px;}
+  .relation-viz .arrow{font-size:1.5em;margin:0 12px;color:var(--dim);}
+  .relation-viz .node{display:inline-block;padding:8px 16px;border-radius:8px;font-weight:600;}
+  .relation-viz .node-self{background:var(--ch1bg);color:var(--ch1);}
+  .relation-viz .node-other{background:var(--ch4bg);color:var(--ch4);}
+  .relation-label{font-size:0.8em;color:var(--dim);margin-top:8px;}
+
+  /* Debt Diagnosis */
+  .debt-section{margin-bottom:16px;}
+  .debt-bar-wrap{display:flex;align-items:center;gap:8px;margin:6px 0;}
+  .debt-label{font-size:0.8em;min-width:80px;color:var(--dim);}
+  .debt-bar{height:8px;border-radius:4px;transition:width 0.5s;}
+  .debt-score{font-size:0.85em;font-weight:600;min-width:30px;}
+
+  /* My Periodic Table */
+  .my-table{max-width:880px;margin:16px auto;padding:0 16px;}
+  .my-table h3{font-size:1em;margin-bottom:8px;}
+  .my-count{font-family:'DM Mono',monospace;font-size:0.85em;color:var(--dim);}
+  .my-grid{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+  .my-chip{padding:4px 10px;border-radius:6px;font-size:0.75em;font-weight:600;}
+
+  .prompt-box{max-width:880px;margin:8px auto;padding:0 16px;}
+  .prompt{background:var(--card);border-radius:12px;padding:16px;font-size:0.85em;color:var(--text2);text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>창업소설의 주기율표</h1>
+  <div class="sub">빈칸이 다음 책이다 — 책을 클릭하면 빚이 보인다</div>
+</div>
+
+<div class="mosaic-wrap">
+  <div class="mosaic" id="mosaic"></div>
+</div>
+
+<div class="legend" id="legend">
+  <div class="legend-item" onclick="filterCh(0)"><div class="legend-dot" style="background:#3a3f5a"></div>전체</div>
+  <div class="legend-item" onclick="filterCh(1)"><div class="legend-dot" style="background:var(--ch1)"></div>🪞 1장 거울</div>
+  <div class="legend-item" onclick="filterCh(2)"><div class="legend-dot" style="background:var(--ch2)"></div>🔭 2장 망원경</div>
+  <div class="legend-item" onclick="filterCh(3)"><div class="legend-dot" style="background:var(--ch3)"></div>💒 3장 스테인드글라스</div>
+  <div class="legend-item" onclick="filterCh(4)"><div class="legend-dot" style="background:var(--ch4)"></div>⏱️ 4장 시계</div>
+</div>
+
+<div class="panel" id="panel">
+  <div class="panel-card">
+    <div class="panel-title" id="pTitle"></div>
+    <div class="panel-author" id="pAuthor"></div>
+    <div class="panel-tragedy" id="pTragedy"></div>
+    <div class="panel-quote" id="pQuote"></div>
+
+    <div class="char-grid">
+      <div class="char-card"><h4>주인공의 빌린 것 (self)</h4><div class="val" id="pSelf"></div></div>
+      <div class="char-card"><h4>상대가 빌려준 것 (other)</h4><div class="val" id="pOther"></div></div>
+    </div>
+
+    <div class="relation-viz">
+      <span class="node node-self" id="rSelf"></span>
+      <span class="arrow">⇄</span>
+      <span class="node node-other" id="rOther"></span>
+      <div class="relation-label" id="rLabel"></div>
+    </div>
+
+    <div class="debt-section">
+      <h4 style="font-size:0.85em;color:var(--dim);margin-bottom:8px;">빚 유형 진단</h4>
+      <div class="debt-bar-wrap">
+        <span class="debt-label">🪞 욕망</span>
+        <div class="debt-bar" id="d1" style="background:var(--ch1);width:0%"></div>
+        <span class="debt-score" id="ds1"></span>
+      </div>
+      <div class="debt-bar-wrap">
+        <span class="debt-label">🔭 분석</span>
+        <div class="debt-bar" id="d2" style="background:var(--ch2);width:0%"></div>
+        <span class="debt-score" id="ds2"></span>
+      </div>
+      <div class="debt-bar-wrap">
+        <span class="debt-label">💒 확신</span>
+        <div class="debt-bar" id="d3" style="background:var(--ch3);width:0%"></div>
+        <span class="debt-score" id="ds3"></span>
+      </div>
+      <div class="debt-bar-wrap">
+        <span class="debt-label">⏱️ 성공</span>
+        <div class="debt-bar" id="d4" style="background:var(--ch4);width:0%"></div>
+        <span class="debt-score" id="ds4"></span>
+      </div>
+    </div>
+
+    <div id="pMemo" style="font-size:0.8em;color:var(--dim);margin-top:8px;"></div>
+  </div>
+</div>
+
+<div class="my-table">
+  <h3>내 주기율표 <span class="my-count" id="myCount">0/484</span></h3>
+  <div class="my-grid" id="myGrid"></div>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt">책을 클릭하면 빚이 보입니다. 아픈 곳이 빈칸입니다.</div>
+</div>
+
+<script>
+const DATA = [
+{vol:36,title:'마담 보바리',author:'플로베르',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,featured:true,tragedy:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',quote:'언어란 납작한 돌판 위로 지나가는 균열에 지나지 않다.',memo:'빌린 욕망의 원형'},
+{vol:456,title:'표범',author:'람페두사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P9',ch:2,featured:true,tragedy:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',quote:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.',memo:'분석 마비의 원형'},
+{vol:91,title:'방드르디',author:'투르니에',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:4,featured:true,tragedy:'유럽 문명을 복제하다 모든 것이 무너진 뒤 자기 문명을 세우는 비극',quote:'',memo:'빌린 질서의 원형'},
+{vol:267,title:'페스트',author:'카뮈',self:'자기초월',other:'억압',relation:'연대-해방',pattern:'P8',ch:3,featured:true,tragedy:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',quote:'전염병의 한가운데에서 인간이 배울 수 있는 것이 있다면, 그것은 인간 속에는 경멸할 것보다 찬탄할 것이 더 많다는 사실이다.',memo:'확신의 빚의 원형'},
+{vol:18,title:'고리오 영감',author:'발자크',self:'자기보존',other:'착취',relation:'희생-배반',pattern:'P2',ch:1,tragedy:'자식에게 모든 것을 준 아버지가 파리에서 홀로 죽는 비극',quote:'',memo:'무조건적 사랑이 새장이 될 때'},
+{vol:75,title:'위대한 개츠비',author:'피츠제럴드',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'빌린 꿈이 초록빛 불빛으로 남는 비극',quote:'',memo:'미국판 엠마'},
+{vol:4,title:'변신',author:'카프카',self:'자기소외',other:'억압',relation:'희생-배반',pattern:'P1',ch:4,tragedy:'가족의 빌린 관계가 새장이었음을 벌레가 되어서야 아는 비극',quote:'',memo:'빌린 역할'},
+{vol:248,title:'인형의 집',author:'입센',self:'자기발견',other:'억압',relation:'해방',pattern:'P3',ch:1,tragedy:'새장을 열고 나간 사람',quote:'',memo:'거울새장 탈출'},
+{vol:234,title:'참을 수 없는 존재의 가벼움',author:'쿤데라',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P9',ch:2,tragedy:'가벼움과 무거움 사이에서 어느 쪽이 용기인지 끝내 모르는 비극',quote:'',memo:'가벼움↔무거움 존재론'},
+{vol:29,title:'농담',author:'쿤데라',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:3,tragedy:'엽서 한 장의 농담이 인생을 파괴한다',quote:'',memo:'시스템이 확신을 강요할 때'},
+{vol:388,title:'남아있는 나날',author:'이시구로',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P9',ch:2,tragedy:'선택지가 만료된 뒤에야 장부를 펴는 비극',quote:'',memo:'살리나보다 늦게 편 장부'},
+{vol:278,title:'노인과 바다',author:'헤밍웨이',self:'자기초월',other:'무관심',relation:'연대-해방',pattern:'P8',ch:2,tragedy:'결과를 알면서도 가는 사람',quote:'사람은 파괴당할 수는 있어도 패배할 수는 없다.',memo:'순서를 아는 노인'},
+{vol:379,title:'모두 다 예쁜 말들',author:'매카시',self:'자기발견',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:1,tragedy:'삶의 진실을 모르는 것이 낭만의 활력',quote:'',memo:'Young의 건강한 형태'},
+{vol:5,title:'동물농장',author:'오웰',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P1',ch:3,tragedy:'혁명이 새장이 되는 비극',quote:'모든 동물은 평등하다. 그러나 어떤 동물은 더 평등하다.',memo:'확신이 체제가 될 때'},
+{vol:44,title:'데미안',author:'헤세',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:1,tragedy:'알을 깨는 것이 세계를 깨는 것',quote:'새는 알에서 나오려고 투쟁한다.',memo:'거울 새장의 알'},
+{vol:121,title:'안개',author:'우나무노',self:'자기발견',other:'억압',relation:'모호-긴장',pattern:'P3',ch:4,tragedy:'소설 주인공이 작가를 찾아가 존재를 묻는 비극',quote:'',memo:'존재 의지로서의 글쓰기 — nivola'},
+];
+
+// Debt scoring based on pattern/ch/self/other
+function scoreDept(d) {
+  let s = [25,25,25,25]; // base equal
+  if(d.ch===1) s[0]+=40;
+  if(d.ch===2) s[1]+=40;
+  if(d.ch===3) s[2]+=40;
+  if(d.ch===4) s[3]+=40;
+  if(d.self==='자기기만') { s[0]+=20; s[2]+=10; }
+  if(d.self==='자기보존') { s[1]+=20; s[3]+=10; }
+  if(d.self==='자기초월') { s[2]+=20; }
+  if(d.self==='자기발견') { s[3]+=20; }
+  if(d.self==='자기소외') { s[3]+=15; s[0]+=15; }
+  if(d.relation==='희생-배반') s[0]+=10;
+  if(d.relation==='모호-긴장') s[1]+=10;
+  if(d.relation==='연대-해방') s[2]+=10;
+  const mx=Math.max(...s);
+  return s.map(v=>Math.round(v/mx*100));
+}
+
+// Build mosaic
+const mosaic = document.getElementById('mosaic');
+const analyzed = new Set();
+
+for(let i=1;i<=484;i++){
+  const cell = document.createElement('div');
+  cell.className = 'cell';
+  const d = DATA.find(x=>x.vol===i);
+  if(d){
+    const chClass = d.ch ? `cell-ch${d.ch}` : 'cell-nodata';
+    cell.classList.add(chClass);
+    cell.textContent = i;
+    cell.dataset.vol = i;
+    cell.onclick = ()=> showPanel(d);
+    if(d.featured) cell.style.boxShadow='0 0 6px rgba(255,255,255,0.3)';
+  } else {
+    cell.classList.add('cell-empty');
+    cell.textContent = i;
+  }
+  mosaic.appendChild(cell);
+}
+
+function showPanel(d){
+  document.querySelectorAll('.cell-selected').forEach(c=>c.classList.remove('cell-selected'));
+  const sel = document.querySelector(`.cell[data-vol="${d.vol}"]`);
+  if(sel) sel.classList.add('cell-selected');
+
+  const p = document.getElementById('panel');
+  p.classList.add('active');
+
+  const chNames = {1:'🪞거울새장',2:'🔭망원경새장',3:'💒스테인드글라스새장',4:'⏱️시계새장'};
+  const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
+
+  document.getElementById('pTitle').textContent = `${d.vol}. ${d.title}`;
+  document.getElementById('pTitle').style.color = chColors[d.ch]||'var(--text)';
+  document.getElementById('pAuthor').textContent = `${d.author} — ${chNames[d.ch]||'미분류'}`;
+  document.getElementById('pTragedy').textContent = d.tragedy||'(분석 대기)';
+  document.getElementById('pTragedy').style.borderColor = chColors[d.ch]||'var(--dim)';
+  document.getElementById('pQuote').textContent = d.quote ? `"${d.quote}"` : '';
+  document.getElementById('pSelf').textContent = d.self||'—';
+  document.getElementById('pOther').textContent = d.other||'—';
+  document.getElementById('rSelf').textContent = d.self||'?';
+  document.getElementById('rOther').textContent = d.other||'?';
+  document.getElementById('rLabel').textContent = d.relation ? `관계: ${d.relation}` : '';
+  document.getElementById('pMemo').textContent = d.memo ? `💡 ${d.memo}` : '';
+
+  const scores = scoreDept(d);
+  ['d1','d2','d3','d4'].forEach((id,i)=>{
+    document.getElementById(id).style.width = scores[i]+'%';
+    document.getElementById('ds'+[i+1]).textContent = scores[i]+'%';
+  });
+
+  // Add to my table
+  analyzed.add(d.vol);
+  updateMyTable();
+}
+
+function updateMyTable(){
+  document.getElementById('myCount').textContent = `${analyzed.size}/484`;
+  const grid = document.getElementById('myGrid');
+  grid.innerHTML = '';
+  const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
+  [...analyzed].sort((a,b)=>a-b).forEach(vol=>{
+    const d = DATA.find(x=>x.vol===vol);
+    if(!d)return;
+    const chip = document.createElement('span');
+    chip.className = 'my-chip';
+    chip.style.background = (chColors[d.ch]||'var(--dim)').replace(')',',0.2)').replace('var(','rgba(');
+    chip.style.color = chColors[d.ch]||'var(--dim)';
+    chip.textContent = `${vol} ${d.title}`;
+    grid.appendChild(chip);
+  });
+}
+
+function filterCh(ch){
+  document.querySelectorAll('.cell').forEach(c=>{
+    if(ch===0){ c.classList.remove('dimmed'); return; }
+    const d = DATA.find(x=>x.vol===parseInt(c.dataset.vol));
+    if(d && d.ch===ch) c.classList.remove('dimmed');
+    else c.classList.add('dimmed');
+  });
+}
+</script>
+</body>
+</html>
