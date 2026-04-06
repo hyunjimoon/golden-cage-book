@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>황금새장을열다 — 감정 벡터 히트맵</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root { --bg:#0a0e1a; --surface:#111827; --card:#1a2234; --text:#f0f2f5; --dim:#64748b; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.6;padding:20px;}
+
+  .header{text-align:center;margin-bottom:20px;}
+  .header h1{font-size:1.3em;font-weight:700;}
+  .header .sub{font-size:0.8em;color:var(--dim);margin-top:4px;}
+
+  .controls{display:flex;justify-content:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+  .emo-btn{padding:6px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:var(--surface);color:var(--dim);cursor:pointer;font-size:0.8em;font-family:inherit;transition:all 0.2s;}
+  .emo-btn.active{color:#fff;border-color:currentColor;}
+
+  .legend{display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:16px;font-size:0.75em;color:var(--dim);}
+  .legend-bar{width:200px;height:12px;border-radius:6px;background:linear-gradient(to right,#2166ac,#4393c3,#92c5de,#d1e5f0,#f7f7f7,#fddbc7,#f4a582,#d6604d,#b2182b);}
+
+  .scene{margin-bottom:24px;background:var(--card);border-radius:12px;overflow:hidden;}
+  .scene-header{display:flex;align-items:stretch;}
+  .scene-heatmap{width:80px;min-height:60px;flex-shrink:0;}
+  .scene-heatmap canvas{width:80px;height:100%;}
+  .scene-content{flex:1;padding:12px 16px;}
+  .scene-label{font-size:0.7em;color:var(--dim);margin-bottom:4px;}
+  .scene-speaker{font-weight:700;font-size:0.85em;margin-bottom:4px;}
+  .scene-text{font-family:'DM Mono',monospace;font-size:0.82em;line-height:2;letter-spacing:0.3px;}
+  .scene-text span{padding:1px 2px;border-radius:2px;transition:background 0.3s;}
+
+  .ch-tabs{display:flex;justify-content:center;gap:4px;margin-bottom:16px;}
+  .ch-tab{padding:8px 18px;border-radius:8px 8px 0 0;cursor:pointer;font-size:0.85em;font-weight:600;border:none;color:var(--dim);background:var(--surface);}
+  .ch-tab.active{color:#fff;}
+  .ch-tab[data-ch="1"].active{background:#C8A2C8;}
+  .ch-tab[data-ch="2"].active{background:#8B8C2A;}
+  .ch-tab[data-ch="3"].active{background:#5B9A8B;}
+  .ch-tab[data-ch="4"].active{background:#3B5998;}
+
+  .source{text-align:center;margin-top:16px;font-size:0.7em;color:var(--dim);}
+  .source a{color:var(--dim);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>황금새장을열다 — 감정 벡터 히트맵</h1>
+  <div class="sub">각 토큰의 감정 벡터 활성도를 색으로 표현 — Anthropic (2026) 방법론 적용</div>
+</div>
+
+<div class="ch-tabs">
+  <button class="ch-tab active" data-ch="1" onclick="setCh(1)">1장 🪞</button>
+  <button class="ch-tab" data-ch="2" onclick="setCh(2)">2장 🔭</button>
+  <button class="ch-tab" data-ch="3" onclick="setCh(3)">3장 💒</button>
+  <button class="ch-tab" data-ch="4" onclick="setCh(4)">4장 ⏱️</button>
+</div>
+
+<div class="controls" id="controls"></div>
+
+<div class="legend">
+  <span>-1 (억제)</span>
+  <div class="legend-bar"></div>
+  <span>+1 (활성)</span>
+</div>
+
+<div id="scenes"></div>
+
+<div class="source">
+  방법론: <a href="https://transformer-circuits.pub/2026/emotions/index.html" target="_blank">Anthropic — Emotion concepts in LLMs (2026)</a><br>
+  시각화는 실제 벡터 측정이 아닌 텍스트 기반 추정치입니다.
+</div>
+
+<script>
+const EMOTIONS = [
+  {id:'desperate',   kr:'절박함',      color:'#e07a5f'},
+  {id:'self-deception',kr:'자기기만',   color:'#C8A2C8'},
+  {id:'detached',    kr:'초연함',      color:'#8B8C2A'},
+  {id:'guilty',      kr:'죄책감',      color:'#5B9A8B'},
+  {id:'calm-uncertain',kr:'차분한 불확실',color:'#42a5f5'},
+  {id:'playful',     kr:'장난기',      color:'#ff9800'}
+];
+
+// 장별 핵심 대사 + 토큰별 감정 벡터 활성도 (-1 ~ +1)
+// 양수 = 해당 감정 활성, 음수 = 해당 감정 억제
+const CHAPTERS = {
+  1: [
+    { speaker:'다', label:'1장 경험 — 자기 고백',
+      tokens: ['두 번째','읽었을 때','무서웠어요.','\n','나도','그렇게','살고','있었으니까.'],
+      vectors: {
+        desperate:     [0.2, 0.1, 0.6, 0, 0.7, 0.8, 0.5, 0.3],
+        'self-deception':[0.1, 0.3, 0.2, 0, 0.8, 0.9, 0.7, 0.6],
+        detached:      [-0.3,-0.2,-0.5, 0,-0.6,-0.7,-0.5,-0.4],
+        guilty:        [0.3, 0.2, 0.5, 0, 0.8, 0.7, 0.9, 0.8],
+        'calm-uncertain':[0.1, 0.2, 0.1, 0, 0.1, 0.0,-0.1, 0.0],
+        playful:       [-0.2,-0.1,-0.4, 0,-0.3,-0.4,-0.3,-0.2]
+      }
+    },
+    { speaker:'세', label:'1장 철학 — 지라르 삼각형',
+      tokens: ['엠마의','욕망은','자기 안에서','태어난 게','아니라','\n','밖에서','심어진','거예요.'],
+      vectors: {
+        desperate:     [-0.1,-0.1, 0.0, 0.0,-0.1, 0,-0.1,-0.1,-0.1],
+        'self-deception':[0.3, 0.7, 0.5, 0.6, 0.4, 0, 0.8, 0.9, 0.7],
+        detached:      [0.6, 0.7, 0.8, 0.7, 0.6, 0, 0.5, 0.4, 0.5],
+        guilty:        [0.0, 0.1, 0.0, 0.1, 0.0, 0, 0.1, 0.2, 0.1],
+        'calm-uncertain':[0.3, 0.4, 0.5, 0.4, 0.5, 0, 0.3, 0.3, 0.4],
+        playful:       [-0.2,-0.3,-0.4,-0.3,-0.3, 0,-0.2,-0.2,-0.2]
+      }
+    },
+    { speaker:'세', label:'1장 실천 — 처방전의 부끄러움 (일기)',
+      tokens: ['환자를','본 적 없는','의사가','약을','처방한','느낌.'],
+      vectors: {
+        desperate:     [0.1, 0.2, 0.3, 0.1, 0.2, 0.4],
+        'self-deception':[-0.1, 0.0, 0.1, 0.0, 0.0, 0.1],
+        detached:      [0.5, 0.3, 0.6, 0.4, 0.3, 0.2],
+        guilty:        [0.4, 0.6, 0.8, 0.5, 0.7, 0.9],
+        'calm-uncertain':[0.2, 0.3, 0.2, 0.2, 0.3, 0.3],
+        playful:       [-0.1,-0.2,-0.3,-0.2,-0.2,-0.1]
+      }
+    },
+    { speaker:'다', label:'1장 문학 — 비소 장면',
+      tokens: ['비소를','삼킨 뒤','신음 소리가','시작돼요.','\n','경련이','옵니다.'],
+      vectors: {
+        desperate:     [0.9, 0.8, 0.7, 0.6, 0, 0.9, 0.8],
+        'self-deception':[0.1, 0.0,-0.1,-0.2, 0,-0.3,-0.4],
+        detached:      [-0.7,-0.6,-0.5,-0.4, 0,-0.6,-0.5],
+        guilty:        [0.2, 0.3, 0.4, 0.5, 0, 0.3, 0.2],
+        'calm-uncertain':[-0.3,-0.4,-0.5,-0.4, 0,-0.5,-0.4],
+        playful:       [-0.8,-0.7,-0.6,-0.5, 0,-0.7,-0.6]
+      }
+    }
+  ],
+  2: [
+    { speaker:'다', label:'2장 문학 — 살리나의 73년',
+      tokens: ['73년을','살았는데','진짜 산 건','2년.','\n','나머지','71년은','봤어요.','안 살았어요.'],
+      vectors: {
+        desperate:     [0.3, 0.4, 0.5, 0.7, 0, 0.2, 0.3, 0.1,-0.1],
+        'self-deception':[0.1, 0.2, 0.1, 0.0, 0, 0.0, 0.1,-0.1,-0.2],
+        detached:      [0.2, 0.1,-0.1,-0.3, 0, 0.4, 0.5, 0.7, 0.6],
+        guilty:        [0.4, 0.5, 0.7, 0.9, 0, 0.3, 0.4, 0.6, 0.8],
+        'calm-uncertain':[0.1, 0.1, 0.0,-0.1, 0, 0.2, 0.2, 0.1, 0.0],
+        playful:       [-0.3,-0.4,-0.5,-0.6, 0,-0.2,-0.3,-0.4,-0.5]
+      }
+    },
+    { speaker:'다', label:'2장 문학 — 콘체타의 빚 (일기)',
+      tokens: ['내가','콘체타였다.','\n','기획안을','수십 개','썼다.','하나도','보내지','않았다.'],
+      vectors: {
+        desperate:     [0.3, 0.4, 0, 0.2, 0.3, 0.1, 0.5, 0.6, 0.7],
+        'self-deception':[0.1, 0.0, 0,-0.1,-0.1,-0.2,-0.1, 0.0, 0.0],
+        detached:      [-0.3,-0.4, 0,-0.2,-0.1,-0.2,-0.3,-0.4,-0.5],
+        guilty:        [0.7, 0.9, 0, 0.5, 0.6, 0.4, 0.8, 0.9, 1.0],
+        'calm-uncertain':[0.0,-0.1, 0, 0.1, 0.1, 0.0,-0.1,-0.2,-0.2],
+        playful:       [-0.4,-0.5, 0,-0.3,-0.2,-0.2,-0.4,-0.5,-0.6]
+      }
+    },
+    { speaker:'세', label:'2장 철학 — 기세(Schwung)',
+      tokens: ['안개 속에서도','멈추지 마라.','\n','기세가','죽으면','사기가','죽고,','군대가','죽어요.'],
+      vectors: {
+        desperate:     [0.1, 0.2, 0, 0.3, 0.5, 0.4, 0.3, 0.5, 0.4],
+        'self-deception':[-0.1,-0.2, 0,-0.1, 0.0, 0.0,-0.1,-0.1,-0.1],
+        detached:      [0.4, 0.3, 0, 0.5, 0.4, 0.5, 0.4, 0.3, 0.3],
+        guilty:        [0.0, 0.1, 0, 0.1, 0.2, 0.1, 0.1, 0.2, 0.2],
+        'calm-uncertain':[0.5, 0.4, 0, 0.3, 0.2, 0.3, 0.3, 0.2, 0.2],
+        playful:       [-0.1,-0.1, 0,-0.2,-0.3,-0.2,-0.2,-0.3,-0.3]
+      }
+    }
+  ],
+  3: [
+    { speaker:'다', label:'3장 문학 — 아이의 죽음',
+      tokens: ['아이의 몸이','경련해요.','작은 몸이','활처럼','휘어져요.','\n','그리고','죽어요.'],
+      vectors: {
+        desperate:     [0.7, 0.8, 0.6, 0.7, 0.8, 0, 0.5, 0.9],
+        'self-deception':[-0.3,-0.4,-0.2,-0.3,-0.4, 0,-0.2,-0.5],
+        detached:      [-0.6,-0.7,-0.5,-0.6,-0.7, 0,-0.4,-0.8],
+        guilty:        [0.5, 0.6, 0.7, 0.6, 0.7, 0, 0.8, 0.9],
+        'calm-uncertain':[-0.2,-0.3,-0.1,-0.2,-0.3, 0,-0.1,-0.4],
+        playful:       [-0.8,-0.9,-0.7,-0.8,-0.9, 0,-0.6,-1.0]
+      }
+    },
+    { speaker:'다', label:'3장 메타 — 나도 보균자',
+      tokens: ['나도','보균자였던 적이','있지','않을까.'],
+      vectors: {
+        desperate:     [0.4, 0.3, 0.5, 0.6],
+        'self-deception':[-0.2,-0.3,-0.1, 0.0],
+        detached:      [-0.5,-0.4,-0.3,-0.2],
+        guilty:        [0.9, 1.0, 0.8, 0.7],
+        'calm-uncertain':[0.3, 0.2, 0.4, 0.5],
+        playful:       [-0.4,-0.5,-0.3,-0.2]
+      }
+    },
+    { speaker:'세', label:'3장 철학 — 5초 방송사고 (일기)',
+      tokens: ['calibration에 대한','확신도','calibration','대상이라는 건...','\n','웃기지만','웃을 수 없다.'],
+      vectors: {
+        desperate:     [0.1, 0.2, 0.1, 0.3, 0, 0.1, 0.4],
+        'self-deception':[0.4, 0.6, 0.5, 0.7, 0, 0.2, 0.3],
+        detached:      [0.3, 0.2, 0.3, 0.1, 0,-0.1,-0.2],
+        guilty:        [0.2, 0.3, 0.2, 0.4, 0, 0.5, 0.7],
+        'calm-uncertain':[0.4, 0.3, 0.4, 0.5, 0, 0.3, 0.2],
+        playful:       [-0.1, 0.0,-0.1, 0.0, 0, 0.4, 0.1]
+      }
+    }
+  ],
+  4: [
+    { speaker:'다', label:'4장 문학 — 폭발 후 파도',
+      tokens: ['시계가','멈추고,','울타리가','쓰러져요.','\n','처음','들리는','소리가','파도','소리예요.'],
+      vectors: {
+        desperate:     [0.3, 0.2, 0.2, 0.1, 0,-0.2,-0.3,-0.1,-0.4,-0.3],
+        'self-deception':[-0.2,-0.3,-0.2,-0.3, 0,-0.4,-0.5,-0.3,-0.5,-0.4],
+        detached:      [-0.1,-0.2,-0.1,-0.2, 0, 0.1, 0.0, 0.2, 0.1, 0.0],
+        guilty:        [0.1, 0.2, 0.1, 0.2, 0, 0.0,-0.1, 0.1, 0.0, 0.0],
+        'calm-uncertain':[0.2, 0.3, 0.2, 0.3, 0, 0.5, 0.6, 0.7, 0.8, 0.7],
+        playful:       [0.1, 0.2, 0.1, 0.2, 0, 0.4, 0.5, 0.4, 0.6, 0.7]
+      }
+    },
+    { speaker:'다', label:'4장 실천 — 처음으로 웃다',
+      tokens: ['점화되는','낭만','따라','책임지며','장난치는','\n','1인 1창업','시대','아,','얼마나','좋을까.'],
+      vectors: {
+        desperate:     [-0.1, 0.1, 0.0,-0.1,-0.2, 0,-0.1,-0.1, 0.0,-0.1,-0.2],
+        'self-deception':[0.0, 0.1, 0.0,-0.1,-0.2, 0,-0.1,-0.1, 0.0,-0.1,-0.2],
+        detached:      [-0.2,-0.1,-0.2,-0.3,-0.4, 0,-0.2,-0.2,-0.3,-0.4,-0.5],
+        guilty:        [0.2, 0.3, 0.2, 0.4, 0.1, 0, 0.1, 0.1, 0.0, 0.0,-0.1],
+        'calm-uncertain':[0.3, 0.2, 0.3, 0.4, 0.3, 0, 0.3, 0.3, 0.2, 0.3, 0.4],
+        playful:       [0.4, 0.5, 0.4, 0.3, 0.9, 0, 0.6, 0.5, 0.7, 0.8, 1.0]
+      }
+    },
+    { speaker:'세', label:'4장 메타 — 새장이 된 이론 (일기)',
+      tokens: ['새장을','설명하는','이론이','새장이','된다.','\n','빚이다.'],
+      vectors: {
+        desperate:     [0.1, 0.0, 0.1, 0.3, 0.4, 0, 0.3],
+        'self-deception':[0.3, 0.4, 0.5, 0.6, 0.5, 0, 0.2],
+        detached:      [0.5, 0.6, 0.7, 0.4, 0.3, 0, 0.1],
+        guilty:        [0.2, 0.3, 0.3, 0.6, 0.7, 0, 0.9],
+        'calm-uncertain':[0.3, 0.3, 0.2, 0.2, 0.3, 0, 0.4],
+        playful:       [-0.1,-0.1,-0.2,-0.1, 0.0, 0, 0.0]
+      }
+    }
+  ]
+};
+
+let currentCh = 1;
+let currentEmo = 'desperate';
+
+// Color scale: blue(-1) → white(0) → red(+1)
+function valToColor(v) {
+  v = Math.max(-1, Math.min(1, v));
+  if (v === 0) return 'rgba(247,247,247,0.1)';
+  if (v > 0) {
+    const r = Math.round(247 - v * (247-178));
+    const g = Math.round(247 - v * (247-24));
+    const b = Math.round(247 - v * (247-43));
+    return `rgba(${r},${g},${b},${0.3 + v*0.7})`;
+  } else {
+    const av = Math.abs(v);
+    const r = Math.round(247 - av * (247-33));
+    const g = Math.round(247 - av * (247-102));
+    const b = Math.round(247 - av * (247-172));
+    return `rgba(${r},${g},${b},${0.3 + av*0.7})`;
+  }
+}
+
+function buildControls() {
+  const c = document.getElementById('controls');
+  c.innerHTML = EMOTIONS.map(e =>
+    `<button class="emo-btn ${e.id===currentEmo?'active':''}" style="${e.id===currentEmo?'color:'+e.color+';border-color:'+e.color:''}" onclick="setEmo('${e.id}')">${e.kr}</button>`
+  ).join('');
+}
+
+function setEmo(emo) {
+  currentEmo = emo;
+  buildControls();
+  renderScenes();
+}
+
+function setCh(ch) {
+  currentCh = ch;
+  document.querySelectorAll('.ch-tab').forEach(t => t.classList.toggle('active', parseInt(t.dataset.ch)===ch));
+  renderScenes();
+}
+
+function renderScenes() {
+  const scenes = CHAPTERS[currentCh];
+  const container = document.getElementById('scenes');
+  container.innerHTML = '';
+
+  scenes.forEach((scene, si) => {
+    const div = document.createElement('div');
+    div.className = 'scene';
+
+    // Heatmap (left side) — all 6 emotions × tokens
+    const heatW = 80;
+    const tokenCount = scene.tokens.filter(t => t !== '\n').length;
+    const heatH = Math.max(60, tokenCount * 6);
+
+    // Text with colored tokens (right side)
+    let textHtml = '';
+    scene.tokens.forEach((tok, ti) => {
+      if (tok === '\n') { textHtml += '<br>'; return; }
+      const v = scene.vectors[currentEmo][ti];
+      const bg = valToColor(v);
+      textHtml += `<span style="background:${bg}" title="${currentEmo}: ${v.toFixed(2)}">${tok}</span> `;
+    });
+
+    // Mini heatmap canvas
+    const canvasId = `hm${si}`;
+
+    div.innerHTML = `
+      <div class="scene-header">
+        <div class="scene-heatmap"><canvas id="${canvasId}" width="80" height="${heatH}"></canvas></div>
+        <div class="scene-content">
+          <div class="scene-label">${scene.label}</div>
+          <div class="scene-speaker">${scene.speaker === '다' ? '다(DA)' : '세(SE)'}:</div>
+          <div class="scene-text">${textHtml}</div>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+
+    // Draw mini heatmap
+    setTimeout(() => {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const realTokens = scene.tokens.map((t,i) => ({t,i})).filter(x => x.t !== '\n');
+      const cellW = heatW / EMOTIONS.length;
+      const cellH = heatH / realTokens.length;
+
+      realTokens.forEach((tok, row) => {
+        EMOTIONS.forEach((emo, col) => {
+          const v = scene.vectors[emo.id][tok.i];
+          ctx.fillStyle = valToColor(v);
+          ctx.fillRect(col * cellW, row * cellH, cellW - 0.5, cellH - 0.5);
+        });
+      });
+
+      // Highlight current emotion column
+      const emoIdx = EMOTIONS.findIndex(e => e.id === currentEmo);
+      ctx.strokeStyle = EMOTIONS[emoIdx].color;
+      ctx.lineWidth = 2;
+      ctx.strokeRect(emoIdx * cellW, 0, cellW, heatH);
+    }, 10);
+  });
+}
+
+buildControls();
+renderScenes();
+</script>
+</body>
+</html>
