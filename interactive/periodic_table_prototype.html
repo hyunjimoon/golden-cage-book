@@ -24,7 +24,7 @@
   .cell{
     aspect-ratio:1;border-radius:3px;cursor:pointer;position:relative;
     display:flex;align-items:center;justify-content:center;
-    font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,255,255,0.3);
+    font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);
     transition:transform 0.15s,box-shadow 0.15s,opacity 0.3s;
   }
   .cell:hover{transform:scale(1.8);z-index:10;box-shadow:0 0 12px rgba(255,255,255,0.2);}
@@ -163,74 +163,86 @@
 <script>
 const DATA = [
 // ★ 4장 대표 소설 (featured)
-{vol:36,title:'마담 보바리',author:'플로베르',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,featured:true,tragedy:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',quote:'언어란 납작한 돌판 위로 지나가는 균열에 지나지 않다.',memo:'빌린 욕망의 원형'},
-{vol:456,title:'표범',author:'람페두사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P9',ch:2,featured:true,tragedy:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',quote:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.',memo:'분석 마비의 원형'},
-{vol:267,title:'페스트',author:'카뮈',self:'자기초월',other:'억압',relation:'연대-해방',pattern:'P8',ch:3,featured:true,tragedy:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',quote:'전염병의 한가운데에서 인간이 배울 수 있는 것이 있다면, 그것은 인간 속에는 경멸할 것보다 찬탄할 것이 더 많다는 사실이다.',memo:'확신의 빚의 원형'},
-{vol:91,title:'방드르디, 태평양의 끝',author:'투르니에',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:4,featured:true,tragedy:'유럽 문명을 복제하다 모든 것이 무너진 뒤 자기 문명을 세우는 비극 — 질서를 부수는 창조',quote:'',memo:'빌린 질서의 원형'},
+{vol:36,title:'마담 보바리',author:'귀스타브 플로베르',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,featured:true,tragedy:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',quote:'',memo:'빌린 욕망의 원형'},
+{vol:456,title:'표범',author:'주세페 토마시 디 람페두사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P9',ch:2,featured:true,tragedy:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',quote:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.',memo:'분석 마비의 원형'},
+{vol:267,title:'페스트',author:'알베르 카뮈',self:'자기초월',other:'억압',relation:'연대-해방',pattern:'P8',ch:3,featured:true,tragedy:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',quote:'전염병의 한가운데에서 인간이 배울 수 있는 것이 있다면, 그것은 인간 속에는 경멸할 것보다 찬탄할 것이 더 많다는 사실이다.',memo:'확신의 빚의 원형'},
+{vol:91,title:'방드르디, 태평양의 끝',author:'미셸 투르니에',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:4,featured:true,tragedy:'유럽 문명을 복제하다 모든 것이 무너진 뒤 자기 문명을 세우는 비극 — 질서를 부수는 창조',quote:'',memo:'빌린 질서의 원형'},
 // 🪞 1장 거울새장 — 빌린 욕망
-{vol:18,title:'고리오 영감',author:'발자크',self:'자기보존',other:'착취',relation:'희생-배반',pattern:'P2',ch:1,tragedy:'자식에게 모든 것을 준 아버지가 파리에서 홀로 죽는 비극',quote:'우리의 행복이란 우리 밑바닥에서부터 꼭두부까지 사이에 있는 거야.',memo:'무조건적 사랑이 새장이 될 때'},
+{vol:18,title:'고리오 영감',author:'오노레 드 발자크',self:'자기보존',other:'착취',relation:'희생-배반',pattern:'P2',ch:1,tragedy:'자식에게 모든 것을 준 아버지가 딸들에게 버림받고 파리에서 죽는 비극',quote:'우리의 행복이란 우리 밑바닥에서부터 꼭두부까지 사이에 있는 거야.',memo:'무조건적 사랑이 새장이 될 때'},
 {vol:27,title:'다섯째 아이',author:'도리스 레싱',self:'자기보존',other:'무관심',relation:'오해-비극',pattern:'P6',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:75,title:'위대한 개츠비',author:'피츠제럴드',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'허황된 꿈이 파국으로 귀결되는 비극',quote:'우리는 계속 서서히 물결에 밀려 나아가요.',memo:'미국판 엠마'},
+{vol:75,title:'위대한 개츠비',author:'F. 스콧 피츠제럴드',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'허황된 꿈이 파국으로 귀결되는 비극',quote:'이 세상 사람이 다 너처럼 유리한 입장에 놓여 있지는 않다.',memo:'미국판 엠마'},
 {vol:95,title:'적과 흑',author:'스탕달',self:'자기초월',other:'유혹',relation:'지배-복종',pattern:'P4',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:118,title:'폭풍의 언덕',author:'에밀리 브론테',self:'자기파괴',other:'유혹',relation:'희생-배반',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:169,title:'포스트맨은 벨을 두 번 울린다',author:'케인',self:'자기파괴',other:'유혹',relation:'오해-비극',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:169,title:'포스트맨은 벨을 두 번 울린다',author:'제임스 M. 케인',self:'자기파괴',other:'유혹',relation:'오해-비극',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:205,title:'테스',author:'토머스 하디',self:'자기파괴',other:'유혹',relation:'희생-배반',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:283,title:'엠마',author:'제인 오스틴',self:'자기기만',other:'계몽',relation:'모호-긴장',pattern:'P4',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:379,title:'모두 다 예쁜 말들',author:'매카시',self:'자기발견',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:1,tragedy:'삶의 진실을 모르는 것이 낭만의 활력',quote:'',memo:'Young의 건강한 형태'},
-{vol:388,title:'남아있는 나날',author:'이시구로',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'품위라는 가면에 commit하여 사랑과 인생을 놓치는 비극',quote:'',memo:'살리나보다 늦게 편 장부'},
+{vol:379,title:'모두 다 예쁜 말들',author:'코맥 매카시',self:'자기발견',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:1,tragedy:'삶의 진실을 모르는 것이 낭만의 활력',quote:'',memo:'Young의 건강한 형태'},
+{vol:388,title:'남아있는 나날',author:'가즈오 이시구로',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'품위라는 가면에 commit하여 사랑과 인생을 놓치는 비극',quote:'',memo:'살리나보다 늦게 편 장부'},
 // 🔭 2장 망원경새장 — 분석 마비
-{vol:13,title:'이반 데니소비치',author:'솔제니친',self:'자기보존',other:'억압',relation:'지배-복종',pattern:'P9',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:13,title:'이반 데니소비치, 수용소의 하루',author:'알렉산드르 솔제니친',self:'자기보존',other:'억압',relation:'지배-복종',pattern:'P9',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:65,title:'소망 없는 불행',author:'페터 한트케',self:'자기파괴',other:'무관심',relation:'희생-배반',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:130,title:'자기만의 방',author:'버지니아 울프',self:'자기보존',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:'경제적 독립이 인식의 독립을 낳는다'},
-{vol:248,title:'인형의 집',author:'입센',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'인형에서 인간으로 깨어나는 비극',quote:'나는 먼저 인간이고, 그다음이 여성입니다.',memo:''},
-{vol:309,title:'보이체크·당통의 죽음',author:'뷔히너',self:'자기파괴',other:'무관심',relation:'지배-복종',pattern:'P9',ch:2,tragedy:'(분석 대기)',quote:'',memo:'Golden Cage와 연결'},
-{vol:406,title:'세피아빛 초상',author:'아옌데',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:248,title:'인형의 집',author:'헨리크 입센',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'인형에서 인간으로 깨어나는 비극',quote:'',memo:''},
+{vol:309,title:'보이체크·당통의 죽음',author:'게오르크 뷔히너',self:'자기파괴',other:'무관심',relation:'지배-복종',pattern:'P9',ch:2,tragedy:'(분석 대기)',quote:'',memo:'Golden Cage와 연결'},
+{vol:406,title:'세피아빛 초상',author:'이사벨 아옌데',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
 // 💒 3장 스테인드글라스새장 — 확신의 빚
 {vol:6,title:'허클베리 핀의 모험',author:'마크 트웨인',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'인종차별 사회에서 도덕적 자율을 선택'},
-{vol:21,title:'파우스트',author:'괴테',self:'자기초월',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'앎의 대가를 알면서 선택'},
-{vol:29,title:'농담',author:'쿤데라',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:3,tragedy:'엽서 한 장의 농담이 인생을 파괴한다',quote:'',memo:'시스템이 확신을 강요할 때'},
-{vol:44,title:'데미안',author:'헤세',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'자기 이해 없이 타인을 구하려는 비극',quote:'그 풀이를 할 수 있는 건 누구나 자기 자신뿐이다.',memo:'알을 깨는 것이 세계를 깨는 것'},
-{vol:104,title:'네루다의 우편배달부',author:'스카르메타',self:'자기발견',other:'계몽',relation:'연대-해방',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'멘토를 선택하는 것이 Sequence의 시작'},
-{vol:107,title:'나무 위의 남작',author:'칼비노',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'자발적 망명의 헌신'},
-{vol:154,title:'카라마조프 가의 형제들',author:'도스토예프스키',self:'자기파괴',other:'착취',relation:'오해-비극',pattern:'P6',ch:3,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:21,title:'파우스트',author:'요한 볼프강 폰 괴테',self:'자기초월',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'앎의 대가를 알면서 선택'},
+{vol:29,title:'농담',author:'밀란 쿤데라',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:3,tragedy:'엽서 한 장의 농담이 인생을 파괴한다',quote:'',memo:'시스템이 확신을 강요할 때'},
+{vol:44,title:'데미안',author:'헤르만 헤세',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'자기 이해 없이 타인을 구하려는 비극',quote:'그 풀이를 할 수 있는 건 누구나 자기 자신뿐이다.',memo:'알을 깨는 것이 세계를 깨는 것'},
+{vol:104,title:'네루다의 우편배달부',author:'안토니오 스카르메타',self:'자기발견',other:'계몽',relation:'연대-해방',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'멘토를 선택하는 것이 Sequence의 시작'},
+{vol:107,title:'나무 위의 남작',author:'이탈로 칼비노',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'자발적 망명의 헌신'},
+{vol:154,title:'카라마조프 가의 형제들',author:'표도르 도스토예프스키',self:'자기파괴',other:'착취',relation:'오해-비극',pattern:'P6',ch:3,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:214,title:'면도날',author:'서머싯 몸',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'부와 깨달음 사이의 자유로운 선택'},
-{vol:273,title:'유리알 유희',author:'헤세',self:'자기초월',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'카스탈리엔의 자유를 버리고 세상에 헌신'},
-{vol:278,title:'노인과 바다',author:'헤밍웨이',self:'자기초월',other:'무관심',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'패배를 알면서도 싸움을 선택하는 비극',quote:'인간은 파괴될 수 있지만 패배할 수 없다.',memo:'resilience의 문학적 원형'},
+{vol:273,title:'유리알 유희',author:'헤르만 헤세',self:'자기초월',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'카스탈리엔의 자유를 버리고 세상에 헌신'},
+{vol:278,title:'노인과 바다',author:'어니스트 헤밍웨이',self:'자기초월',other:'무관심',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'패배를 알면서도 싸움을 선택하는 비극',quote:'인간은 파멸당할 수 있을지는 몰라도 패배할 수는 없다.',memo:'resilience의 문학적 원형'},
 {vol:297,title:'여인의 초상',author:'헨리 제임스',self:'자기발견',other:'억압',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'자유를 알면서 헌신을 선택'},
 {vol:375,title:'대사들',author:'헨리 제임스',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:395,title:'월든',author:'소로',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'의도적 삶의 실험'},
+{vol:395,title:'월든',author:'헨리 데이비드 소로',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'의도적 삶의 실험'},
 {vol:436,title:'미들마치',author:'조지 엘리엇',self:'자기초월',other:'억압',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'보이지 않는 선의 축적'},
 // ⏱️ 4장 시계새장 — 성공의 빚
-{vol:4,title:'변신',author:'카프카',self:'자기소외',other:'억압',relation:'희생-배반',pattern:'P1',ch:4,tragedy:'가족의 빌린 관계가 새장이었음을 벌레가 되어서야 아는 비극',quote:'',memo:'빌린 역할'},
-{vol:5,title:'동물농장',author:'오웰',self:'자기기만',other:'억압',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'평등에 commit하면 commit 자체가 권력이 되어 평등을 잡아먹는 비극',quote:'인간은 생산하지 않으면서 소비하는 유일한 동물.',memo:''},
-{vol:121,title:'안개',author:'우나무노',self:'자기발견',other:'억압',relation:'모호-긴장',pattern:'P3',ch:4,tragedy:'소설 주인공이 작가를 찾아가 존재를 묻는 비극',quote:'',memo:'존재 의지로서의 글쓰기 — nivola'},
-{vol:153,title:'구덩이',author:'플라토노프',self:'자기파괴',other:'억압',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:234,title:'참을 수 없는 존재의 가벼움',author:'쿤데라',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'가벼움과 무거움을 모두 알면서 선택의 무게를 짊어지는 비극',quote:'',memo:'가벼움↔무거움 존재론'},
-{vol:290,title:'구르브 연락 없다',author:'멘도사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:4,title:'변신·시골의사',author:'프란츠 카프카',self:'자기소외',other:'억압',relation:'희생-배반',pattern:'P1',ch:4,tragedy:'가족의 빌린 관계가 새장이었음을 벌레가 되어서야 아는 비극',quote:'',memo:'빌린 역할'},
+{vol:5,title:'동물농장',author:'조지 오웰',self:'자기기만',other:'억압',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'평등에 commit하면 commit 자체가 권력이 되어 평등을 잡아먹는 비극',quote:'인간은 생산하지 않으면서 소비하는 유일한 동물.',memo:''},
+{vol:121,title:'안개',author:'미겔 데 우나무노',self:'자기발견',other:'억압',relation:'모호-긴장',pattern:'P3',ch:4,tragedy:'소설 주인공이 작가를 찾아가 존재를 묻는 비극',quote:'',memo:'존재 의지로서의 글쓰기 — nivola'},
+{vol:153,title:'구덩이',author:'안드레이 플라토노프',self:'자기파괴',other:'억압',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:234,title:'참을 수 없는 존재의 가벼움',author:'밀란 쿤데라',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'가벼움과 무거움을 모두 알면서 선택의 무게를 짊어지는 비극',quote:'',memo:'가벼움↔무거움 존재론'},
+{vol:290,title:'구르브 연락 없다',author:'에두아르도 멘도사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:301,title:'레 미제라블',author:'빅토르 위고',self:'자기초월',other:'억압',relation:'연대-해방',pattern:'P8',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:308,title:'에드거 앨런 포 단편선',author:'포',self:'자기파괴',other:'무관심',relation:'오해-비극',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:308,title:'에드거 앨런 포 단편선',author:'에드거 앨런 포',self:'자기파괴',other:'무관심',relation:'오해-비극',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:344,title:'뇌우',author:'차오위',self:'자기기만',other:'유혹',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:345,title:'모옌 중단편선',author:'모옌',self:'자기기만',other:'억압',relation:'오해-비극',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:399,title:'방랑자들',author:'토카르추크',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:465,title:'안과 겉·결혼·여름',author:'카뮈',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:399,title:'방랑자들',author:'올가 토카르추크',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
+{vol:465,title:'안과 겉·결혼·여름',author:'알베르 카뮈',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
 {vol:484,title:'댈러웨이 부인',author:'버지니아 울프',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
 ];
 
-// Debt scoring based on pattern/ch/self/other
-function scoreDept(d) {
-  let s = [25,25,25,25]; // base equal
+// Debt scoring — ch + self + other + relation
+function scoreDebt(d) {
+  let s = [25,25,25,25];
+  // Chapter weight
   if(d.ch===1) s[0]+=40;
   if(d.ch===2) s[1]+=40;
   if(d.ch===3) s[2]+=40;
   if(d.ch===4) s[3]+=40;
+  // Self dimension
   if(d.self==='자기기만') { s[0]+=20; s[2]+=10; }
   if(d.self==='자기보존') { s[1]+=20; s[3]+=10; }
   if(d.self==='자기초월') { s[2]+=20; }
   if(d.self==='자기발견') { s[3]+=20; }
   if(d.self==='자기소외') { s[3]+=15; s[0]+=15; }
+  if(d.self==='자기파괴') { s[0]+=15; s[3]+=15; }
+  // Other dimension
+  if(d.other==='유혹') s[0]+=15;
+  if(d.other==='억압') { s[1]+=10; s[2]+=10; }
+  if(d.other==='무관심') s[1]+=15;
+  if(d.other==='착취') { s[0]+=10; s[3]+=10; }
+  if(d.other==='계몽') s[2]+=15;
+  // Relation dimension
   if(d.relation==='희생-배반') s[0]+=10;
   if(d.relation==='모호-긴장') s[1]+=10;
   if(d.relation==='연대-해방') s[2]+=10;
+  if(d.relation==='지배-복종') s[3]+=10;
+  if(d.relation==='오해-비극') { s[0]+=5; s[3]+=5; }
   const mx=Math.max(...s);
   return s.map(v=>Math.round(v/mx*100));
 }
@@ -238,6 +250,8 @@ function scoreDept(d) {
 // Build mosaic
 const mosaic = document.getElementById('mosaic');
 const analyzed = new Set();
+const TOTAL = DATA.length;
+const chHex = {1:'#C8A2C8',2:'#8B8C2A',3:'#5B9A8B',4:'#3B5998'};
 
 for(let i=1;i<=484;i++){
   const cell = document.createElement('div');
@@ -257,10 +271,11 @@ for(let i=1;i<=484;i++){
   mosaic.appendChild(cell);
 }
 
+let prevSelected = null;
 function showPanel(d){
-  document.querySelectorAll('.cell-selected').forEach(c=>c.classList.remove('cell-selected'));
+  if(prevSelected) prevSelected.classList.remove('cell-selected');
   const sel = document.querySelector(`.cell[data-vol="${d.vol}"]`);
-  if(sel) sel.classList.add('cell-selected');
+  if(sel){ sel.classList.add('cell-selected'); prevSelected=sel; }
 
   const p = document.getElementById('panel');
   p.classList.add('active');
@@ -272,8 +287,9 @@ function showPanel(d){
   if(d.ch && chImgs[d.ch]){
     illust.src = chImgs[d.ch]; illust.alt = chNames[d.ch];
     illust.onload = ()=> illust.classList.add('loaded');
-    illust.classList.remove('loaded');
-  } else { illust.src = ''; illust.classList.remove('loaded'); }
+    illust.onerror = ()=>{ illust.style.display='none'; };
+    illust.classList.remove('loaded'); illust.style.display='';
+  } else { illust.src=''; illust.classList.remove('loaded'); }
 
   document.getElementById('pTitle').textContent = `${d.vol}. ${d.title}`;
   document.getElementById('pTitle').style.color = chColors[d.ch]||'var(--text)';
@@ -288,39 +304,45 @@ function showPanel(d){
   document.getElementById('rLabel').textContent = d.relation ? `관계: ${d.relation}` : '';
   document.getElementById('pMemo').textContent = d.memo ? `💡 ${d.memo}` : '';
 
-  const scores = scoreDept(d);
+  const scores = scoreDebt(d);
   ['d1','d2','d3','d4'].forEach((id,i)=>{
     document.getElementById(id).style.width = scores[i]+'%';
-    document.getElementById('ds'+[i+1]).textContent = scores[i]+'%';
+    document.getElementById('ds'+(i+1)).textContent = scores[i]+'%';
   });
 
-  // Add to my table
   analyzed.add(d.vol);
   updateMyTable();
+  p.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function updateMyTable(){
-  document.getElementById('myCount').textContent = `${analyzed.size}/484`;
+  document.getElementById('myCount').textContent = `${analyzed.size}/${TOTAL}`;
   const grid = document.getElementById('myGrid');
   grid.innerHTML = '';
-  const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
   [...analyzed].sort((a,b)=>a-b).forEach(vol=>{
     const d = DATA.find(x=>x.vol===vol);
     if(!d)return;
     const chip = document.createElement('span');
     chip.className = 'my-chip';
-    chip.style.background = (chColors[d.ch]||'var(--dim)').replace(')',',0.2)').replace('var(','rgba(');
-    chip.style.color = chColors[d.ch]||'var(--dim)';
+    const hex = chHex[d.ch]||'#64748b';
+    chip.style.background = hex+'33';
+    chip.style.color = hex;
     chip.textContent = `${vol} ${d.title}`;
     grid.appendChild(chip);
   });
 }
 
+let activeFilter = 0;
 function filterCh(ch){
+  activeFilter = (activeFilter===ch) ? 0 : ch;
+  document.querySelectorAll('.legend-item').forEach((el,i)=>{
+    el.style.opacity = (activeFilter===0||activeFilter===i) ? '1' : '0.4';
+  });
   document.querySelectorAll('.cell').forEach(c=>{
-    if(ch===0){ c.classList.remove('dimmed'); return; }
+    if(activeFilter===0){ c.classList.remove('dimmed'); return; }
+    if(!c.dataset.vol) return;
     const d = DATA.find(x=>x.vol===parseInt(c.dataset.vol));
-    if(d && d.ch===ch) c.classList.remove('dimmed');
+    if(d && d.ch===activeFilter) c.classList.remove('dimmed');
     else c.classList.add('dimmed');
   });
 }
