@@ -8,7 +8,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
   :root {
     --bg:#0a0e1a; --surface:#111827; --card:#1a2234;
-    --border:rgba(255,255,255,0.06);
     --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b;
     --ch1:#C8A2C8; --ch2:#8B8C2A; --ch3:#5B9A8B; --ch4:#3B5998;
     --ch1bg:rgba(200,162,200,0.25); --ch2bg:rgba(139,140,42,0.25);
@@ -19,29 +18,48 @@
   .header{text-align:center;padding:24px 16px 8px;}
   .header h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;}
   .header .sub{font-size:0.85em;color:var(--dim);margin-top:4px;}
+
+  /* ── 4-Column Summary ── */
+  .summary{max-width:880px;margin:16px auto;padding:0 16px;}
+  .summary h2{font-size:1em;font-weight:600;margin-bottom:10px;color:var(--text2);}
+  .cols4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .col-card{border-radius:12px;padding:14px 10px;cursor:default;}
+  .col-card h3{font-size:0.85em;font-weight:700;margin-bottom:2px;}
+  .col-card .keyword{font-size:0.7em;color:var(--dim);margin-bottom:8px;}
+  .col-card .verb{font-size:0.8em;font-weight:600;margin-bottom:8px;opacity:0.9;}
+  .col-card .booklist{font-size:0.72em;line-height:1.8;}
+  .col-card .booklist span{cursor:pointer;display:inline-block;padding:1px 4px;border-radius:3px;margin:1px 0;}
+  .col-card .booklist span:hover{filter:brightness(1.5);}
+  .col-card .booklist .feat{font-weight:700;}
+  .c1{background:var(--ch1bg);border:1px solid rgba(200,162,200,0.3);color:var(--ch1);}
+  .c2{background:var(--ch2bg);border:1px solid rgba(139,140,42,0.3);color:var(--ch2);}
+  .c3{background:var(--ch3bg);border:1px solid rgba(91,154,139,0.3);color:var(--ch3);}
+  .c4{background:var(--ch4bg);border:1px solid rgba(59,89,152,0.3);color:var(--ch4);}
+
+  /* ── Mosaic ── */
   .mosaic-wrap{padding:8px 16px;}
   .mosaic{display:grid;grid-template-columns:repeat(22,1fr);gap:2px;max-width:880px;margin:0 auto;}
   .cell{
     aspect-ratio:1;border-radius:3px;cursor:pointer;position:relative;
     display:flex;align-items:center;justify-content:center;
-    font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);
+    font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,255,255,0.3);
     transition:transform 0.15s,box-shadow 0.15s,opacity 0.3s;
   }
   .cell:hover{transform:scale(1.8);z-index:10;box-shadow:0 0 12px rgba(255,255,255,0.2);}
   .cell-empty{background:#0f1525;}
-  .cell-nodata{background:#1a1f3a;}
   .cell-ch1{background:var(--ch1bg);border:1px solid rgba(200,162,200,0.4);}
   .cell-ch2{background:var(--ch2bg);border:1px solid rgba(139,140,42,0.4);}
   .cell-ch3{background:var(--ch3bg);border:1px solid rgba(91,154,139,0.4);}
   .cell-ch4{background:var(--ch4bg);border:1px solid rgba(59,89,152,0.4);}
   .cell-selected{box-shadow:0 0 8px rgba(255,255,255,0.5)!important;transform:scale(1.5);z-index:11;}
   .cell.dimmed{opacity:0.15;}
+
   .legend{display:flex;justify-content:center;gap:16px;padding:8px 0;flex-wrap:wrap;}
   .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--dim);cursor:pointer;}
   .legend-item:hover{color:var(--text);}
   .legend-dot{width:10px;height:10px;border-radius:2px;}
 
-  /* Analysis Panel */
+  /* ── Panel ── */
   .panel{max-width:880px;margin:16px auto;padding:0 16px;display:none;}
   .panel.active{display:block;}
   .panel-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;}
@@ -49,104 +67,94 @@
   .panel-author{font-size:0.85em;color:var(--dim);margin-bottom:16px;}
   .panel-tragedy{font-size:0.95em;line-height:1.7;color:var(--text2);margin-bottom:16px;padding:12px;background:var(--surface);border-radius:10px;border-left:3px solid var(--ch1);}
   .panel-quote{font-style:italic;font-size:0.85em;color:var(--dim);margin-bottom:16px;}
-
-  /* Character Cards */
-  .char-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
-  .char-card{padding:14px;background:var(--surface);border-radius:10px;}
-  .char-card h4{font-size:0.8em;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
-  .char-card .val{font-size:1.05em;font-weight:600;}
-
-  /* Relation */
-  .relation-viz{text-align:center;padding:16px;background:var(--surface);border-radius:10px;margin-bottom:16px;}
-  .relation-viz .arrow{font-size:1.5em;margin:0 12px;color:var(--dim);}
-  .relation-viz .node{display:inline-block;padding:8px 16px;border-radius:8px;font-weight:600;}
-  .relation-viz .node-self{background:var(--ch1bg);color:var(--ch1);}
-  .relation-viz .node-other{background:var(--ch4bg);color:var(--ch4);}
-  .relation-label{font-size:0.8em;color:var(--dim);margin-top:8px;}
-
-  /* Debt Diagnosis */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
+  .info-card{padding:14px;background:var(--surface);border-radius:10px;text-align:center;}
+  .info-card h4{font-size:0.7em;color:var(--dim);letter-spacing:1px;margin-bottom:6px;}
+  .info-card .val{font-size:1.05em;font-weight:600;}
+  .verb-box{text-align:center;padding:14px;background:var(--surface);border-radius:10px;margin-bottom:16px;font-size:1.1em;font-weight:700;}
   .debt-section{margin-bottom:16px;}
   .debt-bar-wrap{display:flex;align-items:center;gap:8px;margin:6px 0;}
-  .debt-label{font-size:0.8em;min-width:80px;color:var(--dim);}
+  .debt-label{font-size:0.8em;min-width:100px;color:var(--dim);}
   .debt-bar{height:8px;border-radius:4px;transition:width 0.5s;}
   .debt-score{font-size:0.85em;font-weight:600;min-width:30px;}
 
-  /* My Periodic Table */
   .my-table{max-width:880px;margin:16px auto;padding:0 16px;}
   .my-table h3{font-size:1em;margin-bottom:8px;}
   .my-count{font-family:'DM Mono',monospace;font-size:0.85em;color:var(--dim);}
   .my-grid{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
   .my-chip{padding:4px 10px;border-radius:6px;font-size:0.75em;font-weight:600;}
-
-  .prompt-box{max-width:880px;margin:8px auto;padding:0 16px;}
+  .prompt-box{max-width:880px;margin:8px auto 24px;padding:0 16px;}
   .prompt{background:var(--card);border-radius:12px;padding:16px;font-size:0.85em;color:var(--text2);text-align:center;}
-  .panel-illust{width:100%;border-radius:12px;margin-bottom:16px;opacity:0;transition:opacity 0.5s;}
-  .panel-illust.loaded{opacity:1;}
+
+  @media(max-width:600px){
+    .cols4{grid-template-columns:repeat(2,1fr);}
+    .info-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>창업소설의 주기율표</h1>
-  <div class="sub">빈칸이 다음 책이다 — 책을 클릭하면 빚이 보인다</div>
+  <div class="sub">빌린 것을 안 갚으면, 자기 것을 잃는다 — 빈칸이 다음 책이다</div>
 </div>
 
-<div class="mosaic-wrap">
-  <div class="mosaic" id="mosaic"></div>
+<!-- ═══ 4-Column Summary ═══ -->
+<div class="summary">
+  <h2>네 개의 새장, 네 개의 빚</h2>
+  <div class="cols4" id="cols4"></div>
 </div>
 
-<div class="legend" id="legend">
+<!-- ═══ 484 Mosaic ═══ -->
+<div class="mosaic-wrap"><div class="mosaic" id="mosaic"></div></div>
+
+<div class="legend">
   <div class="legend-item" onclick="filterCh(0)"><div class="legend-dot" style="background:#3a3f5a"></div>전체</div>
-  <div class="legend-item" onclick="filterCh(1)"><div class="legend-dot" style="background:var(--ch1)"></div>🪞 1장 거울</div>
-  <div class="legend-item" onclick="filterCh(2)"><div class="legend-dot" style="background:var(--ch2)"></div>🔭 2장 망원경</div>
-  <div class="legend-item" onclick="filterCh(3)"><div class="legend-dot" style="background:var(--ch3)"></div>💒 3장 스테인드글라스</div>
-  <div class="legend-item" onclick="filterCh(4)"><div class="legend-dot" style="background:var(--ch4)"></div>⏱️ 4장 시계</div>
+  <div class="legend-item" onclick="filterCh(1)"><div class="legend-dot" style="background:var(--ch1)"></div>🪞 오염</div>
+  <div class="legend-item" onclick="filterCh(2)"><div class="legend-dot" style="background:var(--ch2)"></div>🔭 억압</div>
+  <div class="legend-item" onclick="filterCh(3)"><div class="legend-dot" style="background:var(--ch3)"></div>💒 의심</div>
+  <div class="legend-item" onclick="filterCh(4)"><div class="legend-dot" style="background:var(--ch4)"></div>⏱️ 소진</div>
 </div>
 
+<!-- ═══ Detail Panel ═══ -->
 <div class="panel" id="panel">
   <div class="panel-card">
-    <img class="panel-illust" id="pIllust" src="" alt="">
     <div class="panel-title" id="pTitle"></div>
     <div class="panel-author" id="pAuthor"></div>
     <div class="panel-tragedy" id="pTragedy"></div>
     <div class="panel-quote" id="pQuote"></div>
 
-    <div class="char-grid">
-      <div class="char-card"><h4>주인공의 빌린 것 (self)</h4><div class="val" id="pSelf"></div></div>
-      <div class="char-card"><h4>상대가 빌려준 것 (other)</h4><div class="val" id="pOther"></div></div>
+    <div class="info-grid">
+      <div class="info-card"><h4>빌린 것</h4><div class="val" id="pBorrowed"></div></div>
+      <div class="info-card"><h4>잃은 것</h4><div class="val" id="pLost"></div></div>
+      <div class="info-card"><h4>새장 유형</h4><div class="val" id="pCage"></div></div>
     </div>
 
-    <div class="relation-viz">
-      <span class="node node-self" id="rSelf"></span>
-      <span class="arrow">⇄</span>
-      <span class="node node-other" id="rOther"></span>
-      <div class="relation-label" id="rLabel"></div>
-    </div>
+    <div class="verb-box" id="pVerb"></div>
 
     <div class="debt-section">
-      <h4 style="font-size:0.85em;color:var(--dim);margin-bottom:8px;">빚 유형 진단</h4>
+      <h4 style="font-size:0.85em;color:var(--dim);margin-bottom:8px;">빚 진단</h4>
       <div class="debt-bar-wrap">
-        <span class="debt-label">🪞 욕망</span>
+        <span class="debt-label">🪞 욕망 오염</span>
         <div class="debt-bar" id="d1" style="background:var(--ch1);width:0%"></div>
         <span class="debt-score" id="ds1"></span>
       </div>
       <div class="debt-bar-wrap">
-        <span class="debt-label">🔭 분석</span>
+        <span class="debt-label">🔭 분석 억압</span>
         <div class="debt-bar" id="d2" style="background:var(--ch2);width:0%"></div>
         <span class="debt-score" id="ds2"></span>
       </div>
       <div class="debt-bar-wrap">
-        <span class="debt-label">💒 확신</span>
+        <span class="debt-label">💒 의심 부재</span>
         <div class="debt-bar" id="d3" style="background:var(--ch3);width:0%"></div>
         <span class="debt-score" id="ds3"></span>
       </div>
       <div class="debt-bar-wrap">
-        <span class="debt-label">⏱️ 성공</span>
+        <span class="debt-label">⏱️ 성공 소진</span>
         <div class="debt-bar" id="d4" style="background:var(--ch4);width:0%"></div>
         <span class="debt-score" id="ds4"></span>
       </div>
     </div>
-
     <div id="pMemo" style="font-size:0.8em;color:var(--dim);margin-top:8px;"></div>
   </div>
 </div>
@@ -161,109 +169,114 @@
 </div>
 
 <script>
+// ═══ 4장 핵심 키워드 ═══
+// ch1 오염(contamination): 욕망이 상태를 오염한다 — 빌린 욕망
+// ch2 억압(suppression):   상태가 욕망을 억압한다 — 빌린 품위
+// ch3 의심(doubt):         의심 부재가 빚이다     — 빌린 확신
+// ch4 소진(fire):          성공이 변이를 굶긴다   — 빌린 질서
+
+const CH = {
+  1:{borrowed:'욕망',lost:'삶',cage:'오염',verb:'장부를 펴라',
+     line:'내가 원하니까 시장도 원할 것'},
+  2:{borrowed:'품위',lost:'시간',cage:'억압',verb:'순서를 타라',
+     line:'다 보이니 움직일 필요 없다'},
+  3:{borrowed:'확신',lost:'목숨',cage:'의심 부재',verb:'확신을 교정하라',
+     line:'확신이 증거를 차단한다'},
+  4:{borrowed:'질서',lost:'자유',cage:'소진',verb:'다음 불을 피워라',
+     line:'성공했으니 바꿀 이유가 없다'}
+};
+
 const DATA = [
-// ★ 4장 대표 소설 (featured)
-{vol:36,title:'마담 보바리',author:'귀스타브 플로베르',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,featured:true,tragedy:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',quote:'',memo:'빌린 욕망의 원형'},
-{vol:456,title:'표범',author:'주세페 토마시 디 람페두사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P9',ch:2,featured:true,tragedy:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',quote:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.',memo:'분석 마비의 원형'},
-{vol:267,title:'페스트',author:'알베르 카뮈',self:'자기초월',other:'억압',relation:'연대-해방',pattern:'P8',ch:3,featured:true,tragedy:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',quote:'전염병의 한가운데에서 인간이 배울 수 있는 것이 있다면, 그것은 인간 속에는 경멸할 것보다 찬탄할 것이 더 많다는 사실이다.',memo:'확신의 빚의 원형'},
-{vol:91,title:'방드르디, 태평양의 끝',author:'미셸 투르니에',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:4,featured:true,tragedy:'유럽 문명을 복제하다 모든 것이 무너진 뒤 자기 문명을 세우는 비극 — 질서를 부수는 창조',quote:'',memo:'빌린 질서의 원형'},
-// 🪞 1장 거울새장 — 빌린 욕망
-{vol:18,title:'고리오 영감',author:'오노레 드 발자크',self:'자기보존',other:'착취',relation:'희생-배반',pattern:'P2',ch:1,tragedy:'자식에게 모든 것을 준 아버지가 딸들에게 버림받고 파리에서 죽는 비극',quote:'우리의 행복이란 우리 밑바닥에서부터 꼭두부까지 사이에 있는 거야.',memo:'무조건적 사랑이 새장이 될 때'},
-{vol:27,title:'다섯째 아이',author:'도리스 레싱',self:'자기보존',other:'무관심',relation:'오해-비극',pattern:'P6',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:75,title:'위대한 개츠비',author:'F. 스콧 피츠제럴드',self:'자기기만',other:'유혹',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'허황된 꿈이 파국으로 귀결되는 비극',quote:'이 세상 사람이 다 너처럼 유리한 입장에 놓여 있지는 않다.',memo:'미국판 엠마'},
-{vol:95,title:'적과 흑',author:'스탕달',self:'자기초월',other:'유혹',relation:'지배-복종',pattern:'P4',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:118,title:'폭풍의 언덕',author:'에밀리 브론테',self:'자기파괴',other:'유혹',relation:'희생-배반',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:169,title:'포스트맨은 벨을 두 번 울린다',author:'제임스 M. 케인',self:'자기파괴',other:'유혹',relation:'오해-비극',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:205,title:'테스',author:'토머스 하디',self:'자기파괴',other:'유혹',relation:'희생-배반',pattern:'P7',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:283,title:'엠마',author:'제인 오스틴',self:'자기기만',other:'계몽',relation:'모호-긴장',pattern:'P4',ch:1,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:379,title:'모두 다 예쁜 말들',author:'코맥 매카시',self:'자기발견',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:1,tragedy:'삶의 진실을 모르는 것이 낭만의 활력',quote:'',memo:'Young의 건강한 형태'},
-{vol:388,title:'남아있는 나날',author:'가즈오 이시구로',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:1,tragedy:'품위라는 가면에 commit하여 사랑과 인생을 놓치는 비극',quote:'',memo:'살리나보다 늦게 편 장부'},
-// 🔭 2장 망원경새장 — 분석 마비
-{vol:13,title:'이반 데니소비치, 수용소의 하루',author:'알렉산드르 솔제니친',self:'자기보존',other:'억압',relation:'지배-복종',pattern:'P9',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:65,title:'소망 없는 불행',author:'페터 한트케',self:'자기파괴',other:'무관심',relation:'희생-배반',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:130,title:'자기만의 방',author:'버지니아 울프',self:'자기보존',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:'경제적 독립이 인식의 독립을 낳는다'},
-{vol:248,title:'인형의 집',author:'헨리크 입센',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'인형에서 인간으로 깨어나는 비극',quote:'',memo:''},
-{vol:309,title:'보이체크·당통의 죽음',author:'게오르크 뷔히너',self:'자기파괴',other:'무관심',relation:'지배-복종',pattern:'P9',ch:2,tragedy:'(분석 대기)',quote:'',memo:'Golden Cage와 연결'},
-{vol:406,title:'세피아빛 초상',author:'이사벨 아옌데',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P5',ch:2,tragedy:'(분석 대기)',quote:'',memo:''},
-// 💒 3장 스테인드글라스새장 — 확신의 빚
-{vol:6,title:'허클베리 핀의 모험',author:'마크 트웨인',self:'자기발견',other:'억압',relation:'연대-해방',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'인종차별 사회에서 도덕적 자율을 선택'},
-{vol:21,title:'파우스트',author:'요한 볼프강 폰 괴테',self:'자기초월',other:'유혹',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'앎의 대가를 알면서 선택'},
-{vol:29,title:'농담',author:'밀란 쿤데라',self:'자기기만',other:'억압',relation:'희생-배반',pattern:'P4',ch:3,tragedy:'엽서 한 장의 농담이 인생을 파괴한다',quote:'',memo:'시스템이 확신을 강요할 때'},
-{vol:44,title:'데미안',author:'헤르만 헤세',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'자기 이해 없이 타인을 구하려는 비극',quote:'그 풀이를 할 수 있는 건 누구나 자기 자신뿐이다.',memo:'알을 깨는 것이 세계를 깨는 것'},
-{vol:104,title:'네루다의 우편배달부',author:'안토니오 스카르메타',self:'자기발견',other:'계몽',relation:'연대-해방',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'멘토를 선택하는 것이 Sequence의 시작'},
-{vol:107,title:'나무 위의 남작',author:'이탈로 칼비노',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'자발적 망명의 헌신'},
-{vol:154,title:'카라마조프 가의 형제들',author:'표도르 도스토예프스키',self:'자기파괴',other:'착취',relation:'오해-비극',pattern:'P6',ch:3,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:214,title:'면도날',author:'서머싯 몸',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'부와 깨달음 사이의 자유로운 선택'},
-{vol:273,title:'유리알 유희',author:'헤르만 헤세',self:'자기초월',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'카스탈리엔의 자유를 버리고 세상에 헌신'},
-{vol:278,title:'노인과 바다',author:'어니스트 헤밍웨이',self:'자기초월',other:'무관심',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'패배를 알면서도 싸움을 선택하는 비극',quote:'인간은 파멸당할 수 있을지는 몰라도 패배할 수는 없다.',memo:'resilience의 문학적 원형'},
-{vol:297,title:'여인의 초상',author:'헨리 제임스',self:'자기발견',other:'억압',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'자유를 알면서 헌신을 선택'},
-{vol:375,title:'대사들',author:'헨리 제임스',self:'자기발견',other:'계몽',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:395,title:'월든',author:'헨리 데이비드 소로',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'의도적 삶의 실험'},
-{vol:436,title:'미들마치',author:'조지 엘리엇',self:'자기초월',other:'억압',relation:'모호-긴장',pattern:'P3',ch:3,tragedy:'(분석 대기)',quote:'',memo:'보이지 않는 선의 축적'},
-// ⏱️ 4장 시계새장 — 성공의 빚
-{vol:4,title:'변신·시골의사',author:'프란츠 카프카',self:'자기소외',other:'억압',relation:'희생-배반',pattern:'P1',ch:4,tragedy:'가족의 빌린 관계가 새장이었음을 벌레가 되어서야 아는 비극',quote:'',memo:'빌린 역할'},
-{vol:5,title:'동물농장',author:'조지 오웰',self:'자기기만',other:'억압',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'평등에 commit하면 commit 자체가 권력이 되어 평등을 잡아먹는 비극',quote:'인간은 생산하지 않으면서 소비하는 유일한 동물.',memo:''},
-{vol:121,title:'안개',author:'미겔 데 우나무노',self:'자기발견',other:'억압',relation:'모호-긴장',pattern:'P3',ch:4,tragedy:'소설 주인공이 작가를 찾아가 존재를 묻는 비극',quote:'',memo:'존재 의지로서의 글쓰기 — nivola'},
-{vol:153,title:'구덩이',author:'안드레이 플라토노프',self:'자기파괴',other:'억압',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:234,title:'참을 수 없는 존재의 가벼움',author:'밀란 쿤데라',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'가벼움과 무거움을 모두 알면서 선택의 무게를 짊어지는 비극',quote:'',memo:'가벼움↔무거움 존재론'},
-{vol:290,title:'구르브 연락 없다',author:'에두아르도 멘도사',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:301,title:'레 미제라블',author:'빅토르 위고',self:'자기초월',other:'억압',relation:'연대-해방',pattern:'P8',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:308,title:'에드거 앨런 포 단편선',author:'에드거 앨런 포',self:'자기파괴',other:'무관심',relation:'오해-비극',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:344,title:'뇌우',author:'차오위',self:'자기기만',other:'유혹',relation:'지배-복종',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:345,title:'모옌 중단편선',author:'모옌',self:'자기기만',other:'억압',relation:'오해-비극',pattern:'P1',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:399,title:'방랑자들',author:'올가 토카르추크',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:465,title:'안과 겉·결혼·여름',author:'알베르 카뮈',self:'자기발견',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
-{vol:484,title:'댈러웨이 부인',author:'버지니아 울프',self:'자기보존',other:'무관심',relation:'모호-긴장',pattern:'P10',ch:4,tragedy:'(분석 대기)',quote:'',memo:''},
+// ★ 대표 소설
+{vol:36,title:'마담 보바리',author:'플로베르',ch:1,feat:1,tragedy:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',quote:'사실 가끔은 계산을 해 보려고 노력하기도 했다. 그러나 결과가 너무나 엄청나서 도무지 믿어지지 않았다.',memo:'빌린 욕망의 원형'},
+{vol:456,title:'표범',author:'람페두사',ch:2,feat:1,tragedy:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',quote:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.',memo:'73년을 살고 2년을 살았다'},
+{vol:267,title:'페스트',author:'카뮈',ch:3,feat:1,tragedy:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',quote:'인간 속에는 경멸할 것보다 찬탄할 것이 더 많다.',memo:'리외는 60%에서 시작한다'},
+{vol:91,title:'방드르디, 태평양의 끝',author:'투르니에',ch:4,feat:1,tragedy:'빌린 질서가 무너진 뒤 — 파도가 들린다',quote:'',memo:'시계가 멈추자 자유가 시작된다'},
+// 🪞 1장 — 오염: 욕망이 상태를 오염한다
+{vol:18,title:'고리오 영감',author:'발자크',ch:1,tragedy:'자식에게 모든 것을 준 아버지가 파리에서 홀로 죽는 비극',quote:'',memo:'무조건적 사랑이 새장이 될 때'},
+{vol:27,title:'다섯째 아이',author:'도리스 레싱',ch:1,tragedy:'',quote:'',memo:''},
+{vol:75,title:'위대한 개츠비',author:'피츠제럴드',ch:1,tragedy:'빌린 꿈 위에 세운 삶이 총 한 방에 무너지는 비극',quote:'',memo:'미국판 엠마. 녹색 불빛 = 빌린 희망'},
+{vol:95,title:'적과 흑',author:'스탕달',ch:1,tragedy:'',quote:'',memo:'야망의 출처를 묻지 않은 청년'},
+{vol:118,title:'폭풍의 언덕',author:'에밀리 브론테',ch:1,tragedy:'',quote:'',memo:''},
+{vol:169,title:'포스트맨은 벨을 두 번 울린다',author:'케인',ch:1,tragedy:'',quote:'',memo:''},
+{vol:205,title:'테스',author:'토머스 하디',ch:1,tragedy:'',quote:'',memo:''},
+{vol:283,title:'엠마',author:'제인 오스틴',ch:1,tragedy:'',quote:'',memo:'오독하는 힘. 보바리와의 거울'},
+{vol:379,title:'모두 다 예쁜 말들',author:'매카시',ch:1,tragedy:'삶의 진실을 모르는 것이 낭만의 활력',quote:'',memo:''},
+{vol:388,title:'남아있는 나날',author:'이시구로',ch:1,tragedy:'품위라는 가면에 commit하여 사랑과 인생을 놓치는 비극',quote:'',memo:'살리나보다 늦게 편 장부'},
+// 🔭 2장 — 억압: 상태가 욕망을 억압한다
+{vol:13,title:'이반 데니소비치',author:'솔제니친',ch:2,tragedy:'',quote:'',memo:''},
+{vol:65,title:'소망 없는 불행',author:'페터 한트케',ch:2,tragedy:'',quote:'',memo:'절제가 가장 깊은 슬픔'},
+{vol:130,title:'자기만의 방',author:'버지니아 울프',ch:2,tragedy:'',quote:'',memo:'500파운드와 방이 없으면 망원경도 없다'},
+{vol:248,title:'인형의 집',author:'입센',ch:2,tragedy:'인형에서 인간으로 깨어나는 비극',quote:'나는 먼저 인간이고, 그다음이 여성입니다.',memo:'문을 닫는 소리가 세계를 바꿨다'},
+{vol:309,title:'보이체크·당통의 죽음',author:'뷔히너',ch:2,tragedy:'',quote:'',memo:''},
+{vol:406,title:'세피아빛 초상',author:'아옌데',ch:2,tragedy:'',quote:'',memo:''},
+// 💒 3장 — 의심 부재: 확신이 증거를 차단한다
+{vol:6,title:'허클베리 핀의 모험',author:'마크 트웨인',ch:3,tragedy:'',quote:'',memo:'사회의 확신에 맞서 자기 도덕을 선택'},
+{vol:21,title:'파우스트',author:'괴테',ch:3,tragedy:'',quote:'',memo:'앎의 대가를 알면서 선택'},
+{vol:29,title:'농담',author:'쿤데라',ch:3,tragedy:'엽서 한 장의 농담이 인생을 파괴한다',quote:'',memo:'시스템이 확신을 강요할 때'},
+{vol:44,title:'데미안',author:'헤세',ch:3,tragedy:'',quote:'새는 알에서 나오려고 투쟁한다.',memo:'알을 깨는 것이 세계를 깨는 것'},
+{vol:104,title:'네루다의 우편배달부',author:'스카르메타',ch:3,tragedy:'',quote:'',memo:''},
+{vol:107,title:'나무 위의 남작',author:'칼비노',ch:3,tragedy:'',quote:'',memo:'자발적 망명의 헌신'},
+{vol:154,title:'카라마조프 가의 형제들',author:'도스토예프스키',ch:3,tragedy:'',quote:'',memo:''},
+{vol:214,title:'면도날',author:'서머싯 몸',ch:3,tragedy:'',quote:'',memo:''},
+{vol:273,title:'유리알 유희',author:'헤세',ch:3,tragedy:'',quote:'',memo:''},
+{vol:278,title:'노인과 바다',author:'헤밍웨이',ch:3,tragedy:'패배를 알면서도 싸움을 선택하는 비극',quote:'인간은 파괴될 수 있지만 패배할 수 없다.',memo:''},
+{vol:297,title:'여인의 초상',author:'헨리 제임스',ch:3,tragedy:'',quote:'',memo:'자유를 알면서 헌신을 선택'},
+{vol:375,title:'대사들',author:'헨리 제임스',ch:3,tragedy:'',quote:'',memo:''},
+{vol:395,title:'월든',author:'소로',ch:3,tragedy:'',quote:'',memo:'의도적 삶의 실험'},
+{vol:436,title:'미들마치',author:'조지 엘리엇',ch:3,tragedy:'',quote:'',memo:'보이지 않는 선의 축적'},
+// ⏱️ 4장 — 소진: 성공이 변이를 굶긴다
+{vol:4,title:'변신',author:'카프카',ch:4,tragedy:'가족의 빌린 관계가 새장이었음을 벌레가 되어서야 아는 비극',quote:'',memo:'빌린 역할'},
+{vol:5,title:'동물농장',author:'오웰',ch:4,tragedy:'평등에 commit하면 commit 자체가 권력이 되어 평등을 잡아먹는 비극',quote:'',memo:'성공이 변이를 죽인다'},
+{vol:121,title:'안개',author:'우나무노',ch:4,tragedy:'소설 주인공이 작가를 찾아가 존재를 묻는 비극',quote:'',memo:''},
+{vol:153,title:'구덩이',author:'플라토노프',ch:4,tragedy:'',quote:'',memo:''},
+{vol:234,title:'참을 수 없는 존재의 가벼움',author:'쿤데라',ch:4,tragedy:'가벼움과 무거움을 모두 알면서 선택의 무게를 짊어지는 비극',quote:'',memo:''},
+{vol:290,title:'구르브 연락 없다',author:'멘도사',ch:4,tragedy:'',quote:'',memo:''},
+{vol:301,title:'레 미제라블',author:'빅토르 위고',ch:4,tragedy:'',quote:'',memo:''},
+{vol:308,title:'에드거 앨런 포 단편선',author:'포',ch:4,tragedy:'',quote:'',memo:''},
+{vol:344,title:'뇌우',author:'차오위',ch:4,tragedy:'',quote:'',memo:''},
+{vol:345,title:'모옌 중단편선',author:'모옌',ch:4,tragedy:'',quote:'',memo:''},
+{vol:399,title:'방랑자들',author:'토카르추크',ch:4,tragedy:'',quote:'',memo:''},
+{vol:465,title:'안과 겉·결혼·여름',author:'카뮈',ch:4,tragedy:'',quote:'',memo:''},
+{vol:484,title:'댈러웨이 부인',author:'버지니아 울프',ch:4,tragedy:'',quote:'',memo:''},
 ];
 
-// Debt scoring — ch + self + other + relation
-function scoreDebt(d) {
-  let s = [25,25,25,25];
-  // Chapter weight
-  if(d.ch===1) s[0]+=40;
-  if(d.ch===2) s[1]+=40;
-  if(d.ch===3) s[2]+=40;
-  if(d.ch===4) s[3]+=40;
-  // Self dimension
-  if(d.self==='자기기만') { s[0]+=20; s[2]+=10; }
-  if(d.self==='자기보존') { s[1]+=20; s[3]+=10; }
-  if(d.self==='자기초월') { s[2]+=20; }
-  if(d.self==='자기발견') { s[3]+=20; }
-  if(d.self==='자기소외') { s[3]+=15; s[0]+=15; }
-  if(d.self==='자기파괴') { s[0]+=15; s[3]+=15; }
-  // Other dimension
-  if(d.other==='유혹') s[0]+=15;
-  if(d.other==='억압') { s[1]+=10; s[2]+=10; }
-  if(d.other==='무관심') s[1]+=15;
-  if(d.other==='착취') { s[0]+=10; s[3]+=10; }
-  if(d.other==='계몽') s[2]+=15;
-  // Relation dimension
-  if(d.relation==='희생-배반') s[0]+=10;
-  if(d.relation==='모호-긴장') s[1]+=10;
-  if(d.relation==='연대-해방') s[2]+=10;
-  if(d.relation==='지배-복종') s[3]+=10;
-  if(d.relation==='오해-비극') { s[0]+=5; s[3]+=5; }
-  const mx=Math.max(...s);
-  return s.map(v=>Math.round(v/mx*100));
-}
+// ═══ 4-Column Summary ═══
+(function buildSummary(){
+  const wrap = document.getElementById('cols4');
+  const icons = {1:'🪞',2:'🔭',3:'💒',4:'⏱️'};
+  for(let ch=1;ch<=4;ch++){
+    const c = CH[ch];
+    const books = DATA.filter(b=>b.ch===ch);
+    const card = document.createElement('div');
+    card.className = `col-card c${ch}`;
+    let html = `<h3>${icons[ch]} ${c.borrowed}</h3>`;
+    html += `<div class="keyword">${c.line}</div>`;
+    html += `<div class="verb">→ ${c.verb}</div>`;
+    html += '<div class="booklist">';
+    books.forEach(b=>{
+      const cls = b.feat ? 'feat' : '';
+      html += `<span class="${cls}" onclick="showPanel(DATA.find(x=>x.vol===${b.vol}))">${b.vol} ${b.title}</span><br>`;
+    });
+    html += '</div>';
+    card.innerHTML = html;
+    wrap.appendChild(card);
+  }
+})();
 
-// Build mosaic
+// ═══ 484 Mosaic ═══
 const mosaic = document.getElementById('mosaic');
 const analyzed = new Set();
-const TOTAL = DATA.length;
-const chHex = {1:'#C8A2C8',2:'#8B8C2A',3:'#5B9A8B',4:'#3B5998'};
-
 for(let i=1;i<=484;i++){
   const cell = document.createElement('div');
   cell.className = 'cell';
   const d = DATA.find(x=>x.vol===i);
   if(d){
-    const chClass = d.ch ? `cell-ch${d.ch}` : 'cell-nodata';
-    cell.classList.add(chClass);
+    cell.classList.add(`cell-ch${d.ch}`);
     cell.textContent = i;
     cell.dataset.vol = i;
     cell.onclick = ()=> showPanel(d);
-    if(d.featured) cell.style.boxShadow='0 0 6px rgba(255,255,255,0.3)';
+    if(d.feat) cell.style.boxShadow='0 0 6px rgba(255,255,255,0.3)';
   } else {
     cell.classList.add('cell-empty');
     cell.textContent = i;
@@ -271,78 +284,72 @@ for(let i=1;i<=484;i++){
   mosaic.appendChild(cell);
 }
 
-let prevSelected = null;
+// ═══ Debt Scoring ═══
+function scoreDebt(d) {
+  let s = [15,15,15,15];
+  s[d.ch-1] += 60;
+  const mx = Math.max(...s);
+  return s.map(v=>Math.round(v/mx*100));
+}
+
+// ═══ Panel ═══
 function showPanel(d){
-  if(prevSelected) prevSelected.classList.remove('cell-selected');
+  document.querySelectorAll('.cell-selected').forEach(c=>c.classList.remove('cell-selected'));
   const sel = document.querySelector(`.cell[data-vol="${d.vol}"]`);
-  if(sel){ sel.classList.add('cell-selected'); prevSelected=sel; }
+  if(sel) sel.classList.add('cell-selected');
 
   const p = document.getElementById('panel');
   p.classList.add('active');
 
-  const chNames = {1:'🪞거울새장',2:'🔭망원경새장',3:'💒스테인드글라스새장',4:'⏱️시계새장'};
+  const c = CH[d.ch];
+  const chNames = {1:'🪞 거울새장',2:'🔭 망원경새장',3:'💒 스테인드글라스새장',4:'⏱️ 시계새장'};
   const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
-  const chImgs = {1:'../img/ch1.png',2:'../img/ch2.png',3:'../img/ch3.png',4:'../img/ch4.png'};
-  const illust = document.getElementById('pIllust');
-  if(d.ch && chImgs[d.ch]){
-    illust.src = chImgs[d.ch]; illust.alt = chNames[d.ch];
-    illust.onload = ()=> illust.classList.add('loaded');
-    illust.onerror = ()=>{ illust.style.display='none'; };
-    illust.classList.remove('loaded'); illust.style.display='';
-  } else { illust.src=''; illust.classList.remove('loaded'); }
 
   document.getElementById('pTitle').textContent = `${d.vol}. ${d.title}`;
-  document.getElementById('pTitle').style.color = chColors[d.ch]||'var(--text)';
-  document.getElementById('pAuthor').textContent = `${d.author} — ${chNames[d.ch]||'미분류'}`;
+  document.getElementById('pTitle').style.color = chColors[d.ch];
+  document.getElementById('pAuthor').textContent = `${d.author} — ${chNames[d.ch]}`;
   document.getElementById('pTragedy').textContent = d.tragedy||'(분석 대기)';
-  document.getElementById('pTragedy').style.borderColor = chColors[d.ch]||'var(--dim)';
+  document.getElementById('pTragedy').style.borderColor = chColors[d.ch];
   document.getElementById('pQuote').textContent = d.quote ? `"${d.quote}"` : '';
-  document.getElementById('pSelf').textContent = d.self||'—';
-  document.getElementById('pOther').textContent = d.other||'—';
-  document.getElementById('rSelf').textContent = d.self||'?';
-  document.getElementById('rOther').textContent = d.other||'?';
-  document.getElementById('rLabel').textContent = d.relation ? `관계: ${d.relation}` : '';
+  document.getElementById('pBorrowed').textContent = c.borrowed;
+  document.getElementById('pBorrowed').style.color = chColors[d.ch];
+  document.getElementById('pLost').textContent = c.lost;
+  document.getElementById('pCage').textContent = c.cage;
+  document.getElementById('pVerb').textContent = c.verb;
+  document.getElementById('pVerb').style.color = chColors[d.ch];
   document.getElementById('pMemo').textContent = d.memo ? `💡 ${d.memo}` : '';
 
   const scores = scoreDebt(d);
   ['d1','d2','d3','d4'].forEach((id,i)=>{
     document.getElementById(id).style.width = scores[i]+'%';
-    document.getElementById('ds'+(i+1)).textContent = scores[i]+'%';
+    document.getElementById('ds'+[i+1]).textContent = scores[i]+'%';
   });
 
   analyzed.add(d.vol);
   updateMyTable();
-  p.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function updateMyTable(){
-  document.getElementById('myCount').textContent = `${analyzed.size}/${TOTAL}`;
+  document.getElementById('myCount').textContent = `${analyzed.size}/484`;
   const grid = document.getElementById('myGrid');
   grid.innerHTML = '';
+  const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
   [...analyzed].sort((a,b)=>a-b).forEach(vol=>{
     const d = DATA.find(x=>x.vol===vol);
     if(!d)return;
     const chip = document.createElement('span');
     chip.className = 'my-chip';
-    const hex = chHex[d.ch]||'#64748b';
-    chip.style.background = hex+'33';
-    chip.style.color = hex;
+    chip.style.cssText = `background:${chColors[d.ch].replace('var(--ch','rgba(').replace(')',',0.2)')};color:${chColors[d.ch]}`;
     chip.textContent = `${vol} ${d.title}`;
     grid.appendChild(chip);
   });
 }
 
-let activeFilter = 0;
 function filterCh(ch){
-  activeFilter = (activeFilter===ch) ? 0 : ch;
-  document.querySelectorAll('.legend-item').forEach((el,i)=>{
-    el.style.opacity = (activeFilter===0||activeFilter===i) ? '1' : '0.4';
-  });
   document.querySelectorAll('.cell').forEach(c=>{
-    if(activeFilter===0){ c.classList.remove('dimmed'); return; }
-    if(!c.dataset.vol) return;
+    if(ch===0){ c.classList.remove('dimmed'); return; }
     const d = DATA.find(x=>x.vol===parseInt(c.dataset.vol));
-    if(d && d.ch===activeFilter) c.classList.remove('dimmed');
+    if(d && d.ch===ch) c.classList.remove('dimmed');
     else c.classList.add('dimmed');
   });
 }
