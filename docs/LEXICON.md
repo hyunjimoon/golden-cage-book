@@ -104,3 +104,22 @@ modified:
 ---
 
 *이 Lexicon은 원고 완성 후 책 말미에 "용어 해설"로 수록 가능.*
+
+---
+
+## 장별 참고문헌
+
+| 장 | 소설 | 이론 | 사례 |
+|:--|:--|:--|:--|
+| 1 거울 | 《마담 보바리》 플로베르 | 르네 지라르, 《낭만적 거짓과 소설적 진실》; Thiel, *Zero to One* | Quibi, Juicero |
+| 2 망원경 | 《표범》 람페두사 | 클라우제비츠 작전술; Fine, *Clockspeed* | Kodak vs 후지필름, Tesla vs Better Place |
+| 3 스테인드글라스 | 《페스트》 카뮈 | 막스 베버 신념윤리/책임윤리; Bayesian calibration | Theranos vs Moderna |
+| 4 시계 | 《방드르디》 투르니에 | 하위징아, 《호모 루덴스》; Maples, *Pattern Breakers*; Moon (2026) dG/dF=(−) | 생고뱅, 넷플릭스 |
+| 공통 | — | 오웰, 「나는 왜 쓰는가」; 김정운, 《에디톨로지》 | — |
+
+## 추가 용어 (2026-04-07)
+
+| 코드 | 정의 | 검증일 |
+|:--|:--|:--|
+| cont/supp/doubt/fire | 4장의 병리 이름. Contamination(1장: U→s) → Suppression(2장: s→U) → No Doubt(3장: doubt=0) → No Fire(4장: constraint→prison). Paradox of Certainty: 폭풍 속에서 확신이 최대 위험, 의도적 모호함이 최대 안전 | 2026-04-07 |
+| 자원 확장 | dG/dF=(−)의 F는 돈에 한정되지 않는다. 학력·기술·인맥·성공 경험 등 모든 자원이 조기 확신→새장을 만든다. 공통 구조: 좋은 것이 들어와서 → 확신이 굳고 → 의심을 멈추고 → 부러진다 | 2026-04-07 |
