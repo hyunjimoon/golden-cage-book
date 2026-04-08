@@ -30,8 +30,8 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 ```
 chapters/       4장 본문 (경험→문학→철학→사례→실천)
 appendices/     부록 (프롬프팅 예시, 산업별 빚 청산)
-interactive/    인터랙티브 HTML (calibration slider)
-docs/           LEXICON, CHANGELOG, EDITOR_GUIDE
+interactive/    인터랙티브 (주기율표, 감정궤적, 본문뷰어)
+docs/           LEXICON, CHANGELOG, INTENT
 img/            다이어그램
 ```
 

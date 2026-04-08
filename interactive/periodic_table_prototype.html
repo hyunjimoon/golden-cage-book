@@ -64,6 +64,7 @@
   .panel.active{display:block;}
   .panel-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;}
   .panel-title{font-size:1.2em;font-weight:700;margin-bottom:4px;}
+  .panel-cover{float:right;margin:0 0 12px 16px;width:120px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.4);transition:opacity 0.3s;}
   .panel-author{font-size:0.85em;color:var(--dim);margin-bottom:16px;}
   .panel-tragedy{font-size:0.95em;line-height:1.7;color:var(--text2);margin-bottom:16px;padding:12px;background:var(--surface);border-radius:10px;border-left:3px solid var(--ch1);}
   .panel-quote{font-style:italic;font-size:0.85em;color:var(--dim);margin-bottom:16px;}
@@ -119,6 +120,7 @@
 <!-- ═══ Detail Panel ═══ -->
 <div class="panel" id="panel">
   <div class="panel-card">
+    <img class="panel-cover" id="pCover" src="" alt="" style="display:none">
     <div class="panel-title" id="pTitle"></div>
     <div class="panel-author" id="pAuthor"></div>
     <div class="panel-tragedy" id="pTragedy"></div>
@@ -168,6 +170,7 @@
   <div class="prompt">책을 클릭하면 빚이 보입니다. 아픈 곳이 빈칸입니다.</div>
 </div>
 
+<script src="covers.js"></script>
 <script>
 // ═══ 4장 핵심 키워드 ═══
 // ch1 오염(contamination): 욕망이 상태를 오염한다 — 빌린 욕망
@@ -304,6 +307,11 @@ function showPanel(d){
   const c = CH[d.ch];
   const chNames = {1:'🪞 거울새장',2:'🔭 망원경새장',3:'💒 스테인드글라스새장',4:'⏱️ 시계새장'};
   const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
+
+  const coverEl = document.getElementById('pCover');
+  const coverData = typeof COVERS!=='undefined' && COVERS[d.vol];
+  if(coverData){coverEl.src=coverData.url;coverEl.alt=d.title;coverEl.style.display='block';}
+  else{coverEl.style.display='none';}
 
   document.getElementById('pTitle').textContent = `${d.vol}. ${d.title}`;
   document.getElementById('pTitle').style.color = chColors[d.ch];

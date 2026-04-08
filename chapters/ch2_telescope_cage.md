@@ -1,4 +1,5 @@
 ---
+moc: ⭐️
 modified:
   - 2026-03-18T19:00:00+09:00
   - 2026-03-19T14:39:03+09:00
@@ -15,7 +16,7 @@ modified:
 > 4. **Young/Old 전환**: "invent the future for oneself → invent the past for the others" (§실천)
 > 5. **AI 도구**: D vs S Simulated Debate (§실천)
 
-[망원경 새장 — 보는 힘과 행동의 순서](diagrams/panel_ch2_망원경새장.png)
+[망원경 새장 — 보는 힘과 행동의 순서](../img/ch2.png)
 
 | 인물 | 한 줄 |
 |:--|:--|

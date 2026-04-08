@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>황금새장을열다 — 본문</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
+  :root{--bg:#0a0e1a;--surface:#111827;--card:#1a2234;--text:#e2e8f0;--dim:#64748b;
+    --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Serif KR',serif;background:var(--bg);color:var(--text);line-height:2;font-size:16px;}
+  nav{position:fixed;top:0;left:0;right:0;background:rgba(10,14,26,0.95);backdrop-filter:blur(8px);padding:12px 24px;display:flex;align-items:center;gap:12px;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06);}
+  nav a{color:var(--dim);text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-size:0.85em;padding:4px 10px;border-radius:6px;transition:all 0.2s;}
+  nav a:hover,nav a.active{color:var(--text);background:var(--card);}
+  nav .home{font-weight:700;color:var(--ch3);font-size:0.9em;}
+  .content{max-width:720px;margin:80px auto 60px;padding:0 24px;}
+  .content h1{font-size:1.6em;font-weight:700;margin:32px 0 16px;color:var(--text);}
+  .content h2{font-size:1.3em;font-weight:700;margin:28px 0 12px;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:8px;}
+  .content h3{font-size:1.1em;font-weight:600;margin:24px 0 8px;color:var(--text);}
+  .content p{margin:12px 0;color:var(--text);text-align:justify;}
+  .content blockquote{border-left:3px solid var(--ch3);padding:8px 16px;margin:16px 0;color:var(--dim);font-style:italic;background:rgba(91,154,139,0.05);border-radius:0 8px 8px 0;}
+  .content strong{color:#fff;font-weight:600;}
+  .content em{color:var(--dim);}
+  .content table{width:100%;border-collapse:collapse;margin:16px 0;font-family:'Noto Sans KR',sans-serif;font-size:0.85em;}
+  .content th{background:var(--card);padding:10px;text-align:left;font-weight:600;border:1px solid rgba(255,255,255,0.08);}
+  .content td{padding:10px;border:1px solid rgba(255,255,255,0.06);}
+  .content code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:0.9em;}
+  .content pre{background:var(--card);padding:16px;border-radius:10px;overflow-x:auto;margin:16px 0;font-size:0.85em;line-height:1.6;}
+  .content pre code{background:none;padding:0;}
+  .content hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:32px 0;}
+  .content img{max-width:100%;border-radius:10px;margin:16px 0;}
+  .loading{text-align:center;padding:60px;color:var(--dim);font-family:'Noto Sans KR',sans-serif;}
+  @media(max-width:600px){.content{padding:0 16px;} nav{flex-wrap:wrap;gap:6px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="home" href="../">황금새장</a>
+  <a href="?file=ch0_prologue">프롤로그</a>
+  <a href="?file=ch1_mirror_cage">🪞 1장</a>
+  <a href="?file=ch2_telescope_cage">🔭 2장</a>
+  <a href="?file=ch3_stained_glass_cage">💒 3장</a>
+  <a href="?file=ch4_clock_cage">⏱️ 4장</a>
+  <a href="?file=ch5_epilogue">에필로그</a>
+</nav>
+
+<div class="content" id="content">
+  <div class="loading">불러오는 중...</div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const file = params.get('file') || 'ch0_prologue';
+
+// highlight active nav
+document.querySelectorAll('nav a').forEach(a => {
+  if (a.href && a.href.includes('file=' + file)) a.classList.add('active');
+});
+
+// simple markdown to HTML (no external dependency)
+function md2html(md) {
+  // remove YAML frontmatter
+  md = md.replace(/^---[\s\S]*?---\s*/m, '');
+  // remove Obsidian links → plain text
+  md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2');
+  md = md.replace(/\[\[([^\]]+)\]\]/g, '$1');
+  // remove Obsidian image embeds
+  md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
+
+  let lines = md.split('\n');
+  let html = '';
+  let inCode = false, inTable = false, inBlockquote = false;
+  let tableRows = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    // code blocks
+    if (line.trim().startsWith('```')) {
+      if (inCode) { html += '</code></pre>'; inCode = false; }
+      else { html += '<pre><code>'; inCode = true; }
+      continue;
+    }
+    if (inCode) { html += line.replace(/</g,'&lt;') + '\n'; continue; }
+
+    // tables
+    if (line.trim().startsWith('|')) {
+      if (!inTable) { inTable = true; tableRows = []; }
+      if (!/^\|[\s:-]+\|/.test(line.trim())) tableRows.push(line);
+      continue;
+    } else if (inTable) {
+      html += buildTable(tableRows);
+      inTable = false; tableRows = [];
+    }
+
+    // blockquotes
+    if (line.trim().startsWith('>')) {
+      let q = line.replace(/^>\s*/, '');
+      q = inline(q);
+      if (!inBlockquote) { html += '<blockquote>'; inBlockquote = true; }
+      html += q + '<br>';
+      continue;
+    } else if (inBlockquote) { html += '</blockquote>'; inBlockquote = false; }
+
+    // headings
+    if (line.startsWith('### ')) { html += '<h3>' + inline(line.slice(4)) + '</h3>'; continue; }
+    if (line.startsWith('## ')) { html += '<h2>' + inline(line.slice(3)) + '</h2>'; continue; }
+    if (line.startsWith('# ')) { html += '<h1>' + inline(line.slice(2)) + '</h1>'; continue; }
+
+    // hr
+    if (/^---+$/.test(line.trim())) { html += '<hr>'; continue; }
+
+    // images
+    let imgMatch = line.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+    if (imgMatch) { html += `<img src="${imgMatch[2]}" alt="${imgMatch[1]}">`; continue; }
+
+    // paragraphs
+    if (line.trim() === '') { continue; }
+    html += '<p>' + inline(line) + '</p>';
+  }
+
+  if (inTable) html += buildTable(tableRows);
+  if (inBlockquote) html += '</blockquote>';
+  if (inCode) html += '</code></pre>';
+  return html;
+}
+
+function inline(s) {
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--ch3)">$1</a>');
+  return s;
+}
+
+function buildTable(rows) {
+  if (rows.length === 0) return '';
+  let h = '<table>';
+  rows.forEach((row, idx) => {
+    let cells = row.split('|').filter(c => c.trim() !== '');
+    let tag = idx === 0 ? 'th' : 'td';
+    h += '<tr>' + cells.map(c => `<${tag}>${inline(c.trim())}</${tag}>`).join('') + '</tr>';
+  });
+  return h + '</table>';
+}
+
+// fetch and render
+fetch(`../chapters/${file}.md`)
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+  .then(md => { document.getElementById('content').innerHTML = md2html(md); })
+  .catch(e => {
+    // try appendices
+    const appFile = file.startsWith('app') ? file : null;
+    if (appFile) {
+      fetch(`../appendices/${appFile}.md`)
+        .then(r => r.text())
+        .then(md => { document.getElementById('content').innerHTML = md2html(md); })
+        .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });
+    } else {
+      document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>';
+    }
+  });
+</script>
+</body>
+</html>

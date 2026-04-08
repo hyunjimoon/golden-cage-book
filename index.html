@@ -2,10 +2,89 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=interactive/periodic_table_prototype.html">
-<title>황금새장을열다 — 창업소설의 주기율표</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap');
+  :root{--bg:#0a0e1a;--surface:#111827;--card:#1a2234;--text:#f0f2f5;--dim:#64748b;
+    --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;}
+  h1{font-size:2em;font-weight:700;letter-spacing:-1px;margin-bottom:8px;}
+  .sub{font-size:0.9em;color:var(--dim);margin-bottom:40px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:960px;width:100%;}
+  .card{background:var(--card);border-radius:16px;padding:24px;text-decoration:none;color:var(--text);transition:transform 0.2s,box-shadow 0.2s;border:1px solid rgba(255,255,255,0.06);}
+  .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+  .card h2{font-size:1.1em;font-weight:700;margin-bottom:8px;}
+  .card p{font-size:0.85em;color:var(--dim);line-height:1.6;}
+  .card .tag{display:inline-block;font-size:0.7em;padding:2px 8px;border-radius:4px;margin-bottom:12px;font-weight:600;}
+  .t-interactive{background:rgba(91,154,139,0.2);color:var(--ch3);}
+  .t-text{background:rgba(200,162,200,0.2);color:var(--ch1);}
+  .footer{margin-top:48px;text-align:center;font-size:0.8em;color:var(--dim);line-height:1.8;}
+  .footer a{color:var(--ch3);text-decoration:none;}
+  .footer a:hover{text-decoration:underline;}
+  .eq{font-family:'DM Mono',monospace;font-size:0.95em;color:var(--ch2);margin:8px 0 32px;letter-spacing:1px;}
+</style>
 </head>
 <body>
-<p><a href="interactive/periodic_table_prototype.html">창업소설의 주기율표로 이동</a></p>
+
+<h1>황금새장을열다</h1>
+<div class="sub">창업자의 네 가지 빚과 네 가지 근육</div>
+<div class="eq">dG/dF = (+) × (−) = (−)</div>
+
+<div class="grid">
+  <a class="card" href="interactive/periodic_table_prototype.html">
+    <span class="tag t-interactive">인터랙티브</span>
+    <h2>🧪 창업소설의 주기율표</h2>
+    <p>민음사 세계문학전집 484권. 각 소설의 빚을 진단하고, 빈칸이 다음 책이 된다.</p>
+  </a>
+  <a class="card" href="interactive/emotion_trajectory.html">
+    <span class="tag t-interactive">인터랙티브</span>
+    <h2>📈 감정 궤적</h2>
+    <p>다(多)와 세(世) 두 캐릭터의 감정 아크. 예측 vs 실제 gap을 시각화.</p>
+  </a>
+  <a class="card" href="interactive/emotion_heatmap.html">
+    <span class="tag t-interactive">인터랙티브</span>
+    <h2>🔥 감정 히트맵</h2>
+    <p>Token-by-token 감정 벡터. 문장 단위의 열 지도.</p>
+  </a>
+  <a class="card" href="interactive/reader.html?file=ch0_prologue">
+    <span class="tag t-text">본문</span>
+    <h2>📖 프롤로그</h2>
+    <p>이 책이 왜 필요한가 — 질문과 답.</p>
+  </a>
+  <a class="card" href="interactive/reader.html?file=ch1_mirror_cage">
+    <span class="tag t-text">본문</span>
+    <h2>🪞 1장 거울새장</h2>
+    <p>원하니까 된다고 믿음 → 장부를 펴라. 마담 보바리.</p>
+  </a>
+  <a class="card" href="interactive/reader.html?file=ch2_telescope_cage">
+    <span class="tag t-text">본문</span>
+    <h2>🔭 2장 망원경새장</h2>
+    <p>다 보이니 원할 이유 없음 → 순서를 타라. 표범.</p>
+  </a>
+  <a class="card" href="interactive/reader.html?file=ch3_stained_glass_cage">
+    <span class="tag t-text">본문</span>
+    <h2>💒 3장 스테인드글라스새장</h2>
+    <p>확신이 증거를 차단 → 확신을 교정하라. 페스트.</p>
+  </a>
+  <a class="card" href="interactive/reader.html?file=ch4_clock_cage">
+    <span class="tag t-text">본문</span>
+    <h2>⏱️ 4장 시계새장</h2>
+    <p>성공했으니 바꿀 이유 없음 → 다음 불을 피워라. 방드르디.</p>
+  </a>
+  <a class="card" href="interactive/reader.html?file=ch5_epilogue">
+    <span class="tag t-text">본문</span>
+    <h2>🔚 에필로그</h2>
+    <p>빈손이되 맨손이 아니다.</p>
+  </a>
+</div>
+
+<div class="footer">
+  <a href="https://github.com/hyunjimoon/golden-cage-book">GitHub</a> ·
+  <a href="https://github.com/hyunjimoon/golden-cage-thesis">Thesis</a><br>
+  <em>빌린 것을 갚으면 새장이 둥지가 된다.</em>
+</div>
+
 </body>
 </html>
