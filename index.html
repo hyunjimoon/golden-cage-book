@@ -5,182 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>황금새장을열다</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600&family=DM+Mono:wght@400;500&display=swap');
-  :root{
-    --bg:#0a0e1a;--surface:#111827;--card:#1a2234;
-    --text:#f0f2f5;--text2:#c8d0dc;--dim:#64748b;
-    --gold:#D4A574;--gold-dim:rgba(212,165,116,0.15);
-    --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=DM+Mono:wght@400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;overflow-x:hidden;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
 
-  /* ── Hero ── */
-  .hero{text-align:center;padding:60px 20px 20px;position:relative;}
-  .hero h1{font-family:'Noto Serif KR',serif;font-size:2.2em;font-weight:600;letter-spacing:-1px;color:var(--gold);}
-  .hero .sub{font-size:0.9em;color:var(--dim);margin-top:8px;}
-  .hero .eq{font-family:'DM Mono',monospace;font-size:0.85em;color:var(--ch2);margin-top:16px;letter-spacing:1px;opacity:0.7;}
+  .page{max-width:560px;margin:0 auto;padding:64px 24px 48px;}
 
-  /* ── The Map (평면) ── */
-  .map-section{max-width:720px;margin:40px auto 0;padding:0 20px;}
-  .map-label{font-size:0.75em;color:var(--dim);text-align:center;margin-bottom:16px;letter-spacing:2px;}
-  .map{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .cage{background:var(--card);border-radius:14px;padding:20px;text-decoration:none;color:var(--text);transition:all 0.3s;border:1px solid rgba(255,255,255,0.04);position:relative;overflow:hidden;}
-  .cage:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
-  .cage::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-  .cage-1::before{background:var(--ch1);} .cage-2::before{background:var(--ch2);}
-  .cage-3::before{background:var(--ch3);} .cage-4::before{background:var(--ch4);}
-  .cage .icon{font-size:1.6em;margin-bottom:8px;}
-  .cage .title{font-size:0.95em;font-weight:700;margin-bottom:4px;}
-  .cage .novel{font-size:0.78em;color:var(--dim);margin-bottom:8px;font-style:italic;}
-  .cage .debt{font-size:0.78em;color:var(--text2);}
-  .cage .cure{font-size:0.78em;font-weight:600;margin-top:4px;}
-  .cage-1 .cure{color:var(--ch1);} .cage-2 .cure{color:var(--ch2);}
-  .cage-3 .cure{color:var(--ch3);} .cage-4 .cure{color:var(--ch4);}
-  /* arrows between cages */
-  .map-arrows{text-align:center;margin:8px 0;font-size:0.7em;color:rgba(255,255,255,0.12);}
+  /* hero */
+  h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px;}
+  .eq{font-family:'DM Mono',monospace;font-size:12px;color:#6b7a8d;margin-bottom:48px;}
 
-  /* ── Tools ── */
-  .tools{max-width:720px;margin:40px auto 0;padding:0 20px;}
-  .tools-label{font-size:0.75em;color:var(--dim);text-align:center;margin-bottom:12px;letter-spacing:2px;}
-  .tools-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;}
-  .tool{flex:0 0 auto;width:200px;background:var(--card);border-radius:12px;padding:16px;text-decoration:none;color:var(--text);transition:all 0.2s;border:1px solid rgba(255,255,255,0.04);}
-  .tool:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
-  .tool h3{font-size:0.85em;font-weight:700;margin-bottom:4px;}
-  .tool p{font-size:0.72em;color:var(--dim);line-height:1.5;}
+  /* 2×2 map */
+  .map{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.04);border-radius:12px;overflow:hidden;margin-bottom:8px;}
+  .cell{background:#0e1220;padding:20px;text-decoration:none;color:#e8eaf0;transition:background 0.2s;}
+  .cell:hover{background:#141b2d;}
+  .cell .ch{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .cell .novel{font-size:13px;font-weight:300;color:#8899aa;margin-bottom:10px;}
+  .cell .cure{font-size:12px;font-weight:700;}
+  .c1 .ch{color:#C8A2C8;} .c1 .cure{color:#C8A2C8;}
+  .c2 .ch{color:#8B8C2A;} .c2 .cure{color:#8B8C2A;}
+  .c3 .ch{color:#5B9A8B;} .c3 .cure{color:#5B9A8B;}
+  .c4 .ch{color:#3B5998;} .c4 .cure{color:#3B5998;}
+  .cycle{text-align:center;font-size:11px;color:#3a4050;margin-bottom:48px;}
 
-  /* ── Text (chapters) ── */
-  .chapters{max-width:720px;margin:32px auto 0;padding:0 20px;}
-  .chapters-label{font-size:0.75em;color:var(--dim);text-align:center;margin-bottom:12px;letter-spacing:2px;}
-  .ch-list{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
-  .ch-link{padding:6px 14px;border-radius:8px;background:var(--surface);color:var(--dim);text-decoration:none;font-size:0.8em;transition:all 0.2s;}
-  .ch-link:hover{color:var(--text);background:var(--card);}
+  /* links */
+  .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:64px;}
+  .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.2s;}
+  .links a:hover{color:#e8eaf0;}
 
-  /* ── The Question (정사면체) ── */
-  .tetra-section{margin:64px auto 0;text-align:center;padding:0 20px;max-width:400px;}
-  .tetra-svg{width:100%;max-width:320px;height:auto;margin:0 auto;display:block;opacity:0.6;transition:opacity 0.8s;}
-  .tetra-svg:hover{opacity:1;}
-  .tetra-caption{font-family:'Noto Serif KR',serif;font-size:0.85em;color:var(--dim);margin-top:16px;font-style:italic;line-height:1.8;}
-
-  /* ── Footer ── */
-  .footer{text-align:center;padding:48px 20px 32px;font-size:0.75em;color:var(--dim);}
-  .footer a{color:var(--gold);text-decoration:none;opacity:0.7;}
-  .footer a:hover{opacity:1;}
-
-  @media(max-width:500px){
-    .map{grid-template-columns:1fr;}
-    .hero h1{font-size:1.6em;}
-  }
+  /* tetrahedron */
+  .tetra{text-align:center;margin-bottom:16px;}
+  .tetra svg{width:200px;opacity:0.35;transition:opacity 0.6s;}
+  .tetra svg:hover{opacity:0.8;}
+  .end{text-align:center;font-size:12px;color:#3a4050;font-weight:300;}
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- ═══ Hero ═══ -->
-<div class="hero">
   <h1>황금새장을열다</h1>
-  <div class="sub">창업자의 네 가지 빚과 네 가지 약</div>
-  <div class="eq">dG/dF = (+) × (−) = (−)</div>
-</div>
+  <div class="eq">dG/dF = (+)(−) = (−)</div>
 
-<!-- ═══ The Map (평면) ═══ -->
-<div class="map-section">
-  <div class="map-label">지 도</div>
   <div class="map">
-    <a class="cage cage-1" href="interactive/reader.html?file=ch1_mirror_cage">
-      <div class="icon">🪞</div>
-      <div class="title">거울새장</div>
+    <a class="cell c1" href="interactive/reader.html?file=ch1_mirror_cage">
+      <div class="ch">1 거울</div>
       <div class="novel">마담 보바리</div>
-      <div class="debt">원하니까 된다고 믿음</div>
-      <div class="cure">→ 장부를 펴라</div>
+      <div class="cure">장부를 펴라</div>
     </a>
-    <a class="cage cage-2" href="interactive/reader.html?file=ch2_telescope_cage">
-      <div class="icon">🔭</div>
-      <div class="title">망원경새장</div>
+    <a class="cell c2" href="interactive/reader.html?file=ch2_telescope_cage">
+      <div class="ch">2 망원경</div>
       <div class="novel">표범</div>
-      <div class="debt">다 보이니 원할 이유 없음</div>
-      <div class="cure">→ 순서를 타라</div>
+      <div class="cure">순서를 타라</div>
     </a>
-    <a class="cage cage-4" href="interactive/reader.html?file=ch4_clock_cage">
-      <div class="icon">⏱️</div>
-      <div class="title">시계새장</div>
+    <a class="cell c4" href="interactive/reader.html?file=ch4_clock_cage">
+      <div class="ch">4 시계</div>
       <div class="novel">방드르디</div>
-      <div class="debt">성공했으니 바꿀 이유 없음</div>
-      <div class="cure">→ 다음 불을 피워라</div>
+      <div class="cure">다음 불을 피워라</div>
     </a>
-    <a class="cage cage-3" href="interactive/reader.html?file=ch3_stained_glass_cage">
-      <div class="icon">💒</div>
-      <div class="title">스테인드글라스새장</div>
+    <a class="cell c3" href="interactive/reader.html?file=ch3_stained_glass_cage">
+      <div class="ch">3 스테인드글라스</div>
       <div class="novel">페스트</div>
-      <div class="debt">확신이 증거를 차단</div>
-      <div class="cure">→ 확신을 교정하라</div>
+      <div class="cure">확신을 교정하라</div>
     </a>
   </div>
-  <div class="map-arrows">1장의 약이 2장의 병이 된다 — 순환</div>
-</div>
+  <div class="cycle">1장의 약이 2장의 병이 된다</div>
 
-<!-- ═══ Tools ═══ -->
-<div class="tools">
-  <div class="tools-label">도 구</div>
-  <div class="tools-row">
-    <a class="tool" href="interactive/periodic_table_prototype.html">
-      <h3>🧪 주기율표</h3>
-      <p>484권의 빚을 진단한다. 빈칸이 다음 책이 된다.</p>
-    </a>
-    <a class="tool" href="interactive/emotion_trajectory.html">
-      <h3>📈 감정 궤적</h3>
-      <p>다와 세의 감정 아크. 예측 vs 실제.</p>
-    </a>
-    <a class="tool" href="interactive/emotion_heatmap.html">
-      <h3>🔥 감정 히트맵</h3>
-      <p>문장 단위의 감정 벡터 열 지도.</p>
-    </a>
-    <a class="tool" href="interactive/compare.html">
-      <h3>🔷 구조 비교</h3>
-      <p>정사면체 vs 평면. 편집자 판단 요청.</p>
-    </a>
+  <div class="links">
+    <a href="interactive/reader.html?file=ch0_prologue">프롤로그</a>
+    <a href="interactive/reader.html?file=ch5_epilogue">에필로그</a>
+    <a href="interactive/periodic_table_prototype.html">주기율표</a>
+    <a href="interactive/emotion_trajectory.html">감정 궤적</a>
+    <a href="interactive/compare.html">구조 비교</a>
+    <a href="https://github.com/hyunjimoon/golden-cage-book">GitHub</a>
   </div>
-</div>
 
-<!-- ═══ Chapters ═══ -->
-<div class="chapters">
-  <div class="chapters-label">본 문</div>
-  <div class="ch-list">
-    <a class="ch-link" href="interactive/reader.html?file=ch0_prologue">프롤로그</a>
-    <a class="ch-link" href="interactive/reader.html?file=ch0_characters">인물 소개</a>
-    <a class="ch-link" href="interactive/reader.html?file=ch1_mirror_cage">1장 거울</a>
-    <a class="ch-link" href="interactive/reader.html?file=ch2_telescope_cage">2장 망원경</a>
-    <a class="ch-link" href="interactive/reader.html?file=ch3_stained_glass_cage">3장 스테인드글라스</a>
-    <a class="ch-link" href="interactive/reader.html?file=ch4_clock_cage">4장 시계</a>
-    <a class="ch-link" href="interactive/reader.html?file=ch5_epilogue">에필로그</a>
+  <div class="tetra">
+    <svg viewBox="0 0 200 200">
+      <line x1="100" y1="15" x2="25" y2="175" stroke="#2a3040" stroke-width="0.8"/>
+      <line x1="100" y1="15" x2="175" y2="175" stroke="#2a3040" stroke-width="0.8"/>
+      <line x1="100" y1="15" x2="150" y2="100" stroke="#1e2535" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <line x1="25" y1="175" x2="175" y2="175" stroke="#2a3040" stroke-width="0.8"/>
+      <line x1="25" y1="175" x2="150" y2="100" stroke="#1e2535" stroke-width="0.8" stroke-dasharray="3,3"/>
+      <line x1="175" y1="175" x2="150" y2="100" stroke="#2a3040" stroke-width="0.8"/>
+      <circle cx="100" cy="15" r="3" fill="#3B5998"/>
+      <circle cx="25" cy="175" r="3" fill="#C8A2C8"/>
+      <circle cx="175" cy="175" r="3" fill="#5B9A8B"/>
+      <circle cx="150" cy="100" r="3" fill="#8B8C2A"/>
+    </svg>
   </div>
-</div>
+  <div class="end">빌린 것을 갚으면 새장이 둥지가 된다</div>
 
-<!-- ═══ The Question (정사면체) ═══ -->
-<div class="tetra-section">
-  <svg class="tetra-svg" viewBox="0 0 300 300">
-    <!-- edges — hidden face is dashed -->
-    <line x1="150" y1="30" x2="40"  y2="260" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-    <line x1="150" y1="30" x2="260" y2="260" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-    <line x1="150" y1="30" x2="220" y2="150" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="40"  y1="260" x2="260" y2="260" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-    <line x1="40"  y1="260" x2="220" y2="150" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="260" y1="260" x2="220" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-    <!-- vertices — just colored dots, no labels -->
-    <circle cx="150" cy="30"  r="5" fill="#3B5998"/>
-    <circle cx="40"  cy="260" r="5" fill="#C8A2C8"/>
-    <circle cx="260" cy="260" r="5" fill="#5B9A8B"/>
-    <circle cx="220" cy="150" r="5" fill="#8B8C2A"/>
-    <!-- empty center -->
-    <circle cx="167" cy="175" r="2" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="1,2"/>
-  </svg>
-  <div class="tetra-caption">빌린 것을 갚으면 새장이 둥지가 된다.</div>
 </div>
-
-<!-- ═══ Footer ═══ -->
-<div class="footer">
-  <a href="https://github.com/hyunjimoon/golden-cage-book">GitHub</a> ·
-  <a href="https://github.com/hyunjimoon/golden-cage-thesis">Thesis</a>
-</div>
-
 </body>
 </html>
