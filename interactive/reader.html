@@ -6,43 +6,55 @@
 <title>황금새장을열다 — 본문</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
-  :root{--bg:#0a0e1a;--surface:#111827;--card:#1a2234;--text:#e2e8f0;--dim:#64748b;
+  :root{--bg:#090c15;--surface:#111827;--card:#1a2234;--text:#e2e8f0;--dim:#64748b;
     --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;}
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Serif KR',serif;background:var(--bg);color:var(--text);line-height:2;font-size:16px;}
-  nav{position:fixed;top:0;left:0;right:0;background:rgba(10,14,26,0.95);backdrop-filter:blur(8px);padding:12px 24px;display:flex;align-items:center;gap:12px;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06);}
-  nav a{color:var(--dim);text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-size:0.85em;padding:4px 10px;border-radius:6px;transition:all 0.2s;}
-  nav a:hover,nav a.active{color:var(--text);background:var(--card);}
-  nav .home{font-weight:700;color:var(--ch3);font-size:0.9em;}
-  .content{max-width:720px;margin:80px auto 60px;padding:0 24px;}
-  .content h1{font-size:1.6em;font-weight:700;margin:32px 0 16px;color:var(--text);}
-  .content h2{font-size:1.3em;font-weight:700;margin:28px 0 12px;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:8px;}
-  .content h3{font-size:1.1em;font-weight:600;margin:24px 0 8px;color:var(--text);}
-  .content p{margin:12px 0;color:var(--text);text-align:justify;}
-  .content blockquote{border-left:3px solid var(--ch3);padding:8px 16px;margin:16px 0;color:var(--dim);font-style:italic;background:rgba(91,154,139,0.05);border-radius:0 8px 8px 0;}
-  .content strong{color:#fff;font-weight:600;}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;background:rgba(9,12,21,0.95);backdrop-filter:blur(8px);padding:10px 16px;display:flex;align-items:center;gap:8px;z-index:100;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'Noto Sans KR',sans-serif;}
+  nav a{color:var(--dim);text-decoration:none;font-size:13px;padding:4px 8px;border-radius:4px;transition:all 0.15s;}
+  nav a:hover,nav a.active{color:var(--text);background:rgba(255,255,255,0.06);}
+  nav .home{font-weight:700;color:var(--dim);margin-right:auto;}
+
+  /* content */
+  .content{max-width:640px;margin:64px auto 0;padding:24px 24px 80px;}
+  .content h1{font-size:1.5em;font-weight:700;margin:32px 0 16px;}
+  .content h2{font-size:1.2em;font-weight:700;margin:28px 0 12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:6px;}
+  .content h3{font-size:1em;font-weight:600;margin:24px 0 8px;}
+  .content p{margin:10px 0;text-align:justify;}
+  .content blockquote{border-left:2px solid var(--ch3);padding:6px 16px;margin:14px 0;color:var(--dim);font-style:italic;background:rgba(91,154,139,0.03);border-radius:0 4px 4px 0;}
+  .content strong{color:#fff;}
   .content em{color:var(--dim);}
-  .content table{width:100%;border-collapse:collapse;margin:16px 0;font-family:'Noto Sans KR',sans-serif;font-size:0.85em;}
-  .content th{background:var(--card);padding:10px;text-align:left;font-weight:600;border:1px solid rgba(255,255,255,0.08);}
-  .content td{padding:10px;border:1px solid rgba(255,255,255,0.06);}
-  .content code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:0.9em;}
-  .content pre{background:var(--card);padding:16px;border-radius:10px;overflow-x:auto;margin:16px 0;font-size:0.85em;line-height:1.6;}
+  .content table{width:100%;border-collapse:collapse;margin:14px 0;font-family:'Noto Sans KR',sans-serif;font-size:13px;}
+  .content th{background:var(--card);padding:8px 10px;text-align:left;font-weight:600;border:1px solid rgba(255,255,255,0.06);}
+  .content td{padding:8px 10px;border:1px solid rgba(255,255,255,0.04);}
+  .content code{background:var(--card);padding:1px 5px;border-radius:3px;font-size:0.88em;}
+  .content pre{background:var(--card);padding:14px;border-radius:8px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6;}
   .content pre code{background:none;padding:0;}
-  .content hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:32px 0;}
-  .content img{max-width:100%;border-radius:10px;margin:16px 0;}
-  .loading{text-align:center;padding:60px;color:var(--dim);font-family:'Noto Sans KR',sans-serif;}
-  @media(max-width:600px){.content{padding:0 16px;} nav{flex-wrap:wrap;gap:6px;}}
+  .content hr{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:28px 0;}
+  .content img{max-width:100%;border-radius:8px;margin:14px 0;}
+
+  /* prev/next */
+  .pager{display:flex;justify-content:space-between;max-width:640px;margin:0 auto;padding:0 24px 48px;font-family:'Noto Sans KR',sans-serif;}
+  .pager a{color:var(--dim);text-decoration:none;font-size:13px;padding:8px 16px;border-radius:6px;background:var(--card);transition:all 0.15s;}
+  .pager a:hover{color:var(--text);background:var(--surface);}
+  .pager .empty{visibility:hidden;}
+
+  .loading{text-align:center;padding:80px;color:var(--dim);font-family:'Noto Sans KR',sans-serif;font-size:13px;}
+
+  @media(max-width:500px){.content{padding:16px 16px 60px;} nav{gap:4px;} nav a{font-size:12px;padding:4px 6px;}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="home" href="../">황금새장</a>
+  <a class="home" href="../">← 목록</a>
   <a href="?file=ch0_prologue">프롤로그</a>
-  <a href="?file=ch1_mirror_cage">🪞 1장</a>
-  <a href="?file=ch2_telescope_cage">🔭 2장</a>
-  <a href="?file=ch3_stained_glass_cage">💒 3장</a>
-  <a href="?file=ch4_clock_cage">⏱️ 4장</a>
+  <a href="?file=ch1_mirror_cage">1장</a>
+  <a href="?file=ch2_telescope_cage">2장</a>
+  <a href="?file=ch3_stained_glass_cage">3장</a>
+  <a href="?file=ch4_clock_cage">4장</a>
   <a href="?file=ch5_epilogue">에필로그</a>
 </nav>
 
@@ -50,113 +62,91 @@
   <div class="loading">불러오는 중...</div>
 </div>
 
+<div class="pager" id="pager"></div>
+
 <script>
+// chapter order for prev/next
+const CHAPTERS = [
+  {id:'ch0_prologue', label:'프롤로그'},
+  {id:'ch0_characters', label:'인물 소개'},
+  {id:'ch1_mirror_cage', label:'1장 거울새장'},
+  {id:'ch2_telescope_cage', label:'2장 망원경새장'},
+  {id:'ch3_stained_glass_cage', label:'3장 스테인드글라스새장'},
+  {id:'ch4_clock_cage', label:'4장 시계새장'},
+  {id:'ch5_epilogue', label:'에필로그'}
+];
+
 const params = new URLSearchParams(window.location.search);
 const file = params.get('file') || 'ch0_prologue';
+const curIdx = CHAPTERS.findIndex(c => c.id === file);
 
 // highlight active nav
 document.querySelectorAll('nav a').forEach(a => {
   if (a.href && a.href.includes('file=' + file)) a.classList.add('active');
 });
 
-// simple markdown to HTML (no external dependency)
+// build prev/next
+const pager = document.getElementById('pager');
+const prev = curIdx > 0 ? CHAPTERS[curIdx - 1] : null;
+const next = curIdx < CHAPTERS.length - 1 ? CHAPTERS[curIdx + 1] : null;
+pager.innerHTML =
+  (prev ? `<a href="?file=${prev.id}">← ${prev.label}</a>` : '<span class="empty">-</span>') +
+  (next ? `<a href="?file=${next.id}">${next.label} →</a>` : '<span class="empty">-</span>');
+
+// markdown → HTML
 function md2html(md) {
-  // remove YAML frontmatter
   md = md.replace(/^---[\s\S]*?---\s*/m, '');
-  // remove Obsidian links → plain text
+  // Obsidian links → plain text (#4 fix)
+  md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
   md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2');
   md = md.replace(/\[\[([^\]]+)\]\]/g, '$1');
-  // remove Obsidian image embeds
-  md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
 
-  let lines = md.split('\n');
-  let html = '';
-  let inCode = false, inTable = false, inBlockquote = false;
-  let tableRows = [];
+  let lines = md.split('\n'), html = '';
+  let inCode = false, inTable = false, inBQ = false, tableRows = [];
 
   for (let i = 0; i < lines.length; i++) {
-    let line = lines[i];
-
-    // code blocks
-    if (line.trim().startsWith('```')) {
-      if (inCode) { html += '</code></pre>'; inCode = false; }
-      else { html += '<pre><code>'; inCode = true; }
-      continue;
-    }
-    if (inCode) { html += line.replace(/</g,'&lt;') + '\n'; continue; }
-
-    // tables
-    if (line.trim().startsWith('|')) {
-      if (!inTable) { inTable = true; tableRows = []; }
-      if (!/^\|[\s:-]+\|/.test(line.trim())) tableRows.push(line);
-      continue;
-    } else if (inTable) {
-      html += buildTable(tableRows);
-      inTable = false; tableRows = [];
-    }
-
-    // blockquotes
-    if (line.trim().startsWith('>')) {
-      let q = line.replace(/^>\s*/, '');
-      q = inline(q);
-      if (!inBlockquote) { html += '<blockquote>'; inBlockquote = true; }
-      html += q + '<br>';
-      continue;
-    } else if (inBlockquote) { html += '</blockquote>'; inBlockquote = false; }
-
-    // headings
-    if (line.startsWith('### ')) { html += '<h3>' + inline(line.slice(4)) + '</h3>'; continue; }
-    if (line.startsWith('## ')) { html += '<h2>' + inline(line.slice(3)) + '</h2>'; continue; }
-    if (line.startsWith('# ')) { html += '<h1>' + inline(line.slice(2)) + '</h1>'; continue; }
-
-    // hr
-    if (/^---+$/.test(line.trim())) { html += '<hr>'; continue; }
-
-    // images
-    let imgMatch = line.match(/!\[([^\]]*)\]\(([^)]+)\)/);
-    if (imgMatch) { html += `<img src="${imgMatch[2]}" alt="${imgMatch[1]}">`; continue; }
-
-    // paragraphs
-    if (line.trim() === '') { continue; }
-    html += '<p>' + inline(line) + '</p>';
+    let L = lines[i];
+    if (L.trim().startsWith('```')) { if (inCode) { html += '</code></pre>'; inCode = false; } else { html += '<pre><code>'; inCode = true; } continue; }
+    if (inCode) { html += L.replace(/</g, '&lt;') + '\n'; continue; }
+    if (L.trim().startsWith('|')) { if (!inTable) { inTable = true; tableRows = []; } if (!/^\|[\s:-]+\|$/.test(L.trim())) tableRows.push(L); continue; }
+    else if (inTable) { html += tbl(tableRows); inTable = false; tableRows = []; }
+    if (L.trim().startsWith('>')) { let q = L.replace(/^>\s*/, ''); if (!inBQ) { html += '<blockquote>'; inBQ = true; } html += inl(q) + '<br>'; continue; }
+    else if (inBQ) { html += '</blockquote>'; inBQ = false; }
+    if (L.startsWith('### ')) { html += '<h3>' + inl(L.slice(4)) + '</h3>'; continue; }
+    if (L.startsWith('## ')) { html += '<h2>' + inl(L.slice(3)) + '</h2>'; continue; }
+    if (L.startsWith('# ')) { html += '<h1>' + inl(L.slice(2)) + '</h1>'; continue; }
+    if (/^---+$/.test(L.trim())) { html += '<hr>'; continue; }
+    let im = L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+    if (im) { html += `<img src="${im[2]}" alt="${im[1]}">`; continue; }
+    if (L.trim() === '') continue;
+    html += '<p>' + inl(L) + '</p>';
   }
-
-  if (inTable) html += buildTable(tableRows);
-  if (inBlockquote) html += '</blockquote>';
+  if (inTable) html += tbl(tableRows);
+  if (inBQ) html += '</blockquote>';
   if (inCode) html += '</code></pre>';
   return html;
 }
-
-function inline(s) {
-  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
-  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--ch3)">$1</a>');
-  return s;
+function inl(s) {
+  return s
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--ch3)">$1</a>');
 }
-
-function buildTable(rows) {
-  if (rows.length === 0) return '';
+function tbl(rows) {
+  if (!rows.length) return '';
   let h = '<table>';
-  rows.forEach((row, idx) => {
-    let cells = row.split('|').filter(c => c.trim() !== '');
-    let tag = idx === 0 ? 'th' : 'td';
-    h += '<tr>' + cells.map(c => `<${tag}>${inline(c.trim())}</${tag}>`).join('') + '</tr>';
-  });
+  rows.forEach((r, i) => { let c = r.split('|').filter(x => x.trim()); let t = i === 0 ? 'th' : 'td'; h += '<tr>' + c.map(x => `<${t}>${inl(x.trim())}</${t}>`).join('') + '</tr>'; });
   return h + '</table>';
 }
 
-// fetch and render
+// fetch
 fetch(`../chapters/${file}.md`)
   .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-  .then(md => { document.getElementById('content').innerHTML = md2html(md); })
-  .catch(e => {
-    // try appendices
-    const appFile = file.startsWith('app') ? file : null;
-    if (appFile) {
-      fetch(`../appendices/${appFile}.md`)
-        .then(r => r.text())
-        .then(md => { document.getElementById('content').innerHTML = md2html(md); })
+  .then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); })
+  .catch(() => {
+    if (file.startsWith('app')) {
+      fetch(`../appendices/${file}.md`).then(r => r.text()).then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); })
         .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });
     } else {
       document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>';

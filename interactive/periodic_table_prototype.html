@@ -46,6 +46,7 @@
     transition:transform 0.15s,box-shadow 0.15s,opacity 0.3s;
   }
   .cell:hover{transform:scale(1.8);z-index:10;box-shadow:0 0 12px rgba(255,255,255,0.2);}
+  @media(max-width:500px){.mosaic{grid-template-columns:repeat(11,1fr);} .cell{font-size:6px;min-width:24px;min-height:24px;}}
   .cell-empty{background:#0f1525;}
   .cell-ch1{background:var(--ch1bg);border:1px solid rgba(200,162,200,0.4);}
   .cell-ch2{background:var(--ch2bg);border:1px solid rgba(139,140,42,0.4);}
@@ -95,6 +96,7 @@
 </head>
 <body>
 
+<div style="padding:10px 16px;"><a href="../" style="color:#64748b;text-decoration:none;font-size:13px;">← 목록</a></div>
 <div class="header">
   <h1>창업소설의 주기율표</h1>
   <div class="sub">빌린 것을 안 갚으면, 자기 것을 잃는다 — 빈칸이 다음 책이다</div>
@@ -310,7 +312,7 @@ function showPanel(d){
 
   const coverEl = document.getElementById('pCover');
   const coverData = typeof COVERS!=='undefined' && COVERS[d.vol];
-  if(coverData){coverEl.src=coverData.url;coverEl.alt=d.title;coverEl.style.display='block';}
+  if(coverData){coverEl.src=coverData.url;coverEl.alt=d.title;coverEl.style.display='block';coverEl.onerror=function(){this.style.display='none';};}
   else{coverEl.style.display='none';}
 
   document.getElementById('pTitle').textContent = `${d.vol}. ${d.title}`;
