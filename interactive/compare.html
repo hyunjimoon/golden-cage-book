@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구조 비교 — 정사면체 vs 평면</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{--bg:#0a0e1a;--surface:#111827;--card:#1a2234;--text:#f0f2f5;--dim:#64748b;
+    --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;--gold:#D4A574;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;}
+  .header{text-align:center;padding:32px 16px 8px;}
+  .header h1{font-size:1.5em;font-weight:700;}
+  .header .sub{font-size:0.82em;color:var(--dim);margin-top:6px;}
+
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:24px auto;padding:0 20px;}
+  @media(max-width:768px){.compare{grid-template-columns:1fr;}}
+
+  .option{background:var(--card);border-radius:16px;padding:24px;border:2px solid transparent;cursor:pointer;transition:all 0.3s;}
+  .option:hover{border-color:rgba(255,255,255,0.15);}
+  .option.selected{border-color:var(--gold);box-shadow:0 0 20px rgba(212,165,116,0.15);}
+  .option h2{font-size:1.1em;font-weight:700;margin-bottom:16px;text-align:center;}
+
+  .viz{position:relative;width:100%;aspect-ratio:1;margin-bottom:20px;overflow:hidden;border-radius:12px;}
+  .viz svg{width:100%;height:100%;}
+
+  .props{margin-top:16px;}
+  .prop{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .prop-name{font-size:0.8em;color:var(--dim);}
+  .prop-val{font-size:0.82em;font-weight:600;}
+  .prop-bar{width:120px;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;}
+  .prop-fill{height:100%;border-radius:3px;transition:width 0.6s;}
+
+  .analysis{max-width:1100px;margin:32px auto;padding:0 20px;}
+  .analysis-card{background:var(--card);border-radius:16px;padding:24px;}
+  .analysis h2{font-size:1.1em;font-weight:700;margin-bottom:16px;}
+  .row{display:grid;grid-template-columns:140px 1fr 1fr;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.82em;}
+  .row-header{font-weight:700;color:var(--dim);font-size:0.75em;letter-spacing:0.5px;}
+  .row .dim{color:var(--dim);}
+  .check{color:var(--ch3);} .cross{color:var(--ch1);}
+
+  .verdict{max-width:1100px;margin:24px auto;padding:0 20px;}
+  .verdict-card{background:var(--surface);border-radius:16px;padding:24px;border-left:4px solid var(--gold);}
+  .verdict-card h3{font-size:1em;font-weight:700;margin-bottom:8px;}
+  .verdict-card p{font-size:0.85em;color:var(--text2,var(--dim));line-height:1.8;}
+
+  .vote{max-width:1100px;margin:24px auto 40px;padding:0 20px;text-align:center;}
+  .vote-btn{display:inline-block;padding:14px 32px;border-radius:12px;font-size:0.95em;font-weight:700;cursor:pointer;border:2px solid;transition:all 0.3s;margin:0 8px;text-decoration:none;}
+  .vote-a{border-color:var(--ch4);color:var(--ch4);background:rgba(59,89,152,0.1);}
+  .vote-a:hover{background:rgba(59,89,152,0.25);}
+  .vote-b{border-color:var(--ch1);color:var(--ch1);background:rgba(200,162,200,0.1);}
+  .vote-b:hover{background:rgba(200,162,200,0.25);}
+
+  .footer{text-align:center;padding:16px;font-size:0.75em;color:var(--dim);}
+  .footer a{color:var(--ch3);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>구조 비교</h1>
+  <div class="sub">정사면체 vs 평면 — 편집자 판단 요청</div>
+</div>
+
+<div class="compare">
+  <!-- Option A: Tetrahedron -->
+  <div class="option" id="optA" onclick="select('A')">
+    <h2>A. 정사면체</h2>
+    <div class="viz">
+      <svg viewBox="0 0 400 400">
+        <!-- background -->
+        <rect width="400" height="400" fill="#0f1525" rx="12"/>
+        <!-- edges (relationships) -->
+        <line x1="200" y1="40" x2="60" y2="340" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="200" y1="40" x2="340" y2="340" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="200" y1="40" x2="280" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="60" y1="340" x2="340" y2="340" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="60" y1="340" x2="280" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="340" y1="340" x2="280" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <!-- edge labels -->
+        <text x="120" y="180" fill="rgba(255,255,255,0.25)" font-size="11" font-family="Noto Sans KR">거울</text>
+        <text x="250" y="120" fill="rgba(255,255,255,0.25)" font-size="11" font-family="Noto Sans KR">섬</text>
+        <text x="130" y="290" fill="rgba(255,255,255,0.25)" font-size="11" font-family="Noto Sans KR">낭만</text>
+        <text x="200" y="355" fill="rgba(255,255,255,0.25)" font-size="11" font-family="Noto Sans KR">언어</text>
+        <text x="310" y="280" fill="rgba(255,255,255,0.25)" font-size="11" font-family="Noto Sans KR">보균자</text>
+        <text x="220" y="240" fill="rgba(255,255,255,0.25)" font-size="11" font-family="Noto Sans KR">장난</text>
+        <!-- vertices (novels) -->
+        <circle cx="200" cy="40" r="8" fill="var(--ch4)"/>
+        <text x="200" y="25" text-anchor="middle" fill="var(--ch4)" font-size="12" font-weight="700" font-family="Noto Sans KR">방드르디</text>
+        <circle cx="60" cy="340" r="8" fill="var(--ch1)"/>
+        <text x="60" y="365" text-anchor="middle" fill="var(--ch1)" font-size="12" font-weight="700" font-family="Noto Sans KR">마담 보바리</text>
+        <circle cx="340" cy="340" r="8" fill="var(--ch3)"/>
+        <text x="340" y="365" text-anchor="middle" fill="var(--ch3)" font-size="12" font-weight="700" font-family="Noto Sans KR">페스트</text>
+        <circle cx="280" cy="200" r="8" fill="var(--ch2)"/>
+        <text x="310" y="195" fill="var(--ch2)" font-size="12" font-weight="700" font-family="Noto Sans KR">표범</text>
+        <!-- empty center -->
+        <circle cx="220" cy="240" r="3" fill="none" stroke="rgba(255,255,255,0.15)" stroke-dasharray="2,2"/>
+      </svg>
+    </div>
+    <div class="props">
+      <div class="prop"><span class="prop-name">숨겨진 면</span><span class="prop-val">항상 1면 보이지 않음</span></div>
+      <div class="prop"><span class="prop-name">중심</span><span class="prop-val">비어 있음</span></div>
+      <div class="prop"><span class="prop-name">관계(변)</span><span class="prop-val">6개 — 개체(4)보다 많다</span></div>
+      <div class="prop"><span class="prop-name">순서</span><span class="prop-val">없음 — 어디서든 시작</span></div>
+      <div class="prop"><span class="prop-name">초기 이해</span>
+        <div class="prop-bar"><div class="prop-fill" style="width:35%;background:var(--ch4)"></div></div>
+      </div>
+      <div class="prop"><span class="prop-name">체류 시간</span>
+        <div class="prop-bar"><div class="prop-fill" style="width:90%;background:var(--ch4)"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: Flat -->
+  <div class="option" id="optB" onclick="select('B')">
+    <h2>B. 평면 사각형</h2>
+    <div class="viz">
+      <svg viewBox="0 0 400 400">
+        <rect width="400" height="400" fill="#0f1525" rx="12"/>
+        <!-- 4 quadrants -->
+        <rect x="20" y="20" width="170" height="170" rx="12" fill="rgba(200,162,200,0.12)" stroke="var(--ch1)" stroke-width="1"/>
+        <rect x="210" y="20" width="170" height="170" rx="12" fill="rgba(139,140,42,0.12)" stroke="var(--ch2)" stroke-width="1"/>
+        <rect x="20" y="210" width="170" height="170" rx="12" fill="rgba(59,89,152,0.12)" stroke="var(--ch4)" stroke-width="1"/>
+        <rect x="210" y="210" width="170" height="170" rx="12" fill="rgba(91,154,139,0.12)" stroke="var(--ch3)" stroke-width="1"/>
+        <!-- center medallion -->
+        <circle cx="200" cy="200" r="40" fill="var(--card)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="200" y="195" text-anchor="middle" fill="var(--gold)" font-size="10" font-weight="700" font-family="Noto Sans KR">황금새장을</text>
+        <text x="200" y="210" text-anchor="middle" fill="var(--gold)" font-size="10" font-weight="700" font-family="Noto Sans KR">열다</text>
+        <!-- labels -->
+        <text x="105" y="60" text-anchor="middle" fill="var(--ch1)" font-size="13" font-weight="700" font-family="Noto Sans KR">🪞 1장 거울새장</text>
+        <text x="105" y="80" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Noto Sans KR">장부를 펴라</text>
+        <text x="105" y="120" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="Noto Sans KR">엠마</text>
+        <text x="295" y="60" text-anchor="middle" fill="var(--ch2)" font-size="13" font-weight="700" font-family="Noto Sans KR">🔭 2장 망원경새장</text>
+        <text x="295" y="80" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Noto Sans KR">순서를 타라</text>
+        <text x="295" y="120" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="Noto Sans KR">살리나</text>
+        <text x="105" y="250" text-anchor="middle" fill="var(--ch4)" font-size="13" font-weight="700" font-family="Noto Sans KR">⏱️ 4장 시계새장</text>
+        <text x="105" y="270" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Noto Sans KR">다음 불을 피워라</text>
+        <text x="105" y="310" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="Noto Sans KR">로빈슨 · 방드르디</text>
+        <text x="295" y="250" text-anchor="middle" fill="var(--ch3)" font-size="13" font-weight="700" font-family="Noto Sans KR">💒 3장 스테인드글라스</text>
+        <text x="295" y="270" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Noto Sans KR">확신을 교정하라</text>
+        <text x="295" y="310" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="11" font-family="Noto Sans KR">파늘루 · 리외</text>
+        <!-- arrows -->
+        <line x1="180" y1="105" x2="220" y2="105" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="295" y1="185" x2="295" y2="215" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="220" y1="295" x2="180" y2="295" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="105" y1="215" x2="105" y2="185" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arrow)"/>
+        <defs><marker id="arrow" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L6,3 L0,6" fill="rgba(255,255,255,0.15)"/></marker></defs>
+      </svg>
+    </div>
+    <div class="props">
+      <div class="prop"><span class="prop-name">숨겨진 면</span><span class="prop-val">없음 — 4칸 전부 보임</span></div>
+      <div class="prop"><span class="prop-name">중심</span><span class="prop-val">채워져 있음 (제목)</span></div>
+      <div class="prop"><span class="prop-name">관계(변)</span><span class="prop-val">4개 — 순환 화살표</span></div>
+      <div class="prop"><span class="prop-name">순서</span><span class="prop-val">1→2→3→4 암시</span></div>
+      <div class="prop"><span class="prop-name">초기 이해</span>
+        <div class="prop-bar"><div class="prop-fill" style="width:90%;background:var(--ch1)"></div></div>
+      </div>
+      <div class="prop"><span class="prop-name">체류 시간</span>
+        <div class="prop-bar"><div class="prop-fill" style="width:35%;background:var(--ch1)"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Analysis Table -->
+<div class="analysis">
+  <div class="analysis-card">
+    <h2>비교 분석</h2>
+    <div class="row row-header"><span></span><span>A. 정사면체</span><span>B. 평면</span></div>
+    <div class="row"><span class="dim">혜진 기준<br><small>"절제 × 빈칸"</small></span><span><span class="check">●</span> 독자가 빈칸을 채운다</span><span><span class="cross">●</span> 캡션이 채워져 있다</span></div>
+    <div class="row"><span class="dim">근섭 기준<br><small>"전략적 차별"</small></span><span><span class="check">●</span> 다른 경영서에 없는 형태</span><span><span class="cross">●</span> 친숙하지만 평범</span></div>
+    <div class="row"><span class="dim">상준 기준<br><small>"오래 남는 것"</small></span><span><span class="check">●</span> 돌려봐야 해서 재방문</span><span><span class="cross">●</span> 한 번에 소비됨</span></div>
+    <div class="row"><span class="dim">분석형 독자<br><small>김다은·신태호·류승환</small></span><span><span class="check">●</span> 구조적 호기심</span><span>△ 이미 아는 형식</span></div>
+    <div class="row"><span class="dim">감성형 독자<br><small>안채림·박정희·황미선</small></span><span>△ 처음엔 어려울 수 있음</span><span><span class="check">●</span> 즉시 접근 가능</span></div>
+    <div class="row"><span class="dim">자장(磁場)<br><small>"힘주지 않아도 정렬"</small></span><span><span class="check">●</span> 구조가 스스로 말한다</span><span><span class="cross">●</span> 설명이 배치를 대신한다</span></div>
+    <div class="row"><span class="dim">캐리오버 문법<br><small>"한 속도가 다음을"</small></span><span><span class="check">●</span> 6개 변이 관계를 보여줌</span><span>△ 4개 화살표만</span></div>
+    <div class="row"><span class="dim">인쇄 적합성<br><small>흑백 인쇄 가능?</small></span><span><span class="check">●</span> 선과 점으로 충분</span><span><span class="cross">●</span> 색상 의존도 높음</span></div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-card">
+    <h3>판단 요청</h3>
+    <p>두 구조 모두 책의 내용을 담을 수 있습니다. 차이는 <strong>독자에게 무엇을 먼저 보여줄 것인가</strong>입니다.<br>
+    A(정사면체)는 관계를 먼저 보여주고 내용은 나중에 드러납니다.<br>
+    B(평면)는 내용을 먼저 보여주고 관계는 독자가 추론합니다.<br><br>
+    어느 쪽이 이 책의 독자에게 맞는 순서입니까?</p>
+  </div>
+</div>
+
+<div class="vote">
+  <a class="vote-btn vote-a" href="../">← 목록으로</a>
+</div>
+
+<div class="footer">
+  <a href="../">황금새장을열다</a> · 구조 비교
+</div>
+
+<script>
+function select(opt) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.getElementById('opt' + opt).classList.add('selected');
+}
+</script>
+</body>
+</html>
