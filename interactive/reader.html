@@ -3,76 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>황금새장을열다 — 본문</title>
+<title>황금새장을열다</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
-  :root{--bg:#090c15;--surface:#111827;--card:#1a2234;--text:#e2e8f0;--dim:#64748b;
-    --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600&display=swap');
+  :root{--bg:#090c15;--sidebar:#0e1220;--border:rgba(255,255,255,0.04);
+    --text:#e2e8f0;--dim:#5a6a7a;--accent:#5B9A8B;--card:#1a2234;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Serif KR',serif;background:var(--bg);color:var(--text);line-height:2;font-size:16px;}
+  body{font-family:'Noto Serif KR',serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.9;}
 
-  /* nav */
-  nav{position:fixed;top:0;left:0;right:0;background:rgba(9,12,21,0.95);backdrop-filter:blur(8px);padding:10px 16px;display:flex;align-items:center;gap:8px;z-index:100;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'Noto Sans KR',sans-serif;}
-  nav a{color:var(--dim);text-decoration:none;font-size:13px;padding:4px 8px;border-radius:4px;transition:all 0.15s;}
-  nav a:hover,nav a.active{color:var(--text);background:rgba(255,255,255,0.06);}
-  nav .home{font-weight:700;color:var(--dim);margin-right:auto;}
+  /* layout */
+  .layout{display:flex;min-height:100vh;}
 
-  /* content */
-  .content{max-width:640px;margin:64px auto 0;padding:24px 24px 80px;}
-  .content h1{font-size:1.5em;font-weight:700;margin:32px 0 16px;}
-  .content h2{font-size:1.2em;font-weight:700;margin:28px 0 12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:6px;}
+  /* sidebar */
+  .sidebar{width:240px;background:var(--sidebar);border-right:1px solid var(--border);position:fixed;top:0;left:0;bottom:0;overflow-y:auto;font-family:'Noto Sans KR',sans-serif;z-index:50;transition:transform 0.25s;}
+  .sidebar-head{padding:16px;border-bottom:1px solid var(--border);}
+  .sidebar-head a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.5px;}
+  .sidebar-head a:hover{color:var(--text);}
+  .sidebar-nav{padding:8px 0;}
+  .sidebar-nav a{display:block;padding:6px 16px;font-size:13px;color:var(--dim);text-decoration:none;transition:all 0.15s;border-left:2px solid transparent;}
+  .sidebar-nav a:hover{color:var(--text);background:rgba(255,255,255,0.02);}
+  .sidebar-nav a.active{color:var(--accent);border-left-color:var(--accent);background:rgba(91,154,139,0.05);}
+  .sidebar-toc{padding:8px 0;border-top:1px solid var(--border);}
+  .sidebar-toc-label{padding:8px 16px;font-size:11px;color:var(--dim);letter-spacing:1px;font-weight:600;}
+  .sidebar-toc a{display:block;padding:3px 16px 3px 24px;font-size:12px;color:var(--dim);text-decoration:none;transition:color 0.15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sidebar-toc a.h3{padding-left:36px;font-size:11px;}
+  .sidebar-toc a:hover{color:var(--text);}
+  .sidebar-toc a.toc-active{color:var(--accent);}
+
+  /* main */
+  .main{margin-left:240px;flex:1;min-width:0;}
+  .content{max-width:680px;margin:0 auto;padding:32px 32px 80px;}
+  .content h1{font-size:1.5em;font-weight:700;margin:24px 0 16px;}
+  .content h2{font-size:1.2em;font-weight:700;margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
   .content h3{font-size:1em;font-weight:600;margin:24px 0 8px;}
-  .content p{margin:10px 0;text-align:justify;}
-  .content blockquote{border-left:2px solid var(--ch3);padding:6px 16px;margin:14px 0;color:var(--dim);font-style:italic;background:rgba(91,154,139,0.03);border-radius:0 4px 4px 0;}
+  .content p{margin:10px 0;}
+  .content blockquote{border-left:2px solid var(--accent);padding:6px 16px;margin:14px 0;color:var(--dim);font-style:italic;background:rgba(91,154,139,0.03);border-radius:0 4px 4px 0;}
   .content strong{color:#fff;}
   .content em{color:var(--dim);}
   .content table{width:100%;border-collapse:collapse;margin:14px 0;font-family:'Noto Sans KR',sans-serif;font-size:13px;}
-  .content th{background:var(--card);padding:8px 10px;text-align:left;font-weight:600;border:1px solid rgba(255,255,255,0.06);}
-  .content td{padding:8px 10px;border:1px solid rgba(255,255,255,0.04);}
+  .content th{background:var(--card);padding:8px 10px;text-align:left;font-weight:600;border:1px solid var(--border);}
+  .content td{padding:8px 10px;border:1px solid var(--border);}
   .content code{background:var(--card);padding:1px 5px;border-radius:3px;font-size:0.88em;}
-  .content pre{background:var(--card);padding:14px;border-radius:8px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6;}
+  .content pre{background:var(--card);padding:14px;border-radius:6px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6;}
   .content pre code{background:none;padding:0;}
-  .content hr{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:28px 0;}
-  .content img{max-width:100%;border-radius:8px;margin:14px 0;}
-
-  /* prev/next */
-  .pager{display:flex;justify-content:space-between;max-width:640px;margin:0 auto;padding:0 24px 48px;font-family:'Noto Sans KR',sans-serif;}
-  .pager a{color:var(--dim);text-decoration:none;font-size:13px;padding:8px 16px;border-radius:6px;background:var(--card);transition:all 0.15s;}
-  .pager a:hover{color:var(--text);background:var(--surface);}
+  .content hr{border:none;border-top:1px solid var(--border);margin:28px 0;}
+  .content img{max-width:100%;border-radius:6px;margin:14px 0;}
+  .pager{display:flex;justify-content:space-between;max-width:680px;margin:0 auto;padding:0 32px 48px;font-family:'Noto Sans KR',sans-serif;}
+  .pager a{color:var(--dim);text-decoration:none;font-size:12px;padding:6px 14px;border-radius:4px;background:var(--card);transition:all 0.15s;}
+  .pager a:hover{color:var(--text);}
   .pager .empty{visibility:hidden;}
-
   .loading{text-align:center;padding:80px;color:var(--dim);font-family:'Noto Sans KR',sans-serif;font-size:13px;}
 
-  @media(max-width:500px){.content{padding:16px 16px 60px;} nav{gap:4px;} nav a{font-size:12px;padding:4px 6px;}}
+  /* mobile toggle */
+  .menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:60;background:var(--sidebar);border:1px solid var(--border);color:var(--dim);padding:6px 10px;border-radius:4px;font-size:14px;cursor:pointer;}
+  @media(max-width:768px){
+    .sidebar{transform:translateX(-100%);}
+    .sidebar.open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,0.5);}
+    .main{margin-left:0;}
+    .content{padding:48px 20px 80px;}
+    .pager{padding:0 20px 48px;}
+    .menu-btn{display:block;}
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="home" href="../">← 목록</a>
-  <a href="?file=ch0_prologue">프롤로그</a>
-  <a href="?file=ch1_mirror_cage">1장</a>
-  <a href="?file=ch2_telescope_cage">2장</a>
-  <a href="?file=ch3_stained_glass_cage">3장</a>
-  <a href="?file=ch4_clock_cage">4장</a>
-  <a href="?file=ch5_epilogue">에필로그</a>
-</nav>
+<button class="menu-btn" id="menuBtn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
 
-<div class="content" id="content">
-  <div class="loading">불러오는 중...</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head"><a href="../">황금새장을열다</a></div>
+    <div class="sidebar-nav" id="sidebarNav"></div>
+    <div class="sidebar-toc" id="sidebarToc">
+      <div class="sidebar-toc-label">이 장의 목차</div>
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content" id="content"><div class="loading">불러오는 중...</div></div>
+    <div class="pager" id="pager"></div>
+  </div>
 </div>
 
-<div class="pager" id="pager"></div>
-
 <script>
-// chapter order for prev/next
 const CHAPTERS = [
   {id:'ch0_prologue', label:'프롤로그'},
   {id:'ch0_characters', label:'인물 소개'},
-  {id:'ch1_mirror_cage', label:'1장 거울새장'},
-  {id:'ch2_telescope_cage', label:'2장 망원경새장'},
-  {id:'ch3_stained_glass_cage', label:'3장 스테인드글라스새장'},
-  {id:'ch4_clock_cage', label:'4장 시계새장'},
+  {id:'ch1_mirror_cage', label:'🪞 1장 거울새장'},
+  {id:'ch2_telescope_cage', label:'🔭 2장 망원경새장'},
+  {id:'ch3_stained_glass_cage', label:'💒 3장 스테인드글라스새장'},
+  {id:'ch4_clock_cage', label:'⏱️ 4장 시계새장'},
   {id:'ch5_epilogue', label:'에필로그'}
 ];
 
@@ -80,12 +99,18 @@ const params = new URLSearchParams(window.location.search);
 const file = params.get('file') || 'ch0_prologue';
 const curIdx = CHAPTERS.findIndex(c => c.id === file);
 
-// highlight active nav
-document.querySelectorAll('nav a').forEach(a => {
-  if (a.href && a.href.includes('file=' + file)) a.classList.add('active');
+// sidebar nav
+const sidebarNav = document.getElementById('sidebarNav');
+CHAPTERS.forEach(c => {
+  const a = document.createElement('a');
+  a.href = '?file=' + c.id;
+  a.textContent = c.label;
+  if (c.id === file) a.classList.add('active');
+  a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
+  sidebarNav.appendChild(a);
 });
 
-// build prev/next
+// pager
 const pager = document.getElementById('pager');
 const prev = curIdx > 0 ? CHAPTERS[curIdx - 1] : null;
 const next = curIdx < CHAPTERS.length - 1 ? CHAPTERS[curIdx + 1] : null;
@@ -93,63 +118,75 @@ pager.innerHTML =
   (prev ? `<a href="?file=${prev.id}">← ${prev.label}</a>` : '<span class="empty">-</span>') +
   (next ? `<a href="?file=${next.id}">${next.label} →</a>` : '<span class="empty">-</span>');
 
-// markdown → HTML
+// title
+if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을열다';
+
+// md → html
 function md2html(md) {
   md = md.replace(/^---[\s\S]*?---\s*/m, '');
-  // Obsidian links → plain text (#4 fix)
   md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
   md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2');
   md = md.replace(/\[\[([^\]]+)\]\]/g, '$1');
-
-  let lines = md.split('\n'), html = '';
-  let inCode = false, inTable = false, inBQ = false, tableRows = [];
-
-  for (let i = 0; i < lines.length; i++) {
-    let L = lines[i];
-    if (L.trim().startsWith('```')) { if (inCode) { html += '</code></pre>'; inCode = false; } else { html += '<pre><code>'; inCode = true; } continue; }
-    if (inCode) { html += L.replace(/</g, '&lt;') + '\n'; continue; }
-    if (L.trim().startsWith('|')) { if (!inTable) { inTable = true; tableRows = []; } if (!/^\|[\s:-]+\|$/.test(L.trim())) tableRows.push(L); continue; }
-    else if (inTable) { html += tbl(tableRows); inTable = false; tableRows = []; }
-    if (L.trim().startsWith('>')) { let q = L.replace(/^>\s*/, ''); if (!inBQ) { html += '<blockquote>'; inBQ = true; } html += inl(q) + '<br>'; continue; }
-    else if (inBQ) { html += '</blockquote>'; inBQ = false; }
-    if (L.startsWith('### ')) { html += '<h3>' + inl(L.slice(4)) + '</h3>'; continue; }
-    if (L.startsWith('## ')) { html += '<h2>' + inl(L.slice(3)) + '</h2>'; continue; }
-    if (L.startsWith('# ')) { html += '<h1>' + inl(L.slice(2)) + '</h1>'; continue; }
-    if (/^---+$/.test(L.trim())) { html += '<hr>'; continue; }
-    let im = L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
-    if (im) { html += `<img src="${im[2]}" alt="${im[1]}">`; continue; }
-    if (L.trim() === '') continue;
-    html += '<p>' + inl(L) + '</p>';
+  let lines = md.split('\n'), html = '', inCode=false, inTable=false, inBQ=false, tRows=[];
+  for (let i=0;i<lines.length;i++){
+    let L=lines[i];
+    if(L.trim().startsWith('```')){if(inCode){html+='</code></pre>';inCode=false;}else{html+='<pre><code>';inCode=true;}continue;}
+    if(inCode){html+=L.replace(/</g,'&lt;')+'\n';continue;}
+    if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(!/^\|[\s:-]+\|$/.test(L.trim()))tRows.push(L);continue;}
+    else if(inTable){html+=tbl(tRows);inTable=false;tRows=[];}
+    if(L.trim().startsWith('>')){let q=L.replace(/^>\s*/,'');if(!inBQ){html+='<blockquote>';inBQ=true;}html+=inl(q)+'<br>';continue;}
+    else if(inBQ){html+='</blockquote>';inBQ=false;}
+    if(L.startsWith('### ')){html+='<h3 id="s'+i+'">'+inl(L.slice(4))+'</h3>';continue;}
+    if(L.startsWith('## ')){html+='<h2 id="s'+i+'">'+inl(L.slice(3))+'</h2>';continue;}
+    if(L.startsWith('# ')){html+='<h1>'+inl(L.slice(2))+'</h1>';continue;}
+    if(/^---+$/.test(L.trim())){html+='<hr>';continue;}
+    let im=L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+    if(im){html+=`<img src="${im[2]}" alt="${im[1]}">`;continue;}
+    if(L.trim()==='')continue;
+    html+='<p>'+inl(L)+'</p>';
   }
-  if (inTable) html += tbl(tableRows);
-  if (inBQ) html += '</blockquote>';
-  if (inCode) html += '</code></pre>';
+  if(inTable)html+=tbl(tRows);if(inBQ)html+='</blockquote>';if(inCode)html+='</code></pre>';
   return html;
 }
-function inl(s) {
-  return s
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--ch3)">$1</a>');
-}
-function tbl(rows) {
-  if (!rows.length) return '';
-  let h = '<table>';
-  rows.forEach((r, i) => { let c = r.split('|').filter(x => x.trim()); let t = i === 0 ? 'th' : 'td'; h += '<tr>' + c.map(x => `<${t}>${inl(x.trim())}</${t}>`).join('') + '</tr>'; });
-  return h + '</table>';
+function inl(s){return s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');}
+function tbl(rows){if(!rows.length)return '';let h='<table>';rows.forEach((r,i)=>{let c=r.split('|').filter(x=>x.trim());let t=i===0?'th':'td';h+='<tr>'+c.map(x=>`<${t}>${inl(x.trim())}</${t}>`).join('')+'</tr>';});return h+'</table>';}
+
+// build TOC from rendered headings
+function buildToc(){
+  const toc=document.getElementById('sidebarToc');
+  const headings=document.querySelectorAll('.content h2, .content h3');
+  if(headings.length===0){toc.style.display='none';return;}
+  headings.forEach(h=>{
+    const a=document.createElement('a');
+    a.href='#'+h.id;
+    a.textContent=h.textContent;
+    if(h.tagName==='H3')a.classList.add('h3');
+    a.onclick=()=>document.querySelector('.sidebar').classList.remove('open');
+    toc.appendChild(a);
+  });
+  // scroll spy
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        toc.querySelectorAll('a').forEach(a=>a.classList.remove('toc-active'));
+        const active=toc.querySelector(`a[href="#${e.target.id}"]`);
+        if(active)active.classList.add('toc-active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  headings.forEach(h=>observer.observe(h));
 }
 
 // fetch
 fetch(`../chapters/${file}.md`)
-  .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-  .then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); })
-  .catch(() => {
-    if (file.startsWith('app')) {
-      fetch(`../appendices/${file}.md`).then(r => r.text()).then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); })
-        .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });
+  .then(r=>{if(!r.ok)throw new Error(r.status);return r.text();})
+  .then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();})
+  .catch(()=>{
+    if(file.startsWith('app')){
+      fetch(`../appendices/${file}.md`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();})
+        .catch(()=>{document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';});
     } else {
-      document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>';
+      document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';
     }
   });
 </script>
