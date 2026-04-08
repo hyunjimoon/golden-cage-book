@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대표독자 7명 — 황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400&display=swap');
+  :root{--bg:#090c15;--card:#0e1220;--border:rgba(255,255,255,0.04);--text:#e2e8f0;--dim:#5a6a7a;
+    --ch1:#C8A2C8;--ch2:#8B8C2A;--ch3:#5B9A8B;--ch4:#3B5998;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;}
+
+  .page{max-width:720px;margin:0 auto;padding:40px 24px 48px;}
+  .back{font-size:12px;color:var(--dim);text-decoration:none;display:inline-block;margin-bottom:24px;}
+  .back:hover{color:var(--text);}
+  h1{font-size:1.4em;font-weight:700;margin-bottom:4px;}
+  .sub{font-size:12px;color:var(--dim);margin-bottom:32px;}
+
+  /* funnel */
+  .funnel{margin-bottom:40px;}
+  .funnel h2{font-size:12px;color:var(--dim);letter-spacing:1px;margin-bottom:12px;}
+  .funnel-row{display:grid;grid-template-columns:120px 1fr 60px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;}
+  .funnel-stage{font-weight:600;}
+  .funnel-debt{color:var(--dim);}
+  .funnel-ch{font-family:'DM Mono',monospace;font-size:11px;}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:40px;}
+  .card{background:var(--card);border-radius:10px;padding:16px;border-left:3px solid var(--dim);transition:border-color 0.2s;}
+  .card:hover{border-color:var(--text);}
+  .card-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .card-name{font-size:15px;font-weight:700;}
+  .card-meta{font-size:11px;color:var(--dim);font-family:'DM Mono',monospace;}
+  .card-cage{display:inline-block;font-size:11px;padding:1px 6px;border-radius:3px;margin-right:4px;font-weight:600;}
+  .card-why{font-size:12px;color:var(--dim);margin-top:6px;}
+  .card-debt{font-size:12px;margin-top:6px;color:var(--text);opacity:0.8;}
+  .card-fear{font-size:12px;margin-top:4px;color:var(--dim);font-style:italic;}
+
+  .c1{border-left-color:var(--ch1);} .c1 .card-cage{background:rgba(200,162,200,0.15);color:var(--ch1);}
+  .c2{border-left-color:var(--ch2);} .c2 .card-cage{background:rgba(139,140,42,0.15);color:var(--ch2);}
+  .c3{border-left-color:var(--ch3);} .c3 .card-cage{background:rgba(91,154,139,0.15);color:var(--ch3);}
+  .c4{border-left-color:var(--ch4);} .c4 .card-cage{background:rgba(59,89,152,0.15);color:var(--ch4);}
+  .c34{border-left-color:var(--ch3);}
+
+  /* coverage */
+  .coverage{margin-bottom:40px;}
+  .coverage h2{font-size:12px;color:var(--dim);letter-spacing:1px;margin-bottom:12px;}
+  .cov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;}
+  .cov-item{background:var(--card);border-radius:6px;padding:10px;font-size:12px;}
+  .cov-label{color:var(--dim);margin-bottom:2px;}
+  .cov-val{font-weight:600;}
+  .cov-ok{color:var(--ch3);} .cov-warn{color:#e07a5f;}
+
+  /* protocol */
+  .protocol{background:var(--card);border-radius:10px;padding:16px;font-size:12px;color:var(--dim);margin-bottom:32px;}
+  .protocol strong{color:var(--text);}
+
+  .score{text-align:center;font-family:'DM Mono',monospace;font-size:13px;color:var(--dim);margin-bottom:8px;}
+  .score span{font-size:24px;font-weight:700;color:var(--ch3);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="../">← 목록</a>
+  <h1>대표독자 7명</h1>
+  <div class="sub">만장일치 debate 패널 — "모두의 창업" 5,000명 지원자와 그 가족을 위해</div>
+
+  <div class="score">대표성 점수 <span>70</span>/100</div>
+
+  <!-- Funnel -->
+  <div class="funnel">
+    <h2>프로그램 단계 × dG/dF=(−)</h2>
+    <div class="funnel-row"><span class="funnel-stage">지원 5,000명</span><span class="funnel-debt">활동자금이 빌린 욕망을 굳힘</span><span class="funnel-ch">ch1</span></div>
+    <div class="funnel-row"><span class="funnel-stage">오디션 1,000명</span><span class="funnel-debt">경쟁이 빠른 발을 보상</span><span class="funnel-ch">ch2</span></div>
+    <div class="funnel-row"><span class="funnel-stage">루키 100명</span><span class="funnel-debt">자금이 확신을 고착시킴</span><span class="funnel-ch">ch3</span></div>
+    <div class="funnel-row"><span class="funnel-stage">우승 10억+</span><span class="funnel-debt">성공이 변이를 죽임</span><span class="funnel-ch">ch4</span></div>
+    <div class="funnel-row"><span class="funnel-stage">재도전</span><span class="funnel-debt">서사만 되면 재융자</span><span class="funnel-ch">전체</span></div>
+  </div>
+
+  <!-- Reader Cards -->
+  <div class="cards">
+    <div class="card c1">
+      <div class="card-head"><span class="card-name">김다은</span><span class="card-meta">22 · 분석 · 테크</span></div>
+      <span class="card-cage">🪞 거울</span>
+      <div class="card-why">가장 큰 독자풀. "이 책이 나한테 뭘 주는가"가 먼저.</div>
+    </div>
+    <div class="card c3">
+      <div class="card-head"><span class="card-name">이서윤</span><span class="card-meta">23 · 분석 · 과학자</span></div>
+      <span class="card-cage">💒 스테인드글라스</span>
+      <div class="card-why">3장 리트머스. "내 확신이 맞는데요?" 유형.</div>
+    </div>
+    <div class="card c4">
+      <div class="card-head"><span class="card-name">안채림</span><span class="card-meta">22 · 감성 · 전주</span></div>
+      <span class="card-cage">⏱️ 시계</span>
+      <div class="card-why">비수도권 비이공계. 진정성 vs 스케일 갈등.</div>
+    </div>
+    <div class="card c2">
+      <div class="card-head"><span class="card-name">신태호</span><span class="card-meta">24 · 분석 · 부산</span></div>
+      <span class="card-cage">🔭 망원경</span>
+      <div class="card-why">"다 보이는데 못 뛰는" 하드웨어 예비 창업자.</div>
+    </div>
+    <div class="card c1">
+      <div class="card-head"><span class="card-name">박정희</span><span class="card-meta">54 · 감성 · 학부모</span></div>
+      <span class="card-cage">🪞 거울</span>
+      <div class="card-why">유일한 비창업자. "이 책이 위험하지 않은가."</div>
+      <div class="card-fear">"창업하면 망한다 100%"</div>
+    </div>
+    <div class="card c4">
+      <div class="card-head"><span class="card-name">류승환</span><span class="card-meta">33 · 분석 · 삼성 5년</span></div>
+      <span class="card-cage">⏱️ 시계</span>
+      <div class="card-why">빌린 질서 안의 사람. 시간 없는 독자.</div>
+    </div>
+    <div class="card c34">
+      <div class="card-head"><span class="card-name">황미선</span><span class="card-meta">47 · 감성 · 예천 7년차</span></div>
+      <span class="card-cage" style="background:rgba(91,154,139,0.15);color:var(--ch3);">💒+⏱️</span>
+      <div class="card-why">유일한 현직. 참기름 세 자매. "이론은 좋은데 현장에서는 안 통해요."</div>
+      <div class="card-debt">빚: "우리 방식이 최고"를 7년간 수정하지 않음</div>
+      <div class="card-fear">"할머니 레시피를 바꾸면 배신 아닌가"</div>
+    </div>
+  </div>
+
+  <!-- Coverage -->
+  <div class="coverage">
+    <h2>커버리지 검증</h2>
+    <div class="cov-grid">
+      <div class="cov-item"><div class="cov-label">🪞 거울 (1장)</div><div class="cov-val cov-ok">2명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">🔭 망원경 (2장)</div><div class="cov-val cov-ok">1명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">💒 스테인드글라스 (3장)</div><div class="cov-val cov-ok">2명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">⏱️ 시계 (4장)</div><div class="cov-val cov-ok">3명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">현직 창업자</div><div class="cov-val cov-ok">1명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">비창업자</div><div class="cov-val cov-ok">1명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">비수도권</div><div class="cov-val cov-ok">3명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">40~50대</div><div class="cov-val cov-ok">2명 ✓</div></div>
+      <div class="cov-item"><div class="cov-label">seed~growth 단계</div><div class="cov-val cov-warn">0명 — 잔여 빚</div></div>
+      <div class="cov-item"><div class="cov-label">글로벌/이민자</div><div class="cov-val cov-warn">0명 — 잔여 빚</div></div>
+    </div>
+  </div>
+
+  <!-- Protocol -->
+  <div class="protocol">
+    <strong>debate 프로토콜</strong><br>
+    <strong>7:0</strong> 만장일치 → 실행<br>
+    <strong>6:1</strong> → 반대 이유 기록 후 실행<br>
+    <strong>5:2 이하</strong> → 반대 해소할 때까지 수정<br><br>
+    질문: "이 문장/구조/결정에 대해, 당신의 새장과 렌즈에서 동의하는가?"
+  </div>
+
+</div>
+</body>
+</html>
