@@ -98,6 +98,12 @@ CRC Press, 2013.
 2장에서 인용.
 기세(Schwung) — 완벽한 지도를 기다리며 멈춘 군대는 죽는다. 살리나가 73년간 한 일의 군사학적 이름.
 
+### 배달형·전덕종·김진영, 『어떻게 경쟁하고 승리할 것인가: 원리와 방법』
+2장에서 인용.
+"동정의 원리는 움직이면 강해지고 정지하면 약해진다."
+클라우제비츠의 기세를 동양 병법이 한 문장으로 압축한다. 살리나는 정지했고 탄크레디는 움직였다.
+[War Lab에서 보기](https://www.warlabkorea.com/shop_view/?idx=263)
+
 ### Fabrizio Ferraro et al., "Robust Action Revisited"
 *Academy of Management Journal*, 2015.
 2장에서 인용.
