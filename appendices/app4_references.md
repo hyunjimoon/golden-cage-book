@@ -4,9 +4,9 @@ modified:
   - 2026-04-09
 ---
 
-# 부록 4. 참고문헌
+# 부록 4. 이 책이 빌린 생각들
 
-> 서지 목록이 아니라 독서 안내서다. 각 문헌에 왜 이 책인지, 어떤 문장이 남았는지를 적었다.
+> 서지 목록이 아니라 독서 안내서다. 저자가 빌렸듯, 독자도 빌려서 자기 것으로 쓰라.
 
 <!-- 
 tolzul vault 참조 경로 (참고문헌 관리자용):
@@ -100,6 +100,18 @@ CRC Press, 2013.
 2장에서 인용.
 기세(Schwung) — 완벽한 지도를 기다리며 멈춘 군대는 죽는다. 살리나가 73년간 한 일의 군사학적 이름.
 
+### 노자, 『도덕경』
+2장, 4장에서 참조.
+"물은 만물을 이롭게 하면서도 다투지 않는다."
+2장의 기세(움직여야 산다)와 도덕경의 무위(흐르면 된다)는 같은 곳을 가리키되 경로가 다르다. 4장 방드르디의 놀이 = 무위의 육체적 번역.
+[충코의 도덕경 강의](https://www.youtube.com/watch?v=wjKQjDXVTlI)
+
+### 주역
+1장, 전체에서 참조.
+"과거를 바꿔야 팔자가 바뀐다." (강기진, 4강)
+빚을 갚는 것 = 과거의 빌린 가정을 인정하고 해석을 바꾸는 것. "장부를 펴라"의 동양적 표현.
+[EBS 평생학교 8강 시리즈](https://www.youtube.com/playlist?list=PLov1pvgWoT0I1K7EgT1r7MdFmZBtQnYLl)
+
 ### 배달형·전덕종·김진영, 『어떻게 경쟁하고 승리할 것인가: 원리와 방법』
 2장에서 인용.
 "동정의 원리는 움직이면 강해지고 정지하면 약해진다."
@@ -183,6 +195,8 @@ dG/dF = (+)(−) = (−). 168,011개 벤처 실증. 이 책의 학술 원본.
 [민음사TV](https://www.youtube.com/@minumsaTV) — 세계문학전집 독서클럽. 편집자가 소설을 읽는 법.
 [일당백](https://www.youtube.com/@ildangbaek) — 인문·사회과학 강의. 깊이와 접근성의 균형.
 [War Lab 워랩](https://www.youtube.com/@War_Lab) — 전쟁·전략 전문. 클라우제비츠와 손자를 현대 전략으로 번역.
+[충코](https://www.youtube.com/watch?v=wjKQjDXVTlI) — 서양철학 전공자가 읽는 노자 도덕경. "물처럼 흐르라"가 2장의 기세(Schwung)와 만나는 지점.
+[EBS 평생학교 — 강기진의 3천 년의 지혜, 주역](https://www.youtube.com/playlist?list=PLov1pvgWoT0I1K7EgT1r7MdFmZBtQnYLl) — 불확실성을 "운"으로 읽는 동양적 프레임. 4강 "과거를 바꿔야 팔자가 바뀐다" = 1장 "장부를 펴라".
 [How I Write — David Perell](https://www.youtube.com/playlist?list=PLFxhXLgGkVzKCn23_g8qM19DMDgco8eNJ) — 108명의 작가·사상가가 말하는 글쓰기. 이 책의 문체를 다듬는 데 쓴 참고 공정. 특히:
 
 - **EP038 Steven Pinker** — "지식의 저주를 극복하라. 추상에는 구체를 붙여라." → 3장 이론 섹션 순서 교정에 적용
