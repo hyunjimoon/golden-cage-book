@@ -32,6 +32,8 @@ tolzul vault 참조 경로 (참고문헌 관리자용):
 | 3장 | "60%에서 시작해서 결과를 보고 수정" | Gelman et al. (2013) |
 | 4장 | "성공한 선택이 변이를 굶긴다" | Levinthal (1997) |
 | 4장 | dG/dF = (+)(−) = (−) | Moon (2026) |
+| 전체 | 문체 교정 — 추상에 구체를 붙여라 | Pinker, HowIWrite EP038 |
+| 전체 | 아이디어+이야기 두 엔진 | Gawande, HowIWrite EP015 |
 
 ---
 
@@ -181,6 +183,13 @@ dG/dF = (+)(−) = (−). 168,011개 벤처 실증. 이 책의 학술 원본.
 [민음사TV](https://www.youtube.com/@minumsaTV) — 세계문학전집 독서클럽. 편집자가 소설을 읽는 법.
 [일당백](https://www.youtube.com/@ildangbaek) — 인문·사회과학 강의. 깊이와 접근성의 균형.
 [War Lab 워랩](https://www.youtube.com/@War_Lab) — 전쟁·전략 전문. 클라우제비츠와 손자를 현대 전략으로 번역.
+[How I Write — David Perell](https://www.youtube.com/playlist?list=PLFxhXLgGkVzKCn23_g8qM19DMDgco8eNJ) — 108명의 작가·사상가가 말하는 글쓰기. 이 책의 문체를 다듬는 데 쓴 참고 공정. 특히:
+
+- **EP038 Steven Pinker** — "지식의 저주를 극복하라. 추상에는 구체를 붙여라." → 3장 이론 섹션 순서 교정에 적용
+- **EP015 Atul Gawande** — "모든 글에는 아이디어와 이야기 두 엔진이 필요하다." → 2장 이야기 엔진 보강에 적용
+- **EP007 Daniel Pink** — "구조가 먼저, 문장은 나중." → 4섹션 구조 설계의 근거
+- **EP050 Dana Gioia** — "세 독자를 동시에 상상하라." → 편집자/예비창업자/학부모를 동시에 잡는 원칙
+- **EP032 Alain de Botton** — "실제로 느끼는 것을 존중하라." → 다의 3장 고백을 감각의 조각으로 교체
 
 ---
 
