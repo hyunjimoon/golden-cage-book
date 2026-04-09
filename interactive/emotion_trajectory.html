@@ -474,6 +474,92 @@ function render() {
 })();
 
 render();
+
+// ═══ #1: 2D 궤적 — 엠마-타루 × 살리나-리외 ═══
+(function build2D(){
+  const wrap = document.querySelector('.container');
+  const div = document.createElement('div');
+  div.style.cssText = 'margin-top:24px;';
+  div.innerHTML = `
+    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;">다/세 수렴 궤적 — 방드르디를 향해</div>
+    <div style="font-size:0.7em;color:var(--dim);text-align:center;margin-bottom:4px;">X=다(엠마→타루) · Y=세(살리나→리외) · ◎=방드르디</div>
+    <svg id="conv2d" viewBox="0 0 300 300" style="width:100%;max-width:300px;margin:0 auto;display:block;"></svg>
+  `;
+  wrap.appendChild(div);
+
+  const svg = document.getElementById('conv2d');
+  const P=24, S=300-P*2;
+  // 다의 위치: daPos (0=엠마, 100=타루)
+  // 세의 위치: sePos (0=살리나, 100=리외)
+  const pts = [
+    {da:DATA[1].daPos, se:DATA[1].sePos},
+    {da:DATA[2].daPos, se:DATA[2].sePos},
+    {da:DATA[3].daPos, se:DATA[3].sePos},
+    {da:DATA[4].daPos, se:DATA[4].sePos}
+  ];
+  const target = {da:85, se:85}; // 방드르디
+
+  let h = '';
+  // axes
+  h += `<line x1="${P}" y1="${300-P}" x2="${300-P}" y2="${300-P}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
+  h += `<line x1="${P}" y1="${300-P}" x2="${P}" y2="${P}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
+  h += `<text x="${150}" y="${295}" text-anchor="middle" fill="var(--dim)" font-size="10" font-family="Noto Sans KR">다: 엠마 → 타루</text>`;
+  h += `<text x="10" y="${150}" text-anchor="middle" fill="var(--dim)" font-size="10" font-family="Noto Sans KR" transform="rotate(-90,10,150)">세: 살리나 → 리외</text>`;
+
+  // target
+  const tx = P + target.da/100*S, ty = 300-P - target.se/100*S;
+  h += `<circle cx="${tx}" cy="${ty}" r="12" fill="none" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3,3"/>`;
+  h += `<text x="${tx}" y="${ty-16}" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="9" font-family="Noto Sans KR">방드르디</text>`;
+
+  // trail + dots
+  const colors = ['#C8A2C8','#8B8C2A','#5B9A8B','#3B5998'];
+  for(let i=0;i<4;i++){
+    const x = P + pts[i].da/100*S, y2 = 300-P - pts[i].se/100*S;
+    if(i>0){
+      const px = P + pts[i-1].da/100*S, py = 300-P - pts[i-1].se/100*S;
+      h += `<line x1="${px}" y1="${py}" x2="${x}" y2="${y2}" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>`;
+    }
+    h += `<circle cx="${x}" cy="${y2}" r="6" fill="${colors[i]}" style="cursor:pointer" onclick="setCh(${i+1})"/>`;
+    h += `<text x="${x+10}" y="${y2+4}" fill="${colors[i]}" font-size="10" font-weight="600" font-family="Noto Sans KR">${i+1}장</text>`;
+  }
+
+  svg.innerHTML = h;
+})();
+
+// ═══ #2: Gap 히트맵 ═══
+(function buildGapHeatmap(){
+  const wrap = document.querySelector('.container');
+  const div = document.createElement('div');
+  div.style.cssText = 'margin-top:24px;';
+
+  const ek = {'desperate':'desperate','self-deception':'sd','detached':'detached','guilty':'guilty','calm-uncertain':'cu','playful':'playful'};
+  let rows = '';
+  for(let ch=1;ch<=4;ch++){
+    let cells = '';
+    EMOTIONS.forEach(e => {
+      const daP = PRIOR.da[ch]?PRIOR.da[ch][ek[e]]||0:0;
+      const daV = DATA[ch].da[e];
+      const seP = PRIOR.se[ch]?PRIOR.se[ch][ek[e]]||0:0;
+      const seV = DATA[ch].se[e];
+      const gap = Math.max(Math.abs(daV-daP), Math.abs(seV-seP));
+      const intensity = Math.min(gap/50, 1);
+      const bg = gap>=30 ? `rgba(224,122,95,${0.3+intensity*0.5})` : `rgba(255,255,255,${intensity*0.08})`;
+      const label = gap>=30 ? `${gap}⚠️` : gap>=15 ? `${gap}` : '';
+      cells += `<td style="background:${bg};text-align:center;padding:4px;font-size:10px;color:${gap>=30?'#e07a5f':'var(--dim)'};font-weight:${gap>=30?'700':'400'}">${label}</td>`;
+    });
+    rows += `<tr><td style="padding:4px;font-size:11px;font-weight:600;color:${COLORS[ch]}">${ch}장</td>${cells}</tr>`;
+  }
+
+  div.innerHTML = `
+    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;">Gap 히트맵 — 빨간 칸 = 수정 필요</div>
+    <table style="width:100%;border-collapse:collapse;font-family:'Noto Sans KR',sans-serif;">
+      <tr><td></td>${EMOTIONS.map(e=>`<td style="font-size:9px;color:var(--dim);text-align:center;padding:2px;">${EMO_KR[e]}</td>`).join('')}</tr>
+      ${rows}
+    </table>
+    <div style="font-size:10px;color:var(--dim);margin-top:4px;">Gap = max(|다 Prior-Posterior|, |세 Prior-Posterior|). ⚠️ = 30%p 이상</div>
+  `;
+  wrap.appendChild(div);
+})();
 </script>
 </body>
 </html>
