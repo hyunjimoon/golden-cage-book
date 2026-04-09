@@ -475,6 +475,77 @@ function render() {
 
 render();
 
+// ═══ 1×3 Plot: 다 | 세 | 다+세 ═══
+(function build1x3(){
+  const wrap = document.querySelector('.container');
+  const div = document.createElement('div');
+  div.style.cssText = 'margin-top:24px;';
+
+  const W=200, H=160, cx=100, cy=85, R=60;
+  const angles = EMOTIONS.map((_,i) => -Math.PI/2 + (2*Math.PI*i/6));
+
+  function radar(data, color, label, priorData){
+    let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;">`;
+    // axes
+    for(let i=0;i<6;i++){
+      const x2=cx+R*Math.cos(angles[i]), y2=cy+R*Math.sin(angles[i]);
+      svg+=`<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="rgba(255,255,255,0.06)"/>`;
+      const lx=cx+(R+14)*Math.cos(angles[i]), ly=cy+(R+14)*Math.sin(angles[i]);
+      svg+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="var(--dim)" font-size="7" font-family="Noto Sans KR">${EMO_KR[EMOTIONS[i]].slice(0,2)}</text>`;
+    }
+    // grid
+    [25,50,75,100].forEach(v=>{
+      const pts=angles.map(a=>`${cx+R*v/100*Math.cos(a)},${cy+R*v/100*Math.sin(a)}`).join(' ');
+      svg+=`<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.04)"/>`;
+    });
+    // prior (dashed)
+    if(priorData){
+      const pts=EMOTIONS.map((e,i)=>{const v=priorData[e]||0;return `${cx+R*v/100*Math.cos(angles[i])},${cy+R*v/100*Math.sin(angles[i])}`}).join(' ');
+      svg+=`<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3,3"/>`;
+    }
+    // 4 chapters
+    const chColors=['#C8A2C8','#8B8C2A','#5B9A8B','#3B5998'];
+    for(let ch=1;ch<=4;ch++){
+      const d=data[ch];
+      const pts=EMOTIONS.map((e,i)=>{const v=d[e]||0;return `${cx+R*v/100*Math.cos(angles[i])},${cy+R*v/100*Math.sin(angles[i])}`}).join(' ');
+      svg+=`<polygon points="${pts}" fill="${chColors[ch-1]}" fill-opacity="${ch===4?0.15:0.05}" stroke="${chColors[ch-1]}" stroke-width="${ch===4?1.5:0.5}"/>`;
+    }
+    svg+=`<text x="${cx}" y="${H-2}" text-anchor="middle" fill="${color}" font-size="10" font-weight="700" font-family="Noto Sans KR">${label}</text>`;
+    svg+=`</svg>`;
+    return svg;
+  }
+
+  // 다+세 합산
+  const combined={};
+  for(let ch=1;ch<=4;ch++){
+    combined[ch]={};
+    EMOTIONS.forEach(e=>{combined[ch][e]=Math.round((DATA[ch].da[e]+DATA[ch].se[e])/2);});
+  }
+
+  // Prior 변환 (short key → full key)
+  const ek={'desperate':'desperate','sd':'self-deception','detached':'detached','guilty':'guilty','cu':'calm-uncertain','playful':'playful'};
+  function expandPrior(p){const r={};Object.keys(ek).forEach(k=>{r[ek[k]]=p[k]||0;});return r;}
+  const daPrior4=expandPrior(PRIOR.da[4]);
+  const sePrior4=expandPrior(PRIOR.se[4]);
+  const combPrior4={};EMOTIONS.forEach(e=>{combPrior4[e]=Math.round(((daPrior4[e]||0)+(sePrior4[e]||0))/2);});
+
+  const daData={},seData={};
+  for(let ch=1;ch<=4;ch++){daData[ch]=DATA[ch].da;seData[ch]=DATA[ch].se;}
+
+  div.innerHTML=`
+    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;">장별 감정 변화 — 점선=도착 목표(4장 Prior)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;">
+      <div>${radar(daData,'#ff9800','다(DA)',daPrior4)}</div>
+      <div>${radar(seData,'#42a5f5','세(SE)',sePrior4)}</div>
+      <div>${radar(combined,'#aaa','다+세',combPrior4)}</div>
+    </div>
+    <div style="font-size:9px;color:var(--dim);text-align:center;margin-top:4px;">
+      얇은 선=1~3장 · 굵은 선=4장 · 점선=도착 목표 · 4장이 점선에 가까울수록 calibrated
+    </div>
+  `;
+  wrap.appendChild(div);
+})();
+
 // ═══ #1: 2D 궤적 — 엠마-타루 × 살리나-리외 ═══
 (function build2D(){
   const wrap = document.querySelector('.container');
