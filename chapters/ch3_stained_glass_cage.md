@@ -193,7 +193,7 @@ modified:
 
 ---
 
-## 사례 — Theranos vs Moderna
+## 사례 — Theranos vs Moderna *(한국 사례: 인터뷰 확보 중)*
 
 **세:** 이제 이 프레임을 현실에 놓아볼게요. 같은 의료, 같은 야망, 갈린 결과. Theranos와 Moderna.
 

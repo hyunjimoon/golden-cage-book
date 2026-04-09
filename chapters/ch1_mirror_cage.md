@@ -123,7 +123,7 @@ URL: https://gemini.google.com/app/b53659b6f4ad6b22
 
 ---
 
-## 사례 — Quibi의 거울
+## 사례 — Quibi의 거울 *(한국 사례: 인터뷰 확보 중)*
 
 **세:** 두 사례를 가져왔어요. 첫 번째, Quibi. 2020년에 런칭한 모바일 전용 스트리밍 서비스입니다. 창업자 Jeffrey Katzenberg — 디즈니 스튜디오 전 회장이에요. $1.75 billion을 유치했습니다. 17억 5천만 달러.
 
