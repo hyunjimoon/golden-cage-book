@@ -6,7 +6,7 @@ modified:
 
 # 부록 4. 참고문헌
 
-> 본문의 모든 주장에는 근거가 있다. 이 부록은 "그 주장의 근거가 뭐지?"를 1초 안에 찾게 한다.
+> 서지 목록이 아니라 독서 안내서다. 각 문헌에 왜 이 책인지, 어떤 문장이 남았는지를 적었다.
 
 <!-- 
 tolzul vault 참조 경로 (참고문헌 관리자용):
@@ -22,101 +22,149 @@ tolzul vault 참조 경로 (참고문헌 관리자용):
 
 | 장 | 본문 구절 | 근거 |
 |:--|:--|:--|
-| 1장 | "욕망은 직선이 아니라 삼각형이다" | Girard, *Mensonge romantique et vérité romanesque* (1961) |
-| 1장 | "합의 바깥에 서되, 맞아야 한다" | Maples, *Pattern Breakers* (2024) |
-| 2장 | "행동은 확정하고 정체성은 열어둔다" | Ferraro et al., "Robust Action Revisited", *AMJ* (2015) |
-| 2장 | "안개 속에서도 움직여라" | Clausewitz, *Vom Kriege* (1832) — Schwung |
-| 2장 | "되돌릴 수 있는 것을 먼저 하라" | Sarasvathy, "Causation and Effectuation", *AMR* (2001) |
-| 3장 | "확신의 속도가 검증의 속도를 넘으면 빚" | Kahneman, *Thinking, Fast and Slow* (2011) |
-| 3장 | "신념윤리 vs 책임윤리" | Weber, "Politik als Beruf" (1919) |
-| 3장 | "60%에서 시작해서 결과를 보고 수정" | Gelman et al., *Bayesian Data Analysis* (2013) |
-| 4장 | "성공한 선택이 변이를 굶긴다" | Levinthal, "Adaptation on Rugged Landscapes", *Management Science* (1997) |
-| 4장 | dG/dF = (+)(−) = (−) | Moon, MIT SM Thesis (2026) |
+| 1장 | "욕망은 직선이 아니라 삼각형이다" | Girard (1961) |
+| 1장 | "합의 바깥에 서되, 맞아야 한다" | Maples (2024) |
+| 2장 | "행동은 확정하고 정체성은 열어둔다" | Ferraro et al. (2015) |
+| 2장 | "안개 속에서도 움직여라" | Clausewitz (1832) |
+| 2장 | "되돌릴 수 있는 것을 먼저 하라" | Sarasvathy (2001) |
+| 3장 | "확신의 속도가 검증의 속도를 넘으면 빚" | Kahneman (2011) |
+| 3장 | "신념윤리 vs 책임윤리" | Weber (1919) |
+| 3장 | "60%에서 시작해서 결과를 보고 수정" | Gelman et al. (2013) |
+| 4장 | "성공한 선택이 변이를 굶긴다" | Levinthal (1997) |
+| 4장 | dG/dF = (+)(−) = (−) | Moon (2026) |
 
 ---
 
-## 1장 🪞 거울새장 — 빌린 욕망
+## 소설
 
-### 소설
-귀스타브 플로베르, 『마담 보바리』, 김화영 옮김, 민음사, 2000. (세계문학전집 36)
+### 귀스타브 플로베르, 『마담 보바리』
+민음사 세계문학전집 36. 김화영 옮김, 2000.
+1장에서 인용.
+"사실 가끔은 계산을 해 보려고 노력하기도 했다. 그러나 결과가 너무나 엄청나서 도무지 믿어지지 않았다."
+장부를 펼쳤는데 덮은 여자. 이 한 장면이 1장 전체의 씨앗이다.
 <!-- tolzul: 시공간멜로디/.../세계문학전집/036 마담 보바리.md -->
 
-### 이론
-르네 지라르, 『낭만적 거짓과 소설적 진실』, 김치수·송의경 옮김, 한길사, 2001. — 모방 욕망의 삼각형
-Peter Thiel·Blake Masters, *Zero to One*, Crown Business, 2014. — 삼각형 바깥에 서는 투자 전략
-Mike Maples Jr·Peter Ziebelman, *Pattern Breakers*, PublicAffairs, 2024. — non-consensus & right
-
-### 사례
-Jeffrey Katzenberg / Quibi. — $1.75B 유치, 6개월 폐업
-Doug Evans / Juicero. — $120M 유치. 손의 힘을 이기지 못한 기계
-
----
-
-## 2장 🔭 망원경새장 — 빌린 품위
-
-### 소설
-주세페 토마시 디 람페두사, 『표범』, 이현경 옮김, 민음사, 2024. (세계문학전집 456)
+### 주세페 토마시 디 람페두사, 『표범』
+민음사 세계문학전집 456. 이현경 옮김, 2024.
+2장에서 인용.
+"모든 것이 그대로이려면, 모든 것이 변해야 합니다."
+탄크레디의 한마디. 이 문장이 2장의 뼈대이고, 후지필름의 코모리가 한 일의 소설적 번역이다.
 <!-- tolzul: 시공간멜로디/.../세계문학전집/456 표범.md -->
 
-### 이론
-Carl von Clausewitz, *Vom Kriege*, 1832. — 기세(Schwung), 안개(Nebel), 마찰(Friktion)
-Fabrizio Ferraro et al., "Robust Action Revisited", *AMJ*, 2015. — tactical specificity + strategic ambiguity
-<!-- tolzul: 공간화음/Thesis/1논문용/📜Ferraro2015_GrandChallenges_RobustAction.md -->
-Saras Sarasvathy, "Causation and Effectuation", *AMR*, 2001. — affordable loss, 되돌릴 수 있는 것부터
-Charles Fine, *Clockspeed*, Perseus Books, 1998. — 산업 진화 속도
-
-### 사례
-Steve Sasson / Kodak. — 1975년 디지털카메라 발명, 필름 마진 약 70%, 2012년 파산
-Shigetaka Komori / 후지필름. — 2003년 "화학 회사"로 재정의, 화장품→의료→반도체
-
----
-
-## 3장 💒 스테인드글라스새장 — 빌린 확신
-
-### 소설
-알베르 카뮈, 『페스트』, 김화영 옮김, 민음사, 2011. (세계문학전집 267)
+### 알베르 카뮈, 『페스트』
+민음사 세계문학전집 267. 김화영 옮김, 2011.
+3장에서 인용.
+"인간 속에는 경멸할 것보다 찬탄할 것이 더 많다."
+리외의 마지막 문장. 60%인 채로 주사기를 드는 것이 왜 영웅적이 아니라 직업적인지를 말한다.
 <!-- tolzul: 시공간멜로디/.../세계문학전집/267 페스트.md -->
 
-### 이론
-Max Weber, "Politik als Beruf", 1919. — 신념윤리(Gesinnungsethik) vs 책임윤리(Verantwortungsethik)
-Daniel Kahneman, *Thinking, Fast and Slow*, Farrar, Straus & Giroux, 2011. — overconfidence, calibration
-Andrew Gelman et al., *Bayesian Data Analysis*, 3rd ed., CRC Press, 2013. — prior→posterior, model checking
-Marc Kennedy & Anthony O'Hagan, "Bayesian calibration of computer models", *JRSS-B*, 2001. — model discrepancy δ
-
-### 사례
-Elizabeth Holmes / Theranos. — $9B 기업가치, 240→15가지. Carreyrou, *Bad Blood* (2018)
-Stéphane Bancel / Moderna. — 10년간 승인 0, 66일 만에 임상 진입
-
----
-
-## 4장 ⏱️ 시계새장 — 빌린 질서
-
-### 소설
-미셸 투르니에, 『방드르디, 태평양의 끝』, 김화영 옮김, 민음사, 2003. (세계문학전집 91)
+### 미셸 투르니에, 『방드르디, 태평양의 끝』
+민음사 세계문학전집 91. 김화영 옮김, 2003.
+4장에서 인용.
+시계가 멈추자 파도가 들린다. 빌린 질서가 폭파된 뒤 남는 것 — 자유가 아니라 놀이.
 <!-- tolzul: 시공간멜로디/.../세계문학전집/091 방드르디, 태평양의 끝.md -->
 
-### 이론
-Daniel Levinthal, "Adaptation on Rugged Landscapes", *Management Science*, 1997. — exploitation trap
-문현지, "Golden Cage: Paradox of Early Funding and Growth", MIT SM Thesis, 2026. — dG/dF=(−)
-요한 하위징아, 『호모 루덴스』, 이종인 옮김, 연암서가, 2010. — 놀이와 문명
+---
 
-### 사례
-두산. — 130년간 다섯 번 재정의 (포목점→소비재→중공업→에너지→반도체)
-생고뱅(Saint-Gobain). — 1665년 설립, 360년간 유리→세라믹→건축→EV 소재
-Reed Hastings / Netflix. — DVD→스트리밍→분리 실패(80만 이탈)→House of Cards
+## 이론
+
+### 르네 지라르, 『낭만적 거짓과 소설적 진실』
+김치수·송의경 옮김, 한길사, 2001.
+1장, 4장에서 인용.
+"낭만주의자는 자기 욕망이 자발적이라고 믿는다. 그것이 낭만적 거짓이다."
+엠마가 왜 파리를 원했는지, 이 한 문장이 답한다.
+
+### 막스 베버, 「직업으로서의 정치」
+1919.
+3장에서 인용.
+"신념윤리가는 자기 행동의 결과에 대해 책임을 지지 않는다."
+파늘루가 리외와 갈리는 정확한 지점. 신념(내용)은 바뀌어도 확신(태도)은 안 바뀌는 구조.
+
+### 대니얼 카너먼, 『생각에 관한 생각』
+이진원 옮김, 김영사, 2012.
+1장, 3장에서 인용.
+"자신감은 정확성의 증거가 아니다."
+파늘루의 100%가 왜 위험한지, 인지과학이 증명한다.
+
+### Andrew Gelman et al., *Bayesian Data Analysis*, 3rd ed.
+CRC Press, 2013.
+3장에서 인용.
+"모든 모델은 틀렸다. 유용한 모델은 자기가 어디서 틀렸는지 안다."
+리외의 방식 — 60%에서 시작해서 결과를 보고 수정하는 것의 수학적 근거.
+<!-- tolzul: 공간화음/Thesis/1논문용/ -->
+
+### Carl von Clausewitz, *Vom Kriege*
+1832.
+2장에서 인용.
+기세(Schwung) — 완벽한 지도를 기다리며 멈춘 군대는 죽는다. 살리나가 73년간 한 일의 군사학적 이름.
+
+### Fabrizio Ferraro et al., "Robust Action Revisited"
+*Academy of Management Journal*, 2015.
+2장에서 인용.
+"행동은 확정하고 정체성은 열어둔다" — 불확실성이 클수록 모호성은 전략이 아니라 인식론적 필연.
+<!-- tolzul: 공간화음/Thesis/1논문용/📜Ferraro2015_GrandChallenges_RobustAction.md -->
+
+### Saras Sarasvathy, "Causation and Effectuation"
+*Academy of Management Review*, 2001.
+2장에서 인용.
+"잃어도 괜찮은 수준에서 시작하라."
+코모리가 화장품부터 시험한 이유. 되돌릴 수 있는 것부터.
+
+### Daniel Levinthal, "Adaptation on Rugged Landscapes"
+*Management Science*, 1997.
+4장에서 인용.
+성공한 선택이 탐색을 멈추게 한다 — exploitation trap. 로빈슨의 시계가 파도를 죽이는 메커니즘.
+
+### Peter Thiel·Blake Masters, *Zero to One*
+Crown Business, 2014.
+1장에서 인용.
+지라르에게 직접 배운 사람이 쓴 실천편. 삼각형 바깥에 서면 독점이 된다.
+
+### Mike Maples Jr·Peter Ziebelman, *Pattern Breakers*
+PublicAffairs, 2024.
+1장에서 인용.
+"합의 바깥에 서되, 맞아야 한다."
+
+### Charles Fine, *Clockspeed*
+Perseus Books, 1998.
+2장, 4장에서 인용.
+산업마다 진화 속도가 다르다. 느린 산업에서 빠른 의사결정 = 새장.
+
+### 요한 하위징아, 『호모 루덴스』
+이종인 옮김, 연암서가, 2010.
+4장에서 인용.
+놀이는 문명의 기원이다. 방드르디가 담뱃대를 피우는 것이 왜 파괴가 아니라 창조인지.
+
+### 문현지, "Golden Cage: Paradox of Early Funding and Growth"
+MIT SM Thesis, 2026.
+전체.
+dG/dF = (+)(−) = (−). 168,011개 벤처 실증. 이 책의 학술 원본.
+[Thesis PDF](https://www.dropbox.com/scl/fi/l58bvnnfoyeoa6lyx8eyj/Moon26_Golden-Cage_Thesis.pdf?rlkey=c4dra1r195yrdbmuo5iq1voxi&e=1&dl=0)
 
 ---
 
-## 전체
+## 사례
 
-### 글쓰기
-조지 오웰, 「나는 왜 쓰는가」(*Why I Write*), 1946. — 출발점
-조지 오웰, 「소설을 변호하며」(*In Defence of the Novel*), 1936. — 새로운 비평의 필요
+### Quibi / Jeffrey Katzenberg
+1장. $1.75B 유치, 2020년 4월 런칭, 6개월 폐업. 할리우드가 심어준 욕망을 검증 없이 $1.75B으로 키웠다.
 
-### 배경
-유발 노아 하라리, 『넥서스』, 김명주 옮김, 김영사, 2024. — 서사가 검증을 대체할 때
-CB Insights, "Top 20 Reasons Startups Fail", 2019.
-중소벤처기업부, 「모두의창업」 정책문서, 2026. 1. 30.
+### Kodak / Steve Sasson
+2장. 1975년 디지털카메라 발명, 필름 마진 약 70%, 2012년 파산. 37년간 봤는데 안 움직였다 — 살리나의 기업 버전.
+
+### 후지필름 / Shigetaka Komori
+2장. 2003년 "우리는 화학 회사다." 되돌릴 수 있는 것(화장품)부터 시험하고, 핵심 자산(필름)은 가장 늦게.
+
+### Theranos / Elizabeth Holmes
+3장. $9B 기업가치, 240가지를 약속하고 15가지만 수행. Carreyrou, *Bad Blood* (2018). 확신이 증거를 차단한 극단.
+
+### Moderna / Stéphane Bancel
+3장. 10년간 승인 제품 0, 66일 만에 임상 진입. 파늘루의 반대 — 결과를 보고 수정하는 조직.
+
+### 두산
+4장. 130년간 다섯 번 재정의. 포목점→소비재→중공업→에너지→반도체. 성공이 변이를 죽이기 전에 스스로 부순 사례.
+
+### 생고뱅(Saint-Gobain)
+4장. 1665년 루이14세 설립, 360년간 유리→세라믹→건축→EV 소재.
 
 ---
 
@@ -126,22 +174,21 @@ CB Insights, "Top 20 Reasons Startups Fail", 2019.
 
 엠마의 빌린 욕망에 마음이 갔다면:
 F. 스콧 피츠제럴드, 『위대한 개츠비』 (세계문학전집 75)
-
-"새장"이라는 단어가 걸렸다면:
-헨릭 입센, 『인형의 집』 (세계문학전집 248)
-프란츠 카프카, 『변신』 (세계문학전집 4)
+"옛 친구여, 모든 녹색 불빛은 빌린 것이었다."
 
 잘 보면서 안 움직이는 극단을 보고 싶다면:
 가즈오 이시구로, 『남아 있는 나날』 (세계문학전집 388)
+살리나보다 더 늦게 장부를 편 남자.
 
 가벼움과 무거움 사이에서 흔들리고 싶다면:
 밀란 쿤데라, 『참을 수 없는 존재의 가벼움』 (세계문학전집 234)
+"한 번은 없는 것과 같다."
 
 패배를 알면서도 가는 사람을 보고 싶다면:
 어니스트 헤밍웨이, 『노인과 바다』 (세계문학전집 278)
+"인간은 파괴당할 수는 있어도 패배할 수는 없다."
 
 ### 분석으로 들어온 독자
 
-대니얼 카너먼, 『생각에 관한 생각』
-한나 아렌트, 『예루살렘의 아이히만』
-발터 벤야민, 『기술복제시대의 예술작품』
+대니얼 카너먼, 『생각에 관한 생각』 — 직관이 확신으로 굳는 메커니즘
+한나 아렌트, 『예루살렘의 아이히만』 — 시스템이 사람을 갇히게 만드는 평범한 악
