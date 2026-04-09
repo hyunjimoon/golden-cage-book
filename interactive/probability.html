@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>목표달성 확률 — 황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400&display=swap');
+  :root{--bg:#090c15;--card:#0e1220;--border:rgba(255,255,255,0.04);--text:#e2e8f0;--dim:#5a6a7a;--green:#4A7A6B;--red:#9B5A5A;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;}
+  .page{max-width:600px;margin:0 auto;padding:40px 24px 48px;}
+  .back{font-size:12px;color:var(--dim);text-decoration:none;display:inline-block;margin-bottom:24px;}
+  .back:hover{color:var(--text);}
+  h1{font-size:1.4em;font-weight:700;margin-bottom:4px;}
+  .target{font-size:12px;color:var(--dim);margin-bottom:32px;}
+
+  .big-number{text-align:center;margin-bottom:32px;}
+  .big-number .num{font-family:'DM Mono',monospace;font-size:4em;font-weight:700;color:var(--red);}
+  .big-number .label{font-size:13px;color:var(--dim);margin-top:4px;}
+
+  .gate{background:var(--card);border-radius:8px;padding:16px;margin-bottom:12px;}
+  .gate-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .gate-name{font-size:13px;font-weight:600;}
+  .gate-prob{font-family:'DM Mono',monospace;font-size:14px;font-weight:700;}
+  .gate-bar{height:6px;background:#1a2234;border-radius:3px;overflow:hidden;margin-bottom:8px;}
+  .gate-fill{height:100%;border-radius:3px;}
+  .gate-desc{font-size:12px;color:var(--dim);line-height:1.6;}
+
+  .formula{background:var(--card);border-radius:8px;padding:16px;margin:24px 0;font-family:'DM Mono',monospace;font-size:12px;color:var(--dim);line-height:2;}
+
+  h2{font-size:14px;font-weight:700;margin:32px 0 12px;color:var(--dim);letter-spacing:1px;}
+
+  .action{background:var(--card);border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+  .action-text{font-size:13px;}
+  .action-delta{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--green);}
+
+  .channel{margin-bottom:8px;padding:12px 16px;background:var(--card);border-radius:8px;}
+  .channel-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;}
+  .channel-name{font-weight:600;}
+  .channel-vol{font-family:'DM Mono',monospace;color:var(--dim);}
+  .channel-desc{font-size:12px;color:var(--dim);}
+
+  .updated{text-align:center;font-size:11px;color:#3a4050;margin-top:32px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="../">← 대문</a>
+  <h1>목표달성 확률</h1>
+  <div class="target">목표: 연간 2,500부 이상</div>
+
+  <div class="big-number">
+    <div class="num">25%</div>
+    <div class="label">현재 달성 확률</div>
+  </div>
+
+  <div class="gate">
+    <div class="gate-head"><span class="gate-name">1차 관문 — 출판 결정</span><span class="gate-prob" style="color:#D4A574">45%</span></div>
+    <div class="gate-bar"><div class="gate-fill" style="width:45%;background:#D4A574"></div></div>
+    <div class="gate-desc">검토 중. 강점: 학술 근거(N=168,011) + 세계문학전집 활용. 약점: 신인 저자 + 미검증 카테고리("문학×창업")</div>
+  </div>
+
+  <div class="gate">
+    <div class="gate-head"><span class="gate-name">2차 관문 — 교육 채널 채택</span><span class="gate-prob" style="color:#D4A574">50%</span></div>
+    <div class="gate-bar"><div class="gate-fill" style="width:50%;background:#D4A574"></div></div>
+    <div class="gate-desc">모두의창업 5,000명 부교재 또는 대학 커리큘럼. 정부 프로그램 존재하나 위원회 결정 필요. 인터뷰 8명이 관계 형성의 씨앗</div>
+  </div>
+
+  <div class="gate">
+    <div class="gate-head"><span class="gate-name">양쪽 성공 시 2,500부</span><span class="gate-prob" style="color:var(--green)">75%</span></div>
+    <div class="gate-bar"><div class="gate-fill" style="width:75%;background:var(--green)"></div></div>
+    <div class="gate-desc">서점 1,000 + 교육 1,500 = 달성 가능</div>
+  </div>
+
+  <div class="gate">
+    <div class="gate-head"><span class="gate-name">출판만, 교육 없이 2,500부</span><span class="gate-prob" style="color:var(--red)">20%</span></div>
+    <div class="gate-bar"><div class="gate-fill" style="width:20%;background:var(--red)"></div></div>
+    <div class="gate-desc">서점 단독으로 신인 2,500부는 상위 10% 성과</div>
+  </div>
+
+  <div class="formula">
+    P(2,500부) = P(출판) × [P(교육|출판) × P(달성|양쪽) + P(~교육|출판) × P(달성|출판만)]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.45 × [0.50 × 0.75 + 0.50 × 0.20]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.45 × 0.475<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;≈ <strong style="color:var(--text)">0.21 → 25%</strong> (반올림)
+  </div>
+
+  <h2>유통 채널</h2>
+
+  <div class="channel">
+    <div class="channel-head"><span class="channel-name">1. 서점 (교보·예스24)</span><span class="channel-vol">1,000+</span></div>
+    <div class="channel-desc">"문학×창업" 새 카테고리 — 경영+문학 서가 동시 진열</div>
+  </div>
+  <div class="channel">
+    <div class="channel-head"><span class="channel-name">2. 교육 (모두의창업·대학)</span><span class="channel-vol">1,500–3,000</span></div>
+    <div class="channel-desc">중기부 5,000명 파트너십 · 부교재 · 관계자 접점 확보</div>
+  </div>
+  <div class="channel">
+    <div class="channel-head"><span class="channel-name">3. 디지털 (민음사TV)</span><span class="channel-vol">—</span></div>
+    <div class="channel-desc">장별 소설×창업 대담 · 챕터별 콘텐츠 유통</div>
+  </div>
+
+  <h2>확률을 올리는 행동</h2>
+
+  <div class="action">
+    <span class="action-text">인터뷰 8명 중 모두의창업 관계자 포함</span>
+    <span class="action-delta">→ 35%</span>
+  </div>
+  <div class="action">
+    <span class="action-text">대학 수업 1회 시범 + 결과 보고</span>
+    <span class="action-delta">→ 40%</span>
+  </div>
+  <div class="action">
+    <span class="action-text">민음사TV 장별 대담 1회 선행</span>
+    <span class="action-delta">→ 45%</span>
+  </div>
+
+  <div class="updated">2026-04-09 기준 · 진행에 따라 갱신</div>
+
+</div>
+</body>
+</html>
