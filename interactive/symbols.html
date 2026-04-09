@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나의 상징을 찾아라</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap');
+  :root{--bg:#090c15;--card:#0e1220;--border:rgba(255,255,255,0.04);--text:#e2e8f0;--dim:#5a6a7a;
+    --ch1:#9B7A8B;--ch2:#7A8068;--ch3:#4A7A6B;--ch4:#5A8A9A;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;overflow-x:hidden;}
+
+  .page{max-width:600px;margin:0 auto;padding:40px 24px 48px;}
+  .back{font-size:12px;color:var(--dim);text-decoration:none;display:inline-block;margin-bottom:24px;}
+  .back:hover{color:var(--text);}
+  h1{font-size:1.3em;font-weight:700;margin-bottom:4px;}
+  .sub{font-size:12px;color:var(--dim);margin-bottom:32px;}
+
+  /* tetrahedron */
+  .tetra-wrap{text-align:center;margin-bottom:32px;}
+  .tetra-wrap svg{width:280px;height:280px;}
+  .vertex{cursor:pointer;transition:all 0.3s;}
+  .vertex:hover{filter:brightness(1.5);}
+  .vertex.active{filter:brightness(1.8);stroke:#fff;stroke-width:2;}
+  .edge{stroke:rgba(255,255,255,0.08);stroke-width:0.8;}
+  .edge-dash{stroke:rgba(255,255,255,0.04);stroke-width:0.8;stroke-dasharray:3,3;}
+  .v-label{font-size:11px;fill:var(--dim);text-anchor:middle;pointer-events:none;}
+
+  /* panels */
+  .panel{display:none;background:var(--card);border-radius:10px;padding:20px;margin-bottom:16px;border-left:3px solid var(--dim);}
+  .panel.active{display:block;}
+  .panel h2{font-size:1em;font-weight:700;margin-bottom:4px;}
+  .panel .place{font-size:12px;color:var(--dim);margin-bottom:12px;}
+  .symbol{margin:12px 0;padding:12px;background:rgba(255,255,255,0.02);border-radius:6px;}
+  .symbol-name{font-size:13px;font-weight:700;margin-bottom:4px;}
+  .symbol-novel{font-size:12px;color:var(--dim);margin-bottom:6px;}
+  .symbol-q{font-size:13px;line-height:1.7;}
+  .input-wrap{margin-top:8px;}
+  .input-wrap textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:8px;font-size:12px;font-family:inherit;resize:vertical;min-height:36px;}
+  .input-wrap textarea:focus{outline:none;border-color:rgba(255,255,255,0.12);}
+
+  .mapping{margin-top:24px;font-size:12px;color:var(--dim);}
+  .mapping table{width:100%;border-collapse:collapse;margin-top:8px;}
+  .mapping th,.mapping td{padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);}
+  .mapping th{font-weight:600;color:var(--text);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="reader.html?file=ch5_epilogue">← 답과 질문으로</a>
+  <h1>나의 상징을 찾아라</h1>
+  <div class="sub">꼭짓점을 눌러 각 장의 상징을 탐색하세요</div>
+
+  <div class="tetra-wrap">
+    <svg viewBox="0 0 280 280">
+      <line x1="140" y1="20" x2="30" y2="250" class="edge"/>
+      <line x1="140" y1="20" x2="250" y2="250" class="edge"/>
+      <line x1="140" y1="20" x2="210" y2="130" class="edge-dash"/>
+      <line x1="30" y1="250" x2="250" y2="250" class="edge"/>
+      <line x1="30" y1="250" x2="210" y2="130" class="edge-dash"/>
+      <line x1="250" y1="250" x2="210" y2="130" class="edge"/>
+      <circle cx="30" cy="250" r="12" fill="var(--ch1)" class="vertex" onclick="show(1)"/>
+      <circle cx="210" cy="130" r="12" fill="var(--ch2)" class="vertex" onclick="show(2)"/>
+      <circle cx="250" cy="250" r="12" fill="var(--ch3)" class="vertex" onclick="show(3)"/>
+      <circle cx="140" cy="20" r="12" fill="var(--ch4)" class="vertex" onclick="show(4)"/>
+      <text x="30" y="272" class="v-label">🪞 거울</text>
+      <text x="225" y="125" class="v-label">🔭 망원경</text>
+      <text x="250" y="272" class="v-label">💒 스테인드글라스</text>
+      <text x="140" y="14" class="v-label">⏱️ 시계</text>
+    </svg>
+  </div>
+
+  <!-- Ch1 -->
+  <div class="panel" id="p1" style="border-left-color:var(--ch1)">
+    <h2 style="color:var(--ch1)">1장 거울새장 — 빌린 욕망에서 내 욕망</h2>
+    <div class="place">무도회장 — 데모데이에서 빌린 비전을 입는다</div>
+    <div class="symbol"><div class="symbol-name">🪞 거울</div><div class="symbol-novel">엠마가 빌린 삶을 비춰보는 도구</div><div class="symbol-q">나를 비추는 거울은 무엇인가?</div><div class="input-wrap"><textarea placeholder="나의 거울은..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">📖 낭만소설</div><div class="symbol-novel">엠마에게 욕망을 심어준 매체</div><div class="symbol-q">나의 욕망을 심어준 것은?</div><div class="input-wrap"><textarea placeholder="나의 낭만소설은..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">📒 장부</div><div class="symbol-novel">르뢰의 외상장부 — 엠마가 펼치지 않은 것</div><div class="symbol-q">나의 장부에 적어야 할 빚은?</div><div class="input-wrap"><textarea placeholder="나의 장부에는..."></textarea></div></div>
+  </div>
+
+  <!-- Ch2 -->
+  <div class="panel" id="p2" style="border-left-color:var(--ch2)">
+    <h2 style="color:var(--ch2)">2장 망원경새장 — 빌린 품위에서 내 품위</h2>
+    <div class="place">항구 — 시장이 열리는데 관망만 한다</div>
+    <div class="symbol"><div class="symbol-name">🔭 망원경</div><div class="symbol-novel">살리나가 별을 보지만 별을 향해 걷지 않는 도구</div><div class="symbol-q">지금 보고만 있는 것은?</div><div class="input-wrap"><textarea placeholder="나의 망원경은..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">🌫️ 안개</div><div class="symbol-novel">가리발디 상륙 — 불확실한데 뛰어야 하는 순간</div><div class="symbol-q">나의 안개는 무엇인가?</div><div class="input-wrap"><textarea placeholder="나의 안개는..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">📋 순서</div><div class="symbol-novel">코모리가 되돌릴 수 있는 것부터 시험한 것</div><div class="symbol-q">먼저 시험해야 할 것은?</div><div class="input-wrap"><textarea placeholder="나의 첫 시험은..."></textarea></div></div>
+  </div>
+
+  <!-- Ch3 -->
+  <div class="panel" id="p3" style="border-left-color:var(--ch3)">
+    <h2 style="color:var(--ch3)">3장 스테인드글라스새장 — 빌린 신념에서 내 신념</h2>
+    <div class="place">봉쇄된 도시 — 확신을 지킬지 교정할지</div>
+    <div class="symbol"><div class="symbol-name">💒 스테인드글라스</div><div class="symbol-novel">아름답지만 바깥이 안 보이는 창</div><div class="symbol-q">바깥을 차단하는 나의 확신은?</div><div class="input-wrap"><textarea placeholder="나의 스테인드글라스는..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">🏚️ 봉쇄된 도시</div><div class="symbol-novel">오랑 — 역병으로 문이 닫힌 도시</div><div class="symbol-q">내가 갇혀 있는 상황은?</div><div class="input-wrap"><textarea placeholder="나의 봉쇄된 도시는..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">💉 혈청</div><div class="symbol-novel">리외가 60%인 채로 놓는 주사</div><div class="symbol-q">불완전하지만 지금 행동해야 하는 것은?</div><div class="input-wrap"><textarea placeholder="나의 혈청은..."></textarea></div></div>
+  </div>
+
+  <!-- Ch4 -->
+  <div class="panel" id="p4" style="border-left-color:var(--ch4)">
+    <h2 style="color:var(--ch4)">4장 시계새장 — 빌린 질서에서 내 질서</h2>
+    <div class="place">섬 — 자기 회사의 정의를 다시 쓸 수 있는가</div>
+    <div class="symbol"><div class="symbol-name">⏱️ 시계</div><div class="symbol-novel">로빈슨이 만든 질서 — 시간을 통제하려다 통제당하는 도구</div><div class="symbol-q">나를 통제하는 나의 성공은?</div><div class="input-wrap"><textarea placeholder="나의 시계는..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">🏝️ 섬</div><div class="symbol-novel">빌린 질서가 폭파된 뒤 남은 것</div><div class="symbol-q">전부 사라지면 나에게 남는 것은?</div><div class="input-wrap"><textarea placeholder="나의 섬은..."></textarea></div></div>
+    <div class="symbol"><div class="symbol-name">🔥 다음 불</div><div class="symbol-novel">방드르디의 담뱃대 — 계획 없는 의지</div><div class="symbol-q">담뱃대 크기의 실험은?</div><div class="input-wrap"><textarea placeholder="나의 다음 불은..."></textarea></div></div>
+  </div>
+
+  <div class="mapping">
+    <strong>소설의 장소 = 창업의 장면</strong>
+    <table>
+      <tr><th>장</th><th>장소</th><th>소설</th><th>창업</th></tr>
+      <tr><td style="color:var(--ch1)">1</td><td>무도회장</td><td>빌린 삶을 입는다</td><td>데모데이에서 빌린 비전을 입는다</td></tr>
+      <tr><td style="color:var(--ch2)">2</td><td>항구</td><td>상륙하는데 본다</td><td>시장이 열리는데 관망한다</td></tr>
+      <tr><td style="color:var(--ch3)">3</td><td>봉쇄된 도시</td><td>기도할지 치료할지</td><td>확신을 지킬지 교정할지</td></tr>
+      <tr><td style="color:var(--ch4)">4</td><td>섬</td><td>폭파 뒤 파도가 들린다</td><td>정의를 다시 쓸 수 있는가</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<script>
+let current = 0;
+function show(ch) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.vertex').forEach(v => v.classList.remove('active'));
+  document.getElementById('p' + ch).classList.add('active');
+  document.querySelectorAll('.vertex')[ch === 1 ? 0 : ch === 2 ? 1 : ch === 3 ? 2 : 3].classList.add('active');
+  current = ch;
+}
+</script>
+</body>
+</html>
