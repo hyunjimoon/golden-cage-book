@@ -34,11 +34,11 @@
   .main{margin-left:240px;flex:1;min-width:0;}
   .content{max-width:680px;margin:0 auto;padding:32px 32px 80px;}
   .ch-banner{width:100%;max-height:280px;object-fit:cover;border-radius:8px;margin-bottom:24px;}
-  .content h1{font-size:1.5em;font-weight:700;margin:24px 0 16px;}
-  .content h2{font-size:1.2em;font-weight:700;margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+  .content h1{font-size:1.8em;font-weight:700;margin:24px 0 16px;color:var(--accent);}
+  .content h2{font-size:1.3em;font-weight:700;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent);}
   .content h3{font-size:1em;font-weight:600;margin:24px 0 8px;}
   .content p{margin:10px 0;}
-  .content blockquote{border-left:2px solid var(--accent);padding:6px 16px;margin:14px 0;color:var(--dim);font-style:italic;background:rgba(91,154,139,0.03);border-radius:0 4px 4px 0;}
+  .content blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:20px 0;color:var(--text);font-style:italic;background:rgba(255,255,255,0.02);border-radius:0 6px 6px 0;font-size:1.05em;line-height:1.8;}
   .content strong{color:#fff;}
   .content em{color:var(--dim);}
   .content table{width:100%;border-collapse:collapse;margin:14px 0;font-family:'Noto Sans KR',sans-serif;font-size:13px;}
@@ -96,9 +96,18 @@ const CHAPTERS = [
   {id:'ch5_epilogue', label:'답과 질문'}
 ];
 
+const CH_COLORS = {
+  ch1_mirror_cage:'#9B7A8B', ch2_telescope_cage:'#7A8068',
+  ch3_stained_glass_cage:'#4A7A6B', ch4_clock_cage:'#5A8A9A'
+};
+
 const params = new URLSearchParams(window.location.search);
 const file = params.get('file') || 'ch0_prologue';
 const curIdx = CHAPTERS.findIndex(c => c.id === file);
+
+// apply chapter color as accent
+const chColor = CH_COLORS[file] || '#5B9A8B';
+document.documentElement.style.setProperty('--accent', chColor);
 
 // sidebar nav
 const sidebarNav = document.getElementById('sidebarNav');
@@ -149,7 +158,7 @@ function md2html(md) {
   if(inTable)html+=tbl(tRows);if(inBQ)html+='</blockquote>';if(inCode)html+='</code></pre>';
   return html;
 }
-function inl(s){return s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');}
+function inl(s){return s.replace(/\*\*다:\*\*/g,'<strong style="color:var(--accent);font-size:0.95em">다:</strong>').replace(/\*\*세:\*\*/g,'<strong style="color:#8899aa;font-size:0.95em">세:</strong>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');}
 function tbl(rows){if(!rows.length)return '';let h='<table>';rows.forEach((r,i)=>{let c=r.split('|').filter(x=>x.trim());let t=i===0?'th':'td';h+='<tr>'+c.map(x=>`<${t}>${inl(x.trim())}</${t}>`).join('')+'</tr>';});return h+'</table>';}
 
 // build TOC from rendered headings
