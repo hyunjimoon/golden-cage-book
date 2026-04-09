@@ -142,7 +142,7 @@ function md2html(md) {
     let L=lines[i];
     if(L.trim().startsWith('```')){if(inCode){html+='</code></pre>';inCode=false;}else{html+='<pre><code>';inCode=true;}continue;}
     if(inCode){html+=L.replace(/</g,'&lt;')+'\n';continue;}
-    if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(!/^\|[\s:-]+\|$/.test(L.trim()))tRows.push(L);continue;}
+    if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(L.trim().replace(/[|:\-\s]/g,'').length>0)tRows.push(L);continue;}
     else if(inTable){html+=tbl(tRows);inTable=false;tRows=[];}
     if(L.trim().startsWith('>')){let q=L.replace(/^>\s*/,'');if(!inBQ){html+='<blockquote>';inBQ=true;}html+=inl(q)+'<br>';continue;}
     else if(inBQ){html+='</blockquote>';inBQ=false;}
