@@ -33,6 +33,7 @@
   /* main */
   .main{margin-left:240px;flex:1;min-width:0;}
   .content{max-width:680px;margin:0 auto;padding:32px 32px 80px;}
+  .ch-banner{width:100%;max-height:280px;object-fit:cover;border-radius:8px;margin-bottom:24px;}
   .content h1{font-size:1.5em;font-weight:700;margin:24px 0 16px;}
   .content h2{font-size:1.2em;font-weight:700;margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
   .content h3{font-size:1em;font-weight:600;margin:24px 0 8px;}
@@ -86,13 +87,13 @@
 
 <script>
 const CHAPTERS = [
-  {id:'ch0_prologue', label:'프롤로그'},
+  {id:'ch0_prologue', label:'질문과 답'},
   {id:'ch0_characters', label:'인물 소개'},
   {id:'ch1_mirror_cage', label:'🪞 1장 거울새장'},
   {id:'ch2_telescope_cage', label:'🔭 2장 망원경새장'},
   {id:'ch3_stained_glass_cage', label:'💒 3장 스테인드글라스새장'},
   {id:'ch4_clock_cage', label:'⏱️ 4장 시계새장'},
-  {id:'ch5_epilogue', label:'에필로그'}
+  {id:'ch5_epilogue', label:'답과 질문'}
 ];
 
 const params = new URLSearchParams(window.location.search);
@@ -180,7 +181,11 @@ function buildToc(){
 // fetch
 fetch(`../chapters/${file}.md`)
   .then(r=>{if(!r.ok)throw new Error(r.status);return r.text();})
-  .then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();})
+  .then(md=>{
+    const banners={ch1_mirror_cage:'../img/ch1.png',ch2_telescope_cage:'../img/ch2.png',ch3_stained_glass_cage:'../img/ch3.png',ch4_clock_cage:'../img/ch4.png'};
+    const banner=banners[file]?`<img class="ch-banner" src="${banners[file]}" alt="">`:''
+    document.getElementById('content').innerHTML=banner+md2html(md);window.scrollTo(0,0);buildToc();
+  })
   .catch(()=>{
     if(file.startsWith('app')){
       fetch(`../appendices/${file}.md`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();})
