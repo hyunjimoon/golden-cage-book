@@ -39,7 +39,24 @@ Reed Hastings / Netflix. — ch4. 1997 DVD → 2007 스트리밍 → 2011 분리
 
 ---
 
-## 훑을 자료
+## 본문 구절 → 근거 논문
+
+| 장 | 본문 구절 | 근거 |
+|:--|:--|:--|
+| 1장 | "욕망은 직선이 아니라 삼각형이다" | René Girard, *Mensonge romantique et vérité romanesque* (1961) — 모방 욕망의 삼각형 |
+| 1장 | "합의 바깥에 서되, 맞아야 한다" | Mike Maples Jr., *Pattern Breakers* (2024) — non-consensus & right |
+| 2장 | "행동은 확정하고 정체성은 열어둔다" | Ferraro et al., "Robust Action Revisited", *AMJ* (2015) — tactical specificity + strategic ambiguity |
+| 2장 | "안개 속에서도 움직여라" | Clausewitz, *Vom Kriege* (1832) — Schwung(기세), Nebel(안개) |
+| 2장 | "되돌릴 수 있는 것을 먼저 하라" | Sarasvathy, "Causation and Effectuation", *AMR* (2001) — affordable loss principle |
+| 3장 | "확신의 속도가 검증의 속도를 넘으면 빚" | Kahneman, *Thinking, Fast and Slow* (2011) — overconfidence, calibration |
+| 3장 | "신념윤리 vs 책임윤리" | Weber, "Politik als Beruf" (1919) — Gesinnungsethik vs Verantwortungsethik |
+| 3장 | "60%에서 시작해서 결과를 보고 수정" | Gelman et al., *Bayesian Data Analysis* (2013) — prior→posterior update |
+| 4장 | "성공한 선택이 변이를 굶긴다" | Levinthal, "Adaptation on Rugged Landscapes", *Management Science* (1997) — exploitation trap |
+| 4장 | dG/dF = (+)(−) = (−) | Moon, "Golden Cage: Paradox of Early Funding and Growth", MIT SM Thesis (2026) |
+
+---
+
+## 학술 자료
 
 ### Strategic Ambiguity & Robust Action 
 John F. Padgett & Christopher K. Ansell, "Robust Action and the Rise of the Medici, 1400–1434", *American Journal of Sociology*, 1993. — 모호한 약속이 어떻게 권력이 되는가. 메디치가의 전략 = 모호성으로 다수 해석 허용

@@ -109,7 +109,7 @@ const curIdx = CHAPTERS.findIndex(c => c.id === file);
 const chColor = CH_COLORS[file] || '#5B9A8B';
 document.documentElement.style.setProperty('--accent', chColor);
 
-// sidebar nav
+// sidebar nav — chapters
 const sidebarNav = document.getElementById('sidebarNav');
 CHAPTERS.forEach(c => {
   const a = document.createElement('a');
@@ -118,6 +118,28 @@ CHAPTERS.forEach(c => {
   if (c.id === file) a.classList.add('active');
   a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
   sidebarNav.appendChild(a);
+});
+
+// sidebar nav — appendices (3 groups)
+const APPENDICES = [
+  {group:'읽을거리', items:[{id:'app1_romantic_trilogy',label:'에세이'},{id:'app3_craft_of_startup_novel',label:'작법론'}]},
+  {group:'도구', items:[{id:'app5_prompting',label:'프롬프팅 예시'},{id:'app6_industry_debt',label:'산업별 빚'}]},
+  {group:'참고', items:[{id:'app2_glossary',label:'용어 해설'},{id:'app4_references',label:'참고문헌'}]}
+];
+APPENDICES.forEach(g => {
+  const label = document.createElement('div');
+  label.style.cssText = 'padding:8px 16px 2px;font-size:10px;color:var(--dim);letter-spacing:1px;margin-top:8px;border-top:1px solid var(--border);';
+  label.textContent = g.group;
+  sidebarNav.appendChild(label);
+  g.items.forEach(item => {
+    const a = document.createElement('a');
+    a.href = '?file=' + item.id;
+    a.textContent = item.label;
+    a.style.fontSize = '12px';
+    if (item.id === file) a.classList.add('active');
+    a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
+    sidebarNav.appendChild(a);
+  });
 });
 
 // pager
