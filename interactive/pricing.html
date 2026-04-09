@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가격 최적화 — 황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400&display=swap');
+  :root{--bg:#090c15;--card:#0e1220;--border:rgba(255,255,255,0.04);--text:#e2e8f0;--dim:#5a6a7a;--green:#4A7A6B;--red:#9B5A5A;--gold:#D4A574;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;}
+  .page{max-width:640px;margin:0 auto;padding:40px 24px 48px;}
+  .back{font-size:12px;color:var(--dim);text-decoration:none;display:inline-block;margin-bottom:24px;}
+  .back:hover{color:var(--text);}
+  h1{font-size:1.3em;font-weight:700;margin-bottom:4px;}
+  .sub{font-size:12px;color:var(--dim);margin-bottom:24px;}
+
+  .slider-wrap{background:var(--card);border-radius:10px;padding:20px;margin-bottom:20px;}
+  .slider-label{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-bottom:8px;}
+  .price-display{font-family:'DM Mono',monospace;font-size:2em;font-weight:700;text-align:center;margin-bottom:8px;}
+  input[type=range]{width:100%;accent-color:var(--gold);margin:8px 0;}
+  .note{font-size:11px;color:var(--dim);text-align:center;margin-top:4px;}
+
+  .metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;}
+  .metric{background:var(--card);border-radius:8px;padding:12px;text-align:center;}
+  .metric .val{font-family:'DM Mono',monospace;font-size:1.3em;font-weight:700;}
+  .metric .label{font-size:10px;color:var(--dim);margin-top:2px;}
+
+  svg{width:100%;height:auto;margin-bottom:16px;}
+  .chart-title{font-size:12px;color:var(--dim);text-align:center;margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px;}
+  th{background:var(--card);padding:6px 8px;text-align:left;font-weight:600;border:1px solid var(--border);}
+  td{padding:6px 8px;border:1px solid var(--border);}
+  .highlight-row{background:rgba(212,165,116,0.08);}
+
+  .insight{background:var(--card);border-radius:8px;padding:14px;font-size:12px;color:var(--dim);border-left:3px solid var(--gold);margin-bottom:16px;}
+  .updated{text-align:center;font-size:11px;color:#3a4050;margin-top:16px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="../">← 대문</a>
+  <h1>가격이 모든 것을 바꾼다</h1>
+  <div class="sub">슬라이더를 움직여 가격별 손익분기·ROI·접근성을 확인하세요</div>
+
+  <div class="slider-wrap">
+    <div class="slider-label"><span>9,800원</span><span>현재 13,800원</span><span>22,000원</span></div>
+    <div class="price-display" id="priceDisplay" style="color:var(--gold);">13,800원</div>
+    <input type="range" id="priceSlider" min="9800" max="22000" step="200" value="13800">
+    <div class="note">⚠️ 13,800원은 합의 없이 설정된 가격입니다</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="val" id="mBEP" style="color:var(--red);">9,600</div>
+      <div class="label">손익분기 (부)</div>
+    </div>
+    <div class="metric">
+      <div class="val" id="mROI" style="color:var(--red);">-64%</div>
+      <div class="label">ROI (2,500부)</div>
+    </div>
+    <div class="metric">
+      <div class="val" id="mAccess" style="color:var(--green);">중</div>
+      <div class="label">접근성</div>
+    </div>
+  </div>
+
+  <div class="chart-title">가격 × 판매량 → 순수익</div>
+  <svg id="chart" viewBox="0 0 600 300"></svg>
+
+  <div class="chart-title">가격별 비교표</div>
+  <table>
+    <tr><th>가격</th><th>매출(2,500부)</th><th>순수익(45%)</th><th>손익분기</th><th>ROI</th><th>접근성</th></tr>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div class="insight" id="insight"></div>
+
+  <div class="updated">투자 비용 4,300만원 기준 · 마진율 45% 가정</div>
+
+</div>
+
+<script>
+const COST = 4300; // 만원
+const MARGIN = 0.45;
+const TARGET = 2500;
+
+const slider = document.getElementById('priceSlider');
+const display = document.getElementById('priceDisplay');
+
+function calc(price) {
+  const revenue = price * TARGET / 10000; // 만원
+  const profit = revenue * MARGIN;
+  const roi = ((profit - COST) / COST * 100);
+  const bep = Math.ceil(COST / (price * MARGIN / 10000));
+  let access = '높';
+  if (price > 16000) access = '낮';
+  else if (price > 12000) access = '중';
+  return { revenue, profit, roi, bep, access, price };
+}
+
+function drawChart(currentPrice) {
+  const svg = document.getElementById('chart');
+  const W=600, H=300, pad={l:50,r:20,t:20,b:40};
+  const cw=W-pad.l-pad.r, ch=H-pad.t-pad.b;
+
+  let html = '';
+  // axes
+  html += `<line x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}" stroke="rgba(255,255,255,0.1)"/>`;
+  html += `<line x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}" stroke="rgba(255,255,255,0.1)"/>`;
+  html += `<text x="${W/2}" y="${H-5}" text-anchor="middle" fill="var(--dim)" font-size="10">판매량 (부)</text>`;
+  html += `<text x="12" y="${H/2}" text-anchor="middle" fill="var(--dim)" font-size="10" transform="rotate(-90,12,${H/2})">순수익 (만원)</text>`;
+
+  // y axis: -4000 to +4000
+  const yMin=-4500, yMax=4500;
+  function y(v){ return pad.t + ch - (v-yMin)/(yMax-yMin)*ch; }
+  function x(v){ return pad.l + v/10000*cw; }
+
+  // zero line
+  html += `<line x1="${pad.l}" y1="${y(0)}" x2="${W-pad.r}" y2="${y(0)}" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4,4"/>`;
+  html += `<text x="${pad.l-5}" y="${y(0)+4}" text-anchor="end" fill="var(--dim)" font-size="9">0</text>`;
+
+  // cost line
+  html += `<line x1="${pad.l}" y1="${y(-COST*10)}" x2="${W-pad.r}" y2="${y(-COST*10)}" stroke="rgba(155,90,90,0.2)" stroke-dasharray="2,4"/>`;
+
+  // x labels
+  [0,2500,5000,7500,10000].forEach(v => {
+    html += `<text x="${x(v)}" y="${H-pad.b+15}" text-anchor="middle" fill="var(--dim)" font-size="9">${v.toLocaleString()}</text>`;
+  });
+
+  // lines for different prices
+  const prices = [9800, 12000, currentPrice, 16000, 19800];
+  const colors = {'9800':'#42a5f5','12000':'#5B9A8B','16000':'#D4A574','19800':'#9B5A5A'};
+
+  prices.forEach(p => {
+    const margin_per = p * MARGIN / 10000; // 만원/부
+    const pts = [];
+    for(let q=0;q<=10000;q+=200){
+      const profit = margin_per * q - COST;
+      pts.push(`${x(q)},${y(profit*10)}`);
+    }
+    const color = p === currentPrice ? '#fff' : (colors[p] || '#666');
+    const width = p === currentPrice ? 2 : 0.8;
+    const opacity = p === currentPrice ? 1 : 0.4;
+    html += `<polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="${width}" opacity="${opacity}"/>`;
+
+    // BEP dot
+    const bep = Math.ceil(COST / margin_per);
+    if(bep <= 10000){
+      html += `<circle cx="${x(bep)}" cy="${y(0)}" r="3" fill="${color}" opacity="${opacity}"/>`;
+      html += `<text x="${x(bep)}" y="${y(0)-8}" text-anchor="middle" fill="${color}" font-size="8" opacity="${opacity}">${(p/1000).toFixed(1)}k→${bep.toLocaleString()}</text>`;
+    }
+  });
+
+  // target line
+  html += `<line x1="${x(TARGET)}" y1="${pad.t}" x2="${x(TARGET)}" y2="${H-pad.b}" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2,4"/>`;
+  html += `<text x="${x(TARGET)}" y="${pad.t-5}" text-anchor="middle" fill="var(--dim)" font-size="9">목표 2,500</text>`;
+
+  svg.innerHTML = html;
+}
+
+function updateTable(currentPrice) {
+  const tbody = document.getElementById('tableBody');
+  const prices = [9800, 12000, 13800, 15800, 18000, 22000];
+  let html = '';
+  prices.forEach(p => {
+    const d = calc(p);
+    const isCurrent = p === currentPrice;
+    const cls = isCurrent ? ' class="highlight-row"' : '';
+    const roiColor = d.roi >= 0 ? 'var(--green)' : 'var(--red)';
+    html += `<tr${cls}>
+      <td>${isCurrent?'→ ':''}${(p/10000).toFixed(1)}만</td>
+      <td>${d.revenue.toFixed(0)}만</td>
+      <td>${d.profit.toFixed(0)}만</td>
+      <td>${d.bep.toLocaleString()}부</td>
+      <td style="color:${roiColor}">${d.roi.toFixed(0)}%</td>
+      <td>${d.access}</td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+function update() {
+  const price = parseInt(slider.value);
+  display.textContent = price.toLocaleString() + '원';
+
+  const d = calc(price);
+  document.getElementById('mBEP').textContent = d.bep.toLocaleString();
+  document.getElementById('mBEP').style.color = d.bep > 5000 ? 'var(--red)' : d.bep > 3000 ? 'var(--gold)' : 'var(--green)';
+
+  document.getElementById('mROI').textContent = d.roi.toFixed(0) + '%';
+  document.getElementById('mROI').style.color = d.roi >= 0 ? 'var(--green)' : 'var(--red)';
+
+  document.getElementById('mAccess').textContent = d.access;
+  document.getElementById('mAccess').style.color = d.access === '높' ? 'var(--green)' : d.access === '낮' ? 'var(--red)' : 'var(--gold)';
+
+  // insight
+  const insight = document.getElementById('insight');
+  if (price <= 12000) {
+    insight.innerHTML = `<strong>접근성 최대.</strong> 대학생이 부담 없이 산다. 그러나 손익분기 ${d.bep.toLocaleString()}부 — 교육 채널 없이는 도달 불가. 모두의창업 채택이 전제.`;
+  } else if (price <= 15000) {
+    insight.innerHTML = `<strong>현재 구간.</strong> 경영서 평균가. 손익분기 ${d.bep.toLocaleString()}부. 서점+교육 병행 시 도달 가능하나, 2,500부 목표로는 ROI ${d.roi.toFixed(0)}%.`;
+  } else if (price <= 18000) {
+    insight.innerHTML = `<strong>프리미엄 구간.</strong> 손익분기가 ${d.bep.toLocaleString()}부로 낮아진다. 그러나 10-20대 핵심독자의 지갑이 닫힌다. "문학×창업" 새 카테고리의 가격 저항.`;
+  } else {
+    insight.innerHTML = `<strong>고가 전략.</strong> 손익분기 ${d.bep.toLocaleString()}부는 현실적이나, 핵심독자(대학생)가 이탈. 교육 부교재로 채택되면 가격 저항 없음(학교가 지불).`;
+  }
+
+  display.style.color = price === 13800 ? 'var(--gold)' : 'var(--text)';
+  drawChart(price);
+  updateTable(price);
+}
+
+slider.addEventListener('input', update);
+update();
+</script>
+</body>
+</html>
