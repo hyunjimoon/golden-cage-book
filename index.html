@@ -9,7 +9,6 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
 
-  /* hero */
   .hero{display:flex;align-items:center;justify-content:center;gap:48px;max-width:900px;margin:0 auto;padding:64px 24px 48px;min-height:80vh;}
   .hero-text{max-width:400px;}
   .hero-text h1{font-size:1.8em;font-weight:700;letter-spacing:-0.5px;margin-bottom:12px;}
@@ -21,7 +20,6 @@
   .hero-img img{width:260px;border-radius:12px;}
   @media(max-width:700px){.hero{flex-direction:column-reverse;gap:24px;padding-top:40px;min-height:auto;} .hero-img img{width:200px;}}
 
-  /* chapters */
   .section{max-width:900px;margin:0 auto;padding:0 24px 48px;}
   .section-label{font-size:11px;color:#4a5568;letter-spacing:2px;margin-bottom:16px;font-weight:600;}
   .map{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;margin-bottom:8px;}
@@ -34,19 +32,26 @@
   .c3 .ch,.c3 .cure{color:#4A7A6B;} .c4 .ch,.c4 .cure{color:#5A8A9A;}
   .cycle{text-align:center;font-size:11px;color:#3a4050;margin:8px 0 0;}
 
-  /* resources */
-  .resources{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
-  .res-group h3{font-size:12px;color:#5a6a7a;letter-spacing:1px;margin-bottom:10px;font-weight:600;}
-  .res-group a{display:block;font-size:13px;color:#8899aa;text-decoration:none;padding:3px 0;transition:color 0.15s;}
-  .res-group a:hover{color:#e8eaf0;}
-  @media(max-width:500px){.map{grid-template-columns:1fr;} .resources{grid-template-columns:1fr;}}
+  /* progress */
+  .progress{margin-top:40px;background:#0e1220;border-radius:10px;padding:20px;}
+  .progress h3{font-size:12px;color:#5a6a7a;letter-spacing:1px;margin-bottom:12px;font-weight:600;}
+  .progress-bar{height:8px;background:#1a2234;border-radius:4px;overflow:hidden;margin-bottom:12px;}
+  .progress-fill{height:100%;background:#4A7A6B;border-radius:4px;transition:width 0.6s;}
+  .progress-label{display:flex;justify-content:space-between;font-size:11px;color:#5a6a7a;margin-bottom:16px;}
+  .milestones{font-size:12px;color:#8899aa;line-height:2;}
+  .milestones .done{color:#4A7A6B;} .milestones .current{color:#e8eaf0;font-weight:600;} .milestones .todo{color:#3a4050;}
+  .milestones span{margin-right:6px;}
+
+  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;}
+  .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.15s;}
+  .links a:hover{color:#e8eaf0;}
 
   .footer{text-align:center;padding:48px 24px 32px;font-size:12px;color:#3a4050;}
+  @media(max-width:500px){.map{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- Hero -->
 <div class="hero">
   <div class="hero-text">
     <h1>황금새장을열다</h1>
@@ -60,7 +65,6 @@
   </div>
 </div>
 
-<!-- Chapters -->
 <div class="section">
   <div class="section-label">네 개의 새장</div>
   <div class="map">
@@ -87,22 +91,33 @@
   </div>
   <div class="cycle">1장의 약이 2장의 병이 된다</div>
 
-  <div class="resources">
-    <div class="res-group">
-      <h3>자체평가척도</h3>
-      <a href="interactive/emotion_trajectory.html">감정 궤적 (다/세 변신 검증)</a>
-      <a href="interactive/readers.html">대표독자 7명</a>
-      <a href="interactive/symbols.html">나의 상징을 찾아라</a>
-      <a href="interactive/periodic_table_prototype.html">주기율표 (484권)</a>
+  <!-- Progress -->
+  <div class="progress">
+    <h3>진행률 — 65%</h3>
+    <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+    <div class="progress-label"><span>2026.03 1차</span><span>현재</span><span>2026.06 최종</span></div>
+    <div class="milestones">
+      <span class="done">✓</span> <span class="done">1차 원고 4장 완성 (3월)</span><br>
+      <span class="done">✓</span> <span class="done">2차 구조 통일 — 4섹션, AI 실습 배치 (4월 초)</span><br>
+      <span class="done">✓</span> <span class="done">부록5 D vs S 보편 템플릿 + 풍국 예시 (4월 초)</span><br>
+      <span class="done">✓</span> <span class="done">사실오류 6건 수정, CARE 반영 (4월 초)</span><br>
+      <span class="current">→</span> <span class="current">산업별 인터뷰 8명 + 한국 사례 확보 (4월 중)</span><br>
+      <span class="todo">○</span> <span class="todo">3장 추상어 밀도 개선, 2장 이야기 엔진 보강 (4월 말)</span><br>
+      <span class="todo">○</span> <span class="todo">AI 실습 산업별 실제 실행 결과 추가 (5월 초)</span><br>
+      <span class="todo">○</span> <span class="todo">최종 Polish — 문장 다듬기, 인쇄 검토 (5월)</span><br>
+      <span class="todo">○</span> <span class="todo">3차 원고 제출 (6월)</span>
     </div>
+  </div>
+
+  <div class="links">
+    <a href="interactive/readers.html">대표독자 7명</a>
+    <a href="interactive/symbols.html">상징 찾기</a>
+    <a href="interactive/periodic_table_prototype.html">주기율표</a>
+    <a href="https://github.com/hyunjimoon/golden-cage-book">GitHub</a>
   </div>
 </div>
 
-<div class="footer">
-  <a href="https://github.com/hyunjimoon/golden-cage-book" style="color:#4A7A6B;text-decoration:none;">GitHub</a> ·
-  <a href="https://github.com/hyunjimoon/golden-cage-thesis" style="color:#4A7A6B;text-decoration:none;">Thesis</a>
-  <br>빌린 것을 갚으면 새장이 둥지가 된다.
-</div>
+<div class="footer">빌린 것을 갚으면 새장이 둥지가 된다.</div>
 
 </body>
 </html>
