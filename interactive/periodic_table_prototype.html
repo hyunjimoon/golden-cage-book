@@ -285,6 +285,30 @@ for(let i=1;i<=484;i++){
   } else {
     cell.classList.add('cell-empty');
     cell.textContent = i;
+    cell.dataset.vol = i;
+    cell.style.cursor = 'pointer';
+    cell.onclick = ()=>{
+      const c = typeof COVERS!=='undefined' && COVERS[i];
+      if(c){
+        const p = document.getElementById('panel');
+        p.classList.add('active');
+        document.getElementById('pTitle').textContent = i+'. '+c.title;
+        document.getElementById('pTitle').style.color = '#64748b';
+        document.getElementById('pAuthor').textContent = '(분석 대기)';
+        document.getElementById('pTragedy').textContent = '';
+        document.getElementById('pQuote').textContent = '';
+        document.getElementById('pBorrowed').textContent = '—';
+        document.getElementById('pLost').textContent = '—';
+        document.getElementById('pCage').textContent = '—';
+        document.getElementById('pVerb').textContent = '빈칸이 다음 책이다';
+        document.getElementById('pVerb').style.color = '#64748b';
+        document.getElementById('pMemo').textContent = '';
+        ['d1','d2','d3','d4'].forEach((id)=>{document.getElementById(id).style.width='0%';document.getElementById('ds'+(parseInt(id[1])).toString()).textContent='';});
+        const coverEl = document.getElementById('pCover');
+        coverEl.src=c.url;coverEl.alt=c.title;coverEl.style.display='block';
+        coverEl.onerror=function(){this.style.display='none';};
+      }
+    };
   }
   mosaic.appendChild(cell);
 }

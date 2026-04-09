@@ -290,4 +290,3 @@ URL: https://gemini.google.com/app/b53659b6f4ad6b22
 [^1]: PayPal 공동창업자, Facebook 첫 외부 투자자. 《Zero to One》에서 지라르의 모방 경쟁 이론을 경영에 적용한 실천편을 썼다.
 [^2]: 실리콘밸리 벤처캐피털 Floodgate 창업 파트너. 《Pattern Breakers》에서 "합의 바깥(non-consensus)이면서 옳은(right)" 창업자에 베팅하는 전략을 체계화했다.
 
-← [[0_질문과답]] · 다음 → [[2_망원경새장]]
