@@ -124,6 +124,8 @@ CRC Press, 2013.
 "행동은 확정하고 정체성은 열어둔다" — 불확실성이 클수록 모호성은 전략이 아니라 인식론적 필연.
 <!-- tolzul: 공간화음/Thesis/1논문용/📜Ferraro2015_GrandChallenges_RobustAction.md -->
 
+**종합: 최적 모호성의 세 얼굴.** OIL(Moon 2026)은 "언제 구체화할 것인가"의 타이밍을 수식으로, Padgett(1993)은 "모호함이 어떻게 권력이 되는가"를 역사로, Ferraro(2015)는 "왜 모호함이 필연인가"를 인식론으로 답한다. 셋이 말하는 것은 같다 — 빌린 확신(premature precision)이 적응을 죽인다. 살리나는 너무 정밀해서 못 뛰었고, 엠마는 너무 모호해서 방향이 없었다. 최적은 그 사이 — 탄크레디가 "행동은 확정하고 정체성은 열어둔" 것.
+
 ### Saras Sarasvathy, "Causation and Effectuation"
 *Academy of Management Review*, 2001.
 2장에서 인용.
