@@ -9,7 +9,7 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans KR',sans-serif;background:#060910;color:#e2e8f0;overflow-x:hidden;min-height:100vh;}
 
-  .page{max-width:640px;margin:0 auto;padding:48px 24px 64px;position:relative;}
+  .page{max-width:580px;margin:0 auto;padding:48px 24px 64px;}
   .back{font-size:12px;color:#3a4a5a;text-decoration:none;display:inline-block;margin-bottom:40px;transition:color 0.2s;}
   .back:hover{color:#e2e8f0;}
 
@@ -21,40 +21,36 @@
   .canvas-wrap{display:flex;justify-content:center;margin-bottom:40px;position:relative;}
   canvas{display:block;cursor:grab;touch-action:none;}
   canvas:active{cursor:grabbing;}
-  .canvas-hint{position:absolute;bottom:-20px;font-size:10px;color:#2a3a4a;text-align:center;width:100%;transition:opacity 1s;}
+  .canvas-hint{position:absolute;bottom:-16px;font-size:10px;color:#2a3a4a;text-align:center;width:100%;transition:opacity 1s;}
 
-  /* quiz */
+  /* quiz: 1-2-3 buttons */
   .quiz{margin-bottom:40px;}
-  .q-item{margin-bottom:24px;}
-  .q-label{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-  .q-icon{font-size:14px;}
-  .q-text{font-size:13px;color:#8899aa;}
-  .q-slider-wrap{position:relative;padding:0 2px;}
-  .q-slider{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:2px;outline:none;background:#1a2030;cursor:pointer;}
-  .q-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;border:none;cursor:pointer;transition:box-shadow 0.2s;}
-  .q-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;border:none;cursor:pointer;}
-  .q-ends{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;margin-top:4px;}
-
-  .q-item[data-ch="1"] .q-slider::-webkit-slider-thumb{background:#9B7A8B;box-shadow:0 0 12px rgba(155,122,139,0.4);}
-  .q-item[data-ch="2"] .q-slider::-webkit-slider-thumb{background:#7A8068;box-shadow:0 0 12px rgba(122,128,104,0.4);}
-  .q-item[data-ch="3"] .q-slider::-webkit-slider-thumb{background:#4A7A6B;box-shadow:0 0 12px rgba(74,122,107,0.4);}
-  .q-item[data-ch="4"] .q-slider::-webkit-slider-thumb{background:#5A8A9A;box-shadow:0 0 12px rgba(90,138,154,0.4);}
-  .q-item[data-ch="1"] .q-slider::-moz-range-thumb{background:#9B7A8B;}
-  .q-item[data-ch="2"] .q-slider::-moz-range-thumb{background:#7A8068;}
-  .q-item[data-ch="3"] .q-slider::-moz-range-thumb{background:#4A7A6B;}
-  .q-item[data-ch="4"] .q-slider::-moz-range-thumb{background:#5A8A9A;}
+  .q-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .q-row:last-child{border-bottom:none;}
+  .q-left{display:flex;align-items:center;gap:10px;}
+  .q-icon{font-size:15px;flex-shrink:0;}
+  .q-text{font-size:13px;color:#8899aa;line-height:1.5;}
+  .q-btns{display:flex;gap:4px;}
+  .q-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.08);background:transparent;color:#5a6a7a;font-family:'DM Mono',monospace;font-size:13px;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;}
+  .q-btn:hover{border-color:rgba(255,255,255,0.2);color:#e2e8f0;}
+  .q-btn.sel{border-color:transparent;color:#fff;transform:scale(1.1);}
+  .q-row[data-ch="1"] .q-btn.sel{background:#9B7A8B;box-shadow:0 0 16px rgba(155,122,139,0.35);}
+  .q-row[data-ch="2"] .q-btn.sel{background:#7A8068;box-shadow:0 0 16px rgba(122,128,104,0.35);}
+  .q-row[data-ch="3"] .q-btn.sel{background:#4A7A6B;box-shadow:0 0 16px rgba(74,122,107,0.35);}
+  .q-row[data-ch="4"] .q-btn.sel{background:#5A8A9A;box-shadow:0 0 16px rgba(90,138,154,0.35);}
+  .q-legend{display:flex;justify-content:flex-end;gap:16px;font-size:10px;color:#2a3a4a;margin-bottom:16px;padding-right:4px;}
 
   /* result */
-  .result{opacity:0;transform:translateY(20px);transition:all 0.6s;pointer-events:none;margin-bottom:32px;}
+  .result{opacity:0;transform:translateY(16px);transition:all 0.5s;pointer-events:none;margin-bottom:32px;}
   .result.show{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .result-card{background:#0c1018;border-radius:12px;padding:28px;border:1px solid rgba(255,255,255,0.04);}
-  .result-label{font-size:11px;color:#3a4a5a;letter-spacing:2px;font-weight:600;margin-bottom:8px;}
+  .result-card{background:#0c1018;border-radius:12px;padding:24px;border:1px solid rgba(255,255,255,0.04);}
+  .result-label{font-size:10px;color:#3a4a5a;letter-spacing:2px;font-weight:600;margin-bottom:6px;}
   .result-cage{font-size:1.2em;font-weight:700;margin-bottom:4px;}
   .result-sub{font-size:13px;color:#5a6a7a;margin-bottom:4px;}
-  .result-event{font-size:12px;color:#5a6a7a;margin-bottom:20px;font-style:italic;}
+  .result-event{font-size:12px;color:#5a6a7a;margin-bottom:16px;font-style:italic;}
   .result-insight{font-size:12px;color:#8899aa;line-height:1.8;margin-bottom:20px;padding:12px;background:rgba(255,255,255,0.02);border-radius:6px;}
 
-  .sym-row{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:start;margin-bottom:8px;}
+  .sym-row{display:grid;grid-template-columns:60px 1fr;gap:8px;align-items:start;margin-bottom:8px;}
   .sym-label{font-size:11px;color:#5a6a7a;padding-top:9px;}
   .sym-input{position:relative;}
   .sym-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:34px;line-height:1.5;}
@@ -62,11 +58,16 @@
   .sym-saved{position:absolute;right:8px;top:8px;font-size:10px;color:#4A7A6B;opacity:0;transition:opacity 0.3s;}
   .sym-saved.show{opacity:1;}
 
-  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;}
+  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;}
   .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.15s;}
   .links a:hover{color:#e2e8f0;}
 
   .footer{text-align:center;padding:40px 24px;font-size:12px;color:#1a2030;}
+
+  @media(max-width:480px){
+    .q-row{grid-template-columns:1fr;gap:8px;}
+    .q-btns{justify-content:flex-start;}
+  }
 </style>
 </head>
 <body>
@@ -76,34 +77,31 @@
 
   <div class="title">
     <h1>나는 어느 새장에 있는가?</h1>
-    <p>슬라이더를 움직이면 정사면체가 반응합니다.<br>가장 밝은 면이 지금 당신의 새장입니다.</p>
+    <p>각 문장에 1~3점을 매기세요. 정사면체가 반응합니다.</p>
   </div>
 
   <div class="canvas-wrap">
-    <canvas id="tetra" width="360" height="360"></canvas>
+    <canvas id="tetra" width="320" height="320"></canvas>
     <div class="canvas-hint">드래그하여 회전</div>
   </div>
 
   <div class="quiz">
-    <div class="q-item" data-ch="1">
-      <div class="q-label"><span class="q-icon">🪞</span><span class="q-text">빌려서라도 뛰고 싶다</span></div>
-      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="0"></div>
-      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    <div class="q-legend"><span>1 조금</span><span>2 꽤</span><span>3 매우</span></div>
+    <div class="q-row" data-ch="1" data-face="0">
+      <div class="q-left"><span class="q-icon">🪞</span><span class="q-text">빌려서라도 뛰고 싶다</span></div>
+      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
     </div>
-    <div class="q-item" data-ch="2">
-      <div class="q-label"><span class="q-icon">🔭</span><span class="q-text">보이지만 못 움직인다</span></div>
-      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="1"></div>
-      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    <div class="q-row" data-ch="2" data-face="1">
+      <div class="q-left"><span class="q-icon">🔭</span><span class="q-text">보이지만 못 움직인다</span></div>
+      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
     </div>
-    <div class="q-item" data-ch="3">
-      <div class="q-label"><span class="q-icon">💒</span><span class="q-text">확신이 증거보다 앞선다</span></div>
-      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="2"></div>
-      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    <div class="q-row" data-ch="3" data-face="2">
+      <div class="q-left"><span class="q-icon">💒</span><span class="q-text">확신이 증거보다 앞선다</span></div>
+      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
     </div>
-    <div class="q-item" data-ch="4">
-      <div class="q-label"><span class="q-icon">⏱️</span><span class="q-text">성공한 방식이 다음 시도를 막는다</span></div>
-      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="3"></div>
-      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    <div class="q-row" data-ch="4" data-face="3">
+      <div class="q-left"><span class="q-icon">⏱️</span><span class="q-text">성공한 방식이 다음 시도를 막는다</span></div>
+      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
     </div>
   </div>
 
@@ -117,9 +115,9 @@
       <div id="r-symbols"></div>
     </div>
     <div class="links">
-      <a href="symbols.html">12상징 전체 보기 →</a>
-      <a href="reader.html?file=appendices/app5_prompting">AI 프롬프트로 장부 펴기 →</a>
-      <a href="periodic_table_prototype.html">484권의 빚 지도 →</a>
+      <a href="symbols.html">12상징 전체 →</a>
+      <a href="reader.html?file=appendices/app5_prompting">AI 프롬프트 →</a>
+      <a href="periodic_table_prototype.html">484권 빚 지도 →</a>
     </div>
   </div>
 
@@ -128,7 +126,6 @@
 <div class="footer">자기 새장은 자기에게 안 보인다 — 정사면체의 안쪽 면처럼.</div>
 
 <script>
-// === Data ===
 const CAGES = [
   { ch:1, name:'거울새장', color:[155,122,139], title:'빌린 욕망에서 내 욕망으로',
     event:'청구서가 도착한다',
@@ -145,8 +142,8 @@ const CAGES = [
   { ch:3, name:'스테인드글라스새장', color:[74,122,107], title:'빌린 확신에서 내 확신으로',
     event:'확신이 현실에 부딪힌다',
     insight:'확신이 강할수록 증거가 안 보입니다. 스테인드글라스가 아름다울수록 바깥이 안 보이듯. 리외는 60%인 채로 주사기를 들었습니다. 완벽한 확신이 아니라 교정 가능한 확신이 필요합니다.',
-    symbols:['봉쇄된 도시','주사기','60%'],
-    placeholders:['나의 봉쇄된 도시는...','나의 주사기는...','나의 60%는...']
+    symbols:['봉쇄된 도시','주사기','혈청'],
+    placeholders:['나의 봉쇄된 도시는...','나의 주사기는...','나의 혈청은...']
   },
   { ch:4, name:'시계새장', color:[90,138,154], title:'빌린 질서에서 내 질서로',
     event:'빌린 구조가 무너진다',
@@ -159,159 +156,93 @@ const CAGES = [
 // === 3D Tetrahedron ===
 const canvas = document.getElementById('tetra');
 const ctx = canvas.getContext('2d');
-const W = canvas.width, H = canvas.height;
-const CX = W/2, CY = H/2;
-const R = 120; // radius
+const SIZE = 320;
+const CX = SIZE/2, CY = SIZE/2, R = 105;
 
-// Regular tetrahedron vertices on unit sphere
 const S2 = Math.sqrt(2), S6 = Math.sqrt(6);
-const verts3D = [
-  [0, 1, 0],
-  [2*S2/3, -1/3, 0],
-  [-S2/3, -1/3, S6/3],
-  [-S2/3, -1/3, -S6/3]
-];
-
+const verts3D = [[0,1,0],[2*S2/3,-1/3,0],[-S2/3,-1/3,S6/3],[-S2/3,-1/3,-S6/3]];
 const faces = [[0,1,2],[0,2,3],[0,3,1],[1,3,2]];
 const faceValues = [0,0,0,0];
 
 let rotX = -0.3, rotY = 0, autoRot = true;
 let dragStart = null, dragRotX = 0, dragRotY = 0;
 
-function rotatePoint(p, rx, ry) {
+function rot(p, rx, ry) {
   let [x,y,z] = p;
-  // rotate Y
-  let x1 = x*Math.cos(ry) - z*Math.sin(ry);
-  let z1 = x*Math.sin(ry) + z*Math.cos(ry);
-  // rotate X
-  let y1 = y*Math.cos(rx) - z1*Math.sin(rx);
-  let z2 = y*Math.sin(rx) + z1*Math.cos(rx);
-  return [x1, y1, z2];
+  let x1 = x*Math.cos(ry)-z*Math.sin(ry), z1 = x*Math.sin(ry)+z*Math.cos(ry);
+  let y1 = y*Math.cos(rx)-z1*Math.sin(rx), z2 = y*Math.sin(rx)+z1*Math.cos(rx);
+  return [x1,y1,z2];
 }
-
-function project(p) {
-  const perspective = 4;
-  const scale = R * perspective / (perspective + p[2]);
-  return [CX + p[0]*scale, CY - p[1]*scale, p[2]];
+function proj(p) {
+  const d=4, s=R*d/(d+p[2]);
+  return [CX+p[0]*s, CY-p[1]*s, p[2]];
 }
-
-function faceNormalZ(face, projected) {
-  const [a,b,c] = face.map(i => projected[i]);
-  return (b[0]-a[0])*(c[1]-a[1]) - (b[1]-a[1])*(c[0]-a[0]);
-}
-
-function faceCenter(face, rotated) {
-  let cx=0,cy=0,cz=0;
-  face.forEach(i => { cx+=rotated[i][0]; cy+=rotated[i][1]; cz+=rotated[i][2]; });
-  return [cx/3,cy/3,cz/3];
-}
+function faceZ(f,r){ let s=0; f.forEach(i=>s+=r[i][2]); return s/3; }
+function faceNZ(f,p){ const[a,b,c]=f.map(i=>p[i]); return(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]); }
 
 function draw() {
-  ctx.clearRect(0,0,W,H);
+  ctx.clearRect(0,0,SIZE,SIZE);
+  const g=ctx.createRadialGradient(CX,CY,0,CX,CY,170);
+  g.addColorStop(0,'rgba(40,50,70,0.12)'); g.addColorStop(1,'transparent');
+  ctx.fillStyle=g; ctx.fillRect(0,0,SIZE,SIZE);
 
-  // ambient glow
-  const grad = ctx.createRadialGradient(CX,CY,0,CX,CY,200);
-  grad.addColorStop(0,'rgba(40,50,70,0.15)');
-  grad.addColorStop(1,'transparent');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0,0,W,H);
+  const rd = verts3D.map(v=>rot(v,rotX,rotY));
+  const pj = rd.map(v=>proj(v));
+  const order = [0,1,2,3].map(i=>({i,z:faceZ(faces[i],rd)})).sort((a,b)=>a.z-b.z);
 
-  const rotated = verts3D.map(v => rotatePoint(v, rotX, rotY));
-  const projected = rotated.map(v => project(v));
-
-  // sort faces by depth (painter's algorithm)
-  const faceOrder = [0,1,2,3].map(i => ({
-    idx: i,
-    z: faceCenter(faces[i], rotated)[2]
-  })).sort((a,b) => a.z - b.z);
-
-  // draw faces
-  faceOrder.forEach(({idx}) => {
-    const face = faces[idx];
-    const pts = face.map(i => projected[i]);
-    const nz = faceNormalZ(face, projected);
-
-    const c = CAGES[idx].color;
-    const val = faceValues[idx] / 100;
-    const baseAlpha = 0.06 + val * 0.45;
-    const alpha = nz > 0 ? baseAlpha : baseAlpha * 0.3;
-
-    ctx.beginPath();
-    ctx.moveTo(pts[0][0], pts[0][1]);
-    ctx.lineTo(pts[1][0], pts[1][1]);
-    ctx.lineTo(pts[2][0], pts[2][1]);
-    ctx.closePath();
-
-    ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
-    ctx.fill();
-
-    // edge glow
-    ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.15 + val*0.4})`;
-    ctx.lineWidth = 0.8 + val * 1.2;
-    ctx.stroke();
-
-    // face glow for high values
-    if (val > 0.5 && nz > 0) {
-      const cx = (pts[0][0]+pts[1][0]+pts[2][0])/3;
-      const cy = (pts[0][1]+pts[1][1]+pts[2][1])/3;
-      const glow = ctx.createRadialGradient(cx,cy,0,cx,cy,60);
-      glow.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},${val*0.12})`);
-      glow.addColorStop(1,'transparent');
-      ctx.fillStyle = glow;
-      ctx.fill();
+  order.forEach(({i})=>{
+    const f=faces[i], pts=f.map(j=>pj[j]), nz=faceNZ(f,pj);
+    const c=CAGES[i].color, val=faceValues[i]/3;
+    const a = nz>0 ? 0.06+val*0.5 : (0.06+val*0.5)*0.3;
+    ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+    ctx.lineTo(pts[1][0],pts[1][1]); ctx.lineTo(pts[2][0],pts[2][1]); ctx.closePath();
+    ctx.fillStyle=`rgba(${c},${a})`; ctx.fill();
+    ctx.strokeStyle=`rgba(${c},${0.12+val*0.45})`; ctx.lineWidth=0.7+val*1.5; ctx.stroke();
+    if(val>0.5 && nz>0){
+      const cx=(pts[0][0]+pts[1][0]+pts[2][0])/3, cy=(pts[0][1]+pts[1][1]+pts[2][1])/3;
+      const gw=ctx.createRadialGradient(cx,cy,0,cx,cy,55);
+      gw.addColorStop(0,`rgba(${c},${val*0.15})`); gw.addColorStop(1,'transparent');
+      ctx.fillStyle=gw; ctx.fill();
     }
   });
-
-  // draw vertices
-  projected.forEach((p,i) => {
-    ctx.beginPath();
-    ctx.arc(p[0],p[1],2.5,0,Math.PI*2);
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
-    ctx.fill();
-  });
+  pj.forEach(p=>{ ctx.beginPath(); ctx.arc(p[0],p[1],2,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fill(); });
 }
+function animate(){ if(autoRot) rotY+=0.004; draw(); requestAnimationFrame(animate); }
 
-function animate() {
-  if (autoRot) rotY += 0.004;
-  draw();
-  requestAnimationFrame(animate);
-}
-
-// mouse/touch interaction
-canvas.addEventListener('pointerdown', e => {
-  autoRot = false;
-  dragStart = {x:e.clientX, y:e.clientY};
-  dragRotX = rotX; dragRotY = rotY;
+canvas.addEventListener('pointerdown',e=>{
+  autoRot=false; dragStart={x:e.clientX,y:e.clientY}; dragRotX=rotX; dragRotY=rotY;
   canvas.setPointerCapture(e.pointerId);
-  document.querySelector('.canvas-hint').style.opacity = '0';
+  document.querySelector('.canvas-hint').style.opacity='0';
 });
-canvas.addEventListener('pointermove', e => {
-  if (!dragStart) return;
-  rotY = dragRotY + (e.clientX - dragStart.x) * 0.008;
-  rotX = dragRotX + (e.clientY - dragStart.y) * 0.008;
+canvas.addEventListener('pointermove',e=>{
+  if(!dragStart)return;
+  rotY=dragRotY+(e.clientX-dragStart.x)*0.008;
+  rotX=dragRotX+(e.clientY-dragStart.y)*0.008;
 });
-canvas.addEventListener('pointerup', () => { dragStart = null; });
+canvas.addEventListener('pointerup',()=>{dragStart=null;});
 
-// hi-dpi
-const dpr = window.devicePixelRatio || 1;
-canvas.width = 360 * dpr;
-canvas.height = 360 * dpr;
-canvas.style.width = '360px';
-canvas.style.height = '360px';
-ctx.scale(dpr, dpr);
-
+const dpr=window.devicePixelRatio||1;
+canvas.width=SIZE*dpr; canvas.height=SIZE*dpr;
+canvas.style.width=SIZE+'px'; canvas.style.height=SIZE+'px';
+ctx.scale(dpr,dpr);
 animate();
 
-// === Quiz ===
-const sliders = document.querySelectorAll('.q-slider');
-let touched = new Set();
+// === Quiz: 1-2-3 buttons ===
+let answered = new Set();
 
-sliders.forEach(s => {
-  s.addEventListener('input', () => {
-    const fi = parseInt(s.dataset.face);
-    faceValues[fi] = parseInt(s.value);
-    touched.add(fi);
-    if (touched.size >= 2) showResult();
+document.querySelectorAll('.q-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const row = btn.closest('.q-row');
+    const fi = parseInt(row.dataset.face);
+    const val = parseInt(btn.dataset.v);
+
+    // toggle: click same = deselect
+    row.querySelectorAll('.q-btn').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+
+    faceValues[fi] = val;
+    answered.add(fi);
+    if (answered.size >= 2) showResult();
   });
 });
 
@@ -321,13 +252,12 @@ function showResult() {
   const cage = CAGES[maxIdx];
 
   document.getElementById('r-cage').textContent = cage.name;
-  document.getElementById('r-cage').style.color = `rgb(${cage.color.join(',')})`;
+  document.getElementById('r-cage').style.color = `rgb(${cage.color})`;
   document.getElementById('r-sub').textContent = cage.title;
   document.getElementById('r-event').textContent = cage.event;
   document.getElementById('r-insight').textContent = cage.insight;
-  document.getElementById('result-card').style.borderColor = `rgba(${cage.color.join(',')},0.2)`;
+  document.getElementById('result-card').style.borderColor = `rgba(${cage.color},0.2)`;
 
-  // symbols
   const symEl = document.getElementById('r-symbols');
   symEl.innerHTML = '';
   cage.symbols.forEach((sym,i) => {
@@ -342,8 +272,6 @@ function showResult() {
         </div>
       </div>`;
   });
-
-  // bind save
   symEl.querySelectorAll('textarea[data-save]').forEach(ta => {
     let t;
     ta.addEventListener('input', () => {
@@ -356,7 +284,6 @@ function showResult() {
       }, 400);
     });
   });
-
   document.getElementById('result').classList.add('show');
 }
 </script>
