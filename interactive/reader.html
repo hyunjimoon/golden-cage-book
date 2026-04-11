@@ -34,6 +34,13 @@
   .main{margin-left:240px;flex:1;min-width:0;}
   .content{max-width:680px;margin:0 auto;padding:32px 32px 80px;}
   .ch-banner{width:100%;max-height:260px;object-fit:cover;object-position:top;border-radius:8px;margin-bottom:24px;}
+  .tetra-pos{display:flex;justify-content:center;margin-bottom:20px;}
+  .tetra-pos svg{width:120px;height:120px;}
+  .tetra-pos .edge{stroke:rgba(255,255,255,0.06);stroke-width:0.6;}
+  .tetra-pos .edge-d{stroke:rgba(255,255,255,0.03);stroke-width:0.6;stroke-dasharray:2,2;}
+  .tetra-pos .v{opacity:0.25;} .tetra-pos .v.cur{opacity:1;filter:drop-shadow(0 0 6px var(--accent));}
+  .tetra-pos .lbl{font-size:7px;fill:#5a6a7a;text-anchor:middle;font-family:'Noto Sans KR',sans-serif;}
+  .tetra-pos .lbl.cur{fill:var(--accent);font-weight:700;font-size:8px;}
   .content h1{font-size:1.8em;font-weight:700;margin:24px 0 16px;color:var(--accent);}
   .content h2{font-size:1.3em;font-weight:700;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent);}
   .content h3{font-size:1em;font-weight:600;margin:24px 0 8px;}
@@ -214,8 +221,25 @@ fetch(`../chapters/${file}.md`)
   .then(r=>{if(!r.ok)throw new Error(r.status);return r.text();})
   .then(md=>{
     const banners={ch1_mirror_cage:'../img/ch1.png',ch2_telescope_cage:'../img/ch2.png',ch3_stained_glass_cage:'../img/ch3.png',ch4_clock_cage:'../img/ch4.png'};
-    const banner=banners[file]?`<img class="ch-banner" src="${banners[file]}" alt="">`:''
-    document.getElementById('content').innerHTML=banner+md2html(md);window.scrollTo(0,0);buildToc();
+    const banner=banners[file]?`<img class="ch-banner" src="${banners[file]}" alt="">`:'';
+    const tetraMap={ch1_mirror_cage:0,ch2_telescope_cage:1,ch3_stained_glass_cage:2,ch4_clock_cage:3};
+    let tetra='';
+    if(file in tetraMap){
+      const ci=tetraMap[file];
+      const vs=[{x:15,y:105,c:'#9B7A8B',l:'거울'},{x:95,y:55,c:'#7A8068',l:'망원경'},{x:110,y:105,c:'#4A7A6B',l:'스테인드글라스'},{x:60,y:10,c:'#5A8A9A',l:'시계'}];
+      const es=[[0,1,'edge'],[0,2,'edge'],[0,3,'edge-d'],[1,2,'edge'],[1,3,'edge-d'],[2,3,'edge']];
+      let svg='<div class="tetra-pos"><svg viewBox="0 0 125 120">';
+      es.forEach(([a,b,cls])=>{svg+=`<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`;});
+      vs.forEach((v,i)=>{
+        const cur=i===ci;
+        svg+=`<circle cx="${v.x}" cy="${v.y}" r="${cur?6:3.5}" fill="${v.c}" class="v${cur?' cur':''}"/>`;
+        const ly=i===3?v.y-8:v.y+14;
+        svg+=`<text x="${v.x}" y="${ly}" class="lbl${cur?' cur':''}">${v.l}</text>`;
+      });
+      svg+='</svg></div>';
+      tetra=svg;
+    }
+    document.getElementById('content').innerHTML=banner+tetra+md2html(md);window.scrollTo(0,0);buildToc();
   })
   .catch(()=>{
     if(file.startsWith('app')){
