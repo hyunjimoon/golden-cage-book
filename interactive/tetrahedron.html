@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나는 어느 새장에 있는가</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#060910;color:#e2e8f0;overflow-x:hidden;min-height:100vh;}
+
+  .page{max-width:640px;margin:0 auto;padding:48px 24px 64px;position:relative;}
+  .back{font-size:12px;color:#3a4a5a;text-decoration:none;display:inline-block;margin-bottom:40px;transition:color 0.2s;}
+  .back:hover{color:#e2e8f0;}
+
+  .title{text-align:center;margin-bottom:48px;}
+  .title h1{font-size:1.6em;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px;}
+  .title p{font-size:13px;color:#5a6a7a;line-height:1.7;}
+
+  /* canvas */
+  .canvas-wrap{display:flex;justify-content:center;margin-bottom:40px;position:relative;}
+  canvas{display:block;cursor:grab;touch-action:none;}
+  canvas:active{cursor:grabbing;}
+  .canvas-hint{position:absolute;bottom:-20px;font-size:10px;color:#2a3a4a;text-align:center;width:100%;transition:opacity 1s;}
+
+  /* quiz */
+  .quiz{margin-bottom:40px;}
+  .q-item{margin-bottom:24px;}
+  .q-label{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .q-icon{font-size:14px;}
+  .q-text{font-size:13px;color:#8899aa;}
+  .q-slider-wrap{position:relative;padding:0 2px;}
+  .q-slider{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:2px;outline:none;background:#1a2030;cursor:pointer;}
+  .q-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;border:none;cursor:pointer;transition:box-shadow 0.2s;}
+  .q-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;border:none;cursor:pointer;}
+  .q-ends{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;margin-top:4px;}
+
+  .q-item[data-ch="1"] .q-slider::-webkit-slider-thumb{background:#9B7A8B;box-shadow:0 0 12px rgba(155,122,139,0.4);}
+  .q-item[data-ch="2"] .q-slider::-webkit-slider-thumb{background:#7A8068;box-shadow:0 0 12px rgba(122,128,104,0.4);}
+  .q-item[data-ch="3"] .q-slider::-webkit-slider-thumb{background:#4A7A6B;box-shadow:0 0 12px rgba(74,122,107,0.4);}
+  .q-item[data-ch="4"] .q-slider::-webkit-slider-thumb{background:#5A8A9A;box-shadow:0 0 12px rgba(90,138,154,0.4);}
+  .q-item[data-ch="1"] .q-slider::-moz-range-thumb{background:#9B7A8B;}
+  .q-item[data-ch="2"] .q-slider::-moz-range-thumb{background:#7A8068;}
+  .q-item[data-ch="3"] .q-slider::-moz-range-thumb{background:#4A7A6B;}
+  .q-item[data-ch="4"] .q-slider::-moz-range-thumb{background:#5A8A9A;}
+
+  /* result */
+  .result{opacity:0;transform:translateY(20px);transition:all 0.6s;pointer-events:none;margin-bottom:32px;}
+  .result.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .result-card{background:#0c1018;border-radius:12px;padding:28px;border:1px solid rgba(255,255,255,0.04);}
+  .result-label{font-size:11px;color:#3a4a5a;letter-spacing:2px;font-weight:600;margin-bottom:8px;}
+  .result-cage{font-size:1.2em;font-weight:700;margin-bottom:4px;}
+  .result-sub{font-size:13px;color:#5a6a7a;margin-bottom:4px;}
+  .result-event{font-size:12px;color:#5a6a7a;margin-bottom:20px;font-style:italic;}
+  .result-insight{font-size:12px;color:#8899aa;line-height:1.8;margin-bottom:20px;padding:12px;background:rgba(255,255,255,0.02);border-radius:6px;}
+
+  .sym-row{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:start;margin-bottom:8px;}
+  .sym-label{font-size:11px;color:#5a6a7a;padding-top:9px;}
+  .sym-input{position:relative;}
+  .sym-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:34px;line-height:1.5;}
+  .sym-input textarea:focus{outline:none;border-color:rgba(255,255,255,0.15);}
+  .sym-saved{position:absolute;right:8px;top:8px;font-size:10px;color:#4A7A6B;opacity:0;transition:opacity 0.3s;}
+  .sym-saved.show{opacity:1;}
+
+  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;}
+  .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.15s;}
+  .links a:hover{color:#e2e8f0;}
+
+  .footer{text-align:center;padding:40px 24px;font-size:12px;color:#1a2030;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back" href="../">← 대문으로</a>
+
+  <div class="title">
+    <h1>나는 어느 새장에 있는가?</h1>
+    <p>슬라이더를 움직이면 정사면체가 반응합니다.<br>가장 밝은 면이 지금 당신의 새장입니다.</p>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="tetra" width="360" height="360"></canvas>
+    <div class="canvas-hint">드래그하여 회전</div>
+  </div>
+
+  <div class="quiz">
+    <div class="q-item" data-ch="1">
+      <div class="q-label"><span class="q-icon">🪞</span><span class="q-text">빌려서라도 뛰고 싶다</span></div>
+      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="0"></div>
+      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    </div>
+    <div class="q-item" data-ch="2">
+      <div class="q-label"><span class="q-icon">🔭</span><span class="q-text">보이지만 못 움직인다</span></div>
+      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="1"></div>
+      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    </div>
+    <div class="q-item" data-ch="3">
+      <div class="q-label"><span class="q-icon">💒</span><span class="q-text">확신이 증거보다 앞선다</span></div>
+      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="2"></div>
+      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    </div>
+    <div class="q-item" data-ch="4">
+      <div class="q-label"><span class="q-icon">⏱️</span><span class="q-text">성공한 방식이 다음 시도를 막는다</span></div>
+      <div class="q-slider-wrap"><input type="range" class="q-slider" min="0" max="100" value="0" data-face="3"></div>
+      <div class="q-ends"><span>전혀</span><span>매우</span></div>
+    </div>
+  </div>
+
+  <div class="result" id="result">
+    <div class="result-card" id="result-card">
+      <div class="result-label">당신의 새장</div>
+      <div class="result-cage" id="r-cage"></div>
+      <div class="result-sub" id="r-sub"></div>
+      <div class="result-event" id="r-event"></div>
+      <div class="result-insight" id="r-insight"></div>
+      <div id="r-symbols"></div>
+    </div>
+    <div class="links">
+      <a href="symbols.html">12상징 전체 보기 →</a>
+      <a href="reader.html?file=appendices/app5_prompting">AI 프롬프트로 장부 펴기 →</a>
+      <a href="periodic_table_prototype.html">484권의 빚 지도 →</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">자기 새장은 자기에게 안 보인다 — 정사면체의 안쪽 면처럼.</div>
+
+<script>
+// === Data ===
+const CAGES = [
+  { ch:1, name:'거울새장', color:[155,122,139], title:'빌린 욕망에서 내 욕망으로',
+    event:'청구서가 도착한다',
+    insight:'빌려서라도 뛰고 싶은 에너지는 진짜입니다. 문제는 에너지의 출처입니다. 엠마도 욕망이 가짜가 아니었습니다 — 출처가 빌린 것이었을 뿐. 장부를 펴서 내 것과 빌린 것을 구분하는 것이 첫 걸음입니다.',
+    symbols:['무도회장','청구서','장부'],
+    placeholders:['나의 무도회장은...','나의 청구서는...','나의 장부에는...']
+  },
+  { ch:2, name:'망원경새장', color:[122,128,104], title:'빌린 품위에서 내 품위로',
+    event:'타이밍이 지나간다',
+    insight:'다 보이는데 안 움직이는 것은 겁이 아닙니다. 지키고 싶은 것이 있기 때문입니다. 살리나의 표범처럼. 문제는 지키려는 것이 내 것인지 빌린 품위인지입니다. 안개 속에서 되돌릴 수 있는 것부터 시험하세요.',
+    symbols:['항구','표범','안개'],
+    placeholders:['나의 항구에서는...','나의 표범은...','나의 첫 시험은...']
+  },
+  { ch:3, name:'스테인드글라스새장', color:[74,122,107], title:'빌린 확신에서 내 확신으로',
+    event:'확신이 현실에 부딪힌다',
+    insight:'확신이 강할수록 증거가 안 보입니다. 스테인드글라스가 아름다울수록 바깥이 안 보이듯. 리외는 60%인 채로 주사기를 들었습니다. 완벽한 확신이 아니라 교정 가능한 확신이 필요합니다.',
+    symbols:['봉쇄된 도시','주사기','60%'],
+    placeholders:['나의 봉쇄된 도시는...','나의 주사기는...','나의 60%는...']
+  },
+  { ch:4, name:'시계새장', color:[90,138,154], title:'빌린 질서에서 내 질서로',
+    event:'빌린 구조가 무너진다',
+    insight:'성공한 방식을 반복하는 것이 가장 안전해 보입니다. 로빈슨도 그랬습니다 — 시계와 달력과 헌법으로 섬을 관리하면서. 담뱃대 하나가 그 질서를 폭파했을 때, 비로소 파도 소리가 들렸습니다.',
+    symbols:['섬','담뱃대','불씨'],
+    placeholders:['나의 섬은...','나의 담뱃대는...','나의 다음 불은...']
+  }
+];
+
+// === 3D Tetrahedron ===
+const canvas = document.getElementById('tetra');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+const CX = W/2, CY = H/2;
+const R = 120; // radius
+
+// Regular tetrahedron vertices on unit sphere
+const S2 = Math.sqrt(2), S6 = Math.sqrt(6);
+const verts3D = [
+  [0, 1, 0],
+  [2*S2/3, -1/3, 0],
+  [-S2/3, -1/3, S6/3],
+  [-S2/3, -1/3, -S6/3]
+];
+
+const faces = [[0,1,2],[0,2,3],[0,3,1],[1,3,2]];
+const faceValues = [0,0,0,0];
+
+let rotX = -0.3, rotY = 0, autoRot = true;
+let dragStart = null, dragRotX = 0, dragRotY = 0;
+
+function rotatePoint(p, rx, ry) {
+  let [x,y,z] = p;
+  // rotate Y
+  let x1 = x*Math.cos(ry) - z*Math.sin(ry);
+  let z1 = x*Math.sin(ry) + z*Math.cos(ry);
+  // rotate X
+  let y1 = y*Math.cos(rx) - z1*Math.sin(rx);
+  let z2 = y*Math.sin(rx) + z1*Math.cos(rx);
+  return [x1, y1, z2];
+}
+
+function project(p) {
+  const perspective = 4;
+  const scale = R * perspective / (perspective + p[2]);
+  return [CX + p[0]*scale, CY - p[1]*scale, p[2]];
+}
+
+function faceNormalZ(face, projected) {
+  const [a,b,c] = face.map(i => projected[i]);
+  return (b[0]-a[0])*(c[1]-a[1]) - (b[1]-a[1])*(c[0]-a[0]);
+}
+
+function faceCenter(face, rotated) {
+  let cx=0,cy=0,cz=0;
+  face.forEach(i => { cx+=rotated[i][0]; cy+=rotated[i][1]; cz+=rotated[i][2]; });
+  return [cx/3,cy/3,cz/3];
+}
+
+function draw() {
+  ctx.clearRect(0,0,W,H);
+
+  // ambient glow
+  const grad = ctx.createRadialGradient(CX,CY,0,CX,CY,200);
+  grad.addColorStop(0,'rgba(40,50,70,0.15)');
+  grad.addColorStop(1,'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,W,H);
+
+  const rotated = verts3D.map(v => rotatePoint(v, rotX, rotY));
+  const projected = rotated.map(v => project(v));
+
+  // sort faces by depth (painter's algorithm)
+  const faceOrder = [0,1,2,3].map(i => ({
+    idx: i,
+    z: faceCenter(faces[i], rotated)[2]
+  })).sort((a,b) => a.z - b.z);
+
+  // draw faces
+  faceOrder.forEach(({idx}) => {
+    const face = faces[idx];
+    const pts = face.map(i => projected[i]);
+    const nz = faceNormalZ(face, projected);
+
+    const c = CAGES[idx].color;
+    const val = faceValues[idx] / 100;
+    const baseAlpha = 0.06 + val * 0.45;
+    const alpha = nz > 0 ? baseAlpha : baseAlpha * 0.3;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    ctx.lineTo(pts[1][0], pts[1][1]);
+    ctx.lineTo(pts[2][0], pts[2][1]);
+    ctx.closePath();
+
+    ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+    ctx.fill();
+
+    // edge glow
+    ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.15 + val*0.4})`;
+    ctx.lineWidth = 0.8 + val * 1.2;
+    ctx.stroke();
+
+    // face glow for high values
+    if (val > 0.5 && nz > 0) {
+      const cx = (pts[0][0]+pts[1][0]+pts[2][0])/3;
+      const cy = (pts[0][1]+pts[1][1]+pts[2][1])/3;
+      const glow = ctx.createRadialGradient(cx,cy,0,cx,cy,60);
+      glow.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},${val*0.12})`);
+      glow.addColorStop(1,'transparent');
+      ctx.fillStyle = glow;
+      ctx.fill();
+    }
+  });
+
+  // draw vertices
+  projected.forEach((p,i) => {
+    ctx.beginPath();
+    ctx.arc(p[0],p[1],2.5,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fill();
+  });
+}
+
+function animate() {
+  if (autoRot) rotY += 0.004;
+  draw();
+  requestAnimationFrame(animate);
+}
+
+// mouse/touch interaction
+canvas.addEventListener('pointerdown', e => {
+  autoRot = false;
+  dragStart = {x:e.clientX, y:e.clientY};
+  dragRotX = rotX; dragRotY = rotY;
+  canvas.setPointerCapture(e.pointerId);
+  document.querySelector('.canvas-hint').style.opacity = '0';
+});
+canvas.addEventListener('pointermove', e => {
+  if (!dragStart) return;
+  rotY = dragRotY + (e.clientX - dragStart.x) * 0.008;
+  rotX = dragRotX + (e.clientY - dragStart.y) * 0.008;
+});
+canvas.addEventListener('pointerup', () => { dragStart = null; });
+
+// hi-dpi
+const dpr = window.devicePixelRatio || 1;
+canvas.width = 360 * dpr;
+canvas.height = 360 * dpr;
+canvas.style.width = '360px';
+canvas.style.height = '360px';
+ctx.scale(dpr, dpr);
+
+animate();
+
+// === Quiz ===
+const sliders = document.querySelectorAll('.q-slider');
+let touched = new Set();
+
+sliders.forEach(s => {
+  s.addEventListener('input', () => {
+    const fi = parseInt(s.dataset.face);
+    faceValues[fi] = parseInt(s.value);
+    touched.add(fi);
+    if (touched.size >= 2) showResult();
+  });
+});
+
+function showResult() {
+  let maxVal = -1, maxIdx = 0;
+  faceValues.forEach((v,i) => { if (v > maxVal) { maxVal = v; maxIdx = i; } });
+  const cage = CAGES[maxIdx];
+
+  document.getElementById('r-cage').textContent = cage.name;
+  document.getElementById('r-cage').style.color = `rgb(${cage.color.join(',')})`;
+  document.getElementById('r-sub').textContent = cage.title;
+  document.getElementById('r-event').textContent = cage.event;
+  document.getElementById('r-insight').textContent = cage.insight;
+  document.getElementById('result-card').style.borderColor = `rgba(${cage.color.join(',')},0.2)`;
+
+  // symbols
+  const symEl = document.getElementById('r-symbols');
+  symEl.innerHTML = '';
+  cage.symbols.forEach((sym,i) => {
+    const key = 'tetra_' + cage.ch + '_' + i;
+    const saved = localStorage.getItem(key) || '';
+    symEl.innerHTML += `
+      <div class="sym-row">
+        <div class="sym-label">${sym}</div>
+        <div class="sym-input">
+          <textarea data-save="${key}" placeholder="${cage.placeholders[i]}">${saved}</textarea>
+          <div class="sym-saved">저장됨</div>
+        </div>
+      </div>`;
+  });
+
+  // bind save
+  symEl.querySelectorAll('textarea[data-save]').forEach(ta => {
+    let t;
+    ta.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        localStorage.setItem(ta.dataset.save, ta.value);
+        const msg = ta.nextElementSibling;
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 1200);
+      }, 400);
+    });
+  });
+
+  document.getElementById('result').classList.add('show');
+}
+</script>
+</body>
+</html>
