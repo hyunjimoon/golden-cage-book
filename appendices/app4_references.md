@@ -132,6 +132,12 @@ CRC Press, 2013.
 "잃어도 괜찮은 수준에서 시작하라."
 코모리가 화장품부터 시험한 이유. 되돌릴 수 있는 것부터.
 
+### 로저 마틴, 『통합적 사고: 제3의 선택으로 세상을 바꾼 이노베이터들의 생각법』
+4장에서 참조.
+"완전히 다른 두 가지 아이디어를 동시에 생각하는 능력. 양자택일 대신 새로운 차원의 아이디어를 합성한다."
+두산이 130년간 살아남은 이유 — 불일치를 인공선택으로 제거하지 않고, 매번 새 차원으로 합성했다. D vs S 프롬프트의 이론적 근거.
+<!-- tolzul: 공간화음/Thesis/choose(organization)/3_G_思🟠/📚journal/📜martin_opposable_mind.md -->
+
 ### Daniel Levinthal, "Adaptation on Rugged Landscapes"
 *Management Science*, 1997.
 4장에서 인용.
