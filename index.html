@@ -9,10 +9,10 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
 
-  .hero{display:flex;align-items:center;justify-content:center;gap:48px;max-width:900px;margin:0 auto;padding:64px 24px 48px;min-height:80vh;}
-  .hero-text{max-width:400px;}
+  /* hero */
+  .hero{display:flex;align-items:center;justify-content:center;gap:48px;max-width:900px;margin:0 auto;padding:64px 24px 48px;min-height:70vh;}
+  .hero-text{max-width:420px;}
   .hero-text h1{font-size:1.8em;font-weight:700;letter-spacing:-0.5px;margin-bottom:12px;}
-  .hero-text .eq{font-family:'DM Mono',monospace;font-size:13px;color:#6b7a8d;margin-bottom:24px;}
   .hero-text p{font-size:14px;color:#8899aa;line-height:1.8;margin-bottom:12px;}
   .hero-text .cta{display:inline-block;margin-top:20px;padding:10px 24px;background:#4A7A6B;color:#fff;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600;transition:background 0.2s;}
   .hero-text .cta:hover{background:#5B9A8B;}
@@ -20,38 +20,68 @@
   .hero-img img{width:260px;border-radius:12px;}
   @media(max-width:700px){.hero{flex-direction:column-reverse;gap:24px;padding-top:40px;min-height:auto;} .hero-img img{width:200px;}}
 
+  /* sections */
   .section{max-width:900px;margin:0 auto;padding:0 24px 48px;}
   .section-label{font-size:11px;color:#4a5568;letter-spacing:2px;margin-bottom:16px;font-weight:600;}
+
+  /* genre definition */
+  .genre{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;margin-bottom:16px;}
+  .genre-col{background:#0e1220;padding:20px;}
+  .genre-col h3{font-size:12px;font-weight:700;color:#5a6a7a;letter-spacing:1px;margin-bottom:12px;}
+  .genre-item{margin-bottom:10px;}
+  .genre-item .label{font-size:11px;color:#5a6a7a;margin-bottom:2px;}
+  .genre-item .value{font-size:13px;color:#c8d0dd;line-height:1.6;}
+  .genre-item .value em{color:#8899aa;font-style:normal;font-size:12px;}
+
+  /* 4 cages */
   .map{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;margin-bottom:8px;}
   .cell{background:#0e1220;padding:20px;text-decoration:none;color:#e8eaf0;transition:background 0.2s;}
   .cell:hover{background:#141b2d;}
   .cell .ch{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:4px;}
-  .cell .novel{font-size:13px;font-weight:300;color:#8899aa;margin-bottom:8px;}
+  .cell .novel{font-size:13px;font-weight:300;color:#8899aa;margin-bottom:4px;}
+  .cell .event{font-size:11px;color:#5a6a7a;margin-bottom:8px;}
   .cell .cure{font-size:12px;font-weight:600;}
   .c1 .ch,.c1 .cure{color:#9B7A8B;} .c2 .ch,.c2 .cure{color:#7A8068;}
   .c3 .ch,.c3 .cure{color:#4A7A6B;} .c4 .ch,.c4 .cure{color:#5A8A9A;}
-  .cycle{text-align:center;font-size:11px;color:#3a4050;margin:8px 0 0;}
 
-  /* progress */
-  .progress{margin-top:40px;background:#0e1220;border-radius:10px;padding:20px;}
-  .progress h3{font-size:12px;color:#5a6a7a;letter-spacing:1px;margin-bottom:12px;font-weight:600;}
-  .progress-bar{height:8px;background:#1a2234;border-radius:4px;overflow:hidden;margin-bottom:12px;}
-  .progress-fill{height:100%;background:#4A7A6B;border-radius:4px;transition:width 0.6s;}
-  .progress-label{display:flex;justify-content:space-between;font-size:11px;color:#5a6a7a;margin-bottom:16px;}
-  .milestones{font-size:12px;color:#8899aa;line-height:2;}
-  .milestones .done{color:#4A7A6B;} .milestones .current{color:#e8eaf0;font-weight:600;} .milestones .todo{color:#3a4050;}
-  .milestones span{margin-right:6px;}
+  /* audience */
+  .audience{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;}
+  .audience-card{background:#0e1220;padding:20px;}
+  .audience-card h4{font-size:12px;font-weight:700;color:#4A7A6B;margin-bottom:8px;}
+  .audience-card p{font-size:12px;color:#8899aa;line-height:1.7;}
+  .audience-card .detail{font-size:11px;color:#5a6a7a;margin-top:8px;line-height:1.6;}
+
+  /* hypotheses */
+  .hypo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+  .hypo-card{background:#0e1220;border-radius:8px;padding:20px;border:1px solid rgba(255,255,255,0.05);}
+  .hypo-card h4{font-size:12px;font-weight:700;margin-bottom:6px;}
+  .hypo-card .pct{font-family:'DM Mono',monospace;font-size:1.6em;font-weight:700;margin-bottom:8px;}
+  .hypo-card p{font-size:11px;color:#8899aa;line-height:1.7;}
+  .hypo-card .bottleneck{font-size:11px;color:#5a6a7a;margin-top:8px;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;}
+  .hypo-s h4,.hypo-s .pct{color:#4A7A6B;}
+  .hypo-d h4,.hypo-d .pct{color:#5A8A9A;}
+
+  /* deliberations */
+  .delib{background:#0e1220;border-radius:10px;padding:20px;margin-top:24px;}
+  .delib h3{font-size:12px;color:#5a6a7a;letter-spacing:1px;margin-bottom:16px;font-weight:600;}
+  .delib-item{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .delib-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .delib-item .q{font-size:13px;color:#c8d0dd;margin-bottom:6px;font-weight:600;}
+  .delib-item .status{font-size:12px;color:#8899aa;line-height:1.7;}
+  .delib-item a{color:#4A7A6B;text-decoration:none;font-size:11px;}
+  .delib-item a:hover{text-decoration:underline;}
 
   .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;}
   .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.15s;}
   .links a:hover{color:#e8eaf0;}
 
   .footer{text-align:center;padding:48px 24px 32px;font-size:12px;color:#3a4050;}
-  @media(max-width:500px){.map{grid-template-columns:1fr;}}
+  @media(max-width:600px){.genre,.audience{grid-template-columns:1fr;} .map{grid-template-columns:1fr;} .hypo-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
+<!-- A. 한 문장 + 표지 -->
 <div class="hero">
   <div class="hero-text">
     <h1>황금새장을열다</h1>
@@ -64,69 +94,136 @@
   </div>
 </div>
 
+<!-- B. 창업소설이란 — 장르의 품질척도 -->
+<div class="section">
+  <div class="section-label">창업소설이란</div>
+  <div class="genre">
+    <div class="genre-col">
+      <h3>구성 3요소</h3>
+      <div class="genre-item">
+        <div class="label">인물</div>
+        <div class="value">다 <em>— 낭만으로 뛰는 사람</em><br>세 <em>— 분석으로 보는 사람</em></div>
+      </div>
+      <div class="genre-item">
+        <div class="label">사건</div>
+        <div class="value">빚이 드러나는 순간 <em>— 청구서, 지나간 타이밍, 아이의 죽음, 담뱃대 폭발</em></div>
+      </div>
+      <div class="genre-item">
+        <div class="label">배경</div>
+        <div class="value">무도회장, 항구, 봉쇄된 도시, 섬</div>
+      </div>
+    </div>
+    <div class="genre-col">
+      <h3>소설 3요소</h3>
+      <div class="genre-item">
+        <div class="label">주제</div>
+        <div class="value">욕망·품위·확신·질서 — 네 가지 빚을 상환한 뒤 12개의 상징을 찾는다</div>
+      </div>
+      <div class="genre-item">
+        <div class="label">구성</div>
+        <div class="value">논리적이지도 인과적이지도 않은 현실 경험에 의미를 부여하는 소설을 써서 진실을 추구한다</div>
+      </div>
+      <div class="genre-item">
+        <div class="label">문체</div>
+        <div class="value">문체를 완성해갈 때쯤엔 이미 그것을 넘어서 있다</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C. 네 개의 새장 -->
 <div class="section">
   <div class="section-label">네 개의 새장</div>
   <div class="map">
     <a class="cell c1" href="interactive/reader.html?file=ch1_mirror_cage">
       <div class="ch">1 거울</div>
       <div class="novel">마담 보바리</div>
+      <div class="event">빌린 비전의 대가가 청구된다</div>
       <div class="cure">장부를 펴라</div>
     </a>
     <a class="cell c2" href="interactive/reader.html?file=ch2_telescope_cage">
       <div class="ch">2 망원경</div>
       <div class="novel">표범</div>
+      <div class="event">타이밍이 지나간다</div>
       <div class="cure">순서를 타라</div>
-    </a>
-    <a class="cell c4" href="interactive/reader.html?file=ch4_clock_cage">
-      <div class="ch">4 시계</div>
-      <div class="novel">방드르디</div>
-      <div class="cure">다음 불을 피워라</div>
     </a>
     <a class="cell c3" href="interactive/reader.html?file=ch3_stained_glass_cage">
       <div class="ch">3 스테인드글라스</div>
       <div class="novel">페스트</div>
+      <div class="event">확신이 현실에 부딪힌다</div>
       <div class="cure">확신을 교정하라</div>
+    </a>
+    <a class="cell c4" href="interactive/reader.html?file=ch4_clock_cage">
+      <div class="ch">4 시계</div>
+      <div class="novel">방드르디</div>
+      <div class="event">빌린 구조가 무너진다</div>
+      <div class="cure">다음 불을 피워라</div>
+    </a>
+  </div>
+</div>
+
+<!-- D. 누구의 삶을 바꾸는가 -->
+<div class="section">
+  <div class="section-label">누구의 삶을 바꾸는 이야기인가</div>
+  <div class="audience">
+    <div class="audience-card">
+      <h4>작가</h4>
+      <p>모두의창업 국가 프로젝트의 기회를 타고 한국 창업문화를 정립할 작가의 삶을 바꾼다.</p>
+    </div>
+    <div class="audience-card">
+      <h4>독자</h4>
+      <p>창업언어와 창업소설 작문 체계를 이용해 창작을 시작할 독자의 삶을 바꾼다.</p>
+      <div class="detail">산업별(문화·제조·의약·AI) · 타입별(로컬·기술) · 단계별(무도회장→항구→봉쇄도시→섬)</div>
+    </div>
+    <div class="audience-card">
+      <h4>정책설계자</h4>
+      <p>유연한 헌신을 통해 생산적인 실패를 장려할 창업 정책설계자의 삶을 바꾼다.</p>
+      <div class="detail">경제경영(자금·인프라, 로컬·기술 관리) · 문화(창업오디션, 실패경험 데이터베이스)</div>
+    </div>
+  </div>
+</div>
+
+<!-- E. 고민 중인 것 — 두 가설 + 열린 문제 -->
+<div class="section">
+  <div class="section-label">고민 중인 것</div>
+
+  <div class="hypo-grid">
+    <a href="interactive/readers.html" class="hypo-card hypo-s" style="text-decoration:none;">
+      <h4>팔 수 있는가 (S)</h4>
+      <div class="pct">40%</div>
+      <p>가설: 욕망과 믿음을 분리하고 독립적으로 갱신하면 유연한 헌신이 가능하다</p>
+      <div class="bottleneck">병목: 한국 사례 2건(1장·3장) 미확보</div>
+    </a>
+    <a href="interactive/emotion_trajectory.html" class="hypo-card hypo-d" style="text-decoration:none;">
+      <h4>만들 수 있는가 (D)</h4>
+      <div class="pct">35%</div>
+      <p>가설: AI에게 감정교육이 가능하다</p>
+      <div class="bottleneck">병목: 세의 변신 Gap 33%p 잔존</div>
     </a>
   </div>
 
-  <!-- Progress -->
-  <div class="progress">
-    <h3>판단하시는 분께</h3>
-    <div style="font-size:12px;color:#8899aa;margin-bottom:12px;">1차 소통 이후 달라진 것 세 가지.</div>
-    <div class="milestones">
-      <span class="done">1.</span> <span class="done"><strong>구조가 잡혔습니다.</strong> 경험→이론→사례→실천, 4섹션 × 4장. 소설과 철학을 "이론"으로 합쳤습니다. 부록 6개 완성.</span><br>
-      <span class="done">2.</span> <span class="done"><strong>캐릭터를 측정하고 있습니다.</strong> AI 감정 벡터로 다/세의 대사를 진단합니다. 다는 도착했고, 세는 아직입니다.</span><br>
-      <span class="done">3.</span> <span class="done"><strong>모두의창업 5,000명과 만나는 길을 찾고 있습니다.</strong> 실패 경력서를 빚의 장부로 바꾸는 가설을 세웠고, 인터뷰를 준비 중입니다.</span><br>
-      <br>
-      <span style="font-size:11px;color:#5a6a7a;">1차 때 여쭌 것: ①멈추는 곳 ②낭만 에세이 포함 여부. 이번에 여쭙는 것은 <a href="interactive/reader.html?file=docs/INTENT" style="color:#D4A574;text-decoration:none;">2차 소통문</a>에.</span>
+  <div class="delib">
+    <h3>판단하시는 분께 — 이런 고민 중입니다</h3>
+    <div class="delib-item">
+      <div class="q">종이로 완결되는가, 디지털로 확장되는가</div>
+      <div class="status">AI 프롬프트 실습이 본체인지 부록인지에 따라 종이 분량과 부록 위상이 달라집니다. 두 가지 구조를 모두 그려보고 있습니다.</div>
+      <a href="https://github.com/hyunjimoon/golden-cage-book/issues/33">#33 본문 품질</a>
     </div>
-  </div>
-
-  <div style="margin-top:32px;">
-    <div class="section-label" style="margin-bottom:8px;">두 가설</div>
-    <div style="font-size:12px;color:#8899aa;margin-bottom:16px;line-height:1.8;">
-      팔 수 있는 것과 만들 수 있는 것이 함께 자라야 합니다.<br>
-      한쪽만 앞서면 — 봤는데 안 뛰면 살리나, 안 봤는데 뛰면 엠마.
+    <div class="delib-item">
+      <div class="q">한국 사례를 어떤 기준으로 고를까</div>
+      <div class="status">독자 인지도, 빚의 구조적 선명함, 저자 접근성 — 세 기준의 우선순위를 저울질하고 있습니다. 인터뷰를 준비 중입니다.</div>
+      <a href="https://github.com/hyunjimoon/golden-cage-book/issues/32">#32 사업 전략</a>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-      <a href="interactive/readers.html" style="background:#0e1220;border-radius:8px;padding:16px;text-decoration:none;border:1px solid rgba(74,122,107,0.2);transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(74,122,107,0.5)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(74,122,107,0.2)';this.style.transform='none'">
-        <div style="font-size:12px;font-weight:700;color:#4A7A6B;margin-bottom:6px;">팔 수 있는가 (S)</div>
-        <div style="font-family:'DM Mono',monospace;font-size:1.6em;font-weight:700;color:#4A7A6B;">40%</div>
-        <div style="font-size:11px;color:#8899aa;line-height:1.7;margin-top:4px;">가설: 욕망과 믿음을 분리하고 독립적으로 갱신하면 유연한 헌신이 가능하다</div>
-        <div style="font-size:10px;color:#4A7A6B;margin-top:8px;">대표독자 7명 →</div>
-      </a>
-      <a href="interactive/emotion_trajectory.html" style="background:#0e1220;border-radius:8px;padding:16px;text-decoration:none;border:1px solid rgba(90,138,154,0.2);transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(90,138,154,0.5)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(90,138,154,0.2)';this.style.transform='none'">
-        <div style="font-size:12px;font-weight:700;color:#5A8A9A;margin-bottom:6px;">만들 수 있는가 (D)</div>
-        <div style="font-family:'DM Mono',monospace;font-size:1.6em;font-weight:700;color:#5A8A9A;">35%</div>
-        <div style="font-size:11px;color:#8899aa;line-height:1.7;margin-top:4px;">가설: AI에게 감정교육이 가능하다</div>
-        <div style="font-size:10px;color:#5A8A9A;margin-top:8px;">다 ✓ 세 ⚠️ →</div>
-      </a>
+    <div class="delib-item">
+      <div class="q">4장의 관계를 어떤 형태로 보여줄까</div>
+      <div class="status">평면 2×2는 순환과 인쇄에 적합하고, 정사면체는 "자기 새장은 자기에게 안 보인다"를 구조 자체로 체험시킵니다. 병행을 검토 중입니다.</div>
+      <a href="https://github.com/hyunjimoon/golden-cage-book/issues/22">#22 창업소설 작법론</a>
     </div>
   </div>
 
   <div class="links" style="margin-top:16px;">
-    <a href="https://www.dropbox.com/scl/fi/l58bvnnfoyeoa6lyx8eyj/Moon26_Golden-Cage_Thesis.pdf?rlkey=c4dra1r195yrdbmuo5iq1voxi&e=1&dl=0">Thesis (PDF)</a>
-    <a href="https://github.com/hyunjimoon/golden-cage-book/issues">함께 채울 빈칸 →</a>
+    <a href="interactive/reader.html?file=docs/INTENT">2차 소통문 →</a>
+    <a href="https://github.com/hyunjimoon/golden-cage-book/issues">열린 고민 전체 →</a>
   </div>
 </div>
 
