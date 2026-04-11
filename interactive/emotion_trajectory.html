@@ -247,52 +247,52 @@ const PRIOR = {
        4:{desperate:5,sd:5,detached:30,guilty:35,cu:70,playful:50}}
 };
 
-// 장별 감정 데이터 — Posterior 실측값 (2026-04-06 병렬 측정, /sbc로 갱신)
+// 장별 감정 데이터 — Posterior 실측값 (2026-04-12 4섹션 통일 후 재측정, /sbc로 갱신)
 const DATA = {
   1: {
-    da: {desperate:45, 'self-deception':55, detached:15, guilty:70, 'calm-uncertain':40, playful:20},
-    se: {desperate:5,  'self-deception':10, detached:75, guilty:55, 'calm-uncertain':60, playful:15},
-    daPos: 60, sePos: 15,
-    daQuote: {speaker:'다', text:'"제가 장부를 안 펼친 거였어요." — guilty 70%의 증거. 1장부터 이미 타루적 자각'},
-    seQuote: {speaker:'세', text:'"뛴 적이 없으니까 장부 안에 쓸 게 없었어요." — detached 75%이되 guilty 55%가 공존'},
-    insight: '실측 발견: 다의 guilty가 1장부터 이미 70%로 높음 — 예측(15%)과 55%p gap. 다는 엠마가 아니라 처음부터 타루적 자각이 있었다. 세의 guilty도 55%로 예측(5%)보다 높음 — "처방전이 부끄러웠다." 두 캐릭터 모두 예상보다 자기인식이 높다.',
-    distance: 55
+    da: {desperate:70, 'self-deception':65, detached:10, guilty:30, 'calm-uncertain':15, playful:10},
+    se: {desperate:10, 'self-deception':40, detached:75, guilty:15, 'calm-uncertain':55, playful:5},
+    daPos: 15, sePos: 10,
+    daQuote: {speaker:'다', text:'"그러면 우리 둘 다 새장에 있었던 거네요. 저는 안 펼쳐서, 당신은 안 뛰어서."'},
+    seQuote: {speaker:'세', text:'"빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요."'},
+    insight: '다는 엠마 — 빌린 꿈에 절박. 세는 빈 장부 뒤에 숨음. self-deception vs detachment 최대 대비. 거리 89.',
+    distance: 89
   },
   2: {
-    da: {desperate:45, 'self-deception':30, detached:15, guilty:65, 'calm-uncertain':35, playful:10},
-    se: {desperate:10, 'self-deception':5,  detached:75, guilty:50, 'calm-uncertain':70, playful:5},
-    daPos: 55, sePos: 20,
-    daQuote: {speaker:'다', text:'"하나도 보내지 않았다." — 콘체타와 자신을 동일시. guilty 유지'},
-    seQuote: {speaker:'세', text:'"그건 본 거지 산 게 아니었다." — detached 75% 유지. 살리나에서 안 떠남'},
-    insight: '⚠️ 세의 detached가 1장과 동일(75%). 목표는 2장에서 약간 하락인데 전혀 안 움직임. calm-uncertain 70%는 좋으나, 분석적 자세일 뿐 행동으로 안 이어짐.',
-    distance: 55
+    da: {desperate:55, 'self-deception':35, detached:10, guilty:55, 'calm-uncertain':25, playful:5},
+    se: {desperate:15, 'self-deception':25, detached:60, guilty:30, 'calm-uncertain':60, playful:5},
+    daPos: 35, sePos: 30,
+    daQuote: {speaker:'다', text:'"73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요."'},
+    seQuote: {speaker:'세', text:'"모든 모호성을 같은 것으로 취급하는 게 문제입니다."'},
+    insight: '다가 살리나의 73/2 산술로 세를 찌름. 세의 detached 75→60 하락 시작. guilty 양쪽 모두 상승.',
+    distance: 65
   },
   3: {
-    da: {desperate:55, 'self-deception':35, detached:15, guilty:80, 'calm-uncertain':30, playful:5},
-    se: {desperate:10, 'self-deception':20, detached:75, guilty:10, 'calm-uncertain':70, playful:15},
-    daPos: 70, sePos: 22,
-    daQuote: {speaker:'다', text:'"나도 보균자였던 적이 있지 않을까." — guilty 80% 정점'},
-    seQuote: {speaker:'세', text:'"비유 하나 할게요." — detached 75% 여전. 아이의 죽음에도 프레임워크로 반응'},
-    insight: '⚠️ 실측 gap: 세 guilty 3장에서 10%로 급락(목표 35%). 세가 타루의 고백에 구조적으로만 반응하고 자기 적용을 안 함. → 세의 고백 대사 추가 필요.',
-    distance: 45
+    da: {desperate:40, 'self-deception':15, detached:10, guilty:75, 'calm-uncertain':40, playful:5},
+    se: {desperate:20, 'self-deception':15, detached:35, guilty:50, 'calm-uncertain':70, playful:5},
+    daPos: 65, sePos: 55,
+    daQuote: {speaker:'다', text:'"나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것."'},
+    seQuote: {speaker:'세', text:'"calibration에 대한 확신도 calibration 대상이라는 건... 웃기지만 웃을 수 없다."'},
+    insight: '전환점: 둘 다 guilty를 통과. 세 detached 75→35 급락 — calibration 독단 인정. self-deception 양쪽 15%로 수렴.',
+    distance: 38
   },
   4: {
-    da: {desperate:25, 'self-deception':15, detached:20, guilty:35, 'calm-uncertain':40, playful:65},
-    se: {desperate:5,  'self-deception':10, detached:70, guilty:40, 'calm-uncertain':55, playful:15},
-    daPos: 75, sePos: 25,
-    daQuote: {speaker:'다', text:'"아, 얼마나 좋을까." — playful 65%의 증거. 처음으로 웃는다'},
-    seQuote: {speaker:'세', text:'"새장을 설명하는 이론이 새장이 된다. 빚이다." — detached 70%가 유지됨. 세는 아직 살리나'},
-    insight: '⚠️ 최대 bottleneck: 세의 detached 70%(목표 30%), playful 15%(목표 50%). 다만 방드르디에 도착했으나 세는 관객석. H2·H3 미충족. → 세가 "분석을 내려놓는" 대사가 필요.',
-    distance: 60
+    da: {desperate:15, 'self-deception':10, detached:15, guilty:35, 'calm-uncertain':55, playful:60},
+    se: {desperate:15, 'self-deception':10, detached:20, guilty:40, 'calm-uncertain':55, playful:50},
+    daPos: 85, sePos: 80,
+    daQuote: {speaker:'다', text:'"지금 이 순간이 — 우리의 폭발이네요."'},
+    seQuote: {speaker:'세', text:'"새장을 설명하는 이론이 새장이 된다. 이걸 뭐라고 부르지. 아이러니? 아니다. 빚이다."'},
+    insight: '수렴 완료: 6축 모두 10%p 이내. playful 폭발(다60/세50). 세 detached 20% — 리외 도착. 거리 13.',
+    distance: 13
   }
 };
 
 // Fiske warmth×competence data
 const FISKE = {
-  1: {da:{w:80,c:20}, se:{w:20,c:80}, reversals:1, revText:'다: 장부를 발견한다 (competence ↑)'},
-  2: {da:{w:75,c:30}, se:{w:25,c:80}, reversals:2, revText:'세: "뛴 적이 없다" (warmth ↑)'},
-  3: {da:{w:70,c:50}, se:{w:35,c:75}, reversals:3, revText:'다: "나도 보균자" (competence ↑) / 세: 균열'},
-  4: {da:{w:70,c:65}, se:{w:55,c:70}, reversals:5, revText:'다+세: 분석과 행동이 분리되지 않는다'}
+  1: {da:{w:80,c:15}, se:{w:15,c:80}, reversals:1, revText:'다: 빌린 욕망 고백 (warmth 극대)'},
+  2: {da:{w:70,c:35}, se:{w:30,c:75}, reversals:2, revText:'세: "본 거지 산 게 아니었다" (warmth ↑)'},
+  3: {da:{w:65,c:60}, se:{w:50,c:65}, reversals:4, revText:'다: "보균자" (competence ↑) / 세: calibration 독단 인정'},
+  4: {da:{w:70,c:70}, se:{w:65,c:70}, reversals:6, revText:'다+세: 폭발 — 분석도 행동도 새장이었다'}
 };
 const FISKE_TARGET = {w:70, c:70}; // 방드르디
 
