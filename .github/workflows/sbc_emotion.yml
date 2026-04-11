@@ -1,0 +1,37 @@
+name: SBC Emotion Analysis
+
+on:
+  push:
+    paths:
+      - 'chapters/ch*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Extract dialogue and analyze emotions
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/sbc_analyze.py
+
+      - name: Commit updated emotion data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet interactive/emotion_trajectory.html || \
+            (git add interactive/emotion_trajectory.html && \
+             git commit -m "auto: SBC 감정 데이터 갱신 — $(date +%Y-%m-%d)" && \
+             git push)
