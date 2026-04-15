@@ -401,7 +401,7 @@ S(데이터 분석자): 우리가 이걸 팔 수 있는가? 시장 기준으로.
 
 | 장 | 산업 | 해외 사례 | 한국 사례 | AI 도구 |
 |:--|:--|:--|:--|:--|
-| 1장 🪞 | 문화·컨텐츠 | Quibi, Juicero | (TODO) | 📊 D vs S 출처 대조 |
+| 1장 🪞 | 문화·컨텐츠 | Quibi, Juicero | 허채원 / The American Dream 2.0 | 📊 D vs S 출처 대조 |
 | 2장 🔭 | 제조 | Kodak/후지필름 | PuzzleData×풍국 | ⚖️ D vs S 안개 탐지 |
 | 3장 💒 | 의약·바이오 | Theranos/Moderna | (TODO) | 🎚️ Calibration |
 | 4장 ⏱️ | 에너지·소재 | 두산/생고뱅 | 두산 | 🔲 2×2 빈칸 |
