@@ -7,112 +7,87 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:#060910;color:#e2e8f0;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
-  .page{max-width:520px;width:100%;padding:48px 24px 64px;}
-  .back{font-size:12px;color:#3a4a5a;text-decoration:none;display:inline-block;margin-bottom:40px;transition:color 0.2s;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#060910;color:#e2e8f0;min-height:100vh;}
+  .page{max-width:480px;margin:0 auto;padding:48px 20px 64px;}
+  .back{font-size:12px;color:#3a4a5a;text-decoration:none;display:inline-block;margin-bottom:36px;}
   .back:hover{color:#e2e8f0;}
-  .title{text-align:center;margin-bottom:48px;}
-  .title h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px;}
-  .title p{font-size:13px;color:#5a6a7a;line-height:1.7;}
+  h1{font-size:1.4em;font-weight:700;text-align:center;margin-bottom:6px;}
+  .sub{font-size:13px;color:#5a6a7a;text-align:center;margin-bottom:40px;}
 
-  /* grid */
-  .grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:20px;}
+  /* 2x2 grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;}
+  .cage{padding:28px 18px;cursor:pointer;transition:background 0.3s;border:1px solid rgba(255,255,255,0.04);position:relative;}
+  .cage .ch{position:absolute;top:10px;right:12px;font-size:11px;color:#2a3a4a;}
+  .cage .icon{font-size:22px;margin-bottom:6px;}
+  .cage .name{font-size:14px;font-weight:600;margin-bottom:4px;}
+  .cage .debt{font-size:12px;color:#5a6a7a;}
+  .cage.active{background:rgba(255,255,255,0.05);}
+  .cage.pair{background:rgba(255,255,255,0.08);outline:2px solid rgba(255,255,255,0.15);outline-offset:-2px;}
 
-  /* dual bonds — horizontal thick lines */
-  .dual-bond{position:absolute;height:3px;background:rgba(255,255,255,0.08);z-index:1;transition:all 0.5s;}
-  .dual-bond.top{top:50%;left:25%;width:50%;transform:translateY(-50%);top:calc(25% - 1.5px);}
-  .dual-bond.bot{bottom:50%;left:25%;width:50%;transform:translateY(50%);bottom:calc(25% - 1.5px);}
-  .dual-bond.lit-12{background:linear-gradient(90deg,rgba(155,122,139,0.6),rgba(122,128,104,0.6));box-shadow:0 0 20px rgba(140,125,120,0.3);}
-  .dual-bond.lit-34{background:linear-gradient(90deg,rgba(74,122,107,0.6),rgba(90,138,154,0.6));box-shadow:0 0 20px rgba(80,130,130,0.3);}
+  /* 쌍대 표시 */
+  .pair-label{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;padding:0 4px;margin-bottom:2px;}
+  .pair-row{display:flex;align-items:center;justify-content:center;padding:4px 0;}
+  .pair-line{font-size:10px;color:#2a3a4a;letter-spacing:2px;}
 
-  /* flow arrows — vertical thin lines */
-  .flow{position:absolute;width:1px;background:rgba(255,255,255,0.04);z-index:0;transition:all 0.5s;}
-  .flow.left{left:25%;top:25%;height:50%;}
-  .flow.right{right:25%;top:25%;height:50%;}
-  .flow.lit{background:rgba(255,255,255,0.12);}
-  .flow-arrow{position:absolute;font-size:10px;color:rgba(255,255,255,0.06);transition:all 0.5s;}
-  .flow-arrow.lit{color:rgba(255,255,255,0.25);}
-  .flow-arrow.la{left:22%;top:50%;transform:translateY(-50%);}
-  .flow-arrow.ra{right:22%;top:50%;transform:translateY(-50%);}
+  /* 범례 */
+  .legend{text-align:center;font-size:10px;color:#2a3a4a;margin:12px 0 28px;letter-spacing:1px;}
 
-  /* cage cells */
-  .cage{position:relative;padding:32px 20px;cursor:pointer;transition:all 0.4s;border:1px solid rgba(255,255,255,0.03);z-index:2;}
-  .cage:hover{background:rgba(255,255,255,0.02);}
-  .cage .icon{font-size:24px;margin-bottom:8px;}
-  .cage .name{font-size:15px;font-weight:600;margin-bottom:4px;transition:color 0.4s;}
-  .cage .debt{font-size:12px;color:#5a6a7a;line-height:1.5;}
-  .cage .ch{position:absolute;top:12px;right:14px;font-size:11px;color:#2a3a4a;font-weight:300;}
-  .cage.active{background:rgba(255,255,255,0.03);}
-  .cage.pair{animation:pulse 1.5s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{background:rgba(255,255,255,0.02);}50%{background:rgba(255,255,255,0.06);}}
+  /* 결과 */
+  .result{overflow:hidden;max-height:0;opacity:0;transition:all 0.4s;margin-bottom:24px;}
+  .result.show{max-height:250px;opacity:1;}
+  .result-box{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.05);}
+  .r-pair{font-size:14px;font-weight:600;margin-bottom:10px;}
+  .r-warn{font-size:13px;margin-bottom:8px;}
+  .r-dilemma{font-size:12px;color:#5a6a7a;margin-bottom:8px;}
+  .r-flow{font-size:11px;color:#2a3a4a;}
 
-  /* result */
-  .result{max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.5s;opacity:0;margin-bottom:24px;}
-  .result.show{max-height:300px;opacity:1;}
-  .result-inner{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.04);}
-  .result-dual{font-size:13px;color:#8899aa;line-height:1.8;margin-bottom:12px;}
-  .result-warn{font-size:13px;font-weight:600;line-height:1.6;}
-  .result-flow{font-size:12px;color:#3a4a5a;margin-top:12px;}
-
-  /* cycle label */
-  .cycle{text-align:center;margin-bottom:32px;}
-  .cycle span{font-size:11px;color:#2a3a4a;letter-spacing:1px;}
-
-  .footer{text-align:center;padding:40px 24px;font-size:12px;color:#1a2030;}
-  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px;}
-  .links a{font-size:12px;color:#3a4a5a;text-decoration:none;transition:color 0.15s;}
+  .links{display:flex;gap:16px;flex-wrap:wrap;}
+  .links a{font-size:12px;color:#3a4a5a;text-decoration:none;}
   .links a:hover{color:#e2e8f0;}
+  .footer{text-align:center;padding:48px 20px;font-size:12px;color:#1a2030;}
 </style>
 </head>
 <body>
 <div class="page">
   <a class="back" href="../">← 대문으로</a>
-  <div class="title">
-    <h1>나는 어느 새장에 있는가?</h1>
-    <p>새장을 누르세요. 짝의 새장이 빛납니다.</p>
-  </div>
+  <h1>나는 어느 새장에 있는가?</h1>
+  <p class="sub">새장을 누르세요.</p>
 
+  <div class="pair-label"><span>━ 쌍대: 같은 실수의 앞뒤</span><span></span></div>
   <div class="grid" id="grid">
-    <div class="dual-bond top" id="bond12"></div>
-    <div class="dual-bond bot" id="bond34"></div>
-    <div class="flow left" id="flowL"></div>
-    <div class="flow right" id="flowR"></div>
-    <div class="flow-arrow la" id="arrowL">▼</div>
-    <div class="flow-arrow ra" id="arrowR">▲</div>
-
-    <div class="cage" data-ch="1" data-pair="2" data-bond="12">
+    <div class="cage" data-ch="1" data-pair="2">
       <div class="ch">1장</div>
       <div class="icon">🪞</div>
-      <div class="name">거울새장</div>
-      <div class="debt">욕망 → 관찰 오염</div>
+      <div class="name">거울</div>
+      <div class="debt">원하니까 그렇게 보인다</div>
     </div>
-    <div class="cage" data-ch="2" data-pair="1" data-bond="12">
+    <div class="cage" data-ch="2" data-pair="1">
       <div class="ch">2장</div>
       <div class="icon">🔭</div>
-      <div class="name">망원경새장</div>
-      <div class="debt">관찰 → 욕망 억압</div>
+      <div class="name">망원경</div>
+      <div class="debt">보이니까 포기한다</div>
     </div>
-    <div class="cage" data-ch="3" data-pair="4" data-bond="34">
+    <div class="cage" data-ch="3" data-pair="4">
       <div class="ch">3장</div>
       <div class="icon">💒</div>
-      <div class="name">스테인드글라스새장</div>
-      <div class="debt">확신 → 의심 차단</div>
+      <div class="name">스테인드글라스</div>
+      <div class="debt">맞으니까 반복한다</div>
     </div>
-    <div class="cage" data-ch="4" data-pair="3" data-bond="34">
+    <div class="cage" data-ch="4" data-pair="3">
       <div class="ch">4장</div>
       <div class="icon">⏱️</div>
-      <div class="name">시계새장</div>
-      <div class="debt">성공 → 변이 굶김</div>
+      <div class="name">시계</div>
+      <div class="debt">됐으니까 멈춘다</div>
     </div>
   </div>
-
-  <div class="cycle"><span>━ 쌍대 결합 &nbsp;&nbsp; │ 순환 흐름</span></div>
+  <div class="legend">━ 가로 = 쌍대 &nbsp;&nbsp; │ 세로 = 순환</div>
 
   <div class="result" id="result">
-    <div class="result-inner" id="resultInner">
-      <div class="result-dual" id="rDual"></div>
-      <div class="result-warn" id="rWarn"></div>
-      <div class="result-flow" id="rFlow"></div>
+    <div class="result-box" id="rBox">
+      <div class="r-pair" id="rPair"></div>
+      <div class="r-warn" id="rWarn"></div>
+      <div class="r-dilemma" id="rDilemma"></div>
+      <div class="r-flow" id="rFlow"></div>
     </div>
   </div>
 
@@ -122,72 +97,32 @@
     <a href="periodic_table_prototype.html">484권 빚 지도 →</a>
   </div>
 </div>
-
 <div class="footer">약의 과잉이 짝의 병이 된다.</div>
 
 <script>
-const DATA = {
-  1: { name:'거울새장', color:'155,122,139',
-       dual:'🪞↔🔭 거울과 망원경은 쌍대다. 욕망이 관찰을 오염하고(1장), 관찰이 욕망을 억압한다(2장). U⊥s 위반의 두 방향.',
-       warn:'과잉 솔직은 안개가 된다.',
-       flow:'다음 읽기: 2장 → 3장으로' },
-  2: { name:'망원경새장', color:'122,128,104',
-       dual:'🔭↔🪞 망원경과 거울은 쌍대다. 관찰이 욕망을 억압하고(2장), 욕망이 관찰을 오염한다(1장). U⊥s 위반의 두 방향.',
-       warn:'과잉 질주는 욕망이 된다.',
-       flow:'다음 읽기: 3장으로' },
-  3: { name:'스테인드글라스새장', color:'74,122,107',
-       dual:'💒↔⏱️ 스테인드글라스와 시계는 쌍대다. 확신이 의심을 차단하고(3장), 성공이 변이를 굶긴다(4장). 확신⊥변이의 두 방향.',
-       warn:'과잉 교정은 마비가 된다.',
-       flow:'다음 읽기: 4장으로' },
-  4: { name:'시계새장', color:'90,138,154',
-       dual:'⏱️↔💒 시계와 스테인드글라스는 쌍대다. 성공이 변이를 굶기고(4장), 확신이 의심을 차단한다(3장). 확신⊥변이의 두 방향.',
-       warn:'과잉 해체는 맹신이 된다.',
-       flow:'다시 읽기: 1장으로' }
+const D = {
+  1:{pair:'🪞↔🔭',warn:'과잉 솔직은 안개가 된다.',dilemma:'유연성 vs 효율 — 원하는 것과 보이는 것 사이',flow:'→ 2장을 함께 읽으세요',color:'155,122,139'},
+  2:{pair:'🔭↔🪞',warn:'과잉 질주는 욕망이 된다.',dilemma:'유연성 vs 효율 — 보이는 것과 원하는 것 사이',flow:'→ 1장을 함께 읽으세요',color:'122,128,104'},
+  3:{pair:'💒↔⏱️',warn:'과잉 교정은 마비가 된다.',dilemma:'착취 vs 탐색 — 맞는 것과 새로운 것 사이',flow:'→ 4장을 함께 읽으세요',color:'74,122,107'},
+  4:{pair:'⏱️↔💒',warn:'과잉 해체는 맹신이 된다.',dilemma:'착취 vs 탐색 — 된 것과 다음 것 사이',flow:'→ 3장을 함께 읽으세요',color:'90,138,154'}
 };
-
-const cages = document.querySelectorAll('.cage');
-let active = null;
-
-cages.forEach(cage => {
-  cage.addEventListener('click', () => {
-    const ch = cage.dataset.ch;
-    const pairCh = cage.dataset.pair;
-    const bond = cage.dataset.bond;
-    const d = DATA[ch];
-
-    // reset
-    cages.forEach(c => { c.classList.remove('active','pair'); });
-    document.getElementById('bond12').className = 'dual-bond top';
-    document.getElementById('bond34').className = 'dual-bond bot';
-    document.getElementById('flowL').classList.remove('lit');
-    document.getElementById('flowR').classList.remove('lit');
-    document.getElementById('arrowL').classList.remove('lit');
-    document.getElementById('arrowR').classList.remove('lit');
-
-    // activate
-    cage.classList.add('active');
-    document.querySelector(`.cage[data-ch="${pairCh}"]`).classList.add('pair');
-
-    // bond glow
-    if (bond === '12') document.getElementById('bond12').classList.add('lit-12');
-    else document.getElementById('bond34').classList.add('lit-34');
-
-    // flow arrows
-    document.getElementById('flowL').classList.add('lit');
-    document.getElementById('flowR').classList.add('lit');
-    document.getElementById('arrowL').classList.add('lit');
-    document.getElementById('arrowR').classList.add('lit');
-
-    // result
-    document.getElementById('rDual').textContent = d.dual;
-    document.getElementById('rWarn').textContent = d.warn;
-    document.getElementById('rWarn').style.color = `rgb(${d.color})`;
-    document.getElementById('rFlow').textContent = d.flow;
-    document.getElementById('resultInner').style.borderColor = `rgba(${d.color},0.2)`;
+const cages=document.querySelectorAll('.cage');
+cages.forEach(c=>{
+  c.addEventListener('click',()=>{
+    const ch=c.dataset.ch, p=c.dataset.pair, d=D[ch];
+    cages.forEach(x=>{x.classList.remove('active','pair');x.querySelector('.name').style.color='';});
+    c.classList.add('active');
+    c.querySelector('.name').style.color=`rgb(${d.color})`;
+    const pc=document.querySelector(`.cage[data-ch="${p}"]`);
+    pc.classList.add('pair');
+    pc.querySelector('.name').style.color=`rgb(${D[p].color})`;
+    document.getElementById('rPair').textContent=d.pair;
+    document.getElementById('rPair').style.color=`rgb(${d.color})`;
+    document.getElementById('rWarn').textContent=d.warn;
+    document.getElementById('rDilemma').textContent=d.dilemma;
+    document.getElementById('rFlow').textContent=d.flow;
+    document.getElementById('rBox').style.borderColor=`rgba(${d.color},0.2)`;
     document.getElementById('result').classList.add('show');
-
-    // color active cage name
-    cage.querySelector('.name').style.color = `rgb(${d.color})`;
   });
 });
 </script>
