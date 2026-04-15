@@ -5,287 +5,191 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나는 어느 새장에 있는가</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:#060910;color:#e2e8f0;overflow-x:hidden;min-height:100vh;}
-
-  .page{max-width:580px;margin:0 auto;padding:48px 24px 64px;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#060910;color:#e2e8f0;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
+  .page{max-width:520px;width:100%;padding:48px 24px 64px;}
   .back{font-size:12px;color:#3a4a5a;text-decoration:none;display:inline-block;margin-bottom:40px;transition:color 0.2s;}
   .back:hover{color:#e2e8f0;}
-
   .title{text-align:center;margin-bottom:48px;}
-  .title h1{font-size:1.6em;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px;}
+  .title h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px;}
   .title p{font-size:13px;color:#5a6a7a;line-height:1.7;}
 
-  /* canvas */
-  .canvas-wrap{display:flex;justify-content:center;margin-bottom:40px;position:relative;}
-  canvas{display:block;cursor:grab;touch-action:none;}
-  canvas:active{cursor:grabbing;}
-  .canvas-hint{position:absolute;bottom:-16px;font-size:10px;color:#2a3a4a;text-align:center;width:100%;transition:opacity 1s;}
+  /* grid */
+  .grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:20px;}
 
-  /* quiz: 1-2-3 buttons */
-  .quiz{margin-bottom:40px;}
-  .q-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .q-row:last-child{border-bottom:none;}
-  .q-left{display:flex;align-items:center;gap:10px;}
-  .q-icon{font-size:15px;flex-shrink:0;}
-  .q-text{font-size:13px;color:#8899aa;line-height:1.5;}
-  .q-btns{display:flex;gap:4px;}
-  .q-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.08);background:transparent;color:#5a6a7a;font-family:'DM Mono',monospace;font-size:13px;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;}
-  .q-btn:hover{border-color:rgba(255,255,255,0.2);color:#e2e8f0;}
-  .q-btn.sel{border-color:transparent;color:#fff;transform:scale(1.1);}
-  .q-row[data-ch="1"] .q-btn.sel{background:#9B7A8B;box-shadow:0 0 16px rgba(155,122,139,0.35);}
-  .q-row[data-ch="2"] .q-btn.sel{background:#7A8068;box-shadow:0 0 16px rgba(122,128,104,0.35);}
-  .q-row[data-ch="3"] .q-btn.sel{background:#4A7A6B;box-shadow:0 0 16px rgba(74,122,107,0.35);}
-  .q-row[data-ch="4"] .q-btn.sel{background:#5A8A9A;box-shadow:0 0 16px rgba(90,138,154,0.35);}
-  .q-legend{display:flex;justify-content:flex-end;gap:16px;font-size:10px;color:#2a3a4a;margin-bottom:16px;padding-right:4px;}
+  /* dual bonds — horizontal thick lines */
+  .dual-bond{position:absolute;height:3px;background:rgba(255,255,255,0.08);z-index:1;transition:all 0.5s;}
+  .dual-bond.top{top:50%;left:25%;width:50%;transform:translateY(-50%);top:calc(25% - 1.5px);}
+  .dual-bond.bot{bottom:50%;left:25%;width:50%;transform:translateY(50%);bottom:calc(25% - 1.5px);}
+  .dual-bond.lit-12{background:linear-gradient(90deg,rgba(155,122,139,0.6),rgba(122,128,104,0.6));box-shadow:0 0 20px rgba(140,125,120,0.3);}
+  .dual-bond.lit-34{background:linear-gradient(90deg,rgba(74,122,107,0.6),rgba(90,138,154,0.6));box-shadow:0 0 20px rgba(80,130,130,0.3);}
+
+  /* flow arrows — vertical thin lines */
+  .flow{position:absolute;width:1px;background:rgba(255,255,255,0.04);z-index:0;transition:all 0.5s;}
+  .flow.left{left:25%;top:25%;height:50%;}
+  .flow.right{right:25%;top:25%;height:50%;}
+  .flow.lit{background:rgba(255,255,255,0.12);}
+  .flow-arrow{position:absolute;font-size:10px;color:rgba(255,255,255,0.06);transition:all 0.5s;}
+  .flow-arrow.lit{color:rgba(255,255,255,0.25);}
+  .flow-arrow.la{left:22%;top:50%;transform:translateY(-50%);}
+  .flow-arrow.ra{right:22%;top:50%;transform:translateY(-50%);}
+
+  /* cage cells */
+  .cage{position:relative;padding:32px 20px;cursor:pointer;transition:all 0.4s;border:1px solid rgba(255,255,255,0.03);z-index:2;}
+  .cage:hover{background:rgba(255,255,255,0.02);}
+  .cage .icon{font-size:24px;margin-bottom:8px;}
+  .cage .name{font-size:15px;font-weight:600;margin-bottom:4px;transition:color 0.4s;}
+  .cage .debt{font-size:12px;color:#5a6a7a;line-height:1.5;}
+  .cage .ch{position:absolute;top:12px;right:14px;font-size:11px;color:#2a3a4a;font-weight:300;}
+  .cage.active{background:rgba(255,255,255,0.03);}
+  .cage.pair{animation:pulse 1.5s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{background:rgba(255,255,255,0.02);}50%{background:rgba(255,255,255,0.06);}}
 
   /* result */
-  .result{opacity:0;transform:translateY(16px);transition:all 0.5s;pointer-events:none;margin-bottom:32px;}
-  .result.show{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .result-card{background:#0c1018;border-radius:12px;padding:24px;border:1px solid rgba(255,255,255,0.04);}
-  .result-label{font-size:10px;color:#3a4a5a;letter-spacing:2px;font-weight:600;margin-bottom:6px;}
-  .result-cage{font-size:1.2em;font-weight:700;margin-bottom:4px;}
-  .result-sub{font-size:13px;color:#5a6a7a;margin-bottom:4px;}
-  .result-event{font-size:12px;color:#5a6a7a;margin-bottom:16px;font-style:italic;}
-  .result-insight{font-size:12px;color:#8899aa;line-height:1.8;margin-bottom:20px;padding:12px;background:rgba(255,255,255,0.02);border-radius:6px;}
+  .result{max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.5s;opacity:0;margin-bottom:24px;}
+  .result.show{max-height:300px;opacity:1;}
+  .result-inner{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.04);}
+  .result-dual{font-size:13px;color:#8899aa;line-height:1.8;margin-bottom:12px;}
+  .result-warn{font-size:13px;font-weight:600;line-height:1.6;}
+  .result-flow{font-size:12px;color:#3a4a5a;margin-top:12px;}
 
-  .sym-row{display:grid;grid-template-columns:60px 1fr;gap:8px;align-items:start;margin-bottom:8px;}
-  .sym-label{font-size:11px;color:#5a6a7a;padding-top:9px;}
-  .sym-input{position:relative;}
-  .sym-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:34px;line-height:1.5;}
-  .sym-input textarea:focus{outline:none;border-color:rgba(255,255,255,0.15);}
-  .sym-saved{position:absolute;right:8px;top:8px;font-size:10px;color:#4A7A6B;opacity:0;transition:opacity 0.3s;}
-  .sym-saved.show{opacity:1;}
-
-  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;}
-  .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.15s;}
-  .links a:hover{color:#e2e8f0;}
+  /* cycle label */
+  .cycle{text-align:center;margin-bottom:32px;}
+  .cycle span{font-size:11px;color:#2a3a4a;letter-spacing:1px;}
 
   .footer{text-align:center;padding:40px 24px;font-size:12px;color:#1a2030;}
-
-  @media(max-width:480px){
-    .q-row{grid-template-columns:1fr;gap:8px;}
-    .q-btns{justify-content:flex-start;}
-  }
+  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px;}
+  .links a{font-size:12px;color:#3a4a5a;text-decoration:none;transition:color 0.15s;}
+  .links a:hover{color:#e2e8f0;}
 </style>
 </head>
 <body>
 <div class="page">
-
   <a class="back" href="../">← 대문으로</a>
-
   <div class="title">
     <h1>나는 어느 새장에 있는가?</h1>
-    <p>각 문장에 1~3점을 매기세요. 정사면체가 반응합니다.</p>
+    <p>새장을 누르세요. 짝의 새장이 빛납니다.</p>
   </div>
 
-  <div class="canvas-wrap">
-    <canvas id="tetra" width="320" height="320"></canvas>
-    <div class="canvas-hint">드래그하여 회전</div>
+  <div class="grid" id="grid">
+    <div class="dual-bond top" id="bond12"></div>
+    <div class="dual-bond bot" id="bond34"></div>
+    <div class="flow left" id="flowL"></div>
+    <div class="flow right" id="flowR"></div>
+    <div class="flow-arrow la" id="arrowL">▼</div>
+    <div class="flow-arrow ra" id="arrowR">▲</div>
+
+    <div class="cage" data-ch="1" data-pair="2" data-bond="12">
+      <div class="ch">1장</div>
+      <div class="icon">🪞</div>
+      <div class="name">거울새장</div>
+      <div class="debt">욕망 → 관찰 오염</div>
+    </div>
+    <div class="cage" data-ch="2" data-pair="1" data-bond="12">
+      <div class="ch">2장</div>
+      <div class="icon">🔭</div>
+      <div class="name">망원경새장</div>
+      <div class="debt">관찰 → 욕망 억압</div>
+    </div>
+    <div class="cage" data-ch="3" data-pair="4" data-bond="34">
+      <div class="ch">3장</div>
+      <div class="icon">💒</div>
+      <div class="name">스테인드글라스새장</div>
+      <div class="debt">확신 → 의심 차단</div>
+    </div>
+    <div class="cage" data-ch="4" data-pair="3" data-bond="34">
+      <div class="ch">4장</div>
+      <div class="icon">⏱️</div>
+      <div class="name">시계새장</div>
+      <div class="debt">성공 → 변이 굶김</div>
+    </div>
   </div>
 
-  <div class="quiz">
-    <div class="q-legend"><span>1 조금</span><span>2 꽤</span><span>3 매우</span></div>
-    <div class="q-row" data-ch="1" data-face="0">
-      <div class="q-left"><span class="q-icon">🪞</span><span class="q-text">빌려서라도 뛰고 싶다</span></div>
-      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
-    </div>
-    <div class="q-row" data-ch="2" data-face="1">
-      <div class="q-left"><span class="q-icon">🔭</span><span class="q-text">보이지만 못 움직인다</span></div>
-      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
-    </div>
-    <div class="q-row" data-ch="3" data-face="2">
-      <div class="q-left"><span class="q-icon">💒</span><span class="q-text">확신이 증거보다 앞선다</span></div>
-      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
-    </div>
-    <div class="q-row" data-ch="4" data-face="3">
-      <div class="q-left"><span class="q-icon">⏱️</span><span class="q-text">성공한 방식이 다음 시도를 막는다</span></div>
-      <div class="q-btns"><button class="q-btn" data-v="1">1</button><button class="q-btn" data-v="2">2</button><button class="q-btn" data-v="3">3</button></div>
-    </div>
-  </div>
+  <div class="cycle"><span>━ 쌍대 결합 &nbsp;&nbsp; │ 순환 흐름</span></div>
 
   <div class="result" id="result">
-    <div class="result-card" id="result-card">
-      <div class="result-label">당신의 새장</div>
-      <div class="result-cage" id="r-cage"></div>
-      <div class="result-sub" id="r-sub"></div>
-      <div class="result-event" id="r-event"></div>
-      <div class="result-insight" id="r-insight"></div>
-      <div id="r-symbols"></div>
-    </div>
-    <div class="links">
-      <a href="symbols.html">12상징 전체 →</a>
-      <a href="reader.html?file=appendices/app5_prompting">AI 프롬프트 →</a>
-      <a href="periodic_table_prototype.html">484권 빚 지도 →</a>
+    <div class="result-inner" id="resultInner">
+      <div class="result-dual" id="rDual"></div>
+      <div class="result-warn" id="rWarn"></div>
+      <div class="result-flow" id="rFlow"></div>
     </div>
   </div>
 
+  <div class="links">
+    <a href="emotion_trajectory.html">감정 궤적 →</a>
+    <a href="symbols.html">12상징 →</a>
+    <a href="periodic_table_prototype.html">484권 빚 지도 →</a>
+  </div>
 </div>
 
-<div class="footer">자기 새장은 자기에게 안 보인다 — 정사면체의 안쪽 면처럼.</div>
+<div class="footer">약의 과잉이 짝의 병이 된다.</div>
 
 <script>
-const CAGES = [
-  { ch:1, name:'거울새장', color:[155,122,139], title:'빌린 욕망에서 내 욕망으로',
-    event:'청구서가 도착한다',
-    insight:'빌려서라도 뛰고 싶은 에너지는 진짜입니다. 문제는 에너지의 출처입니다. 엠마도 욕망이 가짜가 아니었습니다 — 출처가 빌린 것이었을 뿐. 장부를 펴서 내 것과 빌린 것을 구분하는 것이 첫 걸음입니다.',
-    symbols:['무도회장','청구서','장부'],
-    placeholders:['나의 무도회장은...','나의 청구서는...','나의 장부에는...']
-  },
-  { ch:2, name:'망원경새장', color:[122,128,104], title:'빌린 품위에서 내 품위로',
-    event:'타이밍이 지나간다',
-    insight:'다 보이는데 안 움직이는 것은 겁이 아닙니다. 지키고 싶은 것이 있기 때문입니다. 살리나의 표범처럼. 문제는 지키려는 것이 내 것인지 빌린 품위인지입니다. 안개 속에서 되돌릴 수 있는 것부터 시험하세요.',
-    symbols:['항구','표범','안개'],
-    placeholders:['나의 항구에서는...','나의 표범은...','나의 첫 시험은...']
-  },
-  { ch:3, name:'스테인드글라스새장', color:[74,122,107], title:'빌린 확신에서 내 확신으로',
-    event:'확신이 현실에 부딪힌다',
-    insight:'확신이 강할수록 증거가 안 보입니다. 스테인드글라스가 아름다울수록 바깥이 안 보이듯. 리외는 60%인 채로 주사기를 들었습니다. 완벽한 확신이 아니라 교정 가능한 확신이 필요합니다.',
-    symbols:['봉쇄된 도시','주사기','혈청'],
-    placeholders:['나의 봉쇄된 도시는...','나의 주사기는...','나의 혈청은...']
-  },
-  { ch:4, name:'시계새장', color:[90,138,154], title:'빌린 질서에서 내 질서로',
-    event:'빌린 구조가 무너진다',
-    insight:'성공한 방식을 반복하는 것이 가장 안전해 보입니다. 로빈슨도 그랬습니다 — 시계와 달력과 헌법으로 섬을 관리하면서. 담뱃대 하나가 그 질서를 폭파했을 때, 비로소 파도 소리가 들렸습니다.',
-    symbols:['섬','담뱃대','불씨'],
-    placeholders:['나의 섬은...','나의 담뱃대는...','나의 다음 불은...']
-  }
-];
+const DATA = {
+  1: { name:'거울새장', color:'155,122,139',
+       dual:'🪞↔🔭 거울과 망원경은 쌍대다. 욕망이 관찰을 오염하고(1장), 관찰이 욕망을 억압한다(2장). U⊥s 위반의 두 방향.',
+       warn:'과잉 솔직은 안개가 된다.',
+       flow:'다음 읽기: 2장 → 3장으로' },
+  2: { name:'망원경새장', color:'122,128,104',
+       dual:'🔭↔🪞 망원경과 거울은 쌍대다. 관찰이 욕망을 억압하고(2장), 욕망이 관찰을 오염한다(1장). U⊥s 위반의 두 방향.',
+       warn:'과잉 질주는 욕망이 된다.',
+       flow:'다음 읽기: 3장으로' },
+  3: { name:'스테인드글라스새장', color:'74,122,107',
+       dual:'💒↔⏱️ 스테인드글라스와 시계는 쌍대다. 확신이 의심을 차단하고(3장), 성공이 변이를 굶긴다(4장). 확신⊥변이의 두 방향.',
+       warn:'과잉 교정은 마비가 된다.',
+       flow:'다음 읽기: 4장으로' },
+  4: { name:'시계새장', color:'90,138,154',
+       dual:'⏱️↔💒 시계와 스테인드글라스는 쌍대다. 성공이 변이를 굶기고(4장), 확신이 의심을 차단한다(3장). 확신⊥변이의 두 방향.',
+       warn:'과잉 해체는 맹신이 된다.',
+       flow:'다시 읽기: 1장으로' }
+};
 
-// === 3D Tetrahedron ===
-const canvas = document.getElementById('tetra');
-const ctx = canvas.getContext('2d');
-const SIZE = 320;
-const CX = SIZE/2, CY = SIZE/2, R = 105;
+const cages = document.querySelectorAll('.cage');
+let active = null;
 
-const S2 = Math.sqrt(2), S6 = Math.sqrt(6);
-const verts3D = [[0,1,0],[2*S2/3,-1/3,0],[-S2/3,-1/3,S6/3],[-S2/3,-1/3,-S6/3]];
-const faces = [[0,1,2],[0,2,3],[0,3,1],[1,3,2]];
-const faceValues = [0,0,0,0];
+cages.forEach(cage => {
+  cage.addEventListener('click', () => {
+    const ch = cage.dataset.ch;
+    const pairCh = cage.dataset.pair;
+    const bond = cage.dataset.bond;
+    const d = DATA[ch];
 
-let rotX = -0.3, rotY = 0, autoRot = true;
-let dragStart = null, dragRotX = 0, dragRotY = 0;
+    // reset
+    cages.forEach(c => { c.classList.remove('active','pair'); });
+    document.getElementById('bond12').className = 'dual-bond top';
+    document.getElementById('bond34').className = 'dual-bond bot';
+    document.getElementById('flowL').classList.remove('lit');
+    document.getElementById('flowR').classList.remove('lit');
+    document.getElementById('arrowL').classList.remove('lit');
+    document.getElementById('arrowR').classList.remove('lit');
 
-function rot(p, rx, ry) {
-  let [x,y,z] = p;
-  let x1 = x*Math.cos(ry)-z*Math.sin(ry), z1 = x*Math.sin(ry)+z*Math.cos(ry);
-  let y1 = y*Math.cos(rx)-z1*Math.sin(rx), z2 = y*Math.sin(rx)+z1*Math.cos(rx);
-  return [x1,y1,z2];
-}
-function proj(p) {
-  const d=4, s=R*d/(d+p[2]);
-  return [CX+p[0]*s, CY-p[1]*s, p[2]];
-}
-function faceZ(f,r){ let s=0; f.forEach(i=>s+=r[i][2]); return s/3; }
-function faceNZ(f,p){ const[a,b,c]=f.map(i=>p[i]); return(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]); }
+    // activate
+    cage.classList.add('active');
+    document.querySelector(`.cage[data-ch="${pairCh}"]`).classList.add('pair');
 
-function draw() {
-  ctx.clearRect(0,0,SIZE,SIZE);
-  const g=ctx.createRadialGradient(CX,CY,0,CX,CY,170);
-  g.addColorStop(0,'rgba(40,50,70,0.12)'); g.addColorStop(1,'transparent');
-  ctx.fillStyle=g; ctx.fillRect(0,0,SIZE,SIZE);
+    // bond glow
+    if (bond === '12') document.getElementById('bond12').classList.add('lit-12');
+    else document.getElementById('bond34').classList.add('lit-34');
 
-  const rd = verts3D.map(v=>rot(v,rotX,rotY));
-  const pj = rd.map(v=>proj(v));
-  const order = [0,1,2,3].map(i=>({i,z:faceZ(faces[i],rd)})).sort((a,b)=>a.z-b.z);
+    // flow arrows
+    document.getElementById('flowL').classList.add('lit');
+    document.getElementById('flowR').classList.add('lit');
+    document.getElementById('arrowL').classList.add('lit');
+    document.getElementById('arrowR').classList.add('lit');
 
-  order.forEach(({i})=>{
-    const f=faces[i], pts=f.map(j=>pj[j]), nz=faceNZ(f,pj);
-    const c=CAGES[i].color, val=faceValues[i]/3;
-    const a = nz>0 ? 0.06+val*0.5 : (0.06+val*0.5)*0.3;
-    ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
-    ctx.lineTo(pts[1][0],pts[1][1]); ctx.lineTo(pts[2][0],pts[2][1]); ctx.closePath();
-    ctx.fillStyle=`rgba(${c},${a})`; ctx.fill();
-    ctx.strokeStyle=`rgba(${c},${0.12+val*0.45})`; ctx.lineWidth=0.7+val*1.5; ctx.stroke();
-    if(val>0.5 && nz>0){
-      const cx=(pts[0][0]+pts[1][0]+pts[2][0])/3, cy=(pts[0][1]+pts[1][1]+pts[2][1])/3;
-      const gw=ctx.createRadialGradient(cx,cy,0,cx,cy,55);
-      gw.addColorStop(0,`rgba(${c},${val*0.15})`); gw.addColorStop(1,'transparent');
-      ctx.fillStyle=gw; ctx.fill();
-    }
-  });
-  pj.forEach(p=>{ ctx.beginPath(); ctx.arc(p[0],p[1],2,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fill(); });
-}
-function animate(){ if(autoRot) rotY+=0.004; draw(); requestAnimationFrame(animate); }
+    // result
+    document.getElementById('rDual').textContent = d.dual;
+    document.getElementById('rWarn').textContent = d.warn;
+    document.getElementById('rWarn').style.color = `rgb(${d.color})`;
+    document.getElementById('rFlow').textContent = d.flow;
+    document.getElementById('resultInner').style.borderColor = `rgba(${d.color},0.2)`;
+    document.getElementById('result').classList.add('show');
 
-canvas.addEventListener('pointerdown',e=>{
-  autoRot=false; dragStart={x:e.clientX,y:e.clientY}; dragRotX=rotX; dragRotY=rotY;
-  canvas.setPointerCapture(e.pointerId);
-  document.querySelector('.canvas-hint').style.opacity='0';
-});
-canvas.addEventListener('pointermove',e=>{
-  if(!dragStart)return;
-  rotY=dragRotY+(e.clientX-dragStart.x)*0.008;
-  rotX=dragRotX+(e.clientY-dragStart.y)*0.008;
-});
-canvas.addEventListener('pointerup',()=>{dragStart=null;});
-
-const dpr=window.devicePixelRatio||1;
-canvas.width=SIZE*dpr; canvas.height=SIZE*dpr;
-canvas.style.width=SIZE+'px'; canvas.style.height=SIZE+'px';
-ctx.scale(dpr,dpr);
-animate();
-
-// === Quiz: 1-2-3 buttons ===
-let answered = new Set();
-
-document.querySelectorAll('.q-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const row = btn.closest('.q-row');
-    const fi = parseInt(row.dataset.face);
-    const val = parseInt(btn.dataset.v);
-
-    // toggle: click same = deselect
-    row.querySelectorAll('.q-btn').forEach(b => b.classList.remove('sel'));
-    btn.classList.add('sel');
-
-    faceValues[fi] = val;
-    answered.add(fi);
-    if (answered.size >= 2) showResult();
+    // color active cage name
+    cage.querySelector('.name').style.color = `rgb(${d.color})`;
   });
 });
-
-function showResult() {
-  let maxVal = -1, maxIdx = 0;
-  faceValues.forEach((v,i) => { if (v > maxVal) { maxVal = v; maxIdx = i; } });
-  const cage = CAGES[maxIdx];
-
-  document.getElementById('r-cage').textContent = cage.name;
-  document.getElementById('r-cage').style.color = `rgb(${cage.color})`;
-  document.getElementById('r-sub').textContent = cage.title;
-  document.getElementById('r-event').textContent = cage.event;
-  document.getElementById('r-insight').textContent = cage.insight;
-  document.getElementById('result-card').style.borderColor = `rgba(${cage.color},0.2)`;
-
-  const symEl = document.getElementById('r-symbols');
-  symEl.innerHTML = '';
-  cage.symbols.forEach((sym,i) => {
-    const key = 'tetra_' + cage.ch + '_' + i;
-    const saved = localStorage.getItem(key) || '';
-    symEl.innerHTML += `
-      <div class="sym-row">
-        <div class="sym-label">${sym}</div>
-        <div class="sym-input">
-          <textarea data-save="${key}" placeholder="${cage.placeholders[i]}">${saved}</textarea>
-          <div class="sym-saved">저장됨</div>
-        </div>
-      </div>`;
-  });
-  symEl.querySelectorAll('textarea[data-save]').forEach(ta => {
-    let t;
-    ta.addEventListener('input', () => {
-      clearTimeout(t);
-      t = setTimeout(() => {
-        localStorage.setItem(ta.dataset.save, ta.value);
-        const msg = ta.nextElementSibling;
-        msg.classList.add('show');
-        setTimeout(() => msg.classList.remove('show'), 1200);
-      }, 400);
-    });
-  });
-  document.getElementById('result').classList.add('show');
-}
 </script>
 </body>
 </html>
