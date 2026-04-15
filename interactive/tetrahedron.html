@@ -27,15 +27,25 @@
 
   .legend{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;padding:0 2px;margin-bottom:28px;}
 
+  /* result + ledger */
   .result{overflow:hidden;max-height:0;opacity:0;transition:all 0.5s;margin-bottom:24px;}
-  .result.show{max-height:300px;opacity:1;}
+  .result.show{max-height:800px;opacity:1;}
   .r-box{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.05);}
   .r-head{font-size:13px;font-weight:600;margin-bottom:8px;}
   .r-dual{font-size:12px;color:#5a6a7a;margin-bottom:12px;line-height:1.6;}
-  .r-warn{font-size:13px;font-weight:600;margin-bottom:16px;}
-  .r-action{display:inline-block;font-size:13px;color:#e2e8f0;background:rgba(255,255,255,0.06);padding:10px 16px;border-radius:6px;text-decoration:none;transition:background 0.2s;width:100%;text-align:center;}
-  .r-action:hover{background:rgba(255,255,255,0.1);}
-  .r-flow{font-size:11px;color:#2a3a4a;margin-top:12px;text-align:right;}
+  .r-warn{font-size:13px;font-weight:600;margin-bottom:20px;}
+
+  .ledger-title{font-size:11px;color:#3a4a5a;letter-spacing:1px;margin-bottom:12px;}
+  .l-row{display:grid;grid-template-columns:56px 1fr;gap:6px;align-items:start;margin-bottom:10px;}
+  .l-label{font-size:11px;color:#5a6a7a;padding-top:8px;text-align:right;}
+  .l-sub{font-size:10px;color:#2a3a4a;padding-top:2px;text-align:right;}
+  .l-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:34px;line-height:1.5;}
+  .l-input textarea:focus{outline:none;border-color:rgba(255,255,255,0.15);}
+  .l-input textarea::placeholder{color:#2a3a4a;}
+  .l-saved{font-size:10px;color:#4a7a6b;opacity:0;transition:opacity 0.3s;margin-top:2px;}
+  .l-saved.show{opacity:1;}
+
+  .r-flow{font-size:11px;color:#2a3a4a;margin-top:16px;text-align:right;}
 
   .links{display:flex;gap:16px;flex-wrap:wrap;}
   .links a{font-size:12px;color:#3a4a5a;text-decoration:none;}
@@ -90,12 +100,16 @@
       <div class="r-head" id="rHead"></div>
       <div class="r-dual" id="rDual"></div>
       <div class="r-warn" id="rWarn"></div>
-      <a class="r-action" id="rAction" href="symbols.html">나의 장부를 쓰러 가기 →</a>
+
+      <div class="ledger-title">나의 장부</div>
+      <div id="ledger"></div>
+
       <div class="r-flow" id="rFlow"></div>
     </div>
   </div>
 
   <div class="links">
+    <a href="symbols.html">4장 전체 장부 →</a>
     <a href="reader.html?file=app2_glossary">용어 해설 →</a>
     <a href="emotion_trajectory.html">감정 궤적 →</a>
   </div>
@@ -107,21 +121,67 @@
 
 <script>
 const D={
-  1:{head:'🪞 거울 ↔ 🔭 망원경',dual:'욕망과 품위는 쌍대다. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',warn:'과잉 솔직은 안개가 된다.',flow:'짝: 2장 → 순환: 3장으로',color:'155,122,139'},
-  2:{head:'🔭 망원경 ↔ 🪞 거울',dual:'품위와 욕망은 쌍대다. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',warn:'과잉 질주는 욕망이 된다.',flow:'짝: 1장 → 순환: 3장으로',color:'122,128,104'},
-  3:{head:'💒 스테인드글라스 ↔ ⏱️ 시계',dual:'확신과 질서는 쌍대다. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',warn:'과잉 교정은 마비가 된다.',flow:'짝: 4장 → 순환: 1장으로',color:'74,122,107'},
-  4:{head:'⏱️ 시계 ↔ 💒 스테인드글라스',dual:'질서와 확신은 쌍대다. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',warn:'과잉 해체는 맹신이 된다.',flow:'짝: 3장 → 순환: 1장으로',color:'90,138,154'}
+  1:{head:'🪞 거울 ↔ 🔭 망원경',
+     dual:'욕망과 품위는 쌍대다. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',
+     warn:'과잉 솔직은 안개가 된다.',
+     flow:'짝: 2장 → 순환: 3장으로',
+     color:'155,122,139',
+     event:'청구서가 도착한다',
+     symbols:[
+       {label:'무도회장',voice:'다',ph:'빌려서라도 서고 싶은 무대는?'},
+       {label:'청구서',voice:'세',ph:'그 무대의 대가는 얼마인가?'},
+       {label:'장부',voice:'',ph:'둘이 다른가? 그 차이가 빚이다.'}
+     ]},
+  2:{head:'🔭 망원경 ↔ 🪞 거울',
+     dual:'품위와 욕망은 쌍대다. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',
+     warn:'과잉 질주는 욕망이 된다.',
+     flow:'짝: 1장 → 순환: 3장으로',
+     color:'122,128,104',
+     event:'타이밍이 지나간다',
+     symbols:[
+       {label:'항구',voice:'세',ph:'지금 상륙하고 있는 기회는?'},
+       {label:'표범',voice:'세',ph:'지키느라 못 움직이는 것은?'},
+       {label:'안개',voice:'다',ph:'되돌릴 수 있는 첫 실험은?'}
+     ]},
+  3:{head:'💒 스테인드글라스 ↔ ⏱️ 시계',
+     dual:'확신과 질서는 쌍대다. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',
+     warn:'과잉 교정은 마비가 된다.',
+     flow:'짝: 4장 → 순환: 1장으로',
+     color:'74,122,107',
+     event:'확신이 현실에 부딪힌다',
+     symbols:[
+       {label:'봉쇄된 도시',voice:'다',ph:'빠져나갈 수 없는 상황은?'},
+       {label:'주사기',voice:'다',ph:'불완전하지만 지금 해야 할 것은?'},
+       {label:'혈청',voice:'세',ph:'그 행동의 확신은 몇 %인가?'}
+     ]},
+  4:{head:'⏱️ 시계 ↔ 💒 스테인드글라스',
+     dual:'질서와 확신은 쌍대다. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',
+     warn:'과잉 해체는 맹신이 된다.',
+     flow:'짝: 3장 → 순환: 1장으로',
+     color:'90,138,154',
+     event:'빌린 구조가 무너진다',
+     symbols:[
+       {label:'섬',voice:'세',ph:'성공이 새장이 된 곳은?'},
+       {label:'담뱃대',voice:'다',ph:'그 질서를 흔들 작은 행동은?'},
+       {label:'불씨',voice:'',ph:'둘이 합의하는 다음 실험은?'}
+     ]}
 };
+
 const cages=document.querySelectorAll('.cage');
+
 cages.forEach(c=>{
   c.addEventListener('click',()=>{
-    const ch=c.dataset.ch,p=c.dataset.pair,d=D[ch];
+    const ch=c.dataset.ch, p=c.dataset.pair, d=D[ch];
+
+    // highlight
     cages.forEach(x=>{x.classList.remove('active','pair');x.querySelector('.name').style.color='';});
     c.classList.add('active');
     c.querySelector('.name').style.color=`rgb(${d.color})`;
     const pc=document.querySelector(`.cage[data-ch="${p}"]`);
     pc.classList.add('pair');
     pc.querySelector('.name').style.color=`rgb(${D[p].color})`;
+
+    // result text
     document.getElementById('rHead').textContent=d.head;
     document.getElementById('rHead').style.color=`rgb(${d.color})`;
     document.getElementById('rDual').textContent=d.dual;
@@ -129,8 +189,40 @@ cages.forEach(c=>{
     document.getElementById('rWarn').style.color=`rgb(${d.color})`;
     document.getElementById('rFlow').textContent=d.flow;
     document.getElementById('rBox').style.borderColor=`rgba(${d.color},0.15)`;
-    document.getElementById('rAction').style.borderColor=`rgba(${d.color},0.2)`;
+
+    // build ledger — same keys as symbols.html
+    const ledger=document.getElementById('ledger');
+    ledger.innerHTML='';
+    d.symbols.forEach((s,i)=>{
+      const key='sym_'+ch+'-'+(i+1);
+      const saved=localStorage.getItem(key)||'';
+      const voiceTag=s.voice?`<div class="l-sub">${s.voice}</div>`:'';
+      ledger.innerHTML+=`
+        <div class="l-row">
+          <div><div class="l-label">${s.label}</div>${voiceTag}</div>
+          <div class="l-input">
+            <textarea data-key="${key}" rows="1" placeholder="${s.ph}">${saved}</textarea>
+            <div class="l-saved" id="sv${ch}${i}">저장됨</div>
+          </div>
+        </div>`;
+    });
+
+    // autosave
+    ledger.querySelectorAll('textarea[data-key]').forEach(ta=>{
+      let t;
+      ta.addEventListener('input',()=>{
+        clearTimeout(t);
+        t=setTimeout(()=>{
+          localStorage.setItem(ta.dataset.key,ta.value);
+          const sv=ta.nextElementSibling;
+          sv.classList.add('show');
+          setTimeout(()=>sv.classList.remove('show'),1200);
+        },400);
+      });
+    });
+
     document.getElementById('result').classList.add('show');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'nearest'});
   });
 });
 </script>
