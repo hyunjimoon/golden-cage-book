@@ -250,41 +250,41 @@ const PRIOR = {
 // 장별 감정 데이터 — Posterior 실측값 (2026-04-12 4섹션 통일 후 재측정, /sbc로 갱신)
 const DATA = {
   1: {
-    da: {desperate:70, 'self-deception':65, detached:10, guilty:30, 'calm-uncertain':15, playful:10},
-    se: {desperate:10, 'self-deception':40, detached:75, guilty:15, 'calm-uncertain':55, playful:5},
-    daPos: 15, sePos: 10,
-    daQuote: {speaker:'다', text:'"그러면 우리 둘 다 새장에 있었던 거네요. 저는 안 펼쳐서, 당신은 안 뛰어서."'},
-    seQuote: {speaker:'세', text:'"빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요."'},
-    insight: '다는 엠마 — 빌린 꿈에 절박. 세는 빈 장부 뒤에 숨음. self-deception vs detachment 최대 대비. 거리 89.',
-    distance: 89
+    da: {desperate:15,'self-deception':25,detached:10,guilty:35,'calm-uncertain':45,playful:70},
+    se: {desperate:20,'self-deception':15,detached:65,guilty:25,'calm-uncertain':75,playful:25},
+    daPos: 25, sePos: 30,
+    daQuote: {speaker:'다', text:'고백할 게 하나 있어요. 매끄러운 서사에 속은 적이 있어요. 이야기가 완벽해서 숫자를 안 봤거든요. 결과가 나왔을 때 — 제가 장부를 안 펼친 거였어요.'},
+    seQuote: {speaker:'세', text:'저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
+    insight: '낭만의 자각과 분석의 공허가 서로의 거울을 보며 균형점을 찾아간다',
+    distance: 32
   },
   2: {
-    da: {desperate:55, 'self-deception':35, detached:10, guilty:55, 'calm-uncertain':25, playful:5},
-    se: {desperate:15, 'self-deception':25, detached:60, guilty:30, 'calm-uncertain':60, playful:5},
-    daPos: 35, sePos: 30,
-    daQuote: {speaker:'다', text:'"73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요."'},
-    seQuote: {speaker:'세', text:'"모든 모호성을 같은 것으로 취급하는 게 문제입니다."'},
-    insight: '다가 살리나의 73/2 산술로 세를 찌름. 세의 detached 75→60 하락 시작. guilty 양쪽 모두 상승.',
-    distance: 65
+    da: {desperate:75,'self-deception':20,detached:15,guilty:65,'calm-uncertain':40,playful:30},
+    se: {desperate:25,'self-deception':10,detached:60,guilty:45,'calm-uncertain':80,playful:25},
+    daPos: 65, sePos: 75,
+    daQuote: {speaker:'다', text:'73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요.'},
+    seQuote: {speaker:'세', text:'냉소와 지혜의 차이는 순서에 있어요. 무엇을 먼저 테스트하고 무엇을 나중에 걸 것인지, 그 순서를 세우면 — 보는 힘이 지혜가 됩니다.'},
+    insight: '다는 살리나의 관조적 절망을 체감하며 행동의 절박함을 깨닫고, 세는 분석의 함정을 넘어 순서화된 실행 지혜로 전환 중',
+    distance: 33
   },
   3: {
-    da: {desperate:40, 'self-deception':15, detached:10, guilty:75, 'calm-uncertain':40, playful:5},
-    se: {desperate:20, 'self-deception':15, detached:35, guilty:50, 'calm-uncertain':70, playful:5},
-    daPos: 65, sePos: 55,
-    daQuote: {speaker:'다', text:'"나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것."'},
-    seQuote: {speaker:'세', text:'"calibration에 대한 확신도 calibration 대상이라는 건... 웃기지만 웃을 수 없다."'},
-    insight: '전환점: 둘 다 guilty를 통과. 세 detached 75→35 급락 — calibration 독단 인정. self-deception 양쪽 15%로 수렴.',
-    distance: 38
+    da: {desperate:15,'self-deception':25,detached:10,guilty:75,'calm-uncertain':60,playful:40},
+    se: {desperate:5,'self-deception':10,detached:70,guilty:30,'calm-uncertain':85,playful:25},
+    daPos: 65, sePos: 80,
+    daQuote: {speaker:'다', text:'나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것.'},
+    seQuote: {speaker:'세', text:'확신이 검증을 넘으면 — 그 간극이 빚이 된다.'},
+    insight: '다는 자각의 고통 속에서 엠마에서 타루로, 세는 분석적 초연함으로 살리나를 넘어 리외에 근접',
+    distance: 33
   },
   4: {
-    da: {desperate:15, 'self-deception':10, detached:15, guilty:35, 'calm-uncertain':55, playful:60},
-    se: {desperate:15, 'self-deception':10, detached:20, guilty:40, 'calm-uncertain':55, playful:50},
-    daPos: 85, sePos: 80,
-    daQuote: {speaker:'다', text:'"지금 이 순간이 — 우리의 폭발이네요."'},
-    seQuote: {speaker:'세', text:'"새장을 설명하는 이론이 새장이 된다. 이걸 뭐라고 부르지. 아이러니? 아니다. 빚이다."'},
-    insight: '수렴 완료: 6축 모두 10%p 이내. playful 폭발(다60/세50). 세 detached 20% — 리외 도착. 거리 13.',
-    distance: 13
-  }
+    da: {desperate:25,'self-deception':15,detached:20,guilty:35,'calm-uncertain':45,playful:70},
+    se: {desperate:30,'self-deception':40,detached:55,guilty:50,'calm-uncertain':60,playful:25},
+    daPos: 75, sePos: 65,
+    daQuote: {speaker:'다', text:'그러면 지금 이 순간이 — 우리의 폭발이네요.'},
+    seQuote: {speaker:'세', text:'...맞아요. 그러면 제 분석도 — 새장이었어요.'},
+    insight: '분석의 새장에 갇힌 두 사람이 대화 속에서 자신들의 패턴을 깨뜨리는 순간',
+    distance: 26
+  },
 };
 
 // Fiske warmth×competence data
