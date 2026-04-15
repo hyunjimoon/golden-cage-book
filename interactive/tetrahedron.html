@@ -12,117 +12,185 @@
   .back{font-size:12px;color:#3a4a5a;text-decoration:none;display:inline-block;margin-bottom:36px;}
   .back:hover{color:#e2e8f0;}
   h1{font-size:1.4em;font-weight:700;text-align:center;margin-bottom:6px;}
-  .sub{font-size:13px;color:#5a6a7a;text-align:center;margin-bottom:40px;}
+  .sub{font-size:13px;color:#5a6a7a;text-align:center;margin-bottom:6px;line-height:1.6;}
+  .epigraph{font-size:11px;color:#2a3a4a;text-align:center;margin-bottom:36px;font-style:italic;}
 
-  /* 2x2 grid */
-  .grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;}
-  .cage{padding:28px 18px;cursor:pointer;transition:background 0.3s;border:1px solid rgba(255,255,255,0.04);position:relative;}
-  .cage .ch{position:absolute;top:10px;right:12px;font-size:11px;color:#2a3a4a;}
-  .cage .icon{font-size:22px;margin-bottom:6px;}
-  .cage .name{font-size:14px;font-weight:600;margin-bottom:4px;}
-  .cage .debt{font-size:12px;color:#5a6a7a;}
-  .cage.active{background:rgba(255,255,255,0.05);}
-  .cage.pair{background:rgba(255,255,255,0.08);outline:2px solid rgba(255,255,255,0.15);outline-offset:-2px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;margin-bottom:6px;}
+  .cage{padding:24px 16px;cursor:pointer;transition:all 0.3s;border:1px solid rgba(255,255,255,0.04);position:relative;}
+  .cage .ch{position:absolute;top:8px;right:10px;font-size:10px;color:#2a3a4a;}
+  .cage .icon{font-size:20px;margin-bottom:4px;}
+  .cage .name{font-size:14px;font-weight:600;margin-bottom:6px;transition:color 0.3s;}
+  .cage .line1{font-size:11px;color:#6a7a8a;line-height:1.5;margin-bottom:2px;}
+  .cage .line2{font-size:11px;color:#4a5a6a;line-height:1.5;}
+  .cage.active{background:rgba(255,255,255,0.04);}
+  .cage.pair{background:rgba(255,255,255,0.07);outline:2px solid rgba(255,255,255,0.12);outline-offset:-2px;}
 
-  /* 쌍대 표시 */
-  .pair-label{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;padding:0 4px;margin-bottom:2px;}
-  .pair-row{display:flex;align-items:center;justify-content:center;padding:4px 0;}
-  .pair-line{font-size:10px;color:#2a3a4a;letter-spacing:2px;}
+  .legend{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;padding:0 2px;margin-bottom:28px;}
 
-  /* 범례 */
-  .legend{text-align:center;font-size:10px;color:#2a3a4a;margin:12px 0 28px;letter-spacing:1px;}
+  /* expanded result */
+  .result{overflow:hidden;max-height:0;opacity:0;transition:all 0.5s;margin-bottom:24px;}
+  .result.show{max-height:600px;opacity:1;}
+  .r-box{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.05);}
+  .r-head{font-size:13px;font-weight:600;margin-bottom:4px;}
+  .r-dual{font-size:12px;color:#5a6a7a;margin-bottom:16px;}
+  .r-warn{font-size:13px;font-weight:600;margin-bottom:16px;}
 
-  /* 결과 */
-  .result{overflow:hidden;max-height:0;opacity:0;transition:all 0.4s;margin-bottom:24px;}
-  .result.show{max-height:250px;opacity:1;}
-  .result-box{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.05);}
-  .r-pair{font-size:14px;font-weight:600;margin-bottom:10px;}
-  .r-warn{font-size:13px;margin-bottom:8px;}
-  .r-dilemma{font-size:12px;color:#5a6a7a;margin-bottom:8px;}
-  .r-flow{font-size:11px;color:#2a3a4a;}
+  /* 장부: reader writes */
+  .ledger{margin-bottom:8px;}
+  .ledger h3{font-size:11px;color:#3a4a5a;letter-spacing:1px;margin-bottom:10px;font-weight:400;}
+  .l-row{display:grid;grid-template-columns:56px 1fr;gap:6px;align-items:start;margin-bottom:8px;}
+  .l-label{font-size:11px;color:#5a6a7a;padding-top:8px;text-align:right;}
+  .l-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:32px;line-height:1.5;}
+  .l-input textarea:focus{outline:none;border-color:rgba(255,255,255,0.15);}
+  .l-input textarea::placeholder{color:#2a3a4a;}
+  .l-saved{font-size:10px;color:#4a7a6b;opacity:0;transition:opacity 0.3s;margin-top:2px;}
+  .l-saved.show{opacity:1;}
+
+  .r-flow{font-size:11px;color:#2a3a4a;margin-top:12px;text-align:right;}
 
   .links{display:flex;gap:16px;flex-wrap:wrap;}
   .links a{font-size:12px;color:#3a4a5a;text-decoration:none;}
   .links a:hover{color:#e2e8f0;}
-  .footer{text-align:center;padding:48px 20px;font-size:12px;color:#1a2030;}
+  .footer{text-align:center;padding:40px 20px;font-size:11px;color:#1a2030;line-height:1.7;}
 </style>
 </head>
 <body>
 <div class="page">
   <a class="back" href="../">← 대문으로</a>
   <h1>나는 어느 새장에 있는가?</h1>
-  <p class="sub">새장을 누르세요.</p>
+  <p class="sub">새장은 두 가지가 겹칠 때 닫힌다.</p>
+  <p class="epigraph">한계를 인정하지 않는다 + 다양성을 흡수하지 않는다</p>
 
-  <div class="pair-label"><span>━ 쌍대: 같은 실수의 앞뒤</span><span></span></div>
   <div class="grid" id="grid">
     <div class="cage" data-ch="1" data-pair="2">
       <div class="ch">1장</div>
       <div class="icon">🪞</div>
       <div class="name">거울</div>
-      <div class="debt">원하니까 그렇게 보인다</div>
+      <div class="line1">빌린 욕망을 내 것으로 착각</div>
+      <div class="line2">샤를의 세계를 흡수 안 함</div>
     </div>
     <div class="cage" data-ch="2" data-pair="1">
       <div class="ch">2장</div>
       <div class="icon">🔭</div>
       <div class="name">망원경</div>
-      <div class="debt">보이니까 포기한다</div>
+      <div class="line1">시대가 넘었음을 인정 안 함</div>
+      <div class="line2">칼로제로의 시간을 흡수 안 함</div>
     </div>
     <div class="cage" data-ch="3" data-pair="4">
       <div class="ch">3장</div>
       <div class="icon">💒</div>
       <div class="name">스테인드글라스</div>
-      <div class="debt">맞으니까 반복한다</div>
+      <div class="line1">모델이 틀릴 수 있음을 인정 안 함</div>
+      <div class="line2">아이의 죽음을 흡수 안 함</div>
     </div>
     <div class="cage" data-ch="4" data-pair="3">
       <div class="ch">4장</div>
       <div class="icon">⏱️</div>
       <div class="name">시계</div>
-      <div class="debt">됐으니까 멈춘다</div>
+      <div class="line1">빌린 질서가 유일하다고 믿음</div>
+      <div class="line2">방드르디의 놀이를 흡수 안 함</div>
     </div>
   </div>
-  <div class="legend">━ 가로 = 쌍대 &nbsp;&nbsp; │ 세로 = 순환</div>
+  <div class="legend">
+    <span>━ 가로: 쌍대 (약의 과잉 = 짝의 병)</span>
+    <span>│세로: 순환</span>
+  </div>
 
   <div class="result" id="result">
-    <div class="result-box" id="rBox">
-      <div class="r-pair" id="rPair"></div>
+    <div class="r-box" id="rBox">
+      <div class="r-head" id="rHead"></div>
+      <div class="r-dual" id="rDual"></div>
       <div class="r-warn" id="rWarn"></div>
-      <div class="r-dilemma" id="rDilemma"></div>
+      <div class="ledger">
+        <h3>나의 장부</h3>
+        <div class="l-row">
+          <div class="l-label" id="lPlace">장소</div>
+          <div class="l-input"><textarea id="tPlace" rows="1"></textarea><div class="l-saved" id="sPlace">저장됨</div></div>
+        </div>
+        <div class="l-row">
+          <div class="l-label">낭만</div>
+          <div class="l-input"><textarea id="tRomance" rows="1" placeholder="현실보다 나은 미래를 믿는 마음"></textarea><div class="l-saved" id="sRomance">저장됨</div></div>
+        </div>
+        <div class="l-row">
+          <div class="l-label">위안</div>
+          <div class="l-input"><textarea id="tComfort" rows="1" placeholder="간극을 덮는 설명"></textarea><div class="l-saved" id="sComfort">저장됨</div></div>
+        </div>
+        <div class="l-row">
+          <div class="l-label">빚</div>
+          <div class="l-input"><textarea id="tDebt" rows="1" placeholder="검증 안 된 가정 위에서 행동한 것"></textarea><div class="l-saved" id="sDebt">저장됨</div></div>
+        </div>
+      </div>
       <div class="r-flow" id="rFlow"></div>
     </div>
   </div>
 
   <div class="links">
+    <a href="reader.html?file=app2_glossary">용어 해설 →</a>
     <a href="emotion_trajectory.html">감정 궤적 →</a>
     <a href="symbols.html">12상징 →</a>
-    <a href="periodic_table_prototype.html">484권 빚 지도 →</a>
   </div>
 </div>
-<div class="footer">약의 과잉이 짝의 병이 된다.</div>
+<div class="footer">
+  새장에는 주인만 있는 게 아니다.<br>
+  내 결정의 비용을 누가 지는지 봐라.
+</div>
 
 <script>
-const D = {
-  1:{pair:'🪞↔🔭',warn:'과잉 솔직은 안개가 된다.',dilemma:'유연성 vs 효율 — 원하는 것과 보이는 것 사이',flow:'→ 2장을 함께 읽으세요',color:'155,122,139'},
-  2:{pair:'🔭↔🪞',warn:'과잉 질주는 욕망이 된다.',dilemma:'유연성 vs 효율 — 보이는 것과 원하는 것 사이',flow:'→ 1장을 함께 읽으세요',color:'122,128,104'},
-  3:{pair:'💒↔⏱️',warn:'과잉 교정은 마비가 된다.',dilemma:'착취 vs 탐색 — 맞는 것과 새로운 것 사이',flow:'→ 4장을 함께 읽으세요',color:'74,122,107'},
-  4:{pair:'⏱️↔💒',warn:'과잉 해체는 맹신이 된다.',dilemma:'착취 vs 탐색 — 된 것과 다음 것 사이',flow:'→ 3장을 함께 읽으세요',color:'90,138,154'}
+const D={
+  1:{head:'🪞 거울 ↔ 🔭 망원경',dual:'욕망과 품위는 쌍대다. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',warn:'과잉 솔직은 안개가 된다.',place:'무도회장',ph:'나의 무도회장 — 빌린 삶을 처음 입은 곳',flow:'짝: 2장 → 순환: 3장으로',color:'155,122,139'},
+  2:{head:'🔭 망원경 ↔ 🪞 거울',dual:'품위와 욕망은 쌍대다. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',warn:'과잉 질주는 욕망이 된다.',place:'항구',ph:'나의 항구 — 변화가 상륙하는데 관망만 하는 곳',flow:'짝: 1장 → 순환: 3장으로',color:'122,128,104'},
+  3:{head:'💒 스테인드글라스 ↔ ⏱️ 시계',dual:'확신과 질서는 쌍대다. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',warn:'과잉 교정은 마비가 된다.',place:'봉쇄된 도시',ph:'나의 봉쇄된 도시 — 데이터를 볼지 확신을 지킬지 갈리는 곳',flow:'짝: 4장 → 순환: 1장으로',color:'74,122,107'},
+  4:{head:'⏱️ 시계 ↔ 💒 스테인드글라스',dual:'질서와 확신은 쌍대다. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',warn:'과잉 해체는 맹신이 된다.',place:'섬',ph:'나의 섬 — 내가 만든 구조를 부술 수 있는가',flow:'짝: 3장 → 순환: 1장으로',color:'90,138,154'}
 };
+
 const cages=document.querySelectorAll('.cage');
+let cur=null;
+
+function save(key,val){localStorage.setItem(key,val);}
+function load(key){return localStorage.getItem(key)||'';}
+function flash(id){const e=document.getElementById(id);e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1200);}
+
 cages.forEach(c=>{
   c.addEventListener('click',()=>{
-    const ch=c.dataset.ch, p=c.dataset.pair, d=D[ch];
+    const ch=c.dataset.ch,p=c.dataset.pair,d=D[ch];
     cages.forEach(x=>{x.classList.remove('active','pair');x.querySelector('.name').style.color='';});
     c.classList.add('active');
     c.querySelector('.name').style.color=`rgb(${d.color})`;
     const pc=document.querySelector(`.cage[data-ch="${p}"]`);
     pc.classList.add('pair');
     pc.querySelector('.name').style.color=`rgb(${D[p].color})`;
-    document.getElementById('rPair').textContent=d.pair;
-    document.getElementById('rPair').style.color=`rgb(${d.color})`;
+
+    document.getElementById('rHead').textContent=d.head;
+    document.getElementById('rHead').style.color=`rgb(${d.color})`;
+    document.getElementById('rDual').textContent=d.dual;
     document.getElementById('rWarn').textContent=d.warn;
-    document.getElementById('rDilemma').textContent=d.dilemma;
+    document.getElementById('rWarn').style.color=`rgb(${d.color})`;
     document.getElementById('rFlow').textContent=d.flow;
-    document.getElementById('rBox').style.borderColor=`rgba(${d.color},0.2)`;
+    document.getElementById('rBox').style.borderColor=`rgba(${d.color},0.15)`;
+    document.getElementById('lPlace').textContent=d.place;
+    document.getElementById('tPlace').placeholder=d.ph;
+
+    // load saved
+    const pre='cage'+ch+'_';
+    document.getElementById('tPlace').value=load(pre+'place');
+    document.getElementById('tRomance').value=load(pre+'romance');
+    document.getElementById('tComfort').value=load(pre+'comfort');
+    document.getElementById('tDebt').value=load(pre+'debt');
+    cur=ch;
+
     document.getElementById('result').classList.add('show');
+  });
+});
+
+// autosave
+['tPlace','tRomance','tComfort','tDebt'].forEach(id=>{
+  const field=id.replace('t','').toLowerCase();
+  const saveId='s'+id.slice(1);
+  let t;
+  document.getElementById(id).addEventListener('input',e=>{
+    if(!cur)return;
+    clearTimeout(t);
+    t=setTimeout(()=>{save('cage'+cur+'_'+field,e.target.value);flash(saveId);},500);
   });
 });
 </script>
