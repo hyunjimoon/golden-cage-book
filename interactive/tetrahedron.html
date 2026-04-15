@@ -27,25 +27,14 @@
 
   .legend{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;padding:0 2px;margin-bottom:28px;}
 
-  /* expanded result */
   .result{overflow:hidden;max-height:0;opacity:0;transition:all 0.5s;margin-bottom:24px;}
-  .result.show{max-height:600px;opacity:1;}
+  .result.show{max-height:300px;opacity:1;}
   .r-box{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.05);}
-  .r-head{font-size:13px;font-weight:600;margin-bottom:4px;}
-  .r-dual{font-size:12px;color:#5a6a7a;margin-bottom:16px;}
+  .r-head{font-size:13px;font-weight:600;margin-bottom:8px;}
+  .r-dual{font-size:12px;color:#5a6a7a;margin-bottom:12px;line-height:1.6;}
   .r-warn{font-size:13px;font-weight:600;margin-bottom:16px;}
-
-  /* 장부: reader writes */
-  .ledger{margin-bottom:8px;}
-  .ledger h3{font-size:11px;color:#3a4a5a;letter-spacing:1px;margin-bottom:10px;font-weight:400;}
-  .l-row{display:grid;grid-template-columns:56px 1fr;gap:6px;align-items:start;margin-bottom:8px;}
-  .l-label{font-size:11px;color:#5a6a7a;padding-top:8px;text-align:right;}
-  .l-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:32px;line-height:1.5;}
-  .l-input textarea:focus{outline:none;border-color:rgba(255,255,255,0.15);}
-  .l-input textarea::placeholder{color:#2a3a4a;}
-  .l-saved{font-size:10px;color:#4a7a6b;opacity:0;transition:opacity 0.3s;margin-top:2px;}
-  .l-saved.show{opacity:1;}
-
+  .r-action{display:inline-block;font-size:13px;color:#e2e8f0;background:rgba(255,255,255,0.06);padding:10px 16px;border-radius:6px;text-decoration:none;transition:background 0.2s;width:100%;text-align:center;}
+  .r-action:hover{background:rgba(255,255,255,0.1);}
   .r-flow{font-size:11px;color:#2a3a4a;margin-top:12px;text-align:right;}
 
   .links{display:flex;gap:16px;flex-wrap:wrap;}
@@ -101,25 +90,7 @@
       <div class="r-head" id="rHead"></div>
       <div class="r-dual" id="rDual"></div>
       <div class="r-warn" id="rWarn"></div>
-      <div class="ledger">
-        <h3>나의 장부</h3>
-        <div class="l-row">
-          <div class="l-label" id="lPlace">장소</div>
-          <div class="l-input"><textarea id="tPlace" rows="1"></textarea><div class="l-saved" id="sPlace">저장됨</div></div>
-        </div>
-        <div class="l-row">
-          <div class="l-label">낭만</div>
-          <div class="l-input"><textarea id="tRomance" rows="1" placeholder="현실보다 나은 미래를 믿는 마음"></textarea><div class="l-saved" id="sRomance">저장됨</div></div>
-        </div>
-        <div class="l-row">
-          <div class="l-label">위안</div>
-          <div class="l-input"><textarea id="tComfort" rows="1" placeholder="간극을 덮는 설명"></textarea><div class="l-saved" id="sComfort">저장됨</div></div>
-        </div>
-        <div class="l-row">
-          <div class="l-label">빚</div>
-          <div class="l-input"><textarea id="tDebt" rows="1" placeholder="검증 안 된 가정 위에서 행동한 것"></textarea><div class="l-saved" id="sDebt">저장됨</div></div>
-        </div>
-      </div>
+      <a class="r-action" id="rAction" href="symbols.html">나의 장부를 쓰러 가기 →</a>
       <div class="r-flow" id="rFlow"></div>
     </div>
   </div>
@@ -127,7 +98,6 @@
   <div class="links">
     <a href="reader.html?file=app2_glossary">용어 해설 →</a>
     <a href="emotion_trajectory.html">감정 궤적 →</a>
-    <a href="symbols.html">12상징 →</a>
   </div>
 </div>
 <div class="footer">
@@ -137,19 +107,12 @@
 
 <script>
 const D={
-  1:{head:'🪞 거울 ↔ 🔭 망원경',dual:'욕망과 품위는 쌍대다. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',warn:'과잉 솔직은 안개가 된다.',place:'무도회장',ph:'나의 무도회장 — 빌린 삶을 처음 입은 곳',flow:'짝: 2장 → 순환: 3장으로',color:'155,122,139'},
-  2:{head:'🔭 망원경 ↔ 🪞 거울',dual:'품위와 욕망은 쌍대다. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',warn:'과잉 질주는 욕망이 된다.',place:'항구',ph:'나의 항구 — 변화가 상륙하는데 관망만 하는 곳',flow:'짝: 1장 → 순환: 3장으로',color:'122,128,104'},
-  3:{head:'💒 스테인드글라스 ↔ ⏱️ 시계',dual:'확신과 질서는 쌍대다. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',warn:'과잉 교정은 마비가 된다.',place:'봉쇄된 도시',ph:'나의 봉쇄된 도시 — 데이터를 볼지 확신을 지킬지 갈리는 곳',flow:'짝: 4장 → 순환: 1장으로',color:'74,122,107'},
-  4:{head:'⏱️ 시계 ↔ 💒 스테인드글라스',dual:'질서와 확신은 쌍대다. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',warn:'과잉 해체는 맹신이 된다.',place:'섬',ph:'나의 섬 — 내가 만든 구조를 부술 수 있는가',flow:'짝: 3장 → 순환: 1장으로',color:'90,138,154'}
+  1:{head:'🪞 거울 ↔ 🔭 망원경',dual:'욕망과 품위는 쌍대다. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',warn:'과잉 솔직은 안개가 된다.',flow:'짝: 2장 → 순환: 3장으로',color:'155,122,139'},
+  2:{head:'🔭 망원경 ↔ 🪞 거울',dual:'품위와 욕망은 쌍대다. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',warn:'과잉 질주는 욕망이 된다.',flow:'짝: 1장 → 순환: 3장으로',color:'122,128,104'},
+  3:{head:'💒 스테인드글라스 ↔ ⏱️ 시계',dual:'확신과 질서는 쌍대다. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',warn:'과잉 교정은 마비가 된다.',flow:'짝: 4장 → 순환: 1장으로',color:'74,122,107'},
+  4:{head:'⏱️ 시계 ↔ 💒 스테인드글라스',dual:'질서와 확신은 쌍대다. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',warn:'과잉 해체는 맹신이 된다.',flow:'짝: 3장 → 순환: 1장으로',color:'90,138,154'}
 };
-
 const cages=document.querySelectorAll('.cage');
-let cur=null;
-
-function save(key,val){localStorage.setItem(key,val);}
-function load(key){return localStorage.getItem(key)||'';}
-function flash(id){const e=document.getElementById(id);e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1200);}
-
 cages.forEach(c=>{
   c.addEventListener('click',()=>{
     const ch=c.dataset.ch,p=c.dataset.pair,d=D[ch];
@@ -159,7 +122,6 @@ cages.forEach(c=>{
     const pc=document.querySelector(`.cage[data-ch="${p}"]`);
     pc.classList.add('pair');
     pc.querySelector('.name').style.color=`rgb(${D[p].color})`;
-
     document.getElementById('rHead').textContent=d.head;
     document.getElementById('rHead').style.color=`rgb(${d.color})`;
     document.getElementById('rDual').textContent=d.dual;
@@ -167,30 +129,8 @@ cages.forEach(c=>{
     document.getElementById('rWarn').style.color=`rgb(${d.color})`;
     document.getElementById('rFlow').textContent=d.flow;
     document.getElementById('rBox').style.borderColor=`rgba(${d.color},0.15)`;
-    document.getElementById('lPlace').textContent=d.place;
-    document.getElementById('tPlace').placeholder=d.ph;
-
-    // load saved
-    const pre='cage'+ch+'_';
-    document.getElementById('tPlace').value=load(pre+'place');
-    document.getElementById('tRomance').value=load(pre+'romance');
-    document.getElementById('tComfort').value=load(pre+'comfort');
-    document.getElementById('tDebt').value=load(pre+'debt');
-    cur=ch;
-
+    document.getElementById('rAction').style.borderColor=`rgba(${d.color},0.2)`;
     document.getElementById('result').classList.add('show');
-  });
-});
-
-// autosave
-['tPlace','tRomance','tComfort','tDebt'].forEach(id=>{
-  const field=id.replace('t','').toLowerCase();
-  const saveId='s'+id.slice(1);
-  let t;
-  document.getElementById(id).addEventListener('input',e=>{
-    if(!cur)return;
-    clearTimeout(t);
-    t=setTimeout(()=>{save('cage'+cur+'_'+field,e.target.value);flash(saveId);},500);
   });
 });
 </script>
