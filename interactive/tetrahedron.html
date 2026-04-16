@@ -20,14 +20,12 @@
   .cage .ch{position:absolute;top:8px;right:10px;font-size:10px;color:#2a3a4a;}
   .cage .icon{font-size:20px;margin-bottom:4px;}
   .cage .name{font-size:14px;font-weight:600;margin-bottom:6px;transition:color 0.3s;}
-  .cage .line1{font-size:11px;color:#6a7a8a;line-height:1.5;margin-bottom:2px;}
-  .cage .line2{font-size:11px;color:#4a5a6a;line-height:1.5;}
+  .cage .line1{font-size:12px;color:#7a8a9a;line-height:1.55;}
   .cage.active{background:rgba(255,255,255,0.04);}
   .cage.pair{background:rgba(255,255,255,0.07);outline:2px solid rgba(255,255,255,0.12);outline-offset:-2px;}
 
   .legend{display:flex;justify-content:space-between;font-size:10px;color:#2a3a4a;padding:0 2px;margin-bottom:28px;}
 
-  /* result + ledger */
   .result{overflow:hidden;max-height:0;opacity:0;transition:all 0.5s;margin-bottom:24px;}
   .result.show{max-height:800px;opacity:1;}
   .r-box{padding:20px;background:#0c1018;border-radius:8px;border:1px solid rgba(255,255,255,0.05);}
@@ -57,41 +55,37 @@
 <div class="page">
   <a class="back" href="../">← 대문으로</a>
   <h1>나는 어느 새장에 있는가?</h1>
-  <p class="sub">새장은 두 가지가 겹칠 때 닫힌다.</p>
-  <p class="epigraph">한계를 인정하지 않는다 + 다양성을 흡수하지 않는다</p>
+  <p class="sub">새장은 안과 밖이 같이 닫힐 때 잠긴다.</p>
+  <p class="epigraph">내가 틀릴 수 있음을 안 받아들이고 + 남이 주는 신호를 안 받는다</p>
 
   <div class="grid" id="grid">
     <div class="cage" data-ch="1" data-pair="2">
       <div class="ch">1장</div>
       <div class="icon">🪞</div>
       <div class="name">거울</div>
-      <div class="line1">빌린 욕망을 내 것으로 착각</div>
-      <div class="line2">샤를의 세계를 흡수 안 함</div>
+      <div class="line1">남의 꿈을 내 꿈이라 우긴다</div>
     </div>
     <div class="cage" data-ch="2" data-pair="1">
       <div class="ch">2장</div>
       <div class="icon">🔭</div>
       <div class="name">망원경</div>
-      <div class="line1">시대가 넘었음을 인정 안 함</div>
-      <div class="line2">칼로제로의 시간을 흡수 안 함</div>
-    </div>
-    <div class="cage" data-ch="3" data-pair="4">
-      <div class="ch">3장</div>
-      <div class="icon">💒</div>
-      <div class="name">스테인드글라스</div>
-      <div class="line1">모델이 틀릴 수 있음을 인정 안 함</div>
-      <div class="line2">아이의 죽음을 흡수 안 함</div>
+      <div class="line1">변한 걸 보고도 안 움직인다</div>
     </div>
     <div class="cage" data-ch="4" data-pair="3">
       <div class="ch">4장</div>
       <div class="icon">⏱️</div>
       <div class="name">시계</div>
-      <div class="line1">빌린 질서가 유일하다고 믿음</div>
-      <div class="line2">방드르디의 놀이를 흡수 안 함</div>
+      <div class="line1">성공한 방식 말고는 다 틀렸다고 한다</div>
+    </div>
+    <div class="cage" data-ch="3" data-pair="4">
+      <div class="ch">3장</div>
+      <div class="icon">💒</div>
+      <div class="name">스테인드글라스</div>
+      <div class="line1">반증이 와도 내 말이 맞다고 한다</div>
     </div>
   </div>
   <div class="legend">
-    <span>━ 가로: 쌍대 (약의 과잉 = 짝의 병)</span>
+    <span>━ 가로: 앞뒷면 (한쪽으로 기울어도 같은 새장)</span>
     <span>│세로: 순환</span>
   </div>
 
@@ -122,44 +116,40 @@
 <script>
 const D={
   1:{head:'🪞 거울 ↔ 🔭 망원경',
-     dual:'욕망과 품위는 쌍대다. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',
+     dual:'욕망과 품위는 한 동전의 앞뒷면. 빌려서 뛰면 거울새장, 보고도 안 뛰면 망원경새장.',
      warn:'과잉 솔직은 안개가 된다.',
-     flow:'짝: 2장 → 순환: 3장으로',
+     flow:'짝: 2장 → 순환: 4장으로',
      color:'155,122,139',
-     event:'청구서가 도착한다',
      symbols:[
        {label:'무도회장',voice:'다',ph:'빌려서라도 서고 싶은 무대는?'},
        {label:'청구서',voice:'세',ph:'그 무대의 대가는 얼마인가?'},
        {label:'장부',voice:'',ph:'둘이 다른가? 그 차이가 빚이다.'}
      ]},
   2:{head:'🔭 망원경 ↔ 🪞 거울',
-     dual:'품위와 욕망은 쌍대다. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',
+     dual:'품위와 욕망은 한 동전의 앞뒷면. 보고도 안 뛰면 망원경새장, 빌려서 뛰면 거울새장.',
      warn:'과잉 질주는 욕망이 된다.',
      flow:'짝: 1장 → 순환: 3장으로',
      color:'122,128,104',
-     event:'타이밍이 지나간다',
      symbols:[
        {label:'항구',voice:'세',ph:'지금 상륙하고 있는 기회는?'},
        {label:'표범',voice:'세',ph:'지키느라 못 움직이는 것은?'},
        {label:'안개',voice:'다',ph:'되돌릴 수 있는 첫 실험은?'}
      ]},
   3:{head:'💒 스테인드글라스 ↔ ⏱️ 시계',
-     dual:'확신과 질서는 쌍대다. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',
+     dual:'확신과 질서는 한 동전의 앞뒷면. 확신이 증거를 이기면 스테인드글라스새장, 성공이 변이를 굶기면 시계새장.',
      warn:'과잉 교정은 마비가 된다.',
      flow:'짝: 4장 → 순환: 1장으로',
      color:'74,122,107',
-     event:'확신이 현실에 부딪힌다',
      symbols:[
        {label:'봉쇄된 도시',voice:'다',ph:'빠져나갈 수 없는 상황은?'},
        {label:'주사기',voice:'다',ph:'불완전하지만 지금 해야 할 것은?'},
        {label:'혈청',voice:'세',ph:'그 행동의 확신은 몇 %인가?'}
      ]},
   4:{head:'⏱️ 시계 ↔ 💒 스테인드글라스',
-     dual:'질서와 확신은 쌍대다. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',
+     dual:'질서와 확신은 한 동전의 앞뒷면. 성공이 변이를 굶기면 시계새장, 확신이 증거를 이기면 스테인드글라스새장.',
      warn:'과잉 해체는 맹신이 된다.',
      flow:'짝: 3장 → 순환: 1장으로',
      color:'90,138,154',
-     event:'빌린 구조가 무너진다',
      symbols:[
        {label:'섬',voice:'세',ph:'성공이 새장이 된 곳은?'},
        {label:'담뱃대',voice:'다',ph:'그 질서를 흔들 작은 행동은?'},
@@ -168,12 +158,9 @@ const D={
 };
 
 const cages=document.querySelectorAll('.cage');
-
 cages.forEach(c=>{
   c.addEventListener('click',()=>{
     const ch=c.dataset.ch, p=c.dataset.pair, d=D[ch];
-
-    // highlight
     cages.forEach(x=>{x.classList.remove('active','pair');x.querySelector('.name').style.color='';});
     c.classList.add('active');
     c.querySelector('.name').style.color=`rgb(${d.color})`;
@@ -181,7 +168,6 @@ cages.forEach(c=>{
     pc.classList.add('pair');
     pc.querySelector('.name').style.color=`rgb(${D[p].color})`;
 
-    // result text
     document.getElementById('rHead').textContent=d.head;
     document.getElementById('rHead').style.color=`rgb(${d.color})`;
     document.getElementById('rDual').textContent=d.dual;
@@ -190,7 +176,6 @@ cages.forEach(c=>{
     document.getElementById('rFlow').textContent=d.flow;
     document.getElementById('rBox').style.borderColor=`rgba(${d.color},0.15)`;
 
-    // build ledger — same keys as symbols.html
     const ledger=document.getElementById('ledger');
     ledger.innerHTML='';
     d.symbols.forEach((s,i)=>{
@@ -206,8 +191,6 @@ cages.forEach(c=>{
           </div>
         </div>`;
     });
-
-    // autosave
     ledger.querySelectorAll('textarea[data-key]').forEach(ta=>{
       let t;
       ta.addEventListener('input',()=>{
