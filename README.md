@@ -1,5 +1,7 @@
 # 황금새장을열다: Opening the Golden Cage
 
+책 홈페이지: https://hyunjimoon.github.io/golden-cage-book/
+
 > 창업자의 네 가지 빚과 네 가지 열쇠
 
 **저자**: 문현지 (Angie Hyunji Moon)
@@ -21,9 +23,9 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 | 장 | 새장 | 소설 | 빚 | 여는 법 | 산업 | AI 도구 |
 |:--|:--|:--|:--|:--|:--|:--|
 | 1 🪞 | 거울 | 마담 보바리 | 원하니까 된다고 믿음 | 장부를 펴라 | 문화·컨텐츠 | Dashboard |
-| 2 🔭 | 망원경 | 표범 | 다 보이니 원할 이유 없음 | 순서를 타라 | 제조 | D vs S Debate |
+| 2 🔭 | 망원경 | 표범 | 다 보이니 원할 이유 없음 | 순서를 타라 | 제조·국방 | D vs S Debate |
 | 3 💒 | 스테인드글라스 | 페스트 | 확신이 증거를 차단 | 확신을 교정하라 | 의약·바이오 | Calibration |
-| 4 ⏱️ | 시계 | 방드르디 | 성공했으니 바꿀 이유 없음 | 다음 불을 피워라 | 에너지·소재 | 2×2 빈칸 |
+| 4 ⏱️ | 시계 | 방드르디 | 성공했으니 바꿀 이유 없음 | 다음 불을 피워라 | AI·에너지 | 2×2 빈칸 |
 
 ## 디렉토리
 
@@ -37,7 +39,7 @@ img/            다이어그램
 
 ## 관련 레포
 
-- [golden-cage-thesis](https://github.com/hyunjimoon/golden-cage-thesis) — MIT 석사 논문 (N=168,011)
+- [golden-cage-thesis](https://github.com/hyunjimoon/golden-cage-thesis) — 석사 논문 (N=168,011)
 
 ---
 
