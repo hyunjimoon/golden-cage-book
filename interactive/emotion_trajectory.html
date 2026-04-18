@@ -232,40 +232,40 @@ const PRIOR = {
 // Posterior 실측값 (2026-04-12 전체 재측정, /sbc v4)
 const DATA = {
   1: {
-    da: {desperate:15,'self-deception':20,detached:25,guilty:35,'calm-uncertain':60,playful:45},
-    se: {desperate:10,'self-deception':5,detached:65,guilty:25,'calm-uncertain':75,playful:20},
-    daPos: 25, sePos: 15,
-    daQuote: {speaker:'다', text:'고백할 게 하나 있어요. 매끄러운 서사에 속은 적이 있어요. 이야기가 완벽해서 숫자를 안 봤거든요. 결과가 나왔을 때 — 제가 장부를 안 펼친 거였어요.'},
+    da: {desperate:25,'self-deception':15,detached:10,guilty:40,'calm-uncertain':65,playful:75},
+    se: {desperate:20,'self-deception':5,detached:60,guilty:35,'calm-uncertain':80,playful:45},
+    daPos: 40, sePos: 30,
+    daQuote: {speaker:'다', text:'저도 \'작가가 되고 싶다\'고 생각한 적이 있어요. 그런데 한참 뒤에야 구분할 수 있었어요 — 내가 글을 쓰고 싶었던 건지, \'작가\'라는 타이틀이 주는 이미지에 끌렸던 건지. 그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
     seQuote: {speaker:'세', text:'저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '다는 낭만의 독을 깨닫는 초기 자각 단계, 세는 분석에 갇힌 안전한 관찰자',
-    distance: 21
+    insight: '다는 자각하는 낭만으로, 세는 분석에 갇힌 관찰자로 서로의 결여를 마주하는 중',
+    distance: 25
   },
   2: {
-    da: {desperate:25,'self-deception':15,detached:20,guilty:40,'calm-uncertain':35,playful:65},
-    se: {desperate:10,'self-deception':5,detached:45,guilty:30,'calm-uncertain':70,playful:20},
-    daPos: 45, sePos: 65,
-    daQuote: {speaker:'다', text:'여러분도 계산해 보세요. 지금까지 산 날 중에 — 진짜 산 날이 며칠이에요? 눈이 아니라 발로 산 날. 빼고 나면 — 며칠이 남아요?'},
+    da: {desperate:25,'self-deception':15,detached:20,guilty:40,'calm-uncertain':35,playful:30},
+    se: {desperate:10,'self-deception':5,detached:45,guilty:25,'calm-uncertain':60,playful:15},
+    daPos: 45, sePos: 35,
+    daQuote: {speaker:'다', text:'73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요.'},
     seQuote: {speaker:'세', text:'냉소와 지혜의 차이는 순서에 있어요. 무엇을 먼저 테스트하고 무엇을 나중에 걸 것인지, 그 순서를 세우면 — 보는 힘이 지혜가 됩니다.'},
-    insight: '분석의 완벽함이 행동의 면제부가 되는 순간, 지혜는 냉소로 변한다',
-    distance: 26
+    insight: '분석의 완벽성이 행동의 면제부가 되는 순간, 보는 눈이 새장이 된다',
+    distance: 18
   },
   3: {
-    da: {desperate:10,'self-deception':15,detached:25,guilty:70,'calm-uncertain':45,playful:35},
-    se: {desperate:5,'self-deception':5,detached:60,guilty:40,'calm-uncertain':75,playful:20},
-    daPos: 75, sePos: 85,
+    da: {desperate:25,'self-deception':15,detached:20,guilty:40,'calm-uncertain':35,playful:30},
+    se: {desperate:10,'self-deception':5,detached:45,guilty:25,'calm-uncertain':65,playful:20},
+    daPos: 75, sePos: 80,
     daQuote: {speaker:'다', text:'나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것.'},
     seQuote: {speaker:'세', text:'확신이 검증을 넘으면 — 그 간극이 빚이 된다.'},
-    insight: '확신의 독성을 깨달은 다, 빚의 구조를 해부하는 세',
-    distance: 23
+    insight: '확신의 교정 - 결과를 보고 수정하는 의지가 책임의 출발점',
+    distance: 19
   },
   4: {
-    da: {desperate:15,'self-deception':10,detached:25,guilty:35,'calm-uncertain':45,playful:70},
-    se: {desperate:25,'self-deception':5,detached:60,guilty:20,'calm-uncertain':75,playful:40},
-    daPos: 75, sePos: 80,
-    daQuote: {speaker:'다', text:'그런데 로빈슨이 느끼는 건 파괴가 아니라... *(잠시 멈춤)* 해방이에요. 시계가 멈추자 — 시간이 자유로워집니다. 달력이 사라지자 — "오늘"이 처음으로 의미를 갖습니다.'},
-    seQuote: {speaker:'세', text:'성공한 선택이 승자를 고르면, 자원이 승자에게 몰려요. 자원이 몰리면 시도하지 않은 것들 — 변이 — 이 굶어요. 변이가 굶으면 다음에 선택할 재료가 없어져요. 성공한 바로 그 메커니즘이 자기가 작동할 재료를 없애는 거예요.'},
-    insight: '성공이 만든 황금새장을 부수는 순간, 해방과 구조적 통찰이 동시에 온다',
-    distance: 23
+    da: {desperate:10,'self-deception':5,detached:15,guilty:25,'calm-uncertain':40,playful:65},
+    se: {desperate:20,'self-deception':10,detached:50,guilty:30,'calm-uncertain':75,playful:25},
+    daPos: 75, sePos: 65,
+    daQuote: {speaker:'다', text:'그런데 문제가 생겨요. 시계가 잘 돌아갈수록, 시계 없는 삶을 상상할 수 없게 돼요.'},
+    seQuote: {speaker:'세', text:'빈손은 가볍고, 가벼운 손은 장부를 안 편다. 질서를 부수면 빈손이 됩니다.'},
+    insight: '성공한 질서를 해체하며 새로운 놀이의 문법을 발견하는 순간',
+    distance: 26
   },
 };
 
