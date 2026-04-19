@@ -10,6 +10,8 @@ URL: https://gemini.google.com/app/b53659b6f4ad6b22
 # CHAPTER 1 — 거울 새장
 *빌린 욕망에서 내 욕망으로*
 
+> 무도회장의 엠마는 거울과 르뢰를 의심하며, 오메처럼 장부를 써라
+
 [거울 새장 — 욕망의 출처와 검증의 구조](diagrams/panel_ch1_거울새장.png)
 
 | 인물      | 한 줄                                  |
