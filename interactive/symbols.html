@@ -8,26 +8,25 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e2e8f0;font-size:14px;}
-
   .page{max-width:560px;margin:0 auto;padding:40px 24px 48px;}
   .back{font-size:12px;color:#5a6a7a;text-decoration:none;display:inline-block;margin-bottom:24px;}
   .back:hover{color:#e2e8f0;}
   h1{font-size:1.3em;font-weight:700;margin-bottom:8px;}
   .sub{font-size:12px;color:#5a6a7a;margin-bottom:36px;line-height:1.7;}
-
-  .ch{margin-bottom:28px;}
+  .ch{margin-bottom:32px;}
   .ch-head{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;}
   .ch-head h2{font-size:14px;font-weight:700;}
-  .ch-event{font-size:11px;color:#5a6a7a;margin-bottom:12px;}
-
+  .ch-novel{font-size:11px;color:#3a4a5a;margin-bottom:4px;font-style:italic;}
+  .ch-event{font-size:11px;color:#5a6a7a;margin-bottom:14px;}
+  .sym-group{margin-bottom:6px;}
+  .sym-label{font-size:10px;color:#3a4a5a;letter-spacing:1px;margin-bottom:6px;padding-left:72px;}
   .row{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:start;margin-bottom:8px;}
-  .row-label{font-size:11px;color:#5a6a7a;padding-top:9px;}
+  .row-name{font-size:11px;color:#5a6a7a;padding-top:9px;text-align:right;}
   .row-input{position:relative;}
   .row-input textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#e2e8f0;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;min-height:34px;line-height:1.5;}
   .row-input textarea:focus{outline:none;border-color:rgba(255,255,255,0.15);}
   .saved{position:absolute;right:8px;top:8px;font-size:10px;color:#4A7A6B;opacity:0;transition:opacity 0.3s;}
   .saved.show{opacity:1;}
-
   .links{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;}
   .links a{font-size:12px;color:#5a6a7a;text-decoration:none;}
   .links a:hover{color:#e2e8f0;}
@@ -35,50 +34,91 @@
 </head>
 <body>
 <div class="page">
-
   <a class="back" href="../">← 대문으로</a>
   <h1>나의 상징을 찾아라</h1>
-  <div class="sub">다가 되어 느낌으로 적고, 세가 되어 검증하라.<br>둘이 다르게 답하는 곳이 — 당신의 빚이다.</div>
+  <div class="sub">배경 → 인물 → 작은 실천. 순서대로 적어라.<br>소설 속 인물이 갇힌 곳에서, 당신은 뭘 다르게 할 것인가.</div>
 
+  <!-- 1장 거울 -->
   <div class="ch">
     <div class="ch-head"><h2 style="color:#9B7A8B">1 거울</h2><span style="font-size:12px;color:#5a6a7a;">빌린 욕망 → 내 욕망</span></div>
+    <div class="ch-novel">엠마는 무도회장에서 벨벳을 입고, 거울에 비친 자기를 사랑하고, 장부를 한 번도 안 폈다.</div>
     <div class="ch-event">청구서가 도착한다</div>
-    <div class="row"><div class="row-label">무도회장</div><div class="row-input"><textarea data-key="1-1" placeholder="다: 빌려서라도 서고 싶은 무대는?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">청구서</div><div class="row-input"><textarea data-key="1-2" placeholder="세: 그 무대의 대가는 얼마인가?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">장부</div><div class="row-input"><textarea data-key="1-3" placeholder="둘이 다른가? 그 차이가 빚이다."></textarea><div class="saved">저장됨</div></div></div>
+    <div class="sym-group">
+      <div class="sym-label">배경</div>
+      <div class="row"><div class="row-name">무도회장</div><div class="row-input"><textarea data-key="1-1" placeholder="빌려서라도 서고 싶은 무대는 어디인가?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">인물</div>
+      <div class="row"><div class="row-name">거울</div><div class="row-input"><textarea data-key="1-2" placeholder="내 욕망의 출처를 가리고 있는 것은? (박수? 멘토? 미디어?)"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">작은 실천</div>
+      <div class="row"><div class="row-name">장부</div><div class="row-input"><textarea data-key="1-3" placeholder="빌린 것과 내 것을 구분하는 첫 행동은?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
   </div>
 
+  <!-- 2장 망원경 -->
   <div class="ch">
     <div class="ch-head"><h2 style="color:#7A8068">2 망원경</h2><span style="font-size:12px;color:#5a6a7a;">빌린 품위 → 내 품위</span></div>
+    <div class="ch-novel">살리나는 항구에서 가리발디 상륙을 보고, 표범의 품위로 냉소하고, 안개 속에서 한 발도 안 뗐다.</div>
     <div class="ch-event">타이밍이 지나간다</div>
-    <div class="row"><div class="row-label">항구</div><div class="row-input"><textarea data-key="2-1" placeholder="세: 지금 상륙하고 있는 기회는?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">표범</div><div class="row-input"><textarea data-key="2-2" placeholder="세: 지키느라 못 움직이는 것은?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">안개</div><div class="row-input"><textarea data-key="2-3" placeholder="다: 되돌릴 수 있는 첫 실험은?"></textarea><div class="saved">저장됨</div></div></div>
+    <div class="sym-group">
+      <div class="sym-label">배경</div>
+      <div class="row"><div class="row-name">항구</div><div class="row-input"><textarea data-key="2-1" placeholder="변화가 상륙하는데 관망만 하고 있는 곳은?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">인물</div>
+      <div class="row"><div class="row-name">표범</div><div class="row-input"><textarea data-key="2-2" placeholder="지키느라 못 놓고 있는 것은? (직함? 체면? 완벽함?)"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">작은 실천</div>
+      <div class="row"><div class="row-name">안개</div><div class="row-input"><textarea data-key="2-3" placeholder="완벽하지 않아도 내일 할 수 있는 되돌릴 수 있는 실험은?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
   </div>
 
+  <!-- 3장 스테인드글라스 -->
   <div class="ch">
     <div class="ch-head"><h2 style="color:#4A7A6B">3 스테인드글라스</h2><span style="font-size:12px;color:#5a6a7a;">빌린 확신 → 내 확신</span></div>
+    <div class="ch-novel">파늘루는 봉쇄된 도시에서 설교하고, 리외는 주사기를 들고, 혈청이 듣는지 모른 채 기록했다.</div>
     <div class="ch-event">확신이 현실에 부딪힌다</div>
-    <div class="row"><div class="row-label">봉쇄된 도시</div><div class="row-input"><textarea data-key="3-1" placeholder="다: 빠져나갈 수 없는 상황은?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">주사기</div><div class="row-input"><textarea data-key="3-2" placeholder="다: 불완전하지만 지금 해야 할 것은?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">혈청</div><div class="row-input"><textarea data-key="3-3" placeholder="세: 그 행동의 확신은 몇 %인가?"></textarea><div class="saved">저장됨</div></div></div>
+    <div class="sym-group">
+      <div class="sym-label">배경</div>
+      <div class="row"><div class="row-name">봉쇄된 도시</div><div class="row-input"><textarea data-key="3-1" placeholder="빠져나갈 수 없는 상황은 어디인가?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">인물</div>
+      <div class="row"><div class="row-name">주사기</div><div class="row-input"><textarea data-key="3-2" placeholder="불완전하지만 지금 들어야 할 도구는?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">작은 실천</div>
+      <div class="row"><div class="row-name">혈청</div><div class="row-input"><textarea data-key="3-3" placeholder="그 행동의 확신은 몇 %인가? 숫자로 적어라."></textarea><div class="saved">저장됨</div></div></div>
+    </div>
   </div>
 
+  <!-- 4장 시계 -->
   <div class="ch">
     <div class="ch-head"><h2 style="color:#5A8A9A">4 시계</h2><span style="font-size:12px;color:#5a6a7a;">빌린 질서 → 내 질서</span></div>
+    <div class="ch-novel">로빈슨은 섬에서 시계를 만들고, 방드르디가 담뱃대를 피우자 폭발했고, 불씨에서 파도 소리가 들렸다.</div>
     <div class="ch-event">빌린 구조가 무너진다</div>
-    <div class="row"><div class="row-label">섬</div><div class="row-input"><textarea data-key="4-1" placeholder="세: 성공이 새장이 된 곳은?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">담뱃대</div><div class="row-input"><textarea data-key="4-2" placeholder="다: 그 질서를 흔들 작은 행동은?"></textarea><div class="saved">저장됨</div></div></div>
-    <div class="row"><div class="row-label">불씨</div><div class="row-input"><textarea data-key="4-3" placeholder="둘이 합의하는 다음 실험은?"></textarea><div class="saved">저장됨</div></div></div>
+    <div class="sym-group">
+      <div class="sym-label">배경</div>
+      <div class="row"><div class="row-name">섬</div><div class="row-input"><textarea data-key="4-1" placeholder="성공한 방식이 나를 가두고 있는 곳은?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">인물</div>
+      <div class="row"><div class="row-name">담뱃대</div><div class="row-input"><textarea data-key="4-2" placeholder="그 질서를 흔들 작은 충격은? (담뱃대 크기면 된다)"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
+    <div class="sym-group">
+      <div class="sym-label">작은 실천</div>
+      <div class="row"><div class="row-name">불씨</div><div class="row-input"><textarea data-key="4-3" placeholder="다음에 피울 불은 무엇인가?"></textarea><div class="saved">저장됨</div></div></div>
+    </div>
   </div>
 
   <div class="links">
     <a href="tetrahedron.html">나는 어느 새장에 있는가? →</a>
     <a href="periodic_table_prototype.html">484권의 빚 지도 →</a>
     <a href="reader.html?file=appendices/app5_prompting">AI 프롬프트 →</a>
-    <a href="reader.html?file=appendices/app3_craft_of_startup_novel">작법론 →</a>
   </div>
-
 </div>
 <script>
 document.querySelectorAll('textarea[data-key]').forEach(ta => {
