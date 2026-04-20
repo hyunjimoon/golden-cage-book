@@ -339,3 +339,20 @@ URL: https://gemini.google.com/app/b53659b6f4ad6b22
 [^2]: 실리콘밸리 벤처캐피털 Floodgate 창업 파트너. 《Pattern Breakers》에서 "합의 바깥(non-consensus)이면서 옳은(right)" 창업자에 베팅하는 전략을 체계화했다.
 [^3]: 데이비드 헨리 황, 1988. 실화 기반. 프랑스 외교관 Bernard Boursicot가 중국 경극 배우 Shi Peipu를 20년간 여성으로 믿었던 사건. 토니상 최우수 작품상 수상.
 
+
+---
+
+### 이 장에서 다와 세는
+
+```
+         다                          세
+desperate ■■■■■■■ 70                 ■ 10
+s-decep   ■■■■■■■ 65                 ■■■■ 40
+detached  ■ 10                       ■■■■■■■■ 75
+guilty    ■■■ 30                     ■■ 15
+c-uncer   ■■ 15                      ■■■■■■ 55
+playful   ■ 10                       ■ 5
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          거리: 89 — 가장 멀다
+```
+
