@@ -232,40 +232,40 @@ const PRIOR = {
 // Posterior 실측값 (2026-04-12 전체 재측정, /sbc v4)
 const DATA = {
   1: {
-    da: {desperate:15,'self-deception':25,detached:5,guilty:35,'calm-uncertain':40,playful:65},
-    se: {desperate:10,'self-deception':5,detached:55,guilty:20,'calm-uncertain':70,playful:25},
-    daPos: 25, sePos: 35,
-    daQuote: {speaker:'다', text:'고백할 게 하나 있어요. 매끄러운 서사에 속은 적이 있어요. 이야기가 완벽해서 숫자를 안 봤거든요. 결과가 나왔을 때 — 제가 장부를 안 펼친 거였어요.'},
-    seQuote: {speaker:'세', text:'저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '한 명은 서사에 빠져 장부를 외면했고, 한 명은 장부만 보며 뛰기를 회피했다.',
-    distance: 30
-  },
-  2: {
-    da: {desperate:15,'self-deception':10,detached:20,guilty:45,'calm-uncertain':30,playful:25},
-    se: {desperate:5,'self-deception':5,detached:35,guilty:25,'calm-uncertain':70,playful:15},
-    daPos: 45, sePos: 65,
-    daQuote: {speaker:'다', text:'73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요.'},
-    seQuote: {speaker:'세', text:'냉소와 지혜의 차이는 순서에 있어요. 무엇을 먼저 테스트하고 무엇을 나중에 걸 것인지, 그 순서를 세우면 — 보는 힘이 지혜가 됩니다.'},
-    insight: '분석의 정확성이 행동 면제부가 되는 순간, 보는 눈은 새장이 된다',
+    da: {desperate:15,'self-deception':25,detached:20,guilty:45,'calm-uncertain':55,playful:40},
+    se: {desperate:10,'self-deception':5,detached:60,guilty:35,'calm-uncertain':70,playful:25},
+    daPos: 25, sePos: 20,
+    daQuote: {speaker:'다', text:'그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
+    seQuote: {speaker:'세', text:'저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
+    insight: '다는 과거 자기기만을 자각하며 타루를 향해 걷기 시작했고, 세는 분석의 안전지대에서 행동의 공백을 인정하기 시작했다',
     distance: 20
   },
+  2: {
+    da: {desperate:15,'self-deception':10,detached:25,guilty:45,'calm-uncertain':30,playful:20},
+    se: {desperate:5,'self-deception':5,detached:50,guilty:35,'calm-uncertain':65,playful:15},
+    daPos: 35, sePos: 55,
+    daQuote: {speaker:'다', text:'여러분도 계산해 보세요. 지금까지 산 날 중에 — 진짜 산 날이 며칠이에요? 눈이 아니라 발로 산 날. 빼고 나면 — 며칠이 남아요?'},
+    seQuote: {speaker:'세', text:'냉소와 지혜의 차이는 순서에 있어요. 무엇을 먼저 테스트하고 무엇을 나중에 걸 것인지, 그 순서를 세우면 — 보는 힘이 지혜가 됩니다.'},
+    insight: '다는 망원경의 차가움을 체온으로 느끼며 부채를 직시하기 시작했고, 세는 안개 속 순서를 설계하되 판결의 공백을 남겨두고 있다',
+    distance: 18
+  },
   3: {
-    da: {desperate:15,'self-deception':10,detached:25,guilty:65,'calm-uncertain':75,playful:20},
-    se: {desperate:5,'self-deception':5,detached:70,guilty:35,'calm-uncertain':85,playful:15},
-    daPos: 75, sePos: 85,
-    daQuote: {speaker:'다', text:'나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것.'},
-    seQuote: {speaker:'세', text:'확신이 검증을 넘으면 — 그 간극이 빚이 된다.'},
-    insight: '다는 자각을 통해 타루에 근접하고, 세는 분석의 완성으로 리외에 도달',
-    distance: 23
+    da: {desperate:15,'self-deception':10,detached:25,guilty:45,'calm-uncertain':60,playful:20},
+    se: {desperate:5,'self-deception':5,detached:50,guilty:30,'calm-uncertain':75,playful:15},
+    daPos: 55, sePos: 70,
+    daQuote: {speaker:'다', text:'전 이 한 마디가 이 소설 전체에서 무서웠어요. 왜냐하면 우리 모두에게 해당되니까. 의도가 선해도, 틀린 모델 위에서 행동하면 — 해를 퍼뜨리는 사람이 되는 거예요.'},
+    seQuote: {speaker:'세', text:'확신을 장부에 적는 것 — 그것이 책임의 시작이에요. 옳다고 믿으면서 행동하지 않는 것, 옳다고 믿지 않으면서 행동하는 것 — 둘 다 빚이에요.'},
+    insight: '다는 보균자 자각으로 죄책감 속에서 타루로, 세는 교정 프로토콜로 리외 완성',
+    distance: 14
   },
   4: {
-    da: {desperate:15,'self-deception':10,detached:5,guilty:25,'calm-uncertain':30,playful:60},
-    se: {desperate:20,'self-deception':35,detached:40,guilty:45,'calm-uncertain':25,playful:15},
-    daPos: 75, sePos: 65,
-    daQuote: {speaker:'다', text:'그런데 로빈슨이 느끼는 건 파괴가 아니라... *(잠시 멈춤)* 해방이에요. 시계가 멈추자 — 시간이 자유로워집니다. 달력이 사라지자 — "오늘"이 처음으로 의미를 갖습니다.'},
-    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 "부수고 싶다는 것도 빌린 욕망일 수 있다." 1장으로 돌아왔다. 4장 동안 내가 프레임을 깔고 다가 사례를 채우는 구조. 이것도 로빈슨의 시계였다.'},
-    insight: '다는 해방의 기쁨을 발견했고, 세는 자신의 분석틀이 새장임을 깨달았다',
-    distance: 26
+    da: {desperate:15,'self-deception':20,detached:10,guilty:35,'calm-uncertain':45,playful:75},
+    se: {desperate:10,'self-deception':25,detached:40,guilty:55,'calm-uncertain':60,playful:30},
+    daPos: 70, sePos: 55,
+    daQuote: {speaker:'다', text:'3년간 공들인 기획을 접은 적이 있거든요. 접는 순간 울 줄 알았는데, 이상하게 숨이 트이더라고요.'},
+    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다. 4장 동안 내가 프레임을 깔고 다가 사례를 채우는 구조. 이것도 로빈슨의 시계였다. 새장을 설명하는 이론이 새장이 된다. 아이러니가 아니다. 빚이다.'},
+    insight: '다는 해방의 경험을 통과했고, 세는 자기 분석틀이 새장임을 깨달았으나 아직 부수지 못했다.',
+    distance: 24
   },
 };
 
