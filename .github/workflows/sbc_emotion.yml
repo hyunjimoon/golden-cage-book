@@ -1,0 +1,53 @@
+name: SBC Emotion Analysis
+
+on:
+  push:
+    paths:
+      - 'chapters/ch*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sbc-emotion-main
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Extract dialogue and analyze emotions
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/sbc_analyze.py
+
+      - name: Commit updated emotion data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet interactive/emotion_trajectory.html; then
+            echo "No changes to emotion_trajectory.html"
+            exit 0
+          fi
+          git add interactive/emotion_trajectory.html
+          git commit -m "auto: SBC 감정 데이터 갱신 — $(date +%Y-%m-%d)"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Push succeeded on attempt $i"
+              exit 0
+            fi
+            echo "Push attempt $i failed, retrying..."
+            sleep $((i * 5))
+          done
+          echo "All push attempts failed"
+          exit 1
