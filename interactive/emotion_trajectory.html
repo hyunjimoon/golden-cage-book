@@ -232,40 +232,40 @@ const PRIOR = {
 // Posterior 실측값 (2026-04-12 전체 재측정, /sbc v4)
 const DATA = {
   1: {
-    da: {desperate:25,'self-deception':15,detached:10,guilty:35,'calm-uncertain':40,playful:65},
-    se: {desperate:15,'self-deception':5,detached:60,guilty:20,'calm-uncertain':75,playful:20},
-    daPos: 25, sePos: 15,
-    daQuote: {speaker:'다', text:'고백할 게 하나 있어요. 매끄러운 서사에 속은 적이 있어요. 이야기가 완벽해서 숫자를 안 봤거든요. 결과가 나왔을 때 — 제가 장부를 안 펼친 거였어요.'},
+    da: {desperate:25,'self-deception':15,detached:10,guilty:65,'calm-uncertain':30,playful:45},
+    se: {desperate:20,'self-deception':5,detached:60,guilty:45,'calm-uncertain':75,playful:25},
+    daPos: 15, sePos: 25,
+    daQuote: {speaker:'다', text:'저도 \'작가가 되고 싶다\'고 생각한 적이 있어요. 그런데 한참 뒤에야 구분할 수 있었어요 — 내가 글을 쓰고 싶었던 건지, \'작가\'라는 타이틀이 주는 이미지에 끌렸던 건지. 그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
     seQuote: {speaker:'세', text:'저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '다는 엠마의 그림자를 보며 자각하고, 세는 살리나의 그림자를 안고 관찰한다',
-    distance: 32
+    insight: '다는 과거의 자기기만을 인식하며 죄책감 속에서 각성하고, 세는 분석적 거리두기로 불확실성을 품고 있다',
+    distance: 30
   },
   2: {
-    da: {desperate:25,'self-deception':5,detached:10,guilty:35,'calm-uncertain':45,playful:30},
-    se: {desperate:15,'self-deception':10,detached:55,guilty:25,'calm-uncertain':65,playful:20},
-    daPos: 45, sePos: 75,
-    daQuote: {speaker:'다', text:'여러분도 계산해 보세요. 지금까지 산 날 중에 — 진짜 산 날이 며칠이에요? 눈이 아니라 발로 산 날. 빼고 나면 — 며칠이 남아요?'},
+    da: {desperate:35,'self-deception':15,detached:20,guilty:60,'calm-uncertain':40,playful:25},
+    se: {desperate:10,'self-deception':5,detached:65,guilty:25,'calm-uncertain':80,playful:30},
+    daPos: 45, sePos: 70,
+    daQuote: {speaker:'다', text:'73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요.'},
     seQuote: {speaker:'세', text:'냉소와 지혜의 차이는 순서에 있어요. 무엇을 먼저 테스트하고 무엇을 나중에 걸 것인지, 그 순서를 세우면 — 보는 힘이 지혜가 됩니다.'},
-    insight: '다는 살리나의 망원경 함정을 체감하며 각성하고, 세는 분석을 행동의 도구로 정교화하고 있다',
-    distance: 21
+    insight: '완벽한 진단이 행동 마비의 근거가 되는 지점에서, 낭만과 분석의 협업이 시작된다',
+    distance: 30
   },
   3: {
-    da: {desperate:15,'self-deception':10,detached:25,guilty:35,'calm-uncertain':70,playful:45},
-    se: {desperate:5,'self-deception':5,detached:60,guilty:25,'calm-uncertain':85,playful:35},
-    daPos: 65, sePos: 75,
+    da: {desperate:25,'self-deception':15,detached:10,guilty:35,'calm-uncertain':60,playful:40},
+    se: {desperate:5,'self-deception':10,detached:70,guilty:20,'calm-uncertain':85,playful:25},
+    daPos: 75, sePos: 80,
     daQuote: {speaker:'다', text:'나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것.'},
-    seQuote: {speaker:'세', text:'확신이 검증을 넘으면 — 그 간극이 빚이 된다.'},
-    insight: '확신의 교정 가능성이 책임윤리와 신념윤리를 가르는 분기점',
-    distance: 17
+    seQuote: {speaker:'세', text:'확신을 장부에 적는 것 — 그것이 책임의 시작이에요. 옳다고 믿으면서 행동하지 않는 것, 옳다고 믿지 않으면서 행동하는 것 — 둘 다 빚이에요.'},
+    insight: '다는 자각의 고통 속에서 타루가 되어가고, 세는 리외의 방법론을 완성하며 교정의 윤리를 확립한다',
+    distance: 29
   },
   4: {
-    da: {desperate:15,'self-deception':20,detached:25,guilty:30,'calm-uncertain':60,playful:85},
-    se: {desperate:25,'self-deception':35,detached:70,guilty:45,'calm-uncertain':75,playful:40},
-    daPos: 75, sePos: 65,
-    daQuote: {speaker:'다', text:'잠깐. *(멈춤)* 지금 말하면서 깨달은 건데 — 자원이 방향전환을 막는다는 거잖아요. 그런데 우리 대화에도 그게 적용되고 있었어요. 제가 장면을 주고, 세가 구조를 입히고. 이 패턴이 네 장째 반복되면서 — 질서가 됐어요.'},
-    seQuote: {speaker:'세', text:'*(긴 침묵)* ...맞아요.'},
-    insight: '황금새장의 역설 - 성공한 질서가 자기 해체의 순간을 인식할 때 진짜 자유가 시작된다',
-    distance: 28
+    da: {desperate:20,'self-deception':15,detached:10,guilty:25,'calm-uncertain':35,playful:65},
+    se: {desperate:30,'self-deception':40,detached:45,guilty:60,'calm-uncertain':25,playful:20},
+    daPos: 75, sePos: 60,
+    daQuote: {speaker:'다', text:'그런데 지금 이 순간이 — 우리의 폭발이네요.'},
+    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다.'},
+    insight: '분석이 새로운 새장이 되는 순간, 해체자가 해체되어야 한다',
+    distance: 29
   },
 };
 
