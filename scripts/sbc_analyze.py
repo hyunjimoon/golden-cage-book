@@ -84,7 +84,7 @@ def analyze_chapter(client, chapter_id: str, chapter_name: str) -> dict:
     prompt = PROMPT_TEMPLATE.format(chapter_name=chapter_name, text=dialogue)
 
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-5",
         max_tokens=1024,
         messages=[{"role": "user", "content": prompt}],
     )
