@@ -232,40 +232,40 @@ const PRIOR = {
 // Posterior 실측값 (2026-04-12 전체 재측정, /sbc v4)
 const DATA = {
   1: {
-    da: {desperate:15,'self-deception':45,detached:20,guilty:55,'calm-uncertain':35,playful:40},
-    se: {desperate:10,'self-deception':25,detached:60,guilty:50,'calm-uncertain':65,playful:20},
-    daPos: 25, sePos: 20,
-    daQuote: {speaker:'다', text:'저도 \'작가가 되고 싶다\'고 생각한 적이 있어요. 그런데 한참 뒤에야 구분할 수 있었어요 — 내가 글을 쓰고 싶었던 건지, \'작가\'라는 타이틀이 주는 이미지에 끌렸던 건지. 그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
-    seQuote: {speaker:'세', text:'저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '둘 다 새장 안: 다는 검증 없이 뛰었고, 세는 뛰지 않고 관찰만 했다',
-    distance: 23
+    da: {desperate:15,'self-deception':35,detached:20,guilty:45,'calm-uncertain':55,playful:40},
+    se: {desperate:10,'self-deception':25,detached:65,guilty:50,'calm-uncertain':70,playful:30},
+    daPos: 25, sePos: 35,
+    daQuote: {speaker:'다', text:'저는 안 펼쳐서, 당신은 안 뛰어서.'},
+    seQuote: {speaker:'세', text:'...저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
+    insight: '두 사람 모두 자기 새장을 자각했으나, 아직 그것을 벗어나는 행동으로는 전환하지 못한 상태',
+    distance: 20
   },
   2: {
-    da: {desperate:15,'self-deception':5,detached:10,guilty:35,'calm-uncertain':25,playful:10},
-    se: {desperate:5,'self-deception':0,detached:45,guilty:20,'calm-uncertain':65,playful:15},
-    daPos: 45, sePos: 55,
+    da: {desperate:15,'self-deception':5,detached:20,guilty:45,'calm-uncertain':30,playful:10},
+    se: {desperate:5,'self-deception':0,detached:35,guilty:25,'calm-uncertain':65,playful:15},
+    daPos: 35, sePos: 55,
     daQuote: {speaker:'다', text:'여러분도 계산해 보세요. 지금까지 산 날 중에 — 진짜 산 날이 며칠이에요? 눈이 아니라 발로 산 날. 빼고 나면 — 며칠이 남아요?'},
-    seQuote: {speaker:'세', text:'아는 것을 행동으로 바꾸지 않으면 — 아는 것 자체가 빚이 됩니다. 1장에서 엠마는 검증 없이 달려서 빚을 졌어요. 콘체타는 달리지 않아서 빚을 졌어요. 지나친 행동도 빚이지만, 지나친 망설임도 빚입니다.'},
-    insight: '다는 살리나의 거울을 보며 자각하고, 세는 분석의 독을 해독하는 중',
-    distance: 23
+    seQuote: {speaker:'세', text:'정확한 진단이 행동하지 않을 근거로 쓰이는 순간이에요.'},
+    insight: '다는 살리나의 고통을 체화하며 과거를 정산 중, 세는 그 정산을 순서로 구조화하는 중 — 둘 다 안개 안에 있으나 세만 안개를 작전술로 전환했다',
+    distance: 18
   },
   3: {
-    da: {desperate:15,'self-deception':10,detached:25,guilty:45,'calm-uncertain':60,playful:20},
-    se: {desperate:5,'self-deception':5,detached:50,guilty:30,'calm-uncertain':75,playful:15},
-    daPos: 55, sePos: 70,
+    da: {desperate:15,'self-deception':10,detached:20,guilty:45,'calm-uncertain':60,playful:25},
+    se: {desperate:5,'self-deception':5,detached:55,guilty:30,'calm-uncertain':75,playful:15},
+    daPos: 65, sePos: 70,
     daQuote: {speaker:'다', text:'전 이 한 마디가 이 소설 전체에서 무서웠어요. 왜냐하면 우리 모두에게 해당되니까. 의도가 선해도, 틀린 모델 위에서 행동하면 — 해를 퍼뜨리는 사람이 되는 거예요.'},
     seQuote: {speaker:'세', text:'확신을 장부에 적는 것 — 그것이 책임의 시작이에요. 옳다고 믿으면서 행동하지 않는 것, 옳다고 믿지 않으면서 행동하는 것 — 둘 다 빚이에요.'},
-    insight: '확신을 수정하는 용기와 빚을 기록하는 겸허 사이에서 책임이 시작된다',
-    distance: 14
+    insight: '타루의 자각에 공명하는 다, 교정 프로토콜을 완성하는 세 — 확신의 빚을 인정하되 청산 방법까지 제시한 장',
+    distance: 17
   },
   4: {
-    da: {desperate:15,'self-deception':10,detached:20,guilty:35,'calm-uncertain':55,playful:75},
-    se: {desperate:5,'self-deception':45,detached:40,guilty:60,'calm-uncertain':50,playful:25},
+    da: {desperate:15,'self-deception':10,detached:20,guilty:35,'calm-uncertain':45,playful:65},
+    se: {desperate:5,'self-deception':25,detached:50,guilty:55,'calm-uncertain':60,playful:20},
     daPos: 75, sePos: 65,
-    daQuote: {speaker:'다', text:'방드르디가 담뱃대를 피우는 장면에서 웃었다. 처음으로. 네 장 내내 무거웠는데, 이 아이는 가볍다. 악의 없이 부순다.'},
-    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다. 4장 동안 내가 프레임을 깔고 다가 사례를 채우는 구조. 이것도 로빈슨의 시계였다. 새장을 설명하는 이론이 새장이 된다.'},
-    insight: '다는 웃음으로 자유에 닿았고, 세는 자각으로 새로운 새장을 발견했다.',
-    distance: 28
+    daQuote: {speaker:'다', text:'접는 순간 울 줄 알았는데, 이상하게 숨이 트이더라고요.'},
+    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다.'},
+    insight: '다는 폭발 후의 해방을 체화했고, 세는 프레임 자체가 새장임을 자각했으나 아직 놓지 못했다',
+    distance: 25
   },
 };
 
