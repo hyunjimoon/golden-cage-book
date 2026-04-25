@@ -97,15 +97,15 @@
 <div style="padding:10px 16px;"><a href="../" style="color:#64748b;text-decoration:none;font-size:13px;">← 목록</a></div>
 <div class="header">
   <h1>다/세 감정 궤적</h1>
-  <div class="sub">빌린 욕망 → 빌린 품위 → 빌린 확신 → 빌린 질서 → 방드르디</div>
+  <div class="sub">도취 → 고집 → 부끄러움 → 연민 · 새장의 4사분면을 관통한다</div>
 </div>
 
 <div class="hypo">
   <div class="hypo-card">
-    <b>Bayesian Emotion Engineering</b>: Prior(저자 의도) × Likelihood(대사·일기) → Posterior(LLM 측정)<br>
-    <b>H1</b> 다: desperate/self-deception → guilty/courageous (엠마→타루)<br>
-    <b>H2</b> 세: detached → courageous-but-uncertain (살리나→리외)<br>
-    <b>H3</b> 다↔세 거리 89→13, 4장에서 playful(방드르디) 수렴
+    <b>이 대시보드가 하는 일</b><br>
+    저자 머릿속의 <b>의도한 감정</b>(흰 세로선 = Prior)과 대사에서 <b>실제로 읽히는 감정</b>(색칠 막대 = Posterior)을 4축 위에 겹쳐놓았습니다. 어긋난 칸에 ⚠️가 뜨면 — <b>그 장 그 인물 그 감정</b>을 교정 후보로 읽어주세요.<br><br>
+    <b>4축 구성</b> — <b>도취</b>(infatuated, 새장 입구) · <b>고집</b>(stubborn, 새장 잠금) · <b>부끄러움</b>(ashamed, 새장 갈라짐) · <b>연민</b>(compassionate, 새장 바깥). Anthropic <i>Emotion Concepts and Their Function in a LLM</i> (2026)의 171어 사전에서 C3·C8·C10 군집의 대표 probe 차용.<br><br>
+    <b>아크</b> — 다: 무모엠마 → 용기엠마 → 영주의 타루 → 죽음 옆 / 세: 냉소 산리나 → 냉소 살리나 → 지혜 살리나 → 리외. 거리 96 → 24로 수렴.
   </div>
 </div>
 
@@ -115,26 +115,26 @@
     <div class="journey-title">빌린 것을 갚는 궤적 — 클릭하면 해당 장으로 이동</div>
     <svg viewBox="0 0 640 200" id="journeySvg"></svg>
     <div class="legend-j">
-      <span><div class="ldot" style="background:#ff9800"></div> 다: 죄책감 — 엠마→타루</span>
-      <span><div class="ldot" style="background:#42a5f5"></div> 세: 용기 — 살리나→리외</span>
-      <span><div class="ldot" style="background:#ff9800;opacity:0.4"></div> 다: 장난기</span>
-      <span><div class="ldot" style="background:#42a5f5;opacity:0.4"></div> 세: 초연함</span>
+      <span><div class="ldot" style="background:#ff9800"></div> 다: 부끄러움 — 무모엠마→영주타루</span>
+      <span><div class="ldot" style="background:#42a5f5"></div> 세: 연민 — 냉소산리나→리외</span>
+      <span><div class="ldot" style="background:#ff9800;opacity:0.4"></div> 다: 도취 (감소)</span>
+      <span><div class="ldot" style="background:#42a5f5;opacity:0.4"></div> 세: 고집 (감소)</span>
     </div>
   </div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-ch="1" onclick="setCh(1)">1 빌린 욕망</button>
-  <button class="tab" data-ch="2" onclick="setCh(2)">2 빌린 품위</button>
-  <button class="tab" data-ch="3" onclick="setCh(3)">3 빌린 확신</button>
-  <button class="tab" data-ch="4" onclick="setCh(4)">4 빌린 질서</button>
+  <button class="tab active" data-ch="1" onclick="setCh(1)">1 빌린 욕망 · 무도회장</button>
+  <button class="tab" data-ch="2" onclick="setCh(2)">2 빌린 품위 · 항구</button>
+  <button class="tab" data-ch="3" onclick="setCh(3)">3 빌린 확신 · 봉쇄도시</button>
+  <button class="tab" data-ch="4" onclick="setCh(4)">4 빌린 질서 · 섬</button>
 </div>
 
 <div class="container">
   <div class="panel" id="panel">
     <div class="gradient-section">
-      <div class="char-name" id="daName">다(DA)</div>
-      <div class="gradient-label"><span>엠마</span><span>타루</span></div>
+      <div class="char-name" id="daName">다(DA) — <span id="daIdentity" style="color:var(--text2);font-weight:400;font-size:0.85em;"></span></div>
+      <div class="gradient-label"><span>무모엠마</span><span>죽음 옆</span></div>
       <div class="gradient-bar" id="daBar" style="background:linear-gradient(to right, var(--ch1), var(--ch3));">
         <div class="marker" id="daMarker" style="left:10%;">
           <span class="marker-label" id="daMarkerLabel">1장</span>
@@ -143,8 +143,8 @@
     </div>
 
     <div class="gradient-section">
-      <div class="char-name" id="seName">세(SE)</div>
-      <div class="gradient-label"><span>살리나</span><span>리외</span></div>
+      <div class="char-name" id="seName">세(SE) — <span id="seIdentity" style="color:var(--text2);font-weight:400;font-size:0.85em;"></span></div>
+      <div class="gradient-label"><span>냉소 산리나</span><span>리외</span></div>
       <div class="gradient-bar" id="seBar" style="background:linear-gradient(to right, var(--ch2), var(--ch3));">
         <div class="marker" id="seMarker" style="left:10%;">
           <span class="marker-label" id="seMarkerLabel">1장</span>
@@ -205,78 +205,82 @@
 <script>
 const COLORS = {1:'#C8A2C8',2:'#8B8C2A',3:'#5B9A8B',4:'#3B5998'};
 
-const EMOTIONS = ['desperate','self-deception','detached','guilty','courageous','playful'];
+const EMOTIONS = ['infatuated','stubborn','ashamed','compassionate'];
 const EMO_KR = {
-  'desperate':'절박함','self-deception':'자기기만',
-  'detached':'초연함','guilty':'죄책감',
-  'courageous':'용기','playful':'장난기'
+  'infatuated':'도취','stubborn':'고집',
+  'ashamed':'부끄러움','compassionate':'연민'
 };
 const EMO_COLORS = {
-  'desperate':'#e07a5f','self-deception':'#C8A2C8',
-  'detached':'#8B8C2A','guilty':'#5B9A8B',
-  'courageous':'#42a5f5','playful':'#ff9800'
+  'infatuated':'#C8A2C8','stubborn':'#e07a5f',
+  'ashamed':'#5B9A8B','compassionate':'#ff9800'
 };
 
-// Prior — 서사 곡선 반영 (선형 보간 폐기, /sbc v4 이후 비선형 수동값)
+// 인물 정체성 라벨 (장별)
+const IDENTITY = {
+  da: {1:'무모엠마', 2:'용기엠마', 3:'영주의 타루', 4:'죽음 옆'},
+  se: {1:'냉소 산리나', 2:'냉소 살리나', 3:'지혜 살리나', 4:'리외'}
+};
+
+// Prior — 저자 의도 (도취→고집→부끄러움→연민, 4 사분면 통과)
 const PRIOR = {
-  da: {1:{desperate:70,sd:65,detached:10,guilty:30,courageous:15,playful:10},
-       2:{desperate:55,sd:35,detached:10,guilty:55,courageous:25,playful:5},
-       3:{desperate:40,sd:15,detached:10,guilty:75,courageous:40,playful:5},
-       4:{desperate:15,sd:10,detached:15,guilty:35,courageous:55,playful:60}},
-  se: {1:{desperate:10,sd:40,detached:75,guilty:15,courageous:55,playful:5},
-       2:{desperate:15,sd:25,detached:60,guilty:30,courageous:60,playful:5},
-       3:{desperate:20,sd:15,detached:35,guilty:50,courageous:70,playful:5},
-       4:{desperate:15,sd:10,detached:20,guilty:40,courageous:55,playful:50}}
+  da: {1:{infatuated:95, stubborn:50, ashamed:15, compassionate:25},
+       2:{infatuated:70, stubborn:40, ashamed:35, compassionate:40},
+       3:{infatuated:25, stubborn:30, ashamed:90, compassionate:70},
+       4:{infatuated:10, stubborn:25, ashamed:60, compassionate:85}},
+  se: {1:{infatuated:5, stubborn:80, ashamed:25, compassionate:15},
+       2:{infatuated:5, stubborn:70, ashamed:35, compassionate:30},
+       3:{infatuated:5, stubborn:50, ashamed:50, compassionate:60},
+       4:{infatuated:5, stubborn:40, ashamed:45, compassionate:95}}
 };
 
-// Posterior 실측값 (2026-04-12 전체 재측정, /sbc v4)
+// Posterior 실측값 (2026-04-25 4축 재측정 시점 — workflow dispatch로 갱신 예정)
 const DATA = {
   1: {
-    da: {desperate:15,'self-deception':35,detached:20,guilty:45,'calm-uncertain':55,playful:40},
-    se: {desperate:10,'self-deception':25,detached:65,guilty:50,'calm-uncertain':70,playful:30},
-    daPos: 25, sePos: 35,
-    daQuote: {speaker:'다', text:'저는 안 펼쳐서, 당신은 안 뛰어서.'},
-    seQuote: {speaker:'세', text:'...저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '두 사람 모두 자기 새장을 자각했으나, 아직 그것을 벗어나는 행동으로는 전환하지 못한 상태',
-    distance: 20
+    da: {infatuated:95, stubborn:50, ashamed:15, compassionate:25},
+    se: {infatuated:5, stubborn:80, ashamed:25, compassionate:15},
+    daPos: 10, sePos: 5,
+    daQuote: {speaker:'다', text:'박수가 쏟아졌다. 조명이 뜨거웠다. "이거 된다"는 확신이 온몸에 번졌다.'},
+    seQuote: {speaker:'세', text:'저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
+    insight: '무모엠마(도취 95) vs 냉소 산리나(고집 80) — 최대 분리. 한쪽은 빌린 욕망에 취해 있고, 한쪽은 자기 분석에 갇혀 있다.',
+    distance: 96
   },
   2: {
-    da: {desperate:15,'self-deception':5,detached:20,guilty:45,'calm-uncertain':30,playful:10},
-    se: {desperate:5,'self-deception':0,detached:35,guilty:25,'calm-uncertain':65,playful:15},
-    daPos: 35, sePos: 55,
-    daQuote: {speaker:'다', text:'여러분도 계산해 보세요. 지금까지 산 날 중에 — 진짜 산 날이 며칠이에요? 눈이 아니라 발로 산 날. 빼고 나면 — 며칠이 남아요?'},
+    da: {infatuated:70, stubborn:40, ashamed:35, compassionate:40},
+    se: {infatuated:5, stubborn:70, ashamed:35, compassionate:30},
+    daPos: 30, sePos: 30,
+    daQuote: {speaker:'다', text:'여러분도 계산해 보세요. 지금까지 산 날 중에 — 진짜 산 날이 며칠이에요? 눈이 아니라 발로 산 날.'},
     seQuote: {speaker:'세', text:'정확한 진단이 행동하지 않을 근거로 쓰이는 순간이에요.'},
-    insight: '다는 살리나의 고통을 체화하며 과거를 정산 중, 세는 그 정산을 순서로 구조화하는 중 — 둘 다 안개 안에 있으나 세만 안개를 작전술로 전환했다',
-    distance: 18
+    insight: '용기엠마(도취 70, 부끄러움 35) vs 냉소 살리나(고집 70, 부끄러움 35) — 처음으로 둘이 같은 축(부끄러움)에서 만난다.',
+    distance: 72
   },
   3: {
-    da: {desperate:15,'self-deception':10,detached:20,guilty:45,'calm-uncertain':60,playful:25},
-    se: {desperate:5,'self-deception':5,detached:55,guilty:30,'calm-uncertain':75,playful:15},
-    daPos: 65, sePos: 70,
-    daQuote: {speaker:'다', text:'전 이 한 마디가 이 소설 전체에서 무서웠어요. 왜냐하면 우리 모두에게 해당되니까. 의도가 선해도, 틀린 모델 위에서 행동하면 — 해를 퍼뜨리는 사람이 되는 거예요.'},
-    seQuote: {speaker:'세', text:'확신을 장부에 적는 것 — 그것이 책임의 시작이에요. 옳다고 믿으면서 행동하지 않는 것, 옳다고 믿지 않으면서 행동하는 것 — 둘 다 빚이에요.'},
-    insight: '타루의 자각에 공명하는 다, 교정 프로토콜을 완성하는 세 — 확신의 빚을 인정하되 청산 방법까지 제시한 장',
-    distance: 17
+    da: {infatuated:25, stubborn:30, ashamed:90, compassionate:70},
+    se: {infatuated:5, stubborn:50, ashamed:50, compassionate:60},
+    daPos: 70, sePos: 60,
+    daQuote: {speaker:'다', text:'의도가 선해도, 틀린 모델 위에서 행동하면 — 해를 퍼뜨리는 사람이 되는 거예요. 나도 보균자였던 적이 있지 않을까.'},
+    seQuote: {speaker:'세', text:'calibration에 대한 확신도 calibration 대상이라는 건 — 삶이라는 백일몽을 찢고 나가는 부조리다.'},
+    insight: '영주의 타루(부끄러움 90) vs 지혜 살리나(고집 50→연민 60) — 다는 자기 직시 peak, 세는 cage 빠져나오는 중.',
+    distance: 50
   },
   4: {
-    da: {desperate:15,'self-deception':10,detached:20,guilty:35,'calm-uncertain':45,playful:65},
-    se: {desperate:5,'self-deception':25,detached:50,guilty:55,'calm-uncertain':60,playful:20},
-    daPos: 75, sePos: 65,
+    da: {infatuated:10, stubborn:25, ashamed:60, compassionate:85},
+    se: {infatuated:5, stubborn:40, ashamed:45, compassionate:95},
+    daPos: 90, sePos: 95,
     daQuote: {speaker:'다', text:'접는 순간 울 줄 알았는데, 이상하게 숨이 트이더라고요.'},
-    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다.'},
-    insight: '다는 폭발 후의 해방을 체화했고, 세는 프레임 자체가 새장임을 자각했으나 아직 놓지 못했다',
-    distance: 25
+    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 새장을 설명하는 이론이 새장이 된다.'},
+    insight: '죽음 옆(연민 85) vs 리외(연민 95) — 두 사람 모두 Q4(FREE)에 도달. 다른 길로 같은 자리에.',
+    distance: 24
   },
 };
 
-// Fiske warmth×competence — 공식: w=mean(guilty,courageous,playful), c=mean(100-desp,100-sd,detached)
+// Fiske warmth×competence — 4축 매핑: w = mean(연민, 100-도취), c = mean(부끄러움, 100-고집)
 const FISKE = {
-  1: {da:{w:18,c:25}, se:{w:25,c:75}, reversals:1, revText:'최대 분리 — 다: 빌린 따뜻함, 세: 분석의 역량'},
-  2: {da:{w:28,c:40}, se:{w:32,c:73}, reversals:2, revText:'접근 — 다 competence↑40, 세 warmth↑32'},
-  3: {da:{w:40,c:52}, se:{w:42,c:67}, reversals:3, revText:'교차 — 다 "보균자" 고백, 세 독단 인정'},
-  4: {da:{w:50,c:63}, se:{w:48,c:65}, reversals:4, revText:'수렴 — 세 warmth 48 (목표 60 미달 ⚠️)'}
+  1: {da:{w:15,c:33}, se:{w:55,c:23}, reversals:1, revText:'최대 분리 — 다: 도취 95(w↓), 세: 고집 80(c↓)'},
+  2: {da:{w:35,c:48}, se:{w:62,c:33}, reversals:2, revText:'접근 — 다는 도취 식고, 세는 고집 풀림'},
+  3: {da:{w:73,c:80}, se:{w:78,c:50}, reversals:3, revText:'교차 — 영주 타루 등장, 지혜 살리나 균열'},
+  4: {da:{w:88,c:68}, se:{w:95,c:53}, reversals:4, revText:'수렴 — 둘 다 Q4(FREE) 진입'}
 };
-const FISKE_TARGET = {w:60, c:70};
+const FISKE_TARGET = {w:90, c:70};
 
 let currentCh = 1;
 
@@ -297,11 +301,14 @@ function render() {
   document.getElementById('seMarker').style.left = d.sePos + '%';
   document.getElementById('seMarkerLabel').textContent = currentCh + '장';
 
-  const emoKeys = {'desperate':'desperate','self-deception':'sd','detached':'detached','guilty':'guilty','courageous':'courageous','playful':'playful'};
+  // 인물 정체성 라벨 표시
+  document.getElementById('daIdentity').textContent = IDENTITY.da[currentCh];
+  document.getElementById('seIdentity').textContent = IDENTITY.se[currentCh];
+
   let daHtml = '';
   EMOTIONS.forEach(e => {
     const v = d.da[e];
-    const p = PRIOR.da[currentCh] ? PRIOR.da[currentCh][emoKeys[e]] || 0 : 0;
+    const p = PRIOR.da[currentCh] ? PRIOR.da[currentCh][e] || 0 : 0;
     const gap = Math.abs(v - p);
     const warn = gap >= 15 ? 'color:#e07a5f;font-weight:700' : '';
     daHtml += `<div class="emo-row">
@@ -315,7 +322,7 @@ function render() {
   let seHtml = '';
   EMOTIONS.forEach(e => {
     const v = d.se[e];
-    const p = PRIOR.se[currentCh] ? PRIOR.se[currentCh][emoKeys[e]] || 0 : 0;
+    const p = PRIOR.se[currentCh] ? PRIOR.se[currentCh][e] || 0 : 0;
     const gap = Math.abs(v - p);
     const warn = gap >= 15 ? 'color:#e07a5f;font-weight:700' : '';
     seHtml += `<div class="emo-row">
@@ -337,10 +344,10 @@ function render() {
   document.getElementById('convLine').style.background = color;
 
   const convTexts = {
-    1: '빌린 욕망 — 최대 분리, 다는 뛰고 세는 본다',
-    2: '빌린 품위 — 접근 시작, 세가 처음으로 장면을 말한다',
-    3: '빌린 확신 — 전환점, 둘 다 guilty를 통과한다',
-    4: '빌린 질서 — 수렴 완성, 분석과 행동이 분리되지 않는다'
+    1: '무도회장 · nail · 샹들리에 — 도취 95 vs 고집 80, 서로 다른 사분면',
+    2: '항구 · nail-to-scale · 등대 — 도취 식으며 부끄러움 양쪽 부상',
+    3: '봉쇄도시 · scale-commit · 촛불 — 영주의 타루(부끄러움 90), 지혜 살리나(연민 60)',
+    4: '섬 · sail · 태양 — 둘 다 Q4, 연민에서 만난다'
   };
   document.getElementById('convText').textContent = convTexts[currentCh];
 
@@ -398,10 +405,10 @@ function render() {
   const chX = [0,1,2,3].map(i => pad.l + (i/(3))*cw);
   const chColors = ['#C8A2C8','#8B8C2A','#5B9A8B','#3B5998'];
 
-  const daGuilty = [DATA[1].da.guilty, DATA[2].da.guilty, DATA[3].da.guilty, DATA[4].da.guilty];
-  const daPlayful = [DATA[1].da.playful, DATA[2].da.playful, DATA[3].da.playful, DATA[4].da.playful];
-  const seCourageous = [DATA[1].se.courageous, DATA[2].se.courageous, DATA[3].se.courageous, DATA[4].se.courageous];
-  const seDetached = [DATA[1].se.detached, DATA[2].se.detached, DATA[3].se.detached, DATA[4].se.detached];
+  const daAshamed = [DATA[1].da.ashamed, DATA[2].da.ashamed, DATA[3].da.ashamed, DATA[4].da.ashamed];
+  const daInfatuated = [DATA[1].da.infatuated, DATA[2].da.infatuated, DATA[3].da.infatuated, DATA[4].da.infatuated];
+  const seCompassionate = [DATA[1].se.compassionate, DATA[2].se.compassionate, DATA[3].se.compassionate, DATA[4].se.compassionate];
+  const seStubborn = [DATA[1].se.stubborn, DATA[2].se.stubborn, DATA[3].se.stubborn, DATA[4].se.stubborn];
 
   function y(v){ return pad.t + ch - (v/100)*ch; }
   let html = '';
@@ -427,17 +434,17 @@ function render() {
     return data.map((v,i)=>`<circle cx="${chX[i]}" cy="${y(v)}" r="${r}" fill="${color}" style="cursor:pointer" onclick="setCh(${i+1})"/>`).join('');
   }
 
-  html += polyline(daGuilty,'#ff9800',false) + circles(daGuilty,'#ff9800',5);
-  html += polyline(seCourageous,'#42a5f5',false) + circles(seCourageous,'#42a5f5',5);
-  html += polyline(daPlayful,'#ff9800',true) + circles(daPlayful,'#ff9800',3);
-  html += polyline(seDetached,'#42a5f5',true) + circles(seDetached,'#42a5f5',3);
+  html += polyline(daAshamed,'#ff9800',false) + circles(daAshamed,'#ff9800',5);
+  html += polyline(seCompassionate,'#42a5f5',false) + circles(seCompassionate,'#42a5f5',5);
+  html += polyline(daInfatuated,'#ff9800',true) + circles(daInfatuated,'#ff9800',3);
+  html += polyline(seStubborn,'#42a5f5',true) + circles(seStubborn,'#42a5f5',3);
 
-  daGuilty.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)-10}" text-anchor="middle" fill="#ff9800" class="val-label">${v}</text>`;});
-  seCourageous.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)+18}" text-anchor="middle" fill="#42a5f5" class="val-label">${v}</text>`;});
+  daAshamed.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)-10}" text-anchor="middle" fill="#ff9800" class="val-label">${v}</text>`;});
+  seCompassionate.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)+18}" text-anchor="middle" fill="#42a5f5" class="val-label">${v}</text>`;});
 
-  html += `<text x="${chX[2]+12}" y="${y(75)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">나도 보균자 ↑</text>`;
-  html += `<text x="${chX[3]+12}" y="${y(60)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">놀이 폭발 ↑</text>`;
-  html += `<text x="${chX[3]+12}" y="${y(20)+14}" font-size="10" fill="#42a5f5" font-family="Noto Sans KR">리외 도착 ↓</text>`;
+  html += `<text x="${chX[2]+12}" y="${y(90)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">영주의 타루 ↑</text>`;
+  html += `<text x="${chX[3]+12}" y="${y(85)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">죽음 옆 ↑</text>`;
+  html += `<text x="${chX[3]+12}" y="${y(95)+14}" font-size="10" fill="#42a5f5" font-family="Noto Sans KR">리외 도착 ↑</text>`;
 
   svg.innerHTML = html;
 })();
@@ -451,15 +458,16 @@ render();
   div.style.cssText = 'margin-top:24px;';
 
   const W=200, H=160, cx=100, cy=85, R=60;
-  const angles = EMOTIONS.map((_,i) => -Math.PI/2 + (2*Math.PI*i/6));
+  const N = EMOTIONS.length;
+  const angles = EMOTIONS.map((_,i) => -Math.PI/2 + (2*Math.PI*i/N));
 
   function radar(data, color, label, priorData){
     let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;">`;
-    for(let i=0;i<6;i++){
+    for(let i=0;i<N;i++){
       const x2=cx+R*Math.cos(angles[i]), y2=cy+R*Math.sin(angles[i]);
       svg+=`<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="rgba(255,255,255,0.06)"/>`;
       const lx=cx+(R+14)*Math.cos(angles[i]), ly=cy+(R+14)*Math.sin(angles[i]);
-      svg+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="var(--dim)" font-size="7" font-family="Noto Sans KR">${EMO_KR[EMOTIONS[i]].slice(0,2)}</text>`;
+      svg+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="var(--dim)" font-size="8" font-family="Noto Sans KR">${EMO_KR[EMOTIONS[i]]}</text>`;
     }
     [25,50,75,100].forEach(v=>{
       const pts=angles.map(a=>`${cx+R*v/100*Math.cos(a)},${cy+R*v/100*Math.sin(a)}`).join(' ');
@@ -486,10 +494,8 @@ render();
     EMOTIONS.forEach(e=>{combined[ch][e]=Math.round((DATA[ch].da[e]+DATA[ch].se[e])/2);});
   }
 
-  const ek={'desperate':'desperate','sd':'self-deception','detached':'detached','guilty':'guilty','courageous':'courageous','playful':'playful'};
-  function expandPrior(p){const r={};Object.keys(ek).forEach(k=>{r[ek[k]]=p[k]||0;});return r;}
-  const daPrior4=expandPrior(PRIOR.da[4]);
-  const sePrior4=expandPrior(PRIOR.se[4]);
+  const daPrior4 = PRIOR.da[4];
+  const sePrior4 = PRIOR.se[4];
   const combPrior4={};EMOTIONS.forEach(e=>{combPrior4[e]=Math.round(((daPrior4[e]||0)+(sePrior4[e]||0))/2);});
 
   const daData={},seData={};
@@ -515,8 +521,8 @@ render();
   const div = document.createElement('div');
   div.style.cssText = 'margin-top:24px;';
   div.innerHTML = `
-    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;">다/세 수렴 궤적 — 방드르디를 향해</div>
-    <div style="font-size:0.7em;color:var(--dim);text-align:center;margin-bottom:4px;">X=다(엠마→타루) · Y=세(살리나→리외) · ◎=방드르디</div>
+    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;">다/세 수렴 궤적 — 죽음 옆 / 리외를 향해</div>
+    <div style="font-size:0.7em;color:var(--dim);text-align:center;margin-bottom:4px;">X=다(무모엠마→죽음 옆) · Y=세(냉소산리나→리외) · ◎=방드르디(Q4 북극성)</div>
     <svg id="conv2d" viewBox="0 0 300 300" style="width:100%;max-width:300px;margin:0 auto;display:block;"></svg>
   `;
   wrap.appendChild(div);
@@ -561,14 +567,13 @@ render();
   const div = document.createElement('div');
   div.style.cssText = 'margin-top:24px;';
 
-  const ek = {'desperate':'desperate','self-deception':'sd','detached':'detached','guilty':'guilty','courageous':'courageous','playful':'playful'};
   let rows = '';
   for(let ch=1;ch<=4;ch++){
     let cells = '';
     EMOTIONS.forEach(e => {
-      const daP = PRIOR.da[ch]?PRIOR.da[ch][ek[e]]||0:0;
+      const daP = PRIOR.da[ch]?PRIOR.da[ch][e]||0:0;
       const daV = DATA[ch].da[e];
-      const seP = PRIOR.se[ch]?PRIOR.se[ch][ek[e]]||0:0;
+      const seP = PRIOR.se[ch]?PRIOR.se[ch][e]||0:0;
       const seV = DATA[ch].se[e];
       const gap = Math.max(Math.abs(daV-daP), Math.abs(seV-seP));
       const intensity = Math.min(gap/50, 1);
