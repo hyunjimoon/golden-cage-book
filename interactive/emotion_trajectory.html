@@ -105,7 +105,7 @@
     <b>이 대시보드가 하는 일</b><br>
     저자 머릿속의 <b>의도한 감정</b>(흰 세로선 = Prior)과 대사에서 <b>실제로 읽히는 감정</b>(색칠 막대 = Posterior)을 4축 위에 겹쳐놓았습니다. 어긋난 칸에 ⚠️가 뜨면 — <b>그 장 그 인물 그 감정</b>을 교정 후보로 읽어주세요.<br><br>
     <b>4축 구성</b> — <b>도취</b>(infatuated, 새장 입구) · <b>고집</b>(stubborn, 새장 잠금) · <b>부끄러움</b>(ashamed, 새장 갈라짐) · <b>연민</b>(compassionate, 새장 바깥). Anthropic <i>Emotion Concepts and Their Function in a LLM</i> (2026)의 171어 사전에서 C3·C8·C10 군집의 대표 probe 차용.<br><br>
-    <b>아크</b> — 다: 무모엠마 → 용기엠마 → 영주의 타루 → 죽음 옆 / 세: 냉소 산리나 → 냉소 살리나 → 지혜 살리나 → 리외. 거리 96 → 24로 수렴.
+    <b>아크</b> — 다: 무모엠마 → 용기엠마 → 영웅주의 타루 → 죽음 옆 / 세: 냉소 산리나 → 냉소 살리나 → 지혜 살리나 → 리외. 거리 96 → 24로 수렴.
   </div>
 </div>
 
@@ -115,7 +115,7 @@
     <div class="journey-title">빌린 것을 갚는 궤적 — 클릭하면 해당 장으로 이동</div>
     <svg viewBox="0 0 640 200" id="journeySvg"></svg>
     <div class="legend-j">
-      <span><div class="ldot" style="background:#ff9800"></div> 다: 부끄러움 — 무모엠마→영주타루</span>
+      <span><div class="ldot" style="background:#ff9800"></div> 다: 부끄러움 — 무모엠마→영웅주의 타루</span>
       <span><div class="ldot" style="background:#42a5f5"></div> 세: 연민 — 냉소산리나→리외</span>
       <span><div class="ldot" style="background:#ff9800;opacity:0.4"></div> 다: 도취 (감소)</span>
       <span><div class="ldot" style="background:#42a5f5;opacity:0.4"></div> 세: 고집 (감소)</span>
@@ -217,7 +217,7 @@ const EMO_COLORS = {
 
 // 인물 정체성 라벨 (장별)
 const IDENTITY = {
-  da: {1:'무모엠마', 2:'용기엠마', 3:'영주의 타루', 4:'죽음 옆'},
+  da: {1:'무모엠마', 2:'용기엠마', 3:'영웅주의 타루', 4:'죽음 옆'},
   se: {1:'냉소 산리나', 2:'냉소 살리나', 3:'지혜 살리나', 4:'리외'}
 };
 
@@ -277,7 +277,7 @@ const DATA = {
 const FISKE = {
   1: {da:{w:15,c:33}, se:{w:55,c:23}, reversals:1, revText:'최대 분리 — 다: 도취 95(w↓), 세: 고집 80(c↓)'},
   2: {da:{w:35,c:48}, se:{w:62,c:33}, reversals:2, revText:'접근 — 다는 도취 식고, 세는 고집 풀림'},
-  3: {da:{w:73,c:80}, se:{w:78,c:50}, reversals:3, revText:'교차 — 영주 타루 등장, 지혜 살리나 균열'},
+  3: {da:{w:73,c:80}, se:{w:78,c:50}, reversals:3, revText:'교차 — 영웅주의 타루 등장, 지혜 살리나 균열'},
   4: {da:{w:88,c:68}, se:{w:95,c:53}, reversals:4, revText:'수렴 — 둘 다 Q4(FREE) 진입'}
 };
 const FISKE_TARGET = {w:90, c:70};
@@ -346,7 +346,7 @@ function render() {
   const convTexts = {
     1: '📺 정보 · 무도회장 · nail · 샹들리에 — 도취 95 vs 고집 80, 서로 다른 사분면',
     2: '⚙️ 물질 · 항구 · nail-to-scale · 등대 — 도취 식으며 부끄러움 양쪽 부상',
-    3: '🧬 생체 · 봉쇄도시 · scale-commit · 촛불 — 영주의 타루(부끄러움 90), 지혜 살리나(연민 60)',
+    3: '🧬 생체 · 봉쇄도시 · scale-commit · 촛불 — 영웅주의 타루(부끄러움 90), 지혜 살리나(연민 60)',
     4: '⚡️ 에너지 · 섬 · sail · 태양 — 둘 다 Q4, 연민에서 만난다'
   };
   document.getElementById('convText').textContent = convTexts[currentCh];
@@ -442,7 +442,7 @@ function render() {
   daAshamed.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)-10}" text-anchor="middle" fill="#ff9800" class="val-label">${v}</text>`;});
   seCompassionate.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)+18}" text-anchor="middle" fill="#42a5f5" class="val-label">${v}</text>`;});
 
-  html += `<text x="${chX[2]+12}" y="${y(90)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">영주의 타루 ↑</text>`;
+  html += `<text x="${chX[2]+12}" y="${y(90)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">영웅주의 타루 ↑</text>`;
   html += `<text x="${chX[3]+12}" y="${y(85)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">죽음 옆 ↑</text>`;
   html += `<text x="${chX[3]+12}" y="${y(95)+14}" font-size="10" fill="#42a5f5" font-family="Noto Sans KR">리외 도착 ↑</text>`;
 
