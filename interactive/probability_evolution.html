@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>확률 진화 — 4.11 → 4.25 — 황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500;700&display=swap');
+  :root{
+    --bg:#0a0e1a;--card:#1a2234;--surface:#111827;--border:rgba(255,255,255,0.06);
+    --text:#f0f2f5;--text2:#94a3b8;--dim:#5a6a7a;
+    --s:#D4A574;--d:#4A7A6B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;overflow-x:hidden;}
+  .page{max-width:780px;margin:0 auto;padding:32px 20px 60px;}
+  .back{font-size:12px;color:var(--dim);text-decoration:none;}
+  h1{font-size:1.5em;font-weight:700;margin:18px 0 4px;}
+  .sub{font-size:12px;color:var(--dim);margin-bottom:24px;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+  .card{background:var(--card);border-radius:12px;padding:20px;border-left:3px solid;}
+  .card-s{border-left-color:var(--s);}
+  .card-d{border-left-color:var(--d);}
+  .card-label{font-size:12px;color:var(--text2);font-weight:600;margin-bottom:4px;}
+  .card-num{font-family:'DM Mono',monospace;font-size:3.6em;font-weight:700;line-height:1;letter-spacing:-0.02em;transition:color 0.3s;}
+  .card-s .card-num{color:var(--s);}
+  .card-d .card-num{color:var(--d);}
+  .card-delta{font-family:'DM Mono',monospace;font-size:0.8em;color:var(--text2);margin-top:2px;}
+  .card-delta.up{color:#7CB342;}
+  .card-note{font-size:11px;color:var(--dim);margin-top:8px;line-height:1.5;}
+
+  .controls{display:flex;align-items:center;gap:12px;background:var(--surface);border-radius:8px;padding:10px 14px;margin-bottom:16px;}
+  .btn{background:var(--card);color:var(--text);border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif;}
+  .btn:hover{background:#283344;}
+  .btn-play{background:var(--d);color:#fff;min-width:80px;}
+  .btn-play:hover{background:#5A8A7A;}
+  .scrubber{flex:1;height:4px;background:#283344;border-radius:2px;position:relative;cursor:pointer;}
+  .scrubber-fill{height:100%;background:var(--d);border-radius:2px;width:0;transition:width 0.1s linear;}
+  .scrubber-knob{position:absolute;top:-5px;width:14px;height:14px;background:var(--text);border-radius:50%;transform:translateX(-50%);transition:left 0.1s linear;}
+  .speed{font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);}
+  .speed select{background:var(--card);color:var(--text);border:1px solid var(--border);padding:3px 6px;border-radius:4px;font-family:inherit;font-size:11px;}
+
+  .frame-info{background:var(--surface);border-radius:8px;padding:14px 16px;margin-bottom:16px;font-size:12px;}
+  .frame-date{font-family:'DM Mono',monospace;color:var(--text2);font-weight:700;display:inline-block;margin-right:10px;}
+  .frame-sha{font-family:'DM Mono',monospace;color:var(--dim);font-size:10px;display:inline-block;margin-right:10px;}
+  .frame-msg{color:var(--text);font-weight:600;}
+  .frame-rationale{color:var(--text2);margin-top:6px;font-size:11px;line-height:1.5;}
+
+  .chart-wrap{background:var(--card);border-radius:12px;padding:18px;margin-bottom:16px;}
+  .chart-title{font-size:11px;color:var(--text2);font-weight:600;margin-bottom:8px;letter-spacing:0.5px;}
+  svg{width:100%;display:block;}
+
+  .legend{display:flex;justify-content:center;gap:18px;font-size:11px;color:var(--text2);margin-top:6px;}
+  .legend span{display:flex;align-items:center;gap:5px;}
+  .legend .dot{width:10px;height:10px;border-radius:50%;}
+
+  .summary{background:var(--surface);border-radius:8px;padding:14px 16px;font-size:12px;color:var(--text2);}
+  .summary b{color:var(--text);}
+  .summary .delta-up{color:#7CB342;font-weight:700;}
+
+  @media(max-width:560px){
+    .card-num{font-size:2.6em;}
+    .controls{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="../">← 대문</a>
+  <h1>책이 자라는 모습 — 2026.4.11 → 4.25</h1>
+  <div class="sub">14일 동안 책이 어떻게 단단해졌는가 · 19 milestone · ▶ 재생을 눌러보세요</div>
+
+  <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:12.5px;line-height:1.7;color:var(--text2);">
+    <b style="color:var(--text);">편집자님께</b> — 두 막대로 책의 건강을 잽니다.<br>
+    🟡 <b style="color:var(--s)">팔 수 있는가</b> = 독자에게 <i>꽂힐</i> 가능성. 페르소나·사례·서사 명료도.<br>
+    🟢 <b style="color:var(--d)">만들 수 있는가</b> = 원고가 <i>설계대로 작동하는</i> 정도. 인물 감정 측정·교정.<br>
+    재생 버튼을 누르면 4.11 (40·55)에서 오늘 (65·78)까지 어떤 결정이 어떤 변화를 만들었는지 보입니다.
+  </div>
+
+  <div class="cards">
+    <div class="card card-s">
+      <div class="card-label">🟡 팔 수 있는가</div>
+      <div class="card-num" id="sNum">40%</div>
+      <div class="card-delta" id="sDelta">출발점</div>
+      <div class="card-note" id="sNote">한국 사례 2건(1장·3장) 미확보</div>
+    </div>
+    <div class="card card-d">
+      <div class="card-label">🟢 만들 수 있는가</div>
+      <div class="card-num" id="dNum">55%</div>
+      <div class="card-delta" id="dDelta">출발점</div>
+      <div class="card-note" id="dNote">두 인물 감정 거리 89 → 13으로 좁혀짐</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-play" id="playBtn">▶ 재생</button>
+    <button class="btn" id="restartBtn">⏮ 처음</button>
+    <div class="scrubber" id="scrubber">
+      <div class="scrubber-fill" id="scrubberFill"></div>
+      <div class="scrubber-knob" id="scrubberKnob" style="left:0%"></div>
+    </div>
+    <div class="speed">
+      <select id="speedSel">
+        <option value="1500">1×</option>
+        <option value="900" selected>2×</option>
+        <option value="500">5×</option>
+        <option value="200">10×</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="frame-info">
+    <span class="frame-date" id="frameDate">4-11</span>
+    <span class="frame-sha" id="frameSha">e93790f</span>
+    <span class="frame-msg" id="frameMsg">베이스라인 — D 35%→55% 상향</span>
+    <div class="frame-rationale" id="frameRationale">감정 궤적 측정 도입. 4.12 측정 결과: 세 detached 75→20%, 다/세 거리 89→13.</div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">S × D 궤적</div>
+    <svg id="chart" viewBox="0 0 720 240"></svg>
+    <div class="legend">
+      <span><div class="dot" style="background:var(--s)"></div>S 팔 수 있는가</span>
+      <span><div class="dot" style="background:var(--d)"></div>D 만들 수 있는가</span>
+    </div>
+  </div>
+
+  <div class="summary" id="summary">
+    <b>14일 요약:</b><br>
+    🟡 팔 수 있는가 <span class="delta-up">40% → 65% (+25%p)</span> — 산업 4개·페르소나 12셀·4축 좌표계 정착<br>
+    🟢 만들 수 있는가 <span class="delta-up">55% → 78% (+23%p)</span> — 자동 측정·인물 일기 두께·외부 학술 어휘 정합<br>
+    📈 두 확률의 곱 <span class="delta-up">0.22 → 0.51 (×2.3)</span> — 책 출간 가능성이 두 배 이상으로
+  </div>
+
+  <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:11.5px;color:var(--text2);line-height:1.7;">
+    <b style="color:var(--text);">남은 일</b> — 한국 사례 1·3장 부재(옐로모바일·신라젠 펙사벡 후보 정리 완료) · 표지 4사분면 디자인 · 민음사 시연 카드 인쇄
+  </div>
+</div>
+
+<script>
+const FRAMES = [
+  {date:'4-11',sha:'e93790f',S:40,D:55,msg:'출발점',
+   sNote:'한국 실패 사례 비어 있음',dNote:'두 인물 감정 거리 89 → 13으로 좁혀짐',
+   why:'4.11 자체평가: 외국 사례만(Quibi·Theranos·Kodak) · 감정 측정 첫 결과 도착.'},
+  {date:'4-11',sha:'9269fec',S:40,D:60,msg:'매일 자동으로 책의 건강을 재기 시작',
+   sNote:'편집자께 보여드릴 도구 미정',dNote:'AI가 매 push마다 인물 감정 측정',
+   why:'만들기 +5: 사람 손에 의존하지 않고 매일 자동 측정. 측정값이 흔들리지 않는다는 뜻.'},
+  {date:'4-12',sha:'b78afdc',S:42,D:60,msg:'네 작가의 문체가 합류하는 부록 3 정리',
+   sNote:'플로베르·람페두사·카뮈·투르니에 어떻게 합류하는가',dNote:'',
+   why:'팔기 +2: 학술 근거가 부록으로 정돈됨. 편집자 회의 자료.'},
+  {date:'4-15',sha:'4f99525',S:42,D:60,msg:'독자 자기진단 도구 — 정사면체 → 2×2 그리드',
+   sNote:'독자가 5초에 자기 새장 알 수 있게',dNote:'',
+   why:'시각화 단순화. 복잡함이 줄면 신뢰가 자란다.'},
+  {date:'4-16',sha:'eccd538',S:44,D:62,msg:'새장진단기를 실천 언어로 — "앞뒷면"으로 표현',
+   sNote:'추상 → 일상어 번역',dNote:'4축의 씨앗',
+   why:'양쪽 +2: 독자도 작가도 같은 언어로 책 안과 밖을 본다.'},
+  {date:'4-17',sha:'f49d120',S:46,D:64,msg:'장마다 똑같은 7칸 격자로 흐름 통일',
+   sNote:'책 안에서 길을 잃지 않게',dNote:'',
+   why:'독자가 어느 장에 있어도 같은 호흡으로 읽음.'},
+  {date:'4-18',sha:'553180f',S:50,D:68,msg:'두 인물의 일기 4편 — 5문단으로 두텁게',
+   sNote:'저자 목소리가 책에 새겨짐',dNote:'AI가 측정할 신호가 풍부해짐',
+   why:'양쪽 +4: 책의 심장이 두꺼워졌다. 1주일 작업 중 가장 큰 도약.'},
+  {date:'4-19',sha:'48c47d8',S:53,D:71,msg:'1·2장에 한 줄 공식 — 책의 뼈를 드러냄',
+   sNote:'각 장 = 한 문장으로 압축 가능',dNote:'',
+   why:'독자가 책을 덮어도 한 문장은 남는다. 전파력 ↑.'},
+  {date:'4-20',sha:'558ee23',S:55,D:71,msg:'네 산업 도입 — 정보·물질·생체·에너지',
+   sNote:'창업자가 자기 산업으로 책을 읽음',dNote:'',
+   why:'팔기 +2: 산업별 진입로 4개 = 마케팅 페르소나의 씨앗.'},
+  {date:'4-20',sha:'9cbcff9',S:58,D:75,msg:'네 장 끝에 감정 궤적 그래프 직접 삽입',
+   sNote:'',dNote:'본문 안에 측정 결과 가시화',
+   why:'만들기 +4: 학술 측정과 본문이 같은 페이지에서 만남.'},
+  {date:'4-20',sha:'9e29f2c',S:58,D:76,msg:'자동 측정 안정화 — 충돌 방지',
+   sNote:'',dNote:'workflow 100% 성공',
+   why:'인프라 안정. 한 번 무너지면 다 무너지는 자리를 막음.'},
+  {date:'4-23',sha:'050efe5',S:58,D:76,msg:'클라우제비츠 "기세" → "마찰" 정확화',
+   sNote:'독자 한 분의 지적 반영',dNote:'',
+   why:'평탄. 작은 학술 정확화. 신뢰의 누적.'},
+  {date:'4-23',sha:'c600e60',S:60,D:76,msg:'책의 첫 페이지 품질 — 24상징·범례·감각',
+   sNote:'책 펴자마자 인사하는 한 페이지',dNote:'',
+   why:'팔기 +2: 첫 인상이 정렬되면 끝까지 읽힌다.'},
+  {date:'4-25',sha:'4e2e0c2',S:62,D:76,msg:'감정 4축으로 압축 — 도취·고집·부끄러움·연민',
+   sNote:'편집자께 한 번에 설명되는 좌표계',dNote:'Anthropic 연구 어휘 차용',
+   why:'팔기 +2: 6축 → 4축. 도취 → 연민의 한 문장으로 책 전체 요약.'},
+  {date:'4-25',sha:'22eeec2',S:62,D:77,msg:'측정 도구도 4축으로 정합',
+   sNote:'',dNote:'AI 프롬프트와 새장 2×2 매트릭스 연결',
+   why:'만들기 +1: 측정과 시각화가 같은 언어를 씀.'},
+  {date:'4-25',sha:'46be9e1',S:63,D:78,msg:'4축 자동 측정 첫 결과 도착',
+   sNote:'',dNote:'두 인물 감정 거리 4축 기준으로 18→11',
+   why:'만들기 +1: 외부 검증 데이터 수집됨. 의도와 실측의 차이가 보임 = 다음 교정 지점.'},
+  {date:'4-25',sha:'efd461a',S:65,D:78,msg:'12 독자 매트릭스 완성 — 3 페르소나 × 4 산업',
+   sNote:'민음사 회의 즉시 사용 가능 형태',dNote:'',
+   why:'팔기 +2: 카드 12장으로 마케팅 회의 시연 가능. 편집자 결정 도구.'},
+  {date:'4-25',sha:'44996ec',S:65,D:78,msg:'산업 마커 통일 — 1📺 2⚙️ 3🧬 4⚡️',
+   sNote:'시각 통일',dNote:'',
+   why:'마이크로 정렬. 한 눈에 산업 구분.'},
+  {date:'4-25',sha:'1ace4ee',S:65,D:78,msg:'타루의 동기 정확화 — 영웅주의',
+   sNote:'카뮈 페스트의 핵심 모티프',dNote:'',
+   why:'평탄. 인물 정확화.'},
+];
+
+const $ = id => document.getElementById(id);
+let idx = 0, playing = false, timer = null;
+
+function render(i){
+  const f = FRAMES[i];
+  const prev = i > 0 ? FRAMES[i-1] : f;
+  $('sNum').textContent = f.S + '%';
+  $('dNum').textContent = f.D + '%';
+  const ds = f.S - FRAMES[0].S, dd = f.D - FRAMES[0].D;
+  $('sDelta').textContent = (ds>=0?'+':'') + ds + 'pp from baseline';
+  $('dDelta').textContent = (dd>=0?'+':'') + dd + 'pp from baseline';
+  $('sDelta').className = 'card-delta' + (ds>0?' up':'');
+  $('dDelta').className = 'card-delta' + (dd>0?' up':'');
+  if(f.sNote) $('sNote').textContent = f.sNote;
+  if(f.dNote) $('dNote').textContent = f.dNote;
+
+  $('frameDate').textContent = f.date;
+  $('frameSha').textContent = f.sha;
+  $('frameMsg').textContent = f.msg;
+  $('frameRationale').textContent = f.why;
+
+  const pct = (i/(FRAMES.length-1))*100;
+  $('scrubberFill').style.width = pct + '%';
+  $('scrubberKnob').style.left = pct + '%';
+
+  drawChart(i);
+}
+
+function drawChart(highlightIdx){
+  const svg = $('chart');
+  const W=720, H=240, P={l:38,r:18,t:18,b:30};
+  const cw = W-P.l-P.r, ch = H-P.t-P.b;
+  const xs = FRAMES.map((_,i) => P.l + (i/(FRAMES.length-1))*cw);
+  const yS = v => P.t + ch - (v/100)*ch;
+  const yD = v => P.t + ch - (v/100)*ch;
+
+  let html = '';
+  // grid
+  for(let v=0; v<=100; v+=20){
+    const y = yS(v);
+    html += `<line x1="${P.l}" x2="${W-P.r}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,0.05)"/>`;
+    html += `<text x="${P.l-6}" y="${y+4}" text-anchor="end" fill="#5a6a7a" font-size="10" font-family="DM Mono">${v}</text>`;
+  }
+  // x labels (selected)
+  const xLabels = [0, 6, 8, 12, 18];
+  xLabels.forEach(i => {
+    if(i < FRAMES.length){
+      html += `<text x="${xs[i]}" y="${H-10}" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="DM Mono">${FRAMES[i].date}</text>`;
+    }
+  });
+
+  // S line
+  const sPts = FRAMES.slice(0, highlightIdx+1).map((f,i)=>`${xs[i]},${yS(f.S)}`).join(' ');
+  html += `<polyline points="${sPts}" stroke="#D4A574" stroke-width="2" fill="none"/>`;
+  // D line
+  const dPts = FRAMES.slice(0, highlightIdx+1).map((f,i)=>`${xs[i]},${yD(f.D)}`).join(' ');
+  html += `<polyline points="${dPts}" stroke="#4A7A6B" stroke-width="2" fill="none"/>`;
+
+  // dots
+  FRAMES.forEach((f,i) => {
+    if(i > highlightIdx) return;
+    const r = i === highlightIdx ? 5 : 2.5;
+    html += `<circle cx="${xs[i]}" cy="${yS(f.S)}" r="${r}" fill="#D4A574"/>`;
+    html += `<circle cx="${xs[i]}" cy="${yD(f.D)}" r="${r}" fill="#4A7A6B"/>`;
+  });
+
+  // current value labels
+  const cur = FRAMES[highlightIdx];
+  html += `<text x="${xs[highlightIdx]+8}" y="${yS(cur.S)+4}" fill="#D4A574" font-size="11" font-family="DM Mono" font-weight="700">${cur.S}</text>`;
+  html += `<text x="${xs[highlightIdx]+8}" y="${yD(cur.D)+4}" fill="#4A7A6B" font-size="11" font-family="DM Mono" font-weight="700">${cur.D}</text>`;
+
+  svg.innerHTML = html;
+}
+
+function step(){
+  if(idx < FRAMES.length-1){
+    idx++;
+    render(idx);
+  } else {
+    pause();
+  }
+}
+function play(){
+  if(idx >= FRAMES.length-1) idx = 0;
+  playing = true;
+  $('playBtn').textContent = '⏸ 정지';
+  const speed = parseInt($('speedSel').value);
+  timer = setInterval(step, speed);
+}
+function pause(){
+  playing = false;
+  $('playBtn').textContent = '▶ 재생';
+  if(timer){ clearInterval(timer); timer = null; }
+}
+function restart(){
+  pause();
+  idx = 0;
+  render(idx);
+}
+
+$('playBtn').onclick = () => playing ? pause() : play();
+$('restartBtn').onclick = restart;
+$('speedSel').onchange = () => { if(playing){ pause(); play(); } };
+$('scrubber').onclick = (e) => {
+  pause();
+  const rect = $('scrubber').getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  idx = Math.round(pct * (FRAMES.length-1));
+  idx = Math.max(0, Math.min(FRAMES.length-1, idx));
+  render(idx);
+};
+
+render(0);
+// auto-play after 1.2s
+setTimeout(() => { if(idx === 0) play(); }, 1200);
+</script>
+</body>
+</html>
