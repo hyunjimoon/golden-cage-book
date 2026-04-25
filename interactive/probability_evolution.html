@@ -79,21 +79,24 @@
   </div>
 
   <div style="background:var(--surface);border-radius:8px;padding:13px 16px;margin-bottom:18px;font-size:12px;line-height:1.7;color:var(--text2);">
-    <b style="color:var(--text);">약속이 너무 정확하면 안 팔리고, 너무 모호하면 안 만들어집니다.</b> 이 책의 정밀도(τ)는 두 측의 가치/비용 비율이 균형을 이룰 때만 적정합니다 — <i>τ* = max{0, √(V/4i) − 1}</i>. 아래 두 막대는 그 비율을 사용자 측(🟡)과 작가 측(🟢)으로 나눠 본 것입니다.
+    <b style="color:var(--text);">두 막대 모두가 자라야 약속이 산다.</b> 한쪽만 높으면 —
+    <span style="color:#9B7A8B;font-weight:600;">D &gt; S = 살리나 마비</span> (좋은데 안 팔림) ·
+    <span style="color:#D4A574;font-weight:600;">S &gt; D = 보바리 조산</span> (약속만 있고 못 만듦).
+    두 측 균형을 향한 14일 기록입니다.
   </div>
 
   <div class="cards">
     <div class="card card-s">
-      <div class="card-label">🟡 사용자 약속이 작동하는가</div>
+      <div class="card-label">🟡 사용자에게 닿는가</div>
       <div class="card-num" id="sNum">40%</div>
       <div class="card-delta" id="sDelta">출발점</div>
-      <div class="card-note" id="sNote">독자가 얻는 가치(V_u) ÷ 읽고 적용하는 비용(i_u). 한국 사례 부재가 i_u ↑ 요인.</div>
+      <div class="card-note" id="sNote">12 독자 셀(3 페르소나 × 4 산업) 모두 자기 진입로를 갖는가. 한국 사례 부재가 가장 큰 막힘.</div>
     </div>
     <div class="card card-d">
-      <div class="card-label">🟢 작가 약속이 작동하는가</div>
+      <div class="card-label">🟢 작가가 만들 수 있는가</div>
       <div class="card-num" id="dNum">55%</div>
       <div class="card-delta" id="dDelta">출발점</div>
-      <div class="card-note" id="dNote">설계가 산출하는 가치(V_m) ÷ 만드는 비용(i_m). 측정 자동화로 i_m ↓ 시작.</div>
+      <div class="card-note" id="dNote">원고가 설계대로 측정·교정·출간되는가. AI 자동 측정 안정화로 진전.</div>
     </div>
   </div>
 
@@ -132,18 +135,17 @@
 
   <div class="summary" id="summary">
     <b>14일 요약 — 약속이 모호함에서 정밀로:</b><br>
-    🟡 사용자 측 V/i <span class="delta-up">40% → 65%</span> — V↑(4 산업·12셀·4축) · i↓(언어 단순화·시각 통일)<br>
-    🟢 작가 측 V/i <span class="delta-up">55% → 78%</span> — V↑(외부 학술 어휘·자동 측정 외부화) · i↓(인프라 안정·재현성)<br>
-    📈 두 측 곱 <span class="delta-up">0.22 → 0.51 (×2.3)</span> — 곱이 4를 향해 자라는 만큼 정밀도(τ)도 earn된다
+    🟡 사용자에게 닿는가 <span class="delta-up">40% → 65%</span> — 4 산업·12셀·4축으로 진입로 다양화, 언어·시각 단순화<br>
+    🟢 작가가 만들 수 있는가 <span class="delta-up">55% → 78%</span> — 자동 측정·외부 학술 어휘·CI 안정으로 재현성 확보<br>
+    📈 두 측의 곱 <span class="delta-up">0.22 → 0.51 (×2.3)</span> — 책 출간 가능성이 두 배 이상으로
   </div>
 
   <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:11.5px;color:var(--text2);line-height:1.7;">
-    <b style="color:var(--text);">정밀도(τ)가 더 자라기 위해 필요한 것</b> — 사용자 측 i 추가 감소 (한국 1·3장 사례 옐로모바일·신라젠 펙사벡 인용) · 작가 측 V 추가 증가 (표지 4사분면 디자인 · 민음사 시연 카드 인쇄)
+    <b style="color:var(--text);">두 막대를 더 키우려면</b> — 🟡 사용자 측: 한국 1·3장 사례(옐로모바일·신라젠 펙사벡) 본문 삽입 · 🟢 작가 측: 표지 4사분면 디자인 · 민음사 시연 카드 12장 인쇄
   </div>
 
   <div style="margin-top:18px;font-size:10px;color:var(--dim);text-align:center;line-height:1.6;">
-    OIL: τ* = max{0, √(V/4i) − 1} · Moon (2026) <i>Optimal Ignorance</i>. 약속은 V/i &gt; 4일 때만 정밀해질 권리를 얻는다.<br>
-    "Promise precision must be earned, not assumed."
+    "약속은 정확해질 권리를 얻은 만큼만 정확해진다." · 수식적 구조: <a href="https://github.com/hyunjimoon/golden-cage-book/blob/main/appendices/" style="color:var(--dim);">부록 — Optimal Ignorance Theory</a>
   </div>
 </div>
 
@@ -154,7 +156,7 @@ const FRAMES = [
    why:'4.11 자체평가: 외국 사례만(Quibi·Theranos·Kodak) · 감정 측정 첫 결과 도착.'},
   {date:'4-11',sha:'9269fec',S:40,D:60,msg:'매일 자동으로 책의 건강을 재기 시작',
    sNote:'편집자께 보여드릴 도구 미정',dNote:'AI가 매 push마다 인물 감정 측정',
-   why:'작가 i ↓: 측정 비용이 사람 손에서 자동화로. 같은 책이 매번 같은 척도로 평가됨 → V/i ↑.'},
+   why:'작가가 더 잘 만들게: 측정이 사람 손에서 자동화로 옮김 — 같은 책이 매번 같은 척도로 평가된다.'},
   {date:'4-12',sha:'b78afdc',S:42,D:60,msg:'네 작가의 문체가 합류하는 부록 3 정리',
    sNote:'플로베르·람페두사·카뮈·투르니에 어떻게 합류하는가',dNote:'',
    why:'팔기 +2: 학술 근거가 부록으로 정돈됨. 편집자 회의 자료.'},
@@ -169,13 +171,13 @@ const FRAMES = [
    why:'독자가 어느 장에 있어도 같은 호흡으로 읽음.'},
   {date:'4-18',sha:'553180f',S:50,D:68,msg:'두 인물의 일기 4편 — 5문단으로 두텁게',
    sNote:'저자 목소리가 책에 새겨짐',dNote:'AI가 측정할 신호가 풍부해짐',
-   why:'사용자 V ↑↑·작가 V ↑↑: 독자가 받는 정서적 가치 두 배(읽을 거리 두꺼워짐) + 측정 신호 풍부. 한 주 최대 도약.'},
+   why:'양쪽 동시 도약: 독자가 받는 정서가 두 배 + 작가가 측정할 신호 풍부 — 한 주 최대 도약.'},
   {date:'4-19',sha:'48c47d8',S:53,D:71,msg:'1·2장에 한 줄 공식 — 책의 뼈를 드러냄',
    sNote:'각 장 = 한 문장으로 압축 가능',dNote:'',
    why:'독자가 책을 덮어도 한 문장은 남는다. 전파력 ↑.'},
   {date:'4-20',sha:'558ee23',S:55,D:71,msg:'네 산업 도입 — 정보·물질·생체·에너지',
    sNote:'창업자가 자기 산업으로 책을 읽음',dNote:'',
-   why:'사용자 V ↑: 산업별 진입로 4개 = "내 산업이 여기 있다"는 즉시 인식. 12셀 매트릭스의 시드.'},
+   why:'사용자에게 더 닿게: 산업별 진입로 4개 = "내 산업이 여기 있다"는 즉시 인식. 12셀 시드.'},
   {date:'4-20',sha:'9cbcff9',S:58,D:75,msg:'네 장 끝에 감정 궤적 그래프 직접 삽입',
    sNote:'',dNote:'본문 안에 측정 결과 가시화',
    why:'만들기 +4: 학술 측정과 본문이 같은 페이지에서 만남.'},
