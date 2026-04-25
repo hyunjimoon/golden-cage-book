@@ -68,28 +68,32 @@
 <body>
 <div class="page">
   <a class="back" href="../">← 대문</a>
-  <h1>책이 자라는 모습 — 2026.4.11 → 4.25</h1>
-  <div class="sub">14일 동안 책이 어떻게 단단해졌는가 · 19 milestone · ▶ 재생을 눌러보세요</div>
+  <h1>약속의 정밀화 — 2026.4.11 → 4.25</h1>
+  <div class="sub">한 문장의 약속이 14일간 어떻게 좁혀졌는가 · 19 milestone · ▶ 재생</div>
 
-  <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:12.5px;line-height:1.7;color:var(--text2);">
-    <b style="color:var(--text);">편집자님께</b> — 두 막대로 책의 건강을 잽니다.<br>
-    🟡 <b style="color:var(--s)">팔 수 있는가</b> = 독자에게 <i>꽂힐</i> 가능성. 페르소나·사례·서사 명료도.<br>
-    🟢 <b style="color:var(--d)">만들 수 있는가</b> = 원고가 <i>설계대로 작동하는</i> 정도. 인물 감정 측정·교정.<br>
-    재생 버튼을 누르면 4.11 (40·55)에서 오늘 (65·78)까지 어떤 결정이 어떤 변화를 만들었는지 보입니다.
+  <div style="background:linear-gradient(135deg, rgba(212,165,116,0.08), rgba(74,122,107,0.08));border-radius:10px;padding:18px 20px;margin-bottom:18px;font-size:13.5px;line-height:1.85;color:var(--text);border:1px solid rgba(255,255,255,0.06);">
+    <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;margin-bottom:8px;">이 책이 약속하는 것</div>
+    "당신이 가져온 새장에서, 같이 자물쇠를 본다."<br>
+    <span style="font-size:12px;color:var(--text2);">4 소설(보바리·표범·페스트·방드르디) 거울로, 4 감정(도취·고집·부끄러움·연민) 좌표로, 4 산업(📺⚙️🧬⚡️) 번역기로.<br>
+    도착: <b style="color:var(--text);">다른 출발, 같은 자리</b> — 분석과 행동이 분리되지 않는 상태.</span>
+  </div>
+
+  <div style="background:var(--surface);border-radius:8px;padding:13px 16px;margin-bottom:18px;font-size:12px;line-height:1.7;color:var(--text2);">
+    <b style="color:var(--text);">약속이 너무 정확하면 안 팔리고, 너무 모호하면 안 만들어집니다.</b> 이 책의 정밀도(τ)는 두 측의 가치/비용 비율이 균형을 이룰 때만 적정합니다 — <i>τ* = max{0, √(V/4i) − 1}</i>. 아래 두 막대는 그 비율을 사용자 측(🟡)과 작가 측(🟢)으로 나눠 본 것입니다.
   </div>
 
   <div class="cards">
     <div class="card card-s">
-      <div class="card-label">🟡 팔 수 있는가</div>
+      <div class="card-label">🟡 사용자 약속이 작동하는가</div>
       <div class="card-num" id="sNum">40%</div>
       <div class="card-delta" id="sDelta">출발점</div>
-      <div class="card-note" id="sNote">한국 사례 2건(1장·3장) 미확보</div>
+      <div class="card-note" id="sNote">독자가 얻는 가치(V_u) ÷ 읽고 적용하는 비용(i_u). 한국 사례 부재가 i_u ↑ 요인.</div>
     </div>
     <div class="card card-d">
-      <div class="card-label">🟢 만들 수 있는가</div>
+      <div class="card-label">🟢 작가 약속이 작동하는가</div>
       <div class="card-num" id="dNum">55%</div>
       <div class="card-delta" id="dDelta">출발점</div>
-      <div class="card-note" id="dNote">두 인물 감정 거리 89 → 13으로 좁혀짐</div>
+      <div class="card-note" id="dNote">설계가 산출하는 가치(V_m) ÷ 만드는 비용(i_m). 측정 자동화로 i_m ↓ 시작.</div>
     </div>
   </div>
 
@@ -127,14 +131,19 @@
   </div>
 
   <div class="summary" id="summary">
-    <b>14일 요약:</b><br>
-    🟡 팔 수 있는가 <span class="delta-up">40% → 65% (+25%p)</span> — 산업 4개·페르소나 12셀·4축 좌표계 정착<br>
-    🟢 만들 수 있는가 <span class="delta-up">55% → 78% (+23%p)</span> — 자동 측정·인물 일기 두께·외부 학술 어휘 정합<br>
-    📈 두 확률의 곱 <span class="delta-up">0.22 → 0.51 (×2.3)</span> — 책 출간 가능성이 두 배 이상으로
+    <b>14일 요약 — 약속이 모호함에서 정밀로:</b><br>
+    🟡 사용자 측 V/i <span class="delta-up">40% → 65%</span> — V↑(4 산업·12셀·4축) · i↓(언어 단순화·시각 통일)<br>
+    🟢 작가 측 V/i <span class="delta-up">55% → 78%</span> — V↑(외부 학술 어휘·자동 측정 외부화) · i↓(인프라 안정·재현성)<br>
+    📈 두 측 곱 <span class="delta-up">0.22 → 0.51 (×2.3)</span> — 곱이 4를 향해 자라는 만큼 정밀도(τ)도 earn된다
   </div>
 
   <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:11.5px;color:var(--text2);line-height:1.7;">
-    <b style="color:var(--text);">남은 일</b> — 한국 사례 1·3장 부재(옐로모바일·신라젠 펙사벡 후보 정리 완료) · 표지 4사분면 디자인 · 민음사 시연 카드 인쇄
+    <b style="color:var(--text);">정밀도(τ)가 더 자라기 위해 필요한 것</b> — 사용자 측 i 추가 감소 (한국 1·3장 사례 옐로모바일·신라젠 펙사벡 인용) · 작가 측 V 추가 증가 (표지 4사분면 디자인 · 민음사 시연 카드 인쇄)
+  </div>
+
+  <div style="margin-top:18px;font-size:10px;color:var(--dim);text-align:center;line-height:1.6;">
+    OIL: τ* = max{0, √(V/4i) − 1} · Moon (2026) <i>Optimal Ignorance</i>. 약속은 V/i &gt; 4일 때만 정밀해질 권리를 얻는다.<br>
+    "Promise precision must be earned, not assumed."
   </div>
 </div>
 
@@ -145,7 +154,7 @@ const FRAMES = [
    why:'4.11 자체평가: 외국 사례만(Quibi·Theranos·Kodak) · 감정 측정 첫 결과 도착.'},
   {date:'4-11',sha:'9269fec',S:40,D:60,msg:'매일 자동으로 책의 건강을 재기 시작',
    sNote:'편집자께 보여드릴 도구 미정',dNote:'AI가 매 push마다 인물 감정 측정',
-   why:'만들기 +5: 사람 손에 의존하지 않고 매일 자동 측정. 측정값이 흔들리지 않는다는 뜻.'},
+   why:'작가 i ↓: 측정 비용이 사람 손에서 자동화로. 같은 책이 매번 같은 척도로 평가됨 → V/i ↑.'},
   {date:'4-12',sha:'b78afdc',S:42,D:60,msg:'네 작가의 문체가 합류하는 부록 3 정리',
    sNote:'플로베르·람페두사·카뮈·투르니에 어떻게 합류하는가',dNote:'',
    why:'팔기 +2: 학술 근거가 부록으로 정돈됨. 편집자 회의 자료.'},
@@ -160,13 +169,13 @@ const FRAMES = [
    why:'독자가 어느 장에 있어도 같은 호흡으로 읽음.'},
   {date:'4-18',sha:'553180f',S:50,D:68,msg:'두 인물의 일기 4편 — 5문단으로 두텁게',
    sNote:'저자 목소리가 책에 새겨짐',dNote:'AI가 측정할 신호가 풍부해짐',
-   why:'양쪽 +4: 책의 심장이 두꺼워졌다. 1주일 작업 중 가장 큰 도약.'},
+   why:'사용자 V ↑↑·작가 V ↑↑: 독자가 받는 정서적 가치 두 배(읽을 거리 두꺼워짐) + 측정 신호 풍부. 한 주 최대 도약.'},
   {date:'4-19',sha:'48c47d8',S:53,D:71,msg:'1·2장에 한 줄 공식 — 책의 뼈를 드러냄',
    sNote:'각 장 = 한 문장으로 압축 가능',dNote:'',
    why:'독자가 책을 덮어도 한 문장은 남는다. 전파력 ↑.'},
   {date:'4-20',sha:'558ee23',S:55,D:71,msg:'네 산업 도입 — 정보·물질·생체·에너지',
    sNote:'창업자가 자기 산업으로 책을 읽음',dNote:'',
-   why:'팔기 +2: 산업별 진입로 4개 = 마케팅 페르소나의 씨앗.'},
+   why:'사용자 V ↑: 산업별 진입로 4개 = "내 산업이 여기 있다"는 즉시 인식. 12셀 매트릭스의 시드.'},
   {date:'4-20',sha:'9cbcff9',S:58,D:75,msg:'네 장 끝에 감정 궤적 그래프 직접 삽입',
    sNote:'',dNote:'본문 안에 측정 결과 가시화',
    why:'만들기 +4: 학술 측정과 본문이 같은 페이지에서 만남.'},
