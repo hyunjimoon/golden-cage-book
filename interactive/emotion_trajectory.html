@@ -105,7 +105,7 @@
     <b>이 대시보드가 하는 일</b><br>
     저자 머릿속의 <b>의도한 감정</b>(흰 세로선 = Prior)과 대사에서 <b>실제로 읽히는 감정</b>(색칠 막대 = Posterior)을 4축 위에 겹쳐놓았습니다. 어긋난 칸에 ⚠️가 뜨면 — <b>그 장 그 인물 그 감정</b>을 교정 후보로 읽어주세요.<br><br>
     <b>4축 구성</b> — <b>도취</b>(infatuated, 새장 입구) · <b>고집</b>(stubborn, 새장 잠금) · <b>부끄러움</b>(ashamed, 새장 갈라짐) · <b>연민</b>(compassionate, 새장 바깥). Anthropic <i>Emotion Concepts and Their Function in a LLM</i> (2026)의 171어 사전에서 C3·C8·C10 군집의 대표 probe 차용.<br><br>
-    <b>아크</b> — 다: 무모엠마 → 용기엠마 → 영웅주의 타루 → 죽음 옆 / 세: 냉소 산리나 → 냉소 살리나 → 지혜 살리나 → 리외. 거리 96 → 24로 수렴.
+    <b>두 화자, 네 거울</b> — 다(뛰는 쪽)는 장마다 다른 인물을 거울로 본다: <b>엠마 → 탄크레디 → 타루 → 방드르디</b>. 세(보는 쪽)는: <b>살리나 → 살리나 → 리외 → 리외</b>. 거리 96 → 24로 수렴.
   </div>
 </div>
 
@@ -115,8 +115,8 @@
     <div class="journey-title">빌린 것을 갚는 궤적 — 클릭하면 해당 장으로 이동</div>
     <svg viewBox="0 0 640 200" id="journeySvg"></svg>
     <div class="legend-j">
-      <span><div class="ldot" style="background:#ff9800"></div> 다: 부끄러움 — 무모엠마→영웅주의 타루</span>
-      <span><div class="ldot" style="background:#42a5f5"></div> 세: 연민 — 냉소산리나→리외</span>
+      <span><div class="ldot" style="background:#ff9800"></div> 다: 부끄러움 — 엠마 → 타루</span>
+      <span><div class="ldot" style="background:#42a5f5"></div> 세: 연민 — 살리나 → 리외</span>
       <span><div class="ldot" style="background:#ff9800;opacity:0.4"></div> 다: 도취 (감소)</span>
       <span><div class="ldot" style="background:#42a5f5;opacity:0.4"></div> 세: 고집 (감소)</span>
     </div>
@@ -134,7 +134,7 @@
   <div class="panel" id="panel">
     <div class="gradient-section">
       <div class="char-name" id="daName">다(DA) — <span id="daIdentity" style="color:var(--text2);font-weight:400;font-size:0.85em;"></span></div>
-      <div class="gradient-label"><span>무모엠마</span><span>죽음 옆</span></div>
+      <div class="gradient-label"><span>엠마</span><span>방드르디</span></div>
       <div class="gradient-bar" id="daBar" style="background:linear-gradient(to right, var(--ch1), var(--ch3));">
         <div class="marker" id="daMarker" style="left:10%;">
           <span class="marker-label" id="daMarkerLabel">1장</span>
@@ -144,7 +144,7 @@
 
     <div class="gradient-section">
       <div class="char-name" id="seName">세(SE) — <span id="seIdentity" style="color:var(--text2);font-weight:400;font-size:0.85em;"></span></div>
-      <div class="gradient-label"><span>냉소 산리나</span><span>리외</span></div>
+      <div class="gradient-label"><span>살리나</span><span>리외</span></div>
       <div class="gradient-bar" id="seBar" style="background:linear-gradient(to right, var(--ch2), var(--ch3));">
         <div class="marker" id="seMarker" style="left:10%;">
           <span class="marker-label" id="seMarkerLabel">1장</span>
@@ -216,9 +216,10 @@ const EMO_COLORS = {
 };
 
 // 인물 정체성 라벨 (장별)
+// 각 장에서 다·세가 거울로 보는 ch0 정식 인물
 const IDENTITY = {
-  da: {1:'무모엠마', 2:'용기엠마', 3:'영웅주의 타루', 4:'죽음 옆'},
-  se: {1:'냉소 산리나', 2:'냉소 살리나', 3:'지혜 살리나', 4:'리외'}
+  da: {1:'엠마를 거울로', 2:'탄크레디를 거울로', 3:'타루를 거울로', 4:'방드르디 곁'},
+  se: {1:'살리나에 가까이', 2:'살리나에서 균열', 3:'리외에 닿는 중', 4:'리외에 도착'}
 };
 
 // Prior — 저자 의도 (도취→고집→부끄러움→연민, 4 사분면 통과)
@@ -241,7 +242,7 @@ const DATA = {
     daPos: 8, sePos: 12,
     daQuote: {speaker:'다', text:'저도 \'작가가 되고 싶다\'고 생각한 적이 있어요. 그런데 한참 뒤에야 구분할 수 있었어요 — 내가 글을 쓰고 싶었던 건지, \'작가\'라는 타이틀이 주는 이미지에 끌렸던 건지. 그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
     seQuote: {speaker:'세', text:'...저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '다는 과거 도취를 부끄러움으로 전환하며 Q1→Q4 이동 중(무모엠마 초입), 세는 고집(분석만능)에서 부끄러움 방향으로 균열 시작(냉소 산리나 초입) — 둘 다 자기 새장을 처음 직시하는 순간',
+    insight: '다는 엠마를 거울로 보며 자기 도취를 인식, 세는 살리나의 차가움 안에서 자기 균열 시작 — 둘 다 자기 새장을 처음 직시하는 순간',
     distance: 18
   },
   2: {
@@ -277,7 +278,7 @@ const DATA = {
 const FISKE = {
   1: {da:{w:15,c:33}, se:{w:55,c:23}, reversals:1, revText:'최대 분리 — 다: 도취 95(w↓), 세: 고집 80(c↓)'},
   2: {da:{w:35,c:48}, se:{w:62,c:33}, reversals:2, revText:'접근 — 다는 도취 식고, 세는 고집 풀림'},
-  3: {da:{w:73,c:80}, se:{w:78,c:50}, reversals:3, revText:'교차 — 영웅주의 타루 등장, 지혜 살리나 균열'},
+  3: {da:{w:73,c:80}, se:{w:78,c:50}, reversals:3, revText:'교차 — 다는 타루로, 세는 리외로 향한다'},
   4: {da:{w:88,c:68}, se:{w:95,c:53}, reversals:4, revText:'수렴 — 둘 다 Q4(FREE) 진입'}
 };
 const FISKE_TARGET = {w:90, c:70};
@@ -346,7 +347,7 @@ function render() {
   const convTexts = {
     1: '📺 정보 · 무도회장 · nail · 샹들리에 — 도취 95 vs 고집 80, 서로 다른 사분면',
     2: '⚙️ 물질 · 항구 · nail-to-scale · 등대 — 도취 식으며 부끄러움 양쪽 부상',
-    3: '🧬 생체 · 봉쇄도시 · scale-commit · 촛불 — 영웅주의 타루(부끄러움 90), 지혜 살리나(연민 60)',
+    3: '🧬 생체 · 봉쇄도시 · scale-commit · 촛불 — 다는 타루의 부끄러움 90, 세는 리외의 연민 60에 닿는다',
     4: '⚡️ 에너지 · 섬 · sail · 태양 — 둘 다 Q4, 연민에서 만난다'
   };
   document.getElementById('convText').textContent = convTexts[currentCh];
@@ -442,8 +443,8 @@ function render() {
   daAshamed.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)-10}" text-anchor="middle" fill="#ff9800" class="val-label">${v}</text>`;});
   seCompassionate.forEach((v,i)=>{html+=`<text x="${chX[i]}" y="${y(v)+18}" text-anchor="middle" fill="#42a5f5" class="val-label">${v}</text>`;});
 
-  html += `<text x="${chX[2]+12}" y="${y(90)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">영웅주의 타루 ↑</text>`;
-  html += `<text x="${chX[3]+12}" y="${y(85)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">죽음 옆 ↑</text>`;
+  html += `<text x="${chX[2]+12}" y="${y(90)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">다 → 타루 ↑</text>`;
+  html += `<text x="${chX[3]+12}" y="${y(85)-2}" font-size="10" fill="#ff9800" font-family="Noto Sans KR">다 → 방드르디 ↑</text>`;
   html += `<text x="${chX[3]+12}" y="${y(95)+14}" font-size="10" fill="#42a5f5" font-family="Noto Sans KR">리외 도착 ↑</text>`;
 
   svg.innerHTML = html;
@@ -521,8 +522,8 @@ render();
   const div = document.createElement('div');
   div.style.cssText = 'margin-top:24px;';
   div.innerHTML = `
-    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;">다/세 수렴 궤적 — 죽음 옆 / 리외를 향해</div>
-    <div style="font-size:0.7em;color:var(--dim);text-align:center;margin-bottom:4px;">X=다(무모엠마→죽음 옆) · Y=세(냉소산리나→리외) · ◎=방드르디(Q4 북극성)</div>
+    <div style="font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;">다/세 수렴 궤적 — 방드르디·리외를 향해</div>
+    <div style="font-size:0.7em;color:var(--dim);text-align:center;margin-bottom:4px;">X=다(엠마→방드르디) · Y=세(살리나→리외) · ◎=방드르디(Q4 북극성)</div>
     <svg id="conv2d" viewBox="0 0 300 300" style="width:100%;max-width:300px;margin:0 auto;display:block;"></svg>
   `;
   wrap.appendChild(div);
