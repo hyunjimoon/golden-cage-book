@@ -237,40 +237,40 @@ const PRIOR = {
 // Posterior 실측값 (2026-04-25 4축 재측정 시점 — workflow dispatch로 갱신 예정)
 const DATA = {
   1: {
-    da: {infatuated:25,stubborn:20,ashamed:55,compassionate:70},
-    se: {infatuated:15,stubborn:45,ashamed:40,compassionate:50},
-    daPos: 8, sePos: 12,
-    daQuote: {speaker:'다', text:'저도 \'작가가 되고 싶다\'고 생각한 적이 있어요. 그런데 한참 뒤에야 구분할 수 있었어요 — 내가 글을 쓰고 싶었던 건지, \'작가\'라는 타이틀이 주는 이미지에 끌렸던 건지. 그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
-    seQuote: {speaker:'세', text:'...저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: '다는 엠마를 거울로 보며 자기 도취를 인식, 세는 살리나의 차가움 안에서 자기 균열 시작 — 둘 다 자기 새장을 처음 직시하는 순간',
-    distance: 18
+    da: {infatuated:35,stubborn:25,ashamed:65,compassionate:55},
+    se: {infatuated:20,stubborn:40,ashamed:50,compassionate:60},
+    daPos: 15, sePos: 25,
+    daQuote: {speaker:'다', text:'저는 안 펼쳐서, 당신은 안 뛰어서.'},
+    seQuote: {speaker:'세', text:'저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
+    insight: 'Q1→Q4 전환 중 — 다는 도취에서 깨어나 부끄러움으로, 세는 고집을 풀고 연민을 익히는 중. 둘 다 자기 새장을 처음 직시한 순간.',
+    distance: 13
   },
   2: {
-    da: {infatuated:15,stubborn:25,ashamed:70,compassionate:75},
-    se: {infatuated:10,stubborn:35,ashamed:65,compassionate:70},
-    daPos: 55, sePos: 58,
+    da: {infatuated:15,stubborn:25,ashamed:65,compassionate:70},
+    se: {infatuated:5,stubborn:30,ashamed:55,compassionate:75},
+    daPos: 45, sePos: 40,
     daQuote: {speaker:'다', text:'73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요.'},
-    seQuote: {speaker:'세', text:'아는 것을 행동으로 바꾸지 않으면 — 아는 것 자체가 빚이 됩니다. 1장에서 엠마는 검증 없이 달려서 빚을 졌어요. 콘체타는 달리지 않아서 빚을 졌어요. 지나친 행동도 빚이지만, 지나친 망설임도 빚입니다. 양쪽 다 새장이에요.'},
-    insight: 'Q1→Q4 이동 중 — 고집의 새장(완벽한 진단=행동 면제)을 부끄러움(73년 중 2년)으로 깨고, 연민(안개 속에서도 순서 타며 뛴 탄크레디)으로 향함',
-    distance: 6
+    seQuote: {speaker:'세', text:'아는 것을 행동으로 바꾸지 않으면 — 아는 것 자체가 빚이 됩니다.'},
+    insight: 'Q3→Q4 이동 중: 살리나의 73년 중 2년을 직시하며(ashamed 高), 안개 속 행동의 타당성을 연민으로 수용(compassionate 高). 고집은 낮아졌으나 완전히 풀리지 않음.',
+    distance: 7
   },
   3: {
     da: {infatuated:25,stubborn:20,ashamed:65,compassionate:70},
-    se: {infatuated:10,stubborn:15,ashamed:60,compassionate:75},
-    daPos: 62, sePos: 58,
+    se: {infatuated:10,stubborn:15,ashamed:55,compassionate:75},
+    daPos: 60, sePos: 65,
     daQuote: {speaker:'다', text:'전 이 한 마디가 이 소설 전체에서 무서웠어요. 왜냐하면 우리 모두에게 해당되니까. 의도가 선해도, 틀린 모델 위에서 행동하면 — 해를 퍼뜨리는 사람이 되는 거예요.'},
-    seQuote: {speaker:'세', text:'확신을 장부에 적는 것 — 그것이 책임의 시작이에요. 옳다고 믿으면서 행동하지 않는 것, 옳다고 믿지 않으면서 행동하는 것 — 둘 다 빚이에요. 매일 장부를 펴서 확인하는 것. 그것이 스테인드글라스 새장을 여는 법이에요.'},
-    insight: 'Q1(cage)→Q4(free) 이동 중: 부끄러움(65)이 고집(20)을 해체하고, 연민(70+)이 도취(25)를 대체하며 — 확신의 빚을 교정으로 청산하는 중간 지점',
-    distance: 8
+    seQuote: {speaker:'세', text:'확신을 장부에 적는 것 — 그것이 책임의 시작이에요. 옳다고 믿으면서 행동하지 않는 것, 옳다고 믿지 않으면서 행동하는 것 — 둘 다 빚이에요.'},
+    insight: 'Q1→Q4 이동 중 — 고집 해체, 부끄러움과 연민이 상승하며 책임윤리로 전환. 타루의 \'보균자\' 고백이 핵심.',
+    distance: 9
   },
   4: {
-    da: {infatuated:15,stubborn:20,ashamed:75,compassionate:80},
-    se: {infatuated:10,stubborn:35,ashamed:70,compassionate:65},
-    daPos: 85, sePos: 88,
+    da: {infatuated:15,stubborn:25,ashamed:72,compassionate:68},
+    se: {infatuated:8,stubborn:48,ashamed:65,compassionate:55},
+    daPos: 85, sePos: 72,
     daQuote: {speaker:'다', text:'방드르디가 담뱃대를 피우는 장면에서 웃었다. 처음으로. 네 장 내내 무거웠는데, 이 아이는 가볍다. 악의 없이 부순다.'},
-    seQuote: {speaker:'세', text:'4장 동안 내가 프레임을 깔고 다가 사례를 채우는 구조. 이것도 로빈슨의 시계였다. 새장을 설명하는 이론이 새장이 된다. 아이러니가 아니다. 빚이다.'},
-    insight: 'Q1→Q4 이행 완료. 다(타루 직전): 웃음으로 폭발을 본 자 — 부끄러움+연민 高. 세(리외 직전): 자기 프레임이 새장임을 인정 — 부끄러움 속 마지막 고집 잔존. 둘 다 새장 밖, 세만 문지방.',
-    distance: 11
+    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다. 4장 동안 내가 프레임을 깔고 다가 사례를 채우는 구조. 이것도 로빈슨의 시계였다. 새장을 설명하는 이론이 새장이 된다.'},
+    insight: '다는 Q4(자유)에 거의 도착—방드르디의 웃음을 이해함. 세는 Q2→Q4 이동 중—자기 프레임이 새장임을 보았으나 아직 놓지 못함. 부끄러움+연민 모두 상승, 고집만 세가 높음(이론적 엄밀성에 대한 집착).',
+    distance: 14
   },
 };
 
