@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다·세·관계 베이즈 업데이트 — 황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=DM+Mono:wght@400;500;700&display=swap');
+  :root{
+    --bg:#0a0e1a;--card:#141a2a;--surface:#0e1320;--border:rgba(255,255,255,0.06);
+    --text:#f0f2f5;--text2:#94a3b8;--dim:#5a6a7a;
+    --da:#ff9800;--se:#42a5f5;--rel:#a78bfa;
+    --c1:#C8A2C8;--c2:#8B8C2A;--c3:#5B9A8B;--c4:#3B5998;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;}
+  .page{max-width:920px;margin:0 auto;padding:32px 20px 60px;}
+  .back{font-size:12px;color:var(--dim);text-decoration:none;}
+  h1{font-size:1.5em;font-weight:700;margin:18px 0 4px;}
+  .sub{font-size:12.5px;color:var(--text2);margin-bottom:14px;}
+
+  .legend-top{background:var(--surface);border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.7;color:var(--text2);margin-bottom:18px;}
+  .legend-top .obj{display:inline-block;padding:1px 7px;border-radius:3px;font-weight:600;margin-right:4px;}
+
+  .controls{display:flex;align-items:center;gap:10px;background:var(--surface);border-radius:8px;padding:8px 12px;margin-bottom:18px;}
+  .step-btn{flex:1;background:var(--card);color:var(--text2);border:none;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit;transition:all 0.2s;}
+  .step-btn.active{background:var(--text);color:var(--bg);}
+  .step-btn:hover:not(.active){background:#1f2740;color:var(--text);}
+  .play-btn{background:var(--rel);color:#fff;padding:8px 16px;font-weight:700;}
+  .play-btn:hover{background:#8b6dd9;color:#fff;}
+
+  .panel{background:var(--card);border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid;}
+  .panel-da{border-left-color:var(--da);}
+  .panel-se{border-left-color:var(--se);}
+  .panel-rel{border-left-color:var(--rel);}
+  .panel-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+  .panel-name{font-size:14px;font-weight:700;}
+  .panel-desc{font-size:11px;color:var(--text2);font-weight:400;}
+  .panel-da .panel-name{color:var(--da);}
+  .panel-se .panel-name{color:var(--se);}
+  .panel-rel .panel-name{color:var(--rel);}
+
+  .chart-wrap{margin:8px 0;}
+  svg{width:100%;display:block;}
+
+  .insight-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;font-size:11.5px;}
+  .insight-block{background:var(--surface);border-radius:6px;padding:8px 12px;color:var(--text2);}
+  .insight-block b{color:var(--text);}
+  .insight-block .v{font-family:'DM Mono',monospace;color:var(--text);}
+  .insight-up{color:#7CB342;}
+  .insight-down{color:#e07a5f;}
+
+  .prior-card{background:rgba(167,139,250,0.06);border-radius:6px;padding:10px 12px;font-size:11.5px;color:var(--text2);margin:8px 0;border-left:2px solid var(--rel);}
+  .prior-card b{color:var(--text);}
+  .prior-card .axis-list{font-family:'DM Mono',monospace;color:var(--text);font-size:11px;margin-top:4px;}
+
+  .quote{background:var(--surface);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--text2);font-style:italic;margin-top:8px;line-height:1.6;border-left:2px solid var(--dim);}
+  .quote b{font-style:normal;color:var(--text);}
+
+  .footnote{text-align:center;font-size:10.5px;color:var(--dim);margin-top:18px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="../">← 대문</a>
+  <h1>베이즈 업데이트 — 다·세·관계</h1>
+  <div class="sub">저자 의도(Prior) + 4 장 대사(Likelihood) → 누적 Posterior</div>
+
+  <div class="legend-top">
+    세 객체의 사전 확률(Prior)이 각 장의 대사를 거치며 어떻게 갱신되는가:
+    <span class="obj" style="background:rgba(255,152,0,0.15);color:var(--da);">🟠 다</span> 뛰는 사람 ·
+    <span class="obj" style="background:rgba(66,165,245,0.15);color:var(--se);">🔵 세</span> 보는 사람 ·
+    <span class="obj" style="background:rgba(167,139,250,0.15);color:var(--rel);">🟣 관계</span> 둘 사이의 역학.
+    아래 ▶ 한 단계씩 ch0(Prior) → ch1 → ch2 → ch3 → ch4(최종).
+  </div>
+
+  <div class="controls">
+    <button class="step-btn active" data-step="0">Prior</button>
+    <button class="step-btn" data-step="1">+ ch1 거울</button>
+    <button class="step-btn" data-step="2">+ ch2 망원경</button>
+    <button class="step-btn" data-step="3">+ ch3 스테인드</button>
+    <button class="step-btn" data-step="4">+ ch4 시계</button>
+    <button class="step-btn play-btn" id="playBtn">▶</button>
+  </div>
+
+  <!-- 다 -->
+  <div class="panel panel-da">
+    <div class="panel-head">
+      <span class="panel-name">🟠 다 (Actor) — 뛰어본 쪽</span>
+      <span class="panel-desc">desire: 진짜 내가 원하는 것 · fear: 또 남의 꿈이었을 때</span>
+    </div>
+    <div class="prior-card">
+      <b>Prior (ch0_characters에서 도출)</b> — 감각적·경험 과신·파늘루 확신구조<br>
+      <span class="axis-list">도취 70 · 고집 50 · 부끄러움 40 · 연민 50</span>
+    </div>
+    <svg id="daChart" viewBox="0 0 720 200"></svg>
+    <div class="insight-row" id="daInsight"></div>
+    <div class="quote" id="daQuote"></div>
+  </div>
+
+  <!-- 세 -->
+  <div class="panel panel-se">
+    <div class="panel-head">
+      <span class="panel-name">🔵 세 (Seer) — 지켜본 쪽</span>
+      <span class="panel-desc">desire: 전부 설명되는 세계 · fear: 내 이론이 맞는 것</span>
+    </div>
+    <div class="prior-card">
+      <b>Prior (ch0_characters에서 도출)</b> — 패턴·구조 강함, 분석 과신, 영원한 60%<br>
+      <span class="axis-list">도취 5 · 고집 75 · 부끄러움 30 · 연민 25</span>
+    </div>
+    <svg id="seChart" viewBox="0 0 720 200"></svg>
+    <div class="insight-row" id="seInsight"></div>
+    <div class="quote" id="seQuote"></div>
+  </div>
+
+  <!-- 관계 -->
+  <div class="panel panel-rel">
+    <div class="panel-head">
+      <span class="panel-name">🟣 다·세 관계</span>
+      <span class="panel-desc">"부러움·경멸 ↔ 경외·안타까움" 의 거리·결합·교환</span>
+    </div>
+    <div class="prior-card">
+      <b>Prior (ch0_characters의 "둘 사이의 역학"에서 도출)</b> — 무대(다)와 관객석(세) — 보지만 닿지 않음<br>
+      <span class="axis-list">거리 90 · 부러움(다→세) 70 · 경외(세→다) 70 · 결합도 30</span>
+    </div>
+    <svg id="relChart" viewBox="0 0 720 200"></svg>
+    <div class="insight-row" id="relInsight"></div>
+    <div class="quote" id="relQuote"></div>
+  </div>
+
+  <div class="footnote">
+    Prior = 저자 의도 (ch0_characters.md 인물카드 + 둘 사이의 역학).
+    Likelihood = 각 장의 대사 (chapters/ch1~ch4.md).
+    Posterior = Prior + 누적 evidence. 다·세 4축 = Anthropic 2026 Emotion Concepts (도취·고집·부끄러움·연민).
+  </div>
+</div>
+
+<script>
+// ═══════════ DATA ═══════════
+const STEPS = ['Prior','+ch1','+ch2','+ch3','+ch4'];
+
+// 다: 4 axes × 5 time points (prior + 4 chapters)
+const DA = {
+  axes: ['도취','고집','부끄러움','연민'],
+  colors: ['#C8A2C8','#e07a5f','#5B9A8B','#ff9800'],
+  data: [
+    [70,25,15,25,15],   // 도취: prior, ch1, ch2, ch3, ch4
+    [50,20,25,20,20],   // 고집
+    [40,55,70,65,75],   // 부끄러움
+    [50,70,75,70,80],   // 연민
+  ],
+  quotes: [
+    '저자 의도 — 감각적이지만 경험을 과신한다. 한 번의 실패를 전체로 일반화하는 파늘루적 확신구조.',
+    'ch1 거울 — "박수가 쏟아졌다... 이거 된다는 확신이 온몸에 번졌다." 도취가 저자 의도(70)보다 낮게 측정(25) — 다는 이미 자기 도취를 회상으로 다루는 화자.',
+    'ch2 망원경 — "73년을 살았는데 진짜 산 건 2년." 부끄러움이 70까지. 살리나의 거울에서 자기 빈 장부를 본다.',
+    'ch3 스테인드 — "나도 보균자였던 적이 있지 않을까." 부끄러움 65 유지, 연민 70. 타루의 자각에 공명.',
+    'ch4 시계 — "접는 순간 울 줄 알았는데, 이상하게 숨이 트이더라고요." 부끄러움 75 + 연민 80 — 분석과 행동이 분리되지 않는 자리에 도달.',
+  ],
+};
+
+// 세
+const SE = {
+  axes: ['도취','고집','부끄러움','연민'],
+  colors: ['#C8A2C8','#e07a5f','#5B9A8B','#ff9800'],
+  data: [
+    [5,15,10,10,10],     // 도취
+    [75,45,35,15,35],    // 고집
+    [30,40,65,60,70],    // 부끄러움
+    [25,50,70,75,65],    // 연민
+  ],
+  quotes: [
+    '저자 의도 — Golden Cage Theory를 만든 사람. 새장은 밝혔으나 한 번도 안에 들어가본 적 없다. 영원한 60%.',
+    'ch1 거울 — "빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요." 고집 75→45 — 자기 분석이 만능이 아님을 첫 인정.',
+    'ch2 망원경 — "정확한 진단이 행동하지 않을 근거로 쓰이는 순간이에요." 자기 검진. 부끄러움 65.',
+    'ch3 스테인드 — "calibration에 대한 확신도 calibration 대상이라는 건..." 고집 15까지 떨어짐. 영원한 60%가 부서지는 순간.',
+    'ch4 시계 — "새장을 설명하는 이론이 새장이 된다." 고집 35로 약간 회복(자기 프레임 인정 잔존). 연민 65.',
+  ],
+};
+
+// 관계
+const REL = {
+  axes: ['거리','부러움(다→세)','경외(세→다)','결합도'],
+  colors: ['#9B5A5A','#D4A574','#7BA098','#a78bfa'],
+  data: [
+    [90,18,6,8,11],      // 거리
+    [70,50,30,15,10],    // 부러움
+    [70,50,30,20,15],    // 경외
+    [30,50,70,85,90],    // 결합도
+  ],
+  quotes: [
+    '저자 의도 — 다는 무대, 세는 관객석. 서로 부러워하고 경멸하고 경외하고 안타까워하지만 같은 종이에 쓰지 못한다.',
+    'ch1 거울 — 측정 거리 18. Prior 90이 너무 컸다 — 두 화자는 1장부터 이미 가까이 있었다. "둘 다 새장에 있었던 거네요."',
+    'ch2 망원경 — 거리 6 (최저). 결합도 70 — 다가 살리나 죽음의 장면을 가져오자 세가 처음 자기 시간 계산을 한다.',
+    'ch3 스테인드 — 거리 8, 결합도 85. 다는 보균자를 인정, 세는 calibration의 calibration을 인정 — 같은 부끄러움 통과.',
+    'ch4 시계 — 거리 11(약간 반등), 결합도 90. 부러움·경외 다 사라짐 — 같은 종이 위에서 쓰는 단계.',
+  ],
+};
+
+// ═══════════ CHART RENDERER ═══════════
+function drawChart(svgId, obj, currentStep){
+  const svg = document.getElementById(svgId);
+  const W=720, H=200, P={l:60,r:30,t:18,b:32};
+  const cw = W-P.l-P.r, ch = H-P.t-P.b;
+  const xs = [0,1,2,3,4].map(i => P.l + (i/4)*cw);
+  const y = v => P.t + ch - (v/100)*ch;
+
+  let html = '';
+  // grid + y labels
+  for(let v=0; v<=100; v+=25){
+    html += `<line x1="${P.l}" x2="${W-P.r}" y1="${y(v)}" y2="${y(v)}" stroke="rgba(255,255,255,0.05)"/>`;
+    html += `<text x="${P.l-8}" y="${y(v)+4}" text-anchor="end" fill="#5a6a7a" font-size="10" font-family="DM Mono">${v}</text>`;
+  }
+  // x labels
+  STEPS.forEach((s,i) => {
+    const isActive = i === currentStep;
+    html += `<text x="${xs[i]}" y="${H-10}" text-anchor="middle" fill="${isActive?'#fff':'#5a6a7a'}" font-size="${isActive?11:10}" font-weight="${isActive?700:400}" font-family="Noto Sans KR">${s}</text>`;
+  });
+  // vertical line for current step
+  html += `<line x1="${xs[currentStep]}" x2="${xs[currentStep]}" y1="${P.t}" y2="${P.t+ch}" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="3,3"/>`;
+
+  // for each axis: faint full line + bold up to current step
+  obj.axes.forEach((axis, ai) => {
+    const data = obj.data[ai];
+    const color = obj.colors[ai];
+
+    // faint full trajectory (preview)
+    const fullPts = data.map((v,i)=>`${xs[i]},${y(v)}`).join(' ');
+    html += `<polyline points="${fullPts}" stroke="${color}" stroke-width="1" fill="none" opacity="0.18"/>`;
+
+    // bold up to currentStep
+    if(currentStep >= 0){
+      const activePts = data.slice(0, currentStep+1).map((v,i)=>`${xs[i]},${y(v)}`).join(' ');
+      html += `<polyline points="${activePts}" stroke="${color}" stroke-width="2.2" fill="none"/>`;
+
+      // dots
+      data.slice(0, currentStep+1).forEach((v,i)=>{
+        const r = i === currentStep ? 5 : 2.5;
+        html += `<circle cx="${xs[i]}" cy="${y(v)}" r="${r}" fill="${color}"/>`;
+      });
+    }
+
+    // axis label at end
+    const finalY = y(data[currentStep]);
+    html += `<text x="${W-P.r+4}" y="${finalY+4}" fill="${color}" font-size="11" font-weight="600" font-family="Noto Sans KR">${axis}</text>`;
+    // current value next to it
+    html += `<text x="${W-P.r+44}" y="${finalY+4}" fill="${color}" font-size="10" font-family="DM Mono">${data[currentStep]}</text>`;
+  });
+
+  svg.innerHTML = html;
+}
+
+// ═══════════ INSIGHT ═══════════
+function renderInsight(prefix, obj, currentStep){
+  const block = document.getElementById(prefix + 'Insight');
+  if(currentStep === 0){
+    // Prior only
+    block.innerHTML = `
+      <div class="insight-block"><b>현재 단계:</b> Prior (ch0)</div>
+      <div class="insight-block"><b>다음 evidence:</b> ch1 ${prefix==='rel'?'거울':'대사'}</div>
+    `;
+  } else {
+    // Find largest delta from prev step
+    let maxDelta = 0, maxAxis = '', maxFrom = 0, maxTo = 0;
+    obj.axes.forEach((axis, ai) => {
+      const prev = obj.data[ai][currentStep-1];
+      const curr = obj.data[ai][currentStep];
+      const d = Math.abs(curr - prev);
+      if(d > maxDelta){ maxDelta = d; maxAxis = axis; maxFrom = prev; maxTo = curr; }
+    });
+    const dir = maxTo > maxFrom ? 'up' : 'down';
+    const arrow = maxTo > maxFrom ? '↑' : '↓';
+    // Find delta from prior
+    let priorDelta = '';
+    obj.axes.forEach((axis, ai) => {
+      const prior = obj.data[ai][0];
+      const curr = obj.data[ai][currentStep];
+      if(Math.abs(curr - prior) >= 20){
+        priorDelta += `${axis} ${prior}→${curr}, `;
+      }
+    });
+    priorDelta = priorDelta.slice(0, -2) || '큰 변화 없음';
+
+    block.innerHTML = `
+      <div class="insight-block"><b>이번 장 최대 업데이트</b><br><span class="v">${maxAxis}: ${maxFrom} → ${maxTo}</span> <span class="insight-${dir}">${arrow} ${maxDelta}pp</span></div>
+      <div class="insight-block"><b>Prior 대비 누적</b><br><span class="v" style="font-size:10.5px;">${priorDelta}</span></div>
+    `;
+  }
+}
+
+// ═══════════ SET STEP ═══════════
+let currentStep = 0;
+function setStep(s){
+  currentStep = s;
+  document.querySelectorAll('.step-btn[data-step]').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.step) === s);
+  });
+  drawChart('daChart', DA, s);
+  drawChart('seChart', SE, s);
+  drawChart('relChart', REL, s);
+  document.getElementById('daQuote').innerHTML = `<b>증거:</b> ${DA.quotes[s]}`;
+  document.getElementById('seQuote').innerHTML = `<b>증거:</b> ${SE.quotes[s]}`;
+  document.getElementById('relQuote').innerHTML = `<b>증거:</b> ${REL.quotes[s]}`;
+  renderInsight('da', DA, s);
+  renderInsight('se', SE, s);
+  renderInsight('rel', REL, s);
+}
+
+document.querySelectorAll('.step-btn[data-step]').forEach(b => {
+  b.onclick = () => setStep(parseInt(b.dataset.step));
+});
+
+// auto play
+let playing = false, playTimer = null;
+document.getElementById('playBtn').onclick = function(){
+  if(playing){
+    clearInterval(playTimer); playing = false; this.textContent = '▶'; return;
+  }
+  playing = true; this.textContent = '⏸';
+  let s = (currentStep + 1) % 5;
+  setStep(s);
+  playTimer = setInterval(() => {
+    s = (s + 1) % 5;
+    setStep(s);
+  }, 1800);
+};
+
+setStep(0);
+</script>
+</body>
+</html>
