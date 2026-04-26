@@ -77,6 +77,28 @@
 
   .footer{text-align:center;padding:48px 24px 32px;font-size:12px;color:#3a4050;}
   @media(max-width:600px){.genre,.audience{grid-template-columns:1fr;} .map{grid-template-columns:1fr;} .hypo-grid{grid-template-columns:1fr;}}
+
+  /* policy designer panels */
+  .policy-buttons{display:flex;gap:6px;margin-top:12px;}
+  .policy-btn{
+    flex:1;padding:7px 10px;background:#141b2d;border:1px solid rgba(255,255,255,0.08);
+    color:#c8d0dd;font-family:inherit;font-size:11px;font-weight:600;
+    border-radius:6px;cursor:pointer;transition:all 0.2s;
+  }
+  .policy-btn:hover{background:#1c2540;border-color:#4A7A6B;color:#fff;}
+  .policy-btn.active{background:#4A7A6B;border-color:#4A7A6B;color:#fff;}
+  .policy-panel{display:none;background:#0a0e1a;border-radius:6px;padding:14px;margin-top:10px;
+    border:1px solid rgba(74,122,107,0.2);font-size:11px;color:#8899aa;line-height:1.7;}
+  .policy-panel.active{display:block;}
+  .policy-panel h5{color:#4A7A6B;font-size:11px;margin-bottom:6px;font-weight:700;letter-spacing:0.5px;margin-top:10px;}
+  .policy-panel h5:first-child{margin-top:0;}
+  .policy-panel ul{padding-left:14px;margin:4px 0;}
+  .policy-panel li{margin-bottom:3px;}
+  .policy-panel .quote{color:#c8d0dd;border-left:2px solid #4A7A6B;padding-left:8px;margin:6px 0;font-size:11px;font-style:italic;}
+  .policy-panel a{color:#5A8A9A;text-decoration:none;font-weight:600;}
+  .policy-panel a:hover{text-decoration:underline;color:#7BAACB;}
+  .policy-panel .bb{background:rgba(74,122,107,0.08);border-radius:4px;padding:8px;margin-top:8px;font-size:10.5px;}
+  .policy-panel .bb strong{color:#c8d0dd;}
 </style>
 </head>
 <body>
@@ -179,7 +201,67 @@
       <h4>정책설계자</h4>
       <p>유연한 헌신을 통해 생산적인 실패를 장려할 창업 정책설계자의 삶을 바꾼다.</p>
       <div class="detail">경제경영(자금·인프라, 로컬·기술 관리) · 문화(창업오디션, 실패경험 데이터베이스)</div>
+
+      <div class="policy-buttons">
+        <button class="policy-btn" onclick="togglePolicy('econ', this)">경제경영 ▾</button>
+        <button class="policy-btn" onclick="togglePolicy('culture', this)">문화 ▾</button>
+      </div>
+
+      <div id="policy-econ" class="policy-panel">
+        <h5>모두의 창업 정책 4축의 빈자리</h5>
+        한성숙 장관(중기부) 발표의 정책 4축 — <strong>기술(WHAT) · 생산성(HOW) · 수출(HOW) · 성장(WHAT)</strong>. 빠진 축 = <strong>⭐️ WHY</strong>("왜 창업하나"). 자금·인프라가 검증되지 않은 욕망 위에서 작동하면 dG/dF=(−)가 단계마다 작동.
+
+        <h5>5,000명 단계별 dG/dF=(−)</h5>
+        <ul>
+          <li>지원 (5,000명·200만원) → ch1 거울: 활동자금이 빌린 욕망 굳힘</li>
+          <li>오디션 (1,000명·2,000만원) → ch2 망원경: 경쟁이 빠른 발 보상, 이해 멈춤</li>
+          <li>루키 (100명·1억) → ch3 스테인드: 자금이 확신 고착, 피벗 불가</li>
+          <li>우승 (10억+펀드) → ch4 시계: 성공이 변이 죽임 = 황금새장</li>
+        </ul>
+
+        <div class="quote">"빌린 것을 갚으면 새장이 둥지가 된다." — 책의 마지막 문장</div>
+
+        <div class="bb">
+          <strong>Bottleneck = Sell (받아줄 의지)</strong> — 검증 도구:
+          <a href="interactive/readers.html">→ 12 독자 셀 (3 페르소나 × 4 산업) 65%</a><br>
+          <strong>요청</strong>: 모두의 창업 5,000명 중 5명 대표 인터뷰 (현직 창업자·로컬·시니어·10대·이민자 배경) — 가상 프로필 80% → 실제 95%로 점프.
+        </div>
+      </div>
+
+      <div id="policy-culture" class="policy-panel">
+        <h5>창업오디션 = 4 새장 진단 + 4 둥지 짓기</h5>
+        오디션의 단계별 압박이 ch1~ch4 새장과 1:1. 콘텐츠로 흡수하면 5,000명이 *진단을 의례*로 만든다. 굿페일·재도전 = ch4 빈칸 찾기. 실패가 자가발전 회로의 연료.
+
+        <h5>실패경험 DB = 484 + V×A 감정 격자</h5>
+        <ul>
+          <li>484 권 = 50년 세계문학전집 + 4 lens × 10 감정 군집</li>
+          <li>다·세 감정 궤적 = 다(실행) ↔ 세(분석) 두 인격의 실패 회로</li>
+          <li>5,000명이 매주 1권 + 자기 V×A 위치 = 매일 갱신되는 살아있는 DB</li>
+          <li>독자별 매트릭스 시제품 작동 — <a href="interactive/periodic_table_prototype.html">484 라이브 매트릭스</a></li>
+        </ul>
+
+        <div class="quote">"창업소설은 무엇을 걸고 무엇을 잃는지의 이야기."</div>
+
+        <div class="bb">
+          <strong>Bottleneck = Deliver (콘텐츠가 작동하는가)</strong> — 검증 도구:
+          <a href="interactive/emotion_trajectory.html">→ 다·세 감정 궤적 SBC 78%</a><br>
+          <strong>요청</strong>: 모두의 창업 콘텐츠 채택 검토 — 부교재·자유학기제·창업진흥원 표준 가능성. 종이책 1부(한 번 진단) + 디지털 2부(매일 갱신) 두 트랙 독립 운영.
+        </div>
+      </div>
     </div>
+
+    <script>
+      function togglePolicy(id, btn){
+        const panel = document.getElementById('policy-' + id);
+        const isActive = panel.classList.contains('active');
+        document.querySelectorAll('.policy-panel').forEach(p=>p.classList.remove('active'));
+        document.querySelectorAll('.policy-btn').forEach(b=>b.classList.remove('active'));
+        if(!isActive){
+          panel.classList.add('active');
+          btn.classList.add('active');
+        }
+      }
+    </script>
   </div>
 </div>
 
