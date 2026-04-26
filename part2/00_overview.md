@@ -24,17 +24,12 @@ mirror: chapters/ch5_epilogue.md
 
 ## 메타 archetype — 「조지오웰을 뒤집다」 (다+세 공동 에세이)
 
-이 에세이가 disenchantment → re-enchantment의 모범. 2부 4장이 같은 4박자 패턴을 따른다.
+이 에세이가 disenchantment → re-enchantment의 모범. 1부와 2부의 경첩.
+4박자(기·승·전·결)로 오웰 세 슬로건을 뒤집어, 같은 기호가 창업의 거울이 됨을 보인다.
 
-> **기 · 반어가 아닐지도.** 오웰 1984의 세 슬로건을 반어로 읽었다. 2018년 이후 다시 폈을 때는 다른 게 보였다 — 실제로 말이 될 수 있겠다.
->
-> **승 · 보편의 문법.** *War is Peace* (토플러: 같은 물결의 기술), *Freedom is Slavery* (장준하: foundation 위의 자유), *Ignorance is Strength* (적도와 북극의 해상도).
->
-> **전 · 창업의 문법.** 우버·리프트(평화는 전쟁), Tesla·Better Place(속박은 자유), 4 산업 optimal ignorance(무지는 힘).
->
-> **결 · 확률적 사고.** 80% 경쟁·20% 협력 → 60:40 매일 갱신. 오웰이 옳다. 그러나 문법을 뒤집으면 같은 기호가 창업의 거울이 된다. **구조가 같으면 빗댐은 참이다.**
+→ **전문: [부록 7 — 조지오웰을 뒤집다](../appendices/app7_orwell_inverted.md)** (24 돌쩌귀 표 + 본문)
 
-→ 전문: [조지오웰 뒤집기 24 돌쩌귀 + 본문](orwell_inverted.md)
+씨앗은 1부 ch3 💉 *"감옥을 감옥에 빗대다"* 세의 에세이 — *"오웰의 세 공식은 등가가 아니다"* 한 줄.
 
 ## 매체 정합 — medium = message
 
