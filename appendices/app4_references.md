@@ -2,11 +2,14 @@
 moc: 🟥
 modified:
   - 2026-04-09
+  - 2026-04-29
 ---
 
 # 부록 4. 이 책의 생각 빚 장부
 
 > 이 책도 빌렸다. 아래는 빌린 것의 목록이다. 저자는 목적에 맞다고 판단해 받아들였지만, 독자는 의심해야 한다 — 이 빌린 생각이 당신의 상황에서도 맞는지.
+
+> **표기 규약.** 인용은 빚이다. 빚은 4필드(저자·판본·인용문·본문위치)로 적는다. 인용 형태는 **직접 인용**(큰따옴표 + 원문 그대로)·**의역**(취지를 자장이 옮긴 것)·**[자장 註]**(베버·플로베르 등에 자장의 해석을 잇는 경우)를 분리 표기한다. 판본을 확정하지 못한 항목은 **[판본 확인 필요]**로 남긴다 — 사기보다 미해결이 낫다.
 
 <!-- 
 tolzul vault 참조 경로 (참고문헌 관리자용):
@@ -76,11 +79,19 @@ tolzul vault 참조 경로 (참고문헌 관리자용):
 "낭만주의자는 자기 욕망이 자발적이라고 믿는다. 그것이 낭만적 거짓이다."
 엠마가 왜 파리를 원했는지, 이 한 문장이 답한다.
 
-### 막스 베버, 「직업으로서의 정치」
-1919.
+### 막스 베버, 「직업으로서의 정치」 (Politik als Beruf)
+원본: 1919년 뮌헨 강연. 한역 후보: 전성우 옮김, 『직업으로서의 정치』(나남, 베버 선집, 2007) / 박상훈 옮김, 『소명으로서의 정치』(폴리테이아, 2011). [본문 인용 판본 확인 필요]
 3장에서 인용.
-"신념윤리가는 자기 행동의 결과에 대해 책임을 지지 않는다."
+의역: "신념윤리가는 자기 행동의 결과에 대해 책임을 지지 않는다."
+원문 취지(*Gesinnungsethik* vs *Verantwortungsethik*): 신념윤리가는 동기의 순수성(*Reinheit der Gesinnung*)에 책임지고, 책임윤리가는 행위의 예측 가능한 결과에 책임진다. 위 인용문은 자장이 이 대비를 한 문장으로 압축한 것 — verbatim이 아니다.
 파늘루가 리외와 갈리는 정확한 지점. 신념(내용)은 바뀌어도 확신(태도)은 안 바뀌는 구조.
+
+### 막스 베버, 「직업으로서의 학문」 (Wissenschaft als Beruf)
+원본: 1919년 뮌헨 강연. 한역 후보: 전성우 옮김, 『직업으로서의 학문』(나남, 2006) / 이상률 옮김, 『직업으로서의 학문』(문예출판사, 2017). [본문 인용 판본 확인 필요]
+3장에서 참조.
+직접 인용(독): "das akademische Leben ist ein wilder Hazard" — 학문적 삶은 거친 도박이다.
+사강사·조교가 정교수가 될지는 "단순히 우연(Hazard)의 문제"이며 "지상에서 우연이 이렇게 큰 역할을 하는 직업은 거의 없다." 베버 본인도 "몇 가지 우연 덕분에 매우 이른 나이에 정교수가 되었다"고 고백.
+[자장 註]: 그러나 소명이 있는 자에게 도박은 계산이 된다. — 베버 원문에는 없는 자장의 해석. 검증 안 된 인용을 베버 발화로 두면 빚이 된다.
 
 ### 대니얼 카너먼, 『생각에 관한 생각』
 이진원 옮김, 김영사, 2012.
@@ -96,21 +107,21 @@ CRC Press, 2013.
 <!-- tolzul: 공간화음/Thesis/1논문용/ -->
 
 ### Carl von Clausewitz, *Vom Kriege*
-1832.
+원본: 1832 (사후 출간). 한역 후보: 김만수 옮김, 『전쟁론』 1·2·3(갈무리, 2016) / 영역: Howard·Paret, *On War*(Princeton UP, 1976). [본문 인용 판본 확인 필요]
 2장에서 인용.
 기세(Schwung) — 완벽한 지도를 기다리며 멈춘 군대는 죽는다. 살리나가 73년간 한 일의 군사학적 이름.
 
 ### 노자, 『도덕경』
+원본: 기원전 6~4세기 추정. 본문 인용 판본: [한역본 확인 필요 — 충코 강의 외 어느 텍스트를 본문에 쓰는지]. 보조 자료: [충코의 도덕경 강의](https://www.youtube.com/watch?v=wjKQjDXVTlI).
 2장, 4장에서 참조.
-"물은 만물을 이롭게 하면서도 다투지 않는다."
+"물은 만물을 이롭게 하면서도 다투지 않는다." (8장, 上善若水)
 2장의 기세(움직여야 산다)와 도덕경의 무위(흐르면 된다)는 같은 곳을 가리키되 경로가 다르다. 4장 방드르디의 놀이 = 무위의 육체적 번역.
-[충코의 도덕경 강의](https://www.youtube.com/watch?v=wjKQjDXVTlI)
 
 ### 주역
+원본: 기원전 8~3세기 추정 (성립 단계 분리). 본문 인용 판본: [한역본 확인 필요]. 보조 자료: [EBS 평생학교 — 강기진의 3천 년의 지혜, 주역 8강 시리즈](https://www.youtube.com/playlist?list=PLov1pvgWoT0I1K7EgT1r7MdFmZBtQnYLl).
 1장, 전체에서 참조.
-"과거를 바꿔야 팔자가 바뀐다." (강기진, 4강)
+의역: "과거를 바꿔야 팔자가 바뀐다." (강기진 4강의 압축 — 강의 자료 출처)
 빚을 갚는 것 = 과거의 빌린 가정을 인정하고 해석을 바꾸는 것. "장부를 펴라"의 동양적 표현.
-[EBS 평생학교 8강 시리즈](https://www.youtube.com/playlist?list=PLov1pvgWoT0I1K7EgT1r7MdFmZBtQnYLl)
 
 ### 배달형·전덕종·김진영, 『어떻게 경쟁하고 승리할 것인가: 원리와 방법』
 2장에서 인용.
@@ -126,10 +137,10 @@ CRC Press, 2013.
 
 **종합: 최적 모호성의 세 얼굴.** OIL(Moon 2026)은 "언제 구체화할 것인가"의 타이밍을 수식으로, Padgett(1993)은 "모호함이 어떻게 권력이 되는가"를 역사로, Ferraro(2015)는 "왜 모호함이 필연인가"를 인식론으로 답한다. 셋이 말하는 것은 같다 — 빌린 확신(premature precision)이 적응을 죽인다. 살리나는 너무 정밀해서 못 뛰었고, 엠마는 너무 모호해서 방향이 없었다. 최적은 그 사이 — 탄크레디가 "행동은 확정하고 정체성은 열어둔" 것.
 
-### Saras Sarasvathy, "Causation and Effectuation"
-*Academy of Management Review*, 2001.
+### Saras Sarasvathy, "Causation and Effectuation: Toward a Theoretical Shift from Economic Inevitability to Entrepreneurial Contingency"
+*Academy of Management Review*, 26(2), 2001, pp. 243–263.
 2장에서 인용.
-"잃어도 괜찮은 수준에서 시작하라."
+의역: "잃어도 괜찮은 수준에서 시작하라." (effectuation 5원칙 중 *Affordable Loss*의 한 줄 번역)
 코모리가 화장품부터 시험한 이유. 되돌릴 수 있는 것부터.
 
 ### 로저 마틴, 『통합적 사고: 제3의 선택으로 세상을 바꾼 이노베이터들의 생각법』
@@ -139,22 +150,22 @@ CRC Press, 2013.
 <!-- tolzul: 공간화음/Thesis/choose(organization)/3_G_思🟠/📚journal/📜martin_opposable_mind.md -->
 
 ### Daniel Levinthal, "Adaptation on Rugged Landscapes"
-*Management Science*, 1997.
+*Management Science*, 43(7), 1997, pp. 934–950. DOI: 10.1287/mnsc.43.7.934.
 4장에서 인용.
 성공한 선택이 탐색을 멈추게 한다 — exploitation trap. 로빈슨의 시계가 파도를 죽이는 메커니즘.
 
-### Peter Thiel·Blake Masters, *Zero to One*
-Crown Business, 2014.
+### Peter Thiel·Blake Masters, *Zero to One: Notes on Startups, or How to Build the Future*
+원본: Crown Business, 2014. 한역: 이지연 옮김, 『제로 투 원』, 한국경제신문, 2014.
 1장에서 인용.
 지라르에게 직접 배운 사람이 쓴 실천편. 삼각형 바깥에 서면 독점이 된다.
 
-### Mike Maples Jr·Peter Ziebelman, *Pattern Breakers*
-PublicAffairs, 2024.
+### Mike Maples Jr·Peter Ziebelman, *Pattern Breakers: Why Some Start-Ups Change the Future*
+PublicAffairs, 2024. [한국어판 미확인 — 영문 원서 인용]
 1장에서 인용.
-"합의 바깥에 서되, 맞아야 한다."
+의역: "합의 바깥에 서되, 맞아야 한다." (원문 *non-consensus and right* — 자장의 한 문장 번역)
 
-### Charles Fine, *Clockspeed*
-Perseus Books, 1998.
+### Charles Fine, *Clockspeed: Winning Industry Control in the Age of Temporary Advantage*
+Perseus Books, 1998. [한국어판 미확인 — 영문 원서 인용]
 2장, 4장에서 인용.
 산업마다 진화 속도가 다르다. 느린 산업에서 빠른 의사결정 = 새장.
 
