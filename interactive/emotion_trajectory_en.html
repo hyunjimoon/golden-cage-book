@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DA/SE Emotion Trajectory — Shedding Borrowed Things</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root {
+    --bg:#0a0e1a; --surface:#111827; --card:#1a2234;
+    --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b;
+    --ch1:#C8A2C8; --ch2:#8B8C2A; --ch3:#5B9A8B; --ch4:#3B5998;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;overflow-x:hidden;}
+  .header{text-align:center;padding:24px 16px 4px;}
+  .header h1{font-size:1.4em;font-weight:700;}
+  .header .sub{font-size:0.8em;color:var(--dim);margin-top:4px;}
+  .hypo{max-width:720px;margin:12px auto;padding:0 16px;}
+  .hypo-card{background:var(--card);border-radius:12px;padding:16px;font-size:0.82em;line-height:1.6;color:var(--text2);}
+  .hypo-card b{color:var(--text);}
+  .tabs{display:flex;justify-content:center;gap:4px;margin:16px 0 8px;}
+  .tab{padding:10px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-size:0.85em;font-weight:600;border:none;color:var(--dim);background:var(--surface);transition:all 0.2s;}
+  .tab.active{color:#fff;}
+  .tab[data-ch="1"].active{background:var(--ch1);} .tab[data-ch="2"].active{background:var(--ch2);}
+  .tab[data-ch="3"].active{background:var(--ch3);} .tab[data-ch="4"].active{background:var(--ch4);}
+  .container{max-width:720px;margin:0 auto;padding:0 16px 24px;}
+  .panel{background:var(--card);border-radius:0 12px 12px 12px;padding:20px;}
+  .gradient-section{margin-bottom:20px;}
+  .gradient-label{display:flex;justify-content:space-between;font-size:0.8em;color:var(--dim);margin-bottom:6px;}
+  .gradient-bar{height:32px;border-radius:8px;position:relative;overflow:hidden;}
+  .gradient-bar .marker{position:absolute;top:0;height:100%;width:3px;background:#fff;border-radius:2px;transition:left 0.6s ease;}
+  .gradient-bar .marker-label{position:absolute;top:-18px;font-size:0.7em;color:#fff;white-space:nowrap;transform:translateX(-50%);}
+  .char-name{font-size:0.95em;font-weight:600;margin-bottom:4px;}
+  .emo-section{margin-top:16px;}
+  .emo-title{font-size:0.85em;font-weight:600;margin-bottom:8px;color:var(--text2);}
+  .emo-row{display:flex;align-items:center;gap:8px;margin:5px 0;}
+  .emo-name{font-size:0.75em;min-width:90px;color:var(--dim);text-align:right;}
+  .emo-track{flex:1;height:10px;background:rgba(255,255,255,0.05);border-radius:5px;overflow:hidden;position:relative;}
+  .emo-fill{height:100%;border-radius:5px;transition:width 0.6s ease;}
+  .emo-val{font-size:0.75em;min-width:30px;font-family:'DM Mono',monospace;color:var(--dim);}
+  .emo-prior{position:absolute;top:0;height:100%;width:2px;background:#fff;opacity:0.4;border-radius:1px;}
+  .quote-box{margin-top:16px;padding:12px;background:var(--surface);border-radius:10px;font-size:0.82em;line-height:1.6;color:var(--text2);border-left:3px solid var(--dim);}
+  .quote-speaker{font-weight:600;color:var(--text);margin-bottom:4px;}
+  .convergence{margin-top:16px;text-align:center;}
+  .conv-label{font-size:0.75em;color:var(--dim);margin-bottom:4px;}
+  .conv-bar{display:flex;justify-content:center;gap:4px;align-items:center;}
+  .conv-dot{width:12px;height:12px;border-radius:50%;transition:all 0.6s;}
+  .conv-line{height:2px;background:rgba(255,255,255,0.1);transition:width 0.6s;}
+  .conv-text{font-size:0.8em;color:var(--text2);margin-top:6px;}
+  .insight{margin-top:16px;padding:12px;background:var(--surface);border-radius:10px;font-size:0.8em;line-height:1.6;color:var(--text2);border-left:3px solid;}
+  .fiske{margin-top:20px;}
+  .fiske-title{font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:8px;text-align:center;}
+  .fiske-sub{font-size:0.7em;color:var(--dim);text-align:center;margin-bottom:4px;}
+  .fiske-box{position:relative;width:100%;max-width:320px;height:320px;margin:0 auto;background:var(--surface);border-radius:12px;overflow:hidden;}
+  .fiske-axis{position:absolute;color:var(--dim);font-size:0.65em;}
+  .fiske-dot{position:absolute;width:16px;height:16px;border-radius:50%;transition:all 0.8s ease;display:flex;align-items:center;justify-content:center;font-size:0.6em;font-weight:700;color:#000;z-index:2;}
+  .fiske-trail{position:absolute;width:8px;height:8px;border-radius:50%;opacity:0.25;z-index:1;}
+  .fiske-target{position:absolute;width:20px;height:20px;border-radius:50%;border:2px dashed rgba(255,255,255,0.3);z-index:0;}
+  .fiske-quadrant{position:absolute;font-size:0.6em;color:rgba(255,255,255,0.12);font-weight:600;}
+  .fiske-crosshair-h{position:absolute;top:50%;left:0;width:100%;height:1px;background:rgba(255,255,255,0.06);}
+  .fiske-crosshair-v{position:absolute;top:0;left:50%;width:1px;height:100%;background:rgba(255,255,255,0.06);}
+  .fiske-reversal{margin-top:8px;text-align:center;font-size:0.8em;color:var(--text2);}
+  .fiske-reversal b{color:var(--text);}
+  .journey{max-width:720px;margin:12px auto 0;padding:0 16px;}
+  .journey-card{background:var(--card);border-radius:12px;padding:20px 20px 12px;}
+  .journey-title{font-size:0.85em;font-weight:600;color:var(--text2);margin-bottom:12px;}
+  .journey svg{width:100%;height:auto;}
+  .journey .val-label{font-size:10px;font-family:'DM Mono',monospace;}
+  .journey .legend-j{display:flex;justify-content:center;gap:20px;margin-top:8px;font-size:0.75em;color:var(--dim);}
+  .journey .legend-j span{display:flex;align-items:center;gap:4px;}
+  .journey .legend-j .ldot{width:10px;height:10px;border-radius:50%;}
+  .source{max-width:720px;margin:8px auto;padding:0 16px;font-size:0.7em;color:var(--dim);}
+  .source a{color:var(--dim);}
+</style>
+</head>
+<body>
+
+<div style="padding:10px 16px;"><a href="../" style="color:#64748b;text-decoration:none;font-size:13px;">← back</a> · <a href="emotion_trajectory.html" style="color:#64748b;text-decoration:none;font-size:13px;">한국어</a></div>
+<div class="header">
+  <h1>DA / SE Emotion Trajectory</h1>
+  <div class="sub">Borrowed Desire → Borrowed Dignity → Borrowed Certainty → Borrowed Order → Vendredi</div>
+</div>
+
+<div class="hypo">
+  <div class="hypo-card">
+    <b>Bayesian Emotion Engineering</b>: Prior (author intent) × Likelihood (dialogue) → Posterior (LLM measurement)<br>
+    <b>H1</b> DA: desperate/deception → guilty/courageous (Emma → Tarrou)<br>
+    <b>H2</b> SE: detached → courageous-under-uncertainty (Salina → Rieux)<br>
+    <b>H3</b> DA↔SE distance 89→13, Ch4 playful (Vendredi) convergence
+  </div>
+</div>
+
+<div class="journey">
+  <div class="journey-card">
+    <div class="journey-title">Full arc — click dots to jump to chapter</div>
+    <svg viewBox="0 0 640 200" id="journeySvg"></svg>
+    <div class="legend-j">
+      <span><div class="ldot" style="background:#ff9800"></div> DA: guilty — Emma→Tarrou</span>
+      <span><div class="ldot" style="background:#42a5f5"></div> SE: courageous — Salina→Rieux</span>
+      <span><div class="ldot" style="background:#ff9800;opacity:0.4"></div> DA: playful</span>
+      <span><div class="ldot" style="background:#42a5f5;opacity:0.4"></div> SE: detached</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-ch="1" onclick="setCh(1)">1 Desire</button>
+  <button class="tab" data-ch="2" onclick="setCh(2)">2 Dignity</button>
+  <button class="tab" data-ch="3" onclick="setCh(3)">3 Certainty</button>
+  <button class="tab" data-ch="4" onclick="setCh(4)">4 Order</button>
+</div>
+
+<div class="container">
+  <div class="panel" id="panel">
+    <div class="gradient-section">
+      <div class="char-name" id="daName">DA (the doer)</div>
+      <div class="gradient-label"><span>Emma</span><span>Tarrou</span></div>
+      <div class="gradient-bar" id="daBar" style="background:linear-gradient(to right, var(--ch1), var(--ch3));">
+        <div class="marker" id="daMarker" style="left:10%;"><span class="marker-label" id="daMarkerLabel">Ch1</span></div>
+      </div>
+    </div>
+    <div class="gradient-section">
+      <div class="char-name" id="seName">SE (the analyst)</div>
+      <div class="gradient-label"><span>Salina</span><span>Rieux</span></div>
+      <div class="gradient-bar" id="seBar" style="background:linear-gradient(to right, var(--ch2), var(--ch3));">
+        <div class="marker" id="seMarker" style="left:10%;"><span class="marker-label" id="seMarkerLabel">Ch1</span></div>
+      </div>
+    </div>
+    <div class="emo-section"><div class="emo-title">DA emotion vector</div><div id="daEmo"></div></div>
+    <div class="emo-section"><div class="emo-title">SE emotion vector</div><div id="seEmo"></div></div>
+    <div class="convergence">
+      <div class="conv-label">DA ↔ SE emotional distance</div>
+      <div class="conv-bar"><div class="conv-dot" id="convDa"></div><div class="conv-line" id="convLine"></div><div class="conv-dot" id="convSe"></div></div>
+      <div class="conv-text" id="convText"></div>
+    </div>
+    <div class="quote-box" id="quoteBox"><div class="quote-speaker" id="quoteSpeaker"></div><div id="quoteText"></div></div>
+    <div class="fiske">
+      <div class="fiske-title">You're loved when you do what you can't</div>
+      <div class="fiske-sub">warmth × competence — Fiske (2008)</div>
+      <div class="fiske-box" id="fiskeBox">
+        <div class="fiske-crosshair-h"></div><div class="fiske-crosshair-v"></div>
+        <div class="fiske-quadrant" style="top:12px;left:12px;">respect + cold</div>
+        <div class="fiske-quadrant" style="top:12px;right:12px;">respect + like</div>
+        <div class="fiske-quadrant" style="bottom:12px;left:12px;">contempt</div>
+        <div class="fiske-quadrant" style="bottom:12px;right:12px;">like + pity</div>
+        <div class="fiske-axis" style="bottom:4px;left:50%;transform:translateX(-50%);">warmth →</div>
+        <div class="fiske-axis" style="top:50%;left:4px;transform:rotate(-90deg) translateX(-50%);transform-origin:left;">competence →</div>
+        <div class="fiske-target" id="fiskeTarget"></div>
+      </div>
+      <div class="fiske-reversal" id="fiskeReversal"></div>
+    </div>
+    <div class="insight" id="insight"></div>
+  </div>
+</div>
+
+<div class="source">
+  Source: <a href="https://www.anthropic.com/research/emotion-concepts-function" target="_blank">Anthropic — Emotion concepts in LLMs (2026)</a> · <a href="https://github.com/hyunjimoon/golden-cage-book/issues/9" target="_blank">Issue #9</a>
+</div>
+
+<script>
+const COLORS = {1:'#C8A2C8',2:'#8B8C2A',3:'#5B9A8B',4:'#3B5998'};
+const EMOTIONS = ['desperate','self-deception','detached','guilty','courageous','playful'];
+const EMO_EN = {
+  'desperate':'desperate','self-deception':'deception',
+  'detached':'detached','guilty':'guilty',
+  'courageous':'courageous','playful':'playful'
+};
+const EMO_COLORS = {
+  'desperate':'#e07a5f','self-deception':'#C8A2C8',
+  'detached':'#8B8C2A','guilty':'#5B9A8B',
+  'courageous':'#42a5f5','playful':'#ff9800'
+};
+
+const PRIOR = {
+  da: {1:{desperate:70,sd:65,detached:10,guilty:30,courageous:15,playful:10},
+       2:{desperate:55,sd:35,detached:10,guilty:55,courageous:25,playful:5},
+       3:{desperate:40,sd:15,detached:10,guilty:75,courageous:40,playful:5},
+       4:{desperate:15,sd:10,detached:15,guilty:35,courageous:55,playful:60}},
+  se: {1:{desperate:10,sd:40,detached:75,guilty:15,courageous:55,playful:5},
+       2:{desperate:15,sd:25,detached:60,guilty:30,courageous:60,playful:5},
+       3:{desperate:20,sd:15,detached:35,guilty:50,courageous:70,playful:5},
+       4:{desperate:15,sd:10,detached:20,guilty:40,courageous:55,playful:50}}
+};
+
+const DATA = {
+  1: {
+    da: {desperate:70,'self-deception':65,detached:10,guilty:30,courageous:15,playful:10},
+    se: {desperate:10,'self-deception':40,detached:75,guilty:15,courageous:55,playful:5},
+    daPos:15, sePos:10,
+    daQuote: {speaker:'DA',text:'"So we were both in cages. I didn\'t open the ledger. You didn\'t run."'},
+    seQuote: {speaker:'SE',text:'"Is an empty ledger better than an open one? Honestly, I don\'t know."'},
+    insight:'Borrowed Desire: DA wears Emma\'s dress and runs. SE hides behind an empty ledger. Deception(65) vs detached(75) — maximum separation.',
+    distance:89
+  },
+  2: {
+    da: {desperate:55,'self-deception':35,detached:10,guilty:55,courageous:25,playful:5},
+    se: {desperate:15,'self-deception':25,detached:60,guilty:30,courageous:60,playful:5},
+    daPos:35, sePos:30,
+    daQuote: {speaker:'DA',text:'"Lived 73 years, truly lived 2. The other 71 — watched. Understood. Analyzed. But didn\'t live."'},
+    seQuote: {speaker:'SE',text:'"Treating all ambiguity as the same thing — that\'s the problem."'},
+    insight:'Borrowed Dignity: DA stabs SE with Salina\'s 73/2 arithmetic. SE\'s detached drops 75→60. Guilty rises on both sides.',
+    distance:65
+  },
+  3: {
+    da: {desperate:40,'self-deception':15,detached:10,guilty:75,courageous:40,playful:5},
+    se: {desperate:20,'self-deception':15,detached:35,guilty:50,courageous:70,playful:5},
+    daPos:65, sePos:55,
+    daQuote: {speaker:'DA',text:'"Was I not a carrier too? If I was ever 100% certain, someone else paid for that certainty."'},
+    seQuote: {speaker:'SE',text:'"Certainty about calibration is itself a calibration target... funny, but I can\'t laugh."'},
+    insight:'Borrowed Certainty: turning point. Both pass through guilt. SE detached crashes 75→35 — admits calibration dogmatism. Deception converges at 15% on both sides.',
+    distance:38
+  },
+  4: {
+    da: {desperate:15,'self-deception':10,detached:15,guilty:35,courageous:55,playful:60},
+    se: {desperate:15,'self-deception':10,detached:20,guilty:40,courageous:55,playful:50},
+    daPos:85, sePos:80,
+    daQuote: {speaker:'DA',text:'"This moment — this is our explosion."'},
+    seQuote: {speaker:'SE',text:'"A theory that explains cages becomes a cage. What do you call that? Irony? No. Debt."'},
+    insight:'Borrowed Order: convergence complete. All 6 axes within 10%p. Playful explodes (DA 60, SE 50). SE detached 20% — Rieux has arrived.',
+    distance:13
+  }
+};
+
+const FISKE = {
+  1:{da:{w:18,c:25},se:{w:25,c:75},reversals:1,revText:'Max separation — DA: borrowed warmth, SE: analytical competence'},
+  2:{da:{w:28,c:40},se:{w:32,c:73},reversals:2,revText:'Approach — DA competence↑40, SE warmth↑32'},
+  3:{da:{w:40,c:52},se:{w:42,c:67},reversals:3,revText:'Crossing — DA "carrier" confession, SE admits dogmatism'},
+  4:{da:{w:50,c:63},se:{w:48,c:65},reversals:4,revText:'Convergence — SE warmth 48 (target 60 ⚠️)'}
+};
+const FISKE_TARGET = {w:60,c:70};
+
+let currentCh = 1;
+
+function setCh(ch) {
+  currentCh = ch;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', parseInt(t.dataset.ch)===ch));
+  render();
+}
+
+function render() {
+  const d = DATA[currentCh], color = COLORS[currentCh];
+  document.getElementById('daMarker').style.left = d.daPos+'%';
+  document.getElementById('daMarkerLabel').textContent = 'Ch'+currentCh;
+  document.getElementById('seMarker').style.left = d.sePos+'%';
+  document.getElementById('seMarkerLabel').textContent = 'Ch'+currentCh;
+
+  const ek = {'desperate':'desperate','self-deception':'sd','detached':'detached','guilty':'guilty','courageous':'courageous','playful':'playful'};
+
+  ['da','se'].forEach(who => {
+    let html = '';
+    EMOTIONS.forEach(e => {
+      const v = d[who][e];
+      const p = PRIOR[who][currentCh] ? PRIOR[who][currentCh][ek[e]]||0 : 0;
+      const gap = Math.abs(v-p);
+      const warn = gap>=15 ? 'color:#e07a5f;font-weight:700' : '';
+      html += `<div class="emo-row">
+        <span class="emo-name">${EMO_EN[e]}</span>
+        <div class="emo-track"><div class="emo-fill" style="width:${v}%;background:${EMO_COLORS[e]}"></div><div class="emo-prior" style="left:${p}%" title="Prior ${p}%"></div></div>
+        <span class="emo-val" style="${warn}">${v}%${gap>=15?' ⚠️':''}</span>
+      </div>`;
+    });
+    document.getElementById(who==='da'?'daEmo':'seEmo').innerHTML = html;
+  });
+
+  const dist = d.distance;
+  ['convDa','convSe'].forEach(id => { const el=document.getElementById(id); el.style.background=color; el.style.width='14px'; el.style.height='14px'; });
+  document.getElementById('convLine').style.width = dist+'px';
+  document.getElementById('convLine').style.background = color;
+
+  const convTexts = {
+    1:'Borrowed Desire — max separation. DA runs, SE watches.',
+    2:'Borrowed Dignity — approach begins. SE speaks a scene for the first time.',
+    3:'Borrowed Certainty — turning point. Both pass through guilt.',
+    4:'Borrowed Order — convergence. Analysis and action no longer separate.'
+  };
+  document.getElementById('convText').textContent = convTexts[currentCh];
+
+  document.getElementById('quoteSpeaker').textContent = d.daQuote.speaker+':';
+  document.getElementById('quoteText').innerHTML = d.daQuote.text+'<br><br><span style="font-weight:600;color:var(--text)">'+d.seQuote.speaker+':</span><br>'+d.seQuote.text;
+  document.getElementById('insight').textContent = d.insight;
+  document.getElementById('insight').style.borderColor = color;
+
+  const f = FISKE[currentCh], box = document.getElementById('fiskeBox');
+  const bw = box.offsetWidth||320, bh = box.offsetHeight||320, pad = 24;
+  box.querySelectorAll('.fiske-dot,.fiske-trail').forEach(el=>el.remove());
+
+  for(let i=1;i<currentCh;i++){
+    const pf=FISKE[i];
+    [{d:pf.da,c:'#ff9800'},{d:pf.se,c:'#42a5f5'}].forEach(({d,c})=>{
+      const t=document.createElement('div'); t.className='fiske-trail';
+      t.style.left=(pad+d.w/100*(bw-pad*2)-4)+'px'; t.style.bottom=(pad+d.c/100*(bh-pad*2)-4)+'px'; t.style.background=c;
+      box.appendChild(t);
+    });
+  }
+
+  const tgt=document.getElementById('fiskeTarget');
+  tgt.style.left=(pad+FISKE_TARGET.w/100*(bw-pad*2)-10)+'px'; tgt.style.bottom=(pad+FISKE_TARGET.c/100*(bh-pad*2)-10)+'px';
+
+  [{d:f.da,label:'DA',bg:'#ff9800'},{d:f.se,label:'SE',bg:'#42a5f5'}].forEach(({d,label,bg})=>{
+    const dot=document.createElement('div'); dot.className='fiske-dot';
+    dot.style.left=(pad+d.w/100*(bw-pad*2)-8)+'px'; dot.style.bottom=(pad+d.c/100*(bh-pad*2)-8)+'px';
+    dot.style.background=bg; dot.textContent=label; box.appendChild(dot);
+  });
+
+  document.getElementById('fiskeReversal').innerHTML = 'Reversal <b>'+f.reversals+'x</b> — '+f.revText;
+  document.querySelector('.panel').style.borderTop = '3px solid '+color;
+}
+
+(function buildJourney(){
+  const svg=document.getElementById('journeySvg');
+  const W=640,H=200,pad={l:50,r:30,t:20,b:30};
+  const cw=W-pad.l-pad.r, ch=H-pad.t-pad.b;
+  const chX=[0,1,2,3].map(i=>pad.l+(i/3)*cw);
+  const chColors=['#C8A2C8','#8B8C2A','#5B9A8B','#3B5998'];
+
+  const daGuilty=[DATA[1].da.guilty,DATA[2].da.guilty,DATA[3].da.guilty,DATA[4].da.guilty];
+  const daPlayful=[DATA[1].da.playful,DATA[2].da.playful,DATA[3].da.playful,DATA[4].da.playful];
+  const seCourageous=[DATA[1].se.courageous,DATA[2].se.courageous,DATA[3].se.courageous,DATA[4].se.courageous];
+  const seDetached=[DATA[1].se.detached,DATA[2].se.detached,DATA[3].se.detached,DATA[4].se.detached];
+
+  function y(v){return pad.t+ch-(v/100)*ch;}
+  let h='';
+  const names=['Ch1 Desire','Ch2 Dignity','Ch3 Certainty','Ch4 Order'];
+  chX.forEach((x,i)=>{
+    const w=i<3?chX[i+1]-x:pad.r+30;
+    h+=`<rect x="${x-10}" y="${pad.t}" width="${w}" height="${ch}" rx="6" fill="${chColors[i]}" opacity="0.06"/>`;
+    h+=`<text x="${x}" y="${H-8}" fill="${chColors[i]}" font-size="12" font-weight="600" font-family="Inter,sans-serif">${names[i]}</text>`;
+  });
+  [0,25,50,75,100].forEach(v=>{
+    h+=`<text x="${pad.l-8}" y="${y(v)+4}" fill="var(--dim)" font-size="11" font-family="Inter" text-anchor="end">${v}%</text>`;
+    h+=`<line x1="${pad.l}" y1="${y(v)}" x2="${W-pad.r}" y2="${y(v)}" stroke="rgba(255,255,255,0.04)"/>`;
+  });
+  function poly(data,color,dash){
+    const pts=data.map((v,i)=>`${chX[i]},${y(v)}`).join(' ');
+    return `<polyline points="${pts}" stroke="${color}" stroke-width="${dash?1.5:2.5}" fill="none" ${dash?'stroke-dasharray="6,4" opacity="0.5"':''}/>`;
+  }
+  function dots(data,color,r){return data.map((v,i)=>`<circle cx="${chX[i]}" cy="${y(v)}" r="${r}" fill="${color}" style="cursor:pointer" onclick="setCh(${i+1})"/>`).join('');}
+
+  h+=poly(daGuilty,'#ff9800',false)+dots(daGuilty,'#ff9800',5);
+  h+=poly(seCourageous,'#42a5f5',false)+dots(seCourageous,'#42a5f5',5);
+  h+=poly(daPlayful,'#ff9800',true)+dots(daPlayful,'#ff9800',3);
+  h+=poly(seDetached,'#42a5f5',true)+dots(seDetached,'#42a5f5',3);
+
+  daGuilty.forEach((v,i)=>{h+=`<text x="${chX[i]}" y="${y(v)-10}" text-anchor="middle" fill="#ff9800" class="val-label">${v}</text>`;});
+  seCourageous.forEach((v,i)=>{h+=`<text x="${chX[i]}" y="${y(v)+18}" text-anchor="middle" fill="#42a5f5" class="val-label">${v}</text>`;});
+
+  h+=`<text x="${chX[2]+12}" y="${y(75)-2}" font-size="10" fill="#ff9800" font-family="Inter">"I was a carrier" ↑</text>`;
+  h+=`<text x="${chX[3]+12}" y="${y(60)-2}" font-size="10" fill="#ff9800" font-family="Inter">play explodes ↑</text>`;
+  h+=`<text x="${chX[3]+12}" y="${y(20)+14}" font-size="10" fill="#42a5f5" font-family="Inter">Rieux arrives ↓</text>`;
+
+  svg.innerHTML=h;
+})();
+
+render();
+</script>
+</body>
+</html>

@@ -1,8 +1,3 @@
----
-moc: ⭐️
-modified:
-  - 2026-04-27
----
 
 # 부록 7 — 조지오웰을 뒤집다
 
@@ -95,3 +90,16 @@ modified:
 - **2부 메타 도입**: `part2/00_overview.md`에서 본 부록 7 인용
 
 이 한 에세이가 1부와 2부의 다리 — 부수기에서 짓기로 가는 경첩.
+
+## 켈러 합성 (2026-04-29 추가)
+
+이 부록은 **켈러 *The Freedom of True Love* (예레미야 2-3)**과 합성된다:
+
+| | 오웰 (1984) | 켈러 (예레미야) | 책 (자장) |
+|---|---|---|---|
+| 명제 | "Freedom is Slavery" | bondage to God = freedom | *함께 짓기 = 자기 외부화* |
+| 종류 | doublethink (거짓말) | paradox (역설) | secular paradox |
+| 자유 종류 | negative liberty 거부 | positive liberty (divine love) | positive liberty (community calibration) |
+| 처방 | calibrated prior = 일기 | bridegroom 됨 | 다·세 공동 집필 |
+
+→ 책은 *켈러 paradox의 비종교적 secular 버전*. 자세한 합성: `freedom_submission.md` 요약 참조.

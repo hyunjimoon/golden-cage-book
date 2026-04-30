@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Questions for Charlie</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;600;700&display=swap');
+  :root{--bg:#0a0e1a;--card:#1a2234;--text:#f0f2f5;--dim:#64748b;--orange:#ff9800;--blue:#42a5f5;--red:#e07a5f;--green:#5B9A8B;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+  .slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 24px;position:relative;}
+  .slide-num{position:absolute;top:20px;right:24px;font-family:'DM Mono';font-size:12px;color:var(--dim);}
+
+  h1{font-size:clamp(1.4em,4vw,2.2em);font-weight:700;text-align:center;max-width:720px;line-height:1.4;}
+  h2{font-size:clamp(1em,2.5vw,1.3em);font-weight:300;color:var(--dim);text-align:center;max-width:600px;margin-top:12px;}
+  .card{background:var(--card);border-radius:16px;padding:32px;max-width:680px;width:100%;margin-top:24px;}
+
+  /* Q1: calibration visual */
+  .q1-compare{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;margin-top:20px;}
+  .q1-box{padding:20px;border-radius:12px;text-align:center;}
+  .q1-box h3{font-size:0.9em;font-weight:600;margin-bottom:12px;}
+  .q1-box .num{font-family:'DM Mono';font-size:2em;font-weight:700;}
+  .q1-box .label{font-size:0.75em;color:var(--dim);margin-top:4px;}
+  .q1-vs{font-size:1.2em;color:var(--dim);text-align:center;}
+  .q1-arrow{text-align:center;margin-top:16px;font-size:0.85em;color:var(--dim);}
+  .q1-arrow b{color:var(--orange);}
+  .q1-surprise{background:rgba(255,152,0,0.1);border:1px solid rgba(255,152,0,0.3);border-radius:10px;padding:16px;margin-top:16px;font-size:0.85em;line-height:1.6;}
+  .q1-surprise b{color:var(--orange);}
+  .q1-test{margin-top:16px;padding:16px;border-left:3px solid var(--green);font-size:0.85em;color:var(--dim);line-height:1.6;}
+  .q1-test b{color:var(--text);}
+
+  /* Q2: cage recursion */
+  .q2-layers{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;margin-top:20px;}
+  .q2-ring{border:2px solid;border-radius:16px;padding:20px 24px;text-align:center;width:100%;transition:all 0.3s;}
+  .q2-ring:nth-child(1){border-color:var(--orange);z-index:3;}
+  .q2-ring:nth-child(2){border-color:var(--blue);margin-top:-8px;padding-top:28px;z-index:2;}
+  .q2-ring:nth-child(3){border-color:var(--green);margin-top:-8px;padding-top:28px;z-index:1;}
+  .q2-ring .domain{font-size:0.7em;color:var(--dim);text-transform:uppercase;letter-spacing:1px;}
+  .q2-ring .eq{font-family:'DM Mono';font-size:1.1em;margin:6px 0;}
+  .q2-ring .meaning{font-size:0.8em;color:var(--dim);}
+  .q2-verdict{margin-top:20px;text-align:center;font-size:0.9em;line-height:1.6;}
+  .q2-verdict b{color:var(--green);}
+
+  /* Q3: mirror visual */
+  .q3-flow{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+  .q3-step{display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start;}
+  .q3-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8em;font-weight:700;color:#000;}
+  .q3-content{font-size:0.85em;line-height:1.6;}
+  .q3-content b{color:var(--text);}
+  .q3-content .sub{color:var(--dim);font-size:0.9em;}
+  .q3-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:0.8em;}
+  .q3-table th{text-align:left;padding:8px;color:var(--dim);border-bottom:1px solid rgba(255,255,255,0.06);font-weight:400;}
+  .q3-table td{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);}
+  .q3-table .do{color:var(--green);}
+  .q3-table .dont{color:var(--red);}
+
+  .nav{position:fixed;bottom:20px;right:24px;display:flex;gap:8px;z-index:10;}
+  .nav a{width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:var(--dim);text-decoration:none;font-size:14px;}
+  .nav a:hover{border-color:var(--text);color:var(--text);}
+</style>
+</head>
+<body>
+
+<!-- ═══ TITLE ═══ -->
+<div class="slide" id="s0">
+  <div class="slide-num">0/3</div>
+  <h1>Three Questions for Charlie</h1>
+  <h2>Bayesian Emotion Engineering — when calibration meets fiction</h2>
+  <div style="margin-top:32px;font-size:0.8em;color:var(--dim);">scroll or use arrows</div>
+</div>
+
+<!-- ═══ Q1: CALIBRATION OR COSTUME? ═══ -->
+<div class="slide" id="s1">
+  <div class="slide-num">Q1</div>
+  <h1>I measured character emotions with an LLM and iterated until intent matched perception.<br>Is this calibration, or curve-fitting in a literary costume?</h1>
+
+  <div class="card">
+    <div class="q1-compare">
+      <div class="q1-box" style="background:rgba(255,152,0,0.08);">
+        <h3 style="color:var(--orange);">Prior (Author Intent)</h3>
+        <div class="num" style="color:var(--orange);">47%</div>
+        <div class="label">Ch3 DA playful<br>linear interpolation</div>
+      </div>
+      <div class="q1-vs">vs</div>
+      <div class="q1-box" style="background:rgba(224,122,95,0.08);">
+        <h3 style="color:var(--red);">Posterior (LLM Read)</h3>
+        <div class="num" style="color:var(--red);">5%</div>
+        <div class="label">Ch3 DA playful<br>actual measurement</div>
+      </div>
+    </div>
+    <div class="q1-arrow">Gap = <b>42%p</b> — a child dies in this chapter. Playfulness at 47% is structurally impossible.</div>
+
+    <div class="q1-surprise">
+      <b>The surprise test:</b> Curve-fitting doesn't invalidate the model. This measurement killed linear interpolation entirely and forced a narrative-curve Prior. I was surprised. That's calibration.
+    </div>
+
+    <div class="q1-test">
+      <b>Charlie's likely probe:</b> "Can someone else run /sbc on an unwritten chapter and get a result you didn't expect? If yes → instrument. If it only confirms what you believe → mirror."
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Q2: CAGE RECURSION ═══ -->
+<div class="slide" id="s2">
+  <div class="slide-num">Q2</div>
+  <h1>The more convincingly I write self-deception, the more the reader falls into the same trap.<br>How do I use this instead of getting stuck in it?</h1>
+
+  <div class="card">
+    <div class="q2-layers">
+      <div class="q2-ring">
+        <div class="domain">Thesis — Funding</div>
+        <div class="eq">dG/dF = (dG/dR) × (dR/dF) = (+)(−) = <b style="color:var(--orange);">(−)</b></div>
+        <div class="meaning">Success (F↑) kills repositioning (R↓). Growth dies.</div>
+      </div>
+      <div class="q2-ring">
+        <div class="domain">Book — Prose</div>
+        <div class="eq">dReader/dQuality = <b style="color:var(--blue);">(−)</b></div>
+        <div class="meaning">Good writing of self-deception hides the cage from the reader.</div>
+      </div>
+      <div class="q2-ring">
+        <div class="domain">Process — Author</div>
+        <div class="eq">dAwareness/dCraft = <b style="color:var(--green);">(−)</b></div>
+        <div class="meaning">The better I build the argument, the harder to see I'm inside it.</div>
+      </div>
+    </div>
+
+    <div class="q2-verdict">
+      Same equation, three materials.<br>
+      <b>That's not confusion — that's generalizability.</b><br>
+      <span style="color:var(--dim);font-size:0.85em;">The proof that the pattern is real, not a one-off.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Q3: EDITOR COMMUNICATION ═══ -->
+<div class="slide" id="s3">
+  <div class="slide-num">Q3</div>
+  <h1>The editor already knows where it's weak.<br>My tool puts numbers on her gut feeling.<br>How do I show her this without her hearing "a machine does your job"?</h1>
+
+  <div class="card">
+    <div class="q3-flow">
+      <div class="q3-step">
+        <div class="q3-dot" style="background:var(--orange);">1</div>
+        <div class="q3-content">
+          <b>Show the gap, not the tool.</b><br>
+          <span class="sub">Open Chapter 3. Point to the number: "SE feels flat here — detached 70%, target 30%."</span>
+        </div>
+      </div>
+      <div class="q3-step">
+        <div class="q3-dot" style="background:var(--blue);">2</div>
+        <div class="q3-content">
+          <b>Ask: "Do you agree?"</b><br>
+          <span class="sub">She'll say yes — she already felt it. Now you both see the same thing.</span>
+        </div>
+      </div>
+      <div class="q3-step">
+        <div class="q3-dot" style="background:var(--green);">3</div>
+        <div class="q3-content">
+          <b>Let her disagree with the numbers.</b><br>
+          <span class="sub">"The number says 70 but I feel 50" — that's the conversation you want. That's calibration too.</span>
+        </div>
+      </div>
+    </div>
+
+    <table class="q3-table">
+      <tr><th>Tool does</th><th>Tool cannot</th></tr>
+      <tr>
+        <td class="do">Measure 6 axes (Posterior)</td>
+        <td class="dont">Judge which axis to raise</td>
+      </tr>
+      <tr>
+        <td class="do">Find gaps (Prior − Posterior)</td>
+        <td class="dont">Write the dialogue that closes the gap</td>
+      </tr>
+      <tr>
+        <td class="do">Detect nonlinearity (playful Ch3 ≠ 47%)</td>
+        <td class="dont">Explain why play is impossible when a child dies</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#s0">0</a>
+  <a href="#s1">1</a>
+  <a href="#s2">2</a>
+  <a href="#s3">3</a>
+</nav>
+
+<script>
+document.querySelectorAll('.slide').forEach(s => {
+  s.style.scrollSnapAlign = 'start';
+});
+document.body.style.scrollSnapType = 'y mandatory';
+document.body.style.overflowY = 'scroll';
+document.body.style.height = '100vh';
+</script>
+</body>
+</html>

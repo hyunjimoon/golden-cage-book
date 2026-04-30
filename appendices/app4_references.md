@@ -1,252 +1,165 @@
----
-moc: 🟥
-modified:
-  - 2026-04-09
-  - 2026-04-29
----
+[2024바람의화원_2008](공간화음/⭐️예술_SOWHAT/Series/2024바람의화원_2008.md)
+## 핵심 자료
 
-# 부록 4. 이 책의 생각 빚 장부
+### 픽션
 
-> 이 책도 빌렸다. 아래는 빌린 것의 목록이다. 저자는 목적에 맞다고 판단해 받아들였지만, 독자는 의심해야 한다 — 이 빌린 생각이 당신의 상황에서도 맞는지.
+귀스타브 플로베르, 『마담 보바리』, 김화영 옮김, 민음사, 2000. — 빌린 욕망의 촉각 ([세계문학전집 36](036 마담 보바리.md))
+주세페 토마시 디 람페두사, 『표범』, 이현경 옮김, 민음사, 2024.  — 보면서 멈추는 사람의 초상 ([세계문학전집 456](456 표범.md))
+알베르 카뮈, 『페스트』, 김화영 옮김, 민음사, 2011. — 재앙 앞에서 기록하는 손 ([세계문학전집 267](267 페스트.md))
+미셸 투르니에, 『방드르디, 태평양의 끝』, 김화영 옮김, 민음사, 2003. — 자기 섬을 부수는 순간 ([세계문학전집 91](091 방드르디, 태평양의 끝.md))
 
-> **표기 규약.** 인용은 빚이다. 빚은 4필드(저자·판본·인용문·본문위치)로 적는다. 인용 형태는 **직접 인용**(큰따옴표 + 원문 그대로)·**의역**(취지를 자장이 옮긴 것)·**[자장 註]**(베버·플로베르 등에 자장의 해석을 잇는 경우)를 분리 표기한다. 판본을 확정하지 못한 항목은 **[판본 확인 필요]**로 남긴다 — 사기보다 미해결이 낫다.
+### 논픽션
 
-<!-- 
-tolzul vault 참조 경로 (참고문헌 관리자용):
-- 논문: /Users/hyunjimoon/tolzul/공간화음/Thesis/1논문용/📜*.md
-- 서적: /Users/hyunjimoon/tolzul/시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/*.md
-- 사례: /Users/hyunjimoon/tolzul/공간화음/Thesis/1논문용/business_cases/**/*.md
-검색: grep -r "[키워드]" /Users/hyunjimoon/tolzul/ --include="*.md"
--->
+[르네 지라르](르네 지라르.md), 『낭만적 거짓과 소설적 진실』, 김치수·송의경 옮김, 한길사, 2001. — 모방욕망. ch1 엠마 + ch4 교환가치의 공통 엔진
+막스 베버, 직업(소명Beruf)으로서의 정치, 직업으로서의 학문. — 신념윤리 vs 책임윤리 = ch3 파늘루 vs 리외의 선택
+Peter Thiel·Blake Masters, *Zero to One*, Crown Business, 2014. → [📚zero to one](📚zero to one.md) — 모방 경쟁을 벗어나 독점을 만들라. 직원 1인 1책임 원칙으로 조직 내 삼각형을 차단한 실천편
+Mike Maples Jr·Peter Ziebelman, *Pattern Breakers*, PublicAffairs, 2024. → 창업가는 자신의 믿는 미래에 베팅하며 기술 변곡점에 집중.
+조지 오웰, 「나는 왜 쓰는가」(*Why I Write*), 1946. → 나는 왜 쓰는가 — "옳은 방향으로 세상을 밀겠다는 정치욕망." 출발점
+유발 노아 하라리, 『넥서스』(*Nexus*), 김명주 옮김, 김영사, 2024. — 정보 네트워크가 권력이 되는 구조. 서사가 검증을 대체할 때 벌어지는 일
+문현지, "Golden Cage: Paradox of Early Funding and Growth", MIT SM Thesis, 2026. — 이 책의 학술 원본
 
----
+### 사례 출처
 
-## 본문 구절 → 근거
-
-| 장 | 본문 구절 | 근거 |
-|:--|:--|:--|
-| 1장 | "욕망은 직선이 아니라 삼각형이다" | Girard (1961) |
-| 1장 | "합의 바깥에 서되, 맞아야 한다" | Maples (2024) |
-| 2장 | "행동은 확정하고 정체성은 열어둔다" | Ferraro et al. (2015) |
-| 2장 | "안개 속에서도 움직여라" | Clausewitz (1832) |
-| 2장 | "되돌릴 수 있는 것을 먼저 하라" | Sarasvathy (2001) |
-| 3장 | "확신의 속도가 검증의 속도를 넘으면 빚" | Kahneman (2011) |
-| 3장 | "신념윤리 vs 책임윤리" | Weber (1919) |
-| 3장 | "60%에서 시작해서 결과를 보고 수정" | Gelman et al. (2013) |
-| 4장 | "성공한 선택이 변이를 굶긴다" | Levinthal (1997) |
-| 4장 | dG/dF = (+)(−) = (−) | Moon (2026) |
-| 전체 | 문체 교정 — 추상에 구체를 붙여라 | Pinker, HowIWrite EP038 |
-| 전체 | 아이디어+이야기 두 엔진 | Gawande, HowIWrite EP015 |
+Jeffrey Katzenberg / Quibi. — ch1. $1.75B 유치, 2020.4 런칭, 6개월 폐업. 할리우드가 심어준 욕망
+Doug Evans / Juicero. — ch1. $120M 유치. $400 기계가 손의 힘을 이기지 못했다
+Steve Sasson / Kodak. — ch2. 1975년 디지털 카메라 발명, 필름 마진율 약 70%, 2012년 파산
+Shigetaka Komori / 후지필름. — ch2. 2003년 취임. 필름 기술을 화장품·의료로 전환
+Elizabeth Holmes / Theranos. — ch3. $9B 기업가치, 240→15가지. John Carreyrou, *Bad Blood* (Knopf, 2018) → [🐙practice(moderna, theranos)](🐙practice(moderna, theranos).md)
+Stephane Bancel / Moderna. — ch3. 2010년 설립, 10년간 승인 제품 0, 65일 만에 임상 진입 → [🐙practice(moderna, theranos)](🐙practice(moderna, theranos).md)
+Reed Hastings / Netflix. — ch4. 1997 DVD → 2007 스트리밍 → 2011 분리 실패(구독자 80만 이탈) → 2013 House of Cards
+생고뱅(Saint-Gobain). — ch4. 1665년 루이14세 설립, 360년간 유리→세라믹→탄소중립 건축→EV 배터리 소재
+신해철, 「그대에게」. — ch4. "우린 그 무엇을 찾아 이 세상에 왔을까?"
+카를로 로벨리, 『시간의 질서』(*The Order of Time*), 이중원 옮김, 쌤앤파커스, 2019. → [📖시간의_질서](📖시간의_질서.md) — 시간은 인간의 거시적 인식이 만든 환상. 엔트로피가 존재하는 이유는 우리가 세상을 "희미하게" 보기 때문. 시계가 멈추면 시간이 사라지듯, 미시적으로 보면 과거와 미래의 구분이 없다. ch4 "빌린 질서"의 물리학적 근거
 
 ---
 
-## 소설
+## 훑을 자료
 
-### 귀스타브 플로베르, 『마담 보바리』
-민음사 세계문학전집 36. 김화영 옮김, 2000.
-1장에서 인용.
-"사실 가끔은 계산을 해 보려고 노력하기도 했다. 그러나 결과가 너무나 엄청나서 도무지 믿어지지 않았다."
-장부를 펼쳤는데 덮은 여자. 이 한 장면이 1장 전체의 씨앗이다.
-<!-- tolzul: 시공간멜로디/.../세계문학전집/036 마담 보바리.md -->
+### Strategic Ambiguity & Robust Action 
+John F. Padgett & Christopher K. Ansell, "Robust Action and the Rise of the Medici, 1400–1434", *American Journal of Sociology*, 1993. — 모호한 약속이 어떻게 권력이 되는가. 메디치가의 전략 = 모호성으로 다수 해석 허용
 
-### 주세페 토마시 디 람페두사, 『표범』
-민음사 세계문학전집 456. 이현경 옮김, 2024.
-2장에서 인용.
-"모든 것이 그대로이려면, 모든 것이 변해야 합니다."
-탄크레디의 한마디. 이 문장이 2장의 뼈대이고, 후지필름의 코모리가 한 일의 소설적 번역이다.
-<!-- tolzul: 시공간멜로디/.../세계문학전집/456 표범.md -->
+```
+Traditional Strategy:        Medici Strategy (Low τ):
+                            
+   You                          You
+    |                         /  |  \
+Faction A                 Oligs  ?  Pop
+    |                      /     |    \
+ Victory                Guild  Market  Politics
+ OR Defeat               \      |     /
+                          SUCCESS ZONE
+```
 
-### 알베르 카뮈, 『페스트』
-민음사 세계문학전집 267. 김화영 옮김, 2011.
-3장에서 인용.
-"인간 속에는 경멸할 것보다 찬탄할 것이 더 많다."
-리외의 마지막 문장. 60%인 채로 주사기를 드는 것이 왜 영웅적이 아니라 직업적인지를 말한다.
-<!-- tolzul: 시공간멜로디/.../세계문학전집/267 페스트.md -->
+**Key Difference**: 
+- Traditional: clear commitment → Single path
+- Medici: robust action → Multiple valid paths preserved
 
-### 미셸 투르니에, 『방드르디, 태평양의 끝』
-민음사 세계문학전집 91. 김화영 옮김, 2003.
-4장에서 인용.
-시계가 멈추자 파도가 들린다. 빌린 질서가 폭파된 뒤 남는 것 — 자유가 아니라 놀이.
-<!-- tolzul: 시공간멜로디/.../세계문학전집/091 방드르디, 태평양의 끝.md -->
+## 🗺️ Classic Examples from Paper
+
+### 1. **Marriage Alliances**
+- **Action**: Medici marriages to both oligarchic families AND merchant families
+- **Interpretation A** (Oligarchs): "They're one of us"
+- **Interpretation B** (Merchants): "They represent new money"
+- **Result**: Support from both without full commitment to either
+
+### 2. **Guild Participation**
+- **Action**: Active in multiple guilds
+- **Interpretation A**: Economic interest
+- **Interpretation B**: Political organizing
+- **Result**: Economic AND political capital simultaneously
+
+### 3. **Patronage Networks**
+- **Action**: Support artists, scholars, religious institutions
+- **Interpretation A**: Cultural leadership (oligarchic)
+- **Interpretation B**: Popular legitimacy (populist)
+- **Result**: Multi-dimensional power base
+---
+
+Fabrizio Ferraro, Dror Etzion & Joel Gehman, "Tackling Grand Challenges Pragmatically: Robust Action Revisited", *Academy of Management Journal*, 2015. — Padgett의 정치 전략 → 인식론적 필연으로 확장. 불확실성이 클수록 모호성이 필수
+
+[📜Ferraro2015_GrandChallenges_RobustAction](공간화음/Thesis/1논문용/📜Ferraro2015_GrandChallenges_RobustAction.md)
+
+Can robust action solve grand challenges? Grand challenges REQUIRE low τ (ambiguity) because premature precision forecloses valuable exploration paths
+
+Wicked Problems (Grand Challenges):
+- State space not fully known (unknown unknowns)
+- Cause-effect relationships unclear
+- Multiple valid problem framings
+
+Padgett: Ambiguity as POLITICAL strategy
+Ferraro: Ambiguity as EPISTEMOLOGICAL necessity
 
 ---
 
-## 이론
+Eric M. Eisenberg, "Ambiguity as Strategy in Organizational Communication", *Communication Monographs*, 1984. — 조직 내 전략적 모호성의 원형 논문
 
-### 르네 지라르, 『낭만적 거짓과 소설적 진실』
-김치수·송의경 옮김, 한길사, 2001.
-1장, 4장에서 인용.
-"낭만주의자는 자기 욕망이 자발적이라고 믿는다. 그것이 낭만적 거짓이다."
-엠마가 왜 파리를 원했는지, 이 한 문장이 답한다.
+[📜Eisenberg1984_Ambiguity_Communication](공간화음/Thesis/1논문용/📜Eisenberg1984_Ambiguity_Communication.md)
 
-### 막스 베버, 「직업으로서의 정치」 (Politik als Beruf)
-원본: 1919년 뮌헨 강연. 한역 후보: 전성우 옮김, 『직업으로서의 정치』(나남, 베버 선집, 2007) / 박상훈 옮김, 『소명으로서의 정치』(폴리테이아, 2011). [본문 인용 판본 확인 필요]
-3장에서 인용.
-의역: "신념윤리가는 자기 행동의 결과에 대해 책임을 지지 않는다."
-원문 취지(*Gesinnungsethik* vs *Verantwortungsethik*): 신념윤리가는 동기의 순수성(*Reinheit der Gesinnung*)에 책임지고, 책임윤리가는 행위의 예측 가능한 결과에 책임진다. 위 인용문은 자장이 이 대비를 한 문장으로 압축한 것 — verbatim이 아니다.
-파늘루가 리외와 갈리는 정확한 지점. 신념(내용)은 바뀌어도 확신(태도)은 안 바뀌는 구조.
+> "Strategic ambiguity is essential to organizing in that it: (1) promotes unified diversity, (2) facilitates organizational change, and (3) amplifies existing source attributions and preserves privileged positions." (p. 227)
 
-### 막스 베버, 「직업으로서의 학문」 (Wissenschaft als Beruf)
-원본: 1919년 뮌헨 강연. 한역 후보: 전성우 옮김, 『직업으로서의 학문』(나남, 2006) / 이상률 옮김, 『직업으로서의 학문』(문예출판사, 2017). [본문 인용 판본 확인 필요]
-3장에서 참조.
-직접 인용(독): "das akademische Leben ist ein wilder Hazard" — 학문적 삶은 거친 도박이다.
-사강사·조교가 정교수가 될지는 "단순히 우연(Hazard)의 문제"이며 "지상에서 우연이 이렇게 큰 역할을 하는 직업은 거의 없다." 베버 본인도 "몇 가지 우연 덕분에 매우 이른 나이에 정교수가 되었다"고 고백.
-[자장 註]: 그러나 소명이 있는 자에게 도박은 계산이 된다. — 베버 원문에는 없는 자장의 해석. 검증 안 된 인용을 베버 발화로 두면 빚이 된다.
+> "Clarity is only a measure of communicative competence if the individual has as his or her goal to be clear." (p. 229)
 
-### 대니얼 카너먼, 『생각에 관한 생각』
-이진원 옮김, 김영사, 2012.
-1장, 3장에서 인용.
-"자신감은 정확성의 증거가 아니다."
-파늘루의 100%가 왜 위험한지, 인지과학이 증명한다.
+> "Ambiguity is not absence of meaning, but abundance of meaning." (implied throughout)
 
-### Andrew Gelman et al., *Bayesian Data Analysis*, 3rd ed.
-CRC Press, 2013.
-3장에서 인용.
-"모든 모델은 틀렸다. 유용한 모델은 자기가 어디서 틀렸는지 안다."
-리외의 방식 — 60%에서 시작해서 결과를 보고 수정하는 것의 수학적 근거.
-<!-- tolzul: 공간화음/Thesis/1논문용/ -->
 
-### Carl von Clausewitz, *Vom Kriege*
-원본: 1832 (사후 출간). 한역 후보: 김만수 옮김, 『전쟁론』 1·2·3(갈무리, 2016) / 영역: Howard·Paret, *On War*(Princeton UP, 1976). [본문 인용 판본 확인 필요]
-2장에서 인용.
-기세(Schwung) — 완벽한 지도를 기다리며 멈춘 군대는 죽는다. 살리나가 73년간 한 일의 군사학적 이름.
+**Becker (1968)** - "Maximum individuality within maximum community"
 
-### 노자, 『도덕경』
-원본: 기원전 6~4세기 추정. 본문 인용 판본: [한역본 확인 필요 — 충코 강의 외 어느 텍스트를 본문에 쓰는지]. 보조 자료: [충코의 도덕경 강의](https://www.youtube.com/watch?v=wjKQjDXVTlI).
-2장, 4장에서 참조.
-"물은 만물을 이롭게 하면서도 다투지 않는다." (8장, 上善若水)
-2장의 기세(움직여야 산다)와 도덕경의 무위(흐르면 된다)는 같은 곳을 가리키되 경로가 다르다. 4장 방드르디의 놀이 = 무위의 육체적 번역.
 
-### 주역
-원본: 기원전 8~3세기 추정 (성립 단계 분리). 본문 인용 판본: [한역본 확인 필요]. 보조 자료: [EBS 평생학교 — 강기진의 3천 년의 지혜, 주역 8강 시리즈](https://www.youtube.com/playlist?list=PLov1pvgWoT0I1K7EgT1r7MdFmZBtQnYLl).
-1장, 전체에서 참조.
-의역: "과거를 바꿔야 팔자가 바뀐다." (강기진 4강의 압축 — 강의 자료 출처)
-빚을 갚는 것 = 과거의 빌린 가정을 인정하고 해석을 바꾸는 것. "장부를 펴라"의 동양적 표현.
-
-### 배달형·전덕종·김진영, 『어떻게 경쟁하고 승리할 것인가: 원리와 방법』
-2장에서 인용.
-"동정의 원리는 움직이면 강해지고 정지하면 약해진다."
-클라우제비츠의 기세를 동양 병법이 한 문장으로 압축한다. 살리나는 정지했고 탄크레디는 움직였다.
-[War Lab에서 보기](https://www.warlabkorea.com/shop_view/?idx=263)
-
-### Fabrizio Ferraro et al., "Robust Action Revisited"
-*Academy of Management Journal*, 2015.
-2장에서 인용.
-"행동은 확정하고 정체성은 열어둔다" — 불확실성이 클수록 모호성은 전략이 아니라 인식론적 필연.
-<!-- tolzul: 공간화음/Thesis/1논문용/📜Ferraro2015_GrandChallenges_RobustAction.md -->
-
-**종합: 최적 모호성의 세 얼굴.** OIL(Moon 2026)은 "언제 구체화할 것인가"의 타이밍을 수식으로, Padgett(1993)은 "모호함이 어떻게 권력이 되는가"를 역사로, Ferraro(2015)는 "왜 모호함이 필연인가"를 인식론으로 답한다. 셋이 말하는 것은 같다 — 빌린 확신(premature precision)이 적응을 죽인다. 살리나는 너무 정밀해서 못 뛰었고, 엠마는 너무 모호해서 방향이 없었다. 최적은 그 사이 — 탄크레디가 "행동은 확정하고 정체성은 열어둔" 것.
-
-### Saras Sarasvathy, "Causation and Effectuation: Toward a Theoretical Shift from Economic Inevitability to Entrepreneurial Contingency"
-*Academy of Management Review*, 26(2), 2001, pp. 243–263.
-2장에서 인용.
-의역: "잃어도 괜찮은 수준에서 시작하라." (effectuation 5원칙 중 *Affordable Loss*의 한 줄 번역)
-코모리가 화장품부터 시험한 이유. 되돌릴 수 있는 것부터.
-
-### 로저 마틴, 『통합적 사고: 제3의 선택으로 세상을 바꾼 이노베이터들의 생각법』
-4장에서 참조.
-"완전히 다른 두 가지 아이디어를 동시에 생각하는 능력. 양자택일 대신 새로운 차원의 아이디어를 합성한다."
-두산이 130년간 살아남은 이유 — 불일치를 인공선택으로 제거하지 않고, 매번 새 차원으로 합성했다. D vs S 프롬프트의 이론적 근거.
-<!-- tolzul: 공간화음/Thesis/choose(organization)/3_G_思🟠/📚journal/📜martin_opposable_mind.md -->
-
-### Daniel Levinthal, "Adaptation on Rugged Landscapes"
-*Management Science*, 43(7), 1997, pp. 934–950. DOI: 10.1287/mnsc.43.7.934.
-4장에서 인용.
-성공한 선택이 탐색을 멈추게 한다 — exploitation trap. 로빈슨의 시계가 파도를 죽이는 메커니즘.
-
-### Peter Thiel·Blake Masters, *Zero to One: Notes on Startups, or How to Build the Future*
-원본: Crown Business, 2014. 한역: 이지연 옮김, 『제로 투 원』, 한국경제신문, 2014.
-1장에서 인용.
-지라르에게 직접 배운 사람이 쓴 실천편. 삼각형 바깥에 서면 독점이 된다.
-
-### Mike Maples Jr·Peter Ziebelman, *Pattern Breakers: Why Some Start-Ups Change the Future*
-PublicAffairs, 2024. [한국어판 미확인 — 영문 원서 인용]
-1장에서 인용.
-의역: "합의 바깥에 서되, 맞아야 한다." (원문 *non-consensus and right* — 자장의 한 문장 번역)
-
-### Charles Fine, *Clockspeed: Winning Industry Control in the Age of Temporary Advantage*
-Perseus Books, 1998. [한국어판 미확인 — 영문 원서 인용]
-2장, 4장에서 인용.
-산업마다 진화 속도가 다르다. 느린 산업에서 빠른 의사결정 = 새장.
-
-### 요한 하위징아, 『호모 루덴스』
-이종인 옮김, 연암서가, 2010.
-4장에서 인용.
-놀이는 문명의 기원이다. 방드르디가 담뱃대를 피우는 것이 왜 파괴가 아니라 창조인지.
-
-### 문현지, "Golden Cage: Paradox of Early Funding and Growth"
-MIT SM Thesis, 2026.
-전체.
-dG/dF = (+)(−) = (−). 168,011개 벤처 실증. 이 책의 학술 원본.
-[Thesis PDF](https://www.dropbox.com/scl/fi/l58bvnnfoyeoa6lyx8eyj/Moon26_Golden-Cage_Thesis.pdf?rlkey=c4dra1r195yrdbmuo5iq1voxi&e=1&dl=0)
+Juliane A. Sillince et al., "Rhetoric and the Organizational Change Associated with Ambiguity", *Academy of Management Review*, 2012. — 수사와 모호성이 조직 변화를 매개하는 메커니즘
 
 ---
 
-## 사례
+Chahrazad Abdallah et al., "The Double Edge of Ambiguity in Strategic Planning", *Journal of Management Studies*, 2014. — 모호성의 양면: 창의적 해석 vs 방향 상실
 
-### Quibi / Jeffrey Katzenberg
-1장. $1.75B 유치, 2020년 4월 런칭, 6개월 폐업. 할리우드가 심어준 욕망을 검증 없이 $1.75B으로 키웠다.
+### 기타
+Charles Fine, *Clockspeed*, Perseus Books, 1998. → matching clockspeed between i) need and solution, ii) organization, process, product to optimize innovation — 산업 진화 속도.
+[요한_하위징아](요한_하위징아.md), 『호모 루덴스』, 이종인 옮김, 연암서가, 2010. — 놀이와 문명. 방드르디가 육체로 보여줌
+로런 벌랜트, *Cruel Optimism*, Duke University Press, 2011. — 좋은 삶의 약속이 독, 희망고문. 본문의 "낭만의 독" 논의와 연결 가능, The Promise of Exchange Value (p. 36), On the Desire for the Political (p.223)
+Cal Newport, 『슬로우 워크』(*Slow Productivity*), 이은경 옮김, 웅진지식하우스, 2024. — 자신만의 평가기준을 찾아 최고 품질이 되게 노력하자
+[김수영](김수영.md), 「멋」, 1960년대 초반. — 멋은 정신의 집중. 세속적 멋으로부터의 자유
+CB Insights, "Top 20 Reasons Startups Fail", 2019. — 스타트업 실패 부검 데이터
+중소벤처기업부, 「모두의창업」 정책문서, 2026. 1. 30.
+민음사TV, 〈세계문학전집 독서클럽〉, 유튜브, 2024–2025.
 
-### Kodak / Steve Sasson
-2장. 1975년 디지털카메라 발명, 필름 마진 약 70%, 2012년 파산. 37년간 봤는데 안 움직였다 — 살리나의 기업 버전.
-
-### 후지필름 / Shigetaka Komori
-2장. 2003년 "우리는 화학 회사다." 되돌릴 수 있는 것(화장품)부터 시험하고, 핵심 자산(필름)은 가장 늦게.
-
-### Theranos / Elizabeth Holmes
-3장. $9B 기업가치, 240가지를 약속하고 15가지만 수행. Carreyrou, *Bad Blood* (2018). 확신이 증거를 차단한 극단.
-
-### Moderna / Stéphane Bancel
-3장. 10년간 승인 제품 0, 66일 만에 임상 진입. 파늘루의 반대 — 결과를 보고 수정하는 조직.
-
-### 두산
-4장. 130년간 다섯 번 재정의. 포목점→소비재→중공업→에너지→반도체. 성공이 변이를 죽이기 전에 스스로 부순 사례.
-
-### 생고뱅(Saint-Gobain)
-4장. 1665년 루이14세 설립, 360년간 유리→세라믹→건축→EV 소재.
-
----
-
-## 지식 생산 공정 (영상)
-
-이 책의 참고문헌은 책(지식상품)만이 아니다. 지식을 만들고 유통하는 공정 자체에서도 배운다.
-
-[민음사TV](https://www.youtube.com/@minumsaTV) — 세계문학전집 독서클럽. 편집자가 소설을 읽는 법.
-[일당백](https://www.youtube.com/@ildangbaek) — 인문·사회과학 강의. 깊이와 접근성의 균형.
-[War Lab 워랩](https://www.youtube.com/@War_Lab) — 전쟁·전략 전문. 클라우제비츠와 손자를 현대 전략으로 번역.
-[충코](https://www.youtube.com/watch?v=wjKQjDXVTlI) — 서양철학 전공자가 읽는 노자 도덕경. "물처럼 흐르라"가 2장의 기세(Schwung)와 만나는 지점.
-[EBS 평생학교 — 강기진의 3천 년의 지혜, 주역](https://www.youtube.com/playlist?list=PLov1pvgWoT0I1K7EgT1r7MdFmZBtQnYLl) — 불확실성을 "운"으로 읽는 동양적 프레임. 4강 "과거를 바꿔야 팔자가 바뀐다" = 1장 "장부를 펴라".
-[How I Write — David Perell](https://www.youtube.com/playlist?list=PLFxhXLgGkVzKCn23_g8qM19DMDgco8eNJ) — 108명의 작가·사상가가 말하는 글쓰기. 이 책의 문체를 다듬는 데 쓴 참고 공정. 특히:
-
-- **EP038 Steven Pinker** — "지식의 저주를 극복하라. 추상에는 구체를 붙여라." → 3장 이론 섹션 순서 교정에 적용
-- **EP015 Atul Gawande** — "모든 글에는 아이디어와 이야기 두 엔진이 필요하다." → 2장 이야기 엔진 보강에 적용
-- **EP007 Daniel Pink** — "구조가 먼저, 문장은 나중." → 4섹션 구조 설계의 근거
-- **EP050 Dana Gioia** — "세 독자를 동시에 상상하라." → 편집자/예비창업자/학부모를 동시에 잡는 원칙
-- **EP032 Alain de Botton** — "실제로 느끼는 것을 존중하라." → 다의 3장 고백을 감각의 조각으로 교체
-
----
-
-## 이 책을 덮은 뒤
-
-### 소설로 들어온 독자
-
-엠마의 빌린 욕망에 마음이 갔다면:
-F. 스콧 피츠제럴드, 『위대한 개츠비』 (세계문학전집 75)
-"옛 친구여, 모든 녹색 불빛은 빌린 것이었다."
-
-잘 보면서 안 움직이는 극단을 보고 싶다면:
-가즈오 이시구로, 『남아 있는 나날』 (세계문학전집 388)
-살리나보다 더 늦게 장부를 편 남자.
+## 세문전 todo list
 
 가벼움과 무거움 사이에서 흔들리고 싶다면:
-밀란 쿤데라, 『참을 수 없는 존재의 가벼움』 (세계문학전집 234)
-"한 번은 없는 것과 같다."
+밀란 쿤데라, 『참을 수 없는 존재의 가벼움』 — 토마시는 모든 것을 가볍게 들었다. 테레자만 무거움을 택했다. 어느 쪽이 용기인가 ([세계문학전집 234](234 참을 수 없는 존재의 가벼움.md))
 
-패배를 알면서도 가는 사람을 보고 싶다면:
-어니스트 헤밍웨이, 『노인과 바다』 (세계문학전집 278)
-"인간은 파괴당할 수는 있어도 패배할 수는 없다."
+---
 
-### 분석으로 들어온 독자
+## 이 책을 덮은 독자를 다음 책으로 꼬시는 법
 
-대니얼 카너먼, 『생각에 관한 생각』 — 직관이 확신으로 굳는 메커니즘
+🎣 독자가 이 책을 덮고 "더 읽고 싶다"고 느낄 때 건넬 미끼
+
+### 소설로 들어온 독자 — "저 소설도 이런 이야기였어요?"
+
+이 책에서 엠마의 빌린 욕망에 마음이 갔다면:
+F. 스콧 피츠제럴드, 『위대한 개츠비』 — 미국판 엠마. 빌린 꿈의 끝이 같다 ([세계문학전집 75](075 위대한 개츠비.md))
+
+"새장"이라는 단어가 걸렸다면:
+헨릭 입센, 『인형의 집』 — 새장을 열고 나간 사람 ([세계문학전집 248](248 인형의 집.md))
+프란츠 카프카, 『변신』 — 자연스럽게 상속된, 빌린 가족관계가 새장이었다 ([세계문학전집 4](004 변신·시골의사.md))
+
+삶의 진실을 모르는 것이 낭만의 활력이라면 (혹은 신을 의심하고 싶다면):
+코맥 매카시, 『모두 다 예쁜 말들』 — "신께서 젊은이들에게 인생을 시작할 때 삶의 진실을 모르게 하신 것은 정말 옳은 판단이었다. 그렇지 않았다면 젊은이들은 아예 인생을 시작할 엄두도 못 냈을 것이다" ([세계문학전집 379](379 모두 다 예쁜 말들.md))
+
+확신이 독이 되는 과정을 웃으면서 보고 싶다면:
+밀란 쿤데라, 『농담』 — 엽서 한 장의 농담이 인생을 파괴한다. 시스템이 확신을 강요할 때 ([세계문학전집 29](029 농담.md))
+
+늙은 사람이 마지막으로 순서를 타는 장면을 보고 싶다면:
+어니스트 헤밍웨이, 『노인과 바다』 — 산티아고는 결과를 안다. 그래도 간다. "사람은 파괴당할 수는 있어도 패배할 수는 없다" ([세계문학전집 278](278 노인과 바다.md))
+
+### 분석으로 들어온 독자 — "이거 원리가 뭐에요?"
+
+"왜 좋은 (것 모방하는)게 독이 되지?"라는 질문이 남았다면:
+[대니얼 카너먼](daniel_kahneman.md), 『생각에 관한 생각』 — 직관이 확신으로 굳는 메커니즘
 한나 아렌트, 『예루살렘의 아이히만』 — 시스템이 사람을 갇히게 만드는 평범한 악
+발터 벤야민, 『기술복제시대의 예술작품』 — 복제가 원본의 아우라를 죽이듯, 맹목적 기술 투자는 기술 개발 과정의 (선한) 의도를 죽인다.
+
+---
+← [부록3_대표독자_투표](부록3_대표독자_투표.md) · [0_목차지도](0_목차지도.md)로 돌아가기
+
+[제임스 조이스](시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/해외/제임스 조이스.md)
+
+[대표성검증함수_모두의창업기반](시공간멜로디/On/love_편집자혜진/product/황금새장을열다/도구/샘플독자프로필/대표성검증함수_모두의창업기반.md)
