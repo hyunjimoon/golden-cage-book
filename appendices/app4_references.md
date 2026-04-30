@@ -18,6 +18,68 @@ Mike Maples Jr·Peter Ziebelman, *Pattern Breakers*, PublicAffairs, 2024. → �
 유발 노아 하라리, 『넥서스』(*Nexus*), 김명주 옮김, 김영사, 2024. — 정보 네트워크가 권력이 되는 구조. 서사가 검증을 대체할 때 벌어지는 일
 문현지, "Golden Cage: Paradox of Early Funding and Growth", MIT SM Thesis, 2026. — 이 책의 학술 원본
 
+### 5-8장 참고문헌 (편집자 소개용)
+
+#### 5장 — M.나비 (역할둥지)
+
+David Henry Hwang, *M. Butterfly*, Plume, 1988. — 송 릴링이 갈리마르의 환상을 *알면서* 입는다. 1988 토니상 희곡상
+
+Lewis Hyde, *Trickster Makes This World*, FSG, 1998. → [📜hyde_trickster_makes_world](📜hyde_trickster_makes_world.md) — Hopi 광대(ritual clowns)의 성스러운 거꾸로 행위. **5-8장 전체의 학술 anchor**
+
+(음화) 로돌프(Rodolphe Boulanger), 『마담 보바리』 — 5장 음화. 환상을 능동적으로 *짓고 떠난* 자. Phase 1만 한 trickster
+
+#### 6장 — 안개 (작가둥지)
+
+Miguel de Unamuno, *Niebla*, 1914. — *nivola* 형식. 작가가 자기 등장인물 앞에 서는 메타픽션. *진단의 자리*
+
+마르쿠스 아우렐리우스, 『명상록』(*Meditations*, *τὰ εἰς ἑαυτόν* — *자기 자신에게*), 천병희 옮김, 숲, 2005. — **6장 처방의 화신**. 황제가 *작가 = 독자 = 자기*인 자리에 1800년 전부터 매일 섰다. Bezos *Day 1*·Buffett 연차서한·Dalio *Principles*의 직계 조상
+
+NotebookLM, *The Trickster's Engine*, 2025. → 5-8장 격자 anchor. Hyde 6 mechanic 시각 정리 (Restraint·Boundary Crossing·Sacred Theft·Disenchant·Re-enchant·Engine of Cultural Evolution)
+
+#### 7장 — 1984 (언어둥지)
+
+George Orwell, *1984*, Secker & Warburg, 1949. — doublethink·Newspeak·산호 문진. 분포 사고가 사라진 세계의 부재 드라마
+
+George Orwell, *Animal Farm*, Secker & Warburg, 1945. — 7장 보조. 복서의 노동이 언어 좁아짐의 또 다른 형태
+
+George Orwell, "Why I Write", *Gangrel*, 1946. → [나는 왜 쓰는가](나는 왜 쓰는가.md) — 책 전체의 출발점. *good prose is like a window pane*
+
+★ **Robert Gibbons, "From Coase to Culture? Visible Hands Build Equilibria", MIT working paper, 2025.** → [📜gibbons25_coase2culture](📜gibbons25_coase2culture.md)
+> *Dropbox 공유 링크*: **[작가 추가 — 편집자 박혜진·박근섭·박상준에게 직접 PDF 공유 권고]**
+**7장 철학 anchor**. 핵심 3 단어: ***clarity problem*** (의미 공유 부재 = doublethink의 정체) + ***naming*** (모순·비유로 *we know more than we can tell* — Polanyi) + ***framing*** (카테고리화의 작은 차이가 큰 균형 차이). *개인 분포 사고(PLoT) → 조직 equilibrium 짓기*의 다리. **편집자 추천 1순위**
+
+Noah D. Goodman & Joshua B. Tenenbaum, *Probabilistic Models of Cognition*, MIT, 2016. → http://probmods.org — **PLoT** 공식. 함수·조건화·합성 3기계 (확률 프로그래밍 언어 *Church*·*WebPPL*)
+
+Michael Polanyi, *The Tacit Dimension*, Routledge, 1966. — *"우리가 말할 수 있는 것보다 더 많이 안다."* Gibbons *naming*의 출발점
+
+Clifford Geertz, *The Interpretation of Cultures*, Basic Books, 1973. — *"Culture is public because meaning is."* 의미가 공적이므로 문화도 공적
+
+#### 8장 — Trickster (트릭둥지)
+
+Lewis Hyde, *Trickster Makes This World*, FSG, 1998. → [📜hyde_trickster_makes_world](📜hyde_trickster_makes_world.md) — **메인**. 8 trickster (Hermes·Raven·Coyote·Loki·Eshu·Krishna·Maui·Monkey) + Frederick Douglass의 4단계 (*Refusing Bait → Sacred Theft → Boundary Crossing → Re-enchantment*)
+
+Frederick Douglass, *Narrative of the Life of Frederick Douglass, an American Slave*, Boston, 1845. — Bailey → Stanley → Johnson → Douglass 4 이름 변천. *명명이 곧 세계 짓기*
+
+★ **일연, 《삼국유사》(三國遺事), 김원중 옮김, 민음사, 2002.** ([민음사 166](166 삼국유사.md)) — **8장 메타-trickster anchor**. 정사(*삼국사기*)가 배제한 한국 trickster들(탈해·원효·처용·도화녀)을 *모은 자*. 책의 형식이 *황금새장을 열다*와 동형 (8→1 ouroboros 자기참조). 메시지 *너의 유사를 써라*의 출처
+
+『호메로스 찬가』 「헤르메스에게」(*Homeric Hymn to Hermes*), 천병희 옮김, 숲, 2011. — Hermes의 50소 도둑질 + 거북등껍질 라이어 발명 + Apollo 화해 *원본 신화*. Hyde Phase 1+2의 학술 anchor
+
+오비디우스, 『변신 이야기 1·2』(*Metamorphoses*), 이윤기 옮김, 민음사, 1998. ([민음사 1·2](001 변신 이야기 1.md)) — 보조. Mercury·Battus 일화 (Book 2.676-707). Hermes 신화의 라틴 전승
+
+#### 7-8장 비교 사례 (창업)
+
+Jeff Bezos, *Amazon Shareholder Letters* (1997-), Amazon. — *Day 1*·*misunderstood for long periods*·*Two-pizza team*. 분포를 제도로
+
+Warren Buffett, *Berkshire Hathaway Annual Letters*. — *moat*·*Mr. Market*·*circle of competence*. 단어 한 개로 전체 lexicon
+
+Ray Dalio, *Principles*, Simon & Schuster, 2017. — *believability-weighted decision-making*. 분포를 *결정 시점*에 박는 시스템
+
+이승건 / 토스. — 사내 *결정 메모* 양식. 분포를 *결정 사후*에 박는 시스템. 한국 사례 (출처: 이승건 공개 인터뷰·Toss Slash 발표; 단일 인용 출처는 작가 검증 필요)
+
+원효, 무애가(無㝵歌)·*대승기신론소*. — 7-8장 동양 거점 (보조). 파계+화쟁사상의 trickster
+
+---
+
 ### 사례 출처
 
 Jeffrey Katzenberg / Quibi. — ch1. $1.75B 유치, 2020.4 런칭, 6개월 폐업. 할리우드가 심어준 욕망

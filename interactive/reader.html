@@ -97,16 +97,23 @@ const CHAPTERS = [
   {id:'ch0_prologue', label:'질문과 답'},
   {id:'ch0_characters', label:'인물 소개'},
   {id:'ch0_roadmap', label:'이 책의 길'},
+  {id:'ch0_intro', label:'머리말'},
   {id:'ch1_mirror_cage', label:'🪞 1장 거울새장'},
   {id:'ch2_telescope_cage', label:'🔭 2장 망원경새장'},
   {id:'ch3_stained_glass_cage', label:'💒 3장 스테인드글라스새장'},
   {id:'ch4_clock_cage', label:'⏱️ 4장 시계새장'},
-  {id:'ch5_epilogue', label:'답과 질문'}
+  {id:'ch5_role_nest', label:'🦋 5장 역할둥지'},
+  {id:'ch6_author_nest', label:'📖 6장 작가둥지'},
+  {id:'ch7_language_nest', label:'⚒️ 7장 언어둥지'},
+  {id:'ch8_trick_nest', label:'🛤️ 8장 트릭둥지'},
+  {id:'ch9_epilogue', label:'답과 질문'}
 ];
 
 const CH_COLORS = {
-  ch1_mirror_cage:'#9B7A8B', ch2_telescope_cage:'#7A8068',
-  ch3_stained_glass_cage:'#4A7A6B', ch4_clock_cage:'#5A8A9A'
+  ch1_mirror_cage:'#C8A2C8', ch2_telescope_cage:'#808000',
+  ch3_stained_glass_cage:'#5F9EA0', ch4_clock_cage:'#2E5090',
+  ch5_role_nest:'#F4D43C', ch6_author_nest:'#6B8E4B',
+  ch7_language_nest:'#1A3A5C', ch8_trick_nest:'#E8843C'
 };
 
 const params = new URLSearchParams(window.location.search);
@@ -132,7 +139,7 @@ CHAPTERS.forEach(c => {
 const APPENDICES = [
   {group:'읽을거리', items:[{id:'app1_romantic_trilogy',label:'에세이'},{id:'app3_craft_of_startup_novel',label:'작법론'}]},
   {group:'도구', items:[{id:'app5_prompting',label:'프롬프팅 예시'},{id:'app6_industry_debt',label:'산업별 빚'}]},
-  {group:'참고', items:[{id:'app2_glossary',label:'용어 해설'},{id:'app4_references',label:'생각 빚 장부'}]}
+  {group:'참고', items:[{id:'app2_glossary',label:'용어 해설'},{id:'app4_references',label:'생각 빚 장부'},{id:'app8_84_structure',label:'84구조 (책 SSOT)'}]}
 ];
 APPENDICES.forEach(g => {
   const label = document.createElement('div');
