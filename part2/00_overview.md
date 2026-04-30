@@ -2,7 +2,7 @@
 moc: ⭐️
 modified:
   - 2026-04-25
-mirror: chapters/ch5_epilogue.md
+mirror: chapters/ch9_epilogue.md
 ---
 
 # 2부 — 둥지 짓기 (Trickster Reflection)

@@ -116,8 +116,13 @@ const CH_COLORS = {
   ch7_language_nest:'#1A3A5C', ch8_trick_nest:'#E8843C'
 };
 
+// backward-compat aliases (옛 URL 살리기)
+const ALIASES = {
+  'ch5_epilogue': 'ch9_epilogue'  // 5-8장 추가 후 epilogue 위치 이동
+};
 const params = new URLSearchParams(window.location.search);
-const file = params.get('file') || 'ch0_prologue';
+const requestedFile = params.get('file') || 'ch0_prologue';
+const file = ALIASES[requestedFile] || requestedFile;
 const curIdx = CHAPTERS.findIndex(c => c.id === file);
 
 // apply chapter color as accent
