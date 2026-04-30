@@ -2,7 +2,7 @@
 building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/121 안개.md)
 [📜hyde_trickster_makes_world](공간화음/Thesis/1논문용/📜hyde_trickster_makes_world.md)
 
-# CHAPTER 6 — 안개
+# CHAPTER 6 — 안개 둥지
 *관조하는 자에서, 작가를 대면하는 자로*
 
 > **이 장의 공식**: 자기 이야기는 *작가에게 가서* 다시 쓰여진다.
