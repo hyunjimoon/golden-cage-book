@@ -12,7 +12,9 @@ title: 84구조 — 황금새장을 열다
 
 > **같은 모방인데, 멈춤 하나로 새장이 둥지가 된다.**
 
-좌측 4박자(*모방→위안→붕괴→선택*)에는 멈춤이 없고, 우측 4박자(***★멈춤***→*모방→넘김→매혹*)는 멈춤이 첫 박자. **★멈춤이 cage/nest 분기점**. 1장 Girard 모방욕망과 5-8장 trickster의 creative mimicry는 *같은 동사*의 다른 자리.
+좌측 4박자(*위안→붕괴→부조리→선택*, 카뮈)는 ***멈춤 없는 모방***의 결과. 우측 4박자(***★멈춤***→*모방→넘김→매혹*, Hyde)는 ***★멈춤 후 모방***의 운동. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
+
+> 1장 Girard 모방욕망과 5-8장 trickster의 *creative mimicry*는 *같은 동사*. *멈춤*이 *false worm 가능성*을 상상하게 만들고, 그 가능성이 곧 *상징적 지능*이다 (Eco·PDF *Baited Hook*).
 
 빌린 도구를 의심하는 4개의 회전(1-4) → 자기인식의 다리(4장 끝, ★멈춤이 박힘) → 여는 도구 4개의 회전(5-8) → 다음 trickster 인정(8→1 회귀). **책은 닫히지 않는다.**
 
@@ -87,14 +89,32 @@ title: 84구조 — 황금새장을 열다
 
 좌→우 회전축이 *4장 끝 자기인식*. 8→1 회귀가 *다음 회전*을 부른다.
 
-## Hyde 4단계 격자 — 5-8장의 운동
+## Hyde 4단계 격자 — 5-8장의 운동 (멈춤·모방·넘김·매혹)
 
-1-4장이 카뮈 *부조리 격자*(위안→붕괴→부조리→선택)에서 작동하듯, 5-8장은 Hyde *Trickster Engine 격자*에서 작동한다.
+1-4장이 *멈춤 없는 모방*의 결과로 카뮈 *부조리 격자*(위안→붕괴→부조리→선택)에 빠지듯, 5-8장은 *★멈춤 후 모방*의 운동으로 Hyde *Trickster Engine 격자*(★멈춤→모방→넘김→매혹)를 짓는다. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
 
-> **5-8 4단계**: **멈춤 → 훔침 → 넘김 → 매혹**
+### Baited Hook 메커니즘 — 모방의 두 운명 (Eco·PDF *Trickster's Engine*)
+
+Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be used to lie."*** (기호는 거짓말에 쓸 수 있는 모든 것). PDF *The Trickster's Engine*은 이를 미끼 단 낚시바늘 앞 물고기 한 그림으로 압축한다:
+
+| 진입 | 경로 | 결과 |
+|:--|:--|:--|
+| **True worm 가정** (멈춤 없음) | 즉각 소비 → 본능 → 사고 0 | *덫에 걸림* — 좌(cage) 진입 → 위안→붕괴→부조리→선택 |
+| **False worm 가능성** (★멈춤) | 머뭇거림 → 해독 → **상징적 지능 자가-탄생** | *symbolic intelligence* — 우(nest) 진입 → 모방→넘김→매혹 |
+
+> *"The moment a creature must pause to determine if a worm is true or false is the exact moment symbolic language and self-reflection are born."*
+
+**모방 자체는 중립이다.** 좌·우 격자에 같은 *모방*이 들어간다. 차이는 *멈춤 유무*뿐.
+
+- 좌 (모방 *멈춤 없이*): 즉각 위안 → 미끼였음이 드러날 때 붕괴 → 부조리 → 선택. **카뮈의 4박자는 *멈춤 없는 모방*의 결과**.
+- 우 (모방 *★멈춤 후*): 멈춤이 *상징적 지능*을 켜고 → 모방을 *해독*해 자기 맥락으로(넘김) → 새 자리에서 매혹.
+
+***가능성*의 상상이 곧 지능이다.** *false worm일 가능성*을 상상할 수 있는 자만이 새장에서 둥지로 건너간다 — **trickster는 가능성의 화신**.
+
+> **5-8 4단계**: **★멈춤 → 모방 → 넘김 → 매혹**
 >
-> - **멈춤** (Restraint, *Pause*) — 미끼와 본능 사이의 *공백*. 그 공백에서 지능이 자가-탄생
-> - **훔침** (Sacred Theft) — 신성을 *내 맥락으로* 가져옴. *Theft is the ultimate context shift*
+> - **★멈춤** (Restraint, *Pause*) — 미끼와 본능 사이의 *공백*. 그 공백에서 지능이 자가-탄생. 책의 한 단어 thesis
+> - **모방** (Sacred Theft / Creative Imitation) — 신성을 *내 맥락으로* 가져옴. *Theft is the ultimate context shift*. 1장 Girard 모방욕망과 같은 동사
 > - **넘김** (Boundary Crossing) — 같은 사물이 *다른 환경*에서 새 의미. 노↔키질 부채
 > - **매혹** (Re-enchantment) — 새 자리에 *spell so beautiful that Apollo forgives*. 창조 + 마법 hybrid
 
@@ -102,9 +122,9 @@ title: 84구조 — 황금새장을 열다
 
 | 장 | 강조 단계 | 한 줄 |
 |:-:|:-:|---|
-| **5** 역할둥지 | 멈춤 · 훔침 | 환상에 멈추고, 환상을 *훔쳐 내 무대로* |
-| **6** 안개둥지 | 훔침 · 넘김 | *작가의 자리를 훔쳐*, 책장 안에서 밖으로 |
-| **7** 언어둥지 | 넘김 · 매혹 | 좁은 lexicon을 *넘어*, 단일 사고체계로 *매혹* |
+| **5** 역할둥지 | 멈춤 · 모방 | 환상에 멈추고, 환상을 *모방해 내 무대로* |
+| **6** 안개둥지 | 모방 · 넘김 | *작가의 자리를 모방해*, 책장 안에서 밖으로 |
+| **7** 언어둥지 | 넘김 · 매혹 | 좁은 lexicon을 *넘어*, 합의된 단일 사고체계로 *매혹* |
 
 ### 8장 = 격자 *바깥* — 책임 + 회귀
 
@@ -119,10 +139,11 @@ title: 84구조 — 황금새장을 열다
 
 | 1-4 (새장) | 5-8 (둥지) |
 |---|---|
-| 카뮈: **위안 → 붕괴 → 부조리 → 선택** | Hyde: **멈춤 → 훔침 → 넘김 → 매혹** |
+| 카뮈 (멈춤 없는 모방의 *결과*): **위안 → 붕괴 → 부조리 → 선택** | Hyde (★멈춤 후 모방의 *운동*): **★멈춤 → 모방 → 넘김 → 매혹** |
 | 빌린 도구의 *비극 4박자* | 여는 도구의 *해방 4박자* |
-| 수동·받음·정지 | 능동·가져감·이동·창조(매혹) |
-| *Le Mythe de Sisyphe* (1942) | *Trickster Makes This World* (1998) + PDF |
+| 본능 (Baited Hook의 True Worm 가정) | 상징적 지능 (False Worm 가능성) |
+| 모방 → 즉각 위안 → 미끼였음 발각 → 붕괴 | ★멈춤 → 해독 → 모방을 *내 맥락으로* → 매혹 |
+| *Le Mythe de Sisyphe* (1942) + Eco *기호=거짓말 가능성* | *Trickster Makes This World* (1998) + PDF *Hesitation* |
 | 4장 *놀이*가 격자 바깥 | 8장 *책임·회귀*가 격자 바깥 |
 
 ## 진화론적 거울 — 인공선택 ↔ 자연선택+모음 (Mokyr)
@@ -221,16 +242,16 @@ title: 84구조 — 황금새장을 열다
 
 ## 학술 처리 — 비틂·추가·정확
 
-| 장 | 원작 (메인) | 처리 | 정당성 | 보조 (민음사 484) |
+| 장 | 원작 (메인) | 처리 | 핵심 학자·정당성 | 보조 |
 |---|---|---|---|---|
-| 1 | 마담보바리 (플로베르) | **비틂** | 르뢰를 trickster로 재해석 | — |
-| 2 | 표범 (람페두사) | 정확 호출 | 살리나의 분석마비 직접 인용 | — |
-| 3 | 페스트 (카뮈) | 정확 호출 | 부조리 3답을 매핑 | — |
-| 4 | 방드르디 (투르니에) | **추가** | 카뮈 격자 *바깥*에 *놀이하는 의지(작란)* 추가 + **Mokyr 인공선택 소진** (빌린 시간표 = 빌린 진화 경로 → 변이 죽음) | Joel Mokyr (*The Lever of Riches*·*Culture of Growth*) |
-| 5 | M.Butterfly (황) | 정확 호출 | 갈리마르의 자기연출 + Hopi 광대(Hyde) | — |
-| 6 | Niebla (**우나무노 = 학술 메인**) | 정확 호출 + **추가** | 우나무노가 자기 *Niebla*에 자기를 등장시킨 *nivola* 발명자 = 6장의 핵심 인물. 빅토르 고티(말의 trickster) + 우나무노(손의 trickster). 아우구스토 = 작품 안 행위자. 처방 보조 = *명상록*(자기-쓰기 실천) — Bezos·Buffett·Dalio의 21세기 형태 | **명상록** (마르쿠스 아우렐리우스) — 우나무노 메타픽션의 *현실 매일 실천*판 |
-| 7 | 1984 (오웰) | **비틂** | doublethink → PLoT 단일 lexicon 보존 + **Gibbons 2025** *clarity problem*·*naming*·*framing*. 개인 PLoT → 조직 equilibrium의 다리 | 동물농장 (보조 그림자) + *From Coase to Culture* (Gibbons 2025) |
-| 8 | Trickster Makes This World (하이드) | 정확 호출 + **추가** | 헤르메스 경계 위 생성 + Re-enchantment + 더글러스 4단계 + **Mokyr 자연선택+모음** (4↔8 거울: 인공선택 닫힘 ↔ 자연선택 변이 풀 보존) | **삼국유사** (일연, 민음사 166) — 메타-trickster, *모은 자*. + **Poe *Philosophy of Composition*** (1846) — 시인이 자기 시 *Raven*의 작법을 *역공학*으로 풀어쓴 메타-에세이 = trickster의 자기설명. + *Homeric Hymn to Hermes* (50소·라이어 풀 신화) |
+| 1 | 마담보바리 (플로베르) | **비틂** | **René Girard** *모방욕망* — *나-중재자-대상* triangulation. 르뢰를 trickster로 재해석 | 옐로모바일 (Quibi 한국 거울, ★ 검증 필요) |
+| 2 | 표범 (람페두사) | 정확 호출 + **추가** | **Pierre Bourdieu** *habitus* — 살리나의 *몸의 빚* (머리는 갱신, 몸은 재생산). cage 닫힘 vs 열림 paired (Kodak vs Fuji) | *La Distinction*·*Le Sens pratique* |
+| 3 | 페스트 (카뮈) | 정확 호출 | **Albert Camus** *부조리·반항* — 두 출구: 철학적 자살(파늘루) vs *réveille*(리외) | *Le Mythe de Sisyphe* (1942) + 셀트리온 vs 신라젠 (★ 검증 필요) |
+| 4 | 방드르디 (투르니에) | **추가** | 카뮈 격자 *바깥* 작란(놀이) + **Joel Mokyr** *artificial selection* 소진 (빌린 진화 경로 → 변이 죽음) | Mokyr *Lever of Riches·Culture of Growth* + 두산 130년 |
+| 5 | M.Butterfly (황) | 정확 호출 | **Lewis Hyde** Hopi 광대 + **Erving Goffman** *frontstage·backstage·role distance* (★멈춤 = role distance) | — |
+| 6 | Niebla (**우나무노 = 학술 메인**) | 정확 호출 + **추가** | **우나무노** *nivola* 발명자 (자기 책에 자기 등장) + **Paul Ricœur** *narrative identity* (idem/ipse) + **아우렐리우스** 처방(자기-쓰기) | *명상록* + Bezos·Buffett·Dalio |
+| 7 | 1984 (오웰) | **비틂 + 대비** | **윈스턴 + Big Brother 공동 메인 음화** (3장 파늘루↔리외 동형). doublethink → PLoT(Goodman·Tenenbaum) + **Sapir-Whorf** 언어상대성 + **Gibbons 2025** *clarity·naming·framing*. **BB = 수단의 음화** (Newspeak 통제) | *From Coase to Culture* (Gibbons) + *동물농장* |
+| 8 | Trickster Makes This World (하이드) | 정확 호출 + **추가** | **Lewis Hyde** Phase 1+2 + Douglass 4단계 + **Mokyr 자연선택+모음** (4↔8 거울) + **Poe *Philosophy of Composition***(1846) 메타-역공학. **BB 호명 = 목적의 음화** (8→1 ouroboros 잠금) | **삼국유사** (일연 = 메타-trickster) + *Homeric Hymn to Hermes* |
 
 비틂(1·7), 추가(4), 정확 호출(나머지). **8장은 *민음사 1·2권 변신 이야기*에 학술 anchor를 둔다** — 시리즈의 시작과 책의 결말이 만나는 ouroboros.
 
