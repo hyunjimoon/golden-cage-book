@@ -1,7 +1,7 @@
 책: [📜hyde_trickster_makes_world](공간화음/Thesis/1논문용/📜hyde_trickster_makes_world.md)
 building on [4_시계새장](4_시계새장.md)
 
-# CHAPTER 8 — 장난 둥지
+# CHAPTER 8 — 선넘 둥지
 *이름을 다시 짓고 규칙을 다시 매혹시킨다*
 
 > **이 장의 공식**: 부수기만 한 자는 trickster가 아니다 — *disrupt하고 다시 매혹시키기까지가 책임이다.*
