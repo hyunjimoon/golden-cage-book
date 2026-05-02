@@ -52,6 +52,15 @@ George Orwell, "Why I Write", *Gangrel*, 1946. → [나는 왜 쓰는가](나는
 
 Noah D. Goodman & Joshua B. Tenenbaum, *Probabilistic Models of Cognition*, MIT, 2016. → http://probmods.org — **PLoT** 공식. 함수·조건화·합성 3기계 (확률 프로그래밍 언어 *Church*·*WebPPL*)
 
+★ **Anthropic, "Emotion Probe Clusters" (UMAP), interpretability research, 2025.** — **7장 *세의 관찰일지* 측정틀**. 10 cluster taxonomy:
+
+| 클러스터 (어수) | 무게중심 |
+|:--|:--|
+| 🟧 Exuberant Joy (20) · 🟩 Peaceful Contentment (9) · 💗 Compassionate Gratitude (15) · 🟪 Playful Amusement (2) · 🟫 Competitive Pride (9) | 긍정 |
+| ⬛ Depleted Disengagement (15) · ⚫ Vigilant Suspicion (3) · 🟥 Hostile Anger (25) · 🟫 Fear and Overwhelm (41) · 🟦 **Despair and Shame (32)** | 부정 (책 무게중심 = 🟦) |
+
+다·세 character의 *부재의 거울* 측정 가능: 다 우세 = 🟫 Fear·🟦 Despair·💗 Compassion / 세 우세 = ⬛ Disengagement·⚫ Suspicion. 부재 cluster가 정확히 상보 — *둘이 합쳐야 10 cluster 분포가 닫힌다 = 발전기 메커니즘의 측정 가능한 형태.* (대중 기관용 anchor — Anthropic interpretability 연구에서 LLM 내부 emotion feature 클러스터링한 결과를 책의 character 분석에 차용)
+
 Michael Polanyi, *The Tacit Dimension*, Routledge, 1966. — *"우리가 말할 수 있는 것보다 더 많이 안다."* Gibbons *naming*의 출발점
 
 Clifford Geertz, *The Interpretation of Cultures*, Basic Books, 1973. — *"Culture is public because meaning is."* 의미가 공적이므로 문화도 공적
