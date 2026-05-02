@@ -12,7 +12,7 @@ title: 84구조 — 황금새장을 열다
 
 > **같은 모방인데, 멈춤 하나로 새장이 둥지가 된다.**
 
-좌측 4박자(*위안→붕괴→부조리→선택*, 카뮈)는 ***멈춤 없는 모방***의 결과. 우측 4박자(***★멈춤***→*모방→넘김→매혹*, Hyde)는 ***★멈춤 후 모방***의 운동. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
+좌측 4박자(*모방→위안→붕괴→선택*, 카뮈)는 ***멈춤 없는 모방***의 결과. 우측 4박자(***★멈춤***→*모방→넘김→매혹*, Hyde)는 ***★멈춤 후 모방***의 운동. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
 
 > 1장 Girard 모방욕망과 5-8장 trickster의 *creative mimicry*는 *같은 동사*. *멈춤*이 *false worm 가능성*을 상상하게 만들고, 그 가능성이 곧 *상징적 지능*이다 (Eco·PDF *Baited Hook*).
 
@@ -87,11 +87,11 @@ title: 84구조 — 황금새장을 열다
 | **반항** | 3장 신념 vs 반항 (이분법) | 7장 언어 짓기·상용화 — 내 *언어*를 누가 좁히는가 |
 | **전환** | 4장 놀이 (작란/作亂) | 8장 규칙 비틀기 — 어떤 *규칙* 안에 있는가 |
 
-좌→우 회전축이 *4장 끝 자기인식*. 8→1 회귀가 *다음 회전*을 부른다.
+좌→우 회전축이 *4장 끝 자기인식*. 8→1 회귀가 *다음 회전*을 부른다. [🗣️Malone25_15.339 Developing Leadership Capabilities](🗣️Malone25_15.339 Developing Leadership Capabilities.md) [25S_15339_Leadership_Malone](공간화음/🟥언어_HOW/School/25S_15339_Leadership_Malone/25S_15339_Leadership_Malone.md)
 
 ## Hyde 4단계 격자 — 5-8장의 운동 (멈춤·모방·넘김·매혹)
 
-1-4장이 *멈춤 없는 모방*의 결과로 카뮈 *부조리 격자*(위안→붕괴→부조리→선택)에 빠지듯, 5-8장은 *★멈춤 후 모방*의 운동으로 Hyde *Trickster Engine 격자*(★멈춤→모방→넘김→매혹)를 짓는다. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
+1-4장이 *멈춤 없는 모방*의 결과로 카뮈 *부조리 격자*(모방→위안→붕괴→선택)에 빠지듯, 5-8장은 *★멈춤 후 모방*의 운동으로 Hyde *Trickster Engine 격자*(★멈춤→모방→넘김→매혹)를 짓는다. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
 
 ### Baited Hook 메커니즘 — 모방의 두 운명 (Eco·PDF *Trickster's Engine*)
 
@@ -99,7 +99,7 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 
 | 진입 | 경로 | 결과 |
 |:--|:--|:--|
-| **True worm 가정** (멈춤 없음) | 즉각 소비 → 본능 → 사고 0 | *덫에 걸림* — 좌(cage) 진입 → 위안→붕괴→부조리→선택 |
+| **True worm 가정** (멈춤 없음) | 즉각 소비 → 본능 → 사고 0 | *덫에 걸림* — 좌(cage) 진입 → 모방→위안→붕괴→선택 |
 | **False worm 가능성** (★멈춤) | 머뭇거림 → 해독 → **상징적 지능 자가-탄생** | *symbolic intelligence* — 우(nest) 진입 → 모방→넘김→매혹 |
 
 > *"The moment a creature must pause to determine if a worm is true or false is the exact moment symbolic language and self-reflection are born."*
@@ -139,12 +139,29 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 
 | 1-4 (새장) | 5-8 (둥지) |
 |---|---|
-| 카뮈 (멈춤 없는 모방의 *결과*): **위안 → 붕괴 → 부조리 → 선택** | Hyde (★멈춤 후 모방의 *운동*): **★멈춤 → 모방 → 넘김 → 매혹** |
+| 카뮈 (멈춤 없는 모방의 *결과*): **모방 → 위안 → 붕괴 → 선택** | Hyde (★멈춤 후 모방의 *운동*): **★멈춤 → 모방 → 넘김 → 매혹** |
 | 빌린 도구의 *비극 4박자* | 여는 도구의 *해방 4박자* |
 | 본능 (Baited Hook의 True Worm 가정) | 상징적 지능 (False Worm 가능성) |
 | 모방 → 즉각 위안 → 미끼였음 발각 → 붕괴 | ★멈춤 → 해독 → 모방을 *내 맥락으로* → 매혹 |
 | *Le Mythe de Sisyphe* (1942) + Eco *기호=거짓말 가능성* | *Trickster Makes This World* (1998) + PDF *Hesitation* |
 | 4장 *놀이*가 격자 바깥 | 8장 *책임·회귀*가 격자 바깥 |
+
+## 5-8장 4 Lens 표 (감각·이론·현실·실천)
+
+각 장이 4 lens × 4 박자 격자로 작동:
+
+| 장 | 🌬️**감각** (몸이 먼저) | 🧠**이론** (학자 anchor) | 👁️**현실** (사례 paired) | 🛠️**실천** (즉시 도구) |
+|:-:|:--|:--|:--|:--|
+| **5 역할둥지** (송 릴링) | 가발 *입는 손*의 멈춤. 거울 속 분 반쯤 발린 얼굴 | Hyde Hopi 광대 + Goffman *frontstage·backstage·role distance* (★멈춤) | SM(이수만) ↔ HYBE(방시혁) / Slack·Stripe·Airbnb·Tesla pivot | **무대-분장실 일지** — *오늘 입은 옷·벗을 자리·솔기 보일 사람* |
+| **6 안개둥지** (우나무노) | 작가 책상 앞 등장인물의 떨림. 안개 너머 살라망카 | Hyde *Crucial Third Position* + Ricœur *narrative identity* (idem/ipse) + 아우렐리우스 *명상록* | 토스 termsheet / 쿠팡 1:29 / Patagonia 신탁 / WeWork 음화 | ***Day 1* 메모** — 매일 자기에게 쓰기. 사업의 *ipse* 짓기 |
+| **7 언어둥지** (윈스턴↔BB) | 단어가 매일 줄어드는 감각. doublethink가 뇌에 박히는 안락함 | **뇌가 변화를 싫어한다**: Cannon homeostasis + Kahneman loss aversion + status quo bias + Sapir-Whorf + Gibbons *clarity·naming·framing* | BB Newspeak (음화) ↔ Bezos·Buffett·Bridgewater·이승건 토스 결정 메모 | **함수·조건화·합성 3기계** — 분포로 생각·단어로 합의·lexicon으로 짓기 |
+| **8 거울둥지** (일연) | 부순 자리의 빈 광장. 두루마리 여백. 안개 뒤의 길 | **NC + Spandrel + 여백의 미**: Brinkerink25 *Negative Capability* + Gould *spandrel* + 노자 *無之以爲用* + Hyde Phase 1+2 + Mokyr 인공/자연선택 + Poe 메타-역공학 | 토스·카카오뱅크·쿠팡·OpenAI/SSI·일연 *삼국유사*·원효 무애가 | **너의 *유사*를 써라** — 변이 풀 외재화 (Orlean 700 카드식) |
+
+→ **4 lens 운동**: 감각 → 이론 → 현실 → 실천 → 감각(재독). 같은 장 안에서 회전.
+
+→ **7장 = 변화 회피**의 장 (closure 강제) ↔ **8장 = 여백의 장** (closure 거부). 정확한 음/양.
+
+→ **8장 = 거울둥지**: 1장 *거울새장*과 정확한 1↔8 ouroboros mirror. 책의 시작과 끝이 *거울*로 봉합.
 
 ## 진화론적 거울 — 인공선택 ↔ 자연선택+모음 (Mokyr)
 
@@ -275,7 +292,8 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 | 1 ↔ 5 | [1_거울새장](1_거울새장.md) | [5_역할둥지](5_역할둥지.md) |
 | 2 ↔ 6 | [2_망원경새장](2_망원경새장.md) | [6_안개둥지](6_안개둥지.md) |
 | 3 ↔ 7 | [3_스테인드글라스새장](3_스테인드글라스새장.md) | [7_언어둥지](7_언어둥지.md) |
-| 4 ↔ 8 | [4_시계새장](4_시계새장.md) | [8_선넘둥지](8_선넘둥지.md) |
+| 4 ↔ 8 | [4_시계새장](4_시계새장.md) | [8_거울둥지](8_거울둥지.md) |
+| **1 ↔ 8** | [1_거울새장](1_거울새장.md) | [8_거울둥지](8_거울둥지.md) (ouroboros mirror — 책 frame) |
 
 → 5-8 둥지 명명: *역할·작가·언어·트릭* — 메타-인지 4가지(누가 만들었나)와 정합. 1-4 *X새장* (도구) / 5-8 *X둥지* (메타-인지 행위 대상) 두 시리즈 균질 짝.
 
@@ -330,7 +348,7 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 |:-:|---|---|---|
 | **★1** | **부제 유무** ("황금새장을 열다" 단독 vs 부제 추가) | 단독 | 표지 디자인 시 |
 | **★2** | **1장 마스터** vault(324행 다이어트+공식) vs web(367행 풍부) | hybrid: vault 구조 + web 4항목 복귀 (옐로모바일·인물표·"외상이면 소도"·footnote 4) | 1장 patch 시 |
-| ~~★3~~ ✅ | ~~5-8 셸 파일명 변경~~ **결정 완료 (3회 갱신)**: `5_역할둥지` / `6_안개둥지` / `7_언어둥지` / `8_선넘둥지` (boundary crossing 직접 호명) — 변천: 트릭→장난→선넘 | sync 스크립트 갱신 (web 영문 ch6_author_nest·ch8_trick_nest URL 유지) | — |
+| ~~★3~~ ✅ | ~~5-8 셸 파일명 변경~~ **결정 완료 (4회 갱신)**: `5_역할둥지` / `6_안개둥지` / `7_언어둥지` / `8_거울둥지` (1↔8 ouroboros mirror) — 변천: 트릭→장난→선넘→거울 | sync 스크립트 갱신 (web 영문 ch6_author_nest·ch8_trick_nest URL 유지) | — |
 | **★4** | **로돌프 추가** (5장 음화 — 2차 작업) | 5장 본문 환상 짓기 확장 시 함께 | 5장 Phase 2 patch |
 | **★5** | **N·T·L·P·B 라벨 의미** (이미지 #4 두 cycle) | 이미지 직접 의미 확정 | 두 cycle 섹션 보강 |
 

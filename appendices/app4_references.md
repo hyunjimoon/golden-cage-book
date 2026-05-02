@@ -44,6 +44,8 @@ George Orwell, *Animal Farm*, Secker & Warburg, 1945. — 7장 보조. 복서의
 
 George Orwell, "Why I Write", *Gangrel*, 1946. → [나는 왜 쓰는가](나는 왜 쓰는가.md) — 책 전체의 출발점. *good prose is like a window pane*
 
+★ **슈테판 클라인 (Stefan Klein), 《뇌는 어떻게 변화를 거부하는가》, 유영미 옮김, 2024.** — 7장 *뇌가 변화를 싫어한다* 이론 anchor. 7가지 착각 framework: ①현실주의자 ②새로움 열망 ③낙관 뇌 ④아는 것이 힘 ⑤자유 ⑥최선 원함 ⑦이데올로기 종언. 7장에 직결: 착각1(예측에 산다)·착각4(앎≠행동)·착각6(status quo bias). 뇌의 변화 거부는 *결함*이 아니라 *기능*. 100만 부 베스트셀러 작가의 신경과학 종합서. **편집자에게 한국어 anchor로 적합 — 1순위 추천 옆**
+
 ★ **Robert Gibbons, "From Coase to Culture? Visible Hands Build Equilibria", MIT working paper, 2025.** → [📜gibbons25_coase2culture](📜gibbons25_coase2culture.md)
 > *Dropbox 공유 링크*: **[작가 추가 — 편집자 박혜진·박근섭·박상준에게 직접 PDF 공유 권고]**
 **7장 철학 anchor**. 핵심 3 단어: ***clarity problem*** (의미 공유 부재 = doublethink의 정체) + ***naming*** (모순·비유로 *we know more than we can tell* — Polanyi) + ***framing*** (카테고리화의 작은 차이가 큰 균형 차이). *개인 분포 사고(PLoT) → 조직 equilibrium 짓기*의 다리. **편집자 추천 1순위**
