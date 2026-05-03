@@ -8,7 +8,15 @@ title: 84구조 — 황금새장을 열다
 
 ![x/Images/84구조 2026_04_28.excalidraw](x/Images/84구조 2026_04_28.excalidraw.md)
 
-## ★ 책의 명제 (한 줄)
+## ★ 책의 명제 (한 줄 — 2026-05-03 결정)
+
+> **신화를 부수고, 함께 짓는다.**
+
+신념윤리 비판러(Phase 1만)에서 책임윤리 trickster(Phase 1+2)로. 사람 중심 창업 — *돈을 벌겠다·기술을 상용화시키겠다*가 아니라, *고객·협업자·employee 모두를 만족시킬 가치제안을 설득하고 함께 가는 것*. 부수기는 시작이고, *짓는 일이 책임이다*.
+
+부제 후보: *신념윤리 비판러에서 책임윤리 trickster로* / *사람 중심 창업의 8 박자* / *1-4 새장에서 5-8 둥지로*.
+
+## ★ 책의 명제 — 형식 (운동 한 줄)
 
 > **같은 모방인데, 멈춤 하나로 새장이 둥지가 된다.**
 
@@ -17,6 +25,32 @@ title: 84구조 — 황금새장을 열다
 > 1장 Girard 모방욕망과 5-8장 trickster의 *creative mimicry*는 *같은 동사*. *멈춤*이 *false worm 가능성*을 상상하게 만들고, 그 가능성이 곧 *상징적 지능*이다 (Eco·PDF *Baited Hook*).
 
 빌린 도구를 의심하는 4개의 회전(1-4) → 자기인식의 다리(4장 끝, ★멈춤이 박힘) → 여는 도구 4개의 회전(5-8) → 다음 trickster 인정(8→1 회귀). **책은 닫히지 않는다.**
+
+## ★ 6 구조 (user 설계 의도 — Image #23 명시)
+
+```
+[1] 1→2→3→4 cage progression  (모방·위안·붕괴·선택)
+[2] 5→6→7→8 nest progression  (★멈춤·모방·넘김·매혹)
+[3] 1↔5 mirror — 인식 차원 (모르고 입기 vs 알면서 입기)
+[4] 2↔6 mirror — 관조 → 대면 (보면서 못 움직임 vs 책상까지 걸어감)
+[5] 3↔7 mirror — 이분법 → 분포 (두 점 대결 vs 분포 분해)
+[6] 4↔8 mirror — 작란 → 명명 (Phase 1 vs Phase 1+2)
+```
+
+각 mirror 짝이 *Image #22 Interdependence of Opposites* 형태 — *Sacred Order ⊥ Trickster Reflection*이 4번 작동. 우(nest)는 좌(cage) 없이 *자기를 모르고*, 좌는 우 없이 *서 있을 수 없다*. 두 점이 서로를 정의한다.
+
+## ★ 4 도메인 mirror (Image #23 발견 — 2026-05-04)
+
+8장 구조 = **4 산업 도메인 × 2 모드** (cage/nest):
+
+| 도메인 | cage (1-4) | nest (5-8) |
+|:--|:--|:--|
+| **정보** | 1장 (Quibi · Airbnb) | 5장 (Slack · Stripe) |
+| **물질** | 2장 (Kodak vs Fuji) | 6장 (Better Place vs Tesla) ⚠ 본문 보강 필요 |
+| **생체** | 3장 (Theranos vs Moderna) | 7장 (생체 사례) ⚠ 본문 보강 필요 |
+| **에너지** | 4장 (두산 · 생고뱅) | 8장 (에너지 사례) ⚠ 본문 보강 필요 |
+
+→ **4 산업 도메인이 1↔5, 2↔6, 3↔7, 4↔8 mirror 짝과 정확히 일치**. 책 구조 = *4 도메인 × 2 모드*. 6·7·8장 본문에 *해당 도메인 사례* 보강이 다음 patch (★ Phase 3).
 
 ## 새장 vs 둥지 — 빚의 두 인식
 
@@ -34,6 +68,7 @@ title: 84구조 — 황금새장을 열다
 
 **M-M(중간점, 현상이동) = 메타-인지의 도약점.**
 
+[거무존청_去蕪存菁](시간리듬/🎵 Weekly_Melody/6_전토플랫폼_현지/거무존청_去蕪存菁.md)
 ## 책 운동 (3박자)
 
 ```
@@ -358,10 +393,10 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 
 | 장 | 파일 (현재) | 행수 | Fact-check 적용 | 약점 (Bird's Eye) |
 |:-:|---|:-:|:-:|---|
-| 5 | `1_거울둥지.md` | 234 | ✅ Hyde 분류·Slack 날짜·Krieger·Hopi족 | 환상 *짓기*까지 확장 약함 |
-| 6 | `2_망원경둥지.md` | 221 | ✅ Orfeo·Eugenia·Mauricio·죽음 모호성·장송 연설 | finder 메타포 본문 반영 부분적 |
-| 7 | `3_스테인드글라스둥지.md` | 277 | ✅ Winston 첫 일기 (DOWN WITH BIG BROTHER)·PLoT 출처 | 짓기·상용화 < 분포 사고 |
-| 8 | `4_시계둥지.md` | 269 | ✅ 4단계 명명·Nathan Johnson·비바리퍼블리카 어원 | 헤르메스 reference만 |
+| 5 | `5_역할둥지.md` | ~165 | ✅ Hyde 분류·Slack 날짜·Krieger·Hopi족 + Goffman role distance | 5월 2일 *낯섦* 결정 (line 24) |
+| 6 | `6_안개둥지.md` | ~250 | ✅ Orfeo·Eugenia·Mauricio·죽음 모호성·장송 연설 + Ricœur narrative identity + 아우렐리우스 처방 | 다 voice manifesto (8장 일기 거울) |
+| 7 | `7_언어둥지.md` | ~360 | ✅ Winston 첫 일기·PLoT 출처 + Sapir-Whorf + Gibbons clarity·naming·framing + 세 관찰일지 + 제3의 위치 manifesto | anchor box plain Korean 변환 (학자명 → 부록4 footnote) |
+| 8 | `8_거울둥지.md` | ~315 | ✅ 4단계 명명·Nathan Johnson·비바리퍼블리카 어원 + Raven 신화 (Haida) + 4 문화권 + 결정 불가능성 + Mokyr·Keats NC·Spandrel·노자·Poe | 르뢰 = 신념윤리 trickster reframe |
 
 **합계 1,001행**. 박혜진 deliverable 가능 상태.
 
@@ -442,3 +477,52 @@ INTRO·COVER_LETTER·도해 자료        ❌ 미발행
 - **commit hash** 명시: 변경 추적 가능
 - 작업 후 *이 섹션 갱신* 권고 (Tier 1 결정 → Tier 2 본문 상태 → Tier 3 reference)
 - 다음 큰 결정 시점에 *Tier 1 미해결 5개* 우선 점검
+
+---
+
+# 작업 로그 — 2026-05-02 · 03 · 04 (Phase 3)
+
+## 🔴 Tier 1 — 추가 결정 (안정)
+
+| # | 결정 | 결과 | 영향 |
+|:-:|---|---|---|
+| 9 | **8장 = 거울둥지** (4번 변천 종결: 트릭→장난→선넘→거울) | 1↔8 ouroboros mirror 명시 — 책 frame 봉합 | `d71da81c` |
+| 10 | **5월 2일 *낯섦* 결정** (5장 line 24) — 세 character core = *낯섦으로 응시*. 정밀 한국어 구분 (낯섦 ≠ 섬뜩 ≠ 무서움) | 6→7→8장 진화 사슬 trigger | 본문 line 24 |
+| 11 | **manifesto 한 줄: *신화를 부수고, 함께 짓는다*** | 사람 중심 창업 + Phase 1+2 + 함께 — 표지 부제 후보 | 본 문서 line 16 |
+| 12 | **르뢰 = 신념윤리 trickster** reframe (Phase 1만 한 trickster, 사회 긴장 만들지만 책임 결여) | 1장 음화 정확화 + 4↔8 mirror 강화 | 본문 8장 line 89 부근 |
+| 13 | **clarity 원칙** — 본문은 소박한 한국어, 부록은 완전한 학술. 2 layer 분리 | 7장 anchor box prototype 변환 (Klein·Cannon·Kahneman·Samuelson 본문→부록) | `0d1164ff` |
+| 14 | **부록4 71→100 entries** (16명 추가) | 본문 호명·부록 누락 0 — 신뢰성 100 | `61c551df` |
+| 15 | **URL rename** (web): ch6_author_nest → ch6_mist_nest, ch8_trick_nest → ch8_mirror_nest. ALIASES로 backward compat | URL ≡ vault 의미 — SSOT | `a11cbe7f`, `7208a9d` |
+| 16 | **세의 관찰일지** (7장) — Anthropic 10 cluster taxonomy로 다 감정 어휘 측정 | *부재의 거울*: 다·세 cluster 정확히 상보 — 발전기 메커니즘 측정 가능 형태 | `ec7a89a2` |
+| 17 | **manifesto 박힘 (7장 일기·8장 일기)**: 7장 *"정밀한 구조로 슬픔을 직시 가능한 형태로 옮기되..."* (세) ↔ 8장 *"세에게 표를 빌렸다... 분장실도 무대도 아닌 자리"* (다) — voice 거울 짝 | 6장 Crucial Third Position 도구화 + 동사화 | `ec7a89a2`, `e924148e` |
+| 18 | **8장 Raven 단락** (단계 1 prototype + 4 문화권 + 결정 불가능성 확장) | trickster 4단계가 한 신화에 압축 / 1↔8 ouroboros 시각화 / 까마귀 = 살아있는 NC | `2392f2fc`, `7b622e86` |
+| 19 | **Image #23 4 도메인 mirror 발견** (정보·물질·생체·에너지) | 책 구조 = *4 도메인 × 2 모드*. 6·7·8장 본문 보강 trigger | 본 문서 line 47 |
+
+## 🟡 Tier 2 — Phase 3 미해결 (다음 patch trigger)
+
+| 우선 | 결정 항목 | 권고 | trigger |
+|:-:|---|---|---|
+| **★A** | 6장 *Better Place vs Tesla* paired case 본문 추가 | 4 도메인 mirror 완성 (물질) | 6장 patch |
+| **★B** | 7장 *생체 사례* 본문 추가 (현재 1984 + 비즈니스만, *생체 도메인* 명시 부재) | 4 도메인 mirror 완성 (생체) | 7장 patch |
+| **★C** | 8장 *에너지 사례* 본문 추가 (Mokyr 인공/자연선택은 *비유*. 명시 *에너지 도메인* 사례 부재) | 4 도메인 mirror 완성 (에너지) | 8장 patch |
+| **★D** | mirror reflection 메커니즘 (책임윤리) 단락 — 8장 2.3 신설 | Phase 1+2 mechanism 시각화 (Image #21·#22 정합) | 8장 patch |
+| **★E** | 박혜진 편집자 deliverable 묶음 — manifesto 한 줄 + 시계판/악보 viz + 부록 100 entries | 민음사 첫 검토용 | 편집자 미팅 trigger |
+
+## Phase 3 작업 완료 commits (2026-05-02 · 03 · 04)
+
+| commit | 작업 |
+|:--|:--|
+| `ec7a89a2` | 7장 세의 관찰일지 + 제3의 위치 manifesto 삽입 |
+| `e924148e` | 8장 ouroboros 호응 + 부록4 Anthropic cluster card |
+| `a11cbe7f` | web 파일명을 vault 의미와 일치 (author→mist, trick→mirror) |
+| `2392f2fc` | 8장 1.1 끝에 Raven 신화 단락 (단계 1 prototype) |
+| `7b622e86` | 8장 Raven 단락 확장 — 4 문화권 + 결정 불가능성 |
+| `0d1164ff` | 7장 anchor box prototype — 학자명 본문에서 부록 footnote로 |
+| `61c551df` | 부록4 참고문헌 16명 추가 (71→100) |
+
+## 메타 — Image #23에서 surprisingly useful한 발견 (4가지)
+
+1. **4 도메인 mirror** — 정보·물질·생체·에너지가 1↔5, 2↔6, 3↔7, 4↔8 mirror 짝과 *정확히 일치*. 책 구조의 *숨은 4×2 격자*. (★A·★B·★C trigger)
+2. **각 장 내부 변화 arc 명시** — 1장 *엠마(victim)→르뢰(trickster)*, 2장 *살리나→탄크레디*, 3장 *파늘루→리외+타루*, 4장 *땅의 로빈슨→태양의 로빈슨*. 동일 인물 두 자리가 아니라 *다른 인물 두 자세*. user의 *르뢰=trickster* 통찰과 정확 정합.
+3. **F·L·C·T ↔ H·U·O·I letter codes** — 각 장 prefix가 patterned. 의미 미상이지만 *체계적 명명* 존재. 두 번째 글자가 *공간*(F=무도회·L=항구·C=도시·T=섬·H=무대·U=창작·O=독재·I=신화) 가능성. 작가 검증 필요.
+4. **4 lens 색 코딩** (변신·행동·이론·사례) — 각 장이 *4 lens × 4 박자* 격자로 균질 작동. 색이 곧 lens 역할 시각화.
