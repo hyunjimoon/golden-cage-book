@@ -74,6 +74,45 @@
   .p3-text{font-size:12px;color:var(--text);}
   .p3-text b{color:var(--gold);}
   .p3-meta{font-size:9px;color:var(--dim);font-family:'DM Mono',monospace;}
+
+  /* ═══ INTENSITY VERIFICATION (Q3) ═══ */
+  .intensity{background:var(--surface);border:2px solid #8b5cf6;border-radius:12px;padding:20px;margin-bottom:24px;}
+  .int-title{font-size:14px;font-weight:700;color:#8b5cf6;margin-bottom:4px;}
+  .int-sub{font-size:10px;color:var(--dim);margin-bottom:14px;font-family:'DM Mono',monospace;}
+  .int-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:12px;}
+  .int-table th{padding:6px 4px;text-align:center;color:var(--dim);font-size:9px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+  .int-table th.label{text-align:left;}
+  .int-table td{padding:8px 4px;text-align:center;border-bottom:1px solid var(--border);}
+  .int-bar{display:inline-block;height:14px;border-radius:3px;vertical-align:middle;position:relative;}
+  .int-bar-l{background:linear-gradient(90deg,#862256,#3D8A8E);} /* cage */
+  .int-bar-r{background:linear-gradient(90deg,#F4D43C,#E8843C);} /* nest */
+  .int-bar.warn{background:linear-gradient(90deg,#f59e0b,#f43f5e);}
+  .int-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);font-weight:600;margin-left:6px;}
+  .int-pair{display:grid;grid-template-columns:1fr 50px 1fr;gap:10px;margin-bottom:8px;align-items:center;padding:8px 12px;background:var(--card);border-radius:6px;}
+  .int-pair .pair-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);text-align:center;font-weight:700;}
+  .int-pair .left,.int-pair .right{font-size:10px;color:var(--text2);}
+  .int-pair .left{text-align:right;} .int-pair .right{text-align:left;}
+  .int-asym{font-size:9px;padding:2px 6px;border-radius:4px;font-family:'DM Mono',monospace;display:inline-block;margin-left:6px;}
+  .int-asym.ok{background:rgba(16,185,129,0.15);color:var(--done);}
+  .int-asym.warn{background:rgba(245,158,11,0.15);color:var(--warn);}
+  .int-asym.bad{background:rgba(244,63,94,0.15);color:var(--blocked);}
+  .int-conclusion{background:var(--card);border-left:3px solid #8b5cf6;padding:12px;font-size:11px;color:var(--text2);line-height:1.7;border-radius:0 6px 6px 0;margin-top:12px;}
+  .int-conclusion b{color:#a78bfa;}
+
+  /* ═══ GITHUB OPEN ISSUES ═══ */
+  .ghissues{background:var(--surface);border:1px solid #38bdf8;border-radius:12px;padding:20px;margin-bottom:24px;}
+  .gh-title{font-size:14px;font-weight:700;color:#38bdf8;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .gh-sub{font-size:10px;color:var(--dim);margin-bottom:14px;font-family:'DM Mono',monospace;}
+  .gh-issue{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;padding:8px 12px;background:var(--card);border-radius:6px;margin-bottom:6px;font-size:11px;border-left:3px solid #38bdf8;}
+  .gh-num{font-family:'DM Mono',monospace;color:#38bdf8;font-weight:700;}
+  .gh-text{color:var(--text);}
+  .gh-label{display:inline-block;font-size:8px;padding:2px 6px;border-radius:8px;margin-left:4px;font-family:'DM Mono',monospace;}
+  .gh-label.l3{background:rgba(29,118,219,0.15);color:#5da8e8;}
+  .gh-label.l2{background:rgba(14,138,22,0.15);color:#4ade80;}
+  .gh-label.tool{background:rgba(83,25,231,0.15);color:#a78bfa;}
+  .gh-label.material{background:rgba(197,222,245,0.15);color:#94c5e8;}
+  .gh-label.debt{background:rgba(217,63,11,0.15);color:#f87171;}
+  .gh-meta{font-size:9px;color:var(--dim);font-family:'DM Mono',monospace;}
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Inter','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;padding:20px;max-width:1200px;margin:0 auto;}
 
@@ -374,32 +413,181 @@
     <div class="p3-meta">79412f50</div>
   </div>
 
-  <div class="p3-issue todo">
+  <div class="p3-issue done">
     <div class="p3-id">★B</div>
-    <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>7장 생체 사례</b> 본문 추가 — 4 도메인 mirror 생체 완성. (현재 1984 + 비즈니스만, 생체 도메인 명시 부재)</div>
-    <div class="p3-meta">대기</div>
+    <div class="p3-status">✅</div>
+    <div class="p3-text"><b>7장 생체 사례</b> — Novo Nordisk vs Aduhelm/Leqembi paired. 4 도메인 mirror 생체 완성. <i style="color:var(--warn);">⚠ "거짓말" 표현 정확화 필요 (★F)</i></div>
+    <div class="p3-meta">5195284f</div>
   </div>
 
   <div class="p3-issue todo">
     <div class="p3-id">★C</div>
     <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>8장 에너지 사례</b> 본문 추가 — 4 도메인 mirror 에너지 완성. (Mokyr는 비유, 명시 에너지 사례 부재)</div>
+    <div class="p3-text"><b>8장 에너지 사례</b> 본문 추가 — 4 도메인 mirror 에너지 완성. 후보: Ørsted(석유→풍력 재명명) vs 포스코(제철→이차전지)</div>
     <div class="p3-meta">대기</div>
   </div>
 
   <div class="p3-issue todo">
     <div class="p3-id">★D</div>
     <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>mirror reflection 메커니즘</b> 단락 — 8장 2.3 신설. Phase 1+2 책임윤리 작동 원리 (Image #21·#22 정합).</div>
+    <div class="p3-text"><b>mirror reflection 메커니즘</b> 단락 — 8장 2.3 신설. Phase 1+2 책임윤리 작동 원리 (Image #21·#22 정합)</div>
     <div class="p3-meta">대기</div>
   </div>
 
   <div class="p3-issue todo">
     <div class="p3-id">★E</div>
     <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>박혜진 편집자 deliverable</b> 묶음 — manifesto 한 줄 + 시계판/악보 viz + 부록 100 entries. 민음사 첫 검토.</div>
+    <div class="p3-text"><b>박혜진 편집자 deliverable</b> 묶음 — manifesto 한 줄 + 시계판/악보 viz + 부록 100 entries. 민음사 첫 검토</div>
     <div class="p3-meta">미팅 trigger</div>
+  </div>
+
+  <div class="p3-issue blocked">
+    <div class="p3-id">★F</div>
+    <div class="p3-status">🔥</div>
+    <div class="p3-text"><b>7장 다이어트 + Novo·Aduhelm 정확화</b> — Q3 검증으로 7장이 ★★★★★ (가장 무거움). 사례 6→4 압축. Q1 답: "거짓말"→"한 점 가설 매몰" 표현 약화. Q2 답: paired 정합성 (옵션 B/C) 검토</div>
+    <div class="p3-meta">★ 우선 1</div>
+  </div>
+
+  <div class="p3-issue blocked">
+    <div class="p3-id">★G</div>
+    <div class="p3-status">🔥</div>
+    <div class="p3-text"><b>8장 다이어트</b> — Mokyr·Keats·Brinkerink·Gould·노자 → 부록 8 *trickster 학술 풀* 분리. 단계 2 미완료 작업 재시작. 본문 무게 ★★★★★→★★★★</div>
+    <div class="p3-meta">★ 우선 2</div>
+  </div>
+
+  <div class="p3-issue todo">
+    <div class="p3-id">★H</div>
+    <div class="p3-status">⏸️</div>
+    <div class="p3-text"><b>6장 OpenAI vs Anthropic</b> paired (★A 옆 추가) — *making vs parenting* narrative. AI 시대 시의성 ★★★★★. *짧은 prototype* (5-6 단락)으로</div>
+    <div class="p3-meta">★ 우선 3</div>
+  </div>
+</div>
+
+<!-- ═══ CHAPTER INTENSITY VERIFICATION (Q3) ═══ -->
+<div class="intensity">
+  <div class="int-title">📊 Chapter Intensity 검증 (Q3, 5월 4일)</div>
+  <div class="int-sub">각 장 무게 측정 + mirror 짝 비대칭 진단 — *Image #22 mirror reflection thesis* 자기 정합 점검</div>
+
+  <table class="int-table">
+    <thead>
+      <tr>
+        <th class="label">장</th>
+        <th>본문 행수</th>
+        <th>사례 수</th>
+        <th>학술 anchor</th>
+        <th>무게 (★ 1-5)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label" style="color:var(--ch1);text-align:left;">1 거울새장</td><td>~180</td><td>3</td><td>1</td><td><span class="int-bar int-bar-l" style="width:40%;"></span><span class="int-num">★★</span></td></tr>
+      <tr><td class="label" style="color:#c4b56a;text-align:left;">2 망원경새장</td><td>~177</td><td>3</td><td>2</td><td><span class="int-bar int-bar-l" style="width:40%;"></span><span class="int-num">★★</span></td></tr>
+      <tr><td class="label" style="color:#5cc4a7;text-align:left;">3 스테인드글라스</td><td>~178</td><td>4</td><td>2</td><td><span class="int-bar int-bar-l" style="width:60%;"></span><span class="int-num">★★★</span></td></tr>
+      <tr><td class="label" style="color:#6cc4c8;text-align:left;">4 시계새장</td><td>~191</td><td>4</td><td>1</td><td><span class="int-bar int-bar-l" style="width:40%;"></span><span class="int-num">★★</span></td></tr>
+      <tr><td class="label" style="color:var(--ch5);text-align:left;">5 역할둥지</td><td>~167</td><td>4</td><td>2</td><td><span class="int-bar int-bar-r" style="width:40%;"></span><span class="int-num">★★</span></td></tr>
+      <tr><td class="label" style="color:#9cb56b;text-align:left;">6 안개둥지</td><td>~270</td><td>6</td><td>3</td><td><span class="int-bar int-bar-r" style="width:80%;"></span><span class="int-num">★★★★</span></td></tr>
+      <tr style="background:rgba(244,63,94,0.05);"><td class="label" style="color:#5d7da8;text-align:left;">7 언어둥지</td><td>~376</td><td>6</td><td><b style="color:var(--blocked);">10+</b></td><td><span class="int-bar warn" style="width:100%;"></span><span class="int-num" style="color:var(--blocked);">★★★★★</span></td></tr>
+      <tr style="background:rgba(244,63,94,0.05);"><td class="label" style="color:var(--ch8);text-align:left;">8 거울둥지</td><td>~330</td><td>5</td><td><b style="color:var(--blocked);">7</b></td><td><span class="int-bar warn" style="width:100%;"></span><span class="int-num" style="color:var(--blocked);">★★★★★</span></td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:11px;color:var(--text2);margin-top:8px;margin-bottom:8px;font-weight:600;">Mirror 짝 비대칭:</div>
+
+  <div class="int-pair">
+    <div class="left">1 거울새장 ★★</div>
+    <div class="pair-label">1↔5</div>
+    <div class="right">5 역할둥지 ★★ <span class="int-asym ok">✓ 균형</span></div>
+  </div>
+  <div class="int-pair">
+    <div class="left">2 망원경새장 ★★</div>
+    <div class="pair-label">2↔6</div>
+    <div class="right">6 안개둥지 ★★★★ <span class="int-asym warn">⚠ 6장 2배 무거움</span></div>
+  </div>
+  <div class="int-pair">
+    <div class="left">3 스테인드글라스 ★★★</div>
+    <div class="pair-label">3↔7</div>
+    <div class="right">7 언어둥지 ★★★★★ <span class="int-asym bad">⚠⚠ 7장 압도</span></div>
+  </div>
+  <div class="int-pair">
+    <div class="left">4 시계새장 ★★</div>
+    <div class="pair-label">4↔8</div>
+    <div class="right">8 거울둥지 ★★★★★ <span class="int-asym bad">⚠⚠ 8장 압도</span></div>
+  </div>
+
+  <div class="int-conclusion">
+    <b>책 무게중심이 5-8장에 쏠림.</b> 특히 7·8장이 1·4장의 ~2.5배 무게 (학술 anchor 10+, 7+). <b>Image #22 mirror reflection thesis 자기 위반</b> — 짝이 *대칭*이어야 *interdependence*가 작동.<br>
+    → <b>★F (7장 다이어트) + ★G (8장 anchor 부록 분리)가 ★C·D·E·H보다 우선.</b> 추가보다 다이어트가 mirror 균형 회복의 핵심.
+  </div>
+</div>
+
+<!-- ═══ GITHUB OPEN ISSUES ═══ -->
+<div class="ghissues">
+  <div class="gh-title">🎟️ GitHub Open Issues — 핵심 (golden-cage-book)</div>
+  <div class="gh-sub">https://github.com/hyunjimoon/golden-cage-book/issues · open 23건 중 Phase 3 직결 11건 선별</div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#67</div>
+    <div class="gh-text">📚뇌는 어떻게 변화를 거부하는가 <span class="gh-label l3">3차소통</span> — Klein 7장 anchor (부록4 등록 ✅, 본문 footnote ✅)</div>
+    <div class="gh-meta">5/2</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#66</div>
+    <div class="gh-text"><b>둥지편</b> <span class="gh-label l3">3차소통</span> — 5-8장 전체. 현재 Phase 3 메인 trigger</div>
+    <div class="gh-meta">5/1</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#65</div>
+    <div class="gh-text">독자프로필 — 7명 panel (대학생·부모·직장인 3타입). 박혜진 deliverable (★E) 정합</div>
+    <div class="gh-meta">4/27</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#53</div>
+    <div class="gh-text">패턴브레이커 인용과 질문들 — Maples *Pattern Breakers*. 6장 ★A Tesla *STARTUP IS THE VEHICLE* 정합 ✅</div>
+    <div class="gh-meta">4/25</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#49</div>
+    <div class="gh-text">대표독자 7명 교차리뷰 13지점 fix <span class="gh-label l2">2차소통</span> — CC1+CC2 합산 210건 → 4명+ 겹침</div>
+    <div class="gh-meta">4/20</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#47</div>
+    <div class="gh-text">1~4장 다이어트 — 7요소 공식을 뼈로 재구조화 <span class="gh-label l2">2차소통</span>. ★F·★G 5-8장 다이어트와 mirror</div>
+    <div class="gh-meta">4/19</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#45</div>
+    <div class="gh-text">📐 장 미시구조 7칸 격자 적용 <span class="gh-label l2">2차소통</span><span class="gh-label tool">어떻게-도구</span> — 4장 공통 격자</div>
+    <div class="gh-meta">4/16</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#44</div>
+    <div class="gh-text">장 끝 다/세 에세이 + 오웰 반박 에세이 구조 <span class="gh-label l3">3차소통</span> — 7장 BB 호명 정합</div>
+    <div class="gh-meta">4/16</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#33</div>
+    <div class="gh-text">✍️ 본문 품질 — 남은 빚 <span class="gh-label debt">무엇-빚</span>. ★F·★G 다이어트와 직결</div>
+    <div class="gh-meta">4/9</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#22</div>
+    <div class="gh-text">부록3 창업소설 작법론 <span class="gh-label l3">3차소통</span><span class="gh-label tool">도구</span> — 우나무노 × 오웰 새 장르 (6·7장)</div>
+    <div class="gh-meta">4/9</div>
+  </div>
+
+  <div class="gh-issue">
+    <div class="gh-num">#9</div>
+    <div class="gh-text"><b>다/세 감정 궤적 — 대사 최적화</b> <span class="gh-label l2">2차소통</span> — 5월 2일 10 cluster 확장 댓글 ✅. 6축 + 10 cluster 두 layer</div>
+    <div class="gh-meta">4/5</div>
   </div>
 </div>
 
