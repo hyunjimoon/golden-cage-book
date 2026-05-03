@@ -8,6 +8,8 @@
 알베르 카뮈, 『페스트』, 김화영 옮김, 민음사, 2011. — 재앙 앞에서 기록하는 손 ([세계문학전집 267](267 페스트.md))
 미셸 투르니에, 『방드르디, 태평양의 끝』, 김화영 옮김, 민음사, 2003. — 자기 섬을 부수는 순간 ([세계문학전집 91](091 방드르디, 태평양의 끝.md))
 
+대니얼 디포 (Daniel Defoe), 『로빈슨 크루소』, 1719. — 4장의 *원본*. 디포의 로빈슨은 *문명의 승리*, 투르니에의 로빈슨은 *문명의 포로* — 같은 인물 두 결말
+
 ### 논픽션
 
 [르네 지라르](르네 지라르.md), 『낭만적 거짓과 소설적 진실』, 김치수·송의경 옮김, 한길사, 2001. — 모방욕망. ch1 엠마 + ch4 교환가치의 공통 엔진
@@ -18,6 +20,12 @@ Mike Maples Jr·Peter Ziebelman, *Pattern Breakers*, PublicAffairs, 2024. → �
 유발 노아 하라리, 『넥서스』(*Nexus*), 김명주 옮김, 김영사, 2024. — 정보 네트워크가 권력이 되는 구조. 서사가 검증을 대체할 때 벌어지는 일
 문현지, "Golden Cage: Paradox of Early Funding and Growth", MIT SM Thesis, 2026. — 이 책의 학술 원본
 
+### 1-4장 추가 학술 anchor (본문 호명)
+
+피에르 부르디외 (Pierre Bourdieu), *La Distinction* (1979) · *Le Sens pratique* (1980). — **2장 *habitus* anchor**. 몸에 밴 *지각·평가·행위의 구조*. 의식보다 빠르게 작동. 살리나가 *알면서도 못 움직인* 이유
+
+칼 폰 클라우제비츠 (Carl von Clausewitz), *Vom Kriege* (1832). — **2장 *기세(Schwung)* anchor**. 안개 속에서 *완벽한 지도를 기다리며 멈춘 군대*보다 *움직이는 군대*가 이긴다. 살리나의 한계, 탄크레디의 정합
+
 ### 5-8장 참고문헌 (편집자 소개용)
 
 #### 5장 — M.나비 (역할둥지)
@@ -26,6 +34,8 @@ David Henry Hwang, *M. Butterfly*, Plume, 1988. — 송 릴링이 갈리마르�
 
 Lewis Hyde, *Trickster Makes This World*, FSG, 1998. → [📜hyde_trickster_makes_world](📜hyde_trickster_makes_world.md) — Hopi 광대(ritual clowns)의 성스러운 거꾸로 행위. **5-8장 전체의 학술 anchor**
 
+Erving Goffman, *The Presentation of Self in Everyday Life*, Anchor Books, 1959. — **5장 *role distance* anchor**. 일상은 무대, 우리는 매 순간 *연기 중*. *frontstage·backstage·impression management*. 송 릴링의 분장실이 founder의 *피칭 언어 닿지 않는 자리*인 이유
+
 (음화) 로돌프(Rodolphe Boulanger), 『마담 보바리』 — 5장 음화. 환상을 능동적으로 *짓고 떠난* 자. Phase 1만 한 trickster
 
 #### 6장 — 안개 (작가둥지)
@@ -33,6 +43,8 @@ Lewis Hyde, *Trickster Makes This World*, FSG, 1998. → [📜hyde_trickster_mak
 Miguel de Unamuno, *Niebla*, 1914. — *nivola* 형식. 작가가 자기 등장인물 앞에 서는 메타픽션. *진단의 자리*
 
 마르쿠스 아우렐리우스, 『명상록』(*Meditations*, *τὰ εἰς ἑαυτόν* — *자기 자신에게*), 천병희 옮김, 숲, 2005. — **6장 처방의 화신**. 황제가 *작가 = 독자 = 자기*인 자리에 1800년 전부터 매일 섰다. Bezos *Day 1*·Buffett 연차서한·Dalio *Principles*의 직계 조상
+
+폴 리쾨르 (Paul Ricœur), *Soi-même comme un autre* (1990) · *Temps et récit* (1983-85). — **6장 *narrative identity* anchor**. *idem*(같음, 변하지 않는 부분) vs *ipse*(자기됨, 서사로만 짜이는 부분). *서사가 자기를 짓는다.* 우나무노 nivola의 철학적 정초
 
 NotebookLM, *The Trickster's Engine*, 2025. → 5-8장 격자 anchor. Hyde 6 mechanic 시각 정리 (Restraint·Boundary Crossing·Sacred Theft·Disenchant·Re-enchant·Engine of Cultural Evolution)
 
@@ -65,6 +77,16 @@ Michael Polanyi, *The Tacit Dimension*, Routledge, 1966. — *"우리가 말할 
 
 Clifford Geertz, *The Interpretation of Cultures*, Basic Books, 1973. — *"Culture is public because meaning is."* 의미가 공적이므로 문화도 공적
 
+Edward Sapir, "The Status of Linguistics as a Science", *Language* 5(4), 1929, pp. 207–214. — *언어상대성* 가설 정식화 출발. *"우리가 사는 '실제 세계'는 상당 부분 그 집단의 언어 습관 위에 무의식적으로 지어진다"*
+
+Benjamin Lee Whorf, *Language, Thought, and Reality*, MIT, 1956. — 워프의 호피어 시제 분석. 강한 버전(언어결정론) — Newspeak의 작동 원리
+
+Walter B. Cannon, *The Wisdom of the Body*, W. W. Norton, 1932. — *homeostasis* 명명. 신체가 변화에 *능동적으로 저항*. 7장 *뇌가 변화를 싫어한다* anchor ① (신체)
+
+Daniel Kahneman & Amos Tversky, "Prospect Theory: An Analysis of Decision under Risk", *Econometrica* 47(2), 1979, pp. 263–291. — *loss aversion* 정초. 잃는 것이 얻는 것보다 *2배 무겁게* 느껴진다. 7장 anchor ② (인지). 카너먼 *Thinking, Fast and Slow* (2011)에서 종합
+
+William Samuelson & Richard Zeckhauser, "Status Quo Bias in Decision Making", *Journal of Risk and Uncertainty* 1, 1988, pp. 7–59. — *status quo bias* 정초. *현 상태*로 표시되면 합리적 비교를 압도. 7장 anchor ③ (결정)
+
 #### 8장 — Trickster (트릭둥지)
 
 Lewis Hyde, *Trickster Makes This World*, FSG, 1998. → [📜hyde_trickster_makes_world](📜hyde_trickster_makes_world.md) — **메인**. 8 trickster (Hermes·Raven·Coyote·Loki·Eshu·Krishna·Maui·Monkey) + Frederick Douglass의 4단계 (*Refusing Bait → Sacred Theft → Boundary Crossing → Re-enchantment*)
@@ -76,6 +98,18 @@ Frederick Douglass, *Narrative of the Life of Frederick Douglass, an American Sl
 『호메로스 찬가』 「헤르메스에게」(*Homeric Hymn to Hermes*), 천병희 옮김, 숲, 2011. — Hermes의 50소 도둑질 + 거북등껍질 라이어 발명 + Apollo 화해 *원본 신화*. Hyde Phase 1+2의 학술 anchor
 
 오비디우스, 『변신 이야기 1·2』(*Metamorphoses*), 이윤기 옮김, 민음사, 1998. ([민음사 1·2](001 변신 이야기 1.md)) — 보조. Mercury·Battus 일화 (Book 2.676-707). Hermes 신화의 라틴 전승
+
+Joel Mokyr, *The Lever of Riches: Technological Creativity and Economic Progress*, Oxford University Press, 1990. & *A Culture of Growth*, Princeton, 2017. — **8장 진화 anchor**. *artificial selection*(인공선택) vs *natural selection*(자연선택). 단기 효율은 인공선택 압승, 환경 바뀌면 *닭공장이 먼저 무너진다*. 일연 *유사*의 경제사적 거울
+
+Stephen Jay Gould & Richard Lewontin, "The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme", *Proceedings of the Royal Society B*, 1979. — **8장 변이 풀 anchor**. 베네치아 산마르코 대성당 아치 사이 *부산물*이 모자이크의 자리가 된다. *부산물로 살아남은 변이가 다음 시대 재료*
+
+John Keats, letter to George and Tom Keats, December 21, 1817. — *Negative Capability* 정의. *"capable of being in uncertainties, mysteries, doubts, without any irritable reaching after fact and reason"*. 셰익스피어를 두고 한 말. 일연 *모음*의 심리적 조건
+
+Jasper J. Brinkerink, "Negative and Positive Capability in Founder Behaviour", *Strategic Change*, 2025. — Keats NC를 founder 행동에 적용. NC(머무는 능력) + PC(결단·실행) 균형. PC만 = 조급한 closure / NC만 = 무한한 미결
+
+노자(老子), 『도덕경』 11장. — ***無之以爲用*** *"빈 것이 쓸모를 만든다"*. 30 바큇살이 한 바퀴통에 모이지만 *비어 있음* 때문에 수레가 굴러간다. 동양의 NC·spandrel 거점
+
+Edgar Allan Poe, "The Raven" (1845) · "The Philosophy of Composition", *Graham's Magazine*, 1846. — 8장 음화. *Nevermore* = Phase 2가 *봉인*으로 끝남. *Composition*에서 자기 시 작법을 역공학으로 폭로 — *trickster의 메타 자기참조*
 
 #### 7-8장 비교 사례 (창업)
 
