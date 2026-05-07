@@ -144,6 +144,36 @@
   .footer { text-align: center; margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); font-size: 10px; color: var(--dim); font-family: 'DM Mono', monospace; letter-spacing: 1px; }
   .footer a { color: var(--gold); text-decoration: none; }
 
+  /* NEXT NOW hero */
+  .next-now { background: linear-gradient(135deg, rgba(197,165,90,0.15), rgba(228,132,60,0.10)); border: 2px solid var(--gold); border-radius: 14px; padding: 22px 24px; margin-bottom: 16px; }
+  .next-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .next-id { display: inline-block; font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 700; color: var(--gold); padding: 3px 10px; background: var(--gold-soft); border-radius: 6px; margin-right: 10px; }
+  .next-title { display: inline; font-family: 'Noto Serif KR', serif; font-size: 19px; font-weight: 600; color: var(--text); }
+  .next-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-2); }
+  .next-meta b { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; margin-right: 4px; }
+
+  /* time bucket */
+  .bucket { background: var(--card-2); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+  .bucket-h { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+  .bucket-week .bucket-h { color: var(--warn); }
+  .bucket-await .bucket-h { color: var(--text-2); }
+  .bucket-back .bucket-h { color: var(--dim); }
+  .task-row { display: grid; grid-template-columns: 50px 1fr auto auto; gap: 10px; align-items: center; padding: 7px 0; font-size: 12px; border-top: 1px solid var(--border); }
+  .task-row:first-of-type { border-top: none; }
+  .task-id { font-family: 'DM Mono', monospace; color: var(--gold); font-size: 11px; font-weight: 700; }
+  .task-name { color: var(--text); }
+  .task-name .why { color: var(--dim); font-size: 10px; margin-left: 6px; }
+  .effort, .impact { font-family: 'DM Mono', monospace; font-size: 9px; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px; }
+  .effort { background: rgba(255,255,255,0.05); color: var(--text-2); }
+  .impact { color: var(--gold); }
+
+  /* progress bar */
+  .progress { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding: 12px 16px; background: var(--card-2); border-radius: 8px; }
+  .progress-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-2); letter-spacing: 1px; min-width: 100px; }
+  .progress-bar { flex: 1; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--done), var(--gold)); border-radius: 4px; transition: width 0.6s; }
+  .progress-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700; }
+
   @media (max-width: 880px) {
     .mod-nav, .prev-grid, .status-grid { grid-template-columns: 1fr 1fr; }
     .struct-frame, .ch-row { grid-template-columns: 1fr; }
@@ -343,26 +373,103 @@
   </a>
 </div>
 
-<!-- STATUS -->
+<!-- TASK BOARD (priority view) -->
+<div class="section-h">
+  <div class="num">★</div>
+  <h2>다음 할 일 — 우선순위 순</h2>
+  <div class="desc">NEXT 1 · THIS WEEK · AWAITING · DONE 6/9</div>
+</div>
+
+<!-- NEXT NOW HERO -->
+<div class="next-now">
+  <div class="next-label">⏰ NEXT — 지금 할 일 (1)</div>
+  <div>
+    <span class="next-id">★H</span>
+    <span class="next-title">6장 OpenAI vs Anthropic paired (making vs parenting narrative)</span>
+  </div>
+  <div class="next-meta">
+    <span><b>EFFORT</b>M · 1h</span>
+    <span><b>IMPACT</b>★★★★★ AI 시대 시의성</span>
+    <span><b>WHY NOW</b>★A·B·C 직후 momentum · Plan v2 2-agent fit</span>
+    <span><b>MODE</b>Author + Verifier 🔴</span>
+  </div>
+</div>
+
+<!-- Progress bar -->
+<div class="progress">
+  <div class="progress-label">PHASE 3 · 3차소통</div>
+  <div class="progress-bar"><div class="progress-fill" style="width:67%;"></div></div>
+  <div class="progress-num">6 / 9</div>
+</div>
+
+<!-- THIS WEEK -->
+<div class="bucket bucket-week">
+  <div class="bucket-h">🔥 This Week (자율 가능)<span style="color:var(--dim);font-size:9px;">총 ~2h</span></div>
+  <div class="task-row">
+    <span class="task-id">★H</span>
+    <span class="task-name">6장 OpenAI vs Anthropic <span class="why">★A·B·C 같은 패턴 4번째 paired</span></span>
+    <span class="effort">M 1h</span>
+    <span class="impact">★★★★★</span>
+  </div>
+  <div class="task-row">
+    <span class="task-id">rename</span>
+    <span class="task-name">chapter 이름 vault 동기화 (놀이/의심/새둥지) <span class="why">dashboard와 일치</span></span>
+    <span class="effort">S 30m</span>
+    <span class="impact">★★★</span>
+  </div>
+  <div class="task-row">
+    <span class="task-id">issue</span>
+    <span class="task-name">GitHub Issue #68 (르뢰 angry deflection) 본문 반영 ✅ → close <span class="why">정리</span></span>
+    <span class="effort">XS 5m</span>
+    <span class="impact">★★</span>
+  </div>
+</div>
+
+<!-- AWAITING -->
+<div class="bucket bucket-await">
+  <div class="bucket-h">⏳ Awaiting Trigger (외부 의존)</div>
+  <div class="task-row">
+    <span class="task-id">★E</span>
+    <span class="task-name">박혜진 편집자 deliverable 묶음 <span class="why">미팅 일정 결정 시 — NotebookLM + viz + 부록 100</span></span>
+    <span class="effort">L 반나절</span>
+    <span class="impact">★★★★★</span>
+  </div>
+  <div class="task-row">
+    <span class="task-id">slide</span>
+    <span class="task-name">NotebookLM 슬라이드 prompt 입력 → 결과 수령 <span class="why">자장 직접 작업</span></span>
+    <span class="effort">S 30m</span>
+    <span class="impact">★★★★</span>
+  </div>
+</div>
+
+<!-- BACKLOG -->
+<div class="bucket bucket-back">
+  <div class="bucket-h">🗄️ Backlog · Phase 4 (출판 전)</div>
+  <div class="task-row">
+    <span class="task-id">★G</span>
+    <span class="task-name">8장 학자 anchor 부록 분리 <span class="why">clarity 강화 · 시급 X</span></span>
+    <span class="effort">M 1-2h</span>
+    <span class="impact">★★</span>
+  </div>
+  <div class="task-row">
+    <span class="task-id">P4</span>
+    <span class="task-name">1-4장 다이어트 + 2 Writers (Cage+Nest) 분업 도입 <span class="why">Plan v2 D항</span></span>
+    <span class="effort">XL 1일+</span>
+    <span class="impact">★★★★</span>
+  </div>
+</div>
+
+<!-- DONE collapsed -->
 <details class="status">
-  <summary>📊 작업 상태 · Phase 1·2·3·4</summary>
+  <summary>✅ Done · 6 task (Phase 3, 5/4)</summary>
   <div class="status-body">
-    <div class="status-grid">
-      <div class="status-cell"><b>Phase 1</b>framework·1차 원고 · 4월 이전</div>
-      <div class="status-cell"><b>Phase 2 — 2차소통</b>1-4장 cage 본문 · 부록 1-7 · 4월</div>
-      <div class="status-cell"><b>Phase 3 — 3차소통 (현재)</b>5-8장 nest 본문 · 부록 8·9 · 5월. ★A-J 中 6 ✅</div>
-    </div>
-    <div style="font-size:11px;color:var(--dim);margin-bottom:8px;font-family:'DM Mono',monospace;letter-spacing:1px;">★ TASKS</div>
     <div class="issue-row done"><div class="issue-id">★A</div><div>✅</div><div>6장 Better Place vs Tesla paired</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★B</div><div>✅</div><div>7장 Novo Nordisk vs Aduhelm</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★C</div><div>✅</div><div>8장 Ørsted·포스코 vs BP (Plan v2 dry run)</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★D</div><div>✅</div><div>8장 mirror reflection 메커니즘 (2.3)</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★F</div><div>✅</div><div>7장 다이어트 + Q1·Q2 정확화</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★J</div><div>✅</div><div>부록 9 D·S Dual AI Cookbook</div><div class="issue-meta">5/4</div></div>
-    <div class="issue-row todo"><div class="issue-id">★E</div><div>⏸️</div><div>박혜진 편집자 deliverable (NotebookLM + viz + 부록 100)</div><div class="issue-meta">미팅 trigger</div></div>
-    <div class="issue-row todo"><div class="issue-id">★G</div><div>⏸️</div><div>8장 anchor 부록 분리 (clarity, low priority)</div><div class="issue-meta">대기</div></div>
-    <div class="issue-row todo"><div class="issue-id">★H</div><div>⏸️</div><div>6장 OpenAI vs Anthropic (parenting narrative)</div><div class="issue-meta">대기</div></div>
-    <div style="margin-top:14px;font-size:11px;color:var(--dim);">→ 더 보기: <a style="color:var(--gold);" href="https://github.com/hyunjimoon/golden-cage-book/issues" target="_blank">GitHub Issues</a> · <a style="color:var(--gold);" href="agent_delegation_v1_3voice.md" target="_blank">Plan v2 (3 voice)</a></div>
+    <div style="margin-top:14px;font-size:11px;color:var(--dim);">→ 더 보기: <a style="color:var(--gold);" href="https://github.com/hyunjimoon/golden-cage-book/issues" target="_blank">GitHub Issues</a></div>
   </div>
 </details>
 
