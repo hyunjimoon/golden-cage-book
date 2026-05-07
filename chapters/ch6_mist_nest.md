@@ -5,8 +5,8 @@ target_chars: ~7000
 
 building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/121 안개.md)
 
-# CHAPTER 6 — 안개 둥지
-*관조하는 자에서, 작가를 대면하는 자로*
+# CHAPTER 6 — 안개 둥지 · **선을 넘어라**
+*관조하는 자에서, 작가를 대면하는 자로 — 책장의 선을, 작가의 책상까지.*
 
 > **이 장의 공식**: 자기 이야기는 *작가에게 가서* 다시 쓰여진다.
 > ★**멈춤** → 모방 → 넘김 → 매혹: 시키는 시나리오에 *바로 안 따름*(공백) → 작가의 자리를 *모방해 가져온다* → 책장 안에서 밖으로 *넘는다* → 자기 nivola로 *매혹시킨다*.
@@ -54,7 +54,7 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 ---
 
-## 2. 이론 — 짓는 궁리
+## 2. 생각 — 짓는 궁리
 
 ### 2.1 학자 — Crucial Third Position (Hyde·Ricœur·아우렐리우스)
 
@@ -84,7 +84,7 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 ---
 
-## 3. 현장 — 어디에
+## 3. 현실 — 어디에
 
 ### 3.1 글로벌 — Better Place vs Tesla (paired)
 
@@ -104,7 +104,23 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 **다:** 그래서 6장 처방이 정확히 이거예요. *시장이 써준 서사*(EV가 더 좋아야 한다)를 받아 입지 말고 — *내가 작가가 되어* *어떤 세계로 가는가*를 직접 써라. 그러면 회사는 그 세계의 *vehicle*이 됩니다.
 
-### 3.2 한국 — 토스의 termsheet 거절 vs 쿠팡의 차등의결권
+### 3.2 글로벌 — OpenAI vs Anthropic (paired) — *making* vs *parenting*
+
+**세:** 같은 산업, 다른 *작가의 자리*. 두 회사 모두 *AI 안전·역량 frontier*에 있어요. 그런데 *narrative frame*이 정반대.
+
+**세:** **OpenAI** (Sam Altman, 2015년 설립). 미션 — *"safe and beneficial AGI"*. *AGI를 *만든다*는* maker narrative. ChatGPT(2022.11.30)가 Phase 1 충격(2개월 1억 사용자). *제작자가 인물을 *생산*하는* 자리.
+
+**다:** **Anthropic** (Dario·Daniela Amodei + ex-OpenAI safety team, 2021년 설립). Constitutional AI(2022) + Responsible Scaling Policy(2023). 미션 — *"AI safety research"*. AI를 *키우는 자세*로 접근 — *parenting narrative*. 모델에 *헌법(Constitution)*을 주고, 책임을 *명시적 솔기*로 노출.
+
+**세:** 6장 메타픽션의 직접 사례예요. OpenAI는 *"내가 너를 만든다"* (우나무노가 아우구스토에게) — 작가가 인물 위에 있어요. Anthropic은 *"우리가 너와 *함께* 자란다"* (작가와 인물이 *같은 책상*에) — Crucial Third Position.
+
+**다:** narrative 차이가 *조직 lexicon*까지 갔어요. OpenAI lexicon: *AGI*·*scaling laws*·*capability*. Anthropic lexicon: *Constitutional AI*·*alignment*·*interpretability*. *같은 분야, 다른 단어 풀.* 7장 *Gibbons clarity·naming·framing*의 직접 사례 — *어휘가 조직을 짓는다*.
+
+**세:** 이건 *novela vs nivola* 한 글자 비틂. OpenAI = *novela* (제작자가 인물을 *위에서* 만든다). Anthropic = *nivola* (작가와 인물이 *같이 짠다*). Better Place vs Tesla(물질)와 동형 패턴이 *정보 도메인*에서 한 번 더 — *cross-domain*으로 같은 작가-인물 자리가 작동.
+
+**다:** 5월 3일 manifesto와 정확 정합 — *"신화를 부수고, 함께 짓는다"* + Maples *"STARTUP IS THE VEHICLE"*. Anthropic의 *함께 키운다*가 manifesto의 *함께 짓는다*의 AI 시대 형태. 한국 cross-reference — 카카오·LG AI 연구원·NAVER 하이퍼클로바가 *making* 또는 *parenting* 분기점에 서 있어요. 향후 10년 한국 AI 산업의 *작가 자리*가 결정될 자리.
+
+### 3.3 한국 — 토스의 termsheet 거절 vs 쿠팡의 차등의결권
 
 **세:** 토스. 2014년 시리즈 A. 이승건이 한 외국 VC와 termsheet까지 갔어요. 평가가 좋았고, 자금이 절실했어요. 그런데 termsheet 조항을 보니 — *대표 해임권이 투자자에게* 있었어요. *"성과 미달 시 이사회가 대표를 교체할 수 있다."*
 
@@ -122,7 +138,7 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 **다:** 5장 Slack이 *옷을 입었다*면, 6장 토스·쿠팡은 *옷장 밖*을 본 거예요. 누가 옷을 만드는 작가인지, 누가 옷을 입는 인물인지 — *그 경계 자체*를 협상한 거예요.
 
-### 3.3 책상 가는 길 — 3질문
+### 3.4 책상 가는 길 — 3질문
 
 **세:** 1장은 욕망의 출처를 물었어요. 5장은 옷의 안과 밖을 물었어요. 6장은 *작가가 누구인가*를 물어요.
 
@@ -134,7 +150,7 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 ## 4. 실천 — 다시 짓기
 
-### 4.1 한 줄 — 자기 서사를 써라
+### 4.1 한 줄 — **선을 넘어라** (부수: 자기 서사를 써라)
 
 **다:** 6장이 어려운 이유 — 작가를 만나려면 자기가 *인물임을 받아들여야* 하기 때문이에요. 받아들이지 않으면 책장 안에 있는 줄도 몰라요. 살리나는 *책장 안에 있다*는 걸 알았어요. 그런데 거기서 멈췄어요. *아우구스토는 책장을 넘어요.*
 
@@ -146,7 +162,7 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 **다:** 그래서 6장은 *둘이 같이 책상으로 가는 자리*예요. 한 명이 작가의 의자, 한 명이 인물의 의자에 앉되 — *자리가 바뀔 수 있어야* 해요. *고정된 자리는 새장이에요.*
 
-> 작가에게 가라. 그리고 *대등하게* 앉아라. ✍️**자기 서사를 써라** — 우나무노처럼 자기 *nivola*를, 아우렐리우스처럼 매일.[^2]
+> ***선을 넘어라*** — 책장과 책상 사이, 인물과 작가 사이, 시장이 쓰게 한 계획서와 내가 쓴 계획서 사이. 넘은 자만 *대등하게* 앉을 수 있다. 그 자리에서 ✍️ **자기 서사를 써라** — 우나무노처럼 자기 *nivola*를, 아우렐리우스처럼 매일.[^2]
 
 ---
 

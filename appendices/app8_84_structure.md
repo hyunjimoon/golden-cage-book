@@ -1,7 +1,7 @@
 ---
 title: 84구조 — 황금새장을 열다
 ---
-
+[문현지_문체](시간리듬/🎵 Weekly_Melody/6_전토플랫폼_현지/문현지_문체.md)
 → [hyde_trickster](공간화음/Thesis/1논문용/📜hyde_trickster_makes_world.md)
 
 # 84구조 — 황금새장을 열다

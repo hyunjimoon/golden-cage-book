@@ -64,6 +64,8 @@ George Orwell, "Why I Write", *Gangrel*, 1946. → [나는 왜 쓰는가](나는
 
 Noah D. Goodman & Joshua B. Tenenbaum, *Probabilistic Models of Cognition*, MIT, 2016. → http://probmods.org — **PLoT** 공식. 함수·조건화·합성 3기계 (확률 프로그래밍 언어 *Church*·*WebPPL*)
 
+★ **Anthropic, *Constitutional AI: Harmlessness from AI Feedback*, arXiv:2212.08073 (2022.12) + *Responsible Scaling Policy* (2023).** — **6장 ★H *parenting narrative* anchor**. AI를 *키우는 자세*로 접근 — 모델에 *헌법(Constitution)*을 주고 책임을 *명시적 솔기*로 노출. OpenAI *making narrative*와 mirror 짝. *novela vs nivola* 한 글자 비틂의 정보 도메인 형태
+
 ★ **Anthropic, "Emotion Probe Clusters" (UMAP), interpretability research, 2025.** — **7장 *세의 관찰일지* 측정틀**. 10 cluster taxonomy:
 
 | 클러스터 (어수) | 무게중심 |
