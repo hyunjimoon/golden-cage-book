@@ -3,847 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DASHBOARD — 황금새장을 열다 (1-8장 통합)</title>
+<title>황금새장을 열다 — 작가의 대시보드</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+
   :root {
-    --bg:#0a0e1a; --surface:#111827; --card:#1a2234; --border:rgba(255,255,255,0.06);
-    --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b; --muted:#475569;
-    --ch1:#862256; --ch2:#8B7D3C; --ch3:#2D8B73; --ch4:#3D8A8E;
-    --ch5:#F4D43C; --ch6:#6B8E4B; --ch7:#1A3A5C; --ch8:#E8843C;
-    --gold:#C5A55A; --emerald:#10b981; --rose:#f43f5e; --warn:#f59e0b;
-    --done:#10b981; --wip:#f59e0b; --blocked:#f43f5e; --skip:#475569;
-    --domain-info:#5B9A8B; --domain-matter:#C4A06A; --domain-bio:#9B6B9E; --domain-energy:#D97757;
+    --bg: #0e1320;
+    --card: #1a2238;
+    --card-2: #232c47;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0f2f5;
+    --text-2: #b8c2d4;
+    --dim: #7c8aa8;
+    --gold: #c5a55a;
+    --gold-soft: rgba(197,165,90,0.18);
+
+    /* 새장 (warm — cage) */
+    --c1: #c8688a;  --c2: #c4b06a;  --c3: #5cc4a7;  --c4: #6cc4c8;
+    /* 둥지 (cool — nest) */
+    --c5: #f4d43c;  --c6: #9cb56b;  --c7: #5d7da8;  --c8: #e8843c;
+
+    --done: #4ade80;
+    --warn: #fbbf24;
   }
 
-  /* ═══ Phase 3 (5월 4일) — manifesto + mirror + issues ═══ */
-  .manifesto-bar{background:linear-gradient(135deg,rgba(197,165,90,0.15),rgba(228,132,60,0.10));border:2px solid var(--gold);border-radius:12px;padding:24px;margin-bottom:24px;text-align:center;}
-  .manifesto-quote{font-size:24px;font-weight:700;color:var(--gold);letter-spacing:-0.5px;margin-bottom:8px;font-family:'Noto Sans KR',sans-serif;}
-  .manifesto-sub{font-size:11px;color:var(--text2);letter-spacing:0.5px;}
-  .manifesto-tag{display:inline-block;font-size:9px;padding:3px 10px;border-radius:10px;background:rgba(197,165,90,0.2);color:var(--gold);font-family:'DM Mono',monospace;margin-top:8px;}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg); color: var(--text);
+    font-size: 14px; line-height: 1.7;
+    padding: 32px 24px 80px;
+    max-width: 1240px; margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  .six-structure{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px;}
-  .six-title{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:0.5px;}
-  .six-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 16px;font-size:11px;color:var(--text2);}
-  .six-list li{padding:6px 0;list-style:none;font-family:'DM Mono',monospace;}
-  .six-list li b{color:var(--text);font-weight:600;}
+  /* HEADER */
+  .hero { text-align: center; padding: 48px 24px 36px; margin-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .hero h1 { font-family: 'Noto Serif KR', serif; font-size: 36px; font-weight: 700; color: var(--gold); letter-spacing: -1px; margin-bottom: 14px; }
+  .hero .manifesto { font-family: 'Noto Serif KR', serif; font-size: 22px; color: var(--text); margin-bottom: 10px; font-weight: 500; }
+  .hero .sub { font-size: 13px; color: var(--dim); letter-spacing: 0.5px; }
+  .hero .sub b { color: var(--text-2); font-weight: 500; }
 
-  .domain-mirror{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px;}
-  .dm-title{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px;}
-  .dm-table{width:100%;border-collapse:collapse;font-size:11px;}
-  .dm-table th{padding:8px;text-align:left;color:var(--dim);font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);}
-  .dm-table td{padding:10px 8px;border-bottom:1px solid var(--border);color:var(--text2);}
-  .dm-table .domain-cell{font-weight:600;}
-  .dm-info{color:var(--domain-info);} .dm-matter{color:var(--domain-matter);}
-  .dm-bio{color:var(--domain-bio);} .dm-energy{color:var(--domain-energy);}
-  .dm-status{font-size:10px;padding:2px 6px;border-radius:4px;margin-left:4px;font-family:'DM Mono',monospace;}
-  .dm-status.done{background:rgba(16,185,129,0.15);color:var(--done);}
-  .dm-status.todo{background:rgba(245,158,11,0.15);color:var(--warn);}
+  /* MOD NAV */
+  .mod-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 40px; }
+  .mod-tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; text-decoration: none; color: var(--text); transition: all 0.2s; display: flex; flex-direction: column; gap: 4px; }
+  .mod-tile:hover { background: var(--card-2); border-color: var(--gold-soft); transform: translateY(-1px); }
+  .mod-tile-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 1.5px; }
+  .mod-tile-name { font-size: 14px; font-weight: 600; }
+  .mod-tile-desc { font-size: 11px; color: var(--dim); }
 
-  /* MIRROR GRID — 1↔5, 2↔6, 3↔7, 4↔8 */
-  .mirror-grid{margin-bottom:24px;}
-  .mg-title{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:0.5px;}
-  .mg-row{display:grid;grid-template-columns:1fr 60px 1fr;gap:12px;margin-bottom:12px;align-items:stretch;}
-  .mg-card{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);position:relative;}
-  .mg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:10px 10px 0 0;}
-  .mg-card.cage1::before{background:var(--ch1);} .mg-card.cage2::before{background:var(--ch2);}
-  .mg-card.cage3::before{background:var(--ch3);} .mg-card.cage4::before{background:var(--ch4);}
-  .mg-card.nest5::before{background:var(--ch5);} .mg-card.nest6::before{background:var(--ch6);}
-  .mg-card.nest7::before{background:var(--ch7);} .mg-card.nest8::before{background:var(--ch8);}
-  .mg-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px;font-weight:700;letter-spacing:-2px;}
-  .mg-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;}
-  .mg-name{font-size:14px;font-weight:700;margin:4px 0 6px;}
-  .mg-card.cage1 .mg-name{color:var(--ch1);} .mg-card.cage2 .mg-name{color:#c4b56a;}
-  .mg-card.cage3 .mg-name{color:#5cc4a7;} .mg-card.cage4 .mg-name{color:#6cc4c8;}
-  .mg-card.nest5 .mg-name{color:var(--ch5);} .mg-card.nest6 .mg-name{color:#9cb56b;}
-  .mg-card.nest7 .mg-name{color:#5d7da8;} .mg-card.nest8 .mg-name{color:var(--ch8);}
-  .mg-thesis{font-size:10px;color:var(--text2);line-height:1.5;margin-bottom:6px;}
-  .mg-domain{font-size:9px;color:var(--dim);font-family:'DM Mono',monospace;}
-  .mg-axis{font-size:9px;color:var(--gold);text-align:center;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+  /* SECTION */
+  .section-h { display: flex; align-items: baseline; gap: 12px; margin: 56px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .section-h .num { font-family: 'DM Mono', monospace; font-size: 14px; color: var(--gold); font-weight: 600; letter-spacing: 1.5px; }
+  .section-h h2 { font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 600; color: var(--text); }
+  .section-h .desc { font-size: 12px; color: var(--dim); margin-left: auto; }
 
-  /* PHASE 3 ISSUES */
-  .phase3{background:var(--surface);border:2px solid var(--rose);border-radius:12px;padding:20px;margin-bottom:24px;}
-  .p3-title{font-size:14px;font-weight:700;color:var(--rose);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
-  .p3-sub{font-size:10px;color:var(--dim);margin-bottom:14px;font-family:'DM Mono',monospace;}
-  .p3-issue{display:grid;grid-template-columns:60px 30px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:var(--card);border-radius:8px;margin-bottom:8px;border-left:3px solid var(--border);}
-  .p3-issue.done{border-left-color:var(--done);}
-  .p3-issue.todo{border-left-color:var(--warn);}
-  .p3-issue.blocked{border-left-color:var(--blocked);}
-  .p3-id{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);font-weight:700;}
-  .p3-status{font-size:14px;text-align:center;}
-  .p3-text{font-size:12px;color:var(--text);}
-  .p3-text b{color:var(--gold);}
-  .p3-meta{font-size:9px;color:var(--dim);font-family:'DM Mono',monospace;}
+  /* M1 STRUCTURE */
+  .struct-frame { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 16px; margin-bottom: 16px; }
+  .part-label { text-align: center; padding: 12px; background: var(--card); border-radius: 8px; border: 1px solid var(--border); }
+  .part-label .part-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 2px; }
+  .part-label .part-name { font-size: 17px; font-weight: 700; margin-top: 4px; }
+  .part-cage .part-name { color: var(--c1); }
+  .part-nest .part-name { color: var(--c5); }
+  .part-axis { display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--gold); font-weight: 700; }
 
-  /* ═══ INTENSITY VERIFICATION (Q3) ═══ */
-  .intensity{background:var(--surface);border:2px solid #8b5cf6;border-radius:12px;padding:20px;margin-bottom:24px;}
-  .int-title{font-size:14px;font-weight:700;color:#8b5cf6;margin-bottom:4px;}
-  .int-sub{font-size:10px;color:var(--dim);margin-bottom:14px;font-family:'DM Mono',monospace;}
-  .int-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:12px;}
-  .int-table th{padding:6px 4px;text-align:center;color:var(--dim);font-size:9px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);}
-  .int-table th.label{text-align:left;}
-  .int-table td{padding:8px 4px;text-align:center;border-bottom:1px solid var(--border);}
-  .int-bar{display:inline-block;height:14px;border-radius:3px;vertical-align:middle;position:relative;}
-  .int-bar-l{background:linear-gradient(90deg,#862256,#3D8A8E);} /* cage */
-  .int-bar-r{background:linear-gradient(90deg,#F4D43C,#E8843C);} /* nest */
-  .int-bar.warn{background:linear-gradient(90deg,#f59e0b,#f43f5e);}
-  .int-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text);font-weight:600;margin-left:6px;}
-  .int-pair{display:grid;grid-template-columns:1fr 50px 1fr;gap:10px;margin-bottom:8px;align-items:center;padding:8px 12px;background:var(--card);border-radius:6px;}
-  .int-pair .pair-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);text-align:center;font-weight:700;}
-  .int-pair .left,.int-pair .right{font-size:10px;color:var(--text2);}
-  .int-pair .left{text-align:right;} .int-pair .right{text-align:left;}
-  .int-asym{font-size:9px;padding:2px 6px;border-radius:4px;font-family:'DM Mono',monospace;display:inline-block;margin-left:6px;}
-  .int-asym.ok{background:rgba(16,185,129,0.15);color:var(--done);}
-  .int-asym.warn{background:rgba(245,158,11,0.15);color:var(--warn);}
-  .int-asym.bad{background:rgba(244,63,94,0.15);color:var(--blocked);}
-  .int-conclusion{background:var(--card);border-left:3px solid #8b5cf6;padding:12px;font-size:11px;color:var(--text2);line-height:1.7;border-radius:0 6px 6px 0;margin-top:12px;}
-  .int-conclusion b{color:#a78bfa;}
+  .ch-row { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 16px; margin-bottom: 14px; }
+  .ch-card { background: var(--card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; position: relative; transition: all 0.2s; }
+  .ch-card:hover { background: var(--card-2); }
+  .ch-card.cage1 { border-top: 3px solid var(--c1); }
+  .ch-card.cage2 { border-top: 3px solid var(--c2); }
+  .ch-card.cage3 { border-top: 3px solid var(--c3); }
+  .ch-card.cage4 { border-top: 3px solid var(--c4); }
+  .ch-card.nest5 { border-top: 3px solid var(--c5); }
+  .ch-card.nest6 { border-top: 3px solid var(--c6); }
+  .ch-card.nest7 { border-top: 3px solid var(--c7); }
+  .ch-card.nest8 { border-top: 3px solid var(--c8); }
 
-  /* ═══ GITHUB OPEN ISSUES ═══ */
-  .ghissues{background:var(--surface);border:1px solid #38bdf8;border-radius:12px;padding:20px;margin-bottom:24px;}
-  .gh-title{font-size:14px;font-weight:700;color:#38bdf8;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
-  .gh-sub{font-size:10px;color:var(--dim);margin-bottom:14px;font-family:'DM Mono',monospace;}
-  .gh-issue{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;padding:8px 12px;background:var(--card);border-radius:6px;margin-bottom:6px;font-size:11px;border-left:3px solid #38bdf8;}
-  .gh-num{font-family:'DM Mono',monospace;color:#38bdf8;font-weight:700;}
-  .gh-text{color:var(--text);}
-  .gh-label{display:inline-block;font-size:8px;padding:2px 6px;border-radius:8px;margin-left:4px;font-family:'DM Mono',monospace;}
-  .gh-label.l3{background:rgba(29,118,219,0.15);color:#5da8e8;}
-  .gh-label.l2{background:rgba(14,138,22,0.15);color:#4ade80;}
-  .gh-label.tool{background:rgba(83,25,231,0.15);color:#a78bfa;}
-  .gh-label.material{background:rgba(197,222,245,0.15);color:#94c5e8;}
-  .gh-label.debt{background:rgba(217,63,11,0.15);color:#f87171;}
-  .gh-meta{font-size:9px;color:var(--dim);font-family:'DM Mono',monospace;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Inter','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;padding:20px;max-width:1200px;margin:0 auto;}
+  .ch-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
+  .ch-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--dim); letter-spacing: 1.5px; }
+  .ch-name { font-size: 16px; font-weight: 700; }
+  .cage1 .ch-name { color: var(--c1); }
+  .cage2 .ch-name { color: var(--c2); }
+  .cage3 .ch-name { color: var(--c3); }
+  .cage4 .ch-name { color: var(--c4); }
+  .nest5 .ch-name { color: var(--c5); }
+  .nest6 .ch-name { color: var(--c6); }
+  .nest7 .ch-name { color: var(--c7); }
+  .nest8 .ch-name { color: var(--c8); }
+  .ch-thesis { font-size: 11px; color: var(--text-2); font-style: italic; margin-bottom: 10px; line-height: 1.5; }
 
-  .header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:16px;border-bottom:2px solid var(--gold);margin-bottom:20px;}
-  .header h1{font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-0.5px;}
-  .header .sub{font-size:11px;color:var(--dim);margin-top:4px;}
-  .header .target{text-align:right;}
-  .header .target-label{font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;}
-  .header .target-date{font-size:18px;font-weight:700;color:var(--rose);}
+  /* 4 절 cycle */
+  .cycle { display: flex; flex-direction: column; gap: 4px; background: rgba(0,0,0,0.15); border-radius: 6px; padding: 8px 10px; }
+  .sec-row { display: grid; grid-template-columns: 38px 1fr; gap: 8px; align-items: baseline; font-size: 11px; line-height: 1.5; }
+  .sec-tag { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; padding-top: 2px; }
+  .sec-content { color: var(--text-2); }
+  .sec-content a { color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold); transition: all 0.2s; }
+  .sec-content a:hover { background: var(--gold-soft); }
 
-  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
-  .kpi{background:var(--card);border-radius:10px;padding:16px;text-align:center;border:1px solid var(--border);}
-  .kpi .label{font-size:10px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
-  .kpi .value{font-size:32px;font-weight:700;font-family:'DM Mono',monospace;}
-  .kpi .unit{font-size:11px;color:var(--text2);margin-top:2px;}
-  .kpi.complete .value{color:var(--done);}
-  .kpi.warn .value{color:var(--warn);}
-  .kpi.blocked .value{color:var(--blocked);}
+  /* mirror axis */
+  .mirror-axis { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--gold); font-family: 'DM Mono', monospace; font-size: 10px; text-align: center; line-height: 1.4; }
+  .mirror-axis .arrow { font-size: 22px; margin: 4px 0; }
+  .mirror-axis .label { color: var(--dim); }
 
-  .pipeline{display:flex;gap:4px;margin-bottom:20px;padding:16px;background:var(--card);border-radius:10px;}
-  .pipe-stage{flex:1;text-align:center;padding:10px 6px;border-radius:8px;border:1px solid var(--border);position:relative;}
-  .pipe-stage .pipe-label{font-size:9px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;}
-  .pipe-stage .pipe-status{font-size:18px;margin-top:4px;}
-  .pipe-stage.completed{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);}
-  .pipe-stage.current{background:rgba(197,165,90,0.1);border-color:var(--gold);box-shadow:0 0 12px rgba(197,165,90,0.15);}
-  .pipe-stage.future{opacity:0.4;}
-  .pipe-arrow{display:flex;align-items:center;color:var(--dim);font-size:10px;}
+  /* cycle viz */
+  .cycle-viz { margin: 32px auto 8px; max-width: 480px; text-align: center; padding: 18px; background: var(--card); border-radius: 12px; border: 1px solid var(--border); }
+  .cycle-viz-title { font-size: 12px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .cycle-viz-flow { font-family: 'Noto Serif KR', serif; font-size: 18px; color: var(--text); letter-spacing: 1px; }
+  .cycle-viz-flow .step { color: var(--gold); }
+  .cycle-viz-flow .arr { color: var(--dim); margin: 0 6px; }
+  .cycle-viz-note { font-size: 11px; color: var(--dim); margin-top: 8px; }
 
-  /* PERELL DIAGNOSTIC SECTION */
-  .perell-section{background:var(--surface);border:2px solid var(--gold);border-radius:12px;padding:24px;margin-bottom:24px;}
-  .perell-title{font-size:16px;font-weight:700;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-  .perell-subtitle{font-size:11px;color:var(--dim);margin-bottom:20px;}
+  /* preview cards */
+  .prev-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .prev-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; text-decoration: none; color: var(--text); transition: all 0.2s; display: flex; flex-direction: column; }
+  .prev-card:hover { background: var(--card-2); border-color: var(--gold-soft); transform: translateY(-2px); }
+  .prev-icon { font-size: 28px; margin-bottom: 12px; }
+  .prev-title { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .prev-sub { font-size: 11px; color: var(--gold); margin-bottom: 12px; font-family: 'DM Mono', monospace; letter-spacing: 0.5px; }
+  .prev-desc { font-size: 12px; color: var(--text-2); line-height: 1.6; flex: 1; }
+  .prev-link { font-size: 11px; color: var(--gold); margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .prev-link::after { content: ' →'; }
 
-  /* RADAR-LIKE BAR CHART */
-  .radar-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
-  .radar-chart{background:var(--card);border-radius:10px;padding:20px;}
-  .radar-chart h3{font-size:13px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-  .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-  .bar-label{font-size:10px;color:var(--text2);width:70px;text-align:right;flex-shrink:0;}
-  .bar-track{flex:1;height:16px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative;}
-  .bar-fill{height:100%;border-radius:3px;transition:width 0.6s ease;position:relative;}
-  .bar-fill::after{content:attr(data-score);position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:9px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.9);font-weight:600;}
-  .bar-fill.s5{width:100%;} .bar-fill.s4{width:80%;} .bar-fill.s3{width:60%;} .bar-fill.s2{width:40%;}
+  /* status collapse */
+  details.status { margin-top: 56px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  details.status + details.status { margin-top: 12px; }
+  details.status summary { cursor: pointer; font-size: 12px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  details.status summary::-webkit-details-marker { display: none; }
+  details.status summary::after { content: '⌄'; font-size: 18px; }
+  details.status[open] summary::after { content: '⌃'; }
+  .status-body { padding-top: 14px; }
+  .status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+  .status-cell { padding: 10px 12px; background: var(--card-2); border-radius: 6px; font-size: 11px; }
+  .status-cell b { display: block; font-size: 10px; color: var(--gold); letter-spacing: 1px; margin-bottom: 4px; font-family: 'DM Mono', monospace; }
+  .issue-row { display: grid; grid-template-columns: 60px 30px 1fr auto; gap: 10px; padding: 8px 12px; background: var(--card-2); border-radius: 6px; margin-bottom: 4px; font-size: 11px; align-items: center; }
+  .issue-row.done { border-left: 3px solid var(--done); }
+  .issue-row.todo { border-left: 3px solid var(--warn); }
+  .issue-id { font-family: 'DM Mono', monospace; color: var(--gold); font-weight: 700; }
+  .issue-meta { font-size: 9px; color: var(--dim); font-family: 'DM Mono', monospace; }
 
-  /* SCORE TRAJECTORY */
-  .trajectory{background:var(--card);border-radius:10px;padding:20px;margin-bottom:20px;}
-  .trajectory h3{font-size:13px;font-weight:600;margin-bottom:16px;}
-  .traj-visual{display:flex;align-items:flex-end;gap:16px;height:120px;padding:0 20px;}
-  .traj-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
-  .traj-col{width:100%;border-radius:6px 6px 0 0;min-height:10px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-family:'DM Mono',monospace;font-size:14px;font-weight:700;color:rgba(255,255,255,0.9);}
-  .traj-label{font-size:10px;color:var(--text2);text-align:center;}
+  .footer { text-align: center; margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border); font-size: 10px; color: var(--dim); font-family: 'DM Mono', monospace; letter-spacing: 1px; }
+  .footer a { color: var(--gold); text-decoration: none; }
 
-  /* PATTERN CARDS */
-  .patterns{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
-  .pattern-card{background:var(--card);border-radius:10px;padding:16px;border-left:3px solid var(--rose);}
-  .pattern-card.fixed{border-left-color:var(--emerald);}
-  .pattern-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);margin-bottom:4px;}
-  .pattern-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px;}
-  .pattern-desc{font-size:11px;color:var(--text2);line-height:1.5;}
-  .pattern-fix{font-size:10px;color:var(--emerald);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
-
-  /* ACTION ITEMS */
-  .actions-section{margin-bottom:24px;}
-  .actions-title{font-size:14px;font-weight:700;color:var(--rose);margin-bottom:12px;}
-  .action-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-  .action-card{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);position:relative;overflow:hidden;}
-  .action-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
-  .action-card.ch1::before{background:var(--ch1);} .action-card.ch2::before{background:var(--ch2);}
-  .action-card.ch3::before{background:var(--ch3);} .action-card.ch4::before{background:var(--ch4);}
-  .action-ch{font-size:9px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-  .action-text{font-size:12px;color:var(--text2);line-height:1.5;}
-  .action-tag{display:inline-block;font-size:9px;padding:2px 6px;border-radius:4px;margin-top:6px;font-weight:600;}
-  .tag-obi{background:rgba(197,165,90,0.15);color:var(--gold);}
-  .tag-henderson{background:rgba(244,63,94,0.15);color:var(--rose);}
-  .tag-saxon{background:rgba(16,185,129,0.15);color:var(--emerald);}
-  .tag-sense{background:rgba(52,152,219,0.15);color:var(--ch2);}
-
-  /* CHAPTER CARDS */
-  .chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px;}
-  .ch-card{background:var(--card);border-radius:12px;padding:20px;border:2px solid var(--border);position:relative;overflow:hidden;}
-  .ch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-  .ch-card.ch1::before{background:var(--ch1);} .ch-card.ch2::before{background:var(--ch2);}
-  .ch-card.ch3::before{background:var(--ch3);} .ch-card.ch4::before{background:var(--ch4);}
-  .ch-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-  .ch-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--dim);}
-  .ch-title{font-size:16px;font-weight:600;}
-  .ch-card.ch1 .ch-title{color:var(--ch1);} .ch-card.ch2 .ch-title{color:var(--ch2);}
-  .ch-card.ch3 .ch-title{color:var(--ch3);} .ch-card.ch4 .ch-title{color:var(--ch4);}
-  .ch-status{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:600;letter-spacing:0.5px;}
-  .ch-status.done{background:rgba(16,185,129,0.15);color:var(--done);}
-  .ch-status.wip{background:rgba(245,158,11,0.15);color:var(--warn);}
-  .ch-status.blocked{background:rgba(244,63,94,0.15);color:var(--blocked);}
-  .ch-meta{font-size:11px;color:var(--text2);margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap;}
-  .myth-pill{font-size:9px;padding:2px 7px;border-radius:8px;background:rgba(197,165,90,0.15);color:var(--gold);font-weight:500;}
-  .camus{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px;}
-  .camus-stage{text-align:center;padding:6px 4px;border-radius:6px;font-size:9px;border:1px solid var(--border);}
-  .camus-stage .emoji{font-size:14px;display:block;margin-bottom:2px;}
-  .camus-stage.active{border-color:var(--gold);background:rgba(197,165,90,0.08);}
-  .checklist{list-style:none;}
-  .checklist li{font-size:11px;color:var(--text2);padding:3px 0;display:flex;align-items:center;gap:6px;}
-  .checklist .icon{font-size:12px;min-width:16px;text-align:center;}
-  .checklist .done-text{color:var(--dim);text-decoration:line-through;}
-  .carryover{font-size:11px;color:var(--rose);font-style:italic;padding:8px 12px;border-left:2px solid var(--rose);margin-top:10px;background:rgba(244,63,94,0.05);border-radius:0 6px 6px 0;}
-
-  /* 6속도 SECTION */
-  .speed-section{background:var(--surface);border:2px solid #8b5cf6;border-radius:12px;padding:24px;margin-bottom:24px;}
-  .speed-title{font-size:16px;font-weight:700;color:#8b5cf6;margin-bottom:4px;}
-  .speed-subtitle{font-size:10px;color:var(--dim);margin-bottom:16px;font-family:'DM Mono',monospace;}
-  .speed-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
-  .speed-card{background:var(--card);border-radius:10px;padding:14px;text-align:center;position:relative;border-top:3px solid var(--border);}
-  .speed-card.sc1{border-top-color:var(--ch1);} .speed-card.sc2{border-top-color:var(--ch2);}
-  .speed-card.sc3{border-top-color:var(--ch3);} .speed-card.sc4{border-top-color:var(--ch4);}
-  .speed-ch{font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:8px;}
-  .speed-bars{display:flex;justify-content:center;align-items:flex-end;gap:4px;height:60px;margin-bottom:8px;}
-  .speed-bar{width:22px;border-radius:3px 3px 0 0;position:relative;}
-  .speed-bar .sv{font-size:8px;color:#fff;position:absolute;top:-14px;width:100%;text-align:center;font-family:'DM Mono',monospace;}
-  .speed-bar.sem{background:linear-gradient(180deg,#c084fc,#7c3aed);}
-  .speed-bar.syn{background:linear-gradient(180deg,#38bdf8,#0284c7);}
-  .speed-gap{font-family:'DM Mono',monospace;font-size:11px;margin-bottom:4px;}
-  .speed-gap.ok{color:#4ade80;} .speed-gap.warn{color:#fbbf24;} .speed-gap.bad{color:#f87171;}
-  .speed-debt{font-size:9px;font-weight:600;padding:2px 6px;border-radius:4px;display:inline-block;}
-  .speed-debt.low{background:rgba(74,222,128,0.15);color:#4ade80;}
-  .speed-debt.mid{background:rgba(251,191,36,0.15);color:#fbbf24;}
-  .speed-stars{font-size:9px;color:var(--dim);margin-top:4px;}
-  .speed-stars b{color:#f0c040;}
-  .speed-algo{background:var(--card);border-radius:8px;padding:14px;font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:16px;}
-  .speed-algo code{font-family:'DM Mono',monospace;color:#c084fc;font-size:10px;}
-  .speed-rx{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .speed-rx-card{background:var(--card);border-radius:8px;padding:12px;border-left:3px solid #f87171;}
-  .speed-rx-card .rx-name{font-size:11px;font-weight:600;color:#f87171;margin-bottom:4px;}
-  .speed-rx-card .rx-detail{font-size:10px;color:var(--text2);}
-  .speed-rx-card .rx-fix{font-size:10px;color:#4ade80;margin-top:6px;}
-
-  .bottleneck-section{background:var(--surface);border:2px solid var(--rose);border-radius:12px;padding:20px;margin-bottom:24px;}
-  .bottleneck-title{font-size:14px;font-weight:700;color:var(--rose);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-  .bn-table{width:100%;border-collapse:collapse;}
-  .bn-table th{font-size:10px;color:var(--dim);text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);letter-spacing:1px;text-transform:uppercase;}
-  .bn-table td{font-size:12px;padding:8px;border-bottom:1px solid var(--border);color:var(--text2);}
-  .bn-rank{font-family:'DM Mono',monospace;font-weight:700;font-size:14px;}
-  .bn-rank.r1{color:var(--rose);} .bn-rank.r2{color:var(--warn);} .bn-rank.r3{color:var(--dim);}
-
-  /* MUSCLE ARC */
-  .muscle-section{background:var(--surface);border:2px solid rgba(255,255,255,0.1);border-radius:12px;padding:24px;margin-bottom:24px;}
-  .muscle-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;}
-  .muscle-arc{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
-  .muscle-card{background:var(--card);border-radius:10px;padding:16px;text-align:center;position:relative;border-top:3px solid var(--border);}
-  .muscle-card.m1{border-top-color:var(--ch1);} .muscle-card.m2{border-top-color:var(--ch2);}
-  .muscle-card.m3{border-top-color:var(--ch3);} .muscle-card.m4{border-top-color:var(--ch4);}
-  .muscle-ch{font-size:9px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
-  .muscle-transform{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:8px;}
-  .muscle-from{font-size:12px;color:var(--text2);text-decoration:line-through;opacity:0.6;}
-  .muscle-arrow{color:var(--dim);font-size:10px;}
-  .muscle-to{font-size:14px;font-weight:700;color:var(--text);}
-  .muscle-name{font-size:11px;font-weight:600;padding:4px 10px;border-radius:12px;display:inline-block;margin-bottom:6px;}
-  .muscle-name.m1{background:rgba(134,34,86,0.2);color:#c66a97;}
-  .muscle-name.m2{background:rgba(139,125,60,0.2);color:#c4b56a;}
-  .muscle-name.m3{background:rgba(45,139,115,0.2);color:#5cc4a7;}
-  .muscle-name.m4{background:rgba(61,138,142,0.2);color:#6cc4c8;}
-  .muscle-axes{font-size:9px;color:var(--dim);line-height:1.4;}
-  .muscle-cage{font-size:9px;color:var(--rose);margin-top:6px;font-style:italic;}
-  .muscle-logic{font-size:12px;color:var(--text2);text-align:center;padding:12px;background:var(--card);border-radius:8px;line-height:1.8;}
-  .muscle-logic b{color:var(--gold);}
-
-  .equation-bar{text-align:center;padding:12px;font-family:'DM Mono',monospace;font-size:13px;color:var(--gold);opacity:0.4;margin-top:16px;letter-spacing:1px;}
-  .verdict{text-align:center;padding:20px;background:var(--card);border-radius:12px;margin-bottom:20px;border:1px solid var(--gold);}
-  .verdict-quote{font-size:15px;font-style:italic;color:var(--gold);line-height:1.8;max-width:700px;margin:0 auto;}
-  .verdict-attr{font-size:10px;color:var(--dim);margin-top:8px;}
-
-  @media(max-width:768px){.chapters,.kpi-row,.radar-grid,.patterns,.action-grid{grid-template-columns:1fr;}.pipeline{flex-wrap:wrap;}.traj-visual{height:80px;}}
+  @media (max-width: 880px) {
+    .mod-nav, .prev-grid, .status-grid { grid-template-columns: 1fr 1fr; }
+    .struct-frame, .ch-row { grid-template-columns: 1fr; }
+    .ch-row .mirror-axis { transform: rotate(90deg); padding: 12px 0; }
+    .hero h1 { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<div class="header">
-  <div>
-    <h1>DASHBOARD — 황금새장을 열다 (1-8장 통합)</h1>
-    <div class="sub">Phase 3 (5월 4일) &middot; 사람 중심 창업 &middot; mirror reflection thesis</div>
-  </div>
-  <div class="target">
-    <div class="target-label">Phase 3 Status</div>
-    <div class="target-date">★A 완료 / ★B-E 대기</div>
-  </div>
+<header class="hero">
+  <h1>황금새장을 열다</h1>
+  <div class="manifesto">신화를 부수고, 함께 짓는다</div>
+  <div class="sub">창업자의 <b>다·세</b> · 신념윤리 비판러에서 책임윤리 trickster로 · 사람 중심 창업의 8 박자</div>
+</header>
+
+<!-- MOD NAV -->
+<nav class="mod-nav">
+  <a class="mod-tile" href="#m1">
+    <div class="mod-tile-num">M 1</div>
+    <div class="mod-tile-name">📚 책 구조</div>
+    <div class="mod-tile-desc">2부·8장·4절 cycle</div>
+  </a>
+  <a class="mod-tile" href="#m2">
+    <div class="mod-tile-num">M 2</div>
+    <div class="mod-tile-name">❓ 질문과 답</div>
+    <div class="mod-tile-desc">양방향 dialogue</div>
+  </a>
+  <a class="mod-tile" href="#m3">
+    <div class="mod-tile-num">M 3</div>
+    <div class="mod-tile-name">📖 빚장부</div>
+    <div class="mod-tile-desc">참고문헌 100+</div>
+  </a>
+  <a class="mod-tile" href="#m4">
+    <div class="mod-tile-num">M 4</div>
+    <div class="mod-tile-name">🧪 주기율표</div>
+    <div class="mod-tile-desc">삶의 분류 484권</div>
+  </a>
+</nav>
+
+<!-- M1 -->
+<div class="section-h" id="m1">
+  <div class="num">M 1</div>
+  <h2>책 구조 — 2부·8장·4절</h2>
+  <div class="desc">좌(새장) ↔ 우(둥지) · 4 mirror 짝 · 4절 순환</div>
 </div>
 
-<!-- ═══ MANIFESTO (5월 3일 결정) ═══ -->
-<div class="manifesto-bar">
-  <div class="manifesto-quote">신화를 부수고, 함께 짓는다.</div>
-  <div class="manifesto-sub">신념윤리 비판러(Phase 1만)에서 책임윤리 trickster(Phase 1+2)로 — STARTUP IS THE VEHICLE</div>
-  <div class="manifesto-tag">2026-05-03 결정 / 부제 후보 3</div>
+<div class="struct-frame">
+  <div class="part-label part-cage"><div class="part-num">PART I</div><div class="part-name">새장 — 빚 식별</div></div>
+  <div class="part-axis">↔</div>
+  <div class="part-label part-nest"><div class="part-num">PART II</div><div class="part-name">둥지 — 다시 짓기</div></div>
 </div>
 
-<!-- ═══ PLAN v2 (5/4 — 3 voice cross-validation 통합) ═══ -->
-<div class="six-structure" style="border:1px solid #38bdf8;">
-  <div class="six-title" style="color:#38bdf8;">⚙️ Multi-Agent Delegation Plan v2 (5/4 — 3 voice cross-validation 통합)</div>
-  <ul class="six-list">
-    <li><b>A. 2-Agent</b> — Author(자장+main) + Specialist on-demand pool (Verifier·Curator·Visualizer)</li>
-    <li><b>B. Verifier 이원화</b> — 🔴Red Flag (인용·사실·paired·voice) blocking / 🟡Yellow advisory / 🟢PASS</li>
-    <li><b>C. Coordinator 분리</b> — Strategic (자장, 주 1-2회) + Tactical (LLM, daily)</li>
-    <li><b>D. Voice 처리</b> — 1 Writer (자장) Phase 3 / 2 Writers (Cage+Nest) Phase 4 (default)</li>
-    <li><b>E. ★ task별 매핑</b> — ★C·H = 2-agent / ★D = 1 / ★E = 4 / ★G = 1</li>
-    <li><b>F. 의례</b> — ★C = dry run ✅ (5/4) / Daily summary / Weekly priority review</li>
-  </ul>
-  <div style="font-size:10px;color:var(--dim);margin-top:8px;font-family:'DM Mono',monospace;">
-    Q2: 1 Writer · Q3: 품질 · Q4: 주 2-3h (defaults). 자장 override 가능. 상세 → <i>도구/agent_delegation_v1_3voice.md</i>
-  </div>
-</div>
-
-<!-- ═══ 6 구조 (Image #23 명시) ═══ -->
-<div class="six-structure">
-  <div class="six-title">★ 6 구조 (user 설계 의도)</div>
-  <ul class="six-list">
-    <li><b>[1]</b> 1→2→3→4 cage progression (모방·위안·붕괴·선택)</li>
-    <li><b>[2]</b> 5→6→7→8 nest progression (★멈춤·모방·넘김·매혹)</li>
-    <li><b>[3]</b> 1↔5 인식 차원 (모르고 입기 vs 알면서 입기)</li>
-    <li><b>[4]</b> 2↔6 관조 → 대면 (못 움직임 vs 책상까지)</li>
-    <li><b>[5]</b> 3↔7 이분법 → 분포 (두 점 vs 분포 분해)</li>
-    <li><b>[6]</b> 4↔8 작란 → 명명 (Phase 1 vs Phase 1+2) + 1↔8 ouroboros</li>
-  </ul>
-</div>
-
-<!-- ═══ 4 도메인 mirror (Image #23 발견 — 5월 4일) ═══ -->
-<div class="domain-mirror">
-  <div class="dm-title">★ 4 도메인 mirror (5월 4일 발견)</div>
-  <table class="dm-table">
-    <thead><tr><th>도메인</th><th>cage (1-4)</th><th>nest (5-8)</th></tr></thead>
-    <tbody>
-      <tr><td class="domain-cell dm-info">정보</td><td>1장 (Quibi · Airbnb)</td><td>5장 (Slack · Stripe) <span class="dm-status done">✅</span></td></tr>
-      <tr><td class="domain-cell dm-matter">물질</td><td>2장 (Kodak vs Fuji)</td><td>6장 (Better Place vs Tesla) <span class="dm-status done">✅ ★A 완료</span></td></tr>
-      <tr><td class="domain-cell dm-bio">생체</td><td>3장 (Theranos vs Moderna)</td><td>7장 (생체 사례) <span class="dm-status todo">⏸️ ★B</span></td></tr>
-      <tr><td class="domain-cell dm-energy">에너지</td><td>4장 (두산 · 생고뱅)</td><td>8장 (Ørsted·포스코 vs BP) <span class="dm-status done">✅ ★C 완료</span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ═══ 8장 MIRROR GRID — 1↔5, 2↔6, 3↔7, 4↔8 ═══ -->
-<div class="mirror-grid">
-  <div class="mg-title">★ 8장 mirror layout (좌 cage ↔ 우 nest)</div>
-
-  <div class="mg-row">
-    <div class="mg-card cage1">
-      <div class="mg-num">1 · 정보 · M1 회전축</div>
-      <div class="mg-name">🪞 거울새장</div>
-      <div class="mg-thesis">엠마(victim) → 르뢰(신념윤리 trickster). 모르고 입기. *장부를 펴라*.</div>
-      <div class="mg-domain">Quibi · Juicero · 옐로모바일</div>
-    </div>
-    <div class="mg-arrow"><div><span class="mg-axis">M-M</span><br>↔</div></div>
-    <div class="mg-card nest5">
-      <div class="mg-num">5 · 정보 · M2 회전축</div>
-      <div class="mg-name">🦋 역할둥지</div>
-      <div class="mg-thesis">송 릴링. 알면서 입기. *역할을 입어라*. 5월 2일 *낯섦* 결정.</div>
-      <div class="mg-domain">Slack · Stripe · Airbnb · Tesla pivot</div>
+<!-- 1↔5 -->
+<div class="ch-row">
+  <div class="ch-card cage1">
+    <div class="ch-head"><span class="ch-num">CH 1</span><span class="ch-name">🪞 거울새장</span></div>
+    <div class="ch-thesis">엠마(악)→르뢰(트릭) · 빌린 욕망에 먹힘</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">파리의 벨벳 — 만져본 적 없는 결을 몸으로 안다</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Girard 모방욕망 — 나→중재자→대상 삼각형</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">Quibi · Juicero · 옐로모바일</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/symbols.html" target="_blank">📒 장부를 펴라 · 상징찾기</a></span></div>
     </div>
   </div>
-
-  <div class="mg-row">
-    <div class="mg-card cage2">
-      <div class="mg-num">2 · 물질</div>
-      <div class="mg-name">🔭 망원경새장</div>
-      <div class="mg-thesis">살리나 → 탄크레디. 관조하며 못 움직임. *순서를 타라*.</div>
-      <div class="mg-domain">Kodak vs Fuji · 노키아 · Blockbuster</div>
-    </div>
-    <div class="mg-arrow"><div><span class="mg-axis">관조<br>→대면</span><br>↔</div></div>
-    <div class="mg-card nest6">
-      <div class="mg-num">6 · 물질</div>
-      <div class="mg-name">🌫️ 안개둥지</div>
-      <div class="mg-thesis">우나무노 nivola. 작가 책상까지 걸어감. *자기 서사를 써라*. ★A 완료.</div>
-      <div class="mg-domain">Better Place vs Tesla · 토스 · 쿠팡</div>
-    </div>
-  </div>
-
-  <div class="mg-row">
-    <div class="mg-card cage3">
-      <div class="mg-num">3 · 생체</div>
-      <div class="mg-name">💒 스테인드글라스새장</div>
-      <div class="mg-thesis">파늘루 신념윤리 → 리외+타루 책임윤리. 이분법. *확신을 교정하라*.</div>
-      <div class="mg-domain">Theranos vs Moderna · 셀트리온 vs 신라젠</div>
-    </div>
-    <div class="mg-arrow"><div><span class="mg-axis">이분법<br>→분포</span><br>↔</div></div>
-    <div class="mg-card nest7">
-      <div class="mg-num">7 · 생체 ⚠</div>
-      <div class="mg-name">💘 언어둥지</div>
-      <div class="mg-thesis">윈스턴 ↔ BB. 분포 분해. *언어를 합의하라*. 세 관찰일지 + 제3의 위치.</div>
-      <div class="mg-domain">Bezos · Buffett · Bridgewater · 토스 / <b>★B 생체 사례 추가 필요</b></div>
-    </div>
-  </div>
-
-  <div class="mg-row">
-    <div class="mg-card cage4">
-      <div class="mg-num">4 · 에너지</div>
-      <div class="mg-name">⏰ 시계새장</div>
-      <div class="mg-thesis">땅의 로빈슨 → 태양의 로빈슨. 작란(Phase 1만). *다음 불을 피워라*.</div>
-      <div class="mg-domain">두산 · 생고뱅 · Netflix</div>
-    </div>
-    <div class="mg-arrow"><div><span class="mg-axis">작란<br>→명명</span><br>↔<br><span style="font-size:7px;">+1↔8 ouroboros</span></div></div>
-    <div class="mg-card nest8">
-      <div class="mg-num">8 · 에너지 ✅ · ouroboros</div>
-      <div class="mg-name">🌗 거울둥지</div>
-      <div class="mg-thesis">일연 + Raven 신화 + Douglass. Phase 1+2. *너의 유사를 써라*. 4 문화권 + 결정 불가능성.</div>
-      <div class="mg-domain">토스 · 카카오뱅크 · 김범석 · <b>Ørsted·포스코 vs BP ✅</b> / 남은: <b>★D mirror reflection 단락</b></div>
+  <div class="mirror-axis"><div class="label">M-M 회전축</div><div class="arrow">↔</div><div class="label">인식 차원</div></div>
+  <div class="ch-card nest5">
+    <div class="ch-head"><span class="ch-num">CH 5</span><span class="ch-name">🦋 놀이둥지</span></div>
+    <div class="ch-thesis">송 릴링 · 환상을 알면서 입기 (★멈춤)</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">분장실 — 분이 반쯤 발린 얼굴</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Hyde Hopi 광대 + Goffman role distance</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">Slack · Stripe · Tesla pivot</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content">🎭 역할을 입어라 (옷이 옷인 줄 안 채로)</span></div>
     </div>
   </div>
 </div>
 
-<!-- ═══ PHASE 3 ISSUES (★A-E) ═══ -->
-<div class="phase3">
-  <div class="p3-title">🎟️ Phase 3 Issues (5월 2-4일 + 미해결)</div>
-  <div class="p3-sub">manifesto 박힘 / 부록4 71→100 / Raven 신화 / URL rename ✅ 완료 / 다음 patch ★B-E</div>
-
-  <div class="p3-issue done">
-    <div class="p3-id">★A</div>
-    <div class="p3-status">✅</div>
-    <div class="p3-text"><b>6장 Better Place vs Tesla</b> paired case 본문 — 4 도메인 mirror 물질 완성. Maples *Pattern Breakers* 정합.</div>
-    <div class="p3-meta">79412f50</div>
+<!-- 2↔6 -->
+<div class="ch-row">
+  <div class="ch-card cage2">
+    <div class="ch-head"><span class="ch-num">CH 2</span><span class="ch-name">🔭 망원경새장</span></div>
+    <div class="ch-thesis">살리나→탄크레디 · 관조하며 마비</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">접안렌즈의 차가움 — 별의 시간으로 살다</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Bourdieu habitus + Clausewitz 기세</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">Kodak vs Fuji · 노키아 · Blockbuster</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/symbols.html" target="_blank">🎞️ 순서를 타라 · 상징찾기</a></span></div>
+    </div>
   </div>
-
-  <div class="p3-issue done">
-    <div class="p3-id">★B</div>
-    <div class="p3-status">✅</div>
-    <div class="p3-text"><b>7장 생체 사례</b> — Novo Nordisk vs Aduhelm/Leqembi paired. 4 도메인 mirror 생체 완성. <i style="color:var(--warn);">⚠ "거짓말" 표현 정확화 필요 (★F)</i></div>
-    <div class="p3-meta">5195284f</div>
-  </div>
-
-  <div class="p3-issue done">
-    <div class="p3-id">★C</div>
-    <div class="p3-status">✅</div>
-    <div class="p3-text"><b>8장 에너지 사례 — Ørsted·포스코 vs BP</b>. 4 도메인 mirror 에너지 ✅ 완성. *Plan v2 dry run* 성공 (Author + Verifier + Curator 분업)</div>
-    <div class="p3-meta">5/4 dry run</div>
-  </div>
-
-  <div class="p3-issue todo">
-    <div class="p3-id">★D</div>
-    <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>mirror reflection 메커니즘</b> 단락 — 8장 2.3 신설. Phase 1+2 책임윤리 작동 원리 (Image #21·#22 정합)</div>
-    <div class="p3-meta">대기</div>
-  </div>
-
-  <div class="p3-issue todo">
-    <div class="p3-id">★E</div>
-    <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>박혜진 편집자 deliverable</b> 묶음 — manifesto 한 줄 + 시계판/악보 viz + 부록 100 entries. 민음사 첫 검토</div>
-    <div class="p3-meta">미팅 trigger</div>
-  </div>
-
-  <div class="p3-issue blocked">
-    <div class="p3-id">★F</div>
-    <div class="p3-status">🔥</div>
-    <div class="p3-text"><b>7장 다이어트 + Novo·Aduhelm 정확화</b> — Q3 검증으로 7장이 ★★★★★ (가장 무거움). 사례 6→4 압축. Q1 답: "거짓말"→"한 점 가설 매몰" 표현 약화. Q2 답: paired 정합성 (옵션 B/C) 검토</div>
-    <div class="p3-meta">★ 우선 1</div>
-  </div>
-
-  <div class="p3-issue blocked">
-    <div class="p3-id">★G</div>
-    <div class="p3-status">🔥</div>
-    <div class="p3-text"><b>8장 다이어트</b> — Mokyr·Keats·Brinkerink·Gould·노자 → 부록 8 *trickster 학술 풀* 분리. 단계 2 미완료 작업 재시작. 본문 무게 ★★★★★→★★★★</div>
-    <div class="p3-meta">★ 우선 2</div>
-  </div>
-
-  <div class="p3-issue todo">
-    <div class="p3-id">★H</div>
-    <div class="p3-status">⏸️</div>
-    <div class="p3-text"><b>6장 OpenAI vs Anthropic</b> paired (★A 옆 추가) — *making vs parenting* narrative. AI 시대 시의성 ★★★★★. *짧은 prototype* (5-6 단락)으로</div>
-    <div class="p3-meta">★ 우선 3</div>
+  <div class="mirror-axis"><div class="label">관조</div><div class="arrow">↔</div><div class="label">→ 대면</div></div>
+  <div class="ch-card nest6">
+    <div class="ch-head"><span class="ch-num">CH 6</span><span class="ch-name">🌫️ 안개둥지</span></div>
+    <div class="ch-thesis">우나무노↔아우구스토 · 작가의 책상까지 (선을 넘어라)</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">손이 키보드 위에 있는데 누구 손인지 모름</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Hyde Crucial Third Position + Ricœur idem/ipse + 아우렐리우스</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">Better Place vs Tesla · 토스 · 쿠팡</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content">✍️ 자기 서사를 써라 · 선을 넘어라</span></div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ CHAPTER INTENSITY VERIFICATION (Q3) ═══ -->
-<div class="intensity">
-  <div class="int-title">📊 Chapter Intensity 검증 (Q3, 5월 4일)</div>
-  <div class="int-sub">각 장 무게 측정 + mirror 짝 비대칭 진단 — *Image #22 mirror reflection thesis* 자기 정합 점검</div>
-
-  <table class="int-table">
-    <thead>
-      <tr>
-        <th class="label">장</th>
-        <th>실측 행수</th>
-        <th>사례 수</th>
-        <th>학술 anchor (본문/footnote)</th>
-        <th>행수 무게</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="label" style="color:var(--ch1);text-align:left;">1 거울새장</td><td>180</td><td>3</td><td>1</td><td><span class="int-bar int-bar-l" style="width:60%;"></span><span class="int-num">★★★</span></td></tr>
-      <tr><td class="label" style="color:#c4b56a;text-align:left;">2 망원경새장</td><td>176</td><td>3</td><td>2</td><td><span class="int-bar int-bar-l" style="width:58%;"></span><span class="int-num">★★★</span></td></tr>
-      <tr><td class="label" style="color:#5cc4a7;text-align:left;">3 스테인드글라스</td><td>203</td><td>4</td><td>2</td><td><span class="int-bar int-bar-l" style="width:67%;"></span><span class="int-num">★★★★</span></td></tr>
-      <tr><td class="label" style="color:#6cc4c8;text-align:left;">4 시계새장</td><td>190</td><td>4</td><td>1</td><td><span class="int-bar int-bar-l" style="width:63%;"></span><span class="int-num">★★★</span></td></tr>
-      <tr><td class="label" style="color:var(--ch5);text-align:left;">5 역할둥지</td><td>166</td><td>4</td><td>2</td><td><span class="int-bar int-bar-r" style="width:55%;"></span><span class="int-num">★★★</span></td></tr>
-      <tr><td class="label" style="color:#9cb56b;text-align:left;">6 안개둥지</td><td>175</td><td>6</td><td>3</td><td><span class="int-bar int-bar-r" style="width:58%;"></span><span class="int-num">★★★</span></td></tr>
-      <tr><td class="label" style="color:#5d7da8;text-align:left;">7 언어둥지 (★F 후)</td><td>179</td><td>6</td><td>10+ (대부분 footnote)</td><td><span class="int-bar int-bar-r" style="width:59%;"></span><span class="int-num">★★★</span></td></tr>
-      <tr><td class="label" style="color:var(--ch8);text-align:left;">8 거울둥지</td><td>181</td><td>5</td><td><b style="color:var(--warn);">7</b></td><td><span class="int-bar int-bar-r" style="width:60%;"></span><span class="int-num">★★★</span></td></tr>
-    </tbody>
-  </table>
-
-  <div style="font-size:11px;color:var(--text2);margin-top:8px;margin-bottom:8px;font-weight:600;">Mirror 짝 비대칭 (실측):</div>
-
-  <div class="int-pair">
-    <div class="left">1 거울새장 (180)</div>
-    <div class="pair-label">1↔5</div>
-    <div class="right">5 역할둥지 (166) <span class="int-asym ok">✓ 균형 (-14, 8%)</span></div>
+<!-- 3↔7 -->
+<div class="ch-row">
+  <div class="ch-card cage3">
+    <div class="ch-head"><span class="ch-num">CH 3</span><span class="ch-name">💒 스테인드글라스새장</span></div>
+    <div class="ch-thesis">파늘루 신념윤리→리외+타루 책임윤리 · 이분법</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">아이의 작은 몸이 활처럼 휘어진다</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Camus 부조리·반항 + Weber 책임윤리</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">Theranos vs Moderna · 셀트리온 vs 신라젠</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/symbols.html" target="_blank">🧠 확신을 교정하라 · 상징찾기</a></span></div>
+    </div>
   </div>
-  <div class="int-pair">
-    <div class="left">2 망원경새장 (176)</div>
-    <div class="pair-label">2↔6</div>
-    <div class="right">6 안개둥지 (175) <span class="int-asym ok">✓ 거의 동일 (-1)</span></div>
-  </div>
-  <div class="int-pair">
-    <div class="left">3 스테인드글라스 (203)</div>
-    <div class="pair-label">3↔7</div>
-    <div class="right">7 언어둥지 (179) <span class="int-asym ok">✓ 균형 (-24, 12%)</span></div>
-  </div>
-  <div class="int-pair">
-    <div class="left">4 시계새장 (190)</div>
-    <div class="pair-label">4↔8</div>
-    <div class="right">8 거울둥지 (181) <span class="int-asym ok">✓ 균형 (-9, 5%)</span></div>
-  </div>
-
-  <div class="int-conclusion">
-    <b>실측: mirror 짝 균형 거의 완벽 ✓.</b> cage 749 vs nest 701 (-48, 6% 차이). 4 짝 모두 ±12% 이내.<br>
-    이전 dashboard estimate (~376·~330)는 부정확했음 — *실측 행수*는 ★F (5/4) 후 7장 179, 8장 181로 1·4장과 균형.<br>
-    → <b>균형 회복 명분 약화. ★F·★G의 우선순위 재평가:</b><br>
-    &nbsp;&nbsp;✅ <b>★F 완료</b> (5/4) — Q1·Q2 정확화 (Aduhelm "거짓말"→"한 점 견지")로 의미 있음<br>
-    &nbsp;&nbsp;⏸️ <b>★G 비긴급</b> — 8장 학자 anchor 부록 분리는 *clarity 강화*로 가치 있지만 시급 X<br>
-    &nbsp;&nbsp;★ <b>★C·D·H가 다시 우선</b>: ★H (OpenAI vs Anthropic) 시의성 ★★★★★, ★C (Ørsted) 4 도메인 mirror 완성
+  <div class="mirror-axis"><div class="label">이분법</div><div class="arrow">↔</div><div class="label">→ 분포</div></div>
+  <div class="ch-card nest7">
+    <div class="ch-head"><span class="ch-num">CH 7</span><span class="ch-name">💘 의심둥지</span></div>
+    <div class="ch-thesis">윈스턴↔BB · 분포로 의심하기</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">2+2=4를 적는 손, 단어가 매일 줄어든다</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">PLoT 함수·조건화·합성 + Gibbons clarity·naming·framing</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">Bezos · Buffett · Bridgewater · 토스 · Novo Nordisk vs Aduhelm</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content">🗣️ 언어를 합의하라 (분포로 굴려라)</span></div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ GITHUB OPEN ISSUES ═══ -->
-<div class="ghissues">
-  <div class="gh-title">🎟️ GitHub Open Issues — 핵심 (golden-cage-book)</div>
-  <div class="gh-sub">https://github.com/hyunjimoon/golden-cage-book/issues · open 23건 중 Phase 3 직결 11건 선별</div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#67</div>
-    <div class="gh-text">📚뇌는 어떻게 변화를 거부하는가 <span class="gh-label l3">3차소통</span> — Klein 7장 anchor (부록4 등록 ✅, 본문 footnote ✅)</div>
-    <div class="gh-meta">5/2</div>
+<!-- 4↔8 -->
+<div class="ch-row">
+  <div class="ch-card cage4">
+    <div class="ch-head"><span class="ch-num">CH 4</span><span class="ch-name">⏰ 시계새장</span></div>
+    <div class="ch-thesis">땅의 로빈슨→태양의 로빈슨 · 작란 (Phase 1만)</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">시계 멈추자 처음 들리는 파도 소리</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Mokyr 인공선택 소진 · 변이 풀</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">두산 · 생고뱅 · Netflix</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/symbols.html" target="_blank">🔥 다음 불을 피워라 · 상징찾기</a></span></div>
+    </div>
   </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#66</div>
-    <div class="gh-text"><b>둥지편</b> <span class="gh-label l3">3차소통</span> — 5-8장 전체. 현재 Phase 3 메인 trigger</div>
-    <div class="gh-meta">5/1</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#65</div>
-    <div class="gh-text">독자프로필 — 7명 panel (대학생·부모·직장인 3타입). 박혜진 deliverable (★E) 정합</div>
-    <div class="gh-meta">4/27</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#53</div>
-    <div class="gh-text">패턴브레이커 인용과 질문들 — Maples *Pattern Breakers*. 6장 ★A Tesla *STARTUP IS THE VEHICLE* 정합 ✅</div>
-    <div class="gh-meta">4/25</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#49</div>
-    <div class="gh-text">대표독자 7명 교차리뷰 13지점 fix <span class="gh-label l2">2차소통</span> — CC1+CC2 합산 210건 → 4명+ 겹침</div>
-    <div class="gh-meta">4/20</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#47</div>
-    <div class="gh-text">1~4장 다이어트 — 7요소 공식을 뼈로 재구조화 <span class="gh-label l2">2차소통</span>. ★F·★G 5-8장 다이어트와 mirror</div>
-    <div class="gh-meta">4/19</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#45</div>
-    <div class="gh-text">📐 장 미시구조 7칸 격자 적용 <span class="gh-label l2">2차소통</span><span class="gh-label tool">어떻게-도구</span> — 4장 공통 격자</div>
-    <div class="gh-meta">4/16</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#44</div>
-    <div class="gh-text">장 끝 다/세 에세이 + 오웰 반박 에세이 구조 <span class="gh-label l3">3차소통</span> — 7장 BB 호명 정합</div>
-    <div class="gh-meta">4/16</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#33</div>
-    <div class="gh-text">✍️ 본문 품질 — 남은 빚 <span class="gh-label debt">무엇-빚</span>. ★F·★G 다이어트와 직결</div>
-    <div class="gh-meta">4/9</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#22</div>
-    <div class="gh-text">부록3 창업소설 작법론 <span class="gh-label l3">3차소통</span><span class="gh-label tool">도구</span> — 우나무노 × 오웰 새 장르 (6·7장)</div>
-    <div class="gh-meta">4/9</div>
-  </div>
-
-  <div class="gh-issue">
-    <div class="gh-num">#9</div>
-    <div class="gh-text"><b>다/세 감정 궤적 — 대사 최적화</b> <span class="gh-label l2">2차소통</span> — 5월 2일 10 cluster 확장 댓글 ✅. 6축 + 10 cluster 두 layer</div>
-    <div class="gh-meta">4/5</div>
+  <div class="mirror-axis"><div class="label">작란</div><div class="arrow">↔</div><div class="label">→ 명명</div></div>
+  <div class="ch-card nest8">
+    <div class="ch-head"><span class="ch-num">CH 8</span><span class="ch-name">🌗 새둥지</span></div>
+    <div class="ch-thesis">일연·Raven·Douglass · Phase 1+2 (책임윤리)</div>
+    <div class="cycle">
+      <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">까마귀가 빛을 물고 굴뚝을 뚫고 날아오름</span></div>
+      <div class="sec-row"><span class="sec-tag">생각</span><span class="sec-content">Hyde Phase 1+2 + Mokyr 자연선택 + Keats NC + 노자 無</span></div>
+      <div class="sec-row"><span class="sec-tag">현실</span><span class="sec-content">토스 · 카카오뱅크 · 김범석 · Ørsted vs BP</span></div>
+      <div class="sec-row"><span class="sec-tag">행동</span><span class="sec-content">🛤️ 너의 유사를 써라 (이름을 다시 짓고 매혹하라)</span></div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ Phase 3 완료 commits 요약 ═══ -->
-<div class="phase3" style="border-color:var(--done);">
-  <div class="p3-title" style="color:var(--done);">✅ Phase 3 완료 (5월 2-4일)</div>
-  <div class="p3-issue done"><div class="p3-id">ec7a89a2</div><div class="p3-status">✅</div><div class="p3-text">7장 세의 관찰일지 + 제3의 위치 manifesto</div><div class="p3-meta">5/2</div></div>
-  <div class="p3-issue done"><div class="p3-id">e924148e</div><div class="p3-status">✅</div><div class="p3-text">8장 ouroboros 호응 + 부록4 Anthropic cluster card</div><div class="p3-meta">5/2</div></div>
-  <div class="p3-issue done"><div class="p3-id">a11cbe7f</div><div class="p3-status">✅</div><div class="p3-text">URL rename: ch6_author_nest → mist_nest, ch8_trick_nest → mirror_nest</div><div class="p3-meta">5/2</div></div>
-  <div class="p3-issue done"><div class="p3-id">2392f2fc</div><div class="p3-status">✅</div><div class="p3-text">8장 Raven 신화 단락 (단계 1 prototype)</div><div class="p3-meta">5/3</div></div>
-  <div class="p3-issue done"><div class="p3-id">7b622e86</div><div class="p3-status">✅</div><div class="p3-text">8장 4 문화권 + 결정 불가능성 (까마귀 = 살아있는 NC)</div><div class="p3-meta">5/3</div></div>
-  <div class="p3-issue done"><div class="p3-id">0d1164ff</div><div class="p3-status">✅</div><div class="p3-text">7장 anchor box plain Korean 변환 (학자명 → 부록 footnote)</div><div class="p3-meta">5/3</div></div>
-  <div class="p3-issue done"><div class="p3-id">61c551df</div><div class="p3-status">✅</div><div class="p3-text">부록4 16명 추가 (71 → 100 entries)</div><div class="p3-meta">5/3</div></div>
-  <div class="p3-issue done"><div class="p3-id">126aa239</div><div class="p3-status">✅</div><div class="p3-text">84구조 Phase 3 갱신 (manifesto + 6 구조 + 4 도메인 mirror + 작업 로그)</div><div class="p3-meta">5/4</div></div>
-  <div class="p3-issue done"><div class="p3-id">79412f50</div><div class="p3-status">✅</div><div class="p3-text">6장 3.1 신설 — Better Place vs Tesla paired case (★A)</div><div class="p3-meta">5/4</div></div>
-  <div class="p3-issue done"><div class="p3-id">5195284f</div><div class="p3-status">✅</div><div class="p3-text">7장 3.3 신설 — Novo Nordisk vs Aduhelm/Leqembi paired (★B)</div><div class="p3-meta">5/4</div></div>
-  <div class="p3-issue done"><div class="p3-id">5265f93c</div><div class="p3-status">✅</div><div class="p3-text">7장 다이어트 + Q1·Q2 정확화 (★F)</div><div class="p3-meta">5/4</div></div>
-  <div class="p3-issue done"><div class="p3-id">08f3f169</div><div class="p3-status">✅</div><div class="p3-text">agent_delegation_v1_3voice — 3 voice cross-validation 표 (Plan v2 synthesis)</div><div class="p3-meta">5/4</div></div>
-  <div class="p3-issue done"><div class="p3-id">★C</div><div class="p3-status">✅</div><div class="p3-text">8장 3.2 신설 — Ørsted·포스코 vs BP paired (★C, Plan v2 dry run)</div><div class="p3-meta">5/4</div></div>
+<!-- cycle viz -->
+<div class="cycle-viz">
+  <div class="cycle-viz-title">4절 순환 · 4 lens cycle</div>
+  <div class="cycle-viz-flow">
+    <span class="step">감각</span><span class="arr">→</span>
+    <span class="step">생각</span><span class="arr">→</span>
+    <span class="step">현실</span><span class="arr">→</span>
+    <span class="step">행동</span><span class="arr">↺</span>
+  </div>
+  <div class="cycle-viz-note">한 장 안에서 4절이 순환. 행동이 다음 감각을 깨운다.</div>
 </div>
 
-<!-- ═══ 아래는 Phase 2 (3월 18일 B2O DASHBOARD) 기록 보존 ═══ -->
-<div style="margin:32px 0 16px;padding:12px;background:rgba(255,255,255,0.02);border-radius:8px;text-align:center;">
-  <div style="font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;">↓ Phase 2 archive (B2O DASHBOARD, 2026-03-18) ↓</div>
+<!-- M2-4 -->
+<div class="section-h" id="m2-4">
+  <div class="num">M 2-4</div>
+  <h2>도구 모듈 — 질문·빚장부·주기율표</h2>
+  <div class="desc">책의 운영 보조 도구</div>
 </div>
 
-<!-- isrVRSI PIPELINE -->
-<div class="pipeline">
-  <div class="pipe-stage completed"><div class="pipe-label">i 채굴</div><div class="pipe-status">&#10003;</div></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-stage completed"><div class="pipe-label">s 의미</div><div class="pipe-status">&#10003;</div></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-stage completed"><div class="pipe-label">r 시험</div><div class="pipe-status">&#10003;</div></div>
-  <div class="pipe-arrow">═</div>
-  <div class="pipe-stage completed"><div class="pipe-label">V 깃발</div><div class="pipe-status">&#9873;</div></div>
-  <div class="pipe-arrow">═</div>
-  <div class="pipe-stage current"><div class="pipe-label">R' 모음</div><div class="pipe-status">&#9881;</div></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-stage future"><div class="pipe-label">S' 이유</div><div class="pipe-status">&#8230;</div></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-stage future"><div class="pipe-label">I' 쐐기</div><div class="pipe-status">&#8230;</div></div>
+<div class="prev-grid">
+  <a class="prev-card" id="m2" href="#m2">
+    <div class="prev-icon">❓</div>
+    <div class="prev-title">질문과 답 & 답과 질문</div>
+    <div class="prev-sub">M 2 · 양방향 dialogue</div>
+    <div class="prev-desc">책이 던진 질문 ↔ 독자의 답. 답에서 다시 새 질문이 자라난다. 다·세의 대화가 책 끝나서 멈추지 않게.</div>
+    <div class="prev-link">준비 중 (Phase 4 trigger)</div>
+  </a>
+
+  <a class="prev-card" id="m3" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=app4_references" target="_blank">
+    <div class="prev-icon">📖</div>
+    <div class="prev-title">생각 빚장부 — 참고문헌</div>
+    <div class="prev-sub">M 3 · 100 entries</div>
+    <div class="prev-desc">빌려온 생각을 *어디서* 빌렸는지 적은 장부. Hyde·Girard·Weber·Goffman·Ricœur·Mokyr·Keats·Anthropic Emotion Probe ··· 책의 모든 anchor.</div>
+    <div class="prev-link">부록 4 열기</div>
+  </a>
+
+  <a class="prev-card" id="m4" href="https://hyunjimoon.github.io/golden-cage-book/interactive/periodic_table_prototype.html" target="_blank">
+    <div class="prev-icon">🧪</div>
+    <div class="prev-title">삶의 주기율표</div>
+    <div class="prev-sub">M 4 · 484권 분류</div>
+    <div class="prev-desc">민음사 세계문학전집 484권을 *원소*처럼 분류. 책의 8장 4도메인 격자가 484권에 어떻게 배치되는지 — 책의 거대한 거울.</div>
+    <div class="prev-link">주기율표 열기</div>
+  </a>
 </div>
 
-<!-- KPI ROW -->
-<div class="kpi-row">
-  <div class="kpi complete">
-    <div class="label">간절함</div>
-    <div class="value">8/10</div>
-    <div class="unit">낭만 보균자 에세이</div>
+<!-- STATUS -->
+<details class="status">
+  <summary>📊 작업 상태 · Phase 1·2·3·4</summary>
+  <div class="status-body">
+    <div class="status-grid">
+      <div class="status-cell"><b>Phase 1</b>framework·1차 원고 · 4월 이전</div>
+      <div class="status-cell"><b>Phase 2 — 2차소통</b>1-4장 cage 본문 · 부록 1-7 · 4월</div>
+      <div class="status-cell"><b>Phase 3 — 3차소통 (현재)</b>5-8장 nest 본문 · 부록 8·9 · 5월. ★A-J 中 6 ✅</div>
+    </div>
+    <div style="font-size:11px;color:var(--dim);margin-bottom:8px;font-family:'DM Mono',monospace;letter-spacing:1px;">★ TASKS</div>
+    <div class="issue-row done"><div class="issue-id">★A</div><div>✅</div><div>6장 Better Place vs Tesla paired</div><div class="issue-meta">5/4</div></div>
+    <div class="issue-row done"><div class="issue-id">★B</div><div>✅</div><div>7장 Novo Nordisk vs Aduhelm</div><div class="issue-meta">5/4</div></div>
+    <div class="issue-row done"><div class="issue-id">★C</div><div>✅</div><div>8장 Ørsted·포스코 vs BP (Plan v2 dry run)</div><div class="issue-meta">5/4</div></div>
+    <div class="issue-row done"><div class="issue-id">★D</div><div>✅</div><div>8장 mirror reflection 메커니즘 (2.3)</div><div class="issue-meta">5/4</div></div>
+    <div class="issue-row done"><div class="issue-id">★F</div><div>✅</div><div>7장 다이어트 + Q1·Q2 정확화</div><div class="issue-meta">5/4</div></div>
+    <div class="issue-row done"><div class="issue-id">★J</div><div>✅</div><div>부록 9 D·S Dual AI Cookbook</div><div class="issue-meta">5/4</div></div>
+    <div class="issue-row todo"><div class="issue-id">★E</div><div>⏸️</div><div>박혜진 편집자 deliverable (NotebookLM + viz + 부록 100)</div><div class="issue-meta">미팅 trigger</div></div>
+    <div class="issue-row todo"><div class="issue-id">★G</div><div>⏸️</div><div>8장 anchor 부록 분리 (clarity, low priority)</div><div class="issue-meta">대기</div></div>
+    <div class="issue-row todo"><div class="issue-id">★H</div><div>⏸️</div><div>6장 OpenAI vs Anthropic (parenting narrative)</div><div class="issue-meta">대기</div></div>
+    <div style="margin-top:14px;font-size:11px;color:var(--dim);">→ 더 보기: <a style="color:var(--gold);" href="https://github.com/hyunjimoon/golden-cage-book/issues" target="_blank">GitHub Issues</a> · <a style="color:var(--gold);" href="agent_delegation_v1_3voice.md" target="_blank">Plan v2 (3 voice)</a></div>
   </div>
-  <div class="kpi warn">
-    <div class="label">능력</div>
-    <div class="value">7/10</div>
-    <div class="unit">다/세 &middot; 4새장 &middot; 순환</div>
+</details>
+
+<details class="status">
+  <summary>⚙️ Multi-Agent Delegation Plan v2</summary>
+  <div class="status-body">
+    <div style="font-size:12px;color:var(--text-2);line-height:1.8;">
+      <b style="color:var(--gold);">A.</b> 2-Agent — Author (자장+main LLM) + Specialist on-demand pool<br>
+      <b style="color:var(--gold);">B.</b> Verifier 이원화 — 🔴 Red Flag (인용·사실·paired·voice) blocking · 🟡 Yellow advisory · 🟢 PASS<br>
+      <b style="color:var(--gold);">C.</b> Coordinator 분리 — Strategic (자장, 주 1-2회) + Tactical (LLM, daily)<br>
+      <b style="color:var(--gold);">D.</b> Voice — 1 Writer Phase 3 / 2 Writers (Cage+Nest) Phase 4<br>
+      <b style="color:var(--gold);">E.</b> ★ task별 매핑 — ★C·H = 2-agent / ★D = 1 / ★E = 4 / ★G = 1<br>
+      <b style="color:var(--gold);">F.</b> 의례 — ★C dry run ✅ / Daily summary / Weekly priority review
+    </div>
   </div>
-  <div class="kpi blocked">
-    <div class="label">연대</div>
-    <div class="value">5/10</div>
-    <div class="unit">소설 인용 깊이 &larr; 병목</div>
-  </div>
-  <div class="kpi warn">
-    <div class="label">해독비용</div>
-    <div class="value">7/10</div>
-    <div class="unit">12파일 &middot; 3층 구조</div>
-  </div>
+</details>
+
+<div class="footer">
+  황금새장을 열다 · 자장(磁場) 문현지 · 민음사 2026 · <a href="https://github.com/hyunjimoon/golden-cage-book" target="_blank">GitHub</a>
 </div>
-
-<!-- ═══════════════ 4새장 변신 아크 ═══════════════ -->
-<div class="muscle-section">
-  <div class="muscle-title">&#129695;&#128301;&#128156;&#8987; 4새장 변신 아크 — 변신이 네 장을 관통한다</div>
-  <div class="muscle-arc">
-    <div class="muscle-card m1">
-      <div class="muscle-ch">Ch1 마담 보바리</div>
-      <div class="muscle-transform"><span class="muscle-from">무모</span><span class="muscle-arrow">→</span><span class="muscle-to">용기</span></div>
-      <div class="muscle-name m1">거울 새장</div>
-      <div class="muscle-axes">거울 앞에 서라</div>
-      <div class="muscle-cage">과잉 시 → 냉소 (1장 cage)</div>
-    </div>
-    <div class="muscle-card m2">
-      <div class="muscle-ch">Ch2 표범</div>
-      <div class="muscle-transform"><span class="muscle-from">냉소</span><span class="muscle-arrow">→</span><span class="muscle-to">지혜</span></div>
-      <div class="muscle-name m2">망원경 새장</div>
-      <div class="muscle-axes">망원경을 내려놓고 걸어라</div>
-      <div class="muscle-cage">과잉 시 → 독선 (2장 cage)</div>
-    </div>
-    <div class="muscle-card m3">
-      <div class="muscle-ch">Ch3 페스트</div>
-      <div class="muscle-transform"><span class="muscle-from">신념윤리</span><span class="muscle-arrow">→</span><span class="muscle-to">책임윤리</span></div>
-      <div class="muscle-name m3">스테인드글라스 새장</div>
-      <div class="muscle-axes">투명 유리로 바꿔라</div>
-      <div class="muscle-cage">과잉 시 → 경직 (3장 cage)</div>
-    </div>
-    <div class="muscle-card m4">
-      <div class="muscle-ch">Ch4 방드르디</div>
-      <div class="muscle-transform"><span class="muscle-from">균형</span><span class="muscle-arrow">→</span><span class="muscle-to">새 균형</span></div>
-      <div class="muscle-name m4">시계 새장</div>
-      <div class="muscle-axes">시계를 멈추고 파도를 들어라</div>
-      <div class="muscle-cage">과잉 시 → 무모 (4장 cage)</div>
-    </div>
-  </div>
-  <div class="muscle-logic">
-    <b>누적</b>: 거울 → 망원경 → 스테인드글라스 → 시계. 앞 새장이 다음 새장의 전제.<br>
-    <b>순환</b>: 각 새장을 여는 법의 과잉이 다음 장의 cage. 시계 과잉 → 무모 → 1장으로.<br>
-    <b>4장 축 전환</b>: 1~3장은 같은 좌표(이해×행동), 4장만 시간×평가기준. 새장을 여는 법이 아니라 <b>좌표계를 갱신</b>하는 메타 변신.
-  </div>
-</div>
-
-<!-- BOTTLENECK SECTION -->
-<div class="bottleneck-section">
-  <div class="bottleneck-title">&#9888; BOTTLENECK — 지금 풀어야 할 것</div>
-  <table class="bn-table">
-    <thead><tr><th>#</th><th>병목</th><th>항</th><th>심각도</th><th>상태</th></tr></thead>
-    <tbody>
-      <tr><td class="bn-rank r1">1</td><td>소설 인용 깊이 (2장 가장 얇음)</td><td>연대</td><td>상</td><td style="color:var(--rose)">미해결</td></tr>
-      <tr><td class="bn-rank r1">2</td><td>에필로그 미완성 (16행)</td><td>능력</td><td>상</td><td style="color:var(--rose)">미해결</td></tr>
-      <tr><td class="bn-rank r1">3</td><td>4장 생고뱅/넷플릭스 서사 부재</td><td>능력</td><td>상</td><td style="color:var(--rose)">미해결</td></tr>
-      <tr><td class="bn-rank r2">4</td><td>Moderna 65/66일 혼재</td><td>연대</td><td>중</td><td style="color:var(--warn)">대기</td></tr>
-      <tr><td class="bn-rank r2">5</td><td>한국 기업사례 추가</td><td>능력</td><td>중</td><td style="color:var(--warn)">대기</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- CHAPTER CARDS -->
-<div class="chapters">
-  <!-- CH1 -->
-  <div class="ch-card ch1">
-    <div class="ch-header">
-      <div><div class="ch-num">CHAPTER 1</div><div class="ch-title">거울 새장</div></div>
-      <span class="ch-status wip">POLISH</span>
-    </div>
-    <div class="ch-meta">
-      마담 보바리 (민음사 036) &middot; Girard
-      <span class="myth-pill">서사적 위안</span>
-      <span class="myth-pill" style="background:rgba(134,34,86,0.2);color:#c66a97;">거울 앞에 서라</span>
-    </div>
-    <div class="camus">
-      <div class="camus-stage active"><span class="emoji">&#128165;</span>소설 속 파리</div>
-      <div class="camus-stage active"><span class="emoji">&#128148;</span>현실의 파리</div>
-      <div class="camus-stage active"><span class="emoji">&#127756;</span>욕망의 공허</div>
-      <div class="camus-stage active"><span class="emoji">&#9889;</span>무모→용기</div>
-    </div>
-    <ul class="checklist">
-      <li><span class="icon">&#10003;</span><span class="done-text">다/세 캐릭터 일관성</span></li>
-      <li><span class="icon">&#10003;</span><span class="done-text">낭만→외상→새장→독 사슬</span></li>
-      <li><span class="icon">&#10003;</span><span class="done-text">장별 인물 테이블</span></li>
-      <li><span class="icon" style="color:var(--warn);">&#9679;</span>소설 고유 인용 1건 (무도회 or 양배추 수프)</li>
-    </ul>
-    <div class="carryover">→ "잘 보는 눈은, 움직이지 않을 이유도 잘 본다"</div>
-  </div>
-
-  <!-- CH2 -->
-  <div class="ch-card ch2">
-    <div class="ch-header">
-      <div><div class="ch-num">CHAPTER 2</div><div class="ch-title">망원경 새장</div></div>
-      <span class="ch-status blocked">BOTTLENECK</span>
-    </div>
-    <div class="ch-meta">
-      표범 (민음사 456) &middot; Bezos Type 1/2
-      <span class="myth-pill">능력주의적 위안</span>
-      <span class="myth-pill" style="background:rgba(139,125,60,0.2);color:#c4b56a;">망원경을 내려놓고 걸어라</span>
-    </div>
-    <div class="camus">
-      <div class="camus-stage active"><span class="emoji">&#128165;</span>"우리 가문은 영원"</div>
-      <div class="camus-stage active"><span class="emoji">&#128148;</span>가리발디 상륙</div>
-      <div class="camus-stage active"><span class="emoji">&#127756;</span>변하지 않는 자기</div>
-      <div class="camus-stage active"><span class="emoji">&#9889;</span>냉소→지혜</div>
-    </div>
-    <ul class="checklist">
-      <li><span class="icon">&#10003;</span><span class="done-text">콘체타 부활 (양방향 빚)</span></li>
-      <li><span class="icon">&#10003;</span><span class="done-text">다/세 캐릭터</span></li>
-      <li><span class="icon" style="color:var(--rose);">&#10007;</span><b style="color:var(--rose);">살리나 구체적 장면 인용 1건 — 소설 인용 가장 얇음</b></li>
-    </ul>
-    <div class="carryover">→ "빠른 발은 확신을 낳고, 확신은 결과를 면제한다"</div>
-  </div>
-
-  <!-- CH3 -->
-  <div class="ch-card ch3">
-    <div class="ch-header">
-      <div><div class="ch-num">CHAPTER 3</div><div class="ch-title">스테인드글라스 새장</div></div>
-      <span class="ch-status wip">POLISH</span>
-    </div>
-    <div class="ch-meta">
-      페스트 (민음사 267) &middot; Weber + Bayesian
-      <span class="myth-pill">종교적 위안</span>
-      <span class="myth-pill" style="background:rgba(45,139,115,0.2);color:#5cc4a7;">투명 유리로 바꿔라</span>
-    </div>
-    <div class="camus">
-      <div class="camus-stage active"><span class="emoji">&#128165;</span>"신의 벌"</div>
-      <div class="camus-stage active"><span class="emoji">&#128148;</span>아이의 죽음</div>
-      <div class="camus-stage active"><span class="emoji">&#127756;</span>무의미한 고통</div>
-      <div class="camus-stage active"><span class="emoji">&#9889;</span>신념→책임</div>
-    </div>
-    <ul class="checklist">
-      <li><span class="icon">&#10003;</span><span class="done-text">파늘루 설교 인용</span></li>
-      <li><span class="icon">&#10003;</span><span class="done-text">타루-다 연결</span></li>
-      <li><span class="icon" style="color:var(--warn);">&#9679;</span>리외 인용 보강</li>
-      <li><span class="icon" style="color:var(--warn);">&#9679;</span>Moderna 65/66일 통일</li>
-    </ul>
-    <div class="carryover">→ "매일의 판단은 질서가 되고, 질서는 뒤집기를 금한다"</div>
-  </div>
-
-  <!-- CH4 -->
-  <div class="ch-card ch4">
-    <div class="ch-header">
-      <div><div class="ch-num">CHAPTER 4</div><div class="ch-title">시계 새장</div></div>
-      <span class="ch-status blocked">BOTTLENECK</span>
-    </div>
-    <div class="ch-meta">
-      방드르디 (민음사 091) &middot; Schumpeter + Fine
-      <span class="myth-pill">계몽주의적 위안</span>
-      <span class="myth-pill" style="background:rgba(61,138,142,0.2);color:#6cc4c8;">시계를 멈추고 파도를 들어라</span>
-    </div>
-    <div class="camus">
-      <div class="camus-stage active"><span class="emoji">&#128165;</span>"서구 문명이 정답"</div>
-      <div class="camus-stage active"><span class="emoji">&#128148;</span>화약 동굴 폭발</div>
-      <div class="camus-stage active"><span class="emoji">&#127756;</span>질서의 공허</div>
-      <div class="camus-stage active"><span class="emoji">&#9889;</span>질서→새 질서</div>
-    </div>
-    <ul class="checklist">
-      <li><span class="icon">&#10003;</span><span class="done-text">방드르디 폭발 장면</span></li>
-      <li><span class="icon">&#10003;</span><span class="done-text">메타 대화</span></li>
-      <li><span class="icon" style="color:var(--rose);">&#10007;</span><b style="color:var(--rose);">생고뱅 장면화 — 서사 부재</b></li>
-      <li><span class="icon" style="color:var(--warn);">&#9679;</span>로빈슨 일지 인용</li>
-    </ul>
-    <div class="carryover">→ "빈손은 가볍고, 가벼운 손은 가계부를 안 편다"</div>
-  </div>
-</div>
-
-<!-- VERDICT -->
-<div class="verdict">
-  <div class="verdict-quote">간절함과 능력은 보인다. 남은 일은 소설을 더 깊이 읽는 것 — 그것이 연대다.</div>
-  <div class="verdict-attr">— B2O 진단, 2026-03-18</div>
-</div>
-
-<!-- EQUATION BAR -->
-<div class="equation-bar">dG/dF = (dG/dR) &times; (dR/dF) = (+) &times; (&minus;) = (&minus;)</div>
 
 </body>
 </html>
