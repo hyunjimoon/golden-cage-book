@@ -95,7 +95,7 @@ target_chars: ~7000
 
 ---
 
-## 3. 현실 — 어디에
+## 3. 현실 — 물질(atoms)
 
 ### 3.1 글로벌 — Kodak vs 후지필름 (paired)
 

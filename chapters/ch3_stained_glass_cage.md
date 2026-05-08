@@ -141,7 +141,7 @@ target_chars: ~7000
 
 ---
 
-## 3. 현실 — 어디에
+## 3. 현실 — 생물(cells)
 
 ### 3.1 글로벌 — Theranos vs Moderna
 
