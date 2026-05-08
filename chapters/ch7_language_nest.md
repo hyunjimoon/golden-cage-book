@@ -93,7 +93,9 @@ building on [3_스테인드글라스새장](3_스테인드글라스새장.md)
 
 ### 2.3 조직의 분포 사고 — *clarity·naming·framing*
 
-**세:** PLoT가 *개인*의 분포 사고라면 *조직*의 분포 사고는? Gibbons(MIT, 2025 *From Coase to Culture*) 한 단어 — ***clarity problem***. *"우리가 같은 약속을 같은 의미로 알고 있나."* doublethink가 깨지는 자리가 거기예요. 처방 두 단어 — ***naming***(*"decentralization with coordinated control"* 같은 *모순의 분포 명명*)과 ***framing***(Bezos *Day 1* — 회사 나이를 매일 *1일*로 재카테고리화).
+**세:** PLoT가 *개인*의 분포 사고라면 *조직*의 분포 사고는? Gibbons(MIT, 2025 *From Coase to Culture*) 한 단어 — ***clarity problem***. *"우리가 같은 약속을 같은 의미로 알고 있나."* doublethink가 깨지는 자리가 거기예요.
+
+**세:** 처방은 *어휘를 합의해 박는 것*. Bezos의 *Day 1*이 사례 — 회사 나이를 매일 *1일*로 재카테고리화하는 *한 단어*가 조직 결정을 짓는다. (*naming·framing* 메커니즘 자세히는 부록 4.)
 
 **다:** 윈스턴이 못한 게 그거예요. *분포로 생각*했지만 — 그 분포에 *이름*을 짓지 않았어요. *사적 의미*에 머물렀어요. *Geertz: "culture is public because meaning is."*
 
