@@ -102,25 +102,28 @@ const CHAPTERS = [
   {id:'ch2_telescope_cage', label:'🔭 2장 망원경새장'},
   {id:'ch3_stained_glass_cage', label:'💒 3장 스테인드글라스새장'},
   {id:'ch4_clock_cage', label:'⏱️ 4장 시계새장'},
-  {id:'ch5_role_nest', label:'🦋 5장 역할둥지'},
+  {id:'ch5_play_nest', label:'🦋 5장 놀이둥지'},
   {id:'ch6_mist_nest', label:'🌫️ 6장 안개둥지'},
-  {id:'ch7_language_nest', label:'💘 7장 언어둥지'},
-  {id:'ch8_mirror_nest', label:'🌗 8장 거울둥지'},
+  {id:'ch7_doubt_nest', label:'💘 7장 의심둥지'},
+  {id:'ch8_bird_nest', label:'🌗 8장 새둥지'},
   {id:'ch9_epilogue', label:'답과 질문'}
 ];
 
 const CH_COLORS = {
   ch1_mirror_cage:'#C8A2C8', ch2_telescope_cage:'#808000',
   ch3_stained_glass_cage:'#5F9EA0', ch4_clock_cage:'#2E5090',
-  ch5_role_nest:'#F4D43C', ch6_mist_nest:'#6B8E4B',
-  ch7_language_nest:'#1A3A5C', ch8_mirror_nest:'#E8843C'
+  ch5_play_nest:'#F4D43C', ch6_mist_nest:'#6B8E4B',
+  ch7_doubt_nest:'#1A3A5C', ch8_bird_nest:'#E8843C'
 };
 
 // backward-compat aliases (옛 URL 살리기)
 const ALIASES = {
-  'ch5_epilogue': 'ch9_epilogue',     // 5-8장 추가 후 epilogue 위치 이동
-  'ch6_author_nest': 'ch6_mist_nest', // 작가둥지 → 안개둥지 (2026-05-02)
-  'ch8_trick_nest': 'ch8_mirror_nest' // 트릭/장난/선넘 → 거울 (2026-05-02)
+  'ch5_epilogue': 'ch9_epilogue',       // 5-8장 추가 후 epilogue 위치 이동
+  'ch6_author_nest': 'ch6_mist_nest',   // 작가둥지 → 안개둥지 (2026-05-02)
+  'ch8_trick_nest': 'ch8_bird_nest',    // 트릭/장난/선넘/거울 → 새 (2026-05-10)
+  'ch5_role_nest': 'ch5_play_nest',     // 역할 → 놀이 (2026-05-10)
+  'ch7_language_nest': 'ch7_doubt_nest',// 언어 → 의심 (2026-05-10)
+  'ch8_mirror_nest': 'ch8_bird_nest'    // 거울 → 새 (2026-05-10)
 };
 const params = new URLSearchParams(window.location.search);
 const requestedFile = params.get('file') || 'ch0_prologue';

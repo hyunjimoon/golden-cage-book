@@ -2,9 +2,13 @@
 version: 150p
 target_chars: ~7000
 ---
-
+[066 나르치스와 골드문트](시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/066 나르치스와 골드문트.md)
 책: [📜hyde_trickster_makes_world](공간화음/Thesis/1논문용/📜hyde_trickster_makes_world.md)
 building on [4_시계새장](4_시계새장.md)
+
+[편집자한솔](시공간멜로디/On/love_편집자혜진/people/편집자한솔.md)
+
+![panel_ch8_거울둥지.png](panel_ch8_거울둥지.png.md)
 
 # CHAPTER 8 — 거울 둥지 · **의미를 만들어라**
 *이름을 다시 짓고 규칙을 다시 매혹시킨다 — 부수: **넘기고 혼동시키며 태어나는 의미***

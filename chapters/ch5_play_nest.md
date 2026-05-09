@@ -5,6 +5,8 @@ target_chars: ~7000
            
 building on [1_거울새장](시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/1_거울새장.md)
 
+![panel_ch5_역할둥지.png](panel_ch5_역할둥지.png.md)
+
 # CHAPTER 5 — 역할 둥지 · **환상을 역이용하라**
 *환상을 벗는 자에서, 환상을 입는 자로*
 

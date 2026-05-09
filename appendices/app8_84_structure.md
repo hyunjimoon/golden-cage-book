@@ -324,11 +324,11 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 
 | 거울 짝 | 회전 1 — 빌린 도구 (1-4장 *새장*) | 회전 2 — 여는 도구 (5-8장 *둥지*) |
 |---|---|---|
-| 1 ↔ 5 | [1_거울새장](1_거울새장.md) | [5_역할둥지](5_역할둥지.md) |
+| 1 ↔ 5 | [1_거울새장](1_거울새장.md) | [5_놀이둥지](5_놀이둥지.md) |
 | 2 ↔ 6 | [2_망원경새장](2_망원경새장.md) | [6_안개둥지](6_안개둥지.md) |
-| 3 ↔ 7 | [3_스테인드글라스새장](3_스테인드글라스새장.md) | [7_언어둥지](7_언어둥지.md) |
-| 4 ↔ 8 | [4_시계새장](4_시계새장.md) | [8_거울둥지](8_거울둥지.md) |
-| **1 ↔ 8** | [1_거울새장](1_거울새장.md) | [8_거울둥지](8_거울둥지.md) (ouroboros mirror — 책 frame) |
+| 3 ↔ 7 | [3_스테인드글라스새장](3_스테인드글라스새장.md) | [7_의심둥지](7_의심둥지.md) |
+| 4 ↔ 8 | [4_시계새장](4_시계새장.md) | [8_새둥지](8_새둥지.md) |
+| **1 ↔ 8** | [1_거울새장](1_거울새장.md) | [8_새둥지](8_새둥지.md) (ouroboros mirror — 책 frame) |
 
 → 5-8 둥지 명명: *역할·작가·언어·트릭* — 메타-인지 4가지(누가 만들었나)와 정합. 1-4 *X새장* (도구) / 5-8 *X둥지* (메타-인지 행위 대상) 두 시리즈 균질 짝.
 
@@ -383,7 +383,7 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 |:-:|---|---|---|
 | **★1** | **부제 유무** ("황금새장을 열다" 단독 vs 부제 추가) | 단독 | 표지 디자인 시 |
 | **★2** | **1장 마스터** vault(324행 다이어트+공식) vs web(367행 풍부) | hybrid: vault 구조 + web 4항목 복귀 (옐로모바일·인물표·"외상이면 소도"·footnote 4) | 1장 patch 시 |
-| ~~★3~~ ✅ | ~~5-8 셸 파일명 변경~~ **결정 완료 (4회 갱신)**: `5_역할둥지` / `6_안개둥지` / `7_언어둥지` / `8_거울둥지` (1↔8 ouroboros mirror) — 변천: 트릭→장난→선넘→거울 | sync 스크립트 갱신 (web 영문 ch6_author_nest·ch8_trick_nest URL 유지) | — |
+| ~~★3~~ ✅ | ~~5-8 셸 파일명 변경~~ **결정 완료 (4회 갱신)**: `5_놀이둥지` / `6_안개둥지` / `7_의심둥지` / `8_새둥지` (1↔8 ouroboros mirror) — 변천: 트릭→장난→선넘→거울 | sync 스크립트 갱신 (web 영문 ch6_author_nest·ch8_trick_nest URL 유지) | — |
 | **★4** | **로돌프 추가** (5장 음화 — 2차 작업) | 5장 본문 환상 짓기 확장 시 함께 | 5장 Phase 2 patch |
 | **★5** | **N·T·L·P·B 라벨 의미** (이미지 #4 두 cycle) | 이미지 직접 의미 확정 | 두 cycle 섹션 보강 |
 
@@ -393,10 +393,10 @@ Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be u
 
 | 장 | 파일 (현재) | 행수 | Fact-check 적용 | 약점 (Bird's Eye) |
 |:-:|---|:-:|:-:|---|
-| 5 | `5_역할둥지.md` | ~165 | ✅ Hyde 분류·Slack 날짜·Krieger·Hopi족 + Goffman role distance | 5월 2일 *낯섦* 결정 (line 24) |
+| 5 | `5_놀이둥지.md` | ~165 | ✅ Hyde 분류·Slack 날짜·Krieger·Hopi족 + Goffman role distance | 5월 2일 *낯섦* 결정 (line 24) |
 | 6 | `6_안개둥지.md` | ~250 | ✅ Orfeo·Eugenia·Mauricio·죽음 모호성·장송 연설 + Ricœur narrative identity + 아우렐리우스 처방 | 다 voice manifesto (8장 일기 거울) |
-| 7 | `7_언어둥지.md` | ~360 | ✅ Winston 첫 일기·PLoT 출처 + Sapir-Whorf + Gibbons clarity·naming·framing + 세 관찰일지 + 제3의 위치 manifesto | anchor box plain Korean 변환 (학자명 → 부록4 footnote) |
-| 8 | `8_거울둥지.md` | ~315 | ✅ 4단계 명명·Nathan Johnson·비바리퍼블리카 어원 + Raven 신화 (Haida) + 4 문화권 + 결정 불가능성 + Mokyr·Keats NC·Spandrel·노자·Poe | 르뢰 = 신념윤리 trickster reframe |
+| 7 | `7_의심둥지.md` | ~360 | ✅ Winston 첫 일기·PLoT 출처 + Sapir-Whorf + Gibbons clarity·naming·framing + 세 관찰일지 + 제3의 위치 manifesto | anchor box plain Korean 변환 (학자명 → 부록4 footnote) |
+| 8 | `8_새둥지.md` | ~315 | ✅ 4단계 명명·Nathan Johnson·비바리퍼블리카 어원 + Raven 신화 (Haida) + 4 문화권 + 결정 불가능성 + Mokyr·Keats NC·Spandrel·노자·Poe | 르뢰 = 신념윤리 trickster reframe |
 
 **합계 1,001행**. 박혜진 deliverable 가능 상태.
 
