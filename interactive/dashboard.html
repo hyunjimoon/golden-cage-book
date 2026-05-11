@@ -68,16 +68,33 @@
   .part-axis { display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--gold); font-weight: 700; }
 
   .ch-row { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 16px; margin-bottom: 14px; }
-  .ch-card { background: var(--card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; position: relative; transition: all 0.2s; }
-  .ch-card:hover { background: var(--card-2); }
+  .ch-card { background: var(--card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; position: relative; transition: all 0.25s ease; }
+  .ch-card:hover { background: var(--card-2); transform: translateY(-1px); }
+  /* cage (좌) — Sacred Order: top border, 위에서 빛 */
+  .ch-card.cage1, .ch-card.cage2, .ch-card.cage3, .ch-card.cage4 {
+    background: linear-gradient(180deg, var(--card) 0%, rgba(14,19,32,0.4) 100%);
+  }
   .ch-card.cage1 { border-top: 3px solid var(--c1); }
   .ch-card.cage2 { border-top: 3px solid var(--c2); }
   .ch-card.cage3 { border-top: 3px solid var(--c3); }
   .ch-card.cage4 { border-top: 3px solid var(--c4); }
-  .ch-card.nest5 { border-top: 3px solid var(--c5); }
-  .ch-card.nest6 { border-top: 3px solid var(--c6); }
-  .ch-card.nest7 { border-top: 3px solid var(--c7); }
-  .ch-card.nest8 { border-top: 3px solid var(--c8); }
+  /* nest (우) — Trickster Reflection: bottom border, 아래에서 빛 (literal mirror) */
+  .ch-card.nest5, .ch-card.nest6, .ch-card.nest7, .ch-card.nest8 {
+    background: linear-gradient(0deg, var(--card) 0%, rgba(14,19,32,0.4) 100%);
+    border-top: 1px solid var(--border);
+  }
+  .ch-card.nest5 { border-bottom: 3px solid var(--c5); }
+  .ch-card.nest6 { border-bottom: 3px solid var(--c6); }
+  .ch-card.nest7 { border-bottom: 3px solid var(--c7); }
+  .ch-card.nest8 { border-bottom: 3px solid var(--c8); }
+  /* mirror pair hover — axis activates */
+  .ch-row:hover .mirror-axis .arrow { color: var(--gold); transform: scale(1.4); }
+  .mirror-axis .arrow { transition: all 0.3s ease; }
+  /* chapter name as link */
+  .ch-name a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .ch-name a:hover { color: var(--gold); }
+  .ch-name a::after { content: ' ↗'; font-size: 10px; opacity: 0; transition: opacity 0.2s; color: var(--gold); }
+  .ch-name a:hover::after { opacity: 1; }
 
   .ch-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
   .ch-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--dim); letter-spacing: 1.5px; }
@@ -231,7 +248,7 @@
 <!-- 1↔5 -->
 <div class="ch-row">
   <div class="ch-card cage1">
-    <div class="ch-head"><span class="ch-num">CH 1</span><span class="ch-name">🪞 거울새장</span></div>
+    <div class="ch-head"><span class="ch-num">CH 1</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch1_mirror_cage" target="_blank">🪞 거울새장</a></span></div>
     <div class="ch-thesis">엠마(악)→르뢰(트릭) · 빌린 욕망에 먹힘</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">파리의 벨벳 — 만져본 적 없는 결을 몸으로 안다</span></div>
@@ -242,7 +259,7 @@
   </div>
   <div class="mirror-axis"><div class="label">M-M 회전축</div><div class="arrow">↔</div><div class="label">인식 차원</div></div>
   <div class="ch-card nest5">
-    <div class="ch-head"><span class="ch-num">CH 5</span><span class="ch-name">🦋 놀이둥지</span></div>
+    <div class="ch-head"><span class="ch-num">CH 5</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_play_nest" target="_blank">🦋 놀이둥지</a></span></div>
     <div class="ch-thesis">송 릴링 · 환상을 알면서 입기 (★멈춤)</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">분장실 — 분이 반쯤 발린 얼굴</span></div>
@@ -256,7 +273,7 @@
 <!-- 2↔6 -->
 <div class="ch-row">
   <div class="ch-card cage2">
-    <div class="ch-head"><span class="ch-num">CH 2</span><span class="ch-name">🔭 망원경새장</span></div>
+    <div class="ch-head"><span class="ch-num">CH 2</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch2_telescope_cage" target="_blank">🔭 망원경새장</a></span></div>
     <div class="ch-thesis">살리나→탄크레디 · 관조하며 마비</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">접안렌즈의 차가움 — 별의 시간으로 살다</span></div>
@@ -267,7 +284,7 @@
   </div>
   <div class="mirror-axis"><div class="label">관조</div><div class="arrow">↔</div><div class="label">→ 대면</div></div>
   <div class="ch-card nest6">
-    <div class="ch-head"><span class="ch-num">CH 6</span><span class="ch-name">🌫️ 안개둥지</span></div>
+    <div class="ch-head"><span class="ch-num">CH 6</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch6_mist_nest" target="_blank">🌫️ 안개둥지</a></span></div>
     <div class="ch-thesis">우나무노↔아우구스토 · 작가의 책상까지 (선을 넘어라)</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">손이 키보드 위에 있는데 누구 손인지 모름</span></div>
@@ -281,7 +298,7 @@
 <!-- 3↔7 -->
 <div class="ch-row">
   <div class="ch-card cage3">
-    <div class="ch-head"><span class="ch-num">CH 3</span><span class="ch-name">💒 스테인드글라스새장</span></div>
+    <div class="ch-head"><span class="ch-num">CH 3</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_stained_glass_cage" target="_blank">💒 스테인드글라스새장</a></span></div>
     <div class="ch-thesis">파늘루 신념윤리→리외+타루 책임윤리 · 이분법</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">아이의 작은 몸이 활처럼 휘어진다</span></div>
@@ -292,7 +309,7 @@
   </div>
   <div class="mirror-axis"><div class="label">이분법</div><div class="arrow">↔</div><div class="label">→ 분포</div></div>
   <div class="ch-card nest7">
-    <div class="ch-head"><span class="ch-num">CH 7</span><span class="ch-name">💘 의심둥지</span></div>
+    <div class="ch-head"><span class="ch-num">CH 7</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch7_doubt_nest" target="_blank">💘 의심둥지</a></span></div>
     <div class="ch-thesis">윈스턴↔BB · 분포로 의심하기</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">2+2=4를 적는 손, 단어가 매일 줄어든다</span></div>
@@ -306,7 +323,7 @@
 <!-- 4↔8 -->
 <div class="ch-row">
   <div class="ch-card cage4">
-    <div class="ch-head"><span class="ch-num">CH 4</span><span class="ch-name">⏰ 시계새장</span></div>
+    <div class="ch-head"><span class="ch-num">CH 4</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch4_clock_cage" target="_blank">⏰ 시계새장</a></span></div>
     <div class="ch-thesis">땅의 로빈슨→태양의 로빈슨 · 작란 (Phase 1만)</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">시계 멈추자 처음 들리는 파도 소리</span></div>
@@ -317,7 +334,7 @@
   </div>
   <div class="mirror-axis"><div class="label">작란</div><div class="arrow">↔</div><div class="label">→ 명명</div></div>
   <div class="ch-card nest8">
-    <div class="ch-head"><span class="ch-num">CH 8</span><span class="ch-name">🌗 새둥지</span></div>
+    <div class="ch-head"><span class="ch-num">CH 8</span><span class="ch-name"><a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch8_bird_nest" target="_blank">🌗 새둥지</a></span></div>
     <div class="ch-thesis">일연·Raven·Douglass · Phase 1+2 (책임윤리)</div>
     <div class="cycle">
       <div class="sec-row"><span class="sec-tag">감각</span><span class="sec-content">까마귀가 빛을 물고 굴뚝을 뚫고 날아오름</span></div>
@@ -404,7 +421,13 @@
 
 <!-- THIS WEEK -->
 <div class="bucket bucket-week">
-  <div class="bucket-h">🔥 This Week (자율 가능)<span style="color:var(--dim);font-size:9px;">총 ~45m</span></div>
+  <div class="bucket-h">🔥 This Week (자율 가능)<span style="color:var(--dim);font-size:9px;">총 ~65m</span></div>
+  <div class="task-row">
+    <span class="task-id">diag</span>
+    <span class="task-name">5-8장 panel diagram 4개 Gemini 생성 <span class="why">prompts/05-08_*_panel.md 준비 완료 · 1-4장 동일 형식</span></span>
+    <span class="effort">S 20m</span>
+    <span class="impact">★★★★</span>
+  </div>
   <div class="task-row">
     <span class="task-id">slide</span>
     <span class="task-name">NotebookLM 슬라이드 prompt 송부 → 결과 수령 <span class="why">★E 진척 — 박혜진 첫 검토 부품</span></span>
@@ -461,7 +484,7 @@
 
 <!-- DONE collapsed -->
 <details class="status">
-  <summary>✅ Done · 8 task (Phase 3, 5/4-5/10)</summary>
+  <summary>✅ Done · 10 task (Phase 3, 5/4-5/11)</summary>
   <div class="status-body">
     <div class="issue-row done"><div class="issue-id">★A</div><div>✅</div><div>6장 Better Place vs Tesla paired</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★B</div><div>✅</div><div>7장 Novo Nordisk vs Aduhelm</div><div class="issue-meta">5/4</div></div>
@@ -470,7 +493,9 @@
     <div class="issue-row done"><div class="issue-id">★F</div><div>✅</div><div>7장 다이어트 + Q1·Q2 정확화</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★J</div><div>✅</div><div>부록 9 D·S Dual AI Cookbook</div><div class="issue-meta">5/4</div></div>
     <div class="issue-row done"><div class="issue-id">★H</div><div>✅</div><div>6장 OpenAI vs Anthropic (making vs parenting)</div><div class="issue-meta">5/7</div></div>
-    <div class="issue-row done"><div class="issue-id">rename</div><div>✅</div><div>5·7·8장 vault·web rename (역할/언어/거울 → 놀이/의심/새 둥지) + ALIASES</div><div class="issue-meta">5/10</div></div>
+    <div class="issue-row done"><div class="issue-id">★L</div><div>✅</div><div>5·7·8장 vault·web rename (역할/언어/거울 → 놀이/의심/새 둥지) + ALIASES + panel embeds</div><div class="issue-meta">5/10</div></div>
+    <div class="issue-row done"><div class="issue-id">★84</div><div>✅</div><div>84구조.md RSRS 재작성 (25,294자→5,607자, 77.8% 감축)</div><div class="issue-meta">5/11</div></div>
+    <div class="issue-row done"><div class="issue-id">★Lex</div><div>✅</div><div>CLAUDE.md Lexicon 19→22 (Phase 2 Re-enchantment·한 글자 비틂·8단계)</div><div class="issue-meta">5/7</div></div>
     <div style="margin-top:14px;font-size:11px;color:var(--dim);">→ 더 보기: <a style="color:var(--gold);" href="https://github.com/hyunjimoon/golden-cage-book/issues" target="_blank">GitHub Issues</a></div>
   </div>
 </details>
