@@ -5,6 +5,32 @@ target_pages: ~15
 modified:
   - 2026-05-02
   - 2026-05-09T07:37:08+09:00
+  - 2026-05-16
+schema_version: v1.0
+coordinate: cage · 1장 · §1-4 · 1↔5
+atomic_unit: "[bit]"
+cc_owner: cc-pair-a
+mirror_anchor: ↔ 5🦋_놀이둥지 (1↔5 한 글자 비틂)
+---
+
+> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §1.1 hook *"이 욕망은 어디서 왔는가"* 단락 입으로 읊어 — *2장 살리나로 넘어가는 마지막 문장*까지 호흡 끊김 표시
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·1장·1↔5·[bit] · 🧑‍🤝‍🧑 cc-pair-a · 🪞 ↔ 5🦋 놀이둥지_
+
+## 🗺️ 양탄자 — 🪞 1 거울새장 · 마담보바리 [bit]
+
+> *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
+
+```text
+(정치) 1850s 프랑스 제2제정      (학문) Girard 모방욕망
+부르주아·출판물 폭증            三角 desire
+        ╲                    ╱
+          ━━ "욕망은 빌린 것.
+              장부를 펴라." ━━
+        ╱                    ╲
+(문학) 19C 사실주의·            (산업) ✗ Quibi·싸이월드
+자유간접화법                   ✓ Netflix·배달의민족
+```
+
 ---
 ![[panel_ch1_거울새장.png]]
 
@@ -178,6 +204,19 @@ modified:
 > 장부를 펴라고 말하는 건 쉬웠다. 나는 펼쳐본 적이 없으니까 — 장부가 없으니까. 뛴 적이 없으면 외상장부도 없다. 다음 장에서는 조금 더 겸손하게 듣겠다.
 
 ---
+
+## 📜 Snapshot Timeline · 🪞 Mirror anchor
+
+> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
+
+| 날짜 | 버전 | δ delta |
+|:--|:--|:--|
+| 2026-05-02 | v1.0 | 150p · 거울새장 초안 |
+| 2026-05-09 | v1.3 | RSRS form 적용 |
+| **2026-05-16** | **v2.0 ★** | **Dashboard skin. §1.1 hook cadence audit.** |
+| 2026-08-15 | v2.1 | (계획) 5장 paired §1 hook(엠마 비소)과 mirror 정합 검증 |
+
+**🪞 Mirror anchor — 1↔5**: 거울새장(엠마, *모르고* 입기) ↔ 놀이둥지(송 릴링, *알면서* 입기). **한 글자 비틂** = *모르고 → 알면서*. Caillois Forbidden(ALEA+MIMICRY 운명-가장) → Fundamental(MIMICRY+ILINX 자기 변형). 8 장 ouroboros의 *첫 회전 시작점* — 마지막 장 [[8🐦‍⬛_까마귀둥지]]가 다시 거울로 닫는다(1↔8). [bit] atomic unit = Shannon 1948.
 
 [^1]: 부록 1 — *지라르 anchor 카드*. 1961년 《낭만적 거짓과 소설적 진실》 5작가 분석, Peter Thiel·Mike Maples Jr.의 *합의 바깥* 적용 전략 포함.
 [^2]: 부록 2 — *옐로모바일 사례 카드*. 분식회계 의혹·자회사 청산 시점·정확 valuation 수치 포함 (작가 검증 필요).

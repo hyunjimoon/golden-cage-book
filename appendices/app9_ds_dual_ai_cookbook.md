@@ -1,3 +1,8 @@
+---
+modified:
+  - 2026-05-04
+type: 부록
+---
 
 # 부록 9 — D·S Dual AI Cookbook
 

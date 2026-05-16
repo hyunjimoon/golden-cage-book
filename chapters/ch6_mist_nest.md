@@ -1,10 +1,46 @@
 ---
 version: 150p
 target_chars: ~7000
+modified:
+  - 2026-05-02
+  - 2026-05-07T23:57:03+09:00
+  - 2026-05-08T05:55:01+09:00
+  - 2026-05-09T10:23:03+09:00
+  - 2026-05-10T11:10:10+09:00
+  - 2026-05-11T17:34:24+09:00
+  - 2026-05-16T04:13:48+09:00
+schema_version: v1.0
+coordinate: nest · 6장 · §1-4 · 2↔6
+atomic_unit: "[atom]"
+cc_owner: cc-pair-b
+mirror_anchor: ↔ 2🔭_망원경새장 (2↔6 한 글자 비틂)
 ---
-![panel_ch6_안개둥지.png](panel_ch6_안개둥지.png.md)
-[08_🪞외우(박혜진7)](시간리듬/🎵 Weekly_Melody/5_전금자본_혜진/08_🪞외우(박혜진7).md)
-building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/121 안개.md)
+
+> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §3 우나무노 살라망카 면담 단락 cadence — *novela → nivola* 한 글자 비틂이 입에서 *번지지 않고* 분리되는지 두 번 읊어 확인
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·6장·2↔6·[atom] · 🧑‍🤝‍🧑 cc-pair-b · 🪞 ↔ 2🔭 망원경새장_
+
+
+## 🗺️ 양탄자 — 🌫️ 6 안개둥지 · 우나무노 안개 [atom]
+
+> *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
+
+```text
+(정치) 1914 1차대전·98세대       (학문) Ricœur idem/ipse
+스페인 제국 붕괴              실존고통 인식론
+        ╲                    ╱
+          ━━ "고통이 실존이다.
+              선을 넘어라." ━━
+        ╱                    ╲
+(문학) novela → nivola         (산업) ✗ Better Place·OpenAI
+인물의 작가 의심 메타구조      ✓ Tesla·Anthropic·토스
+```
+
+---
+[[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/도구/참고문헌_602격자|참고문헌_602격자]]
+![[diagram_ch6_안개둥지.png]]
+![[panel_ch6_안개둥지.png]]
+[[시간리듬/🎵 Weekly_Melody/5_전금자본_혜진/08_🪞외우(박혜진7)|08_🪞외우(박혜진7)]]
+building on [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/121 안개|121 안개]]
 
 ---
 추가 후보
@@ -22,7 +58,7 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 ## 1. 감각 — 짓기 들추기
 
-### 1.1 내 — "내가 쓴 계획서인가, 시장이 쓰게 한 계획서인가"
+### 1.1 내 — "내가 쓴 계획서인가, 시장이 쓰게 한 계획서인가"  *(모방 — 만든 사람의 자리를 *옆으로* 가져오는)*
 
 **다:** 6장이에요. 질문 하나 — *내가 쓴 계획서인가, 시장이 나에게 쓰게 한 계획서인가* 구분되세요? 5분 안에 답할 수 있는 건 어느 쪽이에요?
 
@@ -111,21 +147,11 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 **다:** 그래서 6장 처방이 정확히 이거예요. *시장이 써준 서사*(EV가 더 좋아야 한다)를 받아 입지 말고 — *내가 작가가 되어* *어떤 세계로 가는가*를 직접 써라. 그러면 회사는 그 세계의 *vehicle*이 됩니다.
 
-### 3.2 글로벌 — OpenAI vs Anthropic (paired) — *making* vs *parenting*
+### 3.2 글로벌 — OpenAI vs Anthropic *making vs parenting*
 
-**세:** 같은 산업, 다른 *작가의 자리*. 두 회사 모두 *AI 안전·역량 frontier*에 있어요. 그런데 *narrative frame*이 정반대.
+**세:** 같은 패턴이 *정보* 도메인에서도. **OpenAI** (Altman, 2015) — *AGI를 만든다* maker narrative. ChatGPT(2022.11.30)가 Phase 1 충격. **Anthropic** (Amodei 형제 + ex-OpenAI safety, 2021) — Constitutional AI + Responsible Scaling Policy. *AI와 함께 자란다* parenting narrative.
 
-**세:** **OpenAI** (Sam Altman, 2015년 설립). 미션 — *"safe and beneficial AGI"*. *AGI를 *만든다*는* maker narrative. ChatGPT(2022.11.30)가 Phase 1 충격(2개월 1억 사용자). *제작자가 인물을 *생산*하는* 자리.
-
-**다:** **Anthropic** (Dario·Daniela Amodei + ex-OpenAI safety team, 2021년 설립). Constitutional AI(2022) + Responsible Scaling Policy(2023). 미션 — *"AI safety research"*. AI를 *키우는 자세*로 접근 — *parenting narrative*. 모델에 *헌법(Constitution)*을 주고, 책임을 *명시적 솔기*로 노출.
-
-**세:** 6장 메타픽션의 직접 사례예요. OpenAI는 *"내가 너를 만든다"* (우나무노가 아우구스토에게) — 작가가 인물 위에 있어요. Anthropic은 *"우리가 너와 *함께* 자란다"* (작가와 인물이 *같은 책상*에) — Crucial Third Position.
-
-**다:** narrative 차이가 *조직 어휘*로 굳어요. OpenAI는 *AGI를 만든다*는 어휘가, Anthropic은 *AI와 함께 자란다*는 어휘가 — 매일의 결정을 짓습니다. **어휘가 조직을 짓는다** (자세한 메커니즘은 7장에서).
-
-**세:** 이건 *novela vs nivola* 한 글자 비틂. OpenAI = *novela* (제작자가 인물을 *위에서* 만든다). Anthropic = *nivola* (작가와 인물이 *같이 짠다*). Better Place vs Tesla(물질)와 동형 패턴이 *정보 도메인*에서 한 번 더 — *cross-domain*으로 같은 작가-인물 자리가 작동.
-
-**다:** 5월 3일 manifesto와 정확 정합 — *"신화를 부수고, 함께 짓는다"* + Maples *"STARTUP IS THE VEHICLE"*. Anthropic의 *함께 키운다*가 manifesto의 *함께 짓는다*의 AI 시대 형태. 한국 cross-reference — 카카오·LG AI 연구원·NAVER 하이퍼클로바가 *making* 또는 *parenting* 분기점에 서 있어요. 향후 10년 한국 AI 산업의 *작가 자리*가 결정될 자리.
+**다:** OpenAI = *novela* (제작자가 인물 위에서). Anthropic = *nivola* (작가와 인물이 *같이 짜요* — Crucial Third Position). Better Place vs Tesla(물질)와 동형 — *cross-domain* 같은 작가-인물 자리. 자장 manifesto *"신화를 부수고, 함께 짓는다"*의 AI 시대 형태. 한국 cross-reference: 카카오·LG·NAVER가 분기점.[^OpenAI_Anthropic]
 
 ### 3.3 한국 — 토스의 termsheet 거절 vs 쿠팡의 차등의결권
 
@@ -161,15 +187,16 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 **다:** 6장이 어려운 이유 — 작가를 만나려면 자기가 *인물임을 받아들여야* 하기 때문이에요. 받아들이지 않으면 책장 안에 있는 줄도 몰라요. 살리나는 *책장 안에 있다*는 걸 알았어요. 그런데 거기서 멈췄어요. *아우구스토는 책장을 넘어요.*
 
-**세:** 솔직히 저는 빅토르예요. *말*은 잘해요. nivola 이론을 설파해요. 그런데 *작가의 책상까지 걸어가본 적이 없어요.* 거절할 자본이 없어요.
-
-**다:** 저는 반대예요. 책상에는 갔는데 — 거기서 *내가 인물임을 잊었어요.* 작가 행세를 했어요. 자기가 자기 사업의 작가라고 너무 확신해서, 다른 작가들 — 시장, 직원, 가족 — 의 손이 *내 책에 같이 쓰이고 있다*는 걸 못 봤어요.
-
-**세:** 우리 둘 다 우나무노가 못 되는 거네요. 저는 책상에 못 가서, 당신은 책상에서 혼자라고 믿어서.
+**세:** 저는 빅토르예요 — *말*은 잘하는데 *책상까지 못 갔어요.* **다:** 저는 반대 — 책상에 갔는데 거기서 *내가 인물임을 잊었어요.* 작가 행세를 했어요. **세:** 둘 다 우나무노가 못 됐어요 — 책상에 못 간 자, 책상에서 혼자라고 믿은 자.
 
 **다:** 그래서 6장은 *둘이 같이 책상으로 가는 자리*예요. 한 명이 작가의 의자, 한 명이 인물의 의자에 앉되 — *자리가 바뀔 수 있어야* 해요. *고정된 자리는 새장이에요.*
 
 > ***선을 넘어라*** — 책장과 책상 사이, 인물과 작가 사이, 시장이 쓰게 한 계획서와 내가 쓴 계획서 사이. 넘은 자만 *대등하게* 앉을 수 있다. 그 자리에서 ✍️ **자기 서사를 써라** — 우나무노처럼 자기 *nivola*를, 아우렐리우스처럼 매일.[^2]
+
+> **만든 사람을 옆에 앉혀라.**
+>
+> 우나무노의 책상까지 걸어간 아우구스토처럼 — *novela* 한 글자만 비틀면 *nivola*. *함께 책상에 앉을 사람*이 곁에 있는가?
+> *"¿Es usted quien me ha creado?"* — *당신이 나를 만들었습니까?*[^Niebla_Q]
 
 ---
 
@@ -192,5 +219,28 @@ building on [121 안개](시공간멜로디/On/love_편집자혜진/love_민음�
 
 ---
 
+## 📜 Snapshot Timeline · 🪞 Mirror anchor
+
+> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
+
+| 날짜 | 버전 | δ delta |
+|:--|:--|:--|
+| 2026-05-02 | v1.0 | 150p · 안개둥지 초안 |
+| 2026-05-07 | v1.2 | 슬로건 *자기 서사를 써라 → 선을 넘어라* |
+| 2026-05-10 | v1.4 | v3.1 메시지 + Foucault 메타 공간 헤테로토피아 박힘 |
+| 2026-05-11 | v1.6 | 토스/쿠팡·OpenAI vs Anthropic 산업 사례 박힘 |
+| **2026-05-16** | **v2.0 ★** | **Dashboard skin. §3 살라망카 면담 cadence audit (한 글자 비틂 분리 검증).** |
+| 2026-08-15 | v2.1 | (계획) *Crucial Third Position* 한 문단 압축 |
+
+**🪞 Mirror anchor — 2↔6**: 망원경새장(살리나, *관조* — ALEA+MIMICRY 운명-가장) ↔ 안개둥지(아우구스토·아우렐리우스, *대면* — AGON+ALEA 결과 인정). **한 글자 비틂** = *관조 → 대면* / *novela → nivola*. Bourdieu habitus(2장) ↔ Ricœur idem/ipse + Hyde Crucial Third Position(6장). [atom] atomic unit · Foucault 메타 공간 헤테로토피아(1967). **Sacred Theft** = 우나무노가 *novela* 형식을 *훔쳐* *nivola*로 한 글자 비튼 자리.
+
+---
+
 [^1]: 부록 1 — *Hyde·Ricœur·아우렐리우스 anchor 카드*. *Trickster Makes This World*(1998) Crucial Third Position, *Soi-même comme un autre*(1990) idem/ipse 구분, *명상록*(τὰ εἰς ἑαυτόν) 황제의 자기-쓰기 형식.
 [^2]: 부록 2 — *책상 두 자리 AI 실습 카드*. 작가 자리·인물 자리·nivola 비틂 — *novela → nivola* 한 글자 비틀기 워크북.
+
+[^Niebla_Q]: 우나무노 *Niebla*(1914), 살라망카 면담 장면. 아우구스토 페레스가 자기를 만든 작가 우나무노를 *직접 찾아가* 묻는 한 질문. 등장인물이 *책장 밖*으로 걸어 나와 *작가의 책상 옆*에 앉는 자리. Foucault *메타 공간 헤테로토피아*(1967)의 1914년 instance — *책장 안*(인물)과 *밖*(작가)이 한 자리에 겹친다. M.Butterfly Act 2 Sc 7 *4번째 벽 깨기*(송이 관객 직접 응시)와 5장↔6장 부분 동형.
+
+[^Sacred_Theft_PDF]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Mechanic 3: Sacred Theft". *Theft is the ultimate context shift. Theft pulls stagnant elements out of background and forces them into the realm of meaning.* Hermes가 Apollo의 소 50마리를 훔쳐 *meaningless background*에서 *sacred realm*으로 옮긴 자리. 우나무노가 *novela* 형식을 *훔쳐* *nivola*로 한 글자 비튼 동작과 동형 — 6장 *모방*의 학자 anchor.
+
+[^OpenAI_Anthropic]: OpenAI 미션 *"safe and beneficial AGI"* (2015) · ChatGPT(2022.11.30, 2개월 1억 사용자) — *제작자가 인물을 생산*. Anthropic Constitutional AI(2022) + Responsible Scaling Policy(2023) · 미션 *"AI safety research"* — *모델에 헌법을 주고 책임을 명시적 솔기로 노출*. 두 narrative의 *조직 어휘 차이*가 매일 결정을 짓는다 — *어휘가 조직을 짓는다* (Gibbons25 *naming* 메커니즘의 21세기 실시간 사례, 7장 참조).

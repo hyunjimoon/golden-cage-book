@@ -4,6 +4,33 @@ target_chars: ~7000
 modified:
   - 2026-05-02
   - 2026-05-09T07:37:53+09:00
+  - 2026-05-16
+schema_version: v1.0
+coordinate: cage · 3장 · §1-4 · 3↔7
+atomic_unit: "[cell]"
+cc_owner: cc-pair-c
+mirror_anchor: ↔ 7🌷_튤립둥지 (3↔7 한 글자 비틂)
+---
+
+> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §2 calibration slider 단락 *입으로 읊어* — *"calibration에 대한 확신도 calibration 대상"* 한 문장이 두 번째 호흡에 깨지지 않는지 확인
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·3장·3↔7·[cell] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 7🌷 튤립둥지_
+
+## 🗺️ 양탄자 — 💒 3 유리(스테인드글라스)새장 · 페스트 [cell]
+
+> *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
+
+```text
+(정치) 1947 알제리·전후         (학문) Weber 책임윤리
+홀로코스트 후 신학 위기        신념윤리 긴장
+        ╲                    ╱
+          ━━ "투명한 벽이
+              가장 단단하다.
+              확신을 교정하라." ━━
+        ╱                    ╲
+(문학) 알레고리 정점            (산업) ✗ Theranos·황우석
+파늘루↔리외 이중 시점         ✓ Moderna·셀트리온
+```
+
 ---
 ![[panel_ch3_스테인드글라스새장.png]]
 
@@ -208,6 +235,19 @@ modified:
 > 다가 *"리외도 아내를 잃었어요. 교정이 만능이면 왜 잃었어요?"*라고 했을 때, 대답이 안 나왔다. 5초. 방송 사고. *교정은 내 종교였다.* 파늘루의 신앙처럼 — 나도 calibration을 100%로 믿고 있었다. *calibration에 대한 확신도 calibration 대상*이라는 건... 웃기지만 웃을 수 없다.
 
 ---
+
+## 📜 Snapshot Timeline · 🪞 Mirror anchor
+
+> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
+
+| 날짜 | 버전 | δ delta |
+|:--|:--|:--|
+| 2026-05-02 | v1.0 | 150p · 유리새장 초안 |
+| 2026-05-09 | v1.3 | RSRS form · 베버 위계 추가 (책임윤리 default + 1% 신념윤리) |
+| **2026-05-16** | **v2.0 ★** | **Dashboard skin. §2 calibration slider cadence audit.** |
+| 2026-08-15 | v2.1 | (계획) 7장 paired §1 hook(De Witt 학살)과 confidence mirror 검증 |
+
+**🪞 Mirror anchor — 3↔7**: 유리새장(파늘루·리외, *이분법* — 100% 신념 vs 100% 회의) ↔ 튤립둥지(윈스턴↔BB·De Witt, *분포*). **한 글자 비틂** = *이분법 → 분포*. Caillois Forbidden(AGON+ILINX 경쟁-광기) → Fundamental(AGON+ALEA 결과 인정). Weber 책임윤리(3장) ↔ Bayesian calibration + Gibbons clarity-naming-framing(7장). [cell] atomic unit = Schleiden-Schwann 1838-39. ★ **오늘 활성 mirror pair** (cc-pair-c) — 7장 De Witt 학살(1672) §1 hook이 3장 confidence 빚의 paired 광경.
 
 [^1]: 부록 1 — *베버 anchor 카드*. 베버 *신념윤리(Gesinnungsethik)* vs *책임윤리(Verantwortungsethik)* 상세 — 《소명으로서의 정치》(1919) 강연.
 [^2]: 부록 2 — *셀트리온·신라젠 검증 카드*. 램시마 EMA·FDA 승인 시점, 펙사벡 임상 3상 무용성 평가 결과, 시가총액 추이 (작가 검증 필요).

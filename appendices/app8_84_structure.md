@@ -1,528 +1,373 @@
 ---
-title: 84구조 — 황금새장을 열다
+title: 84구조 — 황금새장을 열다 (RSRS form)
+modified:
+  - 2026-04-28
+  - 2026-05-10
+  - 2026-05-11T16:43:34+09:00
+  - 2026-05-12T12:26:04+09:00
+  - 2026-05-13T08:02:34+09:00
+  - 2026-05-14T16:29:40+09:00
+  - 2026-05-16T06:09:08+09:00
+form: RSRS — Rich Semantics, Restricted Syntax
+purpose: 책 전체 구조의 minimal sufficient statistics
+schema_version: v1.0
+coordinate: frame · 책 전체 구조 · 대시보드 자체
+atomic_unit: meta (4 atomic units 통합)
+cc_owner: cc-grid
+mirror_anchor: 책 전체 (1↔5·2↔6·3↔7·4↔8·1↔8 ouroboros 5개 mirror)
 ---
-[문현지_문체](시간리듬/🎵 Weekly_Melody/6_전토플랫폼_현지/문현지_문체.md)
-→ [hyde_trickster](공간화음/Thesis/1논문용/📜hyde_trickster_makes_world.md)
+
+> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: 본 파일이 *대시보드 그 자체*. 14파일 dashboard skin 적용 후 — *14파일의 좌표가 모두 본 파일과 일대일 호응*하는지 동기화 점검
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ frame·meta·14파일 SSOT · 🧑‍🤝‍🧑 cc-grid · 🪞 책 전체 (5 mirror pairs)_
 
 # 84구조 — 황금새장을 열다
 
-![x/Images/84구조 2026_04_28.excalidraw](x/Images/84구조 2026_04_28.excalidraw.md)
-
-## ★ 책의 명제 (한 줄 — 2026-05-03 결정)
-
 > **신화를 부수고, 함께 짓는다.**
+> *낭만은 활력이자 독이다. 함께 마신 자가 다음 사람을 보호한다.*
+> *같은 모방인데, 멈춤 하나로 새장이 둥지가 된다.*
 
-신념윤리 비판러(Phase 1만)에서 책임윤리 trickster(Phase 1+2)로. 사람 중심 창업 — *돈을 벌겠다·기술을 상용화시키겠다*가 아니라, *고객·협업자·employee 모두를 만족시킬 가치제안을 설득하고 함께 가는 것*. 부수기는 시작이고, *짓는 일이 책임이다*.
+---
 
-부제 후보: *신념윤리 비판러에서 책임윤리 trickster로* / *사람 중심 창업의 8 박자* / *1-4 새장에서 5-8 둥지로*.
+[[공간화음/Thesis/1논문용/📜hyde_trickster_makes_world|📜hyde_trickster_makes_world]]
+## 1. 격자 (4 mirror pair × 2 mode)
 
-## ★ 책의 명제 — 형식 (운동 한 줄)
-
-> **같은 모방인데, 멈춤 하나로 새장이 둥지가 된다.**
-
-좌측 4박자(*모방→위안→붕괴→선택*, 카뮈)는 ***멈춤 없는 모방***의 결과. 우측 4박자(***★멈춤***→*모방→넘김→매혹*, Hyde)는 ***★멈춤 후 모방***의 운동. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
-
-> 1장 Girard 모방욕망과 5-8장 trickster의 *creative mimicry*는 *같은 동사*. *멈춤*이 *false worm 가능성*을 상상하게 만들고, 그 가능성이 곧 *상징적 지능*이다 (Eco·PDF *Baited Hook*).
-
-빌린 도구를 의심하는 4개의 회전(1-4) → 자기인식의 다리(4장 끝, ★멈춤이 박힘) → 여는 도구 4개의 회전(5-8) → 다음 trickster 인정(8→1 회귀). **책은 닫히지 않는다.**
-
-## ★ 6 구조 (user 설계 의도 — Image #23 명시)
-
-```
-[1] 1→2→3→4 cage progression  (모방·위안·붕괴·선택)
-[2] 5→6→7→8 nest progression  (★멈춤·모방·넘김·매혹)
-[3] 1↔5 mirror — 인식 차원 (모르고 입기 vs 알면서 입기)
-[4] 2↔6 mirror — 관조 → 대면 (보면서 못 움직임 vs 책상까지 걸어감)
-[5] 3↔7 mirror — 이분법 → 분포 (두 점 대결 vs 분포 분해)
-[6] 4↔8 mirror — 작란 → 명명 (Phase 1 vs Phase 1+2)
-```
-
-각 mirror 짝이 *Image #22 Interdependence of Opposites* 형태 — *Sacred Order ⊥ Trickster Reflection*이 4번 작동. 우(nest)는 좌(cage) 없이 *자기를 모르고*, 좌는 우 없이 *서 있을 수 없다*. 두 점이 서로를 정의한다.
-
-## ★ 4 도메인 mirror (Image #23 발견 — 2026-05-04)
-
-8장 구조 = **4 산업 도메인 × 2 모드** (cage/nest):
-
-| 도메인 | cage (1-4) | nest (5-8) |
+| 도메인 (atomic unit) | cage 1-4 (부수기) | nest 5-8 (짓기) |
 |:--|:--|:--|
-| **정보** | 1장 (Quibi · Airbnb) | 5장 (Slack · Stripe) |
-| **물질** | 2장 (Kodak vs Fuji) | 6장 (Better Place vs Tesla) ⚠ 본문 보강 필요 |
-| **생체** | 3장 (Theranos vs Moderna) | 7장 (생체 사례) ⚠ 본문 보강 필요 |
-| **에너지** | 4장 (두산 · 생고뱅) | 8장 (에너지 사례) ⚠ 본문 보강 필요 |
+| **정보** `[bit]` | 🪞 **1 거울새장** · *욕망장부를 펴라* · 마담 보바리 / Quibi · 옐로모바일 | 🦋 **5 놀이둥지** · *환상을 역이용하라* · M.Butterfly / Slack · 토스 |
+| **물질** `[atom]` | 🔭 **2 망원경새장** · *순서를 타라* · 표범 / Kodak vs 후지 · Webvan | 🌫️ **6 안개둥지** · *선을 넘어라* · 우나무노 안개·아우렐리우스 명상록 / Better Place vs Tesla · OpenAI vs Anthropic · 토스 termsheet · 쿠팡 차등의결권 |
+| **생체** `[cell]` | 💒 **3 스테인드글라스새장** · *확신을 교정하라* · 페스트 / Theranos vs Moderna · 셀트리온 vs 신라젠 | ❓ **7 튤립둥지** · *확률적으로 생각하라* · 검은 튤립(De Witt 학살) / Bezos *Day 1* · 토스 결정메모 · Novo Nordisk vs Aduhelm · GameStop |
+| **에너지·반도체** `[quanta]` | ⏱️ **4 시계새장** · *다음 불을 피워라* · 방드르디 / 두산 · 생고뱅 · 넷플릭스 | 🐦 **8 새둥지(까마귀)** · *의미를 만들어라* · 삼국유사·trickster 4문화권·Frederick Douglass / 토스(증권의 송금화) · SK Hynix(DRAM→HBM) · Ørsted vs 포스코 vs BP |
 
-→ **4 산업 도메인이 1↔5, 2↔6, 3↔7, 4↔8 mirror 짝과 정확히 일치**. 책 구조 = *4 도메인 × 2 모드*. 6·7·8장 본문에 *해당 도메인 사례* 보강이 다음 patch (★ Phase 3).
+→ **8장 = 4 산업 × 2 모드.** atomic unit = bit(Shannon 1948)·atom(Dalton 1808)·cell(Schleiden-Schwann 1838-39)·quanta(Planck 1900·Einstein 1905). 각 과학의 founding atomic concept이 4 산업 분류의 *기본 단위*.
 
-## 새장 vs 둥지 — 빚의 두 인식
+### 1a. nest 4장 × Foucault 헤테로토피아 4 유형
 
-- **새장 (1-4)** — *빚을 식별*한다. "내가 빚을 졌다."
-- **둥지 (5-8)** — *빚을 만든 시스템을 식별*하고 *그 위에서 다시 짓는다*. "누가 이 빚을 만들었나."
+> *cage = 상상의 utopia/dystopia에 갇힘. ★멈춤 = 통과 의례. nest = 실재의 헤테로토피아 진입.* (Foucault, *Des Espaces Autres*, 1967)
 
-5-8장 4가지 모두 **메타-인지 행위**:
+| 장 | 헤테로토피아 유형 | 작품 instance | Foucault 원전 |
+|:-:|:--|:--|:--|
+| **5** | **거울 헤테로토피아** (실재+비실재 동시) | M.Butterfly Act 1 Sc 13·Act 3 Sc 3 vanity mirror | (1967) — 직접 예시 |
+| **6** | **메타 공간 헤테로토피아** (책장 안·밖 겹침) | Niebla 살라망카 면담 | (1967) — 도서관 동형 |
+| **7** | **정원 헤테로토피아** (다른 규칙 안 + 외부 시선) | 검은 튤립 유리 온실 + 복스텔 망원경 | (1967) — 직접 예시 |
+| **8** | **heterochrony** (다른 시간 수집) | 삼국유사 — 단군~신라가 한 책에 | (1967) — 박물관·도서관 동형 |
 
-| 장 | 메타-인지 질문 |
-|---|---|
-| **5장** (M.Butterfly) | 내 *역할*이 누가 입혀준 것인가 |
-| **6장** (Niebla) | 내가 누구의 *서사* 안에 있는가 |
-| **7장** (1984) | 내 *언어*를 누가 좁히는가 |
-| **8장** (trickster) | 내가 어떤 *규칙* 안에 있는가 |
+→ **cage→nest 전환이 *Foucault 구조 그대로*.** ★멈춤 = Foucault 5번째 원칙(*열리고 닫히는 의례*)의 작업 형태. 5장 거울·7장 유리·8장 책장 — *투명한 매질*의 3 변주.
 
-**M-M(중간점, 현상이동) = 메타-인지의 도약점.**
+[[🗺️지도양탄자]]
 
-[거무존청_去蕪存菁](시간리듬/🎵 Weekly_Melody/6_전토플랫폼_현지/거무존청_去蕪存菁.md)
-## 책 운동 (3박자)
+### 1b. 8장 × 5절 미세 격자 (배경·감각·생각·현실·실천)
+
+> §4의 4절(감각·생각·현실·실천)에 *배경*(작품·인물 변신)을 앞세운 master 격자. mandala panel은 이 표의 *5행 → 4행 압축*이다(생각 행은 footnote 처리).
+
+| 장 | 배경 | 감각 (§1) | 생각 (§2) | 현실 (§3) | 실천 (§4) |
+|:--:|:--|:--|:--|:--|:--|
+| **1 🪞 거울새장** | 엠마 · 약 · 르뢰 트릭 (마담 보바리) | 빌린 욕망 (모방욕망) | Girard 모방욕망 · 르뢰 = funding 인격화 | 정보 [bit] — 옐로모바일 · Quibi · airbnb 거울광고 | 욕망장부를 펴라 |
+| **2 🔭 망원경새장** | 살리나 → 탄크레디 (표범) | 거리 둔 관조 | Bourdieu habitus · 클라우제비츠 작전술 | 물질 [atom] — Kodak vs 후지 · Webvan | 순서를 타라 |
+| **3 💒 스테인드글라스새장** | 파늘루 → 리외+타루 (페스트) | 이분법 신학 (확신·신념윤리) | Weber 위계 · Bayesian discount | 생체 [cell] — Theranos vs Moderna · 셀트리온 vs 신라젠 | 확신을 교정하라 |
+| **4 ⏱️ 시계새장** | 땅의 로빈슨 → 태양의 로빈슨 (방드르디) | 강박적 작란 | Mokyr 인공선택 · KPI 빈칸 없음 | 에너지 [quanta] — 두산 · 생고뱅 · 넷플릭스 | 다음 불을 피워라 |
+| **5 🦋 놀이둥지** | 릴링 ↔ 갈리마르 (M.Butterfly) | **고객 처세** (관객 환상 역이용) | op→st ambiguity · Goffman impression management | 정보 [bit] — Slack · Stripe · 토스 | 환상을 역이용하라 |
+| **6 🌫️ 안개둥지** | 우나무노 ↔ 아우렐리우스 (Niebla · 명상록) | **투자자 처세** (작가 자리 협상) | Crucial Third Position · 책상 위치 협상 | 물질 [atom] — Better Place vs Tesla · OpenAI vs Anthropic · 토스 termsheet 거절 · 쿠팡 차등의결권 | 선을 넘어라 |
+| **7 🌷 튤립둥지** | 코르넬리우스 ↔ 로자 · 복스텔 (검은 튤립 · De Witt 학살 1672) | **경쟁자 처세** (복스텔 라이벌 · 한 점 vs 분포) | Bayesian calibration · Weber 책임윤리 · Gibbons clarity-naming-framing | 생체 [cell] — Novo Nordisk vs Aduhelm · Bezos *Day 1* · GameStop | 확률적으로 생각하라 |
+| **8 🐦 새둥지(까마귀)** | 일연 ↔ 역사 (삼국유사 · Douglass · 4 문화권 trickster) | **협업자 처세** (다음 trickster 명명) | Phase 2 Re-enchantment · 한 글자 비틂 (novela→nivola · Bailey→Douglass · DRAM→HBM) | 에너지·반도체 [quanta] — 토스(증권→송금) · SK Hynix(DRAM→HBM) · Ørsted vs 포스코 vs BP | 의미를 만들어라 |
+
+**나선 읽기**
+
+- *세로* — 한 장이 5절로 짜이는 미시구조 (§4의 master 인스턴스).
+- *가로 cage 1→4* — *모방 → 위안 → 붕괴 → 선택* (Camus 시간 누적).
+- *가로 nest 5→8* — *고객 → 투자자 → 경쟁자 → 협업자* (stakeholder 외부→내부로 좁혀지는 짓기 동선).
+- *세로 mirror 1↔5 · 2↔6 · 3↔7 · 4↔8* — atomic unit 짝 ([bit]·[atom]·[cell]·[quanta]) + Caillois 한 글자 비틂.
+
+**감각(§1) nest 4단계 = stakeholder 4 관계**
+
+| 5 | 6 | 7 | 8 |
+|:--:|:--:|:--:|:--:|
+| 고객의 *환상* | 투자자의 *책상* | 경쟁자의 *분포* | 협업자의 *명명* |
+| 가장 멀리 | 가까이 | 마주보고 | 어깨 나란히 |
+| MIMICRY+ILINX | AGON+ALEA | AGON+ALEA | MIMICRY+ILINX |
+
+→ Caillois 외피 **ABBA**(자기변형 → 결과인정 → 결과인정 → 자기변형)와 동기. 5↔8이 *자기변형*으로 nest 외피를 봉합, 6↔7이 *결과인정*으로 내피를 지킨다.
+
+---
+
+## 2. 시간 구조 (8단계)
 
 ```
-[회전 1]  1 엠마(중심1) → 2 살리나(관조) → 3 리외+타루(반항) → 4 방드르디(전환)
-              │
-              └──→ [4→5 자기인식 다리: 시계 폭파 → 환상 역이용]
-                       │
-[회전 2]  5 송 릴링(중심2) → 6 아우구스토(서사 대면) → 7 윈스턴(언어 짓기·상용화) → 8 헤르메스(경계 비틀기)
-              │
-              └──→ [8→1 ouroboros: 다음 trickster 인정 → 다음 엠마의 무도회장]
-                       │
-                       └──→ [재독: 같은 1장이 다르게 읽힌다]
+새장 4단계: 모방   → 위안   → 붕괴   → 선택       (빚 누적, Camus)
+둥지 4단계: ★멈춤 → 모방   → 넘김   → 매혹       (출구, Hyde)
+
+★멈춤이 둥지 1단계인 이유 — action prior 없는 행동은 새장 4단계로 즉시 빠짐.
+4↔5 회전축: *선택*에서 *멈춤*으로.
+공통 동사 = 모방. 결정자 = ★멈춤.
 ```
 
-회전이 멈추면 정착이고, 정착하면 새장이다. *Movers 2.6× Stayers* — 책 핵심 주장이 책 형식이 된다.
+---
 
-## 두 cycle — M-M 분기점
+## 3. Mirror 4쌍 (Interdependence of Opposites)
 
-```
-1차 cycle  (N → T → M-M)        매칭 *시도*    빌린 도구로 매칭하려다 실패 (1-4장)
-                  ↓
-              [M-M 분기점 = 4장 끝 자기인식 = 메타-인지의 도약점]
-                  ↓
-2차 cycle  (M-M → L → P → B)    매칭 *후 구축*  여는 도구로 진짜 짓기 (5-8장)
-```
+| pair | cage | nest | 학자 anchor | PDF Trickster Engine mechanic |
+|:--:|:--|:--|:--|:--|
+| **1↔5** | 모르고 입기 (엠마) | 알면서 입기 (송 릴링) | Girard 모방욕망 / Hyde·Goffman impression management | **Mechanic 1: Power of Restraint** — Hermes 50 cattle restraint = THE PAUSE creates symbolic intelligence (★멈춤) |
+| **2↔6** | 관조 (살리나) | 대면 (아우구스토·아우렐리우스) | Bourdieu habitus · 클라우제비츠 작전술 / Ricœur idem-ipse · Hyde *Crucial Third Position* | **Mechanic 3: Sacred Theft** — Apollo cattle theft = ultimate context shift (모방) |
+| **3↔7** | 이분법 (파늘루↔리외·베버 위계) | 분포 (윈스턴↔BB·De Witt) | Weber 책임윤리 / Bayesian calibration · Gibbons clarity-naming-framing | **Mechanic 2: Boundary Crossing & Context** — Odysseus oar → winnowing fan, *meaning is locked inside context* (넘김) |
+| **4↔8** | 작란 (방드르디) | 명명 (일연·Douglass·토스·SK Hynix) | Mokyr 인공선택 / Hyde Phase 1+2 · Keats NC · Gould-Lewontin · 노자 | **Phase 2: Re-enchantment** — Hermes Lyre + Douglass *America's Orator*, *true tricksters are creators* (매혹) |
 
-| | 1차 cycle | 2차 cycle |
-|---|---|---|
-| **현실 case** | (매칭 시도 중인 사업) | **Tesla** — 매칭 성공 후 진입 |
-| **소설 case** | **Emma** — 매칭 실패, 안에서 죽음 | (5-8장 인물들) |
+**1↔8 ouroboros**: 거울새장(빌린 욕망에 먹힘) ↔ 새둥지(다음 trickster 비춤). *같은 메타포, 두 모드.* 책의 시작과 끝이 거울로 봉합. **책은 닫히지 않는다.** 8→1 회귀: 첫 회독은 엠마의 눈, 재독은 르뢰의 눈.
 
-> *예술 = 과학 (괴멸)* — 한계점에서만 둘이 같다. 같은 격자가 Tesla와 Emma 둘 다에 작동한다 = 책이 문학+사업 hybrid인 이유.
+### 3a. Caillois 4 놀이 매핑 (Forbidden cage → Fundamental nest)
 
-→ 라벨 N·T·L·P·B의 구체 의미: 작가 확인 필요 (이미지 #4).
+Roger Caillois, *Les Jeux et les Hommes* (1958): AGON(경쟁) · ALEA(우연) · MIMICRY(모방) · ILINX(현기증). *Fundamental* 짝 = AGON-ALEA(문명형, 결과 인정) · MIMICRY-ILINX(전문명형, 자기 변형). *Forbidden* 짝 = AGON-ILINX("경쟁이 광기를 만남") · ALEA-MIMICRY("운명이 가장을 만남").
 
-## M-M 회전축 — 1장·5장이 책의 두 중심
+| pair | cage = Forbidden | nest = Fundamental | 유지 | 전환 |
+|:--:|:--|:--|:--|:--|
+| **1↔5** | MIMICRY+ALEA *운명-가장* (엠마) | MIMICRY+ILINX *자기 변형* (송 릴링) | MIMICRY | ALEA→ILINX |
+| **2↔6** | MIMICRY+ALEA *운명-가장* (살리나) | AGON+ALEA *결과 인정* (아우구스토) | ALEA | MIMICRY→AGON |
+| **3↔7** | AGON+ILINX *경쟁-광기* (파늘루) | AGON+ALEA *결과 인정* (윈스턴) | AGON | ILINX→ALEA |
+| **4↔8** | AGON+ILINX *경쟁-광기* (로빈슨) | MIMICRY+ILINX *자기 변형* (일연·트릭스터) | ILINX | AGON→MIMICRY |
 
-| 중심 | 인물 | 본질 | 회전축 의미 |
-|---|---|---|---|
-| 회전축 1 (1장) | 엠마 (마담보바리) | 빌린 욕망에 *먹힘* | 모든 *빌린 도구*의 원형. 2·3·4장은 그 회전의 다른 위상 |
-| 회전축 2 (5장) | 송 릴링 (M.Butterfly) | 빌린 환상을 *알면서 입음* | 모든 *여는 도구*의 원형. 6·7·8장은 그 회전의 다른 위상 |
+**규칙**: 모든 cage = Caillois *Forbidden* (운명-가장 또는 경쟁-광기). 모든 nest = *Fundamental* (결과 인정 또는 자기 변형). **한 글자 비틂** = Forbidden 짝의 *한 항을 유지*하고 *나머지 한 항을 그 항의 Fundamental 동반자로 교체*. 8장 모두 같은 형식 변환.
 
-→ 다른 6장은 두 회전축의 *다른 양태*. 1·5장에 본문 무게 더 실린다.
+- **1·2장 cage** = ALEA+MIMICRY: 엠마는 소설 여주인공처럼 *운명적 사랑을 연기* / 살리나는 *귀족 운명에 맡기며 역할을 고정*. 자기를 *선택받은 자로 가장*하면서 운명에 맡기는 부패.
+- **3·4장 cage** = AGON+ILINX: 파늘루는 *신학적 결투를 광기로* / 로빈슨은 *문명 재건 경쟁을 집착으로*. 결과 인정형이 *판단력 부재*와 결합해 위험해지는 부패.
+- **5·8장 nest** = MIMICRY+ILINX: 송 릴링이 *환상을 의식적으로 도구화* / 일연이 *재명명으로 재매혹*. 자기 변형형 — *다시 매혹시키는* 짝.
+- **6·7장 nest** = AGON+ALEA: 아우구스토가 *작가에 대면하면서 운명을 수용* / 윈스턴이 *확신과 경쟁하면서 확률을 받음*. 결과 인정형 — *문명을 만드는* 짝.
 
-## 의지의 4가지 문법 — 빌린 ↔ 여는 (메타-인지 4)
+→ **외우지키기 protocol과 동형**: AGON(박혜진의 가오)에 자장의 ILINX(격정)로 답하면 Forbidden 대각선. ALEA(수용)로 답하면 Fundamental. 책의 형식 규칙이 자장 일상 규약의 추상.
 
-| 위상 | 1-4 빌린 의지 (빚 식별) | 5-8 여는 의지 (시스템 식별 + 다시 짓기) |
-|---|---|---|
-| **중심 (회전축)** | 1장 의지 부재 (먹힘) | 5장 환상 역이용 — *역할*이 누가 입혀준 것인가 |
-| **관조** | 2장 관조하는 의지 (마비) | 6장 서사 대면 — 누구의 *서사* 안에 있는가 |
-| **반항** | 3장 신념 vs 반항 (이분법) | 7장 언어 짓기·상용화 — 내 *언어*를 누가 좁히는가 |
-| **전환** | 4장 놀이 (작란/作亂) | 8장 규칙 비틀기 — 어떤 *규칙* 안에 있는가 |
+### 3b. nest 4장의 §1 hook = paired cage의 Forbidden 광경
 
-좌→우 회전축이 *4장 끝 자기인식*. 8→1 회귀가 *다음 회전*을 부른다. [🗣️Malone25_15.339 Developing Leadership Capabilities](🗣️Malone25_15.339 Developing Leadership Capabilities.md) [25S_15339_Leadership_Malone](공간화음/🟥언어_HOW/School/25S_15339_Leadership_Malone/25S_15339_Leadership_Malone.md)
+각 nest 장은 *Fundamental 출구*로 닫히기 전에, §1 감각에서 **paired cage의 Forbidden을 한 번 더 강타**해야 출구의 *필요성*이 신체화된다.
 
-## Hyde 4단계 격자 — 5-8장의 운동 (멈춤·모방·넘김·매혹)
-
-1-4장이 *멈춤 없는 모방*의 결과로 카뮈 *부조리 격자*(모방→위안→붕괴→선택)에 빠지듯, 5-8장은 *★멈춤 후 모방*의 운동으로 Hyde *Trickster Engine 격자*(★멈춤→모방→넘김→매혹)를 짓는다. **공통 분모는 *모방*, 결정자는 *★멈춤*.**
-
-### Baited Hook 메커니즘 — 모방의 두 운명 (Eco·PDF *Trickster's Engine*)
-
-Umberto Eco가 *기호*를 정의한다 — ***"A sign is anything that can be used to lie."*** (기호는 거짓말에 쓸 수 있는 모든 것). PDF *The Trickster's Engine*은 이를 미끼 단 낚시바늘 앞 물고기 한 그림으로 압축한다:
-
-| 진입 | 경로 | 결과 |
+| nest | §1 hook (Forbidden 광경) | §4 출구 (Fundamental) |
 |:--|:--|:--|
-| **True worm 가정** (멈춤 없음) | 즉각 소비 → 본능 → 사고 0 | *덫에 걸림* — 좌(cage) 진입 → 모방→위안→붕괴→선택 |
-| **False worm 가능성** (★멈춤) | 머뭇거림 → 해독 → **상징적 지능 자가-탄생** | *symbolic intelligence* — 우(nest) 진입 → 모방→넘김→매혹 |
+| 5 놀이둥지 | 엠마의 마지막 비소 (ALEA+MIMICRY 죽음) | MIMICRY+ILINX — 송 릴링의 의식적 연기 |
+| 6 안개둥지 | 살리나의 관조하는 황혼 (ALEA+MIMICRY 정지) | AGON+ALEA — 아우구스토의 *나도 작가다* |
+| **7 튤립둥지** | **검은 튤립 오프닝 — De Witt 형제 헤이그 학살(1672)** *AGON+ILINX 군중 광기가 합리적 정치를 찢음* | AGON+ALEA — 확률적·Bayesian 사고 |
+| 8 새둥지 | 로빈슨의 시계 강박 (AGON+ILINX 집착) | MIMICRY+ILINX — 방드르디 폭발 + 일연 재명명 |
 
-> *"The moment a creature must pause to determine if a worm is true or false is the exact moment symbolic language and self-reflection are born."*
+**검은 튤립의 De Witt 사례 깊이**: Jan de Witt는 *Value of Annuities*(1671)를 쓴 actuarial science 선구자 — *순도 100% AGON*. 1672년 8월 헤이그 군중이 그와 형 코르넬리스를 *찢어 죽이고 시신 일부를 먹음* — *순도 100% ILINX*. Caillois가 *Les Jeux et les Hommes*에서 이 구조를 1930-40년대 파시즘에 적용했다 — 합리적 시민이 *대중 도취*에 의해 파괴되는 Forbidden 결합.
 
-**모방 자체는 중립이다.** 좌·우 격자에 같은 *모방*이 들어간다. 차이는 *멈춤 유무*뿐.
+**7장 내부 GameStop = De Witt의 21세기 reprise**: hedge fund(AGON, 계산된 숏) vs /r/wallstreetbets(ILINX, 군중 도취) → 350년 같은 구조. *역사 압축*(자장 문체)이 두 사건을 한 챕터에서 묶는다.
 
-- 좌 (모방 *멈춤 없이*): 즉각 위안 → 미끼였음이 드러날 때 붕괴 → 부조리 → 선택. **카뮈의 4박자는 *멈춤 없는 모방*의 결과**.
-- 우 (모방 *★멈춤 후*): 멈춤이 *상징적 지능*을 켜고 → 모방을 *해독*해 자기 맥락으로(넘김) → 새 자리에서 매혹.
+---
 
-***가능성*의 상상이 곧 지능이다.** *false worm일 가능성*을 상상할 수 있는 자만이 새장에서 둥지로 건너간다 — **trickster는 가능성의 화신**.
+## 4. 장 내부 4절 (모든 장 공통)
 
-> **5-8 4단계**: **★멈춤 → 모방 → 넘김 → 매혹**
+| 절 | cage 1-4 | nest 5-8 |
+|:--:|:--|:--|
+| **§1 감각** | 빚 들추기 | 짓기 들추기 |
+| **§2 생각** | 갚을 궁리 | 짓는 궁리 |
+| **§3 현실** | 어디에 (산업 사례) | 어디에 (산업 사례) |
+| **§4 실천** | 빚 갚기 | 다시 짓기 |
+
+각 §1·§3 도입에 *흡입력 패턴*: 질문 · 자기 confession · 몸 감각.
+
+---
+
+## 5. 4 신체 — 책의 4 모듈 (낭만의 4 발걸음)
+
+| 발걸음 | 모듈 | 동사 | 한 줄 |
+|:--:|:--|:--|:--|
+| **1** | 본문 8장 | **진단한다** | 자기 낭만이 활력인지 독인지 검증한다 |
+| **2** | 질문↔답 | **나눈다** | 다·세 두 보균자가 서로의 낭만을 되묻는다 |
+| **3** | 참고문헌 (생각 빚장부) | **빚장부를 편다** | 누구의 낭만에 감염되어 있는지 적는다 |
+| **4** | 484 주기율표 | **별자리를 펼친다** | 484가지 다른 낭만의 좌표에서 내 별을 찾는다 |
+
+---
+
+## 6. 핵심 lexicon (CLAUDE.md 22 entries 중 책 직접 호응 7)
+
+| Lexicon | 책의 자리 |
+|:--|:--|
+| **빚 = 틀린 모델** | 1-4장 cage thesis 핵심 |
+| **계산끝낸물 = calibrated prior** | 책 전체 종료 조건 (빚=0) |
+| **Bayesian calibration** | 3·7장 척추 |
+| **op/st ambiguity** | 5장 송 릴링 *알면서 입기* |
+| **Phase 2 Re-enchantment** | 8장 척추 (Hyde 1998) |
+| **한 글자 비틂** | 6·8장 핵심 메커니즘 (6 instance: novela→nivola·Bailey→Douglass·통장→메신저·비만→대사호르몬·GPU→LPU·DRAM→HBM) |
+| **8단계 = 새장4 + 둥지4** | 책의 시간 구조 |
+
+---
+
+## 7. 책 전체 dG/dF=(−) 작동
+
+```
+Funding(F) → Reposition(R) 억압 → Growth(G) 죽음
+
+cage 4장 = dG/dF=(−)의 4 형태:
+  1 르뢰 (정보)   · 자금이 모방욕망 강화
+  2 살리나 (물질) · 자원이 관조를 안락하게
+  3 파늘루 (생체) · 신학이 분포 사고 차단
+  4 로빈슨 (에너지) · 성공이 변이 죽임
+
+nest 4장 = dG/dF=(−)의 *해소 동작* 4 형태:
+  5 송 릴링 (정보)        · 환상을 도구로 (op→st ambiguity 의식적 운용)
+  6 우나무노·아우렐리우스 (물질)  · 작가 자리 사수 (Crucial Third Position)
+  7 윈스턴↔Bezos (생체)    · 분포 사고 제도화 (clarity-naming-framing)
+  8 일연·Douglass·토스·SK Hynix (에너지·반도체) · trickster 명명 (visible hand under non-integration)
+```
+
+---
+
+## 8. 두 페이지 심장 — pp. 599·600
+
+| | 599 | 600 |
+|:--|:--|:--|
+| 모드 | 추상 구조도 | 물리적 책 사진 |
+| 언어 | 4색 cyclic diagram | 책표지·필사 포스트잇 |
+| 닫힘 방식 | 논리 (8 mirror) | 물증 (책 모음) |
+| 대표 시각 | bit·atom·cell·quanta pair × 4 lens × 8단계 | 4×4 책 격자, Newspeak 슬로건 행 구분 |
+
+→ **8→1 ouroboros가 599(논리)+600(물증) 두 페이지에서 닫힘.** 책의 *심장 한 쌍*.
+
+---
+
+## 9. 표지
+
+> **황금새장을 열다**
+> *낭만은 활력이자 독이다.*
+> *함께 마신 자가 다음 사람을 보호한다.*
+
+**Visual**: 황금 새장의 수직 격자가 위로 갈수록 휘어 둥지로 짜이고, 둥지 안에 raven이 빛 한 조각을 입에 물고 있음. 아래 모서리에 작은 개(텐) 실루엣 — *부순 자리의 첫 비용*. (1차소통 panel 결 + cage→nest metamorphosis 합성.)
+
+---
+
+## 10. 분업 (m:n) — 7 agent 권장
+
+```
+Content (4) — mirror pair
+  A 정보쌍   (1·5장)
+  B 물질쌍   (2·6장)
+  C 생체쌍   (3·7장)
+  D 에너지쌍 (4·8장)
+
+Frame (1)
+  E 머리말·에필로그·부록·표지 frame
+
+Visual (1)
+  F panel illustration + diagram + 599·600
+
+Orchestration (1)
+  G 총괄 + 5렌즈 audit + cross-mirror 검수
+```
+
+→ task ⊗ agent는 m:n. *결합 강한 cell*(mirror pair)은 단일 agent, *결합 약한 cell*(panel·diagram)은 분산.
+
+---
+
+## 11. 평가 — 5렌즈 (매 결정 시)
+
+| 렌즈 | 잡는 빚 |
+|:--|:--|
+| **SBC** | 캐릭터 평탄성·무너짐 부재 (의도 prior ↔ 추론 posterior gap) |
+| **RSRS** | 길이 빚·anchor 분산 (의미 풍부 vs 구조 절제) |
+| **CARE** | 독자 동선 이탈 (Crisp·Accessible·Reader-loving·Earned) |
+| **독자 7명** | 현장 접근성·산업 정합 (지원자 4 + 관객 1 + 멘토 1 + 재도전 1) |
+| **전문가 3** | 문학 절제·전략 bet·관계 깊이 (편집·경영·출판) |
+
+GitHub issue #69: *🌪️승천-땅 선택에서 평가기준으로는 — 5렌즈 protocol*.
+
+---
+
+## 12. 책의 운동 한 줄
+
+```
+부수기(cage 1-4) → ★멈춤(4↔5 회전축) → 짓기(nest 5-8) → ouroboros(8→1 회귀)
+                                                           ↑
+                                              책은 닫히지 않는다 — 다음 trickster를 비춘다
+```
+
+---
+
+## 부록 — 변경 이력 (5/10 RSRS form 재작성)
+
+| 항목         | 이전          | 현재                                                     |
+| :--------- | :---------- | :----------------------------------------------------- |
+| 5장 이름      | 역할둥지        | **놀이둥지**                                               |
+| 7장 이름      | 언어둥지 → 의심둥지 | **튤립둥지** (anchor 검은튤립 단독)                            |
+| 8장 이름      | 거울둥지        | **새둥지**                                                |
+| 5장 슬로건     | 역할을 입어라     | **환상을 역이용하라**                                          |
+| 6장 슬로건     | 자기 서사를 써라   | **선을 넘어라**                                             |
+| 7장 슬로건     | 언어를 합의하라    | **확률적으로 생각하라** (부수: 확률적으로 생각하는 의미)                     |
+| 8장 슬로건     | 너의 유사를 써라   | **의미를 만들어라** (부수: 넘기고 혼동시키며 태어나는 의미)                   |
+| 산업 분류 (8장) | 에너지         | **에너지·반도체** (SK Hynix·Groq 추가)                         |
+| 3장 마찰      | 신념·책임 이분법   | **+베버 위계** (책임윤리 default + 1% 신념윤리)                    |
+| 7장 깊이      | doublethink | **+gene·meme 환경 차이 (GameStop)**                        |
+| Lexicon    | 19 entries  | **22 entries** (Phase 2 Re-enchantment·한 글자 비틂·8단계 추가) |
+| Panel 이미지  | 1-4 only    | **8장 모두** (5-8 신규: 놀이·안개·의심·새 panel)                   |
+
+### 5/13 갱신 (1-8장 latest 정합)
+
+| 항목              | 이전           | 현재                                                                                                                       |
+| :-------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------- |
+| 도메인 표기          | M·L·C·T pair | **`[bit]·[atom]·[cell]·[quanta]`** (Lexicon *4 산업 × atomic unit* 정합 — Shannon·Dalton·Schleiden-Schwann·Planck/Einstein)  |
+| §1 격자 paired 사례 | 부분           | **본문 정합** (6장 토스/쿠팡·OpenAI vs Anthropic, 7장 Novo Nordisk vs Aduhelm·검은 튤립, 8장 4 문화권+토스+SK Hynix)                         |
+| §3 학자 anchor    | minimal      | **본문 footnote 정합** (1↔5 Goffman, 2↔6 클라우제비츠·아우렐리우스, 3↔7 De Witt·Gibbons clarity-naming-framing, 4↔8 Gould-Lewontin)      |
+| §3a·3b          | 없음           | **Caillois 4 놀이 매핑 + 검은 튤립 De Witt 학살** (forbidden→fundamental 변환, linter 반영)                                            |
+| §7 nest 4장      | 단일 사례        | **다중 사례 + 작동 anchor** (op→st ambiguity·Crucial Third Position·clarity-naming-framing·visible hand under non-integration) |
+| §8 대표 시각        | M·T·C·L pair | **bit·atom·cell·quanta pair**                                                                                            |
+| 부록4 후보          | 100 entries  | **+Anthropic 2026 *Emotion Concepts Function*** (Sofroniew et al., 8장 ★H = figure #83 정합 — issue #9 4435050310)          |
+
+### 5/14 갱신 (v2 핸드오프 sign-off 후 5-8장 nest 재구조화)
+
+| 항목 | 이전 | 현재 |
+|:--|:--|:--|
+| 5장 main scene | 베이징 공연 전 분장실 (송 단독) | + Act 1 Sc 13 vanity mirror (positive — 송 *알면서* 입기) + Act 3 Sc 3 자결 (negative — 갈리마르 *모르고* 끝남). m나비.md SSOT |
+| 7장 main 작품 | 1984 윈스턴 일기 | **검은 튤립 main** (코르넬리우스 유리 온실 + 복스텔 망원경 + 1672 De Witt 학살). 1984 윈스턴 *2+2=4*는 *분포 vs 한 점* anchor로 §2.1 강등 보존 |
+| 8장 §1.2 main | Douglass 3단계 main | **일연 *유사* main** (1281, *正→遺* 한 글자 비틂, heterochrony) + Douglass 부수 (PDF p.10-12). Raven §1.1 *분량 보존* |
+| 5장 manifesto | 없음 | **사랑은 헤테로토피아다 — 같은 자리, 다른 규칙** (1↔5 거울 note + Foucault 1967 *Des Espaces Autres* 원문 시) |
+| 5-8장 §4 결말 | 옛 슬로건 1줄 | **v3.1 메시지** (≤14자) + 시·암시 + 구체 instance + 함께/곁 동사 + 물음표·여백 (3 편집자 합격선 통과 형식) |
+| PDF Trickster Engine | 없음 | 5-8장 footnote 박힘 (Mechanic 1-3 + Phase 2) + §3 mirror 표 한 column 추가 |
+| Foucault 헤테로토피아 4 유형 | 없음 | §1a 표 + nest 4장 footnote 박힘 (거울·메타공간·정원·heterochrony) |
+| 부록4 후보 | Anthropic 2026 *Emotion* | **+ *The Trickster's Engine* (NotebookLM/Anthropic 2026) + Foucault *Des Espaces Autres* (1967)** |
+
+---
+
+*RSRS form: 25,294자 → ~6,500자 (74% 감축). 의미 풍부, 구조 절제. 본 파일이 책 전체의 minimal sufficient statistics. 옛 본은 `🗺️84구조.md.bak.112659`에 보존.*
+
+---
+
+## 📜 Snapshot Timeline · 🪞 14파일 호응표 (cc-grid SSOT)
+
+> _Marks 규칙: 본 파일이 *dashboard SSOT*. 14파일의 좌표가 본 표와 일대일 호응._
+
+| 날짜 | 버전 | δ delta |
+|:--|:--|:--|
+| 2026-04-28 | v0.5 | 초안 |
+| 2026-05-10 | v1.0 | RSRS form 적용 (25,294자 → ~6,500자, 74% 감축) |
+| 2026-05-12 | v1.3 | Caillois 4 놀이 매핑 + 검은 튤립 De Witt 학살 §3a·3b |
+| 2026-05-13 | v1.5 | bit·atom·cell·quanta atomic units 박힘 |
+| 2026-05-14 | v1.7 | 5-8장 nest 재구조화 + Foucault 헤테로토피아 §1a |
+| **2026-05-16** | **v2.0 ★** | **Dashboard skin. 14파일 일괄 좌표 동기화 (Forte·Corcos·Marks 적용).** |
+| 2026-08-15 | v2.1 | (계획) 분기 audit · 5렌즈 통과율 측정 |
+
+### 🪞 14파일 호응표
+
+| 파일 | 좌표 | atomic | CC | mirror | 오늘 셀 |
+|:--|:--|:--|:--|:--|:--|
+| [[⚕️머릿말_ouroboros]] | frame·ouroboros | — | cc-grid | 1↔8 봉합 | ouroboros 단락 |
+| [[0🤨_질문과답]] | frame·앞외피 | — | cc-grid | ↔9 답과질문 | 8 질문 cadence |
+| [[1🪞_거울새장]] | cage·§1-4·1↔5 | [bit] | cc-pair-a | ↔5 놀이둥지 | §1 hook |
+| [[2🔭_망원경새장]] | cage·§1-4·2↔6 | [atom] | cc-pair-b | ↔6 안개둥지 | §2 살리나 인용 |
+| [[3💒_유리새장]] | cage·§1-4·3↔7 | [cell] | cc-pair-c | ↔7 튤립둥지 | §2 calibration slider |
+| [[4⏱️_시계새장]] | cage·§1-4·4↔8 | [quanta] | cc-pair-d | ↔8 까마귀둥지 | §4 다+세 공동일기 |
+| [[5🦋_놀이둥지]] | nest·§1-4·1↔5 | [bit] | cc-pair-a | ↔1 거울새장 | §1 엠마 비소 |
+| [[6🌫️_안개둥지]] | nest·§1-4·2↔6 | [atom] | cc-pair-b | ↔2 망원경새장 | §3 살라망카 |
+| **[[7🌷_튤립둥지]] ★** | nest·§1-4·3↔7 | [cell] | **cc-pair-c ★** | ↔3 유리새장 | **§2.1 윈스턴 강등** |
+| [[8🐦‍⬛_까마귀둥지]] | nest·§1-4·4↔8 + 1↔8 | [quanta] | cc-pair-d | ↔4 + ouroboros | §1.2 일연 유사 |
+| [[9🤨_답과질문]] | frame·뒤외피 | — | cc-grid | ↔0 질문과답 | 답 표 cadence |
+| **본 파일** | frame·meta·SSOT | meta | cc-grid | 5 mirror | 14파일 동기화 |
+| [[부록2_의심3부작]] | appendix | meta | cc-grid | ↔ 부록1 낭만3부작 | Essay 2 cadence |
+| [[부록4_연료자료]] | appendix·참고문헌 | meta | cc-grid | 책 전체 인용 | 인용 일관성 |
+
+> **오늘 활성 mirror pair (2026-05-16, 토)**: **cc-pair-c (3↔7, [cell])** — 7장 De Witt 학살 §1 hook ↔ 3장 confidence 빚의 paired Forbidden 광경 (AGON+ILINX → AGON+ALEA).
+
+---
+
+## 🧲 운영 철학 (Forte·Corcos·Marks)
+
+> **Forte**로 매주 열고 · **Corcos**로 5-CC와 같이 보고 · **Marks**로 10년 같은 형식 지킨다.
 >
-> - **★멈춤** (Restraint, *Pause*) — 미끼와 본능 사이의 *공백*. 그 공백에서 지능이 자가-탄생. 책의 한 단어 thesis
-> - **모방** (Sacred Theft / Creative Imitation) — 신성을 *내 맥락으로* 가져옴. *Theft is the ultimate context shift*. 1장 Girard 모방욕망과 같은 동사
-> - **넘김** (Boundary Crossing) — 같은 사물이 *다른 환경*에서 새 의미. 노↔키질 부채
-> - **매혹** (Re-enchantment) — 새 자리에 *spell so beautiful that Apollo forgives*. 창조 + 마법 hybrid
+> 공통 적: 파일이 박물관이 되는 것.
+> 공통 해독제: **셀에 *오늘의 한 결정*이 박혀 있을 것** — 그러면 살아 있다.
 
-### 5·6·7장 = 4단계 *각자의 자리*에 무게 둔다 (2단계씩 강조)
-
-| 장 | 강조 단계 | 한 줄 |
-|:-:|:-:|---|
-| **5** 역할둥지 | 멈춤 · 모방 | 환상에 멈추고, 환상을 *모방해 내 무대로* |
-| **6** 안개둥지 | 모방 · 넘김 | *작가의 자리를 모방해*, 책장 안에서 밖으로 |
-| **7** 언어둥지 | 넘김 · 매혹 | 좁은 lexicon을 *넘어*, 합의된 단일 사고체계로 *매혹* |
-
-### 8장 = 격자 *바깥* — 책임 + 회귀
-
-8장은 4단계 *전부* + Hyde 격자 *밖*에 두 가지를 더한다:
-
-- **책임** — Phase 2 (매혹)까지가 trickster의 의무. 빠지면 르뢰 (*funding 인격화*, dG/dF=(−))
-- **회귀** — 8→1 ouroboros. 매혹이 *다음 엠마의 무도회장*으로 돌아간다
-
-> **거울 짝**: 4장이 카뮈 격자 바깥에 *놀이(작란)*를 추가했듯, 8장은 Hyde 격자 바깥에 *책임과 회귀*를 추가한다. **격자 바깥이 격자를 살린다.**
-
-### 두 학술 격자의 거울
-
-| 1-4 (새장) | 5-8 (둥지) |
-|---|---|
-| 카뮈 (멈춤 없는 모방의 *결과*): **모방 → 위안 → 붕괴 → 선택** | Hyde (★멈춤 후 모방의 *운동*): **★멈춤 → 모방 → 넘김 → 매혹** |
-| 빌린 도구의 *비극 4박자* | 여는 도구의 *해방 4박자* |
-| 본능 (Baited Hook의 True Worm 가정) | 상징적 지능 (False Worm 가능성) |
-| 모방 → 즉각 위안 → 미끼였음 발각 → 붕괴 | ★멈춤 → 해독 → 모방을 *내 맥락으로* → 매혹 |
-| *Le Mythe de Sisyphe* (1942) + Eco *기호=거짓말 가능성* | *Trickster Makes This World* (1998) + PDF *Hesitation* |
-| 4장 *놀이*가 격자 바깥 | 8장 *책임·회귀*가 격자 바깥 |
-
-## 5-8장 4 Lens 표 (감각·이론·현실·실천)
-
-각 장이 4 lens × 4 박자 격자로 작동:
-
-| 장 | 🌬️**감각** (몸이 먼저) | 🧠**이론** (학자 anchor) | 👁️**현실** (사례 paired) | 🛠️**실천** (즉시 도구) |
-|:-:|:--|:--|:--|:--|
-| **5 역할둥지** (송 릴링) | 가발 *입는 손*의 멈춤. 거울 속 분 반쯤 발린 얼굴 | Hyde Hopi 광대 + Goffman *frontstage·backstage·role distance* (★멈춤) | SM(이수만) ↔ HYBE(방시혁) / Slack·Stripe·Airbnb·Tesla pivot | **무대-분장실 일지** — *오늘 입은 옷·벗을 자리·솔기 보일 사람* |
-| **6 안개둥지** (우나무노) | 작가 책상 앞 등장인물의 떨림. 안개 너머 살라망카 | Hyde *Crucial Third Position* + Ricœur *narrative identity* (idem/ipse) + 아우렐리우스 *명상록* | 토스 termsheet / 쿠팡 1:29 / Patagonia 신탁 / WeWork 음화 | ***Day 1* 메모** — 매일 자기에게 쓰기. 사업의 *ipse* 짓기 |
-| **7 언어둥지** (윈스턴↔BB) | 단어가 매일 줄어드는 감각. doublethink가 뇌에 박히는 안락함 | **뇌가 변화를 싫어한다**: Cannon homeostasis + Kahneman loss aversion + status quo bias + Sapir-Whorf + Gibbons *clarity·naming·framing* | BB Newspeak (음화) ↔ Bezos·Buffett·Bridgewater·이승건 토스 결정 메모 | **함수·조건화·합성 3기계** — 분포로 생각·단어로 합의·lexicon으로 짓기 |
-| **8 거울둥지** (일연) | 부순 자리의 빈 광장. 두루마리 여백. 안개 뒤의 길 | **NC + Spandrel + 여백의 미**: Brinkerink25 *Negative Capability* + Gould *spandrel* + 노자 *無之以爲用* + Hyde Phase 1+2 + Mokyr 인공/자연선택 + Poe 메타-역공학 | 토스·카카오뱅크·쿠팡·OpenAI/SSI·일연 *삼국유사*·원효 무애가 | **너의 *유사*를 써라** — 변이 풀 외재화 (Orlean 700 카드식) |
-
-→ **4 lens 운동**: 감각 → 이론 → 현실 → 실천 → 감각(재독). 같은 장 안에서 회전.
-
-→ **7장 = 변화 회피**의 장 (closure 강제) ↔ **8장 = 여백의 장** (closure 거부). 정확한 음/양.
-
-→ **8장 = 거울둥지**: 1장 *거울새장*과 정확한 1↔8 ouroboros mirror. 책의 시작과 끝이 *거울*로 봉합.
-
-## 진화론적 거울 — 인공선택 ↔ 자연선택+모음 (Mokyr)
-
-4↔8 거울이 *행위*에서 *시스템* 차원으로 격상:
-
-| 축 | 4장 (인공선택, 닫힘) | 8장 (자연선택+모음, 열림) |
-|:--|:--|:--|
-| 도구 | 빌린 시계·시간표 | 일연의 *유사*·붓·두루마리 |
-| 선택 메커니즘 | 의도적 단일 경로 강요 | 변이 풀 보존 + 환경 선별 |
-| 실패 모드 | *성공이 변이를 죽임* (Mokyr) | (없음 — 모음은 미래 환경에 *준비*만) |
-| 공간 | 무인도 (가장 좁은 닫힘) | 방·서재 (가장 좁은 열림) |
-| 시간 | 빌린 시계의 *고정 박자* | 1281년 일연이 1300년 전 신화를 *모음* — 시간 보존 |
-| 한 줄 | *빌린 도구는 인공선택* | *모은 도구는 자연선택의 풀* |
-
-**책 thesis 차원 격상**: *멈춤* (행위) → *변이 보존* (시스템) → *시간 가로지르기* (역사). 같은 운동의 세 척도.
-
-## 공간 척도 — 좁아지는 자리에서 큰 운동 (장소의 닫힘 수렴)
-
-| 좌 (cage) 장소 | 우 (nest) 장소 |
-|:--|:--|
-| M1 시골 (욘빌) | M2 극장·법정 |
-| R 항구 (시칠리아) | U 스페인 (살라망카·로마 궁정) |
-| C 봉쇄도시 (오랑) | O 감시도시 (Airstrip One) |
-| **T1 섬 (스페란차)** | **T2 방 (Poe 학자의 방)** |
-
-좌·우 *둘 다* 마지막 장의 공간이 가장 작음. **좁아지는 공간에서 *가장 큰 운동*이 일어난다** — PDF *Trickster Engine*의 *crucial third position*(이항 바깥의 좁은 자리)와 정확 정합.
-
-→ 8장 일연의 *방*(글 쓰는 자리)이 1300년 한국사의 *유사*를 모은 자리. T1 무인도가 빌린 유럽을 *재현하는* 자리였다면, T2 방은 *가로지르는* 자리.
-
-## 사례 paired — cage 닫힘 ↔ cage 열림
-
-좌·우 모두 *cage 닫힘*과 *cage 열림*의 두 출구를 paired:
-
-| 코드 | 좌 (cage 닫힘) | 우 (cage 열림) | 한국 |
-|:--|:--|:--|:--|
-| M1 | Quibi · Juicero | (단독 — paired 부재) | (예정) |
-| **R** | **Kodak** (필름 마진 70%에 묶임) | **Fuji** (화장품·의료로 전환) | (예정) |
-| C | Theranos | Moderna | (예정) |
-| T1 | (예정) | 두산 (130년 5번 재정의) · 생고뱅 · Netflix | 두산 |
-| M2 | 이수만 ↔ SM (시스템에 갇힌 페르소나) | 방시혁 ↔ HYBE (입었다 벗는 페르소나) | 둘 다 한국 |
-| U | Adam Neumann ↔ WeWork (소설에 잡아먹힘) | Yvon Chouinard ↔ Patagonia (소설로 새장 열기) | 김봉진 우아한형제들 |
-| O | (재선정 필요) | (재선정 필요) | 김정주 ↔ NEXON (F2P 언어 수출) |
-| **T2** | (Big Brother·Poe Raven 음화) | Sam Altman ↔ OpenAI · Ilya Sutskever ↔ SSI (역공학 두 출구) | Hyunji Moon ↔ Golden Cage |
-
-★ **R(2장) paired = Kodak vs Fuji** 정착. C와 같은 *cage 닫힘/열림* 패턴 완성.
-
-## 두 마름모 도식 (구조 멘탈 모델)
-
-추상 구조: 1·5장이 두 회전축, 다른 6장은 두 회전의 *위상*. 멘토·작가·새 LLM의 진단 격자로.
-
-```
-   둥지 마름모 (5-8 성공)              새장 마름모 (1-4 실패)
-                                    
-        6 우나무노/                       2 살리나
-        아우렐리우스                        (망원경)
-            ▲                                ▲
-            │                                │
-   7 윈스턴 ◀─── 5 송릴링 ◀═══▶ 1 엠마 ───▶ 3 파늘루↔리외
-   (1984)         (M.나비)         (마담보바리)   (페스트)
-            │                                │
-            ▼                                ▼
-        8 일연                             4 로빈슨
-        (삼국유사)                          (방드르디)
-```
-
-회전축 1·5는 *접점*에서 마주본다 — M-M Axis = 책의 척추.
-짝 동일 위치: 1↔5(중심) · 2↔6(상) · 3↔7(좌·우) · 4↔8(하). 같은 *기능*의 거울 2번.
-
-(이 도식은 *추상 구조 진단 도구*. 책의 *시각 map*은 → [🗺️지도](🗺️지도.md) (Double Helix 일러스트).)
-
----
-
-## 회전 위치 = 기능 (두 마름모의 거울)
-
-| 위치 | 회전 1 | 회전 2 | 공통 기능 |
-|---|---|---|---|
-| 중심 | 🌑 엠마 | 🦋 송 릴링 | 회전축, *원형* |
-| 위 (관조) | 🔭 살리나 | 🌫️ 아우구스토 | 본 자가 못 움직임 / 본 자가 자기 서사를 본다 |
-| 좌·우 (반항) | 💒 리외+타루 | 💘 윈스턴 | 직접 반항 / 언어로 반항 |
-| 아래 (전환) | ⏰ 방드르디 | 👻 헤르메스 | 폭파 / 비틀기 |
-
-거울 대칭은 *일대일 짝*이 아니라 *기능의 회전*.
-
-## 다·세 관계 진화
-
-| | 1장 (출발) | 4장 (다리) | 5장 (회전축 2) | 8장 (결말) |
-|---|---|---|---|---|
-| **다** | 엠마 — 빌린 욕망으로 다침 | 타루 — *나는 보균자였다* 인정 | 송 릴링 — 빌린 환상을 *알면서 입는다* | 헤르메스 — *경계 위*에서 자기 규칙을 짓는다 |
-| **세** | 살리나 — 다 보이지만 안 뜀 | 리외 — 60%인 채로 주사기 | 아우구스토 — 작가 책상에 걸어 들어간다 | 윈스턴(언어 보존 버전) — 일기에 단일 lexicon을 적는다 |
-| **다+세 거리** | **가장 멀다** | 방드르디를 향한다 | 함께 환상을 점검 | **함께 새 규칙을 짓는다** |
-
-다·세 거리: 1장 *멀다* → 4장 *향한다* → 5장 *점검* → 8장 *함께 짓는다*. **책의 교육 효과는 다·세 거리의 단축으로 시각화된다.**
-
-7장 다·세는 **작품 바깥**에서 모범을 찾는다 — 1984 텍스트 안에는 빅브라더-윈스턴의 폭력적 비대칭만 있다. 이게 한 줄 요약 7번이 *"작품 바깥에서"*인 이유.
-
-## 학술 처리 — 비틂·추가·정확
-
-| 장 | 원작 (메인) | 처리 | 핵심 학자·정당성 | 보조 |
-|---|---|---|---|---|
-| 1 | 마담보바리 (플로베르) | **비틂** | **René Girard** *모방욕망* — *나-중재자-대상* triangulation. 르뢰를 trickster로 재해석 | 옐로모바일 (Quibi 한국 거울, ★ 검증 필요) |
-| 2 | 표범 (람페두사) | 정확 호출 + **추가** | **Pierre Bourdieu** *habitus* — 살리나의 *몸의 빚* (머리는 갱신, 몸은 재생산). cage 닫힘 vs 열림 paired (Kodak vs Fuji) | *La Distinction*·*Le Sens pratique* |
-| 3 | 페스트 (카뮈) | 정확 호출 | **Albert Camus** *부조리·반항* — 두 출구: 철학적 자살(파늘루) vs *réveille*(리외) | *Le Mythe de Sisyphe* (1942) + 셀트리온 vs 신라젠 (★ 검증 필요) |
-| 4 | 방드르디 (투르니에) | **추가** | 카뮈 격자 *바깥* 작란(놀이) + **Joel Mokyr** *artificial selection* 소진 (빌린 진화 경로 → 변이 죽음) | Mokyr *Lever of Riches·Culture of Growth* + 두산 130년 |
-| 5 | M.Butterfly (황) | 정확 호출 | **Lewis Hyde** Hopi 광대 + **Erving Goffman** *frontstage·backstage·role distance* (★멈춤 = role distance) | — |
-| 6 | Niebla (**우나무노 = 학술 메인**) | 정확 호출 + **추가** | **우나무노** *nivola* 발명자 (자기 책에 자기 등장) + **Paul Ricœur** *narrative identity* (idem/ipse) + **아우렐리우스** 처방(자기-쓰기) | *명상록* + Bezos·Buffett·Dalio |
-| 7 | 1984 (오웰) | **비틂 + 대비** | **윈스턴 + Big Brother 공동 메인 음화** (3장 파늘루↔리외 동형). doublethink → PLoT(Goodman·Tenenbaum) + **Sapir-Whorf** 언어상대성 + **Gibbons 2025** *clarity·naming·framing*. **BB = 수단의 음화** (Newspeak 통제) | *From Coase to Culture* (Gibbons) + *동물농장* |
-| 8 | Trickster Makes This World (하이드) | 정확 호출 + **추가** | **Lewis Hyde** Phase 1+2 + Douglass 4단계 + **Mokyr 자연선택+모음** (4↔8 거울) + **Poe *Philosophy of Composition***(1846) 메타-역공학. **BB 호명 = 목적의 음화** (8→1 ouroboros 잠금) | **삼국유사** (일연 = 메타-trickster) + *Homeric Hymn to Hermes* |
-
-비틂(1·7), 추가(4), 정확 호출(나머지). **8장은 *민음사 1·2권 변신 이야기*에 학술 anchor를 둔다** — 시리즈의 시작과 책의 결말이 만나는 ouroboros.
-
-## 4박자 격자 — 8장 통합
-
-| 장 | 소설·인물 | 🌬️ 감각 | 🧠 이해 | 👁️ 관찰 | 🛠️ 실천 |
-|---|---|---|---|---|---|
-| **🌑 1 거울** (빌린: 모방욕망) | 마담보바리·💃엠마 | 박수가 손끝까지 번지는 확신 — 빌린 벨벳이 내 살처럼 | 지라르 모방욕망 + Baited Hook hesitation | Quibi · Juicero · 옐로모바일 | **📒장부를 ✍️써라** |
-| **🔭 2 망원경** (빌린: 분석마비) | 표범·⚓살리나 | 보면 볼수록 발이 무거워지는 감각 | Restraint 외부 강제형 | 코닥 · 노키아 · Blockbuster | **🎞️순서를 🏄‍♀️타라** |
-| **💒 3 스테인드글라스** (빌린: 신념) | 페스트·🏙️파늘루 | 첫 환자 앞에서 신학이 흔들리는 통증 | Bayesian update 거부 = Sacred Theft 거부 | Theranos · WeWork · FTX | **🧠믿음을 🔄교정하라** |
-| **⏰ 4 시계** (빌린: 시간표) | 방드르디·🏝️로빈슨 | 빌린 시간표가 헛도는 감각 | Boundary Crossing 실패 | 도요타 미국 이식 / 실리콘밸리 한국 적용 | **🔥불을 🚬피워라** |
-| **🦋 5 M.Butterfly** (여는: 환상 역이용) | 🎭무대-갈리마르/송 | 한 위장이 벗겨지자 다른 변장이 시작되는 감각 — 가발을 벗는 자와 입는 자가 동시에 있다 | 복장 전환을 *주체가 의식하고 수행*하는 순간, 환상이 *무기에서 도구로* 바뀐다 | Slack(게임→메신저) · Instagram(체크인→사진) · Stripe(정직 재구성) — 수치심 없는 pivot | 복장 일지: "내가 입은 역할은 누가 만들었나? 다시 입을 수 있는가?" **🎭역할을 👁️입어라** |
-| **🌫️ 6 Niebla** (여는: 서사 대면) | 📖페이지-아우구스토 | 작가의 책상 앞에 선 등장인물의 감각 — 내가 누구의 서사 안에 있는지 묻는 순간 | 메타픽션의 자기인식: founder가 자기 *finder*(시나리오 작성자)를 찾아내 대면. SAFE 같은 문서를 *주체적으로 계약서 구성* | 자기 회사가 어떤 *상위 서사*(시장 트렌드, VC 테마, 시대 정신) 안에 있는지 명시한 founder들 — Bezos *Day 1* / Musk *Master Plan* / Stripe *internet GDP* | finder 대면 4단계: **식별-호출-대면-그래도**. **📖작가를 🤝만나라** |
-| **💘 7 1984** (여는: 언어 보존) | 🏛️감시탑-윈스턴 | 단어가 매일 줄어드는 감각 — 언어가 좁아지면 사고가 좁아진다 | Probabilistic Language of Thought vs doublethink — 함수·조건화·합성으로 *단일 lexicon 유지* | Bezos memo / Buffett 연차 서한 / Bridgewater principles — 단일 사고체계로 살아남기 | 함수-조건화-합성 3기계로 투자자·고객·팀 합성. **🗣️언어를 🛡️지켜라** |
-| **👻 8 trickster makes this world** (여는: 규칙 비틀기) | 🌗경계-헤르메스 | 정상의 바깥에 서 있는 감각 — *권력=타협, 지옥=여행* | 경계 위에서의 생성: 정상화된 규칙 안에서는 새 것이 안 나온다. **disrupt 후 enchant** | 토스 vs 증권사 / 카카오뱅크 vs 은행 / 쿠팡 vs 유통 — 규칙의 *틈*을 비튼 사례. *Bom Suk → Bom Kim* · 비바리퍼블리카 명명 (한 글자 비틂, 6장 nivola와 같은 원리) | trickster 점검: *어느 규칙을 비틀고 있는가? 비틀고 책임지는가?* **🪤규칙을 🔄비틀어라** — *disrupt하고 다시 매혹시키기까지가 책임* |
-
-## 본문 파일
-
-| 거울 짝 | 회전 1 — 빌린 도구 (1-4장 *새장*) | 회전 2 — 여는 도구 (5-8장 *둥지*) |
-|---|---|---|
-| 1 ↔ 5 | [1_거울새장](1_거울새장.md) | [5_놀이둥지](5_놀이둥지.md) |
-| 2 ↔ 6 | [2_망원경새장](2_망원경새장.md) | [6_안개둥지](6_안개둥지.md) |
-| 3 ↔ 7 | [3_스테인드글라스새장](3_스테인드글라스새장.md) | [7_의심둥지](7_의심둥지.md) |
-| 4 ↔ 8 | [4_시계새장](4_시계새장.md) | [8_새둥지](8_새둥지.md) |
-| **1 ↔ 8** | [1_거울새장](1_거울새장.md) | [8_새둥지](8_새둥지.md) (ouroboros mirror — 책 frame) |
-
-→ 5-8 둥지 명명: *역할·작가·언어·트릭* — 메타-인지 4가지(누가 만들었나)와 정합. 1-4 *X새장* (도구) / 5-8 *X둥지* (메타-인지 행위 대상) 두 시리즈 균질 짝.
-
-## 한 줄 요약 (책의 결말)
-
-### 회전 1 — 빌린 도구를 의심하라 (빚 식별)
-
-1. 💃 무도회장의 엠마는 🪞거울을 의심하며, 📒장부를 써라 — 엠마에게 없었던 자처럼
-2. ⚓ 항구의 살리나는 🔭망원경을 의심하며, 🎞️순서를 타라 — 탄크레디처럼
-3. 🏙️ 도시의 파늘루는 💒스테인드글라스를 의심하며, 🧠믿음을 교정하라 — 리외와 타루처럼
-4. 🏝️ 섬의 로빈슨은 ⏰시계를 의심하며, 🔥불을 피워라 — 방드르디처럼
-
-### 회전 2 — 여는 도구를 익히라 (시스템 식별 + 다시 짓기)
-
-5. 🎬 무대의 갈리마르는 🦋환상을 역이용하며, 🎭역할을 입어라 — 송 릴링처럼
-6. 📖 페이지의 아우구스토는 🌫️자기 finder를 찾아내며, ✍️**자기 서사를 써라** — 우나무노처럼 자기 *nivola*를, 아우렐리우스처럼 매일. 시장이 써준 서사를 받아 입지 마라 (Ricœur *idem* 아닌 *ipse*)
-7. 🏛️ 감시탑의 윈스턴은 💘언어 좁아짐을 알며, 🤝**언어를 합의하라** — 분포로 생각하고 *함께 쓸 단어로 합의*하고 lexicon으로 짓는다 (Gibbons *clarity·naming·framing*)
-8. 🛤️ 길의 더글러스는 🏷️이름을 다시 짓고, 🏛️ 사찰의 일연은 ✍️ trickster들을 모았다 — **너의 *유사*를 써라**, 다음 trickster를 인정하면서
-
-### 회귀 (8 → 1)
-
-**첫 회독**: *엠마의 눈으로* 마담 보바리를 본다 — 빌린 욕망에 먹힌 자의 비극, 자기 책임의 윤리적 비판.
-
-**8장 후 재독**: *르뢰의 눈으로* 본다 — 외상으로 미끼를 건 자, **부수기만 하고 다시 매혹하지 않은 trickster**. 책임 없는 trickster의 부정적 사례. 르뢰 = funding의 인격화 = dG/dF=(−)의 한 얼굴.
-
-두 시선이 동시에 작동한다. 엠마는 *내가 송 릴링이 되기 전의 나* (자기연민). 르뢰는 *익힌 trickster 윤리로 처음 식별되는 시스템* (시선의 이동: 개인 책임 → 시스템 인식).
-
-1장의 비틂(르뢰 = trickster)은 1장에서 완성되지 않는다. **8→1 회귀에서 완성된다.** 책은 한 번 읽고 끝나지 않는다.
-
----
-
-# 작업 로그 — 2026-04-30 (향후 판단 reference)
-
-## 🔴 Tier 1 — 가장 영향력 있는 결정 / 미해결
-
-### 결정 (안정 — 변경 시 책 전체 큰 작업)
-
-| # | 결정 | 결과 | 영향 |
-|:-:|---|---|---|
-| 1 | **메타포 전환** 둥지 → 여는 도구 4개 (환상역이용·메타픽션·언어짓기·규칙비틀기) | dG/dF=(−), Movers 2.6× Stayers 정합 | 5-8장 전체 reframe 기반 |
-| 2 | **표제** "황금새장을 열다" 단일 | 부제 미결 | 책 정체성 |
-| 3 | **8장 인물 hybrid** 더글러스 메인 + 헤르메스 학술 reference (1차), **르뢰 그림자**(8장 음화) | 본문 line 30-83, 84구조 line 110 | trickster 윤리 시각화 |
-| 4 | **7장 작품 hybrid** 1984 메인 + 동물농장 보조 인용 | 7장 본문 유지, 동물농장 line 130 그림자 등장 | 언어 짓기 명료성 |
-| 5 | **5-8 메타-인지 4가지** 역할/서사/언어/규칙 — *누가 만들었나* 공통 질문 | 84구조 line 19-26 | 5-8장 통일 결 |
-| 6 | **한 글자 비틂 메타-원리** novela→nivola(6장), Bailey→Douglass(8장), Bom Suk→Bom Kim(8장 한국 사례) | 책 전반 메타-원리 | trickster 기술의 핵심 |
-| 7 | **8→1 ouroboros = 르뢰 reading** 첫 회독 엠마의 눈, 재독 르뢰의 눈 | 회귀 단락 | 책 결말 운동 |
-| 8 | **vault = SSOT, web = 발행 타겟** 단방향 sync | sync 스크립트 commit `d4a42a20` | 작업 흐름 |
-
-### 미해결 (다음 작업의 prior — 결정 시 큰 작업 시작)
-
-| 우선 | 결정 항목 | 권고 (현 시점) | trigger |
-|:-:|---|---|---|
-| **★1** | **부제 유무** ("황금새장을 열다" 단독 vs 부제 추가) | 단독 | 표지 디자인 시 |
-| **★2** | **1장 마스터** vault(324행 다이어트+공식) vs web(367행 풍부) | hybrid: vault 구조 + web 4항목 복귀 (옐로모바일·인물표·"외상이면 소도"·footnote 4) | 1장 patch 시 |
-| ~~★3~~ ✅ | ~~5-8 셸 파일명 변경~~ **결정 완료 (4회 갱신)**: `5_놀이둥지` / `6_안개둥지` / `7_의심둥지` / `8_새둥지` (1↔8 ouroboros mirror) — 변천: 트릭→장난→선넘→거울 | sync 스크립트 갱신 (web 영문 ch6_author_nest·ch8_trick_nest URL 유지) | — |
-| **★4** | **로돌프 추가** (5장 음화 — 2차 작업) | 5장 본문 환상 짓기 확장 시 함께 | 5장 Phase 2 patch |
-| **★5** | **N·T·L·P·B 라벨 의미** (이미지 #4 두 cycle) | 이미지 직접 의미 확정 | 두 cycle 섹션 보강 |
-
-## 🟡 Tier 2 — 본문 작업 시 참조
-
-### 5-8장 본문 상태 (commit `cd9968ed` + fact-check `62be9d12`)
-
-| 장 | 파일 (현재) | 행수 | Fact-check 적용 | 약점 (Bird's Eye) |
-|:-:|---|:-:|:-:|---|
-| 5 | `5_놀이둥지.md` | ~165 | ✅ Hyde 분류·Slack 날짜·Krieger·Hopi족 + Goffman role distance | 5월 2일 *낯섦* 결정 (line 24) |
-| 6 | `6_안개둥지.md` | ~250 | ✅ Orfeo·Eugenia·Mauricio·죽음 모호성·장송 연설 + Ricœur narrative identity + 아우렐리우스 처방 | 다 voice manifesto (8장 일기 거울) |
-| 7 | `7_의심둥지.md` | ~360 | ✅ Winston 첫 일기·PLoT 출처 + Sapir-Whorf + Gibbons clarity·naming·framing + 세 관찰일지 + 제3의 위치 manifesto | anchor box plain Korean 변환 (학자명 → 부록4 footnote) |
-| 8 | `8_새둥지.md` | ~315 | ✅ 4단계 명명·Nathan Johnson·비바리퍼블리카 어원 + Raven 신화 (Haida) + 4 문화권 + 결정 불가능성 + Mokyr·Keats NC·Spandrel·노자·Poe | 르뢰 = 신념윤리 trickster reframe |
-
-**합계 1,001행**. 박혜진 deliverable 가능 상태.
-
-### Bird's Eye 5약점 (Phase 2 patch 후보, 시간 순)
-
-| # | 약점 | 자리 | 분량 | ROI |
-|:-:|---|---|:-:|:-:|
-| 1 | **5-8 공통 처방 부재** (8장 결말 또는 8→1 직전) | 8장 220 부근 | 1단락 | ★★★★★ |
-| 2 | 5장 환상 *짓기* 확장 (입기 너머) | 5장 4.1 | 1단락 | ★★★★ |
-| 3 | 6장 finder 메타포 본문 반영 강화 | 6장 1.1 또는 2.1 | 1단락 | ★★★ |
-| 4 | 7장 *언어 짓기·상용화* 페어 명시 | 7장 4.1 | 1단락 | ★★★ |
-| 5 | 8장 헤르메스 신화 직접 인용 (lyre·Apollo) | 8장 1.2 또는 2.2 | 1단락 | ★★★ |
-
-### Issue #42 review log 분류 결과 (42건, GitHub 미게시)
-
-- ➕ 추가 21 / ➖ 삭제 4 / ❓ 혼란 12 / 🗳️ 결정 5
-- 독자 매핑 (Issue #65 신규 3타입): 🎓대학생 25 / 🧑‍🧑‍🧒부모 14 / 💼직장인 23
-- **TOP 5 우선순위**: 7.1 (1984 결정 — 완료) / 1.2 (4박자 카뮈 명명) / 2.5 (살리나 사실 정정) / 4.2 (4장 1·2·3 요약 논리화) / A.1 (베버 책임/신념윤리)
-- 미실행 작업: GitHub Issue 코멘트 게시 (5분), TOP 5 본문 patch (2시간)
-
-## 🟢 Tier 3 — 안정 reference
-
-### 새 독자 타입 3개 (Issue #65)
-
-| 🎓 무모한 대학생 | 🧑‍🧑‍🧒 불안한 부모 | 💼 권태/냉소 직장인 |
-|---|---|---|
-| 알리기: 낭만의 *독* | 낭만의 *전개·복잡성·필요성* | 낭만의 *활력* |
-| 변화: 자신의 낭만 책임 | 자녀 주체적 선택 지지 | 일상이 흥미로워짐 |
-
-이전 2타입 (창업자·정책설계자) → 3타입 전환. 모든 진단·patch에 적용.
-
-### vault ↔ web 동기화 상태 (2026-04-30 기준)
-
-```
-vault (/tolzul, SSOT)              web (golden-cage-book, 발행)
-─────                              ─────
-1-4장 (다이어트 적용)               1-4장 (옛 풍부 버전 — 1장 367 vs 324)
-5-8장 (1001행 작성·검증)            ❌ 미발행
-84구조.md (현 파일)                 ❌ 미발행
-INTRO·COVER_LETTER·도해 자료        ❌ 미발행
-부록 7 (흡수 완료)                  app7_orwell_inverted.md ← 켈러 합성 미반영
-```
-
-→ sync 스크립트 (`도구/sync_vault_to_web.py`) 작성됨. dry-run 검증됨. 첫 실행 대기.
-
-### 시각 자료 상태
-
-- **🗺️8국지도** v2 prompt 정착 (`도구/🗺️8국지도.md`) — 민음사 8색 + 르뢰 그림자 + 8→1 ouroboros 결말
-- **8장 색상 결정** (Image #9-12): 5 노랑 / 6 올리브짙음 / 7 남색짙음 / 8 진홍
-- **거울 짝 색 운동**: 1↔5 보색, 2↔6 analogous 심화, 3↔7 cool 심화, 4↔8 보색
-- **Excalidraw** `x/Images/84구조 2026_04_28.excalidraw` 임베드 (line 11)
-- **Excalidraw 부족분 4개** (cc4 진단): 4→5 다리·M-M 라벨·8→1 ouroboros·좌우 교체 — 작가 직접 수정 대기
-
-### Fact-check 22건 patch (commit `62be9d12`, 2026-04-29)
-
-- 5장 5건: Hyde 분류 일관(시인·문화비평가) · Slack 날짜 · Krieger · Collison 풀네임 · 호피족
-- 6장 3건: Orfeo + Liduvina + Eugenia 풀네임 + Mauricio + 죽음 모호성 + 장송 연설 결말
-- 7장 2건: Winston 첫 일기 정정 (DOWN WITH BIG BROTHER → freedom = 2+2=4) · PLoT 출처 (Goodman·Tenenbaum·Church/WebPPL)
-- 8장 4건: Hyde 8 trickster 정확 명단 · 4단계 명명 · Nathan Johnson · Black Douglas vs James of Douglas · 비바리퍼블리카 어원 (이탈리아어 *Viva la Repubblica*)
-
-### Phase 2 보류 항목 (Critical 외)
-
-- Hyde 원저 vs The Trickster's Engine PDF 출처 일괄 정정
-- Footnote 시스템 5-8장 도입 (1장 표준)
-- 7장 한국 사례 (현재 ⚠ 마커 line 168) — 토스 의사결정 메모 vs 우아한형제들 컨퍼런스 등
-- 카카오뱅크 100만 카드 시기 (8장 line 129, 2개월 → 7일 보도자료 정정)
-
-### 회복 못 한 약점 (다음 손 보면 좋은)
-
-- M-M 회전축 정의를 *수식화* — 현재 정성 묘사. 작가 thesis와 정합 시 학술적 강화
-- 8→1 ouroboros = 르뢰 reading의 *시각화* — 현재 텍스트만. 🗺️지도가 시도 중
-
----
-
-## 메타 — 이 로그의 사용법
-
-- **★ 표시 = 작가 결정 대기**. 결정 시 큰 작업 흐름 잠금 해제
-- **commit hash** 명시: 변경 추적 가능
-- 작업 후 *이 섹션 갱신* 권고 (Tier 1 결정 → Tier 2 본문 상태 → Tier 3 reference)
-- 다음 큰 결정 시점에 *Tier 1 미해결 5개* 우선 점검
-
----
-
-# 작업 로그 — 2026-05-02 · 03 · 04 (Phase 3)
-
-## 🔴 Tier 1 — 추가 결정 (안정)
-
-| # | 결정 | 결과 | 영향 |
-|:-:|---|---|---|
-| 9 | **8장 = 거울둥지** (4번 변천 종결: 트릭→장난→선넘→거울) | 1↔8 ouroboros mirror 명시 — 책 frame 봉합 | `d71da81c` |
-| 10 | **5월 2일 *낯섦* 결정** (5장 line 24) — 세 character core = *낯섦으로 응시*. 정밀 한국어 구분 (낯섦 ≠ 섬뜩 ≠ 무서움) | 6→7→8장 진화 사슬 trigger | 본문 line 24 |
-| 11 | **manifesto 한 줄: *신화를 부수고, 함께 짓는다*** | 사람 중심 창업 + Phase 1+2 + 함께 — 표지 부제 후보 | 본 문서 line 16 |
-| 12 | **르뢰 = 신념윤리 trickster** reframe (Phase 1만 한 trickster, 사회 긴장 만들지만 책임 결여) | 1장 음화 정확화 + 4↔8 mirror 강화 | 본문 8장 line 89 부근 |
-| 13 | **clarity 원칙** — 본문은 소박한 한국어, 부록은 완전한 학술. 2 layer 분리 | 7장 anchor box prototype 변환 (Klein·Cannon·Kahneman·Samuelson 본문→부록) | `0d1164ff` |
-| 14 | **부록4 71→100 entries** (16명 추가) | 본문 호명·부록 누락 0 — 신뢰성 100 | `61c551df` |
-| 15 | **URL rename** (web): ch6_author_nest → ch6_mist_nest, ch8_trick_nest → ch8_mirror_nest. ALIASES로 backward compat | URL ≡ vault 의미 — SSOT | `a11cbe7f`, `7208a9d` |
-| 16 | **세의 관찰일지** (7장) — Anthropic 10 cluster taxonomy로 다 감정 어휘 측정 | *부재의 거울*: 다·세 cluster 정확히 상보 — 발전기 메커니즘 측정 가능 형태 | `ec7a89a2` |
-| 17 | **manifesto 박힘 (7장 일기·8장 일기)**: 7장 *"정밀한 구조로 슬픔을 직시 가능한 형태로 옮기되..."* (세) ↔ 8장 *"세에게 표를 빌렸다... 분장실도 무대도 아닌 자리"* (다) — voice 거울 짝 | 6장 Crucial Third Position 도구화 + 동사화 | `ec7a89a2`, `e924148e` |
-| 18 | **8장 Raven 단락** (단계 1 prototype + 4 문화권 + 결정 불가능성 확장) | trickster 4단계가 한 신화에 압축 / 1↔8 ouroboros 시각화 / 까마귀 = 살아있는 NC | `2392f2fc`, `7b622e86` |
-| 19 | **Image #23 4 도메인 mirror 발견** (정보·물질·생체·에너지) | 책 구조 = *4 도메인 × 2 모드*. 6·7·8장 본문 보강 trigger | 본 문서 line 47 |
-
-## 🟡 Tier 2 — Phase 3 미해결 (다음 patch trigger)
-
-| 우선 | 결정 항목 | 권고 | trigger |
-|:-:|---|---|---|
-| **★A** | 6장 *Better Place vs Tesla* paired case 본문 추가 | 4 도메인 mirror 완성 (물질) | 6장 patch |
-| **★B** | 7장 *생체 사례* 본문 추가 (현재 1984 + 비즈니스만, *생체 도메인* 명시 부재) | 4 도메인 mirror 완성 (생체) | 7장 patch |
-| **★C** | 8장 *에너지 사례* 본문 추가 (Mokyr 인공/자연선택은 *비유*. 명시 *에너지 도메인* 사례 부재) | 4 도메인 mirror 완성 (에너지) | 8장 patch |
-| **★D** | mirror reflection 메커니즘 (책임윤리) 단락 — 8장 2.3 신설 | Phase 1+2 mechanism 시각화 (Image #21·#22 정합) | 8장 patch |
-| **★E** | 박혜진 편집자 deliverable 묶음 — manifesto 한 줄 + 시계판/악보 viz + 부록 100 entries | 민음사 첫 검토용 | 편집자 미팅 trigger |
-
-## Phase 3 작업 완료 commits (2026-05-02 · 03 · 04)
-
-| commit | 작업 |
-|:--|:--|
-| `ec7a89a2` | 7장 세의 관찰일지 + 제3의 위치 manifesto 삽입 |
-| `e924148e` | 8장 ouroboros 호응 + 부록4 Anthropic cluster card |
-| `a11cbe7f` | web 파일명을 vault 의미와 일치 (author→mist, trick→mirror) |
-| `2392f2fc` | 8장 1.1 끝에 Raven 신화 단락 (단계 1 prototype) |
-| `7b622e86` | 8장 Raven 단락 확장 — 4 문화권 + 결정 불가능성 |
-| `0d1164ff` | 7장 anchor box prototype — 학자명 본문에서 부록 footnote로 |
-| `61c551df` | 부록4 참고문헌 16명 추가 (71→100) |
-
-## 메타 — Image #23에서 surprisingly useful한 발견 (4가지)
-
-1. **4 도메인 mirror** — 정보·물질·생체·에너지가 1↔5, 2↔6, 3↔7, 4↔8 mirror 짝과 *정확히 일치*. 책 구조의 *숨은 4×2 격자*. (★A·★B·★C trigger)
-2. **각 장 내부 변화 arc 명시** — 1장 *엠마(victim)→르뢰(trickster)*, 2장 *살리나→탄크레디*, 3장 *파늘루→리외+타루*, 4장 *땅의 로빈슨→태양의 로빈슨*. 동일 인물 두 자리가 아니라 *다른 인물 두 자세*. user의 *르뢰=trickster* 통찰과 정확 정합.
-3. **F·L·C·T ↔ H·U·O·I letter codes** — 각 장 prefix가 patterned. 의미 미상이지만 *체계적 명명* 존재. 두 번째 글자가 *공간*(F=무도회·L=항구·C=도시·T=섬·H=무대·U=창작·O=독재·I=신화) 가능성. 작가 검증 필요.
-4. **4 lens 색 코딩** (변신·행동·이론·사례) — 각 장이 *4 lens × 4 박자* 격자로 균질 작동. 색이 곧 lens 역할 시각화.
+[[처세]]

@@ -4,6 +4,32 @@ target_chars: ~7000
 modified:
   - 2026-05-02
   - 2026-05-09T07:38:26+09:00
+  - 2026-05-16
+schema_version: v1.0
+coordinate: cage · 4장 · §1-4 · 4↔8
+atomic_unit: "[quanta]"
+cc_owner: cc-pair-d
+mirror_anchor: ↔ 8🐦‍⬛_까마귀둥지 (4↔8 한 글자 비틂)
+---
+
+> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §4 다+세 공동일기 *"새장을 설명하는 이론이 새장이 된다"* 단락 cadence — 자기지칭(self-reference) 한 호흡에 마비되지 않는지 입으로 확인
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·4장·4↔8·[quanta] · 🧑‍🤝‍🧑 cc-pair-d · 🪞 ↔ 8🐦‍⬛ 까마귀둥지_
+
+## 🗺️ 양탄자 — ⏱️ 4 시계새장 · 방드르디 [quanta]
+
+> *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
+
+```text
+(정치) 1967 탈식민              (학문) Mokyr 인공선택
+로빈슨(1719) 재서술            성공이 변이 죽임
+        ╲                    ╱
+          ━━ "첫 불에 갇히지 말 것.
+              다음 불을 피워라." ━━
+        ╱                    ╲
+(문학) 포스트모던 재서술        (산업) ✗ Intel·팬택
+방드르디=trickster 원형        ✓ TSMC·두산에너빌리티
+```
+
 ---
 ![[panel_ch4_시계새장.png]]
 
@@ -188,6 +214,19 @@ modified:
 > 다가 *"우리 대화 자체가 접착제 레고예요"*라고 했을 때, 할 말이 없었다. 4장 동안 내가 프레임을 깔고 다가 사례를 채우는 구조. 이것도 *로빈슨의 시계였다.* 내가 만든 질서가 나를 가둔다는 걸 설명하는 프레임워크가 — *나를 가두고 있었다.* 새장을 설명하는 이론이 새장이 된다. 이걸 뭐라고 부르지. 빚이다. 다는 1장의 엠마에서 타루가 됐고, 나는 살리나에서 리외가 되려 하고 있다. 둘이 합쳐지면 방드르디일까. *아직 멀다.*
 
 ---
+
+## 📜 Snapshot Timeline · 🪞 Mirror anchor
+
+> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
+
+| 날짜 | 버전 | δ delta |
+|:--|:--|:--|
+| 2026-05-02 | v1.0 | 150p · 시계새장 초안 |
+| 2026-05-09 | v1.3 | RSRS form · 산업 분류 *에너지·반도체*로 확장 (SK Hynix·Groq) |
+| **2026-05-16** | **v2.0 ★** | **Dashboard skin. §4 self-reference 마비 지점 cadence audit.** |
+| 2026-08-15 | v2.1 | (계획) 8장 paired §1 hook(로빈슨 시계 강박)과 mirror 정합 |
+
+**🪞 Mirror anchor — 4↔8**: 시계새장(로빈슨, *작란* — 만든 질서가 자기를 가둠) ↔ 까마귀둥지(일연·Douglass·토스·SK Hynix, *명명*). **한 글자 비틂** = *작란 → 명명* / DRAM → HBM / Bom Suk → Bom Kim. Caillois Forbidden(AGON+ILINX 경쟁-광기) → Fundamental(MIMICRY+ILINX 자기 변형). Mokyr 인공선택(4장) ↔ Hyde Phase 2 Re-enchantment(8장). [quanta] atomic unit = Planck 1900 · Einstein 1905. **4↔5 회전축** = ★멈춤 = cage→nest 전환점.
 
 [^1]: 부록 1 — *Mokyr 인공선택·자연선택 anchor 카드*. 《부의 지렛대》(1990) + 《성장의 문화》(2017)의 *Industrial Enlightenment* 개념. 18세기 영국 왕립학회·프랑스 백과전서파 vs 청 제국 과거시험 대비.
 [^2]: 부록 2 — *2×2 빈칸 찾기 AI 실습 카드*. 차원 추출 → 빈칸 식별 → 담뱃대 실험 설계 3단계. *방드르디 역할은 AI가, 채우는 건 내가.*

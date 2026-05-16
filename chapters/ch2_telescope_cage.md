@@ -4,6 +4,33 @@ target_chars: ~7000
 modified:
   - 2026-05-02
   - 2026-05-09T07:37:37+09:00
+  - 2026-05-16
+schema_version: v1.0
+coordinate: cage · 2장 · §1-4 · 2↔6
+atomic_unit: "[atom]"
+cc_owner: cc-pair-b
+mirror_anchor: ↔ 6🌫️_안개둥지 (2↔6 한 글자 비틂)
+---
+
+> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §2 살리나 *"우리 시칠리아인들은 길들여졌다"* 인용 자리 cadence — 한국어·이탈리아어·학술어 한 호흡에 들어가는지 입으로 읊어 검증
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·2장·2↔6·[atom] · 🧑‍🤝‍🧑 cc-pair-b · 🪞 ↔ 6🌫️ 안개둥지_
+
+## 🗺️ 양탄자 — 🔭 2 망원경새장 · 표범 [atom]
+
+> *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
+
+```text
+(정치) 1860s 이탈리아 통일       (학문) 작전술
+시칠리아 귀족 흡수             순서·시점·동조
+        ╲                    ╱
+          ━━ "관조의 안락이
+              변이를 죽인다.
+              순서를 타라." ━━
+        ╱                    ╲
+(문학) 19C 만가 (1958)          (산업) ✗ Kodak·대우 세계경영
+세대교체 소설 원형             ✓ 후지필름·LG화학·LGES
+```
+
 ---
 ![[panel_ch2_망원경새장.png]]
 
@@ -175,5 +202,18 @@ modified:
 > 살리나의 73년 중 2년 — 내 나이를 대입했다. 30대 중반. 진짜 산 날이 며칠인지 세어봤다. 데이터를 보고, 분석을 하고, 보고서를 쓰고 — 그건 "본" 거지 "산" 게 아니었다. 살리나의 "우리 시칠리아인들은 길들여졌다"를 — 나도 데이터 볼 때 같은 말을 한다. *"한국 스타트업 생태계는 구조적으로..."* 정확한 진단 뒤에 숨는 것. 오늘부터 분석 끝에 *"그래서 뭘 할 건데?"*를 붙이기로 했다. 스스로에게.
 
 ---
+
+## 📜 Snapshot Timeline · 🪞 Mirror anchor
+
+> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
+
+| 날짜 | 버전 | δ delta |
+|:--|:--|:--|
+| 2026-05-02 | v1.0 | 150p · 망원경새장 초안 |
+| 2026-05-09 | v1.3 | RSRS form 적용 |
+| **2026-05-16** | **v2.0 ★** | **Dashboard skin. §2 살리나 인용 cadence audit.** |
+| 2026-08-15 | v2.1 | (계획) 6장 paired §1 hook(살리나 황혼)과 mirror 정합 |
+
+**🪞 Mirror anchor — 2↔6**: 망원경새장(살리나, *관조*) ↔ 안개둥지(아우구스토·아우렐리우스, *대면*). **한 글자 비틂** = *관조 → 대면*. Caillois Forbidden(ALEA+MIMICRY 운명-가장) → Fundamental(AGON+ALEA 결과 인정). Bourdieu habitus(2장) ↔ Ricœur idem/ipse + Hyde *Crucial Third Position*(6장). [atom] atomic unit = Dalton 1808.
 
 [^1]: 부록 1 — *Bourdieu·클라우제비츠 anchor 카드*. *La Distinction*(1979)·*Le Sens pratique*(1980), cultural capital·field 개념, 클라우제비츠 작전술 3동사(shape·adapt·exploit) 상세.
