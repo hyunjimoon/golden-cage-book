@@ -16,7 +16,7 @@ schema_version: v1.0
 coordinate: nest · 8장 · §1-4 · 3↔8
 atomic_unit: "[cell]"
 cc_owner: cc-pair-c
-mirror_anchor: ↔ 3💒_유리새장 (cell 동일 매질 — 인간 생체(의약·Theranos·Moderna)↔식물 생체(agri-tech·튤립 키우기))
+mirror_anchor: ↔ 3💒_유리새장 (cell 동일 매질 — 인간 생체(의약·Theranos·Moderna)↔인간 대사(Novo Nordisk·튤립 키우기))
 active_today: true
 ---
 
@@ -193,15 +193,7 @@ building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을
 >
 > → 1672 De Witt 학살의 *actuarial 천재*가 광기에 찢긴 자리·Aduhelm의 *MIT급 신경학자*가 30년 단일 가설을 고집한 자리가 *같은 도형*. **전쟁=평화 | 기술 paradox는 *능력자가 분포 사고를 잃을 때* 전쟁이 평화를 찢는다.** 능력이 *매개 기술*이 되어야 평화로 번역된다. 능력 자체는 paradox의 *해소*가 아니라 *조건*.
 
-### 3.3 agri-tech — 식물 cell의 분포 (Pivot Bio · Beyond Meat *paired*)
-
-**세다:** 인간 cell이 *대사 호르몬 분포*(3.2)로 풀렸다면 — 식물 cell도 같은 운동이 있어요. **Pivot Bio** (2010, 카르스텐 템메·캐럴 윙어튼). 1909 *Haber-Bosch* 합성 질소가 100년간 *한 점 분자*로 농업을 정의했고 — 그 한 점이 *세계 인구 30억→80억·해양 산성화·N₂O 배출*을 동시에 만들었어요. Pivot은 *Klebsiella variicola*에 *nif* 유전자를 발현시켜 옥수수 뿌리에 정착하게 해요. **한 글자 비틂: *질소*(합성·한 점) → *질소*(미생물·분포).** 같은 원소, 다른 매개. Series E $430M (2022, Bezos·BEV 투자) · 2023 100만 에이커 적용. ***moat가 분자가 아니라 microbiome.*** 검은 튤립 *유리 온실 한 칸*이 *박테리아 한 균주*로 비틀린 자리.
-
-**세다:** 음화 — **Beyond Meat vs Impossible Foods** *paired*. 둘 다 *식물 단백질*. Beyond = *meme 분포*(기존 고기 simulation·mass-market lexicon), Impossible = *gene 분포*(yeast 발효로 *heme* 분자 단독 합성). Beyond 2019 IPO $25→$240→2024 ~$5. Impossible 비상장 $10B (2021). **Beyond는 *Nail 전에 Scale*했고, Impossible은 *Nail에 더 오래 머물렀어요.*** 2장 살리나의 *Nail↔Scale* 함정이 *식물 단백질 시장*에서 한 점과 분포 두 baseline으로 다시 작동.
-
-**세다:** 식물 cell이 *17세기 검은 튤립의 21세기 후손*이에요. 코르넬리우스가 *Rosa 한 사람과 둘이서* 했던 분포 사고를 — Pivot이 *수백 명 매일* 가능하게 했어요. **3↔8 mirror가 두 종(인간 cell·식물 cell)으로 펼쳐진 자리** — 3장 Theranos·Moderna·신라젠(인간 의약) ↔ 8장 Novo Nordisk(인간 대사)·Pivot Bio·Beyond Meat(식물). *같은 cell, 다른 왕국(kingdom).*
-
-### 3.4 gene과 meme — 두 분포의 다른 환경 (GameStop = De Witt의 21세기 reprise)
+### 3.3 gene과 meme — 두 분포의 다른 환경 (GameStop = De Witt의 21세기 reprise)
 
 **세다:** 3.2 Novo Nordisk가 *gene 환경*의 분포 사고였다면, *meme 환경*의 짝이 있어요 — 2021년 1월 GameStop. **이게 De Witt 학살의 21세기 reprise예요.**
 
@@ -228,7 +220,7 @@ building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을
 
 ---
 
-### 3.5 *전쟁=평화 | 기술* — 8장의 paradox 도입
+### 3.4 *전쟁=평화 | 기술* — 8장의 paradox 도입
 
 > Orwell의 *전쟁=평화*가 8장에서 *조건부*로 다시 박힌다.
 
@@ -237,8 +229,7 @@ building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을
 - **§1.2 코르넬리우스 ↔ 복스텔**: *유리 한 장*이 두 라이벌을 분리하고 *동시에* 연결해요. 기술 매개가 있을 때 = 교배의 전쟁이 *키움의 평화*가 됩니다.
 - **§1.2 De Witt 학살**: *기술 매개 부재*면 — 전쟁이 평화를 *찢어요.* 헤이그 광장의 시신 = 매개 없는 평화의 자리.
 - **§3.2 Novo Nordisk**: *대사 호르몬 재명명* — 언어 기술이 의약 경쟁을 *공중보건 평화*로 풀어냈어요.
-- **§3.3 Pivot Bio**: *질소 고정 미생물* — 한 글자 비틂이 100년 합성 질소(폭탄·비료의 dual-use)를 *비폭력 식물 cell*로 비틀었어요.
-- **§3.4 GameStop**: *플랫폼 기술*이 De Witt의 21세기 reprise를 만들어요. 매개가 약하면 = HODL 슬로건이 손실로 흩어집니다.
+- **§3.3 GameStop**: *플랫폼 기술*이 De Witt의 21세기 reprise를 만들어요. 매개가 약하면 = HODL 슬로건이 손실로 흩어집니다.
 
 **세다:** ***전쟁=평화 | 기술***. *평화는 싸워 지키는 것* — 기술이 매개일 때만. 매개 부재 시 = 헤이그 광장의 시신. 두 De Witt 형제처럼.
 
