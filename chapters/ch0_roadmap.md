@@ -9,6 +9,8 @@ modified:
   - 2026-05-14T16:29:40+09:00
   - 2026-05-16T10:36:55+09:00
   - 2026-05-17T18:13:16+09:00
+  - 2026-05-19T10:32:23+09:00
+  - 2026-05-21T20:48:42+09:00
 form: RSRS — Rich Semantics, Restricted Syntax
 purpose: 책 전체 구조의 minimal sufficient statistics
 schema_version: v1.1
@@ -21,6 +23,7 @@ mirror_anchor: 책 전체 (1↔5 hub · 2↔7 · 3↔8 · 4↔9 · 6=5의 첫 �
 > 🟡 **오늘의 한 결정 · 2026-05-17 (일·pm) · 7·8 swap + 5장 hub 3중주 + 2 paradox**: 7=안개(atom·physical AI), 8=튤립(cell·agri-tech) swap으로 모든 mirror 동일 매질 확보 ✅. 5장 §1.3에 *자장 직접 발화* 합류 (3중주 잠깐) → 회전축 동작 시연. 5장 §3.5 신설 *2 paradox 표* (무지=힘 + 예속=자유 reframe = doublethink 해독). 머릿말 1줄 추가 (cage→nest 형식 신호).
 > _🔒 Schema v1.1 (locked → 2036) · 🗺️ frame·meta·15파일 SSOT · 🧑‍🤝‍🧑 cc-grid · 🪞 책 전체 (4 mirror + 1 hub + 1 satellite)_
 
+[[사랑하는내아들도마]]
 # 94구조 — 황금새장을 열다
 
 > **신화를 부수고, 멈추고, 함께 짓는다.**
@@ -566,19 +569,19 @@ GitHub issue #69: *🌪️승천-땅 선택에서 평가기준으로는 — 5렌
 | 파일 | 좌표 | atomic | CC | mirror | 비고 |
 |:--|:--|:--|:--|:--|:--|
 | [[⚕️머릿말_ouroboros]] | frame·ouroboros | — | cc-grid | 4↔9 봉합 + 1↔5 hub | 9장 ouroboros 갱신 필요 |
-| [[0🤨_질문과답]] | frame·앞외피 | — | cc-grid | ↔10 답과질문 | 9 질문 cadence |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/🤨_질문과답]] | frame·앞외피 | — | cc-grid | ↔10 답과질문 | 9 질문 cadence |
 | [[1🪞_거울새장]] | cage·§1-4·1↔5 hub | [bit] | **CC2** | ↔5 거울둥지 (hub) | §1 hook |
 | [[2🔭_망원경새장]] | cage·§1-4·2↔7 | [atom] | **CC2** | ↔7 안개둥지 | 품위 anchor |
 | [[3💒_유리새장]] | cage·§1-4·3↔8 | [cell] | **CC2** | ↔8 튤립둥지 | 신념 anchor |
 | [[4⏱️_시계새장]] | cage·§1-4·4↔9 | [quanta] | **CC2** | ↔9 까마귀둥지 | 척도 anchor |
-| **[[5🪞🪺_거울둥지]] ★ NEW** | **nest·§1-4·HUB** | **[bit]** | **CC1** | **↔1 거울새장 (hub pair)** | **§4 frame을 공개하라 — 회전축** |
-| [[6🎭_연극둥지]] | nest·§1-4·5의 첫 발자국 | [bit] | **CC3** | 5 satellite (사용자) | 송 릴링 alignment |
-| [[7🌫️_안개둥지]] | nest·§1-4·2↔7 | [atom] | **CC3** | ↔2 망원경새장 (작가↔피조물=인간↔physical AI) | 투자자 anchor |
-| **[[8🌷_튤립둥지]]** | nest·§1-4·3↔8 | [cell] | **CC3** | ↔3 유리새장 (식물 생체=agri-tech) | 경쟁자 anchor |
-| [[9🐦‍⬛_까마귀둥지]] | nest·§1-4·4↔9 + 4↔9 ouroboros | [quanta] | **CC3** | ↔4 + 꼭짓점 ouroboros | 일연 유사 |
-| [[10🤨_답과질문]] | frame·뒤외피 | — | cc-grid | ↔0 질문과답 | 답 표 cadence |
+| **[[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/10🧫_101]] ★ NEW** | **nest·§1-4·HUB** | **[bit]** | **CC1** | **↔1 거울새장 (hub pair)** | **§4 frame을 공개하라 — 회전축** |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/6🦋_나비사용자]] | nest·§1-4·5의 첫 발자국 | [bit] | **CC3** | 5 satellite (사용자) | 송 릴링 alignment |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/7🌫️_안개투자자]] | nest·§1-4·2↔7 | [atom] | **CC3** | ↔2 망원경새장 (작가↔피조물=인간↔physical AI) | 투자자 anchor |
+| **[[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/8🌷_튤립경쟁자]]** | nest·§1-4·3↔8 | [cell] | **CC3** | ↔3 유리새장 (식물 생체=agri-tech) | 경쟁자 anchor |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/9🐦‍⬛_까마귀협력자]] | nest·§1-4·4↔9 + 4↔9 ouroboros | [quanta] | **CC3** | ↔4 + 꼭짓점 ouroboros | 일연 유사 |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/🤨_답과질문]] | frame·뒤외피 | — | cc-grid | ↔0 질문과답 | 답 표 cadence |
 | **본 파일** | frame·meta·SSOT | meta | **CC1** | 4 mirror + 1 hub + 1 satellite | 9장 동기화 |
-| [[부록2_의심3부작]] | appendix | meta | cc-grid | ↔ 부록1 낭만3부작 | Essay 2 cadence |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/부록/부록2_101]] | appendix | meta | cc-grid | ↔ 부록1 낭만3부작 | Essay 2 cadence |
 | [[부록4_연료자료]] | appendix·참고문헌 | meta | cc-grid | 책 전체 인용 | 인용 일관성 |
 
 > **오늘 활성 (2026-05-17, 일)**: **CC1 (5 hub 신설) Phase A 진행 중**. 완료 후 CC2(자산축)·CC3(상대축) 병렬 시작.
