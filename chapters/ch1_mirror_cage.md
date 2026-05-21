@@ -33,7 +33,7 @@ mirror_anchor: ↔ 5🪞🪺_거울둥지 (hub 페어, 욕망↔일)
 ```
 
 ---
-![[panel_ch1_거울새장.png]]
+![[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/diagrams/panel_ch1_거울새장.png]]
 
 # CHAPTER 1 — 거울 새장
 *빌린 욕망에서 내 욕망으로*
