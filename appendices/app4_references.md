@@ -13,6 +13,7 @@ modified:
   - 2026-05-16T04:00:42+09:00
   - 2026-05-17T12:47:59+09:00
   - 2026-05-18T16:51:37+09:00
+  - 2026-05-21T21:13:10+09:00
 schema_version: v1.0
 coordinate: appendix · 연료자료 · 참고문헌
 atomic_unit: meta (책 전체 인용 SSOT)
@@ -333,7 +334,9 @@ CB Insights, "Top 20 Reasons Startups Fail", 2019. — 스타트업 실패 부�
 - 클래식은 영원하다
 - 한화 tv 작심삼일 n회차
 
-[[디아워스]]
+/Users/hyunjimoon/tolzul/시공간멜로디/On/love_편집자혜진/product/황금새장을열다/평가/📚푸코_헤테로피아.md
+
+[[공간화음/⭐️예술_SOWHAT/Movie/🎞️디아워스]]
 ## 세문전 todo list
 
 가벼움과 무거움 사이에서 흔들리고 싶다면:
