@@ -11,7 +11,7 @@ modified:
   - 2026-05-17T18:13:16+09:00
   - 2026-05-19T10:32:23+09:00
   - 2026-05-21T20:48:42+09:00
-  - 2026-05-22T01:21:07+09:00
+  - 2026-05-22T01:49:54+09:00
 form: RSRS — Rich Semantics, Restricted Syntax
 purpose: 책 전체 구조의 minimal sufficient statistics
 schema_version: v1.1
