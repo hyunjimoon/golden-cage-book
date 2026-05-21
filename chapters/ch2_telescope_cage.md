@@ -32,7 +32,7 @@ mirror_anchor: ↔ 7🌷_튤립둥지 (물질, 품위↔경쟁자)
 ```
 
 ---
-![[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/diagrams/panel_ch2_망원경새장.png]]
+![](diagrams/panel_ch2_망원경새장.png){width=85%}
 
 # CHAPTER 2 — 망원경 새장
 *빌린 품위에서 내 품위로*

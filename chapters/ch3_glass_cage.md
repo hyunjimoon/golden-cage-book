@@ -32,7 +32,7 @@ mirror_anchor: ↔ 8🌫️_안개둥지 (산업 단위 CC1 감사 대기)
 ```
 
 ---
-![[panel_ch3_스테인드글라스새장.png]]
+![](diagrams/panel_ch3_유리새장.png){width=85%}
 
 # CHAPTER 3 — 스테인드글라스 새장
 *빌린 확신에서 내 신념으로*

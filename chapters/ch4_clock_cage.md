@@ -31,7 +31,7 @@ mirror_anchor: ↔ 9🐦‍⬛_까마귀둥지 (에너지, 척도↔협업자)
 ```
 
 ---
-![[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/diagrams/panel_ch4_시계새장.png]]
+![](diagrams/panel_ch4_시계새장.png){width=85%}
 
 # CHAPTER 4 — 시계 새장
 *빌린 질서에서 내 질서로*
