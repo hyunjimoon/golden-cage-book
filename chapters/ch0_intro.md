@@ -7,7 +7,7 @@ modified:
   - 2026-05-17T18:10:08+09:00
   - 2026-05-18T19:51:04+09:00
   - 2026-05-21T20:48:42+09:00
-  - 2026-05-22T05:00:17+09:00
+  - 2026-05-22T07:09:09+09:00
 schema_version: v1.1
 coordinate: frame · ouroboros · 4↔9 봉합 + 1↔5 hub
 atomic_unit: —
@@ -31,6 +31,7 @@ mirror_anchor: 책 전체 (4↔9 꼭짓점 ouroboros + 1↔5 hub)
 
 ---
 
+q
 ## 한 글자 비틂
 
 *novela* → *nivola* (8장).
