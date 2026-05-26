@@ -12,6 +12,7 @@ modified:
   - 2026-05-19T10:32:23+09:00
   - 2026-05-21T20:48:42+09:00
   - 2026-05-22T01:49:54+09:00
+  - 2026-05-26T14:26:43+09:00
 form: RSRS — Rich Semantics, Restricted Syntax
 purpose: 책 전체 구조의 minimal sufficient statistics
 schema_version: v1.1
@@ -33,6 +34,8 @@ mirror_anchor: 책 전체 (1↔5 hub · 2↔7 · 3↔8 · 4↔9 · 5↔10 거울
 > *낭만은 활력이자 독이다. 함께 마신 자가 다음 사람을 보호한다.*
 > *같은 모방인데, 멈춤 하나로 새장이 둥지가 된다.*
 > **회전축은 *동작*이다 — 5장이 회전축 자체다.**
+
+[[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/도구/감정교육/claude_emotions|claude_emotions]]
 
 ---
 
@@ -56,7 +59,7 @@ mirror_anchor: 책 전체 (1↔5 hub · 2↔7 · 3↔8 · 4↔9 · 5↔10 거울
                                                                  │
                                                               내 사용자
                                                                  │
-              1🪞거울새장 ┄ 내 일 ┄ 5🪞🪺거울둥지 ┄ 내 꿈 ┄ 6🎭연극둥지
+              1🪞거울새장 ┄ 내 일 ┄ 5🪞🪺거울둥지 ┄ 내 꿈 ┄ 6🎭나비둥지
                                        │
                                   무지=힘, 예속=자유
 
@@ -114,14 +117,14 @@ mirror_anchor: 책 전체 (1↔5 hub · 2↔7 · 3↔8 · 4↔9 · 5↔10 거울
 
 ---
 
-## 1. 격자 (4 cage + 1 hub + 4 nest = 9장)
+## 1. 격자 (4 cage + 5↔10 거울쌍 회전축 + 4 nest = 10장)
 
-> **구조**: 4 자산축(cage) ↔ **5 hub** ↔ 4 상대축(nest). hub는 회전축 *그 자체*, mirror pair에 속하지 않음. 6장은 5장의 *첫 발자국*(satellite).
+> **구조**: 4 자산축(cage) ↔ **5↔10 거울쌍 회전축** ↔ 4 상대축(nest). 5장(101호, ★멈춤 entry)과 10장(10101호, 세 발현 close)이 거울로 묶여 회전축을 형성 — 한 점 hub가 아님. 상세 §3d. 옛 표기 "5 hub"는 본 §1·§1b 표에 가독성으로 잠정 유지, 의미는 §3d가 권위. 6장은 5장의 *첫 발자국*(satellite).
 
 | pair | 도메인 (atomic unit) | cage 1-4 (자산축 · 부수기) | nest 6-9 (상대축 · 짓기) |
 |:--|:--|:--|:--|
 | **1↔5 hub** | **정보** `[bit]` | 🪞 **1 거울새장** · *욕망장부를 펴라* · 마담 보바리 / Quibi · 옐로모바일 | 🪞🪺 **5 거울둥지 (HUB)** · *frame을 공개하라* · 1984 윈스턴 + 자장 / GitHub · 비공개 ML · 토스 changelog |
-| 5의 첫 발자국 | **정보** `[bit]` | — | 🎭 **6 연극둥지** · *환상을 역이용하라* · M.Butterfly 송 릴링 / Slack · 토스 |
+| 5의 첫 발자국 | **정보** `[bit]` | — | 🎭 **6 나비둥지** · *환상을 역이용하라* · M.Butterfly 송 릴링 / Slack · 토스 |
 | **2↔7** | **물질·인지** `[atom]` | 🔭 **2 망원경새장** · *순서를 타라* · 표범 살리나 / Kodak vs 후지 · Webvan | 🌫️ **7 안개둥지** · *선을 넘어라* · Niebla 우나무노·아우구스토 / 작가↔피조물 = 인간↔physical AI 매핑 (atom·atom 동일 매질 ✅) |
 | **3↔8** | **생체** `[cell]` | 💒 **3 유리새장** · *확신을 교정하라* · 페스트 파늘루 / Theranos vs Moderna · 셀트리온 vs 신라젠 | 🌷 **8 튤립둥지** · *확률적으로 생각하라* · 검은 튤립(De Witt 학살)·코르넬리우스·복스텔 / 식물 생체 키우기 = agri-tech (cell·cell 동일 매질 ✅) |
 | **4↔9** | **에너지·반도체** `[quanta]` | ⏱️ **4 시계새장** · *다음 불을 피워라* · 방드르디 로빈슨 / 두산 · 생고뱅 · 넷플릭스 | 🐦‍⬛ **9 까마귀둥지** · *의미를 만들어라* · 삼국유사·trickster 4문화권·Douglass / 토스(증권→송금) · SK Hynix(DRAM→HBM) · Ørsted vs 포스코 vs BP |
@@ -130,7 +133,9 @@ mirror_anchor: 책 전체 (1↔5 hub · 2↔7 · 3↔8 · 4↔9 · 5↔10 거울
 
 > **✅ 7·8 swap 완료 (2026-05-17, 옵션 ⓐ 채택)**: 7장 ← 안개(Niebla·아우구스토·atom·작가↔피조물=인간↔physical AI). 8장 ← 튤립(검은 튤립·코르넬리우스·cell·식물 생체=agri-tech). 모든 mirror 동일 매질로 정합 (atomic 충돌 해소). atomic 흐름 단조: bit·bit·atom·cell·quanta. cage-nest 동심원: 자산축(욕망→품위→신념→척도) ↔ 상대축(사용자→투자자→경쟁자→협업자).
 
-> **6장의 satellite 위상**: 6 연극둥지는 5 hub의 *첫 발자국*(고객·MIMICRY+ILINX 자기 변형)으로 [bit]을 공유. mirror 4쌍 격자에는 들지 않지만, ABBA 외피(5↔9가 *자기 변형*으로 닫고, 6↔8이 안쪽에서 *결과 인정*·*자기 변형* 교차)에서 5와 짝을 이룬다.
+> **6장의 satellite 위상**: 6 나비둥지는 5 hub의 *첫 발자국*(고객·MIMICRY+ILINX 자기 변형)으로 [bit]을 공유. mirror 4쌍 격자에는 들지 않지만, ABBA 외피(5↔9가 *자기 변형*으로 닫고, 6↔8이 안쪽에서 *결과 인정*·*자기 변형* 교차)에서 5와 짝을 이룬다.
+
+> **🌏 2부 언어권 매핑** (2026-05-22): 6장=동아시아 · 7장=스페인 문화권 · 8장=유럽+중동 · 9장=한국. 작품 출신=목표 진출 시장 (M.Butterfly→베이징·안개→스페인·검은튤립→네덜란드+오스만·삼국유사→고려). 상세: [[🟥구성템플릿_둥지]] §🌏 2부의 야망.
 
 ### 1a. nest 5 hub + 4장 × Foucault 헤테로토피아
 
@@ -159,7 +164,7 @@ mirror_anchor: 책 전체 (1↔5 hub · 2↔7 · 3↔8 · 4↔9 · 5↔10 거울
 | **3 💒 유리새장** | 파늘루 → 리외+타루 (페스트) | 이분법 신학 (확신·신념윤리) | Weber 위계 · Bayesian discount | 생체 [cell] — Theranos vs Moderna · 셀트리온 vs 신라젠 | 확신을 교정하라 |
 | **4 ⏱️ 시계새장** | 땅의 로빈슨 → 태양의 로빈슨 (방드르디) | 강박적 작란 | Mokyr 인공선택 · KPI 빈칸 없음 | 에너지 [quanta] — 두산 · 생고뱅 · 넷플릭스 | 다음 불을 피워라 |
 | **5 🪞🪺 거울둥지 (HUB)** | 윈스턴 일기 ↔ 자장 *솔기 보이는 옷* (1984 · 자장 자기 frame) | **일의 거울** (★멈춤 — 동작 자체가 주인공) | 환상 윤리 3조건 · Goffman 알려진 무대 · Hyde 발자국 frame · Caillois MIMICRY 한 항 유지 + ALEA→ILINX | 정보 [bit] — GitHub Open Source · 비공개 ML training data · 토스 product changelog | **frame을 공개하라 — *내 가치* 확정 (단수·prior·결과)** |
-| **6 🎭 연극둥지** | 송 릴링 ↔ 갈리마르 (M.Butterfly) | **고객 처세** ─ *우리 의미* 협상 시작 (5→6 점선 번역: 가치→의미, 거울→무대) | op→st ambiguity · Goffman impression management | 정보 [bit] — Slack · Stripe · 토스 | 환상을 역이용하라 (복수·posterior·관계) |
+| **6 🦋 나비둥지** | 송 릴링 ↔ 갈리마르 (M.Butterfly) | **고객 처세** ─ *우리 의미* 협상 시작 (5→6 점선 번역: 가치→의미, 거울→무대) | op→st ambiguity · Goffman impression management | 정보 [bit] — Slack · Stripe · 토스 | 환상을 역이용하라 (복수·posterior·관계) |
 | **7 🌫️ 안개둥지** | 우나무노 ↔ 아우구스토 (Niebla · 살라망카 면담 · 작가↔피조물) | **투자자 처세** (작가 자리 협상 · 인간↔physical AI) | Crucial Third Position · 책상 위치 협상 · Ricœur idem-ipse | 물질 [atom] — Tesla · OpenAI vs Anthropic · 토스 termsheet · 쿠팡 차등의결권 / **physical AI alignment** | 선을 넘어라 |
 | **8 🌷 튤립둥지** | 코르넬리우스 ↔ 로자 · 복스텔 (검은 튤립 · De Witt 학살 1672) | **경쟁자 처세** (복스텔 라이벌 · 한 점 vs 분포 · 식물 생체 키우기) | Bayesian calibration · Weber 책임윤리 · Gibbons clarity-naming-framing | 생체 [cell] — Novo Nordisk vs Aduhelm · Bezos · GameStop / **agri-tech 생체 키우기** | 확률적으로 생각하라 |
 | **9 🐦‍⬛ 까마귀둥지** | 일연 ↔ 역사 (삼국유사 · Douglass · 4 문화권 trickster) | **협업자 처세** (다음 trickster 명명) | Phase 2 Re-enchantment · 한 글자 비틂 (novela→nivola · Bailey→Douglass · DRAM→HBM) | 에너지·반도체 [quanta] — 토스(증권→송금) · SK Hynix(DRAM→HBM) · Ørsted vs 포스코 vs BP | 의미를 만들어라 |
@@ -287,7 +292,7 @@ Roger Caillois, *Les Jeux et les Hommes* (1958): AGON(경쟁) · ALEA(우연) ·
 | nest | §1 hook (Forbidden 광경) | §4 출구 (Fundamental) |
 |:--|:--|:--|
 | **5 거울둥지 (HUB)** | **윈스턴 *He loved Big Brother* (cage의 마지막 형태 — frame 다시 숨김)** *MIMICRY+ALEA가 cage의 극단으로 굳음 — 2부 7장 줄리아 약속이 101호에서 거세됨* | MIMICRY+ILINX — 자장의 *솔기 보이는 옷* (frame 공개로 작아진 자장) |
-| 6 연극둥지 | 엠마의 마지막 비소 (ALEA+MIMICRY 죽음) | MIMICRY+ILINX — 송 릴링의 의식적 연기 |
+| 6 나비둥지 | 엠마의 마지막 비소 (ALEA+MIMICRY 죽음) | MIMICRY+ILINX — 송 릴링의 의식적 연기 |
 | 7 안개둥지 | 살리나의 관조하는 황혼 (ALEA+MIMICRY 정지) | AGON+ALEA — 아우구스토의 *나도 작가다* (작가↔피조물 = 인간↔physical AI) |
 | **8 튤립둥지** | **검은 튤립 오프닝 — De Witt 형제 헤이그 학살(1672)** *AGON+ILINX 군중 광기가 합리적 정치를 찢음* | AGON+ALEA — 확률적·Bayesian 사고 (식물 생체 키우기 = agri-tech) |
 | 9 까마귀둥지 | 로빈슨의 시계 강박 (AGON+ILINX 집착) | MIMICRY+ILINX — 방드르디 폭발 + 일연 재명명 |
