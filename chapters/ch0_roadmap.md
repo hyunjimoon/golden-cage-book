@@ -622,8 +622,8 @@ GitHub issue #69: *🌪️승천-땅 선택에서 평가기준으로는 — 5렌
 | [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/9🐦‍⬛_까마귀협력자]] | nest·§1-4·4↔9 + 4↔9 ouroboros | [quanta] | **CC3** | ↔4 + 꼭짓점 ouroboros | 일연 유사 |
 | [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/🤨_답과질문]] | frame·뒤외피 | — | cc-grid | ↔0 질문과답 | 답 표 cadence |
 | **본 파일** | frame·meta·SSOT | meta | **CC1** | 4 mirror + 1 hub + 1 satellite | 9장 동기화 |
-| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/부록/부록2_101]] | appendix | meta | cc-grid | ↔ 부록1 낭만3부작 | Essay 2 cadence |
-| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/부록/부록4_연료자료]] | appendix·참고문헌 | meta | cc-grid | 책 전체 인용 | 인용 일관성 |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/부록/부록2_101_끔찍한호러버전]] | appendix | meta | cc-grid | ↔ 부록1 낭만3부작 | Essay 2 cadence |
+| [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/부록/부록4_연료자료]] | appendix·참고문헌 | meta | cc-grid | 책 전체 인용 | 인용 일관성 |
 
 > **오늘 활성 (2026-05-17, 일)**: **CC1 (5 hub 신설) Phase A 진행 중**. 완료 후 CC2(자산축)·CC3(상대축) 병렬 시작.
 
