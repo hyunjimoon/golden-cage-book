@@ -9,13 +9,16 @@ and stores a cited markdown file in the repository.
 from __future__ import annotations
 
 import argparse
+import ipaddress
 import json
 import re
+import socket
 import sys
 from datetime import datetime, timezone
 from html import unescape
 from pathlib import Path
 from typing import Any, Generator
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
@@ -32,6 +35,31 @@ def fetch_html(url: str) -> str:
     with urlopen(req, timeout=30) as resp:  # nosec B310 - user-provided URL expected by tool
         charset = resp.headers.get_content_charset() or "utf-8"
         return resp.read().decode(charset, errors="replace")
+
+
+def validate_source_url(url: str) -> None:
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"}:
+        raise ValueError("Only http/https URLs are allowed")
+    if not parsed.hostname:
+        raise ValueError("URL hostname is required")
+
+    try:
+        addresses = socket.getaddrinfo(parsed.hostname, None)
+    except socket.gaierror as exc:
+        raise ValueError(f"Could not resolve hostname: {parsed.hostname}") from exc
+
+    for _, _, _, _, sockaddr in addresses:
+        ip = ipaddress.ip_address(sockaddr[0])
+        if (
+            ip.is_private
+            or ip.is_loopback
+            or ip.is_link_local
+            or ip.is_multicast
+            or ip.is_reserved
+            or ip.is_unspecified
+        ):
+            raise ValueError(f"Blocked non-public host address: {ip}")
 
 
 def _json_walk(node: Any) -> Generator[dict, None, None]:
@@ -130,7 +158,7 @@ def extract_transcript(html: str) -> str:
 def slug_from_url(url: str) -> str:
     path = urlparse(url).path.rstrip("/")
     slug = path.split("/")[-1] if path else "episode"
-    # Keep Korean characters for readable slugs from Korean podcast URLs.
+    # Keep Hangul syllables (가-힣) for readable slugs in Korean URLs.
     slug = re.sub(r"[^0-9A-Za-z가-힣._-]+", "-", slug).strip("-")
     return slug or "episode"
 
@@ -181,8 +209,23 @@ def main() -> int:
         return 2
 
     try:
+        validate_source_url(args.url)
+    except ValueError as exc:
+        print(f"Invalid source URL: {exc}")
+        return 1
+
+    try:
         html = fetch_html(args.url)
-    except Exception as exc:  # pylint: disable=broad-except
+    except HTTPError as exc:
+        print(f"Failed to fetch page from {args.url}: HTTP {exc.code}")
+        return 1
+    except URLError as exc:
+        print(f"Failed to fetch page from {args.url}: {exc.reason}")
+        return 1
+    except TimeoutError:
+        print(f"Failed to fetch page from {args.url}: request timeout")
+        return 1
+    except OSError as exc:
         print(f"Failed to fetch page from {args.url}: {exc}")
         return 1
 
