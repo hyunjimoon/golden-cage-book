@@ -5,6 +5,7 @@ modified:
   - 2026-05-02
   - 2026-05-09T07:38:26+09:00
   - 2026-05-16
+  - 2026-05-28T22:27:38+09:00
 schema_version: v1.0
 coordinate: cage · 4장 · §1-4 · 4↔9
 atomic_unit: "[quanta]"
@@ -41,6 +42,7 @@ mirror_anchor: ↔ 9🐦‍⬛_까마귀둥지 (에너지, 척도↔협업자)
 > **이 장의 공식**: 성공이 변이를 죽이면 — 그 성공이 빚이 된다.
 > 모방→위안→붕괴→선택: 빌린 유럽 문명 답습 → "문명이 나를 지킨다" → 화약 동굴 폭발 (시계가 사라지자 파도가 들린다) → 배가 왔다, 탈 것인가?
 
+[[공간화음/Thesis/1논문용/📜Brinkerink25_negative_capability_ent_act|📜Brinkerink25_negative_capability_ent_act]]
 ## 1. 감각 — 빚 들추기
 
 ### 1.1 내 — "잘 되고 있는 걸 부순 적"
