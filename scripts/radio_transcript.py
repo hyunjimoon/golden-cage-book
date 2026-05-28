@@ -15,6 +15,7 @@ import sys
 from datetime import datetime, timezone
 from html import unescape
 from pathlib import Path
+from typing import Any, Generator
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
@@ -33,7 +34,7 @@ def fetch_html(url: str) -> str:
         return resp.read().decode(charset, errors="replace")
 
 
-def _json_walk(node):
+def _json_walk(node: Any) -> Generator[dict, None, None]:
     """Recursively walk nested JSON and yield dictionary nodes."""
     if isinstance(node, dict):
         yield node
@@ -170,7 +171,10 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    output = Path(args.output) if args.output else Path("docs/transcripts") / f"{slug_from_url(args.url)}.md"
+    if args.output:
+        output = Path(args.output)
+    else:
+        output = Path("docs/transcripts") / f"{slug_from_url(args.url)}.md"
 
     if output.exists() and not args.overwrite:
         print(f"Output already exists: {output}. Use --overwrite to replace.")
@@ -178,9 +182,14 @@ def main() -> int:
 
     try:
         html = fetch_html(args.url)
+    except Exception as exc:  # pylint: disable=broad-except
+        print(f"Failed to fetch page from {args.url}: {exc}")
+        return 1
+
+    try:
         transcript = extract_transcript(html)
     except Exception as exc:  # pylint: disable=broad-except
-        print(f"Failed to extract transcript from {args.url}: {exc}")
+        print(f"Failed to parse transcript from {args.url}: {exc}")
         return 1
 
     write_markdown(output, args.url, transcript)
