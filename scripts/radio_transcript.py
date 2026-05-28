@@ -9,10 +9,8 @@ and stores a cited markdown file in the repository.
 from __future__ import annotations
 
 import argparse
-import ipaddress
 import json
 import re
-import socket
 import sys
 from datetime import datetime, timezone
 from html import unescape
@@ -28,6 +26,7 @@ USER_AGENT = (
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/125.0 Safari/537.36"
 )
+ALLOWED_HOSTS = ("listennotes.com", "www.listennotes.com")
 
 
 def fetch_html(url: str) -> str:
@@ -43,23 +42,9 @@ def validate_source_url(url: str) -> None:
         raise ValueError("Only http/https URLs are allowed")
     if not parsed.hostname:
         raise ValueError("URL hostname is required")
-
-    try:
-        addresses = socket.getaddrinfo(parsed.hostname, None)
-    except socket.gaierror as exc:
-        raise ValueError(f"Could not resolve hostname: {parsed.hostname}") from exc
-
-    for _, _, _, _, sockaddr in addresses:
-        ip = ipaddress.ip_address(sockaddr[0])
-        if (
-            ip.is_private
-            or ip.is_loopback
-            or ip.is_link_local
-            or ip.is_multicast
-            or ip.is_reserved
-            or ip.is_unspecified
-        ):
-            raise ValueError(f"Blocked non-public host address: {ip}")
+    hostname = parsed.hostname.lower()
+    if hostname not in ALLOWED_HOSTS and not hostname.endswith(".listennotes.com"):
+        raise ValueError("Only listennotes.com hosts are allowed")
 
 
 def _json_walk(node: Any) -> Generator[dict, None, None]:
@@ -108,18 +93,63 @@ def extract_from_jsonld(html: str) -> str | None:
     return max(candidates, key=len)
 
 
+def _decode_json_escapes(value: str) -> str:
+    return (
+        value.replace("\\\\", "\\")
+        .replace("\\n", "\n")
+        .replace("\\r", "\r")
+        .replace("\\t", "\t")
+        .replace('\\"', '"')
+        .replace("\\/", "/")
+    )
+
+
+def _extract_json_value_strings(source: str, key: str) -> list[str]:
+    values = []
+    marker = f'"{key}"'
+    start = 0
+    while True:
+        idx = source.find(marker, start)
+        if idx == -1:
+            break
+        colon = source.find(":", idx + len(marker))
+        quote = source.find('"', colon + 1) if colon != -1 else -1
+        if colon == -1 or quote == -1:
+            break
+
+        i = quote + 1
+        escaped = False
+        chars = []
+        while i < len(source):
+            ch = source[i]
+            if escaped:
+                chars.append("\\" + ch)
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == '"':
+                break
+            else:
+                chars.append(ch)
+            i += 1
+
+        if i < len(source) and source[i] == '"':
+            values.append("".join(chars))
+            start = i + 1
+        else:
+            break
+    return values
+
+
 def extract_from_embedded_json(html: str) -> str | None:
     # Common "transcript":"..." pattern in embedded app state.
-    matches = re.findall(r'"transcript"\s*:\s*"((?:\\.|[^"\\])*)"', html)
+    matches = _extract_json_value_strings(html, "transcript")
     if not matches:
         return None
 
     cleaned = []
     for m in matches:
-        try:
-            decoded = json.loads(f"\"{m}\"")
-        except json.JSONDecodeError:
-            decoded = m
+        decoded = _decode_json_escapes(m)
         if len(decoded.strip()) > 40:
             cleaned.append(decoded)
 

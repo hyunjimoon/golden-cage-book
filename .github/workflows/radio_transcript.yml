@@ -26,11 +26,14 @@ jobs:
           python-version: '3.12'
 
       - name: Extract transcript
+        env:
+          EPISODE_URL: ${{ inputs.episode_url }}
+          OUTPUT_PATH: ${{ inputs.output_path }}
         run: |
-          if [ -n "${{ inputs.output_path }}" ]; then
-            python scripts/radio_transcript.py "${{ inputs.episode_url }}" --output "${{ inputs.output_path }}"
+          if [ -n "$OUTPUT_PATH" ]; then
+            python scripts/radio_transcript.py "$EPISODE_URL" --output "$OUTPUT_PATH"
           else
-            python scripts/radio_transcript.py "${{ inputs.episode_url }}"
+            python scripts/radio_transcript.py "$EPISODE_URL"
           fi
 
       - name: Commit transcript file
