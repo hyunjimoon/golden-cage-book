@@ -52,7 +52,20 @@ appendices/     부록 (프롬프팅 예시, 산업별 빚 청산)
 interactive/    인터랙티브 (주기율표, 감정궤적, 본문뷰어)
 docs/           LEXICON, CHANGELOG, INTENT
 img/            다이어그램
+scripts/        자동화 스크립트 (감정 분석, 라디오 transcript 추출)
 ```
+
+## 라디오 transcript 자동화
+
+ListenNotes 같은 에피소드 URL에서 transcript를 추출해 markdown으로 저장합니다.
+
+```bash
+python scripts/radio_transcript.py "EPISODE_URL"
+```
+
+- 기본 저장 경로: `docs/transcripts/<episode-slug>.md`
+- 덮어쓰기: `--overwrite`
+- 경로 지정: `--output docs/transcripts/my_episode.md`
 
 ## 관련 레포
 

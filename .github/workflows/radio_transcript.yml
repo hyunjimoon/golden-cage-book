@@ -1,0 +1,55 @@
+name: Radio Transcript Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      episode_url:
+        description: 'Podcast episode URL'
+        required: true
+        type: string
+      output_path:
+        description: 'Output markdown path (optional)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  transcript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Extract transcript
+        run: |
+          if [ -n "${{ inputs.output_path }}" ]; then
+            python scripts/radio_transcript.py "${{ inputs.episode_url }}" --output "${{ inputs.output_path }}"
+          else
+            python scripts/radio_transcript.py "${{ inputs.episode_url }}"
+          fi
+
+      - name: Commit transcript file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet docs/transcripts; then
+            echo "No transcript changes"
+            exit 0
+          fi
+          git add docs/transcripts
+          git commit -m "auto: 라디오 transcript 추가 — $(date +%Y-%m-%d)"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Push succeeded on attempt $i"
+              exit 0
+            fi
+            echo "Push attempt $i failed, retrying..."
+            sleep $((i * 5))
+          done
+          echo "All push attempts failed"
+          exit 1
