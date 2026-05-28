@@ -115,7 +115,8 @@ def _extract_json_value_strings(source: str, key: str) -> list[str]:
         colon = source.find(":", idx + len(marker))
         quote = source.find('"', colon + 1) if colon != -1 else -1
         if colon == -1 or quote == -1:
-            break
+            start = idx + len(marker)
+            continue
 
         i = quote + 1
         escaped = False
@@ -137,7 +138,8 @@ def _extract_json_value_strings(source: str, key: str) -> list[str]:
             values.append("".join(chars))
             start = i + 1
         else:
-            break
+            start = idx + len(marker)
+            continue
     return values
 
 
@@ -195,7 +197,7 @@ def slug_from_url(url: str) -> str:
 
 def write_markdown(output_path: Path, source_url: str, transcript: str) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
+    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
     content = [
         "# 라디오 트랜스크립트",
