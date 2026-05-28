@@ -231,7 +231,7 @@ def main() -> int:
 
     try:
         transcript = extract_transcript(html)
-    except Exception as exc:  # pylint: disable=broad-except
+    except ValueError as exc:
         print(f"Failed to parse transcript from {args.url}: {exc}")
         return 1
 
