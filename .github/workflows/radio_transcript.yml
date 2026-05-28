@@ -44,7 +44,7 @@ jobs:
           git add docs/transcripts
           git commit -m "auto: 라디오 transcript 추가 — $(date +%Y-%m-%d)"
           for i in 1 2 3; do
-            if git pull --rebase origin main && git push; then
+            if git pull --rebase origin "${{ github.ref_name }}" && git push; then
               echo "Push succeeded on attempt $i"
               exit 0
             fi

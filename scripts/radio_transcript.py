@@ -34,6 +34,7 @@ def fetch_html(url: str) -> str:
 
 
 def _json_walk(node):
+    """Recursively walk nested JSON and yield dictionary nodes."""
     if isinstance(node, dict):
         yield node
         for value in node.values():
@@ -87,8 +88,8 @@ def extract_from_embedded_json(html: str) -> str | None:
     cleaned = []
     for m in matches:
         try:
-            decoded = bytes(m, "utf-8").decode("unicode_escape")
-        except UnicodeDecodeError:
+            decoded = json.loads(f"\"{m}\"")
+        except json.JSONDecodeError:
             decoded = m
         if len(decoded.strip()) > 40:
             cleaned.append(decoded)
@@ -128,6 +129,7 @@ def extract_transcript(html: str) -> str:
 def slug_from_url(url: str) -> str:
     path = urlparse(url).path.rstrip("/")
     slug = path.split("/")[-1] if path else "episode"
+    # Keep Korean characters for readable slugs from Korean podcast URLs.
     slug = re.sub(r"[^0-9A-Za-z가-힣._-]+", "-", slug).strip("-")
     return slug or "episode"
 
@@ -137,7 +139,7 @@ def write_markdown(output_path: Path, source_url: str, transcript: str) -> None:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
 
     content = [
-        "# 라디오 transcript",
+        "# 라디오 트랜스크립트",
         "",
         f"- source: {source_url}",
         f"- fetched_at_utc: {now}",
@@ -178,7 +180,7 @@ def main() -> int:
         html = fetch_html(args.url)
         transcript = extract_transcript(html)
     except Exception as exc:  # pylint: disable=broad-except
-        print(f"Failed: {exc}")
+        print(f"Failed to extract transcript from {args.url}: {exc}")
         return 1
 
     write_markdown(output, args.url, transcript)
