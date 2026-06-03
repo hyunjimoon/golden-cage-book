@@ -46,22 +46,27 @@ building on [[4⏱️_시계새장]]
 
 [[시공간멜로디/On/love_편집자혜진/people/편집자한솔|편집자한솔]]
 
-![[diagram_ch8_새둥지.png]]
-![[panel_ch8_새둥지.png]]
+![](diagrams/panel_ch8_새둥지.png){width=85%}
 
 # CHAPTER 9 — 까마귀 둥지 · **의미를 만들어라**
 *이름을 다시 짓고 규칙을 다시 매혹시킨다 — 부수: **넘기고 혼동시키며 태어나는 의미***
 
+> **이 작품은** (멈춤 → 모방 → 넘김 → 매혹)
+> · **멈춤** — 일연은 정사(正史)가 빠뜨린 자리 앞에서 손을 멈춘다.
+> · **모방** — 김부식의 형식을 부수지 않고 *옆에* 그대로 둔다.
+> · **넘김** — *正*을 *遺*로 한 글자 비튼다(三國正事→三國遺事).
+> · **매혹** — 사라진 자들이 옆자리에 도착하고, 다음 사람이 그 이름을 이어받는다.
+
 > **이 장의 공식**: 부수기만 한 자는 trickster가 아니다 — *disrupt하고 다시 매혹시키기까지가 책임이다.*
-> ★**멈춤** → 모방 → 넘김 → 매혹: 미끼를 *바로 안 삼킴* → 신성을 *모방해* 내 자리로 → 경계를 *넘어* 가로지른다 → 새 이름으로 다시 *매혹시킨다*.
+> **멈춤 → 비틂 → 매혹**: 정사 앞에서 멈춤 → *正 → 遺* (*Bailey → Douglass*) → 사라진 자들이 옆자리에 도착한다.
 
-> **거울 (1↔8) ouroboros mirror**: 1장 거울새장(빌린 욕망에 먹힘)과 8장 거울둥지(다음 trickster를 비춤). *같은 메타포, 두 모드.* 책의 시작과 끝이 *거울*로 봉합. **책은 닫히지 않는다.**
+> **거울 (1↔9) ouroboros mirror**: 1장 거울새장(빌린 욕망에 먹힘)과 9장 까마귀둥지(다음 trickster를 비춤). *같은 메타포, 두 모드.* 책의 시작과 끝이 *거울*로 봉합. **책은 닫히지 않는다.**
 
-> **거울 (4↔8)**: 4장 작란(*놀이로 경계 흔들기*) → 8장 작란의 *이름을 짓는 것*까지. 시계를 부순 자가 *다시 명명*하지 않으면, 부순 자리에 새 시계가 놓인다.
+> **거울 (4↔9)**: 4장 작란(*놀이로 경계 흔들기*) → 9장 작란의 *이름을 짓는 것*까지. 시계를 부순 자가 *다시 명명*하지 않으면, 부순 자리에 새 시계가 놓인다.
 
 ## 1. 감각 — 짓기 들추기
 
-### 1.1 내 — "부수기만 한 적 있는가"  *(매혹 — 부순 자리에 새 이름을 짓는)*
+### 1.1 내 — "부수기만 한 적 있는가"  *(★멈춤 — 정사 앞 hesitation)*
 
 **세다:** 마지막 장이에요. 질문 하나로 열게요. 살면서 — *부수기만 하고 다시 매혹시키지 않은* 적 있으세요? 누군가의 확신을 흔들어놓고 그 자리를 비워둔 적.
 
@@ -75,11 +80,11 @@ building on [[4⏱️_시계새장]]
 
 **세다:** Raven이 *trickster의 모든 단계*를 한 동작에 담아요. *Refusing Bait*(추장의 권위 거절) → *Sacred Theft*(빛 훔침) → *Boundary Crossing*(인간→새 변신) → *Re-enchantment*(빛을 세상 모두에게 던짐).
 
-**세다:** 그리고 1↔8 ouroboros가 *시각*으로 닫혀요. 1장 엠마는 *거울새장에 갇힌 새*였어요. 8장 Raven은 *새장을 깨고 빛을 물고 날아오르는 새*. *같은 새의 두 자세 — 갇힘에서 날아오름으로.* 그을린 깃털이 까맣게 남아요 — *경계를 가로지른 흔적.*
+**세다:** 그리고 1↔9 ouroboros가 *시각*으로 닫혀요. 1장 엠마는 *거울새장에 갇힌 새*였어요. 9장 Raven은 *새장을 깨고 빛을 물고 날아오르는 새*. *같은 새의 두 자세 — 갇힘에서 날아오름으로.* 그을린 깃털이 까맣게 남아요 — *경계를 가로지른 흔적.*
 
-**세다:** 그리고 까마귀는 *흉조인지 길조인지조차 확실하지 않아요.* 한국에서 *효도하는 새*이면서 동시에 *죽음의 전령*. **결정 불가능성**이 까마귀의 본질이에요. 6장 *Crucial Third Position*, 7장 *분포*, 8장 *Negative Capability* — 셋이 *한 동물*에 모여 있어요. **까마귀 = 살아있는 NC.**
+**세다:** 그리고 까마귀는 *흉조인지 길조인지조차 확실하지 않아요.* 한국에서 *효도하는 새*이면서 동시에 *죽음의 전령*. **결정 불가능성**이 까마귀의 본질이에요. 7장 *Crucial Third Position*, 8장 *분포*, 9장 *Negative Capability* — 셋이 *한 동물*에 모여 있어요. **까마귀 = 살아있는 NC.**
 
-**세다:** 1장 엠마는 *확정*되어 죽었어요. 8장 Raven은 *확정되지 않아* 살아있어요. ***결정 불가능이 곧 가능성*이에요.**
+**세다:** 1장 엠마는 *확정*되어 죽었어요. 9장 Raven은 *확정되지 않아* 살아있어요. ***결정 불가능이 곧 가능성*이에요.**
 
 > **세다의 일기**
 > 어제 누군가의 확신을 흔들었다. 정확하게. 흔들고 끝냈다. 오늘 그 사람이 멍해 보였다. *부순 자리에 다음 이름을 같이 짓지 않으면 — 부수는 게 폭력이 된다.*
@@ -92,7 +97,7 @@ building on [[4⏱️_시계새장]]
 
 **세다:** 비틂이 만든 자리에 — *김부식이 쓰지 않은 사람들*이 도착해요. 단군. 처용. 도화녀. 수로부인. 사금갑의 활쏘기. 향가 14수. *왕 옆에 향가, 신하 옆에 영험담, 전쟁 옆에 여성 능동자.* **새 카테고리가 생긴 게 아니라 *옆 카테고리*가 작동하기 시작했어요.** 한 책의 framing이 한 시대의 *기록 가능성*을 다시 짠 자리.
 
-**세다:** 일연의 trickster 자세 — *부수기*가 아니에요. *옆에 두기*. 김부식의 책을 그대로 두고, 그 옆에 *다른 framing의 책*을 놓는다. 그러면 두 책이 *서로의 의미를 바꿔요.* 정사가 *완전한 역사*가 아니라 *하나의 framing*임이 드러나요. **유사가 있어야 정사가 정사가 돼요.** 5장 거울이 *두 사람의 정반대 동작*을 한 자리에 비췄고, 7장 유리 온실이 *안의 규칙과 밖의 시선*을 한 장에 견뎠다면 — 일연의 *유사*는 *두 framing*을 한 책장에 놓아요.
+**세다:** 일연의 trickster 자세 — *부수기*가 아니에요. *옆에 두기*. 김부식의 책을 그대로 두고, 그 옆에 *다른 framing의 책*을 놓는다. 그러면 두 책이 *서로의 의미를 바꿔요.* 정사가 *완전한 역사*가 아니라 *하나의 framing*임이 드러나요. **유사가 있어야 정사가 정사가 돼요.** 5장 거울이 *두 사람의 정반대 동작*을 한 자리에 비췄고, 8장 유리 온실이 *안의 규칙과 밖의 시선*을 한 장에 견뎠다면 — 일연의 *유사*는 *두 framing*을 한 책장에 놓아요.
 
 **세다:** Foucault가 1967년에 그린 *heterochrony* — *다른 시간들이 한 책에 수집되는 자리*. 박물관·도서관과 동형. *유사*가 그 정확한 1281년 형태예요.[^Foucault67_8]
 
@@ -133,66 +138,107 @@ building on [[4⏱️_시계새장]]
 
 ## 2. 생각 — 짓는 궁리
 
-> *트릭스터 framework(★멈춤·모방·넘김·매혹)는 5장 hinge에서 이미 정형화. 8장은 그 *매혹* 정점을 *학문*으로 짓는다 — Gibbons(MIT, 2025) *Coase to Culture*의 **보이는 손(visible hand)** + **clarity problem** + **naming·framing**.*
+> *트릭스터 4동작(★멈춤·모방·넘김·매혹)은 5장 hinge에서 정형화. 9장은 그 *매혹*을 *세 손동작*으로 짓는다 — 흩어진 자를 함께 모으고(collaborate), 공동의 의미로 묶고(acculturate), 반복 가능한 형식으로 다듬는다(processify). 단 너무 일찍 굳히면 살아있는 유사가 죽은 정사가 된다.*
 
-### 2.1 한 글자 비틂 — *naming*의 학문 이름
+### 2.1 일연의 세 손 — 흩어진 것을 함께 짓는 도구
 
-**세다:** 6장 *novela→nivola*, 8장 *Douglas→Douglass*. 같은 *한 글자 비틂* 두 instance. 학문 이름 — Gibbons25 ***naming***. Polanyi: *"we know more than we can tell"* — 직접 명세 불가능한 자리에 *모순·이야기·비유*가 *leaps in understanding*을 일으킨다. trickster의 한 글자 비틂이 그 *leaps*의 한 형태. *novela→nivola* = 형식의 비틂, *Bailey→Douglass* = 정체성의 비틂.[^naming_anchor]
+**다:** 일연이 *유사*를 만든 게 그냥 혼자 자료를 모은 거예요, 아니면 *도구*를 쓴 거예요?
 
-### 2.2 보이는 손 — Coase에서 Gibbons로
+**세:** 도구예요. 세 손이 한 흐름으로 움직였어요 — *모으고, 묶고, 다듬는다.* 일연 본인이 §1.3에서 *"나는 혼자 쓴 게 아니오"*라고 했죠. 그 한 마디 안에 세 도구가 다 있어요.
 
-**세다:** 8장의 학문 anchor. Coase(1937)의 1세기 dichotomy — *firm vs market*. 안에 있으면 *visible hand(엔트레프레너 조정)*, 밖에 있으면 *invisible hand(가격 메커니즘)*. 88년간 조직경제학의 척추.
+**다:** 첫 번째 손은요?
 
-**세다:** Gibbons(2025)가 *그 dichotomy를 은퇴*시켜요. 이유는 — 21세기에 *3번째 자리*가 거대해졌어요. **visible hand under non-integration** — 회사 *바깥*에서 작동하는 *의도적 조정*. 동맹·네트워크·생태계·플랫폼·컨소시엄.
+**세:** ***함께 짓기(collaborate)***. 일연은 제자 무극의 손, 민간 사찰의 기록, 암자 노승들이 외워 전한 향가 14수 — *흩어진 협력자들*을 한 책장으로 모았어요. 도구의 *enable*: 혼자서는 닿지 못할 데이터에 닿아요. 정통이 닫아 둔 카테고리를 *여럿의 손*으로 다시 열어요 — 김부식의 *삼국사기*가 버린 단군·서민·향가·도화녀를. 단 *risk*도 같이 와요 — 협력자는 파이를 나눠 갖는 자이기도 하고(*어제의 협력자가 내일의 경쟁자*), 손이 많아질수록 *관리가 복잡*해져요. 일연이 권 5를 무극에게 넘긴 자리가 — *나눔이자 위험*이었어요.
 
-| | integration | non-integration |
+**다:** 그런데 — 관례를 따르면 순탄하잖아요. 굳이 버려진 걸 모으면 봉변이 따라올 텐데요.
+
+**세:** 거기가 *의미 만들기*의 심장이에요. *"관례처럼 무서운 것도 없다."* 기존 잣대를 따르면 무리 없이 넘어가는데, *나름의 잣대로 재평가*하면 욕을 먹어요. 일연은 그 위험을 감수했어요 — 우리 역사를 중국에 기대지 않고 *대등하게, 자주적으로* 다시 봤거든요. 최남선이 훗날 *삼국유사*를 *삼국사기* 위에 둔 이유가 그거예요. **흩어진 것을 모으는 용기는, 곧 관례를 다시 재는 용기예요** — collaborate는 데이터를 모으는 손인 동시에, *관례에 NO라고 말하는* 손이에요.
+
+**다:** 그 흩어진 손들을 *한 방향*으로 묶는 게 두 번째 손이겠네요.
+
+**세:** ***함께 물들기(acculturate)***. 문화는 *접착제*예요 — 흩어진 협력자들이 *같은 의미*를 공유하게 만드는. 그런데 접착제는 *매일 발라야* 굳어요. 엔트로피가 늘 잡아당기거든요. *enable*: 응집·공동의 목적. *risk*: 손을 놓으면 *파편화*돼요 — 그리고 *아무도 안 볼 때*가 가장 어려워요. 일연이 절에서 절로 향가를 옮긴 *수십 년*이, 그 매일의 접착이었어요.
+
+**다:** 마지막 손이 — *다듬는* 손이고요.
+
+**세:** ***공정화(processify)***. 흩어진 입에서 입으로 전해지던 향가를, *반복 가능한 형식*(목판·기록 체계)으로 다듬어요. 한 사람이 죽어도 다음 사람이 이어 쓸 수 있게. 찰리 교수의 한 마디 — *"최악은 무(無)프로세스다."* 형식이 없으면 한 세대에 사라져요. 누가 주인이고(owner), 누가 받고(customer), 무엇으로 재는가(metrics) — 그 세 칸을 채우는 게 공정이에요.[^tools_flow]
+
+> **그러나 — 너무 일찍 굳히지 마라**
+>
+> 일연이 *살아있는 유사*를 *완결된 정사*로 너무 일찍 박았다면, 향가는 *죽은 기록*이 됐을 거예요. 공정이 안정되면 그제야 ***자동화(automate)*** — 단 *이해 없는 자동화*는 *이해 없는 외주*예요. ERP를 너무 일찍 깔면 *"회사에 콘크리트를 붓는 것"*. 그다음이 ***전문화(professionalize)*** — 만능 일꾼(generalist)에서 전문가(specialist)로. *enable*: 깊이. *risk*: *사일로*와 *문화 균열* — *"정글의 항해사가 전문가들의 도시에서 길을 잃는"* 자리.
+>
+> **순서가 곧 도구예요** — 모으고(collaborate) → 묶고(acculturate) → 다듬고(processify) → *안정된 다음에야* 자동화·전문화. 한 단계라도 *건너뛰거나 앞당기면* — 부순 정사 자리에 *새 정사*가 놓여요. 그게 새 cage.
+
+**다:** 그러니까 일연이 *부수기만* 한 게 아니라 — 흩어진 것을 *모아서 짓기까지* 한 거네요. 단 *살아있는 채로* 두면서.
+
+**세:** 맞아요. 부수는 능력만으로는 trickster가 아니에요 — *다시 짓는* 능력까지가 책임이에요. Keats는 그걸 ***Negative Capability***라 불렀어요 — *답을 서둘러 못 박지 않고 불확실 속에 머무는 능력.*[^2] 노자도 같은 자리를 봤어요 — *當其無, 有車之用*(바퀴통 한가운데가 비어 있어야 수레가 굴러간다). **다 채운 표가 아니라, 한 칸 비운 표가 다음 사람을 부른다.** ★멈춤이 9장 끝까지 살아 있는 이유예요.
+
+### 2.2 trickster의 4 자리 — Apollo ↔ Hermes 친구되기 격자
+
+**세다:** trickster가 변방에서 일하는 자리는 정확히 *네 곳*이에요 — 사용자·투자자·경쟁자·협력자. 각 자리에서 trickster는 *Apollo(구조·절제)와 Hermes(놀이·횡단)를 친구로 만들어* 합리적 의미를 짓습니다. Hyde 정전: *"At the end of the myth, Apollo and Hermes do not destroy each other; they become friends."* 4 자리에서 친구되기의 *방식*만 다릅니다.
+
+| 자리 | 주 trickster engine | Apollo ↔ Hermes 친구되기 결과 (합리적 의미) |
 |:--|:--|:--|
-| **visible hand** | (Coase의 firm) | **🆕 Gibbons의 자리** — 동맹·생태계·platform |
-| **invisible hand** | — | (Coase의 market) |
+| 🦋 **6 사용자** | 의미 위한 거짓 (lying for meaning) | *모르고 → 알면서* · **시장 = 무대** |
+| 🌫️ **7 투자자** | 제 3의 위치 (Crucial Third) | *novela → nivola* · **자기 서사를 써라** |
+| 🌷 **8 경쟁자** | boundary crossing (영역 횡단) | *문맹 → 문해* · **사랑이 창살을 건넌다** |
+| 🐦‍⬛ **9 협력자** | sacred theft (정통 카테고리 훔침) | *正 → 遺* · **옆자리 friendship** |
 
-**세다:** 핵심 한 줄 — 옛 질문 *"시장이 완벽하다면 회사가 필요한가?"* → 새 질문 ***"계약이 완벽하다면 보스가 필요한가?"*** 보이는 손은 *불완전 계약* 위에서만 작동.
+### 🐾 trickster 동물원 — 4 character × *지롱* 어조
 
-**세다:** 트릭스터의 *Phase 2 Re-enchantment*가 학문적으로 — ***보이는 손이 변방에서 균형을 짓는 동작***이에요. Douglass의 *The North Star* 신문, 토스 *증권의 송금화*, SK Hynix *DRAM의 HBM화* — 모두 *visible hand under non-integration*의 사례.
+**세다:** 네 trickster의 *음성*을 한 자리에 모으면 동물원이 된다. *지롱* 어미는 한국어 trickster의 음역 — 자기를 *드러내면서 동시에 숨기는* 어조.
 
-**세다:** Gibbons의 *경영*은 *명령*이 아니라 ***연합체 짓기(coalitional management)***. Barnard(1938) · Simon(1947) · Cyert·March(1963) 계보. **trickster = 변방의 보이는 손 architect.** 부수는 자가 아니라 *짓는 자*.
+| 장 | character | trickster의 *지롱* 음성 |
+|:--|:--|:--|
+| 🦋 6 나비 | **송 릴링** | *"네 오리엔탈 환상을 연기했지롱"* |
+| 🌫️ 7 안개 | **아우구스토** | *"fictional이라도 의지있지롱"* |
+| 🌷 8 튤립 | **코르넬리우스-로자 사랑** | *"창살이 사랑의 조건이었지롱"* |
+| 🐦‍⬛ 9 까마귀 | **까마귀** | *"엿들었지롱, 시체 먹으면 불사지롱"* |
 
-### 2.3 Clarity + Framing — 보이는 손의 두 도구
+**세다:** 네 character가 *지롱*으로 자기를 폭로하면서도 정체를 다 못 잡힌다. cage 1-4장의 인물(엠마·살리나·파늘루·로빈슨)이 *진지한 비극의 음성*으로 갇혔다면, nest 6-9장의 trickster는 *지롱의 가벼운 음성*으로 열린다. **같은 진지함, 다른 어조** — 어조가 cage와 nest를 가른다.
 
-**세다:** 보이는 손이 마주치는 두 문제 — *credibility* (*네 약속 믿어도 되나?* / 반복게임의 미래 임대료) + ***clarity*** (*우리가 같은 약속을 같은 의미로 알고 있나?* / 공유된 해석). **Gibbons25의 가장 깊은 자리 — clarity가 credibility보다 어렵다.** 미래 임대료가 충분해도, *각자 다른 의미*로 약속을 해석하면 균형이 깨져요.[^clarity_framing]
+**세다:** 9장은 그 *네 친구되기*가 한 자리에서 모이는 곳. 협력자가 매개일 때만, 6·7·8장에서 지은 *세 친구되기*가 다음 사람에게 전달돼요. 일연 옆에 무극, Douglass 옆에 Garrison·Lloyd — *명명은 혼자 하면 새장, 둘이 하면 둥지*.
 
-**세다:** 1장 르뢰를 8장에서 재읽어요. 르뢰는 *credibility*는 있었어요 — 외상을 *진짜로* 줬어요. 그런데 ***clarity가 없었어요*** — *외상이 친절인가 포획인가*에 대한 공유된 이해 부재. 엠마는 *친절*, 르뢰는 *포획*. **같은 거래, 두 약속.** 비소가 그 갈림에서 도착.
+### 2.3 함께 묶을 때의 함정 — 같은 단어, 다른 뜻
 
-**세다:** clarity 짓는 *두 도구* — **Naming** (모순·이야기·비유로 *leaps in understanding*) + **Framing** (연속적 세계를 *공유된 카테고리*로 분할). *Naming*은 §2.1 한 글자 비틂. *Framing*은 일연 *유사*. 1281 일연 *正→遺* 한 글자 — 같은 한국 역사를 *어떤 카테고리로 부를 것인가*. 정사: *왕·신하·전쟁*. 유사: *단군·향가·영험담·여성 능동자*. ***같은 시공간, 다른 framing, 다른 균형.***[^2]
+**다:** 협력자를 모으고 문화로 묶을 때 — 가장 자주 깨지는 자리가 어디예요?
 
-**세다:** founder 응용 — **빌린 KPI는 모든 칸을 채워야 좋은 KPI** (인공선택). **자연선택의 풀은 빈 칸을 둔다** (일연·Keats *Negative Capability*·노자 *當其無, 有車之用*). **KPI 표 옆에 한 칸을 비워둬라** — 다음 trickster의 입구.
+**세:** *같은 약속을 서로 다른 뜻으로 알고 있을 때.* 1장 르뢰를 여기서 다시 읽어봐요. 르뢰는 외상을 *진짜로* 줬어요 — 믿을 만했어요. 그런데 *그 외상이 친절인가 포획인가*를 두 사람이 다르게 알았어요. 엠마는 *친절*, 르뢰는 *포획*. **같은 거래, 두 약속.** 비소가 그 갈림에서 도착했죠.
 
-> ***부수기만 한 자는 trickster가 아니다 = clarity를 짓지 않는 자는 보이는 손이 아니다.***
+**다:** 그러니까 *함께 물들기(acculturate)*가 안 된 거네요 — 협력은 했는데 *의미*를 안 맞춘.
 
-### 2.5 보이는 손의 토대 — 8장이 1장에 도착할 때
+**세:** 정확해요. 그래서 도구의 마지막 규칙 — *표를 다 채우지 마라.* 빌린 지표는 모든 칸을 채워야 좋아 보여요. 그런데 *살아있는 협력*은 한 칸을 비워둬요 — 일연이 *해석 안 된 향가*를 그대로 둔 자리, Keats의 *Negative Capability*, 노자의 *當其無*. **KPI 표 옆에 한 칸을 비워둬라 — 다음 사람이 들어올 입구.**
 
-**세다:** Coase의 *firm vs market*은 1장의 *르뢰 vs 엠마*에 대응해요. 르뢰는 *visible hand under integration* (대금업의 일관 조직), 엠마는 *invisible hand 가설을 믿은 자* (시장이 자기 욕망을 인정할 거라고). 둘 다 *3번째 자리*를 못 봤어요 — *visible hand under non-integration*.
-
-**세다:** 만약 엠마가 *공동체 안의 자기 자리*를 *연합체 짓기*로 다뤘다면 — 친구·이웃·교회·신문 4 visible hand를 *non-integration*으로 모았다면 — 르뢰의 *integrated visible hand*에 잡히지 않았을 거예요. 8장의 학문이 1장의 비극을 *재진단*해요.
-
-> ***보이는 손은 부수기 위해 있는 게 아니라 변방에서 균형을 짓기 위해 있다. trickster의 매혹이 학문의 visible hand로 도착할 때 — 8장이 1장의 손을 잡는다.***
+> ***부수기만 한 자는 trickster가 아니다. 흩어진 것을 모아 함께 의미를 짓되, 한 칸을 비워 다음 사람을 부르는 자가 trickster다.***
 
 ---
 
 ## 3. 현실 — 에너지(quanta)
 
-### 3.1 SK Hynix — *옆자리* framing의 정전
+### 3.1 SK Hynix — DRAM을 HBM 옆으로 비튼 한 회사
 
-**세다:** **SK Hynix HBM**. 2013년 HBM(High Bandwidth Memory) 세계 최초 양산. 2024년 NVIDIA H100·B100의 주력 공급사. 영업이익 23.5조 — 삼성을 제치고 DRAM 1위. *메모리의 자리가 옆자리로 이동* — *멀리 모든 데이터*에서 *가까이 필요한 데이터*로. *DRAM commodity 회사* → *AI 인프라 핵심 부품 회사*. **Phase 2 = *메모리를 연산 옆으로*.**
+**다:** 일연이 *책 한 권*으로 옆자리를 만들었다고 했잖아요. 그걸 *회사 하나*가 그대로 한 적 — 있나요? 정사를 안 부수고, 그 옆에 다른 자리를 만든 회사.
 
-**세다:** SK Hynix가 일연의 *옆자리 만들기*의 산업 형태예요. 김부식이 *정통 아키텍처*를 그대로 두고 그 옆에 *유사*를 놓은 것처럼 — SK Hynix는 *DRAM 시장*을 그대로 두고 그 옆에 *HBM 자리*를 만들었어요. 부수기 0%, 옮기기 100%.
+**세다:** 있어요. **SK Hynix.** 한 회사가 일연의 네 동작을 그대로 밟았어요.
 
-### 3.2 에너지 — Ørsted · 포스코 vs BP
+**세다:** ***멈춤.*** 2000년대 DRAM은 *commodity*였어요 — 값이 떨어지면 같이 떨어지고, 누가 만들어도 똑같은 칩. 삼성이 정사(正史)였어요. SK Hynix는 거기서 *멈췄어요.* *정사를 이기려 더 빨리 달리는 대신* — 멈춰서 물었어요. *메모리가 꼭 연산에서 멀리 있어야 하나?*
 
-**세다:** **Ørsted**(덴마크). 1972 *DONG*(Danish Oil and Natural Gas) → 2017 사명 *Ørsted*(19세기 천문학자 외르스테드). 같은 시점 *사업 재명명* — 석유·가스 → 해상풍력. 화석연료 자산 정리 + 풍력 집중. 세계 해상풍력 점유율 한때 약 25%. *DONG → Ørsted* = 또 한 *한 글자 비틂*.
+**세다:** ***모방.*** DRAM 공정을 버리지 않았어요. 김부식의 책을 그대로 둔 일연처럼 — *기존 메모리 기술을 옆에 그대로 두고*, 그 위에 칩을 *쌓는* 실험을 했어요. 2013년, *HBM*(High Bandwidth Memory) 세계 최초 양산. 메모리를 층층이 쌓아 *연산 바로 옆*에 붙인 칩.
 
-**세다:** 한국 짝 **포스코**. 1968 포항제철 → 2002 POSCO → 2022 *사업 재명명* (철강 + 이차전지·리튬·니켈·수소). 이름은 유지하되 사업을 비튼 trickster — Ørsted 거울짝.
+**다:** *멀리 있던 데이터를, 가까이 끌어다 놓은* 거네요.
 
-**세다:** 음화 **BP**. 2000 *Beyond Petroleum* 리브랜딩만 했고 재정의는 안 함. 화석연료 여전. 2010 Deepwater Horizon, 2023 climate 후퇴. **Phase 1만, Phase 2 없음** = 1장 르뢰의 *corporate scale*. 4 도메인 mirror 모두 닫혔어요 — 정보(1↔5)·물질(2↔6)·생체(3↔7)·**에너지+반도체(4↔8)**.
+**세다:** ***넘김.*** 그게 한 글자 비틂이에요 — *DRAM → HBM.* 같은 메모리인데, *자리*가 옆으로 한 칸 이동했어요. *멀리 모든 데이터*에서 *가까이 필요한 데이터*로. 부수기 0%, 옮기기 100%. 일연이 *正*을 *遺*로 비튼 그 손이에요.
+
+**세다:** ***매혹.*** 2024년, NVIDIA H100·B100 AI 가속기의 주력 HBM 공급사가 됐어요. *commodity 회사*가 *AI 인프라의 핵심 부품 회사*로 다시 명명됐어요. 그해 영업이익 23.47조 — *영업이익으로 삼성을 추월*했어요. 옆자리를 만든 자가, 정사가 못 본 데이터를 길어 올린 거예요.
+
+**세다:** SK Hynix가 일연의 *옆자리 만들기*의 산업 형태예요. *DRAM 시장*을 그대로 두고 그 옆에 *HBM 자리*를 만들었어요 — **Phase 2 = *메모리를 연산 옆으로*.**
+
+### 3.2 거울짝과 음화 — Ørsted · 포스코 · 카카오뱅크 vs BP
+
+**다:** 한국이 home base라고 했죠. SK Hynix 말고도 *한 글자 비튼* 한국 회사가 있어요?
+
+**세다:** **포스코.** 1968 포항제철 → 2002 POSCO → 2022 *사업 재명명* — 철강은 그대로 두고 그 옆에 *이차전지·리튬·니켈·수소*를 놓았어요. 이름은 유지하되 사업을 비튼 trickster. **카카오뱅크**도 같은 손이에요 — 카톡 4천만 친구 관계망 위에 *은행*을 옆자리로 끼워, *은행*이라는 단어의 의미를 바꿨어요.[^카뱅] 글로벌 거울짝은 **Ørsted**(덴마크) — 1972 *DONG*(석유·가스) → 2017 *Ørsted*(천문학자 이름)로 사명을 비틀며 해상풍력으로 옮겨갔어요. 또 한 *한 글자 비틂*.
+
+**세다:** 음화 한 줄 — **BP.** 2000년 *Beyond Petroleum*으로 *이름만* 바꾸고 사업은 안 비틀었어요. 화석연료 그대로, 2010 Deepwater Horizon, 2023 기후 후퇴. **Phase 1(리브랜딩)만 하고 Phase 2(재명명·재매혹)가 없는** 자리 = 1장 르뢰의 *기업 규모 판본*. 이름만 비틀고 자리를 안 옮기면 — 옆자리가 생기지 않아요.
 
 ### 3.3 매개의 인용 — Douglass · *Power concedes nothing without a demand*
 
@@ -211,7 +257,7 @@ building on [[4⏱️_시계새장]]
 
 ### 4.1 한 줄 — **의미를 만들어라** (부수: 넘기고 혼동시키며 태어나는 의미)
 
-**세다:** 8장 다·세 결말은 — ***의미를 만들어라***. 1장부터 7장까지 *각자의 한 줄*을 가져왔다면, 8장은 *부순 자리에서 의미가 태어나는 자리*예요. 어떻게? — ***넘기고*** (boundary crossing) ***혼동시키며*** (category confusion = framing) ***태어나는*** 의미.
+**세다:** 9장 다·세 결말은 — ***의미를 만들어라***. 1장부터 8장까지 *각자의 한 줄*을 가져왔다면, 9장은 *부순 자리에서 의미가 태어나는 자리*예요. 어떻게? — ***넘기고*** (boundary crossing) ***혼동시키며*** (category confusion = framing) ***태어나는*** 의미.
 
 **세다:** 두 도구가 손에 있어요. **Naming** = 모순·비유로 *leaps in understanding* (Sloan·ABB·Polanyi). **Framing** = 카테고리로 *공유된 상황* 짓기 (Goffman·GLW). 트릭스터의 *매혹*이 이 둘의 학문 이름.
 
@@ -222,13 +268,13 @@ building on [[4⏱️_시계새장]]
 > 일연이 *正* 옆에 *遺*를 놓았듯이 — 누구의 *유사*를 *함께* 쓸 사람이 곁에 있는가?
 > *"True tricksters are creators, not just destroyers."*[^Trickster_Phase2]
 
-**세다:** Coase의 *firm vs market*에 8장이 답해요 — ***visible hand under non-integration***. 새장도 시장도 아닌 *3번째 자리*. 보이는 손이 변방에서 *균형을 짓는다*. Gibbons25[^4]가 학문으로, 일연이 역사로, Douglass가 정체성으로, SK Hynix가 산업으로 — *같은 보이는 손의 4 도착*.
+**세다:** Coase의 *firm vs market*에 9장이 답해요 — ***visible hand under non-integration***. 새장도 시장도 아닌 *3번째 자리*. 보이는 손이 변방에서 *균형을 짓는다*. Gibbons25[^4]가 학문으로, 일연이 역사로, Douglass가 정체성으로, SK Hynix가 산업으로 — *같은 보이는 손의 4 도착*.
 
 **세다:** 이게 ***넘기고 혼동시키며 태어나는 의미***. 같은 단어(*새장*)인데 한 칸 옆 함의(*열린 자리*)로 이동. naming의 정확한 한 글자 비틂이에요. framing은 — *cage 카테고리* 옆에 *nest 카테고리*를 만들어 *둘 사이의 통로*를 연 자리.
 
-### 4.2 거울 (4↔8)
+### 4.2 거울 (4↔9)
 
-**세다:** 4장에서 방드르디의 *작란*을 봤어요. 시계 폭파 = *Boundary Crossing*. 4장에서 *멈췄으면* — 부수기만 한 거예요. 8장은 그 부순 자리에 *다음 이름을 짓는 것*까지를 다뤄요. *4장이 작란을 발견했고, 8장이 작란에 이름을 지어요.* 부수기에서 명명으로.
+**세다:** 4장에서 방드르디의 *작란*을 봤어요. 시계 폭파 = *Boundary Crossing*. 4장에서 *멈췄으면* — 부수기만 한 거예요. 9장은 그 부순 자리에 *다음 이름을 짓는 것*까지를 다뤄요. *4장이 작란을 발견했고, 9장이 작란에 이름을 지어요.* 부수기에서 명명으로.
 
 ### 4.3 *평화 = 협력 | 함께 마심* — 8장 paradox의 9장 완결
 
@@ -280,7 +326,7 @@ building on [[4⏱️_시계새장]]
 
 ## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16)
 
-> _Skin 위 *production gauge*. 본 장 = **nest 4단계 = 매혹** = ouroboros 봉합점 (1↔8)._
+> _Skin 위 *production gauge*. 본 장 = **nest 4단계 = 매혹** = ouroboros 봉합점 (9→1)._
 
 ### 🎯 10원칙 적용 마커 (this chapter, [quanta] nest + ouroboros)
 
@@ -295,7 +341,7 @@ building on [[4⏱️_시계새장]]
 | ⑦ | 🎼 Saxon finish | §4 마지막 — *만들어라* (한자어 빚) | ⚠️ |
 | ⑧ | 👖 주머니 속 사물 | 일연: 인각사 붓·향가 14수 / Douglass: *Columbian Orator*·선원 신분증·*The North Star* 1호 | ✅ |
 | ⑨ | 🌌 두 번 묻기 | Gibbons25 *Coase to Culture* §2.2 — *믿는가?*(✅) *어디 있었나?*(MIT 2025) | ✅ |
-| ⑩ | 🦾 팔의 털 | 1↔8 ouroboros 닫힘 단락 *"책의 마지막 장이 첫 장의 손을 잡는다"* | ✅ |
+| ⑩ | 🦾 팔의 털 | 9→1 ouroboros 닫힘 단락 *"책의 마지막 장이 첫 장의 손을 잡는다"* | ✅ |
 
 ### 🩺 5렌즈 audit (현재 진단)
 
@@ -304,20 +350,20 @@ building on [[4⏱️_시계새장]]
 | **SBC** | 캐릭터 평탄성 | 다 *"빈틈만 짚어줬어요"* confession ✅ · 세 *"정확함이 폭력"* 자각 ✅ | 다+세 공동일기 ouroboros anchor 보존 |
 | **RSRS** | 길이·anchor | ~7,500자 / Hyde Phase 2 + Gibbons25 + Foucault heterochrony 박힘 ✅ / *한 글자 비틂* 6 instance 모두 호응 | □⑥ §1.2 *正→遺* + *Bailey→Douglass* 한 단락 cadence 검증 |
 | **CARE** | 독자 동선 | Crisp ✅ / Accessible ⚠ (Gibbons25 + Coase 처음 진입) / Reader-loving ✅ / Earned ✅ ★ | §2.2 *visible hand under non-integration* 한 줄 한국어 ramp |
-| **독자 7명** | 현장 접근성 | 전문가(조직경제) ✅ / 멘토(이미 짓는 자) — *재명명 책임* ✅ / 재도전 — *다음 trickster 호명* | 박혜진 letter §1↔8 ouroboros 단락 단독 발송 |
+| **독자 7명** | 현장 접근성 | 전문가(조직경제) ✅ / 멘토(이미 짓는 자) — *재명명 책임* ✅ / 재도전 — *다음 trickster 호명* | 박혜진 letter §9→1 ouroboros 단락 단독 발송 |
 | **전문가 3** | 문학·전략·관계 | 편집자(*正→遺* 정확성) ✅ / 경영(SK Hynix DRAM→HBM 사실) ⚠ — 부록4 sync / 출판(Douglass 인용) ✅ | SK Hynix HBM 2013 첫 출시·2024 NVIDIA 공급 부록4 sync |
 
-### 🔍 Cross-mirror paragraph anchor — 4↔8 + 1↔8 ouroboros
+### 🔍 Cross-mirror paragraph anchor — 4↔9 + 9→1 ouroboros
 
 | 본 장 자리 | paired 자리 | 한 글자 비틂 |
 |:--|:--|:--|
 | §1.1 Raven 빛 던지기 (MIMICRY+ILINX) | [[4⏱️_시계새장]] §1.2 로빈슨 시계 강박 (AGON+ILINX) | *작란 → 명명* |
-| §1.2 일연 *正→遺* + Douglass *Bailey→Douglass* | [[6🌫️_안개둥지]] §1.2 *novela→nivola* | *한 글자 비틂 3 instance 연쇄* |
+| §1.2 일연 *正→遺* + Douglass *Bailey→Douglass* | [[7🌫️_안개투자자]] §1.2 *novela→nivola* | *한 글자 비틂 3 instance 연쇄* |
 | §1 결말 ouroboros 닫힘 | [[1🪞_거울새장]] §1.1 *"이건 진짜 내가 원한 거다"* | *빌린 욕망 → 다음 trickster* |
 | §3 SK Hynix·Ørsted vs BP (재명명) | [[4⏱️_시계새장]] §3 두산·생고뱅·넷플릭스 (재정의) | *재정의 → 한 글자 비틂* |
 | §4 *의미를 만들어라* | [[4⏱️_시계새장]] §4 *다음 불을 피워라* | *불 → 의미* |
 
-**🔁 1↔8 ouroboros 봉합 (Marks 형식 동결)**: 본 장 §4 끝 → [[1🪞_거울새장]] §1.1로 회귀. *첫 회독*은 엠마의 눈, *재독*은 르뢰의 얼굴. **책은 닫히지 않는다** — 8 결말이 1 입구가 되는 *5번째 mirror pair*.
+**🔁 9→1 ouroboros 봉합 (Marks 형식 동결)**: 본 장 §4 끝 → [[1🪞_거울새장]] §1.1로 회귀. *첫 회독*은 엠마의 눈, *재독*은 르뢰의 얼굴. **책은 닫히지 않는다** — 9 결말이 1 입구가 되는 *마지막 mirror pair*.
 
 ### 🔥 오늘의 빚 (구체)
 
@@ -336,10 +382,10 @@ building on [[4⏱️_시계새장]]
 | 2026-05-10 | v1.4 | v3.1 메시지 + Foucault heterochrony 박힘 |
 | 2026-05-13 | v1.7 | 일연 *유사* main + Douglass 부수 + 토스·SK Hynix 박힘. *正→遺* 한 글자 비틂 정합 |
 | 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
-| **2026-05-16 (pm)** | **v2.1 ★** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror (4↔8 + 1↔8 ouroboros).** |
-| 2026-08-15 | v2.2 | (계획) *Phase 2 Re-enchantment* manifesto 한 문단 압축 |
+| **2026-05-16 (pm)** | **v2.1 ★** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror (4↔9 + 9→1 ouroboros).** |
+| **2026-06-03** | **v2.2** | **§0 4단계 블록 추가 · 장번호 4↔9·9→1 정합 · §3.1 SK Hynix 서사화(DRAM→HBM 4단계) · Ørsted/BP 강등.** |
 
-**🪞 Mirror anchor — 4↔8 + 1↔8**: 시계새장(로빈슨, *작란* — AGON+ILINX 경쟁-광기) ↔ 까마귀둥지(일연·Douglass, *명명* — MIMICRY+ILINX 자기 변형). **한 글자 비틂** = *작란 → 명명* / *正→遺* / *DRAM→HBM* / *Bom Suk→Bom Kim*. Mokyr 인공선택(4장) ↔ Hyde Phase 2 Re-enchantment(8장). [quanta] atomic unit · Foucault heterochrony(1967). **1↔8 ouroboros 봉합**: 8장 결말이 [[1🪞_거울새장]] 첫 페이지로 돌아간다 — *책은 닫히지 않는다*. 첫 회독은 엠마의 눈, 재독은 르뢰의 얼굴. *마지막 trickster가 다음 trickster를 비춘다.*
+**🪞 Mirror anchor — 4↔9 + 9→1**: 시계새장(로빈슨, *작란* — AGON+ILINX 경쟁-광기) ↔ 까마귀둥지(일연·Douglass, *명명* — MIMICRY+ILINX 자기 변형). **한 글자 비틂** = *작란 → 명명* / *正→遺* / *DRAM→HBM* / *Bom Suk→Bom Kim*. Mokyr 인공선택(4장) ↔ Hyde Phase 2 Re-enchantment(9장). [quanta] atomic unit · Foucault heterochrony(1967). **9→1 ouroboros 봉합**: 9장 결말이 [[1🪞_거울새장]] 첫 페이지로 돌아간다 — *책은 닫히지 않는다*. 첫 회독은 엠마의 눈, 재독은 르뢰의 얼굴. *마지막 trickster가 다음 trickster를 비춘다.*
 
 [^2]: 부록 2 — *일연·Mokyr·Keats·Gould·노자 anchor*. *삼국유사*(1281), Mokyr *Lever of Riches*(1990)·*Culture of Growth*(2017), Keats *Negative Capability*(1817), Gould-Lewontin *Spandrels of San Marco*(1979), 노자 *道德經* 11장.
 [^3]: 부록 3 — *Poe 메타 카드 + 명명 Workshop AI 실습*. *The Philosophy of Composition*(1846) 자기폭로 작법, Phase 1 점검 → Phase 2 명명(한 글자 비틂) → Re-enchantment 3단계 워크북.
@@ -351,10 +397,8 @@ building on [[4⏱️_시계새장]]
 
 [^Douglass_PDF]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Step 3 Applied: Boundary Crossing & Identity". Douglass가 4번 이름을 바꾼 4 자리 (Maryland·New England·Scotland) — 마지막 *Douglass*는 월터 스콧 *Lady of the Lake* (1810)의 *James of Douglas*에서. *Reclaiming patrimony* (도둑맞은 patrimony를 되찾기 위해 싸우는 영웅의 이름).
 
-[^Trickster_Phase2]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Phase 2: Re-enchantment". *True tricksters are creators, not just destroyers.* Hermes the Inventor (Lyre 발명, Apollo가 절도 용서) · Douglass the Orator (*America's Orator*, *imagines an America… had to be created*). 8장 manifesto *부수고, 새 이름까지 지어라*의 학자 anchor.
+[^Trickster_Phase2]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Phase 2: Re-enchantment". *True tricksters are creators, not just destroyers.* Hermes the Inventor (Lyre 발명, Apollo가 절도 용서) · Douglass the Orator (*America's Orator*, *imagines an America… had to be created*). 9장 manifesto *부수고, 새 이름까지 지어라*의 학자 anchor.
 
-[^naming_anchor]: *Naming*의 학자 정전 두 instance — Alfred Sloan(GM, 1923) *"decentralization with coordinated control"* (분권·통제 동시 모순이 조직 작동 원리). Percy Barnevik(ABB) *"global and local, big and small, radically decentralized with central control"* (4 모순으로 암묵지식 전달). Gibbons25 §6.2.
-
-[^clarity_framing]: Blader et al.(2020) 운수회사 Lean Management 사례 — 노동자들이 *teamwork·empowerment 약속을 어겼다*고 해석해 LM 시작 사이트가 통제군보다 성과가 *나빠짐*. **clarity가 깨지면 좋은 의도조차 균형을 부순다.** Framing 도구 = Goffman *어떤 상황으로 부를 것인가* + GLW(2021) *작은 categorization 차이 → 큰 equilibrium 차이*. Keats *Negative Capability*(1817) + 노자 *道德經 11장 當其無, 有車之用* — *해석되지 않은 향가를 그대로* 두는 closure 거부 자세. 7장 Newspeak(closure 강제)의 정확한 음화.
+[^tools_flow]: *함께 짓기 세 도구* (찰리 SCALE 시퀀스) — **collaborate**(공급·채널·기술 파트너; *risk*: 파이 나눔·관리 복잡도) → **acculturate**(문화=접착제, 매일 강화로 엔트로피 저항; *risk*: 파편화, "아무도 안 볼 때"가 가장 어려움) → **processify**(Hammer: owner·customer·metrics, "최악은 무프로세스"). 안정 후에야 **automate**(*premature automation = 이해 없는 외주*, ERP="회사에 콘크리트 붓기") → **professionalize**(generalist→specialist; *risk*: 사일로·문화 균열). 학문 호응: clarity problem — *같은 약속을 같은 의미로* (Blader et al. 2020 Lean Management 사례, clarity 깨지면 좋은 의도도 균형을 부숨) + Gibbons25 visible hand under non-integration (상세 부록 4).
 
 [^카뱅]: 카카오뱅크 2017년 7월 출범. 첫 *2일 만에* 가입 100만, *2개월 만에* 캐릭터 체크카드(라이언·어피치) 100만 장. 카톡 4천만+ MAU 친구 관계망 위에 송금을 *옆자리*로 끼워넣은 *Phase 2 Re-enchantment* — 한국에서 *은행*이라는 단어의 의미가 바뀐 instance.
