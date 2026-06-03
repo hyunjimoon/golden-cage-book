@@ -38,7 +38,6 @@ mirror_anchor: 책 전체 (4↔9 꼭짓점 ouroboros + 1↔5 hub)
 
 ---
 
-q
 ## 한 글자 비틂
 
 *novela* → *nivola* (8장).
