@@ -13,16 +13,16 @@ modified:
   - 2026-05-18T20:10:59+09:00
 schema_version: v1.0
 coordinate: nest · 9장 · §1-4 · 4↔9 + 9→5 ouroboros
-atomic_unit: "[quanta]"
+atomic_unit: "[second]"
 cc_owner: cc-pair-c
 mirror_anchor: ↔ 4⏱️_시계새장 (에너지, 협업자↔척도) + ↔ 5🪞🪺_거울둥지 (9→5 ouroboros 봉합)
 ---
 
 > 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §1.2 일연 *유사* main 단락 cadence — *正史 → 遺事* 한 글자 비틂 + Douglass *America's Orator* 한 호흡에 동거하는지 입으로 검증
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·9장·4↔9·[quanta] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 4⏱️ 시계새장 · 9→5 ouroboros_
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·9장·4↔9·[second] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 4⏱️ 시계새장 · 9→5 ouroboros_
 
 [[공간화음/Thesis/business_cases/NOCS_diamond_syntax|NOCS_diamond_syntax]]
-## 🗺️ 양탄자 — 🐦‍⬛ 9 까마귀둥지 · 삼국유사 [quanta]
+## 🗺️ 양탄자 — 🐦‍⬛ 9 까마귀둥지 · 삼국유사 [second]
 
 > *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
 

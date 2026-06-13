@@ -9,15 +9,15 @@ modified:
   - 2026-05-30T11:16:12+09:00
 schema_version: v1.0
 coordinate: cage · 4장 · §1-4 · 4↔9
-atomic_unit: "[quanta]"
+atomic_unit: "[second]"
 cc_owner: cc-pair-d
 mirror_anchor: ↔ 9🐦‍⬛_까마귀둥지 (에너지, 척도↔협업자)
 ---
 
 > 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §4 다+세 공동일기 *"새장을 설명하는 이론이 새장이 된다"* 단락 cadence — 자기지칭(self-reference) 한 호흡에 마비되지 않는지 입으로 확인
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·4장·4↔9·[quanta] · 🧑‍🤝‍🧑 cc-pair-d · 🪞 ↔ 9🐦‍⬛ 까마귀둥지_
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·4장·4↔9·[second] · 🧑‍🤝‍🧑 cc-pair-d · 🪞 ↔ 9🐦‍⬛ 까마귀둥지_
 
-## 🗺️ 양탄자 — ⏱️ 4 시계새장 · 방드르디 [quanta]
+## 🗺️ 양탄자 — ⏱️ 4 시계새장 · 방드르디 [second]
 
 > *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
 
