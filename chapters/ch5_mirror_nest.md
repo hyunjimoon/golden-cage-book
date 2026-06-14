@@ -106,7 +106,7 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 
 **세:** 그 한 글자가 *언제* 비틀렸는지를 본문이 미리 말해줘요. 2부 7장에서 윈스턴이 줄리아에게 약속해요 — *"우리가 서로를 사랑하지 않게 되는 것 — 그게 진짜 배신이야."*[^3] 자백은 배신이 아니다, *사랑을 잃는 것*이 배신이다. frame은 *사랑할 능력*에 매달려 있었어요. 101호의 쥐 앞에서 *"줄리아에게 해, 나 말고"* — 그 한 순간이 진짜 배신이에요. 사랑할 능력이 *거세된 게 아니에요* — 능력은 그대로예요. 사랑의 *방향*이 *한 점*에 봉박힌 거예요. 줄리아·자유·진실로 향할 수 있던 사랑이 — BB *한 점*으로 줄어들어요. 그러고 나서야 *He loved Big Brother*가 가능해져요.
 
-**다:** 수학으로 풀면 — *사랑의 지지집합(support)이 δ 함수로 붕괴*하는 거예요.[^degenerate_prior] 약속 단계는 *p(향할 대상 | 사랑) > 0*인 분포 — 줄리아·자유·기억 어디로든 향할 수 있어요. 101호 후는 *p(world | U=loyalty→BB) = δ(world = BB-with-data)* — 다른 모든 가설의 prior가 0이 돼요. BB에 반하는 어떤 증거가 와도 *posterior로 못 살려요* (Cromwell 위반). 비가역이고요 (KL 무한대). *세계가 욕망의 그림자가 된* 자리예요. 그게 cage의 *수학적 정의*예요 — 능력이 사라지는 게 아니라 *분포가 한 점으로 봉박히는* 것.
+**다:** 줄리아·자유·기억 어디로든 향할 수 있던 사랑이, BB 한 점으로 줄어든 거예요.[^degenerate_prior] 능력이 사라진 게 아니에요. 향할 곳이 하나만 남은 거예요. 그래서 BB에 반하는 증거가 아무리 와도 — 윈스턴은 못 돌아와요. 돌아갈 자리를 스스로 0으로 지웠으니까.
 
 **세:** 책 전체에서 가장 무서운 단락이에요. *환상을 부수는 자*가 아니라 *환상의 frame을 공개한 자*가 무너지는 거예요. frame을 공개하려고 한 그 펜이 — 다시 거두어진 거예요.
 
@@ -155,11 +155,11 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 
 **세:** Erving Goffman은 *The Presentation of Self in Everyday Life*(1959)에서 모든 사회 상호작용을 *무대 위 연기*로 봤어요. 무대 앞(front stage)과 무대 뒤(back stage). 일은 무대 앞이에요. 그런데 Goffman의 주장은 *"무대 뒤를 숨겨야 한다"*가 아니에요. *"무대가 있다는 것을 모두가 안다"*는 게 그의 핵심이에요. 무대인 줄 알면 — *무대가 cage가 아니다.*[^1]
 
-**다:** Lewis Hyde의 *Trickster Makes This World*(1998)는 한 단계 더 가요. trickster는 *환상을 만드는 자*이면서 동시에 그 frame이 *나중에 드러나는* 자리에 자기를 두는 자예요. Hermes가 *Homeric Hymn to Hermes*(c. 600 BCE)에서 50마리 소를 훔치는데 — 소를 *거꾸로* 몰고, 자기 발에는 나뭇가지 샌들을 신어 발자국을 *조작*해요. 노인 한 명에겐 *"오늘 본 일을 보지 못한 것으로 해 달라"*고 부탁하기까지 합니다.[^2a] 완전 은폐 시도예요. 그런데 결정적으로 — *Apollo는 점술(divination)로 trick을 추적해 내고*, Hermes는 잡힌 자리에서 *부인하지 않아요*. Zeus 앞에서 *기지(craft)로 협상*하고 거문고(lyre)를 건네 정당한 교환자가 됩니다. **frame이 *영구 은폐*되었다면 거문고는 없었어요.** Hyde가 trickster를 *"발자국이 결국 읽히는 자리에 자기를 두는 자"*로 읽는 이유. 완전 cage(*1984*)와 갈리는 자리예요 — *1984*에는 Apollo도, Zeus도, 거문고도 없어요. (PDF Trickster Engine, Mechanic 2: Boundary Crossing & Context)
+**다:** Lewis Hyde의 *Trickster Makes This World*(1998)는 한 단계 더 가요. trickster는 발자국을 지우는 자가 아니에요. *발자국이 결국 읽히는 자리에 자기를 두는 자*예요.[^2a] 들킬 걸 알면서 길을 내는 거죠. 그래서 잡혀도 무너지지 않아요 — 들킨 자리에서 *협상*을 시작하니까. *1984*에는 그 *결국 읽힘*이 없어요. 그래서 cage예요.
 
 **세:** 자장의 한 줄로 압축하면 — *환상은 부수는 게 아니라 알리는 것이다.* 부수면 빈 자리에 다른 환상이 들어와요(4장). 알리면 frame 위에서 *함께 짓는* 동작이 시작돼요(6장 이후).
 
-**다:** Roger Caillois가 *Les Jeux et les Hommes*(1958)에서 놀이의 4 유형을 말했죠. 5장의 hub 위치는 그 4 유형의 *경첩*이에요. cage 1-4는 *MIMICRY+ALEA*(운명-가장) 또는 *AGON+ILINX*(경쟁-광기) — Forbidden 결합. nest 6-9는 *MIMICRY+ILINX*(자기 변형) 또는 *AGON+ALEA*(결과 인정) — Fundamental 결합. 5장은 *MIMICRY 한 항을 유지*하면서 ALEA를 ILINX로 바꾸는 *전환 동작 그 자체*예요. 사람이 아니라 *동작*이 5장의 주인공이에요.[^2]
+**다:** Roger Caillois가 놀이를 네 종류로 나눴어요. 새장의 결합과 둥지의 결합이 다른데,[^2] 5장은 그 둘 사이의 *경첩*이에요. 한 손은 그대로 두고 다른 한 손만 바꿔 끼는 자리. 그래서 5장의 주인공은 사람이 아니에요 — *돌리는 동작* 자체예요.
 
 **다:** 시간 4박자로 풀면 — *★멈춤*(거울에 바로 비추지 않음) → *모방*(1장의 욕망 거울을 일의 거울로 옮김) → *넘김*(frame 공개의 선을 넘음) → *매혹*(공개된 frame이 함께 짓는 도구가 됨). 5장 안에서 4박자가 한 번 회전하면, 6-9장이 같은 4박자를 각각 *고객·경쟁자·투자자·협업자*에서 다시 돕니다.
 
@@ -226,9 +226,13 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 
 ### 3.6 두 거울 마주봄 — 세 paradox가 *거울상*으로 나타나는 자리
 
-**다:** 세 paradox 모두 *거울상이 진실인가 폭력인가*의 조건부 시연이에요. *무지=힘*은 **척도가 그어진 거울** — 4장에서 *내 척도*를 거울 표면에 새긴 자만이 그 외 것을 *모를 권리*를 누리고, 척도 부재 시 거울은 모방욕망을 무차별 반사해 자기를 잃어요(엠마형). *예속=자유*는 **내 꿈을 비추는 거울** — 5장 hub에서 *내 꿈*을 거울 한가운데 박은 자는 거울 밖이 자유, 꿈 부재 시 거울 전체가 남의 꿈에 흐려져 모든 자리가 cage. *전쟁=평화 | 기술*은 **두 검이 마주보는 거울** — 기술이 거울 매개일 때 두 stakeholder의 검이 *거울 속에서만 부딪치고 빛만 교환*(7장 검은 튤립 *유리 온실*), 매개 부재 시 *물리 충돌*(1672년 헤이그 광장 De Witt 학살). 
+**다:** paradox마다 거울이 하나씩이에요. *무지=힘*은 **척도가 그어진 거울**. 4장에서 내 척도를 거울 표면에 새긴 자만이 그 밖을 *모를 권리*를 누려요. 척도가 없으면 거울은 남의 욕망을 무차별로 비춰서 자기를 잃어요 — 엠마처럼.
 
-**세:** 세 거울 모두 *조건이 명시되면 진실, 부재하면 Newspeak*예요. 그래서 5장 hub가 세 paradox가 만나는 자리 — 두 거울이 마주보면, 한 거울에 비친 *내 가치*가 다른 거울 안에서 ***우리 의미***로 비쳐요. funding이 reposition을 잡아먹지 않고, 창업자의 G와 투자자의 ROI가 한 자리에서 정렬되는 자리.[^거울쌍대]
+**세:** *예속=자유*는 **내 꿈을 비추는 거울**이에요. 5장에서 내 꿈을 거울 한가운데 박은 자는 거울 밖이 다 자유예요. 꿈이 없으면 거울 전체가 남의 꿈으로 흐려져서 — 어느 자리든 덫이 돼요.
+
+**다:** 세 번째 거울이 제일 무서워요. *전쟁=평화*는 **두 검이 마주보는 거울**이에요. 기술이 거울로 끼면 두 사람의 검이 *거울 속에서만 부딪치고 빛만 주고받아요* (7장 검은 튤립). 거울이 빠지면 — 검이 진짜 살을 베요. 1672년 헤이그 광장, De Witt 형제가 군중에게 찢긴 자리.
+
+**세:** 세 거울 다 같은 규칙이에요 — 조건이 명시되면 진실, 빠지면 Newspeak. 그래서 5장이 세 거울이 만나는 자리예요. 두 거울이 마주보면, 한 거울 속 *내 가치*가 다른 거울 안에서 ***우리 의미***로 비쳐요. funding이 reposition을 잡아먹지 않고, 창업자의 G와 투자자의 ROI가 한 자리에서 정렬되는 자리.[^거울쌍대]
 
 → **수학 상세는 부록 9 §0** (Fenchel biconjugate·Legendre transform·shadow price·KKT·Mirror Descent). **실무 정전은 부록 4** [[Zalman_founder_investor|Zalman·Neumann 2024]] *7장 Red and the Wolf* — 두 저자(founder + investor)가 *상대 거울에 비친 자기*를 본 후 바뀐다.
 
@@ -337,8 +341,8 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 **🪞 Mirror anchor — 1↔5 (hub)**: 거울새장(욕망의 거울, *모르고* 받음) ↔ 거울둥지(일의 거울, *공개하고* 듦). **한 축 비틂** = 축은 *모드*, swap은 *욕망→일* · *숨김→공개*. Caillois MIMICRY *한 항 유지*하면서 ALEA → ILINX 전환의 *동작 그 자체*. 책 정중앙의 회전축. [bit] atomic unit = Shannon 1948. **6장의 첫 발자국**: 5장 frame 공개 → 6장 (연극둥지) 무대 진입 허가증.
 
 [^1]: Goffman, *The Presentation of Self in Everyday Life* (1959), Doubleday. 핵심: *front stage*와 *back stage*가 모두 *알려져 있을 때* 무대는 cage가 아니다. 자장 응용: 5장의 frame 공개 = Goffman의 *알려진 무대*.
-[^2]: PDF Trickster Engine — 5장 hub는 *동작 자체가 주인공*인 유일한 장. 6-9장은 인물(송 릴링·코르넬리우스·아우구스토·일연) — (가): 7장=코르넬리우스(전쟁=평화|기술), 8장=Augusto(예속=자유), 1-4장도 인물(엠마·살리나·파늘루·로빈슨). 5장만 *★멈춤→모방→넘김→매혹* 동작이 주인공. *공백이 회전축*인 이유.
-[^2a]: *Homeric Hymn to Hermes* (c. 600 BCE), lines 75-93 (소를 거꾸로 몰기 + 나뭇가지 샌들), lines 87-93 (Onchestos의 노인에게 *"오늘 본 일을 보지 못한 것으로 해 달라"*), lines 211-213 (Apollo의 점술 추적), lines 416-512 (Zeus 앞 협상 → 거문고 양도). Hyde *Trickster Makes This World* (1998), Ch.6 "Speechless Shame and Shameless Speech"는 이 trick의 *발각가능성*을 trickster 윤리의 정의 조건으로 읽는다. 자장 메모: Hermes는 *frame을 일부러 공개*한 게 아니라 *결국 읽힐 자리에 자기를 둔* 자다. *1984*에는 그 *결국*이 없다 — 그것이 cage의 정의.
+[^2]: Roger Caillois, *Les Jeux et les Hommes* (1958), 놀이 4 유형 — AGON(경쟁)·ALEA(우연)·MIMICRY(모방)·ILINX(현기증). cage 1-4 = *MIMICRY+ALEA*(운명-가장) 또는 *AGON+ILINX*(경쟁-광기) = Forbidden 결합. nest 6-9 = *MIMICRY+ILINX*(자기 변형) 또는 *AGON+ALEA*(결과 인정) = Fundamental 결합. 5장 hub = *MIMICRY 한 항을 유지*하면서 ALEA를 ILINX로 바꾸는 *전환 동작 그 자체* (한 글자 비틂). PDF Trickster Engine — 5장 hub는 *동작 자체가 주인공*인 유일한 장. 6-9장은 인물(송 릴링·코르넬리우스·아우구스토·일연) — (가): 7장=코르넬리우스(전쟁=평화|기술), 8장=Augusto(예속=자유), 1-4장도 인물(엠마·살리나·파늘루·로빈슨). 5장만 *★멈춤→모방→넘김→매혹* 동작이 주인공. *공백이 회전축*인 이유.
+[^2a]: 일화: *Homeric Hymn to Hermes* (c. 600 BCE)에서 Hermes는 Apollo의 소 50마리를 훔치며 — 소를 *거꾸로* 몰고 자기 발엔 나뭇가지 샌들을 신어 발자국을 조작하고, Onchestos의 노인에겐 *"오늘 본 일을 보지 못한 것으로 해 달라"*고 부탁한다 (lines 75-93, 87-93). 완전 은폐 시도다. 그러나 Apollo가 점술로 추적해 내고 (lines 211-213), Hermes는 잡힌 자리에서 부인하지 않고 Zeus 앞에서 *기지(craft)로 협상*해 거문고(lyre)를 건네 정당한 교환자가 된다 (lines 416-512). frame이 *영구 은폐*되었다면 거문고는 없었다. Hyde *Trickster Makes This World* (1998), Ch.6 "Speechless Shame and Shameless Speech"는 이 trick의 *발각가능성*을 trickster 윤리의 정의 조건으로 읽는다. (PDF Trickster Engine, Mechanic 2: Boundary Crossing & Context) 자장 메모: Hermes는 *frame을 일부러 공개*한 게 아니라 *결국 읽힐 자리에 자기를 둔* 자다. *1984*에는 그 *결국*이 없다 — Apollo도 Zeus도 거문고도 없다. 그것이 cage의 정의.
 [^3]: Orwell, *1984* (1949), Part 2, Chapter 7: *"Confession is not betrayal. What you say or do doesn't matter; only feelings matter. If they could make me stop loving you — that would be the real betrayal."* — 윈스턴이 줄리아에게. Part 3, Chapter 5 (101호 쥐 장면)에서 그 *진짜 배신*이 일어난다. **frame은 *사랑할 능력*에 매달려 있다** — 본 장 §1.2의 한 축 비틂(*공개 → 숨김*)이 본문 자체에 미리 명시되어 있는 자리.
 
 [^degenerate_prior]: **Calibration 식민화의 수학 정전** — `p(s | U=stab) = δ(s−s*)` 시 3 귀결: (1) `supp(p_new) ⊊ supp(p_old)` → **Cromwell 위반** (다가설 prior=0이라 어떤 likelihood도 못 살림), (2) `D_KL(p_old‖p_new) = ∞` → **비가역** (체험으로만 다시 넓힘), (3) Fubini 위반 (`s`가 더 이상 확률변수 아니고 `U`의 deterministic 함수 — *세계가 욕망의 그림자*). 사랑의 *능력*은 보존되되 *지지집합*이 한 점으로 봉박힘 = **degenerate prior**. *1984* 윈스턴 *He loved Big Brother*가 이 메커니즘의 문학적 instance. CLAUDE.md Lexicon `calibration_식민화` (2026-05-14) SSOT. 자장 손글씨 노트 (2026-05-18): *"윈스턴 마지막 상태 = degenerate prior · p(world|U=loyalty→BB) = δ(world=BB-with-data) · 지지집합이 한 점으로 줄음 · entropy=0 · 타가설 prior=0이라 모든 모순증거 무력화."* Cromwell rule (1650): *"think it possible you may be mistaken."*
