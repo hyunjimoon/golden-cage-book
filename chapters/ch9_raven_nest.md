@@ -49,26 +49,26 @@ building on [[4⏱️_시계새장]]
 ![](diagrams/panel_ch8_새둥지.png){width=85%}
 
 # CHAPTER 9 — 까마귀 둥지 · **의미를 만들어라**
-*이름을 다시 짓고 규칙을 다시 매혹시킨다 — 부수: **넘기고 혼동시키며 태어나는 의미***
+*이름을 다시 짓는다. 규칙을 다시 매혹시킨다. 부수: **넘기고 혼동시키며 태어나는 의미***
 
 > **이 작품은** (멈춤 → 모방 → 넘김 → 매혹)
 > · **멈춤** — 일연은 정사(正史)가 빠뜨린 자리 앞에서 손을 멈춘다.
 > · **모방** — 김부식의 형식을 부수지 않고 *옆에* 그대로 둔다.
 > · **넘김** — *正*을 *遺*로 한 글자 비튼다(三國正事→三國遺事).
-> · **매혹** — 사라진 자들이 옆자리에 도착하고, 다음 사람이 그 이름을 이어받는다.
+> · **매혹** — 사라진 자들이 옆자리에 도착한다. 다음 사람이 그 이름을 이어받는다.
 
-> **이 장의 공식**: 부수기만 한 자는 trickster가 아니다 — *disrupt하고 다시 매혹시키기까지가 책임이다.*
-> **멈춤 → 비틂 → 매혹**: 정사 앞에서 멈춤 → *正 → 遺* (*Bailey → Douglass*) → 사라진 자들이 옆자리에 도착한다.
+> **이 장의 공식**: 부수기만 한 자는 trickster가 아니다. 부수고 다시 매혹시키기까지가 책임이다.
+> **멈춤 → 비틂 → 매혹**: 정사 앞에서 멈춘다 → *正 → 遺* (*Bailey → Douglass*) → 사라진 자들이 옆자리에 도착한다.
 
-> **거울 (1↔9) ouroboros mirror**: 1장 거울새장(빌린 욕망에 먹힘)과 9장 까마귀둥지(다음 trickster를 비춤). *같은 메타포, 두 모드.* 책의 시작과 끝이 *거울*로 봉합. **책은 닫히지 않는다.**
+> **거울 (1↔9) ouroboros mirror**: 1장 거울새장은 빌린 욕망에 먹혔다. 9장 까마귀둥지는 다음 trickster를 비춘다. *같은 메타포, 두 모드.* 책의 시작과 끝이 거울로 봉합된다. **책은 닫히지 않는다.**
 
-> **거울 (4↔9)**: 4장 작란(*놀이로 경계 흔들기*) → 9장 작란의 *이름을 짓는 것*까지. 시계를 부순 자가 *다시 명명*하지 않으면, 부순 자리에 새 시계가 놓인다.
+> **거울 (4↔9)**: 4장은 작란으로 경계를 흔들었다. 9장은 그 자리에 이름을 짓는다. 부순 자가 다시 명명하지 않으면, 그 자리에 새 시계가 놓인다.
 
 ## 1. ★멈춤 — 공백 만들어 보기
 
 ### 1.1 내 — "부수기만 한 적 있는가"  *(★멈춤 — 정사 앞 hesitation)*
 
-**세다:** 마지막 장이에요. 질문 하나로 열게요. 살면서 — *부수기만 하고 다시 매혹시키지 않은* 적 있으세요? 누군가의 확신을 흔들어놓고 그 자리를 비워둔 적.
+**세다:** 마지막 장이에요. 질문 하나로 엽니다. *부수기만 하고 다시 매혹시키지 않은* 적 있으세요? 누군가의 확신을 흔들어놓고 그 자리를 비워둔 적. 부수는 건 쉬워요. 부순 자리를 비워두면 그게 폭력이 돼요.
 
 **세다:** *(잠시 멈추고)* …있어요. 후배 한 명이 자기 사업 아이디어를 가져왔는데, 제가 *빈틈만 짚어줬어요.* 다 맞는 지적이었어요. 그런데 후배가 며칠 뒤에 그만뒀어요. *부순 자리에 — 제가 다음 이름을 같이 지어주지 않은 거예요.*
 
@@ -398,10 +398,10 @@ building on [[4⏱️_시계새장]]
 
 [^Foucault67_8]: Michel Foucault, *Des Espaces Autres* (1967). 6 원칙 중 *heterochrony* — 다른 시간들이 한 자리에 수집되는 헤테로토피아. 박물관·도서관과 동형. *유사*가 *책의 형식*으로 이 작동을 짠 정확한 instance — 단군·향가·처용이 *한 책장*에 수집되어 *서로의 의미를 다시 매기는* 자리.
 
-[^Douglass_PDF]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Step 3 Applied: Boundary Crossing & Identity". Douglass가 4번 이름을 바꾼 4 자리 (Maryland·New England·Scotland) — 마지막 *Douglass*는 월터 스콧 *Lady of the Lake* (1810)의 *James of Douglas*에서. *Reclaiming patrimony* (도둑맞은 patrimony를 되찾기 위해 싸우는 영웅의 이름).
+[^Douglass_PDF]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Step 3 Applied: Boundary Crossing & Identity". Douglass가 4번 이름을 바꾼 4 자리 (Maryland·New England·Scotland) — 마지막 *Douglass*는 월터 스콧 *Lady of the Lake* (1810)의 *James of Douglas*에서 *l* 한 자를 더해 *Douglass*로. <!-- TODO: Douglas→Douglass 철자 1차출처 --> *Reclaiming patrimony* (도둑맞은 patrimony를 되찾기 위해 싸우는 영웅의 이름).
 
 [^Trickster_Phase2]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Phase 2: Re-enchantment". *True tricksters are creators, not just destroyers.* Hermes the Inventor (Lyre 발명, Apollo가 절도 용서) · Douglass the Orator (*America's Orator*, *imagines an America… had to be created*). 9장 manifesto *부수고, 새 이름까지 지어라*의 학자 anchor.
 
 [^tools_flow]: *함께 짓기 세 도구* (찰리 SCALE 시퀀스) — **collaborate**(공급·채널·기술 파트너; *risk*: 파이 나눔·관리 복잡도) → **acculturate**(문화=접착제, 매일 강화로 엔트로피 저항; *risk*: 파편화, "아무도 안 볼 때"가 가장 어려움) → **processify**(Hammer: owner·customer·metrics, "최악은 무프로세스"). 안정 후에야 **automate**(*premature automation = 이해 없는 외주*, ERP="회사에 콘크리트 붓기") → **professionalize**(generalist→specialist; *risk*: 사일로·문화 균열). 학문 호응: clarity problem — *같은 약속을 같은 의미로* (Blader et al. 2020 Lean Management 사례, clarity 깨지면 좋은 의도도 균형을 부숨) + Gibbons25 visible hand under non-integration (상세 부록 4).
 
-[^카뱅]: 카카오뱅크 2017년 7월 출범. 첫 *2일 만에* 가입 100만, *2개월 만에* 캐릭터 체크카드(라이언·어피치) 100만 장. 카톡 4천만+ MAU 친구 관계망 위에 송금을 *옆자리*로 끼워넣은 *Phase 2 Re-enchantment* — 한국에서 *은행*이라는 단어의 의미가 바뀐 instance.
+[^카뱅]: 카카오뱅크 2017년 7월 출범. *5일 만에* 가입 100만, *2개월 만에* 캐릭터 체크카드(라이언·어피치) 100만 장. 카톡 4천만+ MAU 친구 관계망 위에 송금을 *옆자리*로 끼워넣은 *Phase 2 Re-enchantment* — 한국에서 *은행*이라는 단어의 의미가 바뀐 instance.

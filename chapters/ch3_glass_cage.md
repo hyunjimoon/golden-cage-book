@@ -7,14 +7,14 @@ modified:
   - 2026-05-16
   - 2026-05-30T10:45:40+09:00
 schema_version: v1.0
-coordinate: cage · 3장 · §1-4 · 3↔8
+coordinate: cage · 3장 · §1-4 · 3↔7
 atomic_unit: "[cell]"
 cc_owner: cc-pair-c
-mirror_anchor: ↔ 8🌫️_안개둥지 (산업 단위 CC1 감사 대기)
+mirror_anchor: ↔ 7🌷_튤립둥지 (생체, 신념↔경쟁자)
 ---
 
 > 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §2 calibration slider 단락 *입으로 읊어* — *"calibration에 대한 확신도 calibration 대상"* 한 문장이 두 번째 호흡에 깨지지 않는지 확인
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·3장·3↔8·[cell] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 8🌫️ 안개둥지_
+> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·3장·3↔7·[cell] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 7🌷 튤립둥지_
 
 ## 🗺️ 양탄자 — 💒 3 스테인드글라스새장 · 페스트 [cell]
 
@@ -24,8 +24,8 @@ mirror_anchor: ↔ 8🌫️_안개둥지 (산업 단위 CC1 감사 대기)
 (정치) 1947 알제리·전후         (학문) Weber 책임윤리
 홀로코스트 후 신학 위기        신념윤리 긴장
         ╲                    ╱
-          ━━ "투명한 벽이
-              가장 단단하다.
+          ━━ "가장 단단한 벽은
+              가장 투명한 벽이다.
               확신을 교정하라." ━━
         ╱                    ╲
 (문학) 알레고리 정점            (산업) ✗ Theranos·황우석
@@ -38,8 +38,8 @@ mirror_anchor: ↔ 8🌫️_안개둥지 (산업 단위 CC1 감사 대기)
 # CHAPTER 3 — 스테인드글라스 새장
 *빌린 확신에서 내 신념으로*
 
-> **이 장의 공식**: 확신이 검증을 넘으면 — 그 간극이 빚이 된다.
-> 모방→위안→붕괴→선택: 신학 templates 답습 → "역병은 신의 벌이다" → 아이의 죽음 (확신이 깨졌지만 수정 않는다) → 재융자할 것인가, 청산할 것인가?
+> **이 장의 공식**: 확신이 검증을 앞지르면, 그 간극이 빚이 된다. 못 갚으면 무너진다.
+> 모방→위안→붕괴→선택: 빌린 신학을 답습한다 → "역병은 신의 벌이다" → 아이가 죽는다(확신이 깨졌는데도 고치지 않는다) → 재융자할 것인가, 청산할 것인가.
 
 > ⚡ *새장 정방향 3단계 (모방→붕괴→선택, 문 열림): 1.감각(모방) → 2.생각(붕괴) → 3.혁신(선택). 둥지(2차소통/)와 3단계 거울. SSOT [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/🌙〰️달밀당_가치제안]] §1b.*
 
@@ -299,7 +299,7 @@ mirror_anchor: ↔ 8🌫️_안개둥지 (산업 단위 CC1 감사 대기)
 | 2026-05-09 | v1.3 | RSRS form · 베버 위계 추가 (책임윤리 default + 1% 신념윤리) |
 | 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
 | **2026-05-16 (pm)** | **v2.1 ★ ★ 오늘 활성 paired cage** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror paragraph anchor (3↔7).** |
-| 2026-08-15 | v2.2 | (계획) **8장 paired** §1 hook과 mirror 정합 (3↔7 → **3↔8**, 9장 구조 반영 — 94구조 §3c 참조: *위계의 신학 → 대면의 윤리 / 위탁 → 인계*. Bayesian calibration anchor는 2↔7로 이동; 3↔8의 새 anchor = Ricœur idem-ipse · Hyde Crucial Third Position · Weber 책임윤리). 7장 De Witt는 2↔7 영역으로 이전 — 본 장 §3 anchor 별도 재설계 필요. |
+| 2026-08-15 | v2.2 | (계획) **7장 paired** §1 hook과 mirror 정합 (3↔7 [cell] 정전 고정 — 신념↔경쟁자, De Witt 학살 1672 §1 hook이 본 장 confidence 빚의 paired 광경). Weber 책임윤리(3장) ↔ Bayesian calibration + Gibbons clarity-naming-framing(7장) anchor 유지. |
 
 **🪞 Mirror anchor — 3↔7**: 유리새장(파늘루·리외, *이분법* — 100% 신념 vs 100% 회의) ↔ 튤립둥지(윈스턴↔BB·De Witt, *분포*). **한 글자 비틂** = *이분법 → 분포*. Caillois Forbidden(AGON+ILINX 경쟁-광기) → Fundamental(AGON+ALEA 결과 인정). Weber 책임윤리(3장) ↔ Bayesian calibration + Gibbons clarity-naming-framing(7장). [cell] atomic unit = Schleiden-Schwann 1838-39. ★ **오늘 활성 mirror pair** (cc-pair-c) — 7장 De Witt 학살(1672) §1 hook이 3장 confidence 빚의 paired 광경.
 
