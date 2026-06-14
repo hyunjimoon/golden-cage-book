@@ -55,7 +55,11 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 # CHAPTER 5 — 거울 둥지 · **무지=힘** (frame이 공개되면 진실)
 *욕망의 거울에서, 일의 거울로*
 
-![회전축의 기하 — 수축(고통=비틀림) → ★멈춤(101호) → 거울상 팽창(둥지).](00_geo_수축팽창_거울.png){width=13cm}
+![회전축의 기하 — 수축(고통=비틀림) → ★멈춤(101호) → 거울상 팽창(둥지).](diagrams/00_geo_수축팽창_거울.png){width=13cm}
+
+![회전축의 ★멈춤 — 101호, 빚을 쓰는 자리이자 갚는 자리.](diagrams/05_panel_회전축멈춤_101호.png){width=13cm}
+
+![새장과 둥지, 같은 골격의 두 얼굴.](diagrams/05_slide_새장둥지대비.png){width=14cm}
 
 > **Q. What do you desire?**
 > 다: ……진짜 내가 원하는 것. 남이 심어준 게 아닌 것. 하나만.
@@ -167,7 +171,17 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 
 **세:** 지금까지의 5장을 한 그림으로 압축할게요. 이 책의 학술 원본(*Golden Cage* thesis)의 Figure 1이에요.
 
-![[diagram_05b_calibration.png]]
+![보정된 벤처 — 열망과 약속 사이에 시뮬레이션 루프가 궤도를 고친다(calibration).](diagrams/00_panel_calibration_궤도수정.png){width=14cm}
+
+![빚의 청사진 — Debt = U(desire) − φ(belief).](diagrams/05_slide_듀얼펑션DNA_Debt식.png){width=14cm}
+
+![프로메테우스와 에피메테우스 — 앞서 줌과 뒤늦게 받음의 이중나선.](diagrams/05_panel_듀얼펑션_DNA.png){width=13cm}
+
+![죽음의 계곡 U-곡선 — 그 바닥이 101호다.](diagrams/05_slide_죽음의계곡_101호.png){width=14cm}
+
+![예속이 곧 자유 — 등껍질이 양탄자가 되는 초연함(U⊥s, 빚=0).](diagrams/00_poster_거북이등껍질_초연함의자유.png){width=12cm}
+
+![읽으면 굴레, 짜면 자유 — 龜卜 균열의 거울 두 폭.](diagrams/00_poster_龜卜양탄자_읽다짜다거울.png){width=13cm}
 
 **세:** 위 화살표가 *보정 안 된 벤처*예요 — *열망하고 → 약속하고 → 성공하거나 실패한다.* 사이에 아무것도 없어요. 시뮬레이션이 없어요. 1-4장 새장의 궤적이에요. 엠마도 살리나도 파늘루도 로빈슨도 — *약속부터* 했어요.
 

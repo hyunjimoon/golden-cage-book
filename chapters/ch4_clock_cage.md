@@ -35,7 +35,7 @@ mirror_anchor: ↔ 9🐦‍⬛_까마귀둥지 (에너지, 척도↔협업자)
 # CHAPTER 4 — 시계 새장
 *빌린 질서에서 내 질서로*
 
-![초[second]의 감옥 — 시계가 정확할수록 멀어지는 파도 소리.](04_slide_초의감옥_second.png){width=14cm}
+![초[second]의 감옥 — 시계가 정확할수록 멀어지는 파도 소리.](diagrams/04_slide_초의감옥_second.png){width=14cm}
 
 *째깍. 째깍. 시계가 정확할수록 파도 소리가 멀어진다.*
 
