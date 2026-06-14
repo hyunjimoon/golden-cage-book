@@ -31,7 +31,6 @@ mirror_anchor: ↔ 7🌷_튤립둥지 (생체, 신념↔경쟁자)
 ```
 
 ---
-![](diagrams/panel_ch3_유리새장.png){width=85%}
 
 # CHAPTER 3 — 스테인드글라스 새장
 *빌린 확신에서 내 신념으로*

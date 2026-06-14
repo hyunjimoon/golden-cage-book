@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>황금새장을열다 — 1~10장 평가 + b2o 발판</title>
+<style>
+  :root{ --bit:#2E6FB7; --atom:#2E8B57; --cell:#C0392B; --sec:#D4A017; --ink:#2b2b2b; --paper:#F6EFD9; }
+  body{ background:var(--paper); color:var(--ink); font-family:"Helvetica Neue",sans-serif; margin:0; padding:32px 40px; }
+  h1{ font-size:20px; letter-spacing:.5px; border-bottom:1.5px solid var(--ink); padding-bottom:8px; }
+  .sub{ color:#6b6b6b; font-size:12px; margin:-4px 0 24px; }
+  .row{ display:flex; align-items:center; margin:5px 0; font-size:13px; }
+  .lab{ width:210px; font-weight:600; }
+  .lab small{ font-weight:400; color:#777; }
+  .bar{ height:20px; border-radius:2px; position:relative; transition:width .3s; }
+  .val{ margin-left:8px; font-variant-numeric:tabular-nums; font-size:12px; }
+  .cage{ opacity:.55; } /* cage = 차갑게 = 흐리게 */
+  .legend{ font-size:11px; color:#555; margin:18px 0; }
+  .legend span{ display:inline-block; margin-right:14px; }
+  .chip{ display:inline-block; width:11px; height:11px; border-radius:2px; vertical-align:middle; margin-right:4px; }
+  table{ border-collapse:collapse; margin-top:28px; font-size:11.5px; }
+  th,td{ border:1px solid #cbb; padding:5px 8px; text-align:center; }
+  th{ background:#ece2c5; font-weight:600; }
+  td.ch{ text-align:left; font-weight:600; white-space:nowrap; }
+  .ok{ background:#dff0d8; } .warn{ background:#fce8c8; } .bad{ background:#f6c9c0; font-weight:700; }
+  .note{ margin-top:26px; font-size:12.5px; line-height:1.7; background:#fff8e7; border-left:3px solid var(--cell); padding:12px 16px; }
+  .gridw{ font-size:10px; color:#999; }
+  axis{ }
+</style>
+</head>
+<body>
+<h1>황금새장을열다 · 1~10장 품질 평가 + b2o 발판</h1>
+<div class="sub">근거 = 2026-06 정리 전 본문 5렌즈 평가 + 작가 평가 스냅샷 (audit·원칙 작업메모는 공유본에서 삭제) · 색=atomic unit · 흐림=cage(차갑게) · 점수=종합(0–100)</div>
+
+<!-- composite bars -->
+<div id="bars"></div>
+
+<div class="legend">
+  <span><i class="chip" style="background:#2E6FB7"></i>bit</span>
+  <span><i class="chip" style="background:#2E8B57"></i>atom</span>
+  <span><i class="chip" style="background:#C0392B"></i>cell</span>
+  <span><i class="chip" style="background:#D4A017"></i>second</span>
+  <span>· 흐린 막대 = cage(1–4) · 진한 막대 = hub/nest</span>
+</div>
+
+<!-- 5-lens heatmap -->
+<table>
+  <tr><th>장</th><th>작품정합</th><th>거울·비틂</th><th>다세 SBC</th><th>접근성<br><span class="gridw">(↔과적재)</span></th><th>완성도</th><th>종합</th></tr>
+  <tbody id="heat"></tbody>
+</table>
+
+<div class="note">
+<b>🔴 병목 진단 (b2o 발판)</b><br>
+① <b>접근성 = 해독비용</b> — 7튤립(PLoT·Bayesian·Caillois·Foucault 4개념 동시 + 17각주)·9까마귀(Gibbons+Coase+지롱 동시)에서 최저. 작가 평가 3인(뒤마·일연·카뮈)이 공통 지적: <i>개념 과적재로 장면(작품 결)이 묻힌다</i>. 개념 단순화(simpler) 필요 지점과 일치.<br>
+② <b>완성도</b> — 10장 close(124줄, 산업사례·철학 anchor 부재, 자전 의존)·8장 안개(메디치 역설계 체험 = 책 핵심 소통능력인데 약속만, 미구현).<br>
+③ <b>cross-cutting</b> — nest 4장 동사가 전부 한자어(역이용하라·생각하라·넘어라·만들어라) → 고유어 동사(Saxon finish) 필요. cage 동사(펴라·타라·피워라)와 결 불일치.
+</div>
+
+<script>
+const D=[
+ {n:"1 거울새장",u:"bit",cage:1, s:[5,5,5,4,5]},
+ {n:"2 망원경새장",u:"atom",cage:1, s:[4.5,4.5,5,4,4.5]},
+ {n:"3 스테인드글라스",u:"cell",cage:1, s:[5,4.5,4.5,3.5,4.5]},
+ {n:"4 시계새장",u:"sec",cage:1, s:[4.5,4.5,4.5,3.5,4]},
+ {n:"★5 거울둥지(hub)",u:"bit",cage:0, s:[5,5,4.5,4.5,5]},
+ {n:"6 나비둥지",u:"bit",cage:0, s:[4.5,5,4.5,3.5,4.5]},
+ {n:"7 튤립둥지",u:"cell",cage:0, s:[4.5,5,4,2.5,4]},
+ {n:"8 안개둥지",u:"atom",cage:0, s:[4.5,4.5,4.5,3,3.5]},
+ {n:"9 까마귀둥지",u:"sec",cage:0, s:[4.5,5,4,2.5,4]},
+ {n:"10 101₃(close)",u:"bit",cage:0, s:[4,4.5,4.5,4,2.5]},
+];
+const C={bit:"#2E6FB7",atom:"#2E8B57",cell:"#C0392B",sec:"#D4A017"};
+const comp=d=>Math.round(d.s.reduce((a,b)=>a+b,0)/25*100);
+// bars
+let h="";
+D.forEach(d=>{const v=comp(d);h+=`<div class="row"><div class="lab">${d.n} <small>[${d.u}]</small></div>`+
+ `<div class="bar ${d.cage?'cage':''}" style="width:${v*3.4}px;background:${C[d.u]}"></div>`+
+ `<div class="val">${v}</div></div>`;});
+document.getElementById("bars").innerHTML=h;
+// heatmap
+const cls=x=> x>=4.5?'ok':(x>=3.5?'warn':'bad');
+let t="";
+D.forEach(d=>{const v=comp(d);t+=`<tr><td class="ch">${d.n}</td>`+
+ d.s.map(x=>`<td class="${cls(x)}">${x}</td>`).join("")+
+ `<td class="${v>=90?'ok':(v>=82?'warn':'bad')}"><b>${v}</b></td></tr>`;});
+document.getElementById("heat").innerHTML=t;
+</script>
+</body>
+</html>

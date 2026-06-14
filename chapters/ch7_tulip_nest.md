@@ -44,7 +44,6 @@ active_today: true
 
 ---
 
-![](diagrams/panel_ch7_튤립둥지.png){width=85%}
 
 # CHAPTER 7 — 튤립 둥지 · **확률적으로 생각하라**
 *부수: **확률적으로 생각하는 의미***

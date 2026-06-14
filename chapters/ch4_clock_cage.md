@@ -31,7 +31,6 @@ mirror_anchor: ↔ 9🐦‍⬛_까마귀둥지 (에너지, 척도↔협업자)
 ```
 
 ---
-![](diagrams/panel_ch4_시계새장.png){width=85%}
 
 # CHAPTER 4 — 시계 새장
 *빌린 질서에서 내 질서로*

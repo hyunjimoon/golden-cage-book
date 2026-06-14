@@ -42,7 +42,6 @@ Bailey→Douglass               ✓ SK Hynix·Ørsted
 
 [[시공간멜로디/On/love_편집자혜진/people/편집자한솔|편집자한솔]]
 
-![](diagrams/panel_ch8_새둥지.png){width=85%}
 
 # CHAPTER 9 — 까마귀 둥지 · **의미를 만들어라**
 *이름을 다시 짓는다. 규칙을 다시 매혹시킨다. 부수: **넘기고 혼동시키며 태어나는 의미***

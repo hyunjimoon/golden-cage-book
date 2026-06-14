@@ -30,7 +30,6 @@ mirror_anchor: ↔ 8🌫️_안개둥지 (물질, 품위↔투자자)
 ```
 
 ---
-![](diagrams/panel_ch2_망원경새장.png){width=85%}
 
 # CHAPTER 2 — 망원경 새장
 *빌린 품위에서 내 품위로*
