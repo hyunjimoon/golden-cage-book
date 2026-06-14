@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>황금새장을 열다 — 참고자료</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --bg:#0e1320; --card:#1a2238; --card-2:#232c47; --border:rgba(255,255,255,0.08);
+    --text:#f0f2f5; --text-2:#b8c2d4; --dim:#7c8aa8; --gold:#c5a55a; --gold-soft:rgba(197,165,90,0.18);
+    --done:#4ade80; --warn:#fbbf24;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);
+    font-size:14px;line-height:1.7;padding:32px 24px 80px;max-width:1180px;margin:0 auto;-webkit-font-smoothing:antialiased;}
+  .hero{text-align:center;padding:40px 20px 28px;margin-bottom:24px;border-bottom:1px solid var(--border);}
+  .hero h1{font-family:'Noto Serif KR',serif;font-size:32px;font-weight:700;color:var(--gold);letter-spacing:-1px;margin-bottom:10px;}
+  .hero .sub{font-size:13px;color:var(--dim);}
+  .hero .back{display:inline-block;margin-top:14px;color:var(--text-2);text-decoration:none;font-size:12px;border-bottom:1px solid var(--border);}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;}
+  .tab{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text-2);
+    cursor:pointer;font-size:13px;transition:all .18s;}
+  .tab:hover{background:var(--card-2);}
+  .tab.active{background:var(--gold-soft);border-color:var(--gold);color:var(--gold);font-weight:500;}
+  .search{margin-left:auto;background:var(--card);border:1px solid var(--border);border-radius:8px;
+    padding:8px 12px;color:var(--text);font-size:13px;min-width:200px;font-family:inherit;}
+  .search::placeholder{color:var(--dim);}
+  .count{font-size:12px;color:var(--dim);margin-bottom:10px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{text-align:left;padding:9px 10px;color:var(--dim);font-weight:500;font-size:12px;
+    border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;background:var(--bg);}
+  thead th:hover{color:var(--text-2);}
+  thead th .arr{opacity:.5;font-size:10px;}
+  tbody td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;}
+  tbody tr:hover{background:rgba(255,255,255,0.025);}
+  .grouphdr td{background:var(--card);color:var(--gold);font-weight:600;font-size:13px;padding:11px 10px;
+    font-family:'Noto Serif KR',serif;border-bottom:1px solid var(--border);}
+  .chip{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:500;white-space:nowrap;}
+  .chap-link{color:var(--text);text-decoration:none;border-bottom:1px solid rgba(197,165,90,0.3);}
+  .chap-link:hover{color:var(--gold);}
+  .work{color:var(--dim);font-size:12px;font-style:italic;}
+  .st-ok{color:var(--done);} .st-warn{color:var(--warn);}
+  .appx{color:var(--dim);font-size:12px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
+  .pcard{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--text);transition:all .18s;}
+  .pcard:hover{transform:translateY(-2px);border-color:var(--gold-soft);}
+  .pcard img{width:100%;height:200px;object-fit:cover;display:block;background:var(--card-2);}
+  .pcard .meta{padding:9px 11px;}
+  .pcard .t{font-size:12px;font-weight:500;line-height:1.4;}
+  .pcard .a{font-size:11px;color:var(--dim);margin-top:3px;}
+  .hidden{display:none;}
+  /* 장 색상 */
+  .c1{background:rgba(200,104,138,.18);color:#e89ab3;} .c2{background:rgba(196,176,106,.18);color:#d9c884;}
+  .c3{background:rgba(92,196,167,.18);color:#86d9c0;} .c4{background:rgba(108,196,200,.18);color:#96d9dc;}
+  .c5{background:rgba(244,212,60,.18);color:#f4d96b;} .c6{background:rgba(156,181,107,.18);color:#bcd089;}
+  .c7{background:rgba(93,125,168,.20);color:#9ab3d9;} .c8{background:rgba(232,132,60,.18);color:#f0a96b;}
+  .c9{background:rgba(92,196,167,.16);color:#86d9c0;} .c10{background:rgba(197,165,90,.20);color:#d9c489;}
+  .c14,.c15{background:rgba(124,138,168,.18);color:#b8c2d4;}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>참고자료 — 한 눈에</h1>
+    <div class="sub">『황금새장을 열다』가 빚진 모든 목소리 · <span id="total"></span></div>
+    <a class="back" href="../index.html">← 책으로 돌아가기</a>
+  </div>
+  <div class="controls">
+    <div class="tabs">
+      <div class="tab active" data-view="chapter">장별</div>
+      <div class="tab" data-view="author">저자별</div>
+      <div class="tab" data-view="category">분류별</div>
+      <div class="tab" data-view="check">검증필요</div>
+      <div class="tab" data-view="cover">표지</div>
+    </div>
+    <input class="search" id="q" placeholder="저자·작품 검색…">
+  </div>
+  <div class="count" id="count"></div>
+  <div id="out"></div>
+
+<script>
+const DATA = [{"ch": 8, "chapter_label": "8장", "appendix": "부록4", "author": "Marcus Aurelius", "author_ko": "마르쿠스 아우렐리우스", "work": "τὰ εἰς ἑαυτόν (Meditations)", "year": 180, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/211529-L.jpg"}, {"ch": 15, "chapter_label": "부록5", "appendix": "", "author": "J.L. Austin", "author_ko": "존 랭쇼 오스틴", "work": "How to Do Things with Words", "year": 1962, "category": "언어학anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/997348-L.jpg"}, {"ch": 2, "chapter_label": "2·8장", "appendix": "부록4", "author": "Pierre Bourdieu", "author_ko": "피에르 부르디외", "work": "La Distinction · Le Sens pratique", "year": 1979, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/983819-L.jpg"}, {"ch": 4, "chapter_label": "4장", "appendix": "", "author": "Jasper J. Brinkerink", "author_ko": "야스퍼 브링커링크", "work": "Negative and Positive Capability in Founder Behaviour", "year": 2025, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 5, "chapter_label": "3·5·7장", "appendix": "부록5", "author": "Roger Caillois", "author_ko": "로제 카유아", "work": "Les Jeux et les Hommes", "year": 1958, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/10099340-L.jpg"}, {"ch": 3, "chapter_label": "3장", "appendix": "부록1·부록4", "author": "Albert Camus", "author_ko": "알베르 카뮈", "work": "La Peste", "year": 1947, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/267_페스트-300x511.jpg"}, {"ch": 15, "chapter_label": "부록5", "appendix": "", "author": "Gregory N. Carlson", "author_ko": "그레고리 칼슨", "work": "Reference to Kinds in English (PhD dissertation)", "year": 1977, "category": "언어학anchor", "status": "확정", "cover": "x/Images/icons/ref_manuscript.svg"}, {"ch": 2, "chapter_label": "2장", "appendix": "부록2·부록3·부록4", "author": "Carl von Clausewitz", "author_ko": "카를 폰 클라우제비츠", "work": "Vom Kriege", "year": 1832, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/9933109-L.jpg"}, {"ch": 4, "chapter_label": "4장", "appendix": "부록4", "author": "Daniel Defoe", "author_ko": "대니얼 디포", "work": "Robinson Crusoe", "year": 1719, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/368541-L.jpg"}, {"ch": 9, "chapter_label": "3·9장", "appendix": "부록3·부록4", "author": "Frederick Douglass", "author_ko": "프레더릭 더글러스", "work": "Narrative of the Life of Frederick Douglass, an American Slave", "year": 1845, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/8247724-L.jpg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "", "author": "Angela Duckworth", "author_ko": "앤절라 더크워스", "work": "Grit: The Power of Passion and Perseverance", "year": 2016, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/7438753-L.jpg"}, {"ch": 7, "chapter_label": "5·6·7·9장", "appendix": "부록3", "author": "Alexandre Dumas", "author_ko": "알렉상드르 뒤마", "work": "La Tulipe noire", "year": 1850, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/268_검은-튤립-300x511.jpg"}, {"ch": 1, "chapter_label": "1장", "appendix": "부록4", "author": "Gustave Flaubert", "author_ko": "귀스타브 플로베르", "work": "Madame Bovary", "year": 1857, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/036_마담-보바리-300x505.jpg"}, {"ch": 9, "chapter_label": "3·9장", "appendix": "부록4", "author": "Robert Gibbons", "author_ko": "로버트 기번스", "work": "From Coase to Culture? Visible Hands Build Equilibria", "year": 2025, "category": "학자anchor", "status": "검증필요", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 1, "chapter_label": "1장", "appendix": "부록4", "author": "René Girard", "author_ko": "르네 지라르", "work": "Mensonge romantique et vérité romanesque", "year": 1961, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/6484276-L.jpg"}, {"ch": 6, "chapter_label": "5·6·9장", "appendix": "부록4", "author": "Erving Goffman", "author_ko": "어빙 고프먼", "work": "The Presentation of Self in Everyday Life", "year": 1959, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/6553478-L.jpg"}, {"ch": 9, "chapter_label": "9장", "appendix": "부록4", "author": "Stephen Jay Gould · Richard Lewontin", "author_ko": "굴드·르원틴", "work": "The Spandrels of San Marco and the Panglossian Paradigm", "year": 1979, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 5, "chapter_label": "5·10장", "appendix": "", "author": "Anthony Greenwald", "author_ko": "앤서니 그린월드", "work": "The Totalitarian Ego — Fabrication and Revision of Personal History", "year": 1980, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 15, "chapter_label": "부록5", "appendix": "", "author": "H. Paul Grice", "author_ko": "허버트 폴 그라이스", "work": "Logic and Conversation (in Syntax and Semantics 3)", "year": 1975, "category": "언어학anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "", "author": "Yuval Noah Harari", "author_ko": "유발 노아 하라리", "work": "Nexus", "year": 2024, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/14812834-L.jpg"}, {"ch": 5, "chapter_label": "5·9장", "appendix": "부록4·부록5", "author": "Anonymous (Homeric Hymn)", "author_ko": "호메로스 찬가", "work": "Ὁμηρικοὶ Ὕμνοι · 헤르메스에게", "year": 600, "category": "1차자료", "status": "확정", "cover": "x/Images/icons/ref_manuscript.svg"}, {"ch": 6, "chapter_label": "5·6·7장", "appendix": "부록3·부록4", "author": "David Henry Hwang", "author_ko": "데이비드 헨리 황", "work": "M. Butterfly", "year": 1988, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/4064349-L.jpg"}, {"ch": 9, "chapter_label": "5·6·7·8·9장", "appendix": "부록3·부록4", "author": "Lewis Hyde", "author_ko": "루이스 하이드", "work": "Trickster Makes This World", "year": 1998, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/223529-L.jpg"}, {"ch": 7, "chapter_label": "7장", "appendix": "부록4", "author": "Daniel Kahneman · Amos Tversky", "author_ko": "카너먼·트버스키", "work": "Prospect Theory: An Analysis of Decision under Risk", "year": 1979, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 9, "chapter_label": "9장", "appendix": "부록4", "author": "John Keats", "author_ko": "존 키츠", "work": "Letter to George and Tom Keats (Dec. 21, 1817)", "year": 1817, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_manuscript.svg"}, {"ch": 5, "chapter_label": "5장", "appendix": "부록3·부록4", "author": "Stefan Klein", "author_ko": "슈테판 클라인", "work": "Wie wir die Welt verändern", "year": 2024, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_book.svg"}, {"ch": 15, "chapter_label": "부록5", "appendix": "", "author": "Angelika Kratzer", "author_ko": "안젤리카 크라처", "work": "The Notional Category of Modality", "year": 1981, "category": "언어학anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 2, "chapter_label": "2·4·5·8장", "appendix": "부록3·부록4", "author": "Giuseppe Tomasi di Lampedusa", "author_ko": "주세페 토마시 디 람페두사", "work": "Il Gattopardo", "year": 1958, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/452_표범_표지띠지4-3-300x511.jpg"}, {"ch": 1, "chapter_label": "1장", "appendix": "부록4", "author": "Mike Maples Jr. · Peter Ziebelman", "author_ko": "마이크 메이플스", "work": "Pattern Breakers", "year": 2024, "category": "현장사례", "status": "확정", "cover": "x/Images/icons/ref_book.svg"}, {"ch": 9, "chapter_label": "4·9장", "appendix": "부록4", "author": "Joel Mokyr", "author_ko": "조엘 모키르", "work": "The Lever of Riches · A Culture of Growth", "year": 1990, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/121973-L.jpg"}, {"ch": 5, "chapter_label": "1·5·7·10장", "appendix": "부록2·부록3·부록4·부록5", "author": "George Orwell", "author_ko": "조지 오웰", "work": "Nineteen Eighty-Four", "year": 1949, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/9267242-L.jpg"}, {"ch": 7, "chapter_label": "7장", "appendix": "", "author": "George Orwell", "author_ko": "조지 오웰", "work": "Animal Farm", "year": 1945, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/11261770-L.jpg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "부록5", "author": "George Orwell", "author_ko": "조지 오웰", "work": "Why I Write", "year": 1946, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/111253-L.jpg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "", "author": "Publius Ovidius Naso", "author_ko": "오비디우스", "work": "Metamorphoses", "year": 8, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/001_변신-이야기11-300x507.jpg"}, {"ch": 9, "chapter_label": "9장", "appendix": "부록4", "author": "Michael Polanyi", "author_ko": "마이클 폴라니", "work": "The Tacit Dimension", "year": 1966, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/642674-L.jpg"}, {"ch": 15, "chapter_label": "부록5", "appendix": "", "author": "Willard Van Orman Quine", "author_ko": "윌러드 밴 오먼 콰인", "work": "Elementary Logic", "year": 1941, "category": "언어학anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/413111-L.jpg"}, {"ch": 8, "chapter_label": "2·8장", "appendix": "부록3·부록4", "author": "Paul Ricœur", "author_ko": "폴 리쾨르", "work": "Soi-même comme un autre", "year": 1990, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/9262304-L.jpg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "", "author": "Carlo Rovelli", "author_ko": "카를로 로벨리", "work": "L'ordine del tempo", "year": 2017, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/8177373-L.jpg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "", "author": "Edward Sapir", "author_ko": "에드워드 사피어", "work": "The Status of Linguistics as a Science", "year": 1929, "category": "학자anchor", "status": "확정", "cover": "x/Images/icons/ref_article.svg"}, {"ch": 1, "chapter_label": "1장", "appendix": "부록4", "author": "Peter Thiel · Blake Masters", "author_ko": "피터 틸", "work": "Zero to One", "year": 2014, "category": "현장사례", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/9002334-L.jpg"}, {"ch": 4, "chapter_label": "4장", "appendix": "부록2·부록3·부록4", "author": "Michel Tournier", "author_ko": "미셸 투르니에", "work": "Vendredi ou les limbes du Pacifique", "year": 1967, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/091_방드르디태평양의끝-300x511.jpg"}, {"ch": 8, "chapter_label": "2·7·8·9장", "appendix": "부록3·부록4", "author": "Miguel de Unamuno", "author_ko": "미겔 데 우나무노", "work": "Niebla", "year": 1914, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/121_안개-300x511.jpg"}, {"ch": 3, "chapter_label": "3장", "appendix": "부록4", "author": "Max Weber", "author_ko": "막스 베버", "work": "Politik als Beruf · Wissenschaft als Beruf", "year": 1919, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/12977771-L.jpg"}, {"ch": 14, "chapter_label": "부록4", "appendix": "", "author": "Benjamin Lee Whorf", "author_ko": "벤저민 리 워프", "work": "Language, Thought, and Reality", "year": 1956, "category": "학자anchor", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/152651-L.jpg"}, {"ch": 9, "chapter_label": "7·9장", "appendix": "", "author": "Laozi (老子)", "author_ko": "노자", "work": "道德經 11장", "year": 500, "category": "1차자료", "status": "확정", "cover": "https://covers.openlibrary.org/b/id/662232-L.jpg"}, {"ch": 9, "chapter_label": "4·6·8·9장", "appendix": "부록3·부록4", "author": "Iryeon (一然)", "author_ko": "일연", "work": "三國遺事", "year": 1281, "category": "1차자료", "status": "확정", "cover": "https://minumsa.minumsa.com/wp-content/uploads/bookcover/삼국유사_표1-500x735.jpg"}];
+const CHAP_NAME = {"1": "1장 · 거울 새장", "2": "2장 · 망원경 새장", "3": "3장 · 스테인드글라스 새장", "4": "4장 · 시계 새장", "5": "5장 · 거울 둥지", "6": "6장 · 나비 둥지", "7": "7장 · 튤립 둥지", "8": "8장 · 안개 둥지", "9": "9장 · 까마귀 둥지", "10": "10장 · 101호 (에필로그)", "14": "부록4 · 연료·둥지", "15": "부록5 · 언어철학"};
+const CHAP_SLUG = {"1": "ch1_mirror_cage", "2": "ch2_telescope_cage", "3": "ch3_glass_cage", "4": "ch4_clock_cage", "5": "ch5_mirror_nest", "6": "ch6_play_nest", "7": "ch7_tulip_nest", "8": "ch8_mist_nest", "9": "ch9_raven_nest", "10": "ch10_epilogue"};
+let view = "chapter", sortKey="ch", sortDir=1, q="";
+
+const catColor = {"1차자료":"#e89ab3","학자anchor":"#9ab3d9","언어학anchor":"#bcd089","현장사례":"#f0a96b"};
+function chipFor(r){ return '<span class="chip c'+r.ch+'">'+ (r.chapter_label||'') +'</span>'; }
+function workLink(r){
+  const slug = CHAP_SLUG[r.ch];
+  const title = (r.work? r.work : r.author_ko);
+  const t = '<span class="t">'+esc(r.author_ko)+'</span> <span class="work">'+esc(r.work)+'</span>';
+  if(slug) return '<a class="chap-link" href="reader.html?file='+slug+'">'+t+'</a>';
+  return t;
+}
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function statusCell(s){ return s==='확정'? '<span class="st-ok">● 확정</span>' : '<span class="st-warn">○ '+esc(s)+'</span>'; }
+
+function filtered(){
+  let d = DATA.slice();
+  if(view==="check") d = d.filter(r=>r.status!=="확정");
+  if(q){ const k=q.toLowerCase();
+    d = d.filter(r=>(r.author_ko+r.author+r.work).toLowerCase().includes(k)); }
+  return d;
+}
+function sortRows(d){
+  d.sort((a,b)=>{
+    let x=a[sortKey], y=b[sortKey];
+    if(typeof x==='string'){x=x.toLowerCase();y=(y||'').toLowerCase();}
+    if(x<y)return -1*sortDir; if(x>y)return 1*sortDir;
+    return (a.author_ko<b.author_ko?-1:1);
+  });
+  return d;
+}
+const COLS=[["chapter_label","인용 장"],["author_ko","저자"],["work","원작"],["year","연도"],["appendix","부록"],["category","분류"],["status","상태"]];
+
+function renderTable(group){
+  let d = sortRows(filtered());
+  let h='<table><thead><tr>';
+  for(const [k,lab] of COLS){
+    const arr = sortKey===k? (sortDir>0?' ▲':' ▼'):'';
+    h+='<th data-k="'+k+'">'+lab+'<span class="arr">'+arr+'</span></th>';
+  }
+  h+='</tr></thead><tbody>';
+  if(group){
+    // group by current sortKey-independent grouping field
+    const gf = group;
+    const seen=[]; const groups={};
+    d.forEach(r=>{ const g = gf(r); if(!(g in groups)){groups[g]=[];seen.push(g);} groups[g].push(r); });
+    // group order
+    let order = seen;
+    if(view==="chapter") order = seen.sort((a,b)=>(+a)-(+b));
+    else order = seen.sort();
+    for(const g of order){
+      const label = view==="chapter" ? (CHAP_NAME[g]||(g+'장')) : g;
+      h+='<tr class="grouphdr"><td colspan="'+COLS.length+'">'+esc(label)+' <span style="color:var(--dim);font-weight:400;font-size:11px;">('+groups[g].length+')</span></td></tr>';
+      for(const r of groups[g]) h+=rowHtml(r);
+    }
+  } else {
+    for(const r of d) h+=rowHtml(r);
+  }
+  h+='</tbody></table>';
+  return h;
+}
+function rowHtml(r){
+  return '<tr>'
+    +'<td>'+chipFor(r)+'</td>'
+    +'<td>'+workLink(r)+'</td>'
+    +'<td class="work">'+esc(r.work)+'</td>'
+    +'<td>'+(r.year||'')+'</td>'
+    +'<td class="appx">'+esc(r.appendix)+'</td>'
+    +'<td><span class="chip" style="background:'+(catColor[r.category]||'#444')+'22;color:'+(catColor[r.category]||'#aaa')+'">'+esc(r.category)+'</span></td>'
+    +'<td>'+statusCell(r.status)+'</td>'
+    +'</tr>';
+}
+function renderCards(){
+  let d = sortRows(filtered());
+  let h='<div class="cards">';
+  for(const r of d){
+    const slug=CHAP_SLUG[r.ch];
+    const href = slug? 'reader.html?file='+slug : '#';
+    h+='<a class="pcard" href="'+href+'">'
+      +'<img loading="lazy" src="'+esc(r.cover)+'" alt="">'
+      +'<div class="meta"><div class="t">'+esc(r.author_ko)+'</div>'
+      +'<div class="a">'+esc(r.work)+'</div>'
+      +'<div class="a">'+chipFor(r)+'</div></div></a>';
+  }
+  h+='</div>'; return h;
+}
+function render(){
+  const out=document.getElementById('out');
+  let body;
+  if(view==="cover"){ body=renderCards(); }
+  else if(view==="chapter"){ body=renderTable(r=>r.ch); }
+  else if(view==="author"){ body=renderTable(r=>r.author_ko); }
+  else if(view==="category"){ body=renderTable(r=>r.category); }
+  else { body=renderTable(null); } // check
+  out.innerHTML=body;
+  document.getElementById('count').textContent = filtered().length+'개 표시';
+  out.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{
+    const k=th.dataset.k;
+    if(sortKey===k) sortDir*=-1; else {sortKey=k;sortDir=1;}
+    render();
+  });
+}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); view=t.dataset.view;
+  sortKey = view==="chapter"?"ch":"author_ko"; sortDir=1;
+  render();
+});
+document.getElementById('q').oninput=e=>{q=e.target.value;render();};
+document.getElementById('total').textContent = DATA.length+'개 자료';
+render();
+</script>
+</body>
+</html>
