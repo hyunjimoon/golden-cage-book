@@ -18,8 +18,6 @@ cc_owner: cc-pair-c
 mirror_anchor: ↔ 4⏱️_시계새장 (에너지, 협업자↔척도) + ↔ 5🪞🪺_거울둥지 (9→5 ouroboros 봉합)
 ---
 
-> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §1.2 일연 *유사* main 단락 cadence — *正史 → 遺事* 한 글자 비틂 + Douglass *America's Orator* 한 호흡에 동거하는지 입으로 검증
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·9장·4↔9·[second] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 4⏱️ 시계새장 · 9→5 ouroboros_
 
 [[공간화음/Thesis/business_cases/NOCS_diamond_syntax|NOCS_diamond_syntax]]
 ## 🗺️ 양탄자 — 🐦‍⬛ 9 까마귀둥지 · 삼국유사 [second]
@@ -40,8 +38,6 @@ Bailey→Douglass               ✓ SK Hynix·Ørsted
 
 ---
 [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/066 나르치스와 골드문트|066 나르치스와 골드문트]]
-책: [[공간화음/Thesis/1논문용/📜hyde_trickster_makes_world|📜hyde_trickster_makes_world]]
-building on [[4⏱️_시계새장]]
 [[공간화음/🟣철학_WHY/14_282_org_econ/Papers/📜gibbons25_coase2culture|📜gibbons25_coase2culture]]
 
 [[시공간멜로디/On/love_편집자혜진/people/편집자한솔|편집자한솔]]
@@ -324,84 +320,3 @@ building on [[4⏱️_시계새장]]
 
 > **세다의 일기**
 > 마지막 장을 *닫는* 게 아니라, *5장 hub를 다시 여는* 결말. 처음 기획안을 받았을 때 *결말이 없는 책*은 미완성으로 보였다. 두 달이 지나니 — *결말이 hub의 입구가 되는 책*이 더 정직하다는 걸 안다. 부순 자리에 다음 이름을 같이 짓는 — 그게 책임이라는 걸 9장 끝에서 다시 안다. 1장 르뢰는 그 책임을 안 졌다. 우리는 9장에서 그 책임을 진다 — 다음 사람이 와서 다시 부술 때까지. *책의 마지막 장이 hub의 손을 잡는다. 같은 매질, 다른 빛. 내 가치가 우리 의미가 되는 회로. ouroboros가 닫힌다. 끝이 시작이다.* 우리는 마지막 trickster가 아니다. 다음 사람이 온다. *다음 이름을 같이 지을 자리에 — 남아 있겠다.*
-
----
-
-## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16)
-
-> _Skin 위 *production gauge*. 본 장 = **nest 4단계 = 매혹** = ouroboros 봉합점 (9→1)._
-
-### 🎯 10원칙 적용 마커 (this chapter, [second] nest + ouroboros)
-
-| # | 원칙 | 이 장에서 무는 자리 | 현재 |
-|:-:|:--|:--|:-:|
-| ① | 🪶 한 깃털 | §1.1 Raven 빛 던지기 — *깃털이 그을려 까맣게* + 빛을 *세상 모두에게* (nest 4단계: 매혹) | ✅ |
-| ② | 🧱 Powers 벽 | 일연(*正→遺* 옆에 두기) vs 김부식(*正* 완결) §1.2 — *부수기 vs 옆에 두기*. MIMICRY+ILINX | ✅ |
-| ③ | 🥚 이미지 3조건 | *Raven + 까만 깃털 + 검은 별·해·달* — backcast(opened-cage decathlon 통과) ✅ / 반복 ✅ / 신체 ✅ | ✅ |
-| ④ | 🌋 단락 = 한 화산 | §1.1 hook *"부수기만 한 적 있는가"* — 정확함↔폭력 동거 | ✅ |
-| ⑤ | 🎯 시각·반증·유일 | 슬로건 *의미를 만들어라* — Phase 2 Re-enchantment anchor 유일성 ✅ | ✅ |
-| ⑥ | ✂️ simpler×3+haga | §1.2 *正史→遺事* 한 글자 비틂 + Douglass *Bailey→Douglass* 한 호흡 동거 | ⚠️ **오늘** |
-| ⑦ | 🎼 Saxon finish | §4 마지막 — *만들어라* (한자어 빚) | ⚠️ |
-| ⑧ | 👖 주머니 속 사물 | 일연: 인각사 붓·향가 14수 / Douglass: *Columbian Orator*·선원 신분증·*The North Star* 1호 | ✅ |
-| ⑨ | 🌌 두 번 묻기 | Gibbons25 *Coase to Culture* §2.2 — *믿는가?*(✅) *어디 있었나?*(MIT 2025) | ✅ |
-| ⑩ | 🦾 팔의 털 | 9→1 ouroboros 닫힘 단락 *"책의 마지막 장이 첫 장의 손을 잡는다"* | ✅ |
-
-### 🩺 5렌즈 audit (현재 진단)
-
-| 렌즈 | 잡는 빚 | 현재 진단 | 오늘 행동 |
-|:--|:--|:--|:--|
-| **SBC** | 캐릭터 평탄성 | 다 *"빈틈만 짚어줬어요"* confession ✅ · 세 *"정확함이 폭력"* 자각 ✅ | 다+세 공동일기 ouroboros anchor 보존 |
-| **RSRS** | 길이·anchor | ~7,500자 / Hyde Phase 2 + Gibbons25 + Foucault heterochrony 박힘 ✅ / *한 글자 비틂* 6 instance 모두 호응 | □⑥ §1.2 *正→遺* + *Bailey→Douglass* 한 단락 cadence 검증 |
-| **CARE** | 독자 동선 | Crisp ✅ / Accessible ⚠ (Gibbons25 + Coase 처음 진입) / Reader-loving ✅ / Earned ✅ ★ | §2.2 *visible hand under non-integration* 한 줄 한국어 ramp |
-| **독자 7명** | 현장 접근성 | 전문가(조직경제) ✅ / 멘토(이미 짓는 자) — *재명명 책임* ✅ / 재도전 — *다음 trickster 호명* | 박혜진 letter §9→1 ouroboros 단락 단독 발송 |
-| **전문가 3** | 문학·전략·관계 | 편집자(*正→遺* 정확성) ✅ / 경영(SK Hynix DRAM→HBM 사실) ⚠ — 부록4 sync / 출판(Douglass 인용) ✅ | SK Hynix HBM 2013 첫 출시·2024 NVIDIA 공급 부록4 sync |
-
-### 🔍 Cross-mirror paragraph anchor — 4↔9 + 9→1 ouroboros
-
-| 본 장 자리 | paired 자리 | 한 글자 비틂 |
-|:--|:--|:--|
-| §1.1 Raven 빛 던지기 (MIMICRY+ILINX) | [[4⏱️_시계새장]] §1.2 로빈슨 시계 강박 (AGON+ILINX) | *작란 → 명명* |
-| §1.2 일연 *正→遺* + Douglass *Bailey→Douglass* | [[7🌫️_안개투자자]] §1.2 *novela→nivola* | *한 글자 비틂 3 instance 연쇄* |
-| §1 결말 ouroboros 닫힘 | [[1🪞_거울새장]] §1.1 *"이건 진짜 내가 원한 거다"* | *빌린 욕망 → 다음 trickster* |
-| §3 SK Hynix·Ørsted vs BP (재명명) | [[4⏱️_시계새장]] §3 두산·생고뱅·넷플릭스 (재정의) | *재정의 → 한 글자 비틂* |
-| §4 *의미를 만들어라* | [[4⏱️_시계새장]] §4 *다음 불을 피워라* | *불 → 의미* |
-
-**🔁 9→1 ouroboros 봉합 (Marks 형식 동결)**: 본 장 §4 끝 → [[1🪞_거울새장]] §1.1로 회귀. *첫 회독*은 엠마의 눈, *재독*은 르뢰의 얼굴. **책은 닫히지 않는다** — 9 결말이 1 입구가 되는 *마지막 mirror pair*.
-
-### 🔥 오늘의 빚 (구체)
-
-> **□⑥ simpler×3+haga**: §1.2 *"일연의 *正(바를 정)*에서 *遺(남길 유)* — 한 글자 비틂"* + 그 직후 *"557년 뒤 메릴랜드... Bailey → Stanley → Johnson → Douglass... *l 한 자를 더해*"* — 1281년 한자 비틂과 1838년 영문 비틂이 *한 호흡에 동거*하는지. 두 한 글자 비틂이 *각자 입에서 분리*되어 들려야 정전.
-
----
-
-## 📜 Snapshot Timeline · 🪞 Mirror anchor
-
-> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
-
-| 날짜 | 버전 | δ delta |
-|:--|:--|:--|
-| 2026-05-02 | v1.0 | 150p · *거울둥지* 초안 |
-| 2026-05-07 | v1.2 | *거울둥지 → 새둥지(까마귀)* / 슬로건 *너의 유사를 써라 → 의미를 만들어라* |
-| 2026-05-10 | v1.4 | v3.1 메시지 + Foucault heterochrony 박힘 |
-| 2026-05-13 | v1.7 | 일연 *유사* main + Douglass 부수 + 토스·SK Hynix 박힘. *正→遺* 한 글자 비틂 정합 |
-| 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
-| **2026-05-16 (pm)** | **v2.1 ★** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror (4↔9 + 9→1 ouroboros).** |
-| **2026-06-03** | **v2.2** | **§0 4단계 블록 추가 · 장번호 4↔9·9→1 정합 · §3.1 SK Hynix 서사화(DRAM→HBM 4단계) · Ørsted/BP 강등.** |
-
-**🪞 Mirror anchor — 4↔9 + 9→1**: 시계새장(로빈슨, *작란* — AGON+ILINX 경쟁-광기) ↔ 까마귀둥지(일연·Douglass, *명명* — MIMICRY+ILINX 자기 변형). **한 글자 비틂** = *작란 → 명명* / *正→遺* / *DRAM→HBM* / *Bom Suk→Bom Kim*. Mokyr 인공선택(4장) ↔ Hyde Phase 2 Re-enchantment(9장). [second] atomic unit · Foucault heterochrony(1967). **9→1 ouroboros 봉합**: 9장 결말이 [[1🪞_거울새장]] 첫 페이지로 돌아간다 — *책은 닫히지 않는다*. 첫 회독은 엠마의 눈, 재독은 르뢰의 얼굴. *마지막 trickster가 다음 trickster를 비춘다.*
-
-[^2]: 부록 2 — *일연·Mokyr·Keats·Gould·노자 anchor*. *삼국유사*(1281), Mokyr *Lever of Riches*(1990)·*Culture of Growth*(2017), Keats *Negative Capability*(1817), Gould-Lewontin *Spandrels of San Marco*(1979), 노자 *道德經* 11장.
-[^3]: 부록 3 — *Poe 메타 카드 + 명명 Workshop AI 실습*. *The Philosophy of Composition*(1846) 자기폭로 작법, Phase 1 점검 → Phase 2 명명(한 글자 비틂) → Re-enchantment 3단계 워크북.
-[^4]: 부록 4 — *Gibbons25 Coase-to-Culture anchor*. Robert Gibbons(MIT, 2025) *"From Coase to Culture? Visible Hands Build Equilibria"* — Coase의 firm-market dichotomy 은퇴 + *visible hand under non-integration* 3분류 + *clarity problem* (credibility 외에 *공유된 이해*) + *naming*(Polanyi *we know more than we can tell*, Sloan *decentralization with coordinated control*, ABB Barnevik) + *framing*(Goffman, GLW 2021 *작은 categorization 차이 → 큰 equilibrium 차이*). Blader et al.(2020) 운수회사 Lean Management 사례 (clarity 깨짐의 측정). 보이는 손 = 트릭스터 매혹의 학문 형태.
-
-[^일연_8]: 일연, *삼국유사*(1281). 김부식 *삼국사기*(1145)와 *한 글자 비틂* (*正*→*遺*)으로 한국 역사의 *기록 가능 카테고리 풀*을 다시 짰다. 사금갑·향가·처용·도화녀·수로부인 등 정사에 없는 인물·사건이 *옆 카테고리*로 도착. Foucault *heterochrony*의 1281년 한국 instance.
-
-[^Foucault67_8]: Michel Foucault, *Des Espaces Autres* (1967). 6 원칙 중 *heterochrony* — 다른 시간들이 한 자리에 수집되는 헤테로토피아. 박물관·도서관과 동형. *유사*가 *책의 형식*으로 이 작동을 짠 정확한 instance — 단군·향가·처용이 *한 책장*에 수집되어 *서로의 의미를 다시 매기는* 자리.
-
-[^Douglass_PDF]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Step 3 Applied: Boundary Crossing & Identity". Douglass가 4번 이름을 바꾼 4 자리 (Maryland·New England·Scotland) — 마지막 *Douglass*는 월터 스콧 *Lady of the Lake* (1810)의 *James of Douglas*에서 *l* 한 자를 더해 *Douglass*로. <!-- TODO: Douglas→Douglass 철자 1차출처 --> *Reclaiming patrimony* (도둑맞은 patrimony를 되찾기 위해 싸우는 영웅의 이름).
-
-[^Trickster_Phase2]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Phase 2: Re-enchantment". *True tricksters are creators, not just destroyers.* Hermes the Inventor (Lyre 발명, Apollo가 절도 용서) · Douglass the Orator (*America's Orator*, *imagines an America… had to be created*). 9장 manifesto *부수고, 새 이름까지 지어라*의 학자 anchor.
-
-[^tools_flow]: *함께 짓기 세 도구* (찰리 SCALE 시퀀스) — **collaborate**(공급·채널·기술 파트너; *risk*: 파이 나눔·관리 복잡도) → **acculturate**(문화=접착제, 매일 강화로 엔트로피 저항; *risk*: 파편화, "아무도 안 볼 때"가 가장 어려움) → **processify**(Hammer: owner·customer·metrics, "최악은 무프로세스"). 안정 후에야 **automate**(*premature automation = 이해 없는 외주*, ERP="회사에 콘크리트 붓기") → **professionalize**(generalist→specialist; *risk*: 사일로·문화 균열). 학문 호응: clarity problem — *같은 약속을 같은 의미로* (Blader et al. 2020 Lean Management 사례, clarity 깨지면 좋은 의도도 균형을 부숨) + Gibbons25 visible hand under non-integration (상세 부록 4).
-
-[^카뱅]: 카카오뱅크 2017년 7월 출범. *5일 만에* 가입 100만, *2개월 만에* 캐릭터 체크카드(라이언·어피치) 100만 장. 카톡 4천만+ MAU 친구 관계망 위에 송금을 *옆자리*로 끼워넣은 *Phase 2 Re-enchantment* — 한국에서 *은행*이라는 단어의 의미가 바뀐 instance.

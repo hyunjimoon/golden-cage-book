@@ -30,8 +30,6 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 ---
 
 
-> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □③ 환상 윤리 3조건**: §4 frame 공개 환상의 *3조건*(만든 자가 안다·받는 자도 안다·받는 자가 떠날 수 있다)이 §1 hook에서 *몸으로 먼저* 부딪치는지 — *알면서 입은 옷* 자리에서 호흡 끊김 점검
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ hub·5장·1↔5·[bit] · 🧑‍🤝‍🧑 cc-pair-a · 🪞 ↔ 1🪞 거울새장 (hub pair)_
 
 ## 🗺️ 양탄자 — 🪞🪺 5 거울 둥지 · 자장 + 윈스턴 [bit]
 
@@ -267,80 +265,3 @@ hub_role: cage 1-4 ↔ nest 6-9 회전축 · 책의 정중앙
 
 > **세의 일기**
 > 환상 3조건을 적는 동안 계속 떠올랐다 — 내가 받는 환상 중에 *떠날 수 없는* 것이 얼마나 많은지. 떠날 수 있는 환상은 *무대*고, 떠날 수 없는 환상은 *감옥*이다. 같은 거울, 한 글자가 다르다. 5장의 회전축이 *떠남의 가능성*에 무게를 두는 이유를 이제 알겠다.
-
----
-
-## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16)
-
-> _Skin 위 *production gauge* — hub 5장의 회전축 자리가 *어디서 무엇을 무는지* 좌표화._
-
-### 🎯 10원칙 적용 마커 (this chapter, [bit] hub)
-
-| # | 원칙 | 이 장에서 무는 자리 | 현재 |
-|:-:|:--|:--|:-:|
-| ① | 🪶 한 깃털 | §1.1 *"이 욕망은 어디서 왔는가" → "내가 지금 하는 일은 어떤 거울인가"* — 1장 깃털의 *한 칸 옆 회전* | ✅ |
-| ② | 🧱 Powers 벽 | 윈스턴(공개 시도→잡힘) vs 자장(공개→작아짐) §1.2-1.3 — *같은 동작 두 환경* | ✅ |
-| ③ | 🥚 환상 윤리 3조건 | §2.1 — 만든 자/받는 자/떠남 — backcast ✅·반복 닻 ✅·신체 특정성 ✅ | ✅ **오늘** |
-| ④ | 🌋 단락 = 한 화산 | §1.1 hook *"당신의 일은 어떤 거울인가"* — 1장 질문의 *한 축 비틂* (욕망→일) | ✅ |
-| ⑤ | 🎯 시각·반증·유일 | 슬로건 *무지=힘 — frame이 공개되면 진실, 숨겨지면 cage* — Orwell 비틂 ✅·반증 ✅(frame 숨김 = cage)·유일성 ✅ | ✅ |
-| ⑥ | ✂️ simpler×3+haga | §3 GitHub·비공개 ML·토스 3 사례 — 한 호흡 cadence | ⚠️🟡 |
-| ⑦ | 🎼 Saxon finish | §4 마지막 — *공백이 회전축이다* 단음절 마무리 | ✅ |
-| ⑧ | 👖 주머니 속 사물 | 윈스턴: 비밀 일기 + 잉크병 / 자장: 솔기 보이는 옷 + 거울 | ✅ |
-| ⑨ | 🌌 두 번 묻기 | Goffman 무대 §2.2 + Hyde trickster §2.2 — *어디 있었나?* (1959·1998) | ✅ |
-| ⑩ | 🦾 팔의 털 | 윈스턴 *"He loved Big Brother"* 단락 §1.2 — *몸이 신호 보내는가* | ✅ |
-
-### 🩺 5렌즈 audit (현재 진단)
-
-| 렌즈 | 잡는 빚 | 현재 진단 | 오늘 행동 |
-|:--|:--|:--|:--|
-| **SBC** | 캐릭터 평탄성 | 다 (자장 confession 75 → 솔기 노출 35, 회전축 자기 적용) · 세 (관조 60 → 직설 40, §3 *공개된 모름* anchor) | 세 §4 일기 *"떠날 수 있는 환상"* anchor 보존 |
-| **RSRS** | 길이 빚·anchor | ~10,000자 target · hub 단일 회전축 ✅ / haga §3 3사례 cadence 검증 필요 | □⑥ §3 GitHub→ML→토스 한 호흡 검증 |
-| **CARE** | 독자 동선 | Crisp ✅ / Accessible ✅ / Reader-loving ✅ (자장 자기 frame 공개) / Earned ✅ (1장 깃털 회전) | §4 *공백이 회전축* 마지막 단락 cadence 한 번 더 |
-| **독자 7명** | 현장 접근성 | 신규 창업자 — *frame 공개도 self-audit 3 질문* 도착 ✅ / 재도전 — 1↔5 hub 회전축 진입 ✅ | 박혜진 letter 2차에 §2.1 환상 3조건 단독 발송 |
-| **전문가 3** | 문학·전략·관계 | 편집자(가독) ✅ / 경영(GitHub·ML 사실) ⚠ — 부록4 검증 / 출판(*1984* 인용 정합) ⚠ — Orwell 원문 sync | GitHub Linux 1991·React 2013 사실 부록4 sync + Orwell *"He loved Big Brother"* 원문 인용 |
-
-### 🔍 Cross-mirror paragraph anchor — 1↔5 (hub pair)
-
-| 본 장 자리 | paired [[1🪞_거울새장]] 자리 | 한 축 비틂 |
-|:--|:--|:--|
-| §1.1 *"내가 지금 하는 일은 어떤 거울인가"* | §1.1 *"이 욕망은 어디서 왔는가"* | *욕망 → 일* |
-| §1.2 윈스턴 일기 (frame 공개 시도→잡힘) | §1.2 엠마 비소 (frame 숨겨짐→먹힘) | *숨김 → 공개 시도* |
-| §1.3 자장 *솔기 보이는 옷* | §1.3 다 *(체한 느낌)* | *체함 → 솔기 노출* |
-| §3 GitHub·ML·토스 | §3 Quibi·옐로모바일 | *환상 제조 → frame 공개* |
-| §4 *frame을 공개하라* | §4 *욕망장부를 펴라* | *장부 → frame* |
-| §4 *공백이 회전축이다* | (1장은 회전 시작) | *시작 → 회전축* |
-
-### 🌀 Hub 5장의 6장 발자국 — 다음 회전
-
-| 5장 (hub) | 6장 (첫 발자국, 사용자) | 함의 |
-|:--|:--|:--|
-| frame 3조건 공개 | 송 릴링 *알면서 입기* | 5장 통과 → 6장 무대 |
-| ★멈춤 (공백) | 모방 (무대 진입) | 5장 공백이 6장 무대의 *허가증* |
-| 1↔5 hub pair | 6↔ (사용자 첫 만남) | hub 회전 → nest 시작 |
-
-### 🔥 오늘의 빚 (구체)
-
-> **□③ 환상 윤리 3조건 cadence**: §2.1 *"만든 자가 안다·받는 자도 안다·받는 자가 떠날 수 있다"* 세 조건이 §1.1 *"당신의 일은 어떤 거울인가"* hook에서 *몸으로 먼저* 부딪치는가? 입으로 두 번 읊어 — 추상 3조건이 구체 hook의 *주머니*로 떨어지는지 확인.
-
----
-
-## 📜 Snapshot Timeline · 🪞 Mirror anchor
-
-> _Marks 규칙: 형식 동결, 내용 진화. hub 5장은 책 전체의 회전축._
-
-| 날짜 | 버전 | δ delta |
-|:--|:--|:--|
-| **2026-05-16 (pm)** | **v1.0 ★** | **CC1 pair-hub 신설 — 5🪞🪺 거울 둥지 hub. 1↔5 hub pair · 자장+윈스턴 · 환상 윤리 3조건 · GitHub frame 공개 사례 · 시간 4박자 §별 매핑.** |
-| 2026-08-15 | v1.1 | (계획) 6장 (구 5 놀이→연극) anchor 정합 검증 후 5→6 이월문장 재조정 |
-| 2026-11-15 | v1.2 | (계획) 박혜진 letter 2차 응답 후 환상 3조건 cadence 재검증 |
-
-**🪞 Mirror anchor — 1↔5 (hub)**: 거울새장(욕망의 거울, *모르고* 받음) ↔ 거울둥지(일의 거울, *공개하고* 듦). **한 축 비틂** = 축은 *모드*, swap은 *욕망→일* · *숨김→공개*. Caillois MIMICRY *한 항 유지*하면서 ALEA → ILINX 전환의 *동작 그 자체*. 책 정중앙의 회전축. [bit] atomic unit = Shannon 1948. **6장의 첫 발자국**: 5장 frame 공개 → 6장 (연극둥지) 무대 진입 허가증.
-
-[^1]: Goffman, *The Presentation of Self in Everyday Life* (1959), Doubleday. 핵심: *front stage*와 *back stage*가 모두 *알려져 있을 때* 무대는 cage가 아니다. 자장 응용: 5장의 frame 공개 = Goffman의 *알려진 무대*.
-[^2]: PDF Trickster Engine — 5장 hub는 *동작 자체가 주인공*인 유일한 장. 6-9장은 인물(송 릴링·코르넬리우스·아우구스토·일연) — (가): 7장=코르넬리우스(전쟁=평화|기술), 8장=Augusto(예속=자유), 1-4장도 인물(엠마·살리나·파늘루·로빈슨). 5장만 *★멈춤→모방→넘김→매혹* 동작이 주인공. *공백이 회전축*인 이유.
-[^2a]: *Homeric Hymn to Hermes* (c. 600 BCE), lines 75-93 (소를 거꾸로 몰기 + 나뭇가지 샌들), lines 87-93 (Onchestos의 노인에게 *"오늘 본 일을 보지 못한 것으로 해 달라"*), lines 211-213 (Apollo의 점술 추적), lines 416-512 (Zeus 앞 협상 → 거문고 양도). Hyde *Trickster Makes This World* (1998), Ch.6 "Speechless Shame and Shameless Speech"는 이 trick의 *발각가능성*을 trickster 윤리의 정의 조건으로 읽는다. 자장 메모: Hermes는 *frame을 일부러 공개*한 게 아니라 *결국 읽힐 자리에 자기를 둔* 자다. *1984*에는 그 *결국*이 없다 — 그것이 cage의 정의.
-[^3]: Orwell, *1984* (1949), Part 2, Chapter 7: *"Confession is not betrayal. What you say or do doesn't matter; only feelings matter. If they could make me stop loving you — that would be the real betrayal."* — 윈스턴이 줄리아에게. Part 3, Chapter 5 (101호 쥐 장면)에서 그 *진짜 배신*이 일어난다. **frame은 *사랑할 능력*에 매달려 있다** — 본 장 §1.2의 한 축 비틂(*공개 → 숨김*)이 본문 자체에 미리 명시되어 있는 자리.
-
-[^degenerate_prior]: **Calibration 식민화의 수학 정전** — `p(s | U=stab) = δ(s−s*)` 시 3 귀결: (1) `supp(p_new) ⊊ supp(p_old)` → **Cromwell 위반** (다가설 prior=0이라 어떤 likelihood도 못 살림), (2) `D_KL(p_old‖p_new) = ∞` → **비가역** (체험으로만 다시 넓힘), (3) Fubini 위반 (`s`가 더 이상 확률변수 아니고 `U`의 deterministic 함수 — *세계가 욕망의 그림자*). 사랑의 *능력*은 보존되되 *지지집합*이 한 점으로 봉박힘 = **degenerate prior**. *1984* 윈스턴 *He loved Big Brother*가 이 메커니즘의 문학적 instance. CLAUDE.md Lexicon `calibration_식민화` (2026-05-14) SSOT. 자장 손글씨 노트 (2026-05-18): *"윈스턴 마지막 상태 = degenerate prior · p(world|U=loyalty→BB) = δ(world=BB-with-data) · 지지집합이 한 점으로 줄음 · entropy=0 · 타가설 prior=0이라 모든 모순증거 무력화."* Cromwell rule (1650): *"think it possible you may be mistaken."*
-[^4]: Anthony Greenwald, "The Totalitarian Ego: Fabrication and Revision of Personal History," *American Psychologist* 35(7), 603-618 (1980). 클라인 *뇌는 어떻게 변화를 거부하는가* p.129 인용. **자장 호응**: 5장 hub의 *무지=힘 paradox*는 그린월드 1980 *전체주의적 자아*의 1949 Orwell reprise. 외부 BB(1984)와 내부 BB(전체주의적 자아)가 *같은 메커니즘의 두 자리*. 조건 부재 시(척도 미명시) 둘이 합쳐져 cage로 굳음.
-[^5]: 클라인 *뇌는 어떻게 변화를 거부하는가* (2024) p.154-5 인용 통계 — *iPhone 사용자 91%가 2년 주기 신제품 출시를 원함* / *명품 보유자 44%가 "명품 없는 세상에서 살고 싶다"고 응답*. **자장 호응**: *원치 않으며 받음*의 실시간 작동. *예속=자유 paradox*가 *내 꿈*에서만 자유의 형식 — *남의 꿈*이면 같은 형식이 cage. 조건 = 꿈의 출처.

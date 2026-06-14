@@ -18,8 +18,6 @@ cc_owner: cc-거울
 mirror_anchor: ↔ 2🔭_망원경새장 (atom 동일 매질 — 멀리 보기↔가까운 안개 · 작가↔피조물 = 인간↔physical AI)
 ---
 
-> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §3 우나무노 살라망카 면담 단락 cadence — *novela → nivola* 한 글자 비틂이 입에서 *번지지 않고* 분리되는지 두 번 읊어 확인
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·8장·2↔8·[atom] · 🧑‍🤝‍🧑 cc-거울 · 🪞 ↔ 2🔭 망원경새장_
 
 
 ## 🗺️ 양탄자 — 🌫️ 8 안개투자자 · 우나무노 안개 [atom]
@@ -40,7 +38,6 @@ mirror_anchor: ↔ 2🔭_망원경새장 (atom 동일 매질 — 멀리 보기�
 ---
 [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/도구/참고문헌_602격자|참고문헌_602격자]]
 [[시간리듬/🎵 Weekly_Melody/5_전금자본_혜진/08_🪞외우(박혜진7)|08_🪞외우(박혜진7)]]
-building on [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/121 안개|121 안개]]
 
 ---
 추가 후보
@@ -245,92 +242,3 @@ building on [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledg
 
 > **세다의 일기**
 > 빅토르처럼 *말만* 한 날도, 작가 행세로 *책상에서 혼자라고 믿은* 날도 있었다. 둘 다 우나무노가 못 된 자리 — 책상에 못 간 자와, 책상에서 혼자라고 믿은 자. 우나무노는 인물을 *죽이면서도 책상 옆에 앉혔다.* 만든 자와 만들어진 자가 같은 책상에 — 그게 답이었다. 다음 책상에는 *작가 자리를 나눌 사람*과 같이 앉겠다.
-
----
-
-## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16)
-
-> _Skin 위 *production gauge*. 본 장 = **nest 두 번째 회전 = novela→nivola의 첫 정전 instance**._
-
-### 🎯 10원칙 적용 마커 (this chapter, [atom] nest)
-
-| # | 원칙 | 이 장에서 무는 자리 | 현재 |
-|:-:|:--|:--|:-:|
-| ① | 🪶 한 깃털 | §1.2 아우구스토 살라망카 책상으로 걸어감 — *깃털을 들고 작가에게 감* (nest 2단계: 모방) | ✅ |
-| ② | 🧱 Powers 벽 | 아우구스토(존재 충실) vs 우나무노(작가 책임) §1.2 — *인물이 작가에게 항의*. AGON+ALEA | ✅ |
-| ③ | 🥚 이미지 3조건 | *안개·살라망카 책상* — backcast ⚠ / 반복 ✅ / 신체(책상까지 걷는 발) ✅ | ⚠️ |
-| ④ | 🌋 단락 = 한 화산 | §1.1 hook *"내가 쓴 계획서인가, 시장이 쓰게 한 계획서인가"* — 작가↔도구 동거 | ✅ |
-| ⑤ | 🎯 시각·반증·유일 | 슬로건 *선을 넘어라* — Crucial Third Position anchor 유일성 ✅ | ✅ |
-| ⑥ | ✂️ simpler×3+haga | §3 *novela → nivola* — 입에서 *번지지 않고 분리*되는지 | ⚠️ **오늘** |
-| ⑦ | 🎼 Saxon finish | §4 마지막 — *넘어라* 단음절 | ✅ |
-| ⑧ | 👖 주머니 속 사물 | 아우구스토: 빈 종이·개 Orfeo 목줄 / 우나무노: 펜·살라망카 책상 잉크병 | ✅ |
-| ⑨ | 🌌 두 번 묻기 | Ricœur idem/ipse §2.1 — *믿는가?*(✅) *어디 있었나?*(*Soi-même comme un autre* 1990) | ✅ |
-| ⑩ | 🦾 팔의 털 | 아우구스토 *"당신이 나를 만들었습니까?"* 자기 작가에게 항의 단락 | ✅ |
-
-### 🩺 5렌즈 audit (현재 진단)
-
-| 렌즈 | 잡는 빚 | 현재 진단 | 오늘 행동 |
-|:--|:--|:--|:--|
-| **SBC** | 캐릭터 평탄성 | 다 *"작가 행세를 했다"* confession ✅ · 세 *"빅토르처럼 말만 했다"* 정직 ✅ | 둘이 *반대 새장* §4 anchor 보존 (*책상에 못 간 자 / 책상에서 혼자라고 믿은 자*) |
-| **RSRS** | 길이·anchor | ~7,000자 / Ricœur + Hyde + 아우렐리우스 3 anchor 박힘 ✅ / Foucault 메타 공간 헤테로토피아 ✅ | □⑥ §3 *novela→nivola* 인용 단락 입으로 검증 |
-| **CARE** | 독자 동선 | Crisp ✅ / Accessible ⚠ (메타픽션 첫 진입) / Reader-loving ✅ / Earned ✅ | §1.2 살라망카 책상 한 줄 묘사로 진입 ramp |
-| **독자 7명** | 현장 접근성 | 멘토(이미 글 쓰는 자) — 자기 nivola 짓기 ✅ / 재도전 — *작가 자리* 도착 | 박혜진 letter §1.2 살라망카 면담 단독 발송 |
-| **전문가 3** | 문학·전략·관계 | 편집자(우나무노 정확성) ✅ / 경영(MercadoLibre·Nubank) ⚠ — 부록4 sync / 출판(스페인어 음역) ✅ | MercadoLibre 2001 위기 생존 / Nubank Class B 의결권 부록4 sync |
-
-### 🔍 Cross-mirror paragraph anchor — 2↔8
-
-| 본 장 자리 | paired [[2🔭_망원경새장]] 자리 | 변환 동작 |
-|:--|:--|:--|
-| §1.2 아우구스토 살라망카 책상으로 (AGON+ALEA) | §1.2 살리나 망원경만 (ALEA+MIMICRY) | *관조 → 대면* |
-| §1.1 *"내가 쓴 계획서인가, 시장이 쓰게 한 계획서인가"* | §1.3 *"왜 다 보이는데 못 움직이는가"* | *시선 → 발걸음* |
-| §3 MercadoLibre·Nubank (nivola) | §3 Kodak vs 후지 (novela) | *novela → nivola* |
-| §4 *선을 넘어라* (Crucial Third Position) | §4 *순서를 타라* (작전술) | *전술 → 자세* |
-
-### 🔥 오늘의 빚 (구체)
-
-> **□⑥ simpler×3+haga**: §3 *"novela가 스페인어로 소설인데, 우나무노는 nivola라고 불러요. o → i."* — *novela*와 *nivola*가 입에서 *번지지 않고 분리*되는지. 두 단어가 *같은 발음 흐름*으로 들리면 *체험되지 않음*. 두 번 천천히 읊어 확인.
-
----
-
-## 📜 Snapshot Timeline · 🪞 Mirror anchor
-
-> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
-
-| 날짜 | 버전 | δ delta |
-|:--|:--|:--|
-| 2026-05-02 | v1.0 | 150p · 안개둥지 초안 |
-| 2026-05-07 | v1.2 | 슬로건 *자기 서사를 써라 → 선을 넘어라* |
-| 2026-05-10 | v1.4 | v3.1 메시지 + Foucault 메타 공간 헤테로토피아 박힘 |
-| 2026-05-11 | v1.6 | 토스/쿠팡·OpenAI vs Anthropic 산업 사례 박힘 |
-| 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
-| **2026-05-16 (pm)** | **v2.1 ★** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror paragraph anchor.** |
-| **2026-05-18** | **v2.2** | **세다 통합 (다/세→세다, 54곳) + §1.3 우나무노 voice 신설 (4단락, [^Unamuno_nivola][^Unamuno_1936]) + 5장 hub cross-ref 박힘** |
-| 2026-08-15 | v2.3 | (계획) *Crucial Third Position* 한 문단 압축 |
-
-**🪞 Mirror anchor — 2↔8**: 망원경새장(살리나, *관조* — ALEA+MIMICRY 운명-가장) ↔ 안개둥지(아우구스토·아우렐리우스, *대면* — AGON+ALEA 결과 인정). 변환 = *관조 → 대면* / *novela → nivola*. Bourdieu habitus(2장) ↔ Ricœur idem/ipse + Hyde Crucial Third Position(8장). [atom] atomic unit · Foucault 메타 공간 헤테로토피아(1967). **Sacred Theft** = 우나무노가 *novela* 형식을 *훔쳐* *nivola*로 비튼 자리.
-
----
-
-[^1]: 부록 1 — *Hyde·Ricœur·아우렐리우스 anchor 카드*. *Trickster Makes This World*(1998) Crucial Third Position, *Soi-même comme un autre*(1990) idem/ipse 구분, *명상록*(τὰ εἰς ἑαυτόν) 황제의 자기-쓰기 형식.
-
-[^Wasserman]: Noam Wasserman, *The Founder's Dilemmas*(Princeton, 2012) 및 "The Founder's Dilemma," *Harvard Business Review*(2008). 수천 명 창업자 추적 — **rich vs. king**: 통제(king)와 자본(rich)을 동시에 쥐기 어렵다. 자본을 받으면 이사회·재정 압력·oversight가 따라오며 *작가 자리*가 분산된다. 찰리 교수 SCALE(Mountain) 운영도구 **capitalize**의 학술 anchor. *enable*=성장·역량 / *risk*=통제 상실·oversight.
-
-[^Patel]: Ash Patel(저명 엔젤/VC 격언) — *"Choosing your board is like choosing your boss."* capitalize에서 액수보다 투자자 chemistry·작가 자리 존중 여부가 먼저라는 운영 원칙. 부모님·출판사 등 *비현금 기대·승인*도 같은 board 논리로 다룬다(한국적 구체).
-
-[^Ricoeur]: Paul Ricœur, *Soi-même comme un autre*(1990) — *idem*(같음, 변치 않는 부분: 정관·법인번호) vs *ipse*(자기됨, 서사로만 짜이는 부분: 매년 다시 쓰는 사업서사). 8장에서는 *학자 정초*가 아니라 capitalize *risk*를 가르는 한 줄 anchor로만 남긴다 — *자본은 idem은 사도 ipse를 누가 쓰는지는 termsheet에 박는다.*
-[^2]: 부록 2 — *책상 두 자리 AI 실습 카드*. 작가 자리·인물 자리·nivola 비틂 — *novela → nivola* 한 글자 비틀기 워크북.
-
-[^Unamuno_pain]: 미겔 데 우나무노 *Del sentimiento trágico de la vida*(비극적 생의 감정, 1913) — 서문: *"나는 죽고 싶지 않다 — 그게 내 철학의 출발점이다."* 1898년 스페인-미국 전쟁 패배 후 제국 정체성 붕괴를 목격하며, 죽음 공포를 *부정하지 않고 철학의 재료로 삼은* 사상가. 1936년 프랑코 체제의 가택연금 하에 사망(그해 12월 31일). *Niebla*(1914)는 그 공포가 *소설 형식*을 뚫고 나온 자리 — 작가가 인물의 죽음을 선고하면서 *자신의 죽음 공포를 함께 직면*하는 메타픽션.
-
-[^Niebla_Q]: 우나무노 *Niebla*(1914), 살라망카 면담 장면. 아우구스토 페레스가 자기를 만든 작가 우나무노를 *직접 찾아가* 묻는 한 질문. 등장인물이 *책장 밖*으로 걸어 나와 *작가의 책상 옆*에 앉는 자리. Foucault *메타 공간 헤테로토피아*(1967)의 1914년 instance — *책장 안*(인물)과 *밖*(작가)이 한 자리에 겹친다. M.Butterfly Act 2 Sc 7 *4번째 벽 깨기*(송이 관객 직접 응시)와 5장↔6장 부분 동형.
-
-[^Sacred_Theft_PDF]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Mechanic 3: Sacred Theft". *Theft is the ultimate context shift. Theft pulls stagnant elements out of background and forces them into the realm of meaning.* Hermes가 Apollo의 소 50마리를 훔쳐 *meaningless background*에서 *sacred realm*으로 옮긴 자리. 우나무노가 *novela* 형식을 *훔쳐* *nivola*로 한 글자 비튼 동작과 동형 — 6장 *모방*의 학자 anchor.
-
-[^MELI_NU]: 스페인어권 두 사례 (검증: 2026-06). **MercadoLibre** — 마르코스 갈페린·에르난 카사 공동창업, 1999년 8월 부에노스아이레스. 2000–2002 닷컴 붕괴 + 2001–2002 아르헨티나 국가부도를 *지역 투자자·운영 규율·빠른 현지화*로 버팀. eBay의 지역 지분 인수 압력에도 독립 비전 유지 — *비공식 경제(은행·신용 미접근층)를 위한 시장*. 25년 뒤 라틴아메리카 시가총액 1위(NASDAQ: MELI). **Nubank** — 다비드 벨레스(David Vélez, 콜롬비아) 외 공동창업, 2013 브라질. 창업 전 Sequoia Capital 파트너(투자자 자리 경험). 2021.12 IPO 기업가치 약 $450억(Nu Holdings, NYSE: NU). 2023.12.31 기준 벨레스 *경제적 지분 약 20% / 의결권 약 75.9%* — Class B 이중의결권 구조로 *자금은 분산, 작가 자리(ipse)는 보존*. 두 사례 모두 *말 trickster + 행위 trickster* 페어: 제품 서사(MELI)·지배구조(NU)로 termsheet/시장이 써준 *novela*를 *nivola*로 비틂.
-
-[^Unamuno_nivola]: *novela → nivola* 명명의 출처. *Niebla* §17, 빅토르 고티가 처음 *nivola*라는 말을 만들고, 우나무노가 실제 *Niebla* 전체를 그 형식으로 쓴다. *o → i* 한 글자 비틂 = 작가가 인물보다 위에 있는 소설 형식을 — 작가와 인물이 *함께 흔들리는* 형식으로 전환. 같은 비틂이 §1.2에서 *novela = 기술 서사 / nivola = 세계 전환 서사*로 산업 적용된다.
-
-[^Unamuno_1936]: 우나무노 1936년 살라망카 사건. 1936년 10월 12일, *Día de la Raza* 경축 행사. 프랑코 지지 군부 장군 밀란-아스트라이 *"¡Viva la Muerte! ¡Muera la inteligencia!"(죽음 만세! 지성 타도!)* 발언. 우나무노 반박: *"Venceréis pero no convenceréis — 이기겠지만, 설득하지는 못할 것이다."* 그날 살라망카 총장직 두 번째 박탈, 가택연금. 1936년 12월 31일 사망. 동작(발언권 주장)과 환경(프랑코 군정)이 cage를 만든 자리 — 5장 오웰의 1948년 환경(결핵·냉전)과 동형. 둘 다 *frame 공개가 cage가 되는 환경*의 정전 instance.
-
-[^Aurelius_form]: 마르쿠스 아우렐리우스 *Meditations*(τὰ εἰς ἑαυτόν, ~161-180년). 로마 황제이자 스토아 철학자. 전장·궁정에서 *자기 자신에게* 매일 쓴 일기 — 책의 형식 자체가 *작가 = 독자 = 자기*. *Niebla*의 메타픽션이 1914년 형식 실험이었다면, *명상록*은 1800년 전 황제가 매일 실천한 자리. Bezos의 *Day 1* 메모, Buffett의 *연차서한*, Dalio의 *Principles* — 모두 황제의 일기와 같은 형식. founder가 자기 회사의 *작가*가 되는 가장 오래된 형식. → [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/3차소통/부록6_산업별빚청산]] §창업자_자기서사 추가 예정.
-

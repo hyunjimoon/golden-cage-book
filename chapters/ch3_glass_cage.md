@@ -13,8 +13,6 @@ cc_owner: cc-pair-c
 mirror_anchor: ↔ 7🌷_튤립둥지 (생체, 신념↔경쟁자)
 ---
 
-> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §2 calibration slider 단락 *입으로 읊어* — *"calibration에 대한 확신도 calibration 대상"* 한 문장이 두 번째 호흡에 깨지지 않는지 확인
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ cage·3장·3↔7·[cell] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 7🌷 튤립둥지_
 
 ## 🗺️ 양탄자 — 💒 3 스테인드글라스새장 · 페스트 [cell]
 
@@ -242,67 +240,3 @@ mirror_anchor: ↔ 7🌷_튤립둥지 (생체, 신념↔경쟁자)
 
 > **세의 일기**
 > 다가 *"리외도 아내를 잃었어요. 교정이 만능이면 왜 잃었어요?"*라고 했을 때, 대답이 안 나왔다. 5초. 방송 사고. *교정은 내 종교였다.* 파늘루의 신앙처럼 — 나도 calibration을 100%로 믿고 있었다. *calibration에 대한 확신도 calibration 대상*이라는 건... 웃기지만 웃을 수 없다.
-
----
-
-## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16)
-
-> _Skin 위 *production gauge*. 본 장 = **3↔7 오늘 활성 mirror의 paired cage**._
-
-### 🎯 10원칙 적용 마커 (this chapter, [cell] cage)
-
-| # | 원칙 | 이 장에서 무는 자리 | 현재 |
-|:-:|:--|:--|:-:|
-| ① | 🪶 한 깃털 | §1.2 파늘루 두 번째 설교 — *황금가루가 깃털을 코팅하는* 굳음 (cage 3단계: 붕괴) | ✅ |
-| ② | 🧱 Powers 벽 | 파늘루(신념 충실) vs 리외(경험 책임) §1.3 — *같은 페스트 두 응답*. Caillois AGON+ILINX | ✅ ★ |
-| ③ | 🥚 이미지 3조건 | *스테인드글라스* 이미지 — backcast ⚠ / 반복 ✅ / 신체(빛이 색유리에 굴절) ✅ | ⚠️ |
-| ④ | 🌋 단락 = 한 화산 | §1.1 hook *"내 확신이 누구의 비용이 되고 있는가"* — 도덕↔회계 동거 | ✅ |
-| ⑤ | 🎯 시각·반증·유일 | 슬로건 *확신을 교정하라* — Bayesian calibration anchor 유일성 ✅ | ✅ |
-| ⑥ | ✂️ simpler×3+haga | §2 calibration slider 단락 *"calibration에 대한 확신도 calibration 대상"* | ⚠️ **오늘** |
-| ⑦ | 🎼 Saxon finish | §4 마지막 — *교정하라* 단음절 | ✅ |
-| ⑧ | 👖 주머니 속 사물 | 파늘루: 검은 사제복·라틴어 성무일도서 / 리외: 청진기·아내 사진 | ✅ |
-| ⑨ | 🌌 두 번 묻기 | Weber 책임윤리 §2.2 — *믿는가?*(✅) *어디 있었나?*(《소명으로서의 정치》 1919) | ✅ |
-| ⑩ | 🦾 팔의 털 | 아이 경련 단락 §1 — *몸이 신호 보내는가*. 카뮈가 *팔이 곤두선 채* 쓴 자리 | ✅ |
-
-### 🩺 5렌즈 audit (현재 진단)
-
-| 렌즈 | 잡는 빚 | 현재 진단 | 오늘 행동 |
-|:--|:--|:--|:--|
-| **SBC** | 캐릭터 평탄성 | 다 confident 80 → humble 30 (붕괴 ✅) · 세 detached 70 → engaged 40 *"교정이 내 종교였다"* anchor | 세의 §4 *"파늘루의 신앙처럼"* anchor 보존 |
-| **RSRS** | 길이·anchor | ~7,000자 / 베버 위계(책임윤리 default + 1% 신념윤리) 박힘 ✅ / RSCS-A 미적용 §2.1 | □⑥ §2 calibration slider 단락 입으로 검증 |
-| **CARE** | 독자 동선 | Crisp ✅ / Accessible ⚠ (Bayesian 첫 진입) / Reader-loving ✅ / Earned ✅ | §2 *prior·likelihood·posterior* 첫 등장 한 줄 ramp |
-| **독자 7명** | 현장 접근성 | 멘토(이미 칼리브레이션 가르침) — 자기 종교성 자각 ✅ / 전문가(Bayesian) — Gelman 호응 | 박혜진 letter §1 아이 경련 단독 발송 |
-| **전문가 3** | 문학·전략·관계 | 편집자(가독) ✅ / 경영(셀트리온·신라젠 수치) ⚠ — 부록4 sync / 출판(카뮈 인용) ✅ | 신라젠 펙사벡 임상 3상 무용성 평가(2019) sync |
-
-### 🔍 Cross-mirror paragraph anchor — 3↔7 ★ 오늘 활성
-
-| 본 장 자리 | paired [[7🌷_튤립둥지]] 자리 | 한 글자 비틂 |
-|:--|:--|:--|
-| §1.2 파늘루 두 번째 설교 (100% 신념 → 0%) | §1.2 코르넬리우스 다섯 층 의심 (99% 유지) | *이분법 → 분포* |
-| §1.3 *"내 확신이 누구의 비용이 되고 있는가"* | §1.1 *"지금 제일 확신하는 게 뭐예요? 다섯 줄 적을 수 있어요?"* | *비용 → 분포 측정* |
-| §3 Theranos vs Moderna · 셀트리온 vs 신라젠 | §3 Novo Nordisk vs Aduhelm · GameStop | *한 점 베팅 → 분포 베팅* |
-| §4 *확신을 교정하라* | §4 *확률적으로 생각하라* | *교정 → 분포화* |
-
-### 🔥 오늘의 빚 (구체)
-
-> **□⑥ simpler×3+haga**: §2 *"calibration에 대한 확신도 calibration 대상"* — 첫 호흡(확신)에서 두 번째 호흡(대상)으로 회전하는 자리. *자기지칭 한 문장*이 입에서 *마비*되지 않고 *회전*하는지 두 번 읊어 확인. paired [[7🌷_튤립둥지]] §2.1 *"분포 vs 한 점"* 동시 대조.
-
----
-
-## 📜 Snapshot Timeline · 🪞 Mirror anchor
-
-> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
-
-| 날짜 | 버전 | δ delta |
-|:--|:--|:--|
-| 2026-05-02 | v1.0 | 150p · 유리새장 초안 |
-| 2026-05-09 | v1.3 | RSRS form · 베버 위계 추가 (책임윤리 default + 1% 신념윤리) |
-| 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
-| **2026-05-16 (pm)** | **v2.1 ★ ★ 오늘 활성 paired cage** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror paragraph anchor (3↔7).** |
-| 2026-08-15 | v2.2 | (계획) **7장 paired** §1 hook과 mirror 정합 (3↔7 [cell] 정전 고정 — 신념↔경쟁자, De Witt 학살 1672 §1 hook이 본 장 confidence 빚의 paired 광경). Weber 책임윤리(3장) ↔ Bayesian calibration + Gibbons clarity-naming-framing(7장) anchor 유지. |
-
-**🪞 Mirror anchor — 3↔7**: 유리새장(파늘루·리외, *이분법* — 100% 신념 vs 100% 회의) ↔ 튤립둥지(윈스턴↔BB·De Witt, *분포*). **한 글자 비틂** = *이분법 → 분포*. Caillois Forbidden(AGON+ILINX 경쟁-광기) → Fundamental(AGON+ALEA 결과 인정). Weber 책임윤리(3장) ↔ Bayesian calibration + Gibbons clarity-naming-framing(7장). [cell] atomic unit = Schleiden-Schwann 1838-39. ★ **오늘 활성 mirror pair** (cc-pair-c) — 7장 De Witt 학살(1672) §1 hook이 3장 confidence 빚의 paired 광경.
-
-[^1]: 부록 1 — *베버 anchor 카드*. 베버 *신념윤리(Gesinnungsethik)* vs *책임윤리(Verantwortungsethik)* 상세 — 《소명으로서의 정치》(1919) 강연.
-[^2]: 부록 2 — *셀트리온·신라젠 검증 카드*. 램시마 EMA·FDA 승인 시점, 펙사벡 임상 3상 무용성 평가 결과, 시가총액 추이 (작가 검증 필요).
-[^3]: 부록 3 — *Calibration Slider AI 실습 카드*. 가정 추출 → 확신도 측정 → 반증 → 재측정 → 실험 설계의 5단계 프롬프트 sequence.

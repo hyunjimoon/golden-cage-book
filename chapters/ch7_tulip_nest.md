@@ -21,8 +21,6 @@ mirror_anchor: ↔ 3💒_스테인드글라스새장 (cell 동일 매질 — 닫
 active_today: true
 ---
 
-> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga ★ 오늘 활성 장**: §2.1 윈스턴 강등 단락 *입으로 읊어* cadence — *분포 vs 한 점* anchor 한 호흡에 깨지지 않는지 확인. *2+2=4* 인용이 입에서 *문장처럼* 들리는지
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·7장·3↔7·[cell] · 🧑‍🤝‍🧑 cc-거울 · 🪞 ↔ 3💒 스테인드글라스새장_
 [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/268 검은 튤립|268 검은 튤립]]
 
 [[05-22]]
@@ -45,8 +43,6 @@ active_today: true
 ```
 
 ---
-책: [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/268 검은 튤립|268 검은 튤립]] · [[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/해외/알렉상드르 뒤마|뒤마]]
-building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/3💒_스테인드글라스새장]]
 
 ![](diagrams/panel_ch7_튤립둥지.png){width=85%}
 
@@ -284,89 +280,3 @@ building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을
 
 > **세다의 일기**
 > 분포를 가르치는 게 어려웠다. *한 점이 안전하다는 감각이 너무 깊다.* 뒤마는 *100%를 가질 수 없어서 매일 갱신하며 살았다*고 했다 — 그 말이 *코르넬리우스의 다섯 층*을 *내 일*로 데려왔다. 두 가설이 머리에 동시에 있는데도 충돌의 감각이 꺼져 있던 날, 1672년 감옥 창가의 한 화분이 2026년 회의실에 와 있었다.
-
----
-
-## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16) ★ 오늘 활성 장
-
-> _Skin 위 *production gauge*. 본 장 = **3↔7 오늘 활성 mirror의 nest** = cc-pair-c 작업 중심._
-
-### 🎯 10원칙 적용 마커 (this chapter, [cell] nest)
-
-| # | 원칙 | 이 장에서 무는 자리 | 현재 |
-|:-:|:--|:--|:-:|
-| ① | 🪶 한 깃털 | §1.2 코르넬리우스 구근 세 알 — *깃털을 주머니에 넣고 감옥으로* (nest 3단계: 넘김) | ✅ |
-| ② | 🧱 Powers 벽 | 코르넬리우스(분포 충실) vs 복스텔(확신 폭주) §1.2 — *같은 꽃 두 prior*. AGON+ALEA | ✅ ★ |
-| ③ | 🥚 이미지 3조건 | *검은 튤립 + 유리 온실 + 망원경* — backcast(opened-cage decathlon) ✅ / 반복 ✅ / 신체(흙 만지는 손) ✅ | ✅ |
-| ④ | 🌋 단락 = 한 화산 | §1.1 hook *"지금 제일 확신하는 게 뭐예요? 다섯 줄 적을 수 있어요?"* — 신체 회상↔분포 인식 | ✅ |
-| ⑤ | 🎯 시각·반증·유일 | 슬로건 *확률적으로 생각하라* — Bayesian PLoT anchor 유일성 ✅ | ✅ |
-| ⑥ | ✂️ simpler×3+haga | **§2.1 *분포 vs 한 점* 윈스턴 강등 단락** — *2+2=4* 인용 입에서 *문장처럼* 들리는지 | ⚠️ **오늘** |
-| ⑦ | 🎼 Saxon finish | §4 마지막 — *생각하라* (한자어 빚 잔존) | ⚠️ |
-| ⑧ | 👖 주머니 속 사물 | 코르넬리우스: 구근 세 알·교배 일지·Rosa의 편지 / 복스텔: 망원경·시기심 노트·고발장 | ✅ |
-| ⑨ | 🌌 두 번 묻기 | De Witt 학살 §1.2 — *믿는가?*(✅) *어디 있었나?*(1672.08.20 헤이그) | ✅ |
-| ⑩ | 🦾 팔의 털 | De Witt 형제 *시신 일부를 군중이 씹어 먹음* 단락 — 잔혹성이 *몸으로* 도착하는지 | ✅ |
-
-### 🩺 5렌즈 audit (현재 진단)
-
-| 렌즈 | 잡는 빚 | 현재 진단 | 오늘 행동 |
-|:--|:--|:--|:--|
-| **SBC** | 캐릭터 평탄성 | 다 *"100% 확신했는데 두 가설이 머릿속에"* confession ✅ · 세 *"한 점이 안전하다는 감각이 너무 깊다"* 정직 ✅ | 5층 의심 단락 anchor 보존 |
-| **RSRS** | 길이·anchor | ~7,500자 / 17 footnote 박힘 / RSCS-A 미적용 §2.1 *분포 vs 한 점* — *2+2=4* 한 점이 입에서 *문장*인가 *상징*인가 | □⑥ §2.1 윈스턴 단락 두 번 읊어 검증 (cadence + 분포 사고 동시 도착) |
-| **CARE** | 독자 동선 | Crisp ✅ / Accessible ⚠ (PLoT·Bayesian·Caillois·Foucault 동시 진입) / Reader-loving ✅ / Earned ✅ | §2.2 PLoT 3기계(함수·조건화·합성) 한 줄 ramp 보강 |
-| **독자 7명** | 현장 접근성 | 멘토(Bayesian 알고 있는 자) ✅ / 전문가(Gelman·Talts SBC) ✅ / 재도전(*100%로 무너진 적*) — De Witt 도착 ✅ | 박혜진 letter §1.2 De Witt 학살 단독 발송 |
-| **전문가 3** | 문학·전략·관계 | 편집자(역사 압축) ✅ / 경영(Novo·Aduhelm·GameStop 수치) ⚠ — 부록4 sync | Novo Nordisk Ozempic+Wegovy 2024 ≈ $26B / Aduhelm 2021 / GameStop 2021.01 부록4 sync |
-
-### 🔍 Cross-mirror paragraph anchor — 3↔7 ★ 오늘 활성
-
-| 본 장 자리 | paired [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/3💒_스테인드글라스새장]] 자리 | 한 글자 비틂 |
-|:--|:--|:--|
-| §1.2 코르넬리우스 다섯 층 의심 (99% 유지) | §1.2 파늘루 두 번째 설교 (100%→0% 한 번에 뒤집힘) | *이분법 → 분포* |
-| §1.1 *"지금 제일 확신하는 게 뭐예요? 다섯 줄?"* | §1.3 *"내 확신이 누구의 비용이 되고 있는가"* | *비용 → 분포 측정* |
-| §1.2 De Witt 학살 (AGON+ILINX 광기) | §1.2 파늘루 두 번째 설교 (AGON+ILINX 신학 광기) | *광기 → 결과 인정* (Forbidden → Fundamental) |
-| §3 Novo Nordisk vs Aduhelm · Netafim(중동) | §3 Theranos vs Moderna · 셀트리온 vs 신라젠 | *한 점 베팅 → 분포 베팅* |
-| §4 *확률적으로 생각하라* | §4 *확신을 교정하라* | *교정 → 분포화* |
-
-### 🔥 오늘의 빚 (구체) — 7장 ★ 오늘 활성
-
-> **□⑥ simpler×3+haga**: §2.1 *"Freedom is the freedom to say that two and two make four... 100%는 한 번에 뒤집히니까."* — 영어 인용 + 한국어 해설 + Bayesian 함의 한 호흡? *2+2=4*가 입에서 *상징*이 아니라 *문장*으로 들려야 분포 사고 도착. paired [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/3💒_스테인드글라스새장]] §2 calibration slider 단락 *동시 대조* — 두 단락이 *같은 호흡 구조*인지 검증.
-
-### 🌷 De Witt 학살 §1 hook 정합 (Caillois Forbidden → Fundamental)
-
-> **Forbidden 광경 → Fundamental 출구**: §1.2 *1672.08.20 헤이그 군중이 De Witt 형제를 찢어 죽이고 시신 일부를 씹어 먹음* (AGON+ILINX) → §2 *코르넬리우스 다섯 층 의심* (AGON+ALEA). **한 글자 비틂** = *광기 → 결과 인정*. **350년 reprise** = §3 GameStop(2021.01) hedge fund(AGON 계산된 숏) vs r/wallstreetbets(ILINX 군중 도취) — 같은 구조.
-
----
-
-## 📜 Snapshot Timeline · 🪞 Mirror anchor
-
-> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
-
-| 날짜 | 버전 | δ delta |
-|:--|:--|:--|
-| 2026-05-02 | v1.0 | 160p · *언어둥지* 초안 |
-| 2026-05-07 | v1.2 | *언어둥지 → 의심둥지 → 튤립둥지* / *언어를 합의하라 → 확률적으로 생각하라* |
-| 2026-05-10 | v1.4 | v3.1 메시지 + Foucault 정원 헤테로토피아 |
-| 2026-05-14 | v1.7 | 검은 튤립 main + De Witt 학살 + 1984 §2.1 강등 |
-| 2026-05-15 | v1.8 | GameStop reprise + 음화 NC + Aduhelm·Leqembi 박힘 |
-| 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
-| **2026-05-16 (pm)** | **v2.1 ★ ★ 오늘 활성 장** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror (3↔7) + De Witt Forbidden→Fundamental 정합.** |
-| 2026-08-15 | v2.2 | (계획) 박혜진 letter 후 De Witt 학살 hook 한 문단 압축 |
-
-**🪞 Mirror anchor — 3↔7**: 유리새장(파늘루·리외, *이분법* — AGON+ILINX 경쟁-광기) ↔ 튤립둥지(윈스턴↔BB·De Witt, *분포* — AGON+ALEA 결과 인정). **한 글자 비틂** = *이분법 → 분포* / *한 점 → 분포의 분포 (PLoT)*. Weber 책임윤리(3장) ↔ Bayesian calibration + Gibbons clarity-naming-framing(7장). [cell] atomic unit · Foucault 정원 헤테로토피아(1967) — *닫힌 자리 안 + 외부 시선 동시*. **De Witt 학살(1672) §1 hook** = 3장 confidence 빚의 paired Forbidden 광경 (AGON+ILINX 경쟁-광기). **GameStop reprise** = 21세기 De Witt — hedge fund(AGON) vs r/wallstreetbets(ILINX). 350년 같은 구조.
-
-[^비틂]: *비틂* — 프레임을 한 칸 옆으로 돌리는 두 축(시공간·긍정/부정). SSOT: [[2차소통/비틂|비틂]]. torsion(비틀림)→torque(돌림힘) 한 어원. 학자 anchor — Hyde *Apollonian(한 점)/Hermetic(분포)*(*Trickster Makes This World*, 1998) + 분포 사고의 작동 기계 PLoT(Goodman·Tenenbaum). doublethink 세 슬로건은 *한 점*을 *분포의 분포*로 비틀면 무력화 (상세 부록 1·2).
-[^evaluate]: *평가하라(evaluate)* — milestones·metrics·KPI로 진척을 재고 정렬한다. *enable*: 측정·정렬·투자자 책임. *risk*: 좁은 지표가 창의를 질식 → 지표 + 질적 판단 병행. 뇌가 변화를 싫어하는 본능(Cannon homeostasis 1932 · Kahneman loss aversion 1979 · status quo bias 1988)을 *지표 옆 빈 칸*으로 역이용 (상세 부록 3·4).
-[^3]: 부록 3 — *Distribution AI 실습*. 함수 → 조건화 → 합성 3단계 워크북. 다·세 감정 어휘 분포 측정 (Anthropic Emotion Probe Cluster).
-
-[^Dumas_pain]: 알렉상드르 뒤마의 혼혈 정체성과 마케 협업 논쟁 — Claude Schopp, *Alexandre Dumas: Genius of Life* (1997), pp. 215-240. 뒤마 아버지 토마-알렉상드르 뒤마 장군(아이티 출신 흑인 어머니를 둔 혼혈)의 전기적 사실. 뒤마의 *《검은 튤립》*은 자전적 독해가 가능하다 — *"자본·배경 없이 경쟁자와 맞서는 자가 분포로 살아남는 이야기."* 마케와의 협업은 *표절(한 점 판정)*이 아니라 *분포적 협업*으로 재독해될 수 있다.
-
-[^Foucault67_7]: Michel Foucault, *Des Espaces Autres* (1967 강의 · 1984 출간). 6 원칙 중 *정원 헤테로토피아* — 다른 규칙이 작동하는 *닫힌 자리* 안 + 외부 시선이 작동하는 *밖*이 동시에. 코르넬리우스의 *유리 온실* + 복스텔의 *망원경*이 작품 내 정확한 instance. 5장 거울 헤테로토피아의 *공간 변주* (시간 차이 — 같은 개체, 다른 자리).
-
-[^M나비_Sc11_7]: David Henry Hwang, *M. Butterfly* (Plume/Penguin, 1988), Act 2 Scene 11. 송이 갈리마르의 *책상 유리* 너머로 서류를 본다 — 투명한 한 장이 *그가 본다는 것을 그가 모르게* 하는 자리. 7장 코르넬리우스의 *유리 온실* + 복스텔의 *망원경*과 동형. 5장(거울)·7장(유리)·7장(눈) — 투명한 매질의 3 변주.
-
-[^Trickster_Engine]: *The Trickster's Engine* (NotebookLM/Anthropic, 2026), "Mechanic 2: Boundary Crossing & Context". *Odysseus principle* — 오디세우스가 oar를 *내륙으로* 들고 가면 곧 *winnowing fan*(타작 부채)로 *오인되는* 자리. 물체는 변하지 않고, *환경*이 바뀐다. 7장 *자리가 바뀌면, 의미가 바뀐다* manifesto의 학자 anchor.
-
-[^음화_NC]: 노자 *道德經 11장* — *當其無, 有車之用* (바퀴통 한가운데가 비어 있어야 수레가 굴러간다). Keats *Negative Capability*(1817) — 결단(양화) 옆에 *해소를 보류한 빈자리*(음화). **음화 = NC의 서사적 외화 형식. 분포 사고를 글로 옮기는 유일한 작법.** 7장 *유사 = 정사의 음화* 직결.
-
-[^Aduhelm_Leqembi]: Biogen *Aduhelm*(2021)·Lilly *Leqembi*(2023). Leqembi 인지 호전 *0.45* (임상 유의 threshold ~0.5 부근)<!-- TODO: Leqembi CDR-SB 1차출처 -->, 부작용 ARIA-E 12%·ARIA-H 17%·다수 사망 보고. Novo Nordisk: *Ozempic*(semaglutide) 2017 당뇨 승인, *Wegovy* 2021 비만 적응증 FDA 승인, 2023 시가총액 유럽 1위. 비만의 *재명명* = 의지(한 점) → 대사 호르몬 분포.
-
-[^Netafim]: Netafim — 점적관수(drip irrigation) (검증: 2026-06). 엔지니어 시므하 블라스(Simcha Blass, 폴란드 출신 이스라엘인)가 1959–65년 개발. *말라 보이는 흙 밑에서 새는 이음매 한 곳의 물이 양파 모양으로 번지며 한 나무를 키우는* 광경에서 착안 — 물을 쏟지 않고 뿌리가 받을 만큼 *한 방울씩.* 1965년 네게브 사막 키부츠 하체림(Kibbutz Hatzerim, 1946 설립)과 함께 Netafim 창업, 1966.1 생산 시작. 오늘 110여 개국. 검은 튤립의 *오스만(중동)→네덜란드(유럽)* 이동과 호응 — 분포 사고가 *사막에서 세계로* 건너간 농업기술 instance. [cell]·agri-tech.

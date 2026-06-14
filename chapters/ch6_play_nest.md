@@ -18,8 +18,6 @@ cc_owner: cc-pair-c
 mirror_anchor: ↔ 5🪞🪺_거울둥지 (hub에서 첫 매혹 · 내 가치→우리 의미 번역무대)
 ---
 
-> 🟡 **오늘의 한 결정 · 2026-05-16 (토) · □⑥ simpler×3 + haga**: §1 hook (엠마 비소 광경, ALEA+MIMICRY Forbidden) 단락 cadence — 1장 cage hook과 *대칭 호흡*인지 두 파일 동시에 입으로 읊어 비교
-> _🔒 Schema v1.0 (locked → 2036) · 🗺️ nest·6장·5↔6·[bit] · 🧑‍🤝‍🧑 cc-pair-c · 🪞 ↔ 5🪞🪺 거울둥지(hub)_
 
 ## 🗺️ 양탄자 — 🦋 6 나비둥지 · M.Butterfly [bit]
 
@@ -37,7 +35,6 @@ Bouriscot 스파이(1986)          수행성·자아 연출
 ```
 
 ---
-building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/1_거울새장|1_거울새장]]
 
 ![](diagrams/panel_ch5_놀이둥지.png){width=85%}
 
@@ -204,96 +201,3 @@ building on [[시공간멜로디/On/love_편집자혜진/product/황금새장을
 
 > **세다의 일기**
 > 황은 송을 *매일 벗게* 썼다고 했다. 벗을 수 있어야 옷이 옷이라고. 나는 두 실패를 다 안다 — 안 입어서 무대에 못 오른 날, 너무 입어서 거울 속 나를 못 알아본 날. 오늘 작가의 의도를 거꾸로 걸어보니, 답은 *둘 중 하나*가 아니라 *벗을 자리를 남긴 채 입기*였다. 다음 무대에선 분장실부터 짓겠다.
-
----
-
----
-
-## 🧭 품질 격자 — Forte·Corcos·Marks v2.0 (2026-05-16)
-
-> _Skin 위 *production gauge*. 본 장 = **nest 첫 회전 = ★멈춤 도착점**._
-
-### 🎯 10원칙 적용 마커 (this chapter, [bit] nest)
-
-| # | 원칙 | 이 장에서 무는 자리 | 현재 |
-|:-:|:--|:--|:-:|
-| ① | 🪶 한 깃털 | §1.2 송 릴링 vanity mirror — *깃털을 스스로 뽑아 내려놓음* (nest 1단계: ★멈춤) | ✅ |
-| ② | 🧱 Powers 벽 | 송(연기 충실) vs 갈리마르(살이 됨) §1.2 — *같은 거울 정반대 동작*. MIMICRY+ILINX | ✅ |
-| ③ | 🥚 이미지 3조건 | *vanity mirror* — backcast(분장실 = 일기·가족·절친) ✅ / 반복 ✅ / 신체(분 바르는 손) ✅ | ✅ |
-| ④ | 🌋 단락 = 한 화산 | §1.1 hook *"알면서도 입은 옷이 있으세요?"* — 자각↔연기 동거 | ✅ |
-| ⑤ | 🎯 시각·반증·유일 | 슬로건 *환상을 역이용하라* — 1↔6 mirror anchor 유일성 ✅ | ✅ |
-| ⑥ | ✂️ simpler×3+haga | §1.2 *"You think you've won..."* 영어 인용 + 한국어 번역 한 호흡 | ⚠️ **오늘** |
-| ⑦ | 🎼 Saxon finish | §4 마지막 — *역이용하라* (한자어 빚 잔존) | ⚠️ |
-| ⑧ | 👖 주머니 속 사물 | 송: 분장 거울·비단 끈·정보부 노트 / 갈리마르: 푸치니 LP·일본 인형 | ✅ |
-| ⑨ | 🌌 두 번 묻기 | Bill Aulet 24단계(beachhead)·Toyota TPS "copy exactly" §2.1-2.2 — *믿는가?*(✅) *어디 있었나?*(2024·1980s) | ✅ |
-| ⑩ | 🦾 팔의 털 | 갈리마르 *"My name is René Gallimard — also known as Madame Butterfly"* | ✅ |
-
-### 🩺 5렌즈 audit (현재 진단)
-
-| 렌즈 | 잡는 빚 | 현재 진단 | 오늘 행동 |
-|:--|:--|:--|:--|
-| **SBC** | 캐릭터 평탄성 | 다 *"옷이 살이 됐던 적"* confession ✅ · 세 *"분장실에만 있었다"* 정직 ✅ | 둘이 *반대 새장* anchor §4 보존 |
-| **RSRS** | 길이·anchor | ~7,000자 / Foucault + Hyde·Goffman 박힘 ✅ / Sc13·Sc3 두 instance ✅ | □⑥ Sc13 인용 한·영 한 호흡 검증 |
-| **CARE** | 독자 동선 | Crisp ✅ / Accessible ⚠ (M.Butterfly 첫 진입) / Reader-loving ✅ / Earned ✅ | §1.2 분장실 한 줄 묘사로 진입 ramp |
-| **독자 7명** | 현장 접근성 | 신규(피칭 입문) — *알면서 입기* 도착 ✅ / 멘토 — Goffman role distance | 박혜진 letter §1.2 vanity mirror 단독 발송 |
-| **전문가 3** | 문학·전략·관계 | 편집자 ✅ / 경영(텐센트·라인·닌텐도) ⚠ — 부록4 sync / 출판(영어 인용) ✅ | 텐센트 OICQ→QQ→위챗(2011)·라인 2011 대지진 부록4 sync |
-
-[[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/166 삼국유사|166 삼국유사]]
-### 🔍 Cross-mirror paragraph anchor — 1↔6 + 5↔6(hub 회전축)
-
-| 본 장 자리 | paired [[1🪞_거울새장]] 자리 | 한 글자 비틂 |
-|:--|:--|:--|
-| §1.2 송 vanity mirror 분장 손 (MIMICRY+ILINX) | §1.2 엠마 비소병 든 손 (ALEA+MIMICRY) | *모르고 → 알면서* |
-| §1.1 *"알면서도 입은 옷이 있으세요?"* | §1.3 *"이건 진짜 내가 원한 거다"* | *항변 → 자각* |
-| §3 텐센트·라인 (환상 입음) | §3 Quibi·옐로모바일 (환상에 먹힘) | *novela → nivola* |
-| §4 *알면서 입으면 안 잡아먹힌다* | §4 *욕망장부를 펴라* | *식별 → 운용* |
-
-**🌀 4↔5 회전축**: [[4⏱️_시계새장]] §4 *"방드르디일까. 아직 멀다"* 의 *공백* → 본 장 §1.1 *"잠시 멈추고…"* 의 *★멈춤*으로 회전.
-
-### 🔥 오늘의 빚 (구체)
-
-> **□⑥ simpler×3+haga**: §1.2 송 영문 인용 *"You think you've won..."* + 한국어 번역 + 다·세 해설 — *한 호흡에 몇 음절?* 영문 직역체가 한국어 cadence를 부수면 ALEA→ILINX 비틂이 *입에서 분리되지 않음*. 두 번 읊어 검증.
-
----
-
-## 📜 Snapshot Timeline · 🪞 Mirror anchor
-
-> _Marks 규칙: 형식 동결, 내용 진화. 변화량이 곧 서사._
-
-| 날짜 | 버전 | δ delta |
-|:--|:--|:--|
-| 2026-05-02 | v1.0 | 150p · *역할둥지* 초안 |
-| 2026-05-07 | v1.2 | *역할둥지 → 연극둥지* / 슬로건 *환상을 역이용하라* |
-| 2026-05-10 | v1.4 | v3.1 메시지 + Foucault 거울 헤테로토피아 박힘 |
-| 2026-05-14 | v1.6 | Act 1 Sc 13(positive) + Act 3 Sc 3(negative) 박힘. m나비.md SSOT |
-| 2026-05-16 (am) | v2.0 | Dashboard skin 1차 |
-| **2026-05-16 (pm)** | **v2.1 ★** | **품질 격자 — 10원칙 + 5렌즈 audit + cross-mirror + 5↔6 회전축.** |
-| **2026-06-03** | **v2.2** | **§0 4단계 블록 추가 · 장번호 1↔6 정합(송 릴링=6장) · §3 사례 동아시아 교체(텐센트·라인·닌텐도).** |
-
-**🪞 Mirror anchor — 1↔6**: 거울새장(엠마, *모르고* — ALEA+MIMICRY 운명-가장) ↔ 나비둥지(송 릴링, *알면서* — MIMICRY+ILINX 자기 변형). **한 글자 비틂** = *모르고 → 알면서*. **★멈춤 핵심**: 송이 분장실에서 *멈춰* 자기 깃털 보는 자리 = simulation→belief collapse 방지 (*"simulation을 simulation으로 유지"* — MIMICRY 두 형태 가르는 칼). [bit] atomic unit · Foucault 거울 헤테로토피아(1967). 9장 ouroboros 9→1 회귀의 *첫 nest 회전*.
-
-[^1]: 부록 1 — *Hyde·Goffman anchor 카드*. *Trickster Makes This World*(1998) Hopi 광대 의식, *Presentation of Self in Everyday Life*(1959) frontstage·backstage·impression management·role distance 상세.
-
-[^Aulet]: Bill Aulet, *Disciplined Entrepreneurship*(2013) 24단계 중 1–6단계 — *beachhead market*을 가장 좁게 잡고 인접 시장으로 확장(*follow-on TAM*). 핵심 동사는 더하기가 아니라 *무엇에 NO할지의 선택*: "what NOT to do is the strategy." 찰리 교수 SCALE(Mountain) 운영도구 **segment**의 학술 anchor. *enable*=고객 집중·규모 / *risk*=세그먼트 확장 시 복잡도·단위원가 상승, 영업–운영 갈등.
-
-[^replicate]: 운영도구 **replicate**의 산업 anchor — 맥도날드 표준 매뉴얼·토요타 생산방식(TPS)의 *"copy exactly"* 원칙(정련된 공정을 글자 그대로 다른 공장에 복제). *enable*=재현성·규모경제 / *risk*=표준화·규율 요구, 과잉 동일성(가면→살). 찰리 교수 SCALE(Mountain) 운영도구.
-
-[^Goffman]: Erving Goffman, *The Presentation of Self in Everyday Life*(1959) — **role distance**: 자기와 역할 사이에 두는 공백. replicate의 표준화가 과해질 때 가면이 살이 되는 것을 막는 ★멈춤(NC⊗PC)의 일상어 형태. 6장에서는 *학자 설명*이 아니라 replicate *risk*를 다루는 한 줄 anchor로만 남긴다.
-
-[^Hwang_pain]: David Henry Hwang, 후기 *"Afterword"*, *M. Butterfly* (Plume/Penguin, 1988) — *"I was aware that I, as an Asian American, had internalized the myth of the passive Asian female."* 황은 stereotype을 *부수려* 쓴 것이 아니라, 그것이 자기 안에 있음을 *무대로 공개*했다고 밝혔다. 환상 윤리 3조건의 *(a) 만든 자가 환상인 줄 안다* = 황 자신의 자리.
-
-[^M나비_Sc13]: David Henry Hwang, *M. Butterfly* (Plume/Penguin, 1988), Act 1 Scene 13. 송의 아파트 vanity mirror — 갈리마르 면전에서 송이 *알면서* 분장을 *다시 입는* 자리. Foucault *거울 헤테로토피아*의 positive 짝.
-
-[^M나비_Sc3]: David Henry Hwang, *M. Butterfly* (Plume/Penguin, 1988), Act 3 Scene 3. 감옥의 분장 거울 — 갈리마르가 기모노 입고 하라키리. 1막 13장과 3막 3장 두 거울이 *1↔6 거울쌍*을 닫는다.
-
-[^데미안]: 헤르만 헤세 *데미안*(1919): *"새는 알을 깨고 나오려고 투쟁한다. 신의 이름은 아브락사스."* 알을 *깨면서 입는* 자리 — 분장 거울 앞 송의 손과 같은 동사.
-
-[^Foucault67]: Michel Foucault, *Des Espaces Autres* (1967 강의 · 1984 출간). 6 원칙 중 *거울 헤테로토피아* — 실재(거울 속 응시)와 비실재(거울 너머 자리)가 *같은 자리*에 동시. M.Butterfly Act 1 Sc 13(positive)·Act 3 Sc 3(negative) 두 거울이 작품 내 정확한 instance. 5장 manifesto *사랑은 헤테로토피아다*의 학자 anchor.
-
-[^Hwang_autobio]: David Henry Hwang, *"Evolving a Craft"*, American Theatre (1994); *Yellow Face* (2007) 작가 노트 — 황은 1980년대 미국에서 Asian American 남성 배우의 역할이 "sexless, comic sidekick or villain"으로 고착되어 있었음을 여러 인터뷰에서 밝혔다. *Yellow Face*(2007)는 그 stereotype 내면화 과정 자체를 다시 무대화한 자기 폭로극.
-
-[^Hwang_Bouriscot]: 실화 출처: Bernard Bouriscot·Shi Pei Pu 사건, 1983년 파리 체포·1986년 재판. Hwang의 창작 노트 (*"Afterword"*, *M. Butterfly*, 1988): *"I didn't go to see a newspaper clipping. I went to see a man who had fallen in love with his own fantasy."* 황은 Bouriscot의 심리를 오리엔탈리즘의 prior가 현실 인식을 overwrote한 사례로 읽었다.
-
-[^ch5_ethics]: 환상 윤리 3조건 출처: [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/원고/10🧫_101]] §2 *환상 윤리 3조건* — *(a) 만든 자가 환상인 줄 안다 (b) 받는 자도 안다 (c) 받는 자가 떠날 수 있다*. 황의 *M. Butterfly*는 세 조건 모두 성립: (a) 황 자신이 알면서 쓴 자기 폭로, (b) 관객은 프롤로그에서 전말을 인지, (c) 극장 출구는 언제나 열려 있다. 6장은 5장 hub가 6장으로 회전하는 첫 실연 자리.
-
-[^frame_env_cases]: frame 공개를 활용해 환상을 nest로 전환한 동아시아 사례 — → [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/3차소통/부록6_산업별빚청산]] §frame_공개_사례. 텐센트: 1999년 ICQ를 베낀 OICQ로 출발, AOL 상표 소송 후 QQ로 축소, 2011년 위챗으로 독자 무대 — *모방→독자 전환*의 정전. 라인: 2011년 동일본 대지진 직후 네이버 자회사가 출시, 일본 메신저 환상(스탬프·캐릭터)을 알면서 입어 국민 메신저화. 닌텐도: 1889년 화투 제조사가 *놀이의 환상*을 들고 게임기로 pivot — 업종 비틂·환상 유지.
