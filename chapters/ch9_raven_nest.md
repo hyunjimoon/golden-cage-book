@@ -11,6 +11,7 @@ modified:
   - 2026-05-16T10:33:23+09:00
   - 2026-05-17T23:17:39+09:00
   - 2026-05-18T20:10:59+09:00
+  - 2026-06-15T08:29:59+09:00
 schema_version: v1.0
 coordinate: nest · 9장 · §1-4 · 4↔9 + 9→5 ouroboros
 atomic_unit: "[second]"
@@ -18,8 +19,6 @@ cc_owner: cc-pair-c
 mirror_anchor: ↔ 4⏱️_시계새장 (에너지, 협업자↔척도) + ↔ 5🪞🪺_거울둥지 (9→5 ouroboros 봉합)
 ---
 
-
-[[공간화음/Thesis/business_cases/NOCS_diamond_syntax|NOCS_diamond_syntax]]
 ## 🗺️ 양탄자 — 🐦‍⬛ 9 까마귀둥지 · 삼국유사 [second]
 
 > *4 모서리 → 가운데 thesis 수렴 ([[🗺️지도양탄자]] SSOT)*
@@ -37,10 +36,7 @@ Bailey→Douglass               ✓ SK Hynix·Ørsted
 ```
 
 ---
-[[시공간멜로디/On/love_편집자혜진/love_민음사/knowledge/민음사작가/세계문학전집/066 나르치스와 골드문트|066 나르치스와 골드문트]]
-[[공간화음/🟣철학_WHY/14_282_org_econ/Papers/📜gibbons25_coase2culture|📜gibbons25_coase2culture]]
 
-[[시공간멜로디/On/love_편집자혜진/people/편집자한솔|편집자한솔]]
 
 
 # CHAPTER 9 — 까마귀 둥지 · **의미를 만들어라**
