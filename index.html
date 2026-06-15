@@ -126,6 +126,7 @@
   .bookmap-head p{font-size:13px;color:#8899aa;line-height:1.95;}
   .bookmap-head p b{color:#d6dce6;font-weight:600;}
   .bookmap-svg{width:100%;height:auto;display:block;margin:2px auto 0;}
+  .bookmap-img{width:100%;max-width:760px;height:auto;display:block;margin:10px auto 0;border-radius:10px;}
   .bookmap-svg a{cursor:pointer;}
   .bookmap-svg a:hover circle{stroke:#fff;stroke-width:2.5;}
   .bookmap-svg a:hover text{fill:#fff !important;}
@@ -137,55 +138,9 @@
     <h2>새장 사면체 안에, 둥지 사면체가 거꾸로 맞물린다</h2>
     <p>1부 새장(시지프스)을 <b>한 번 멈춰</b> 뒤집으면 2부 둥지(헤르메스)가 된다 — 같은 골격이 감옥에서 둥지로. 빌린 것을 갚는 그 한 끗이 <b>새장을 연다</b>. 지도를 손에 쥔 자만이 그것을 버리고 항해를 떠난다. <b>세상을 짓는 trickster</b>가 된다.</p>
   </div>
-  <svg id="bookmap-svg" class="bookmap-svg" viewBox="0 0 1120 1000" role="img" aria-label="황금새장을열다 책 지도 — 사면체 안의 거꾸로 사면체"></svg>
-  <div class="bookmap-foot">노드를 누르면 그 장으로 항해 → · 같은 색 = 거울쌍(한 글자 비틂) · 중심 &#9733; = 5&#8596;10 회전축(101&#8322;&#8596;101&#8323;)</div>
+  <img class="bookmap-img" src="interactive/diagrams/00_geo_사면체안의사면체.png" alt="사면체 안의 사면체 — 바깥 새장 4 ⊃ 안 둥지 4, 중심 101호 (5↔10)">
+  <div class="bookmap-foot">바깥 검은 마름모 = 새장(시지프스) · 안쪽 = 둥지(헤르메스) · 점선 = 거울쌍(한 글자 비틂) · 중심 빨강 = 5&#8596;10 회전축 · <a href="interactive/bookmap_3d.html">3D로 체험 →</a></div>
 </section>
-<script>
-(function(){
-  const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
-  const SL={1:'ch1_mirror_cage',2:'ch2_telescope_cage',3:'ch3_glass_cage',4:'ch4_clock_cage',6:'ch6_play_nest',7:'ch7_tulip_nest',8:'ch8_mist_nest',9:'ch9_raven_nest'};
-  const S=205, CX=560, CY=480, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
-  const proj=c=>{const[x,y,z]=c; const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
-    const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
-  const V=[
-    {c:[1,1,1],n:1,g:'cage',u:'bit',nm:'거울새장',kw:'욕망',slo:'장부를 펴라',nov:'마담 보바리'},
-    {c:[1,-1,-1],n:2,g:'cage',u:'atom',nm:'망원경새장',kw:'계산',slo:'순서를 타라',nov:'표범'},
-    {c:[-1,1,-1],n:3,g:'cage',u:'cell',nm:'스테인드글라스',kw:'책임',slo:'확신을 교정하라',nov:'페스트'},
-    {c:[-1,-1,1],n:4,g:'cage',u:'second',nm:'시계새장',kw:'질서',slo:'다음 불을 피워라',nov:'방드르디'},
-    {c:[-1,-1,-1],n:6,g:'nest',u:'bit',nm:'나비둥지',kw:'사용자',slo:'역할을 입어라',nov:'M.Butterfly'},
-    {c:[-1,1,1],n:8,g:'nest',u:'atom',nm:'안개둥지',kw:'투자자',slo:'선을 넘어라',nov:'안개'},
-    {c:[1,-1,1],n:7,g:'nest',u:'cell',nm:'튤립둥지',kw:'기술',slo:'확률적으로 생각하라',nov:'검은 튤립'},
-    {c:[1,1,-1],n:9,g:'nest',u:'second',nm:'까마귀둥지',kw:'협력자',slo:'의미를 만들어라',nov:'삼국유사'},
-  ];
-  V.forEach(v=>{const p=proj(v.c);v.x=p.x;v.y=p.y;v.d=p.d;});
-  const dmin=Math.min(...V.map(v=>v.d)), dmax=Math.max(...V.map(v=>v.d)), norm=d=>(d-dmin)/(dmax-dmin||1);
-  const diff=(a,b)=>{let n=0;for(let i=0;i<3;i++)if(a.c[i]!==b.c[i])n++;return n;};
-  let E=[]; for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){const a=V[i],b=V[j];E.push({a,b,k:diff(a,b),dep:(norm(a.d)+norm(b.d))/2});}
-  const ln=(a,b,at)=>`<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" ${at}/>`;
-  let s='';
-  E.filter(e=>e.k===1).forEach(e=>{s+=ln(e.a,e.b,`stroke="#8aa0c0" stroke-width="1" opacity="${(0.08+0.16*e.dep).toFixed(2)}"`);});
-  E.filter(e=>e.k===3).forEach(e=>{s+=ln(e.a,e.b,`stroke="${U[e.a.u]}" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.45"`);});
-  E.filter(e=>e.k===2 && e.a.g===e.b.g).forEach(e=>{const o=(0.32+0.5*e.dep).toFixed(2);
-    if(e.a.g==='cage') s+=ln(e.a,e.b,`stroke="#cbb487" stroke-width="${(1.5+1.6*e.dep).toFixed(1)}" opacity="${o}"`);
-    else s+=ln(e.a,e.b,`stroke="#8ab6d6" stroke-width="${(1.3+1.1*e.dep).toFixed(1)}" stroke-dasharray="7 5" opacity="${o}"`);});
-  // hub (clickable -> ch5)
-  s+=`<a href="interactive/reader.html?file=ch5_mirror_nest">`;
-  s+=`<circle cx="${CX}" cy="${CY}" r="30" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>`;
-  s+=`<text x="${CX}" y="${CY-5}" text-anchor="middle" fill="#d4af37" font-size="18" font-family="serif">&#9733;</text>`;
-  s+=`<text x="${CX}" y="${CY+12}" text-anchor="middle" fill="#d4af37" font-size="10.5">5&#8596;10 회전축</text>`;
-  s+=`<text x="${CX}" y="${CY+25}" text-anchor="middle" fill="#9a8a4a" font-size="9.5">101&#8322;&#8596;101&#8323;</text></a>`;
-  [...V].sort((p,q)=>p.d-q.d).forEach(v=>{const col=U[v.u], f=norm(v.d), r=(7+4.5*f).toFixed(1), op=(0.5+0.5*f).toFixed(2);
-    let dx=v.x-CX, dy=v.y-CY, L=Math.hypot(dx,dy)||1; dx/=L; dy/=L;
-    const gap=44+Math.max(0,150-L)*0.55, lx=v.x+dx*gap, ly=v.y+dy*gap, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
-    s+=`<a href="interactive/reader.html?file=${SL[v.n]}">`;
-    s+=`<circle cx="${v.x.toFixed(1)}" cy="${v.y.toFixed(1)}" r="${r}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly-6).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="15" fill="${col}">${v.n} ${v.nm}</text>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly+11).toFixed(1)}" text-anchor="${anc}" font-size="12" fill="#cfd6e0">${v.kw} &#183; &#12300;${v.slo}&#12301;</text>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly+27).toFixed(1)}" text-anchor="${anc}" font-size="10.5" fill="#7c8aa8">${v.nov} &#183; [${v.u}]</text></a>`;});
-  document.getElementById('bookmap-svg').innerHTML=s;
-})();
-</script>
-
 <!-- B. 창업소설이란 — 장르의 품질척도 -->
 <div class="section">
   <div class="section-label">창업소설이란</div>
