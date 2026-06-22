@@ -21,13 +21,18 @@
   .svg .node:hover circle{stroke:#fff;stroke-width:2.5;}
   .svg .node:hover text{fill:#fff !important;}
   /* summary panel */
-  #panel{max-width:760px;margin:14px auto 0;background:#0e1220;border:1px solid #1e2740;border-radius:12px;padding:22px 26px;min-height:150px;}
+  #panel{max-width:760px;margin:14px auto 0;background:#0e1220;border:1px solid #1e2740;border-radius:12px;padding:24px 28px;min-height:170px;}
   #panel .eyebrow{font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:6px;}
   #panel h2{font-family:'Noto Serif KR',serif;font-size:1.25em;font-weight:700;margin-bottom:2px;line-height:1.3;}
   #panel .src{font-size:12.5px;color:#9aa6bc;margin-bottom:14px;font-style:italic;}
-  #panel .row{display:flex;gap:10px;margin-bottom:10px;font-size:13.5px;line-height:1.7;}
-  #panel .row .lab{flex:0 0 96px;font-size:11px;letter-spacing:1px;color:#6b7790;font-weight:700;padding-top:2px;text-transform:uppercase;}
-  #panel .row .val{flex:1;color:#dde3ee;}
+  #panel .hook{font-family:'Noto Serif KR',serif;font-size:1.08em;font-weight:700;line-height:1.5;margin-bottom:12px;}
+  #panel .story{font-size:14px;line-height:1.85;color:#e3e8f2;margin-bottom:14px;}
+  #panel .links{display:flex;gap:10px;margin:0 0 16px;flex-wrap:wrap;}
+  #panel .links a{font-size:12px;font-weight:600;text-decoration:none;padding:7px 13px;border-radius:8px;border:1px solid #2a3550;color:#cdd5e4;background:#141a2c;transition:all .15s;}
+  #panel .links a:hover{border-color:#4A7A6B;color:#fff;background:#18203a;}
+  #panel .row{display:flex;gap:10px;margin-bottom:10px;font-size:13px;line-height:1.7;}
+  #panel .row .lab{flex:0 0 86px;font-size:11px;letter-spacing:1px;color:#6b7790;font-weight:700;padding-top:2px;text-transform:uppercase;}
+  #panel .row .val{flex:1;color:#cdd5e4;}
   #panel .val b{color:#fff;font-weight:600;}
   .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle;}
   .hint{text-align:center;font-size:12px;color:#6b7790;margin-top:2px;}
@@ -43,8 +48,8 @@
   <a class="back" href="../index.html">&larr; cover</a>
   <div class="head">
     <div class="kicker">THE TEN NOVELS &middot; FOR CHARLIE</div>
-    <h1>One novel per chapter &mdash; read the summary first, then the chapter</h1>
-    <p>Each chapter of <b>Opening the Golden Cage</b> borrows one novel as its instrument. The four <b>cage</b> chapters (1&ndash;4) teach you to <b>persuade yourself</b>; the four <b>nest</b> chapters (6&ndash;9) teach you to <b>persuade others</b>; chapter 5/10 is the hinge. The outer tetrahedron is the cage, the inner one the nest &mdash; <b>same skeleton, different owner</b>. Click any node for the novel summary.</p>
+    <h1>One novel per chapter &mdash; meet the original first, then read the chapter</h1>
+    <p>This is a launchpad <b>forward to the source novels</b> that <b>Opening the Golden Cage</b> is built on &mdash; each summary below is of the <b>original novel</b>, not my chapter. Meet the source (read it, or watch a summary) and the chapter clicks into place. The four <b>cage</b> chapters (1&ndash;4) teach you to <b>persuade yourself</b>; the four <b>nest</b> chapters (6&ndash;9) to <b>persuade others</b>; 5/10 is the hinge. Outer tetrahedron = cage, inner = nest &mdash; <b>same skeleton, different owner</b>. Click any node for the story, a video summary, and the full text.</p>
   </div>
   <svg id="map" class="svg" viewBox="0 0 1120 1000" role="img" aria-label="Ten novels map — cage tetrahedron with nest tetrahedron inside"></svg>
   <div class="hint">click a node &middot; same color = mirror pair (one-letter twist) &middot; center &#9733; = chapters 5 &amp; 10</div>
@@ -64,46 +69,56 @@
 (function(){
   const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
   const KING={bit:'Bits',atom:'Atoms',cell:'Bio',second:'Energy'};
-  // novel summaries (English — Charlie reads these before each chapter)
+  // novel summaries — told the way you'd tell them to make someone need the chapter.
   const D={
     1:{name:'Mirror Cage',kr:'거울새장',novel:'Madame Bovary',author:'Gustave Flaubert, 1857',u:'bit',g:'cage',
-       plot:'Emma Bovary, a country doctor’s wife, borrows her dreams of passion and luxury from the romance novels she reads, runs up secret debts to the merchant Lheureux chasing a life that was never hers, and is ruined by it.',
+       hook:'A woman reads herself to death.',
+       plot:'Emma reads romance novels until the longing inside them grows louder than her own life. She marries a dull country doctor and then spends herself — and his money — chasing the rapture the books promised: lovers, silk, a Paris she will never see. The cloth-merchant Lheureux keeps smiling and extending her credit, and the debt swells quietly behind the mirror she cannot stop staring into. When the bills come due and the lovers vanish, she swallows arsenic, never once able to tell which of her desires were ever hers.',
        lesson:'Borrowed desire — the founder who mistakes someone else’s dream for her own. <b>Open the desire-ledger.</b>',
        twist:'Mirror of Ch.5: wearing the fantasy <i>unknowingly</i> &rarr; <i>knowingly</i>.'},
     2:{name:'Telescope Cage',kr:'망원경새장',novel:'The Leopard (Il Gattopardo)',author:'Giuseppe Tomasi di Lampedusa, 1958',u:'atom',g:'cage',
-       plot:'Prince Fabrizio Salina watches the old Sicilian aristocracy dissolve during the 1860s unification with perfect clarity — and acts on none of it. His nephew Tancredi: “everything must change so that everything can stay the same.”',
+       hook:'The man who understood everything — and moved on nothing.',
+       plot:'As Garibaldi’s revolution sweeps Sicily, Prince Fabrizio Salina watches his world end from his palace with an astronomer’s calm, reading every force in play more clearly than the men actually making history. His sharp nephew Tancredi hands him the era’s coldest truth: “everything must change so that everything can stay the same.” But the prince only observes; he chooses the comfort of seeing over the risk of acting. And so the new world simply walks past the old leopard — magnificent, lucid, and irrelevant.',
        lesson:'Observe-but-don’t-act — flawless analysis that never moves (Kodak saw digital; Fuji moved). <b>Ride the sequence.</b>',
        twist:'Mirror of Ch.8: detached gazing &rarr; negotiating a seat at the author’s desk.'},
     3:{name:'Stained-Glass Cage',kr:'스테인드글라스새장',novel:'The Plague (La Peste)',author:'Albert Camus, 1947',u:'cell',g:'cage',
-       plot:'In quarantined Oran, Father Paneloux preaches the plague as God’s punishment — a beautiful, total certainty — while Dr. Rieux quietly treats the sick without claiming to know why.',
+       hook:'A sermon so beautiful that no daylight gets through.',
+       plot:'Plague seals the city of Oran, and Father Paneloux climbs the pulpit to explain it: this is God’s whip, falling on the guilty — a vision so luminous it feels like truth pouring through stained glass. Down in the wards Dr. Rieux says nothing so grand; he simply keeps treating the dying, refusing to pretend he knows why a child must suffer. One man holds a gorgeous certainty that lets in no light; the other holds only a clear pane and his own two hands. When a child dies screaming, only one of their faiths survives the night.',
        lesson:'Beautiful certainty that blocks the view (Theranos’s one conviction vs. Moderna’s probabilistic bet). <b>Calibrate your conviction.</b>',
        twist:'Mirror of Ch.7: a single point of faith &rarr; a distribution.'},
     4:{name:'Clock Cage',kr:'시계새장',novel:'Friday (Vendredi ou les limbes du Pacifique)',author:'Michel Tournier, 1967',u:'second',g:'cage',
-       plot:'Shipwrecked Robinson rebuilds borrowed civilization on his island — water-clock, calendar, ledgers, laws. The order first saves him, then imprisons him; when Friday accidentally detonates the gunpowder and the whole built world, Robinson is freed to imagine a life without the clock.',
+       hook:'The clock that saved him, then swallowed him.',
+       plot:'Marooned utterly alone, Robinson beats back his panic by rebuilding the empire that abandoned him: a water-clock to count the hours, a calendar, ledgers, a whole code of law for an island of one. The order rescues his mind — and then, so slowly he never notices, becomes his prison, until he can no longer picture a single day the clock does not rule. Then Friday, careless and free, sets off the gunpowder, and the entire built world goes up in one blast. In the drifting smoke, Robinson finally remembers there was a life before the clock.',
        lesson:'The better the clock runs, the less you can imagine any other life. The explosion = disruption. <b>Light the next fire.</b>',
        twist:'Mirror of Ch.9: compulsive ordering &rarr; making meaning (the ouroboros vertex).'},
     5:{name:'Mirror Nest · Room 101',kr:'거울둥지·101호',novel:'1984',author:'George Orwell, 1949',u:'bit',g:'hub',
-       plot:'In Room 101 Winston is broken until “he loved Big Brother” — his own frame hidden forever. The book’s hinge: the same mirror, now worn knowingly, seams showing.',
+       hook:'The last free room in a man’s mind.',
+       plot:'Winston Smith keeps one secret room inside himself the Party can never enter — until they walk him into Room 101 and meet him with the one thing he cannot bear. He breaks. The book closes on the coldest sentence in modern fiction: “He loved Big Brother.” This is where the whole story pivots: for the rest of us the lesson is to wear the frame knowingly, seams showing, rather than have it sealed over us forever.',
        lesson:'The ★pause (Negative Capability): before you build, ask “what do I truly want / what is the minimum I must know.” Skip it and you fall back to Ch.1’s borrowed desire.',
        twist:'Rotation axis 5↔10 — writing the debt (cold) ↔ paying it back (warm). 101₂ ↔ 101₃.'},
     6:{name:'Butterfly Nest',kr:'나비둥지',novel:'M. Butterfly',author:'David Henry Hwang, 1988',u:'bit',g:'nest',
-       plot:'Song Liling knowingly performs the Western fantasy of the “Oriental woman” for the diplomat Gallimard, who never sees who Song truly is.',
+       hook:'He loved her for twenty years and never once saw her.',
+       plot:'For two decades the French diplomat Gallimard adores a delicate Chinese opera singer, Song Liling — the perfect “Oriental woman” of his imagination. He never discovers that Song is a man, and a spy, performing back to him the exact dream he most wants to believe. Song wears the fantasy with open eyes; Gallimard wears his with closed ones, and only one of them survives the unmasking. Where Emma let her make-believe collapse into belief, Song keeps it a performance — and so keeps the power.',
        lesson:'Wear the role knowingly — simulation ≠ belief. Emma wore the fantasy unknowing and was eaten; Song keeps it a simulation. <b>Persuade your users.</b>',
        twist:'Mirror of Ch.1: belief &rarr; experiment.'},
     7:{name:'Tulip Nest',kr:'튤립둥지',novel:'The Black Tulip (La Tulipe noire)',author:'Alexandre Dumas, 1850',u:'cell',g:'nest',
-       plot:'Against the 1672 lynching of the de Witt brothers (100% rationality torn apart by 100% mob frenzy), the imprisoned Cornelius cultivates a rare black tulip — betting not on one certainty but on a distribution of bulbs.',
+       hook:'Pure reason and a pure mob, three days on the same street.',
+       plot:'In 1672 the rational statesman Cornelius de Witt is dragged from prison and torn to pieces by a crowd in the streets of The Hague — cold logic and hot frenzy living side by side for three days. His godson, Cornelius van Baerle, ruined and jailed, stakes everything not on one bulb but on several, coaxing a near-impossible black tulip toward bloom by treating his chances as a spread of odds rather than a single all-or-nothing bet. From a prison cell he learns the very thing the de Witts’ killers never could: how to think in distributions.',
        lesson:'Think in distributions, not single bets (Novo Nordisk reframes obesity as a disease distribution). <b>Persuade the technologists.</b>',
        twist:'Mirror of Ch.3: one point &rarr; distribution. 21c reprise: GameStop.'},
     8:{name:'Mist Nest',kr:'안개둥지',novel:'Mist (Niebla)',author:'Miguel de Unamuno, 1914',u:'atom',g:'nest',
-       plot:'The character Augusto walks off the page to confront his author, demanding to know whether the author has the right to kill him — a creature negotiating with its creator (the 1914 ancestor of human ↔ AI alignment).',
+       hook:'The character who knocked on his author’s door.',
+       plot:'Augusto, a man drifting through a foggy life he barely chose, resolves to end it — and then does what no character had dared before: he travels to the author’s house to argue. He confronts Unamuno face to face, insisting he has a will of his own and demanding to know by what right his maker may kill him. It is, a full century early, the quarrel between a created mind and its creator — and Unamuno marks the rupture by twisting the word <i>novela</i> into <i>nivola</i>, rewriting the genre’s rules in a single letter.',
        lesson:'Cross the line; negotiate your seat at the table. <b>Persuade your investors</b> (the parent-as-angel, the publisher).',
        twist:'Mirror of Ch.2: the one-letter twist <i>novela &rarr; nivola</i> — rewrite the genre’s own rules.'},
     9:{name:'Raven Nest',kr:'까마귀둥지',novel:'Samguk Yusa (삼국유사)',author:'Iryeon, 1281',u:'second',g:'nest',
-       plot:'The Raven trickster carries light in its beak and makes sun, moon, and stars; during the Mongol invasions Iryeon gathered the stories official history (正) discarded into a “left-over / remembered” history (遺).',
+       hook:'The thief who made the sun by carrying it.',
+       plot:'In Pacific-Northwest myth the Raven steals light in its beak and hurls it up through the smoke-hole of the sky to make the sun, the moon, and the stars — a thief who creates by carrying. Eight centuries ago, as the Mongols burned their way through Korea, the monk Iryeon did the same with memory: he gathered the legends and miracles the official chronicles (正, “the correct”) had thrown away and bound them into a “remembered history” (遺). One twisted character — 正 into 遺 — and the discarded became the canon.',
        lesson:'Make new meaning; name the next thing (SK Hynix renames DRAM &rarr; HBM). <b>Persuade your collaborators.</b>',
        twist:'Mirror of Ch.4: the one-letter twist 正 &rarr; 遺. Ouroboros vertex — the book’s close folds back to its start.'},
     10:{name:'Room 10101',kr:'10101호',novel:'1984 (reprise)',author:'George Orwell, 1949',u:'bit',g:'hub',
-       plot:'The same Room 101, one digit shifted: 101₂ (=5) &rarr; 101₃ (=10). The debt written coldly in Ch.5 is now paid back warmly.',
+       hook:'The same room — one digit over.',
+       plot:'Return to Room 101, but read the number again: 101 in base-2 is 5; in base-3 it is 10. The same room, shifted one notch. What Winston once wrote in cold surrender, the book now pays back warm — not an answer that closes the story, but a question that opens the next one. Binary thinking built the cage; thinking in threes opens the nest.',
        lesson:'Closing as ouroboros — don’t end with an answer, plant the next question. Binary thinking = cage; ternary (≥3) thinking = nest.',
        twist:'Mirror of Ch.5: same room, opposite temperature.'},
   };
@@ -149,16 +164,22 @@
   document.getElementById('map').innerHTML=s;
 
   const panel=document.getElementById('panel');
+  const q=d=>(d.novel.replace(/\s*\(.*?\)/,'')+' '+d.author.replace(/,\s*\d{4}.*$/,'')).trim();
+  const yt=d=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q(d)+' novel summary');
+  const pdf=d=>'https://www.google.com/search?q='+encodeURIComponent(q(d)+' full text pdf');
+  function links(d){return `<div class="links"><a href="${yt(d)}" target="_blank" rel="noopener">&#9654; Watch a summary</a><a href="${pdf(d)}" target="_blank" rel="noopener">&#128196; Read the novel (PDF)</a></div>`;}
   function render(n){
     const d=D[n]; const col=U[d.u];
     let extra='';
-    if(n==5){const t=D[10]; extra=`<div class="row"><div class="lab">Ch.10 · 10101</div><div class="val"><b>${t.novel}</b> &mdash; ${t.plot} ${t.lesson}</div></div>`;}
+    if(n==5){const t=D[10]; extra=`<div class="row"><div class="lab">Ch.10</div><div class="val"><b>${t.novel}</b> — ${t.hook} ${t.plot}</div></div>`;}
     panel.innerHTML=
       `<div class="eyebrow" style="color:${col}">CHAPTER ${n==5?'5 &amp; 10':n} · ${KING[d.u].toUpperCase()} [${d.u}] · ${d.g==='cage'?'CAGE (break)':d.g==='nest'?'NEST (build)':'HINGE'}</div>`+
       `<h2>${d.name} <span style="color:#7c8aa8;font-weight:400;font-size:0.7em">${d.kr}</span><span class="pill" style="background:${col}22;color:${col}">read before Ch.${n}</span></h2>`+
       `<div class="src">${d.novel} — ${d.author}</div>`+
-      `<div class="row"><div class="lab">The novel</div><div class="val">${d.plot}</div></div>`+
-      `<div class="row"><div class="lab">The lesson</div><div class="val">${d.lesson}</div></div>`+
+      `<div class="hook" style="color:${col}">${d.hook}</div>`+
+      `<div class="story">${d.plot}</div>`+
+      links(d)+
+      `<div class="row"><div class="lab">In my chapter</div><div class="val">${d.lesson}</div></div>`+
       `<div class="row"><div class="lab">Twist</div><div class="val">${d.twist}</div></div>`+extra;
   }
   document.querySelectorAll('#map .node').forEach(g=>g.addEventListener('click',()=>render(g.dataset.n)));
