@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ten Novels — a 3D map to read before each chapter</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 24px 56px;}
+  .back{display:inline-block;font-size:12px;color:#5a6a7a;text-decoration:none;margin-bottom:18px;transition:color 0.15s;}
+  .back:hover{color:#e8eaf0;}
+  .head{text-align:center;max-width:720px;margin:0 auto 6px;}
+  .kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:12px;}
+  .head h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.4;}
+  .head p{font-size:13px;color:#8899aa;line-height:1.95;}
+  .head p b{color:#d6dce6;font-weight:600;}
+  .svg{width:100%;height:auto;display:block;margin:2px auto 0;}
+  .svg a,.svg .node{cursor:pointer;}
+  .svg .node:hover circle{stroke:#fff;stroke-width:2.5;}
+  .svg .node:hover text{fill:#fff !important;}
+  /* summary panel */
+  #panel{max-width:760px;margin:14px auto 0;background:#0e1220;border:1px solid #1e2740;border-radius:12px;padding:22px 26px;min-height:150px;}
+  #panel .eyebrow{font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:6px;}
+  #panel h2{font-family:'Noto Serif KR',serif;font-size:1.25em;font-weight:700;margin-bottom:2px;line-height:1.3;}
+  #panel .src{font-size:12.5px;color:#9aa6bc;margin-bottom:14px;font-style:italic;}
+  #panel .row{display:flex;gap:10px;margin-bottom:10px;font-size:13.5px;line-height:1.7;}
+  #panel .row .lab{flex:0 0 96px;font-size:11px;letter-spacing:1px;color:#6b7790;font-weight:700;padding-top:2px;text-transform:uppercase;}
+  #panel .row .val{flex:1;color:#dde3ee;}
+  #panel .val b{color:#fff;font-weight:600;}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  .hint{text-align:center;font-size:12px;color:#6b7790;margin-top:2px;}
+  .foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:18px;line-height:1.9;}
+  .foot a{color:#4A7A6B;text-decoration:none;}
+  .foot a:hover{text-decoration:underline;}
+  .legend{text-align:center;font-size:11px;color:#7c8aa8;margin-top:10px;}
+  .legend span{margin:0 8px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; cover</a>
+  <div class="head">
+    <div class="kicker">THE TEN NOVELS &middot; FOR CHARLIE</div>
+    <h1>One novel per chapter &mdash; read the summary first, then the chapter</h1>
+    <p>Each chapter of <b>Opening the Golden Cage</b> borrows one novel as its instrument. The four <b>cage</b> chapters (1&ndash;4) teach you to <b>persuade yourself</b>; the four <b>nest</b> chapters (6&ndash;9) teach you to <b>persuade others</b>; chapter 5/10 is the hinge. The outer tetrahedron is the cage, the inner one the nest &mdash; <b>same skeleton, different owner</b>. Click any node for the novel summary.</p>
+  </div>
+  <svg id="map" class="svg" viewBox="0 0 1120 1000" role="img" aria-label="Ten novels map — cage tetrahedron with nest tetrahedron inside"></svg>
+  <div class="hint">click a node &middot; same color = mirror pair (one-letter twist) &middot; center &#9733; = chapters 5 &amp; 10</div>
+  <div id="panel"></div>
+  <div class="legend">
+    <span style="color:#4a90d9">&#9679; Bits (bit)</span>
+    <span style="color:#3aa86a">&#9679; Atoms (atom)</span>
+    <span style="color:#d24b3a">&#9679; Bio (cell)</span>
+    <span style="color:#d9a92e">&#9679; Energy (second)</span>
+  </div>
+  <div class="foot">
+    The four kingdoms classify the <i>nature of the product</i>, not a to-do list for one founder &mdash; the beachhead is aspiring Korean entrepreneurs.<br>
+    Why entrepreneurship? &mdash; <b>use your past pain as your future fuel.</b> &middot; <a href="bookmap_3d.html">navigable 3D map</a> &middot; <a href="../index.html">cover</a>
+  </div>
+</div>
+<script>
+(function(){
+  const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
+  const KING={bit:'Bits',atom:'Atoms',cell:'Bio',second:'Energy'};
+  // novel summaries (English — Charlie reads these before each chapter)
+  const D={
+    1:{name:'Mirror Cage',kr:'거울새장',novel:'Madame Bovary',author:'Gustave Flaubert, 1857',u:'bit',g:'cage',
+       plot:'Emma Bovary, a country doctor’s wife, borrows her dreams of passion and luxury from the romance novels she reads, runs up secret debts to the merchant Lheureux chasing a life that was never hers, and is ruined by it.',
+       lesson:'Borrowed desire — the founder who mistakes someone else’s dream for her own. <b>Open the desire-ledger.</b>',
+       twist:'Mirror of Ch.5: wearing the fantasy <i>unknowingly</i> &rarr; <i>knowingly</i>.'},
+    2:{name:'Telescope Cage',kr:'망원경새장',novel:'The Leopard (Il Gattopardo)',author:'Giuseppe Tomasi di Lampedusa, 1958',u:'atom',g:'cage',
+       plot:'Prince Fabrizio Salina watches the old Sicilian aristocracy dissolve during the 1860s unification with perfect clarity — and acts on none of it. His nephew Tancredi: “everything must change so that everything can stay the same.”',
+       lesson:'Observe-but-don’t-act — flawless analysis that never moves (Kodak saw digital; Fuji moved). <b>Ride the sequence.</b>',
+       twist:'Mirror of Ch.8: detached gazing &rarr; negotiating a seat at the author’s desk.'},
+    3:{name:'Stained-Glass Cage',kr:'스테인드글라스새장',novel:'The Plague (La Peste)',author:'Albert Camus, 1947',u:'cell',g:'cage',
+       plot:'In quarantined Oran, Father Paneloux preaches the plague as God’s punishment — a beautiful, total certainty — while Dr. Rieux quietly treats the sick without claiming to know why.',
+       lesson:'Beautiful certainty that blocks the view (Theranos’s one conviction vs. Moderna’s probabilistic bet). <b>Calibrate your conviction.</b>',
+       twist:'Mirror of Ch.7: a single point of faith &rarr; a distribution.'},
+    4:{name:'Clock Cage',kr:'시계새장',novel:'Friday (Vendredi ou les limbes du Pacifique)',author:'Michel Tournier, 1967',u:'second',g:'cage',
+       plot:'Shipwrecked Robinson rebuilds borrowed civilization on his island — water-clock, calendar, ledgers, laws. The order first saves him, then imprisons him; when Friday accidentally detonates the gunpowder and the whole built world, Robinson is freed to imagine a life without the clock.',
+       lesson:'The better the clock runs, the less you can imagine any other life. The explosion = disruption. <b>Light the next fire.</b>',
+       twist:'Mirror of Ch.9: compulsive ordering &rarr; making meaning (the ouroboros vertex).'},
+    5:{name:'Mirror Nest · Room 101',kr:'거울둥지·101호',novel:'1984',author:'George Orwell, 1949',u:'bit',g:'hub',
+       plot:'In Room 101 Winston is broken until “he loved Big Brother” — his own frame hidden forever. The book’s hinge: the same mirror, now worn knowingly, seams showing.',
+       lesson:'The ★pause (Negative Capability): before you build, ask “what do I truly want / what is the minimum I must know.” Skip it and you fall back to Ch.1’s borrowed desire.',
+       twist:'Rotation axis 5↔10 — writing the debt (cold) ↔ paying it back (warm). 101₂ ↔ 101₃.'},
+    6:{name:'Butterfly Nest',kr:'나비둥지',novel:'M. Butterfly',author:'David Henry Hwang, 1988',u:'bit',g:'nest',
+       plot:'Song Liling knowingly performs the Western fantasy of the “Oriental woman” for the diplomat Gallimard, who never sees who Song truly is.',
+       lesson:'Wear the role knowingly — simulation ≠ belief. Emma wore the fantasy unknowing and was eaten; Song keeps it a simulation. <b>Persuade your users.</b>',
+       twist:'Mirror of Ch.1: belief &rarr; experiment.'},
+    7:{name:'Tulip Nest',kr:'튤립둥지',novel:'The Black Tulip (La Tulipe noire)',author:'Alexandre Dumas, 1850',u:'cell',g:'nest',
+       plot:'Against the 1672 lynching of the de Witt brothers (100% rationality torn apart by 100% mob frenzy), the imprisoned Cornelius cultivates a rare black tulip — betting not on one certainty but on a distribution of bulbs.',
+       lesson:'Think in distributions, not single bets (Novo Nordisk reframes obesity as a disease distribution). <b>Persuade the technologists.</b>',
+       twist:'Mirror of Ch.3: one point &rarr; distribution. 21c reprise: GameStop.'},
+    8:{name:'Mist Nest',kr:'안개둥지',novel:'Mist (Niebla)',author:'Miguel de Unamuno, 1914',u:'atom',g:'nest',
+       plot:'The character Augusto walks off the page to confront his author, demanding to know whether the author has the right to kill him — a creature negotiating with its creator (the 1914 ancestor of human ↔ AI alignment).',
+       lesson:'Cross the line; negotiate your seat at the table. <b>Persuade your investors</b> (the parent-as-angel, the publisher).',
+       twist:'Mirror of Ch.2: the one-letter twist <i>novela &rarr; nivola</i> — rewrite the genre’s own rules.'},
+    9:{name:'Raven Nest',kr:'까마귀둥지',novel:'Samguk Yusa (삼국유사)',author:'Iryeon, 1281',u:'second',g:'nest',
+       plot:'The Raven trickster carries light in its beak and makes sun, moon, and stars; during the Mongol invasions Iryeon gathered the stories official history (正) discarded into a “left-over / remembered” history (遺).',
+       lesson:'Make new meaning; name the next thing (SK Hynix renames DRAM &rarr; HBM). <b>Persuade your collaborators.</b>',
+       twist:'Mirror of Ch.4: the one-letter twist 正 &rarr; 遺. Ouroboros vertex — the book’s close folds back to its start.'},
+    10:{name:'Room 10101',kr:'10101호',novel:'1984 (reprise)',author:'George Orwell, 1949',u:'bit',g:'hub',
+       plot:'The same Room 101, one digit shifted: 101₂ (=5) &rarr; 101₃ (=10). The debt written coldly in Ch.5 is now paid back warmly.',
+       lesson:'Closing as ouroboros — don’t end with an answer, plant the next question. Binary thinking = cage; ternary (≥3) thinking = nest.',
+       twist:'Mirror of Ch.5: same room, opposite temperature.'},
+  };
+  const S=205, CX=560, CY=480, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
+  const proj=c=>{const[x,y,z]=c; const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
+    const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
+  const V=[
+    {c:[1,1,1],n:1,g:'cage',u:'bit'},
+    {c:[1,-1,-1],n:2,g:'cage',u:'atom'},
+    {c:[-1,1,-1],n:3,g:'cage',u:'cell'},
+    {c:[-1,-1,1],n:4,g:'cage',u:'second'},
+    {c:[-1,-1,-1],n:6,g:'nest',u:'bit'},
+    {c:[-1,1,1],n:8,g:'nest',u:'atom'},
+    {c:[1,-1,1],n:7,g:'nest',u:'cell'},
+    {c:[1,1,-1],n:9,g:'nest',u:'second'},
+  ];
+  V.forEach(v=>{const p=proj(v.c);v.x=p.x;v.y=p.y;v.d=p.d;});
+  const dmin=Math.min(...V.map(v=>v.d)), dmax=Math.max(...V.map(v=>v.d)), norm=d=>(d-dmin)/(dmax-dmin||1);
+  const diff=(a,b)=>{let n=0;for(let i=0;i<3;i++)if(a.c[i]!==b.c[i])n++;return n;};
+  let E=[]; for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){const a=V[i],b=V[j];E.push({a,b,k:diff(a,b),dep:(norm(a.d)+norm(b.d))/2});}
+  const ln=(a,b,at)=>`<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" ${at}/>`;
+  let s='';
+  E.filter(e=>e.k===1).forEach(e=>{s+=ln(e.a,e.b,`stroke="#8aa0c0" stroke-width="1" opacity="${(0.08+0.16*e.dep).toFixed(2)}"`);});
+  E.filter(e=>e.k===3).forEach(e=>{s+=ln(e.a,e.b,`stroke="${U[e.a.u]}" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.45"`);});
+  E.filter(e=>e.k===2 && e.a.g===e.b.g).forEach(e=>{const o=(0.32+0.5*e.dep).toFixed(2);
+    if(e.a.g==='cage') s+=ln(e.a,e.b,`stroke="#cbb487" stroke-width="${(1.5+1.6*e.dep).toFixed(1)}" opacity="${o}"`);
+    else s+=ln(e.a,e.b,`stroke="#8ab6d6" stroke-width="${(1.3+1.1*e.dep).toFixed(1)}" stroke-dasharray="7 5" opacity="${o}"`);});
+  // hub = chapters 5 & 10
+  s+=`<g class="node" data-n="5">`;
+  s+=`<circle cx="${CX}" cy="${CY}" r="30" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.2" opacity="0.95"/>`;
+  s+=`<text x="${CX}" y="${CY-4}" text-anchor="middle" fill="#d4af37" font-size="17" font-family="serif">&#9733;</text>`;
+  s+=`<text x="${CX}" y="${CY+13}" text-anchor="middle" fill="#d4af37" font-size="10">5 &amp; 10</text>`;
+  s+=`<text x="${CX}" y="${CY+25}" text-anchor="middle" fill="#9a8a4a" font-size="9">1984</text></g>`;
+  [...V].sort((p,q)=>p.d-q.d).forEach(v=>{const col=U[v.u], f=norm(v.d), r=(7+4.5*f).toFixed(1), op=(0.5+0.5*f).toFixed(2);
+    let dx=v.x-CX, dy=v.y-CY, L=Math.hypot(dx,dy)||1; dx/=L; dy/=L;
+    const gap=44+Math.max(0,150-L)*0.55, lx=v.x+dx*gap, ly=v.y+dy*gap, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
+    const d=D[v.n];
+    s+=`<g class="node" data-n="${v.n}">`;
+    s+=`<circle cx="${v.x.toFixed(1)}" cy="${v.y.toFixed(1)}" r="${r}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
+    s+=`<text x="${lx.toFixed(1)}" y="${(ly-6).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="14.5" fill="${col}">${v.n} ${d.name}</text>`;
+    s+=`<text x="${lx.toFixed(1)}" y="${(ly+11).toFixed(1)}" text-anchor="${anc}" font-size="11.5" fill="#cfd6e0">${d.novel}</text>`;
+    s+=`<text x="${lx.toFixed(1)}" y="${(ly+26).toFixed(1)}" text-anchor="${anc}" font-size="10" fill="#7c8aa8">${KING[v.u]} [${v.u}]</text></g>`;});
+  document.getElementById('map').innerHTML=s;
+
+  const panel=document.getElementById('panel');
+  function render(n){
+    const d=D[n]; const col=U[d.u];
+    let extra='';
+    if(n==5){const t=D[10]; extra=`<div class="row"><div class="lab">Ch.10 · 10101</div><div class="val"><b>${t.novel}</b> &mdash; ${t.plot} ${t.lesson}</div></div>`;}
+    panel.innerHTML=
+      `<div class="eyebrow" style="color:${col}">CHAPTER ${n==5?'5 &amp; 10':n} · ${KING[d.u].toUpperCase()} [${d.u}] · ${d.g==='cage'?'CAGE (break)':d.g==='nest'?'NEST (build)':'HINGE'}</div>`+
+      `<h2>${d.name} <span style="color:#7c8aa8;font-weight:400;font-size:0.7em">${d.kr}</span><span class="pill" style="background:${col}22;color:${col}">read before Ch.${n}</span></h2>`+
+      `<div class="src">${d.novel} — ${d.author}</div>`+
+      `<div class="row"><div class="lab">The novel</div><div class="val">${d.plot}</div></div>`+
+      `<div class="row"><div class="lab">The lesson</div><div class="val">${d.lesson}</div></div>`+
+      `<div class="row"><div class="lab">Twist</div><div class="val">${d.twist}</div></div>`+extra;
+  }
+  document.querySelectorAll('#map .node').forEach(g=>g.addEventListener('click',()=>render(g.dataset.n)));
+  render(1);
+})();
+</script>
+</body>
+</html>
