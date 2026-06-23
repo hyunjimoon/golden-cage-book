@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cage → ★Pause → Nest — the tetrahedron folds into its mirror</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:26px 24px 48px;}
+  .back{display:inline-block;font-size:12px;color:#5a6a7a;text-decoration:none;margin-bottom:16px;}
+  .back:hover{color:#e8eaf0;}
+  .head{text-align:center;max-width:680px;margin:0 auto 4px;}
+  .kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:10px;}
+  .head h1{font-size:1.42em;font-weight:700;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.4;}
+  .head p{font-size:13px;color:#8899aa;line-height:1.9;}
+  .head p b{color:#d6dce6;font-weight:600;}
+  .svg{width:100%;height:auto;display:block;}
+  #caption{text-align:center;font-family:'Noto Serif KR',serif;font-size:1.05em;font-weight:700;min-height:1.6em;margin:2px 0 4px;transition:color .25s;}
+  #subcap{text-align:center;font-size:12px;color:#7c8aa8;min-height:1.4em;margin-bottom:12px;}
+  .controls{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;max-width:620px;margin:0 auto;}
+  button{font-family:inherit;font-size:13px;font-weight:600;color:#cdd5e4;background:#141a2c;border:1px solid #2a3550;border-radius:8px;padding:8px 18px;cursor:pointer;transition:all .15s;}
+  button:hover{border-color:#4A7A6B;color:#fff;background:#18203a;}
+  .slider-row{display:flex;align-items:center;gap:12px;flex:1;min-width:280px;}
+  .slider-row span{font-size:11px;color:#6b7790;font-weight:700;letter-spacing:1px;white-space:nowrap;}
+  input[type=range]{flex:1;accent-color:#d4af37;cursor:pointer;}
+  .foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:18px;line-height:1.9;}
+  .foot a{color:#4A7A6B;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="bookmap_3d.html">&larr; 3D map</a>
+  <div class="head">
+    <div class="kicker">CONTRACT &middot; ★PAUSE &middot; MIRROR-EXPAND</div>
+    <h1>The cage tetrahedron folds through its center into the nest</h1>
+    <p>The regular tetrahedron <b>1&middot;2&middot;3&middot;4</b> (the cage) shrinks toward its center of mass &mdash; through the <b>★ pause (Room 101)</b> &mdash; and re-emerges <b>inverted, at half size</b>, as the mirror tetrahedron <b>6&middot;7&middot;8&middot;9</b> (the nest). Same medium pairs by color (1↔6 bit, 2↔8 atom, 3↔7 cell, 4↔9 energy). Drag to adjust the size; press play for the fold.</p>
+  </div>
+  <svg id="map" class="svg" viewBox="0 0 1120 960" role="img" aria-label="Tetrahedron contracting through its centroid into its mirror image"></svg>
+  <div id="caption"></div>
+  <div id="subcap"></div>
+  <div class="controls">
+    <button id="play">&#9654; Play the fold</button>
+    <div class="slider-row">
+      <span style="color:#cbb487">CAGE</span>
+      <input type="range" id="slider" min="0" max="1000" value="0">
+      <span style="color:#8ab6d6">NEST</span>
+    </div>
+    <button id="reset">&#8635; Reset</button>
+  </div>
+  <div class="foot">
+    s = scale about the centroid: <b>+1</b> cage &rarr; <b>0</b> ★pause &rarr; <b>&minus;½</b> half-size mirror.<br>
+    contraction = torsion released as pain &middot; ★pause = Negative Capability (5↔10) &middot; <a href="ten_novels.html">the ten novels</a>
+  </div>
+</div>
+<script>
+(function(){
+  const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
+  const GOLD=[203,180,135], BLUE=[138,182,214];
+  // cage vertices (scale 1). mirror (−v) at half size = nest node.
+  const V=[
+    {c:[1,1,1],   n:1,nm:'Mirror',     mn:6,mnm:'Butterfly',u:'bit'},
+    {c:[1,-1,-1], n:2,nm:'Telescope',  mn:8,mnm:'Mist',     u:'atom'},
+    {c:[-1,1,-1], n:3,nm:'Glass',      mn:7,mnm:'Tulip',    u:'cell'},
+    {c:[-1,-1,1], n:4,nm:'Clock',      mn:9,mnm:'Raven',    u:'second'},
+  ];
+  const S=185, CX=560, CY=470, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
+  const proj=(c,k)=>{const x=c[0]*k,y=c[1]*k,z=c[2]*k;
+    const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
+    const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
+  const mix=(a,b,t)=>`rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*t)).join(',')})`;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const EDG=[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  const svg=document.getElementById('map'), cap=document.getElementById('caption'), sub=document.getElementById('subcap');
+
+  function draw(s){
+    // color factor: s=+1 gold(cage) → s=-0.5 blue(nest)
+    const cf=clamp((1-s)/1.5,0,1);
+    const ec=mix(GOLD,BLUE,cf);
+    const phase = s>0.05 ? 'cage' : (s<-0.05 ? 'nest':'pause');
+    const P=V.map(v=>proj(v.c,s));
+    let h='';
+    // faint full-size cage ghost (so the nest reads as nested inside)
+    const G=V.map(v=>proj(v.c,1));
+    EDG.forEach(([i,j])=>{h+=`<line x1="${G[i].x.toFixed(1)}" y1="${G[i].y.toFixed(1)}" x2="${G[j].x.toFixed(1)}" y2="${G[j].y.toFixed(1)}" stroke="#cbb487" stroke-width="1" opacity="0.12"/>`;});
+    // moving tetra edges
+    EDG.forEach(([i,j])=>{h+=`<line x1="${P[i].x.toFixed(1)}" y1="${P[i].y.toFixed(1)}" x2="${P[j].x.toFixed(1)}" y2="${P[j].y.toFixed(1)}" stroke="${ec}" stroke-width="${(1.6+1.4*Math.abs(s)).toFixed(1)}" opacity="${(0.35+0.5*Math.abs(s)).toFixed(2)}" ${s<0?'stroke-dasharray="7 5"':''}/>`;});
+    // centroid star — pulses at the pause
+    const star=clamp(1-Math.abs(s)/0.35,0,1);
+    const sr=(22+12*star).toFixed(1);
+    h+=`<circle cx="${CX}" cy="${CY}" r="${sr}" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.2" opacity="${(0.35+0.6*star).toFixed(2)}"/>`;
+    h+=`<text x="${CX}" y="${CY+0.32*sr}" text-anchor="middle" fill="#d4af37" font-size="${(16+10*star).toFixed(0)}" font-family="serif" opacity="${(0.4+0.6*star).toFixed(2)}">&#9733;</text>`;
+    if(star>0.6) h+=`<text x="${CX}" y="${CY+34}" text-anchor="middle" fill="#9a8a4a" font-size="11">101</text>`;
+    // vertices + labels
+    V.forEach((v,i)=>{const p=P[i],col=U[v.u];
+      const showName = phase==='nest'?`${v.mn} ${v.mnm}`:(phase==='cage'?`${v.n} ${v.nm}`:'');
+      const op=phase==='pause'?0.4:(0.6+0.4*Math.abs(s));
+      h+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${(6+3*Math.abs(s)).toFixed(1)}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op.toFixed(2)}"/>`;
+      if(showName){let dx=p.x-CX,dy=p.y-CY,L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
+        const lx=p.x+dx*22, ly=p.y+dy*22, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
+        h+=`<text x="${lx.toFixed(1)}" y="${(ly+4).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="14" fill="${col}" opacity="${(0.5+0.5*Math.abs(s)).toFixed(2)}">${showName}</text>`;}
+    });
+    svg.innerHTML=h;
+    // captions
+    if(phase==='cage'){cap.textContent='CAGE — regular tetrahedron 1·2·3·4';cap.style.color='#cbb487';sub.textContent='success built it; well-run, it hides its own bars (dG/dF = −)';}
+    else if(phase==='pause'){cap.textContent='★ PAUSE — Room 101 (5 ↔ 10)';cap.style.color='#d4af37';sub.textContent='contraction halts at the centroid; torsion released as pain — Negative Capability';}
+    else{cap.textContent='NEST — mirror tetra 6·7·8·9 (half size, inside the cage)';cap.style.color='#8ab6d6';sub.textContent='re-emerges inverted: same skeleton, different owner';}
+  }
+
+  // timeline T∈[0,1] → s, with dwell at the ★pause
+  const ease=t=>t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  function mapS(T){
+    if(T<0.10) return 1;
+    if(T<0.45) return 1 - 1*ease((T-0.10)/0.35);          // 1 → 0
+    if(T<0.58) return 0;                                   // dwell ★
+    if(T<0.90) return -0.5*ease((T-0.58)/0.32);            // 0 → -0.5
+    return -0.5;
+  }
+  const slider=document.getElementById('slider'), playBtn=document.getElementById('play');
+  let T=0, playing=false, last=0;
+  const PERIOD=6200;
+  function sFromSlider(){return 1 - (slider.value/1000)*1.5;}   // 0→1(cage), 1000→-0.5(nest)
+  function setSlider(s){slider.value=Math.round((1-s)/1.5*1000);}
+  function frame(ts){
+    if(!playing)return;
+    if(!last)last=ts; T+=(ts-last)/PERIOD; last=ts;
+    if(T>=1){T=0;}
+    const s=mapS(T); setSlider(s); draw(s);
+    requestAnimationFrame(frame);
+  }
+  function play(){playing=true;last=0;playBtn.innerHTML='&#10073;&#10073; Pause';requestAnimationFrame(frame);}
+  function pause(){playing=false;playBtn.innerHTML='&#9654; Play the fold';}
+  playBtn.addEventListener('click',()=>{playing?pause():play();});
+  slider.addEventListener('input',()=>{pause();draw(sFromSlider());});
+  document.getElementById('reset').addEventListener('click',()=>{pause();T=0;slider.value=0;draw(1);});
+  draw(1);
+})();
+</script>
+</body>
+</html>
