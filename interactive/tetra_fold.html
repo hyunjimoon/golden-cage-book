@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Set the star — the nest grows as the cage's mirror</title>
+<title>수축이 공명을 부른다 — 욕망 사면체의 3단</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -11,15 +11,15 @@
   .wrap{max-width:920px;margin:0 auto;padding:26px 24px 48px;}
   .back{display:inline-block;font-size:12px;color:#5a6a7a;text-decoration:none;margin-bottom:16px;}
   .back:hover{color:#e8eaf0;}
-  .head{text-align:center;max-width:680px;margin:0 auto 4px;}
+  .head{text-align:center;max-width:700px;margin:0 auto 4px;}
   .kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:10px;}
-  .head h1{font-size:1.42em;font-weight:700;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.4;}
+  .head h1{font-size:1.4em;font-weight:700;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.45;}
   .head p{font-size:13px;color:#8899aa;line-height:1.9;}
   .head p b{color:#d6dce6;font-weight:600;}
   .svg{width:100%;height:auto;display:block;}
-  #caption{text-align:center;font-family:'Noto Serif KR',serif;font-size:1.05em;font-weight:700;min-height:1.6em;margin:2px 0 4px;transition:color .25s;}
+  #caption{text-align:center;font-family:'Noto Serif KR',serif;font-size:1.05em;font-weight:700;min-height:1.6em;margin:2px 0 3px;transition:color .25s;}
   #subcap{text-align:center;font-size:12px;color:#7c8aa8;min-height:1.4em;margin-bottom:12px;}
-  .controls{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;max-width:640px;margin:0 auto;}
+  .controls{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;max-width:660px;margin:0 auto;}
   button{font-family:inherit;font-size:13px;font-weight:600;color:#cdd5e4;background:#141a2c;border:1px solid #2a3550;border-radius:8px;padding:8px 18px;cursor:pointer;transition:all .15s;}
   button:hover{border-color:#4A7A6B;color:#fff;background:#18203a;}
   .slider-row{display:flex;align-items:center;gap:12px;flex:1;min-width:300px;}
@@ -33,99 +33,103 @@
 <div class="wrap">
   <a class="back" href="bookmap_3d.html">&larr; 3D map</a>
   <div class="head">
-    <div class="kicker">SET THE STAR · GROW THE MIRROR</div>
-    <h1>The cage stays. From the star, the nest grows as its mirror.</h1>
-    <p>The cage tetrahedron <b>1·2·3·4</b> (how you persuade <b>yourself</b>) never leaves &mdash; because the nest <b>6·7·8·9</b> (how you persuade <b>others</b>) is its <b>mirror</b>, born from the <b>★ North Star</b> at the center and grown to half size, inverted. Same medium pairs by color (1↔6 bit, 2↔8 atom, 3↔7 cell, 4↔9 energy). <b>Past pain (cage) becomes future fuel (nest)</b> &mdash; the same mechanism, reversed. Drag to grow the mirror; press play.</p>
+    <div class="kicker">① 부푼 욕망 · ② 수축 · ③ 거울 공명</div>
+    <h1>수축이 공명을 부른다 — 욕망 사면체가 깎이고, 그 거울상이 들어선다</h1>
+    <p><b>① 부푼 욕망</b>(1·2·3·4)을 <b>의심의 칼</b>로 깎아 <b>② 작은 욕망</b>으로 수축시키면, 그 작아진 자리에 <b>③ 외부요인</b>(6·7·8·9)이 <b>거울상</b>으로 들어선다. ②와 ③은 같은 크기의 거울쌍 — 매질 색으로 짝(1↔6 bit·2↔8 atom·3↔7 cell·4↔9 energy). <b>부푼 욕망(①)은 타자를 비출 거울이 못 된다.</b> 슬라이더로 조절, ▶로 재생.</p>
   </div>
-  <svg id="map" class="svg" viewBox="0 0 1120 960" role="img" aria-label="Cage tetrahedron staying fixed while its half-size mirror nest grows from the central star"></svg>
+  <svg id="map" class="svg" viewBox="0 0 1120 940" role="img" aria-label="욕망 사면체가 수축한 뒤 거울상 외부요인으로 공명하는 3단 애니메이션"></svg>
   <div id="caption"></div>
   <div id="subcap"></div>
   <div class="controls">
-    <button id="play">&#9654; Play</button>
+    <button id="play">&#9654; 재생</button>
     <div class="slider-row">
-      <span style="color:#d4af37">★ STAR</span>
+      <span style="color:#cbb487">① 부푼 욕망</span>
       <input type="range" id="slider" min="0" max="1000" value="0">
-      <span style="color:#8ab6d6">MIRROR NEST</span>
+      <span style="color:#8ab6d6">③ 거울 공명</span>
     </div>
-    <button id="reset">&#8635; Reset</button>
+    <button id="reset">&#8635; 처음</button>
   </div>
   <div class="foot">
-    cage = persuade yourself (past pain) &middot; ★ = the shared North Star (Room 101, 5↔10) &middot; nest = persuade others (mirror, half size)<br>
-    set a star &rarr; only the star-relevant structure activates &middot; <a href="ten_novels.html">the ten novels</a> &middot; <a href="bookmap_3d.html">3D map</a>
+    ①→② 의심의 칼(NC·★멈춤): U(desire)↓ &middot; ②→③ 거울(한 글자 비틂): R̂→1 &middot; ★ = 무게중심 101(5↔10)<br>
+    출처: 사면체_3단_수축공명.md &middot; <a href="ten_novels.html">열 편의 소설</a> &middot; <a href="bookmap_3d.html">3D 지도</a>
   </div>
 </div>
 <script>
 (function(){
   const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
-  // cage vertices (scale 1, permanent). nest = mirror (−v) at half size, born from the star.
+  // cage(욕망) → mirror(외부요인). same medium pairs.
   const V=[
-    {c:[1,1,1],   n:1,nm:'Mirror',     mn:6,mnm:'Butterfly',u:'bit'},
-    {c:[1,-1,-1], n:2,nm:'Telescope',  mn:8,mnm:'Mist',     u:'atom'},
-    {c:[-1,1,-1], n:3,nm:'Glass',      mn:7,mnm:'Tulip',    u:'cell'},
-    {c:[-1,-1,1], n:4,nm:'Clock',      mn:9,mnm:'Raven',    u:'second'},
+    {c:[1,1,1],   n:1,nm:'거울',   mn:6,mnm:'나비',  role:'사용자',u:'bit'},
+    {c:[1,-1,-1], n:2,nm:'망원경', mn:8,mnm:'안개',  role:'투자자',u:'atom'},
+    {c:[-1,1,-1], n:3,nm:'스글',   mn:7,mnm:'튤립',  role:'기술',  u:'cell'},
+    {c:[-1,-1,1], n:4,nm:'시계',   mn:9,mnm:'까마귀',role:'협력자',u:'second'},
   ];
-  const S=185, CX=560, CY=470, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
+  const S=170, CX=560, CY=455, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
   const proj=(c,k)=>{const x=c[0]*k,y=c[1]*k,z=c[2]*k;
     const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
-    const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
+    const y2=y1*cos(A)-z1*sin(A); return {x:CX+x1*S, y:CY-y2*S};};
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   const EDG=[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
   const svg=document.getElementById('map'), cap=document.getElementById('caption'), sub=document.getElementById('subcap');
+  const edges=(P,attr)=>EDG.map(([i,j])=>`<line x1="${P[i].x.toFixed(1)}" y1="${P[i].y.toFixed(1)}" x2="${P[j].x.toFixed(1)}" y2="${P[j].y.toFixed(1)}" ${attr}/>`).join('');
 
-  function draw(g){
-    g=clamp(g,0,1);
-    const Pc=V.map(v=>proj(v.c,1));        // cage — permanent, full
-    const Pn=V.map(v=>proj(v.c,-0.5*g));   // nest — mirror, grows to half size
+  function draw(d,m){
+    const G=V.map(v=>proj(v.c,1));        // ① ghost (부푼 욕망, full)
+    const Pd=V.map(v=>proj(v.c,d));       // ② 욕망 (수축)
+    const Pm=V.map(v=>proj(v.c,-d*m));    // ③ 외부요인 (②의 거울상, grows)
     let h='';
-    // cage edges (gold, always visible)
-    EDG.forEach(([i,j])=>{h+=`<line x1="${Pc[i].x.toFixed(1)}" y1="${Pc[i].y.toFixed(1)}" x2="${Pc[j].x.toFixed(1)}" y2="${Pc[j].y.toFixed(1)}" stroke="#cbb487" stroke-width="2.2" opacity="0.72"/>`;});
-    // nest edges (blue dashed, grow with g)
-    EDG.forEach(([i,j])=>{h+=`<line x1="${Pn[i].x.toFixed(1)}" y1="${Pn[i].y.toFixed(1)}" x2="${Pn[j].x.toFixed(1)}" y2="${Pn[j].y.toFixed(1)}" stroke="#8ab6d6" stroke-width="${(1.3+1.2*g).toFixed(1)}" stroke-dasharray="7 5" opacity="${(0.12+0.6*g).toFixed(2)}"/>`;});
-    // North Star at centroid — always present (it is set first); gentle pulse when nest small
-    const seed=clamp(1-g/0.5,0,1), sr=(20+10*seed).toFixed(1);
-    h+=`<circle cx="${CX}" cy="${CY}" r="${sr}" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.3" opacity="${(0.6+0.4*seed).toFixed(2)}"/>`;
-    h+=`<text x="${CX}" y="${(CY+0.34*sr).toFixed(1)}" text-anchor="middle" fill="#d4af37" font-size="${(16+8*seed).toFixed(0)}" font-family="serif">&#9733;</text>`;
-    h+=`<text x="${CX}" y="${CY+32}" text-anchor="middle" fill="#9a8a4a" font-size="10.5">North Star · 101</text>`;
-    // cage vertices + labels (permanent)
-    V.forEach((v,i)=>{const p=Pc[i],col=U[v.u];
-      h+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="9" fill="${col}" stroke="#090c15" stroke-width="2" opacity="0.95"/>`;
+    // ① ghost — inflated desire, faint reference
+    h+=edges(G,`stroke="#cbb487" stroke-width="1" opacity="0.10"`);
+    // ② desire (gold)
+    h+=edges(Pd,`stroke="#cbb487" stroke-width="2.3" opacity="0.78"`);
+    // ③ mirror (blue dashed, grows with m)
+    if(m>0.01) h+=edges(Pm,`stroke="#8ab6d6" stroke-width="${(1.3+1.2*m).toFixed(1)}" stroke-dasharray="7 5" opacity="${(0.15+0.6*m).toFixed(2)}"`);
+    // ★ centroid (101) — prominent at the pause (small desire, no mirror yet)
+    const pulse=clamp((1-m)*(1-(d-0.5)/0.5),0,1), sr=(18+11*pulse).toFixed(1);
+    h+=`<circle cx="${CX}" cy="${CY}" r="${sr}" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.3" opacity="${(0.5+0.45*pulse).toFixed(2)}"/>`;
+    h+=`<text x="${CX}" y="${(CY+0.34*sr).toFixed(1)}" text-anchor="middle" fill="#d4af37" font-size="${(15+8*pulse).toFixed(0)}" font-family="serif">&#9733;</text>`;
+    h+=`<text x="${CX}" y="${CY+30}" text-anchor="middle" fill="#9a8a4a" font-size="10.5">★ 101 (5↔10)</text>`;
+    // ② vertices + labels (욕망)
+    V.forEach((v,i)=>{const p=Pd[i],col=U[v.u];
+      h+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="8" fill="${col}" stroke="#090c15" stroke-width="2" opacity="0.95"/>`;
       let dx=p.x-CX,dy=p.y-CY,L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
-      const lx=p.x+dx*24, ly=p.y+dy*24, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
-      h+=`<text x="${lx.toFixed(1)}" y="${(ly-4).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="14" fill="${col}">${v.n} ${v.nm}</text>`;});
-    // nest vertices + labels (emerge as g grows)
-    if(g>0.06) V.forEach((v,i)=>{const p=Pn[i],col=U[v.u];
-      h+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${(4+3*g).toFixed(1)}" fill="${col}" stroke="#0e1220" stroke-width="1.5" opacity="${(0.3+0.7*g).toFixed(2)}"/>`;
+      const lx=p.x+dx*22, ly=p.y+dy*22, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
+      h+=`<text x="${lx.toFixed(1)}" y="${(ly-2).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="14" fill="${col}">${v.n} ${v.nm}</text>`;});
+    // ③ vertices + labels (외부요인, emerge)
+    if(m>0.06) V.forEach((v,i)=>{const p=Pm[i],col=U[v.u];
+      h+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${(4+3*m).toFixed(1)}" fill="${col}" stroke="#0e1220" stroke-width="1.5" opacity="${(0.3+0.7*m).toFixed(2)}"/>`;
       let dx=p.x-CX,dy=p.y-CY,L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
-      const lx=p.x+dx*16, ly=p.y+dy*16, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
-      h+=`<text x="${lx.toFixed(1)}" y="${(ly+4).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="12" fill="${col}" opacity="${g.toFixed(2)}">${v.mn} ${v.mnm}</text>`;});
+      const lx=p.x+dx*18, ly=p.y+dy*18, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
+      h+=`<text x="${lx.toFixed(1)}" y="${(ly+4).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="12.5" fill="${col}" opacity="${m.toFixed(2)}">${v.mn}·${v.role}</text>`;});
     svg.innerHTML=h;
-    // captions
-    if(g<0.04){cap.textContent='★ SET THE STAR — Room 101 (5 ↔ 10)';cap.style.color='#d4af37';sub.textContent='the cage stands (persuade yourself); the mirror is not yet born';}
-    else if(g<0.96){cap.textContent='THE NEST GROWS FROM THE STAR — the cage’s mirror, half size';cap.style.color='#8ab6d6';sub.textContent='same mechanism, reversed: persuade-self (1·2·3·4) → persuade-others (6·7·8·9)';}
-    else{cap.textContent='CAGE + NEST — both stand, mirror of each other';cap.style.color='#cdd5e4';sub.textContent='past pain (cage) becomes future fuel (nest)';}
+    // captions by stage
+    let c,cc,s;
+    if(d>0.96&&m<0.01){c='① 부푼 욕망 사면체 — 검증 전';cc='#cbb487';s='빚이 잠재한다 (Debt = U − φ)';}
+    else if(m<0.01&&d>0.52){c='①→② 의심의 칼 — 욕망을 깎는다';cc='#d4af37';s='U(desire) ↓  ·  검증 안 된 욕망을 수축';}
+    else if(m<0.06){c='② 수축된 욕망 · ★멈춤(101)';cc='#d4af37';s='작아진 자리 — 이제 타자를 비출 거울이 된다';}
+    else if(m<0.97){c='②→③ 거울 공명 — 타자가 들어선다';cc='#8ab6d6';s='욕망이 작아진 만큼, 그 자리에 외부요인이 공명한다';}
+    else{c='③ 외부요인 = ②의 거울상';cc='#8ab6d6';s='사용자·투자자·기술·협력자 — 수축이 공명을 불렀다';}
+    cap.textContent=c;cap.style.color=cc;sub.textContent=s;
   }
 
   const ease=t=>t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
-  function mapG(T){
-    if(T<0.15) return 0;                       // dwell — star set, cage alone
-    if(T<0.70) return ease((T-0.15)/0.55);     // 0 → 1, nest grows
-    return 1;                                  // hold — full compound
+  function stateAt(T){
+    if(T<0.12) return [1,0];
+    if(T<0.45) return [1-0.5*ease((T-0.12)/0.33),0];   // ①→② 수축
+    if(T<0.55) return [0.5,0];                          // ② hold (★멈춤)
+    if(T<0.88) return [0.5,ease((T-0.55)/0.33)];        // ②→③ 거울 공명
+    return [0.5,1];                                     // ③ hold
   }
   const slider=document.getElementById('slider'), playBtn=document.getElementById('play');
-  let T=0, playing=false, last=0; const PERIOD=5200;
-  function frame(ts){
-    if(!playing)return;
-    if(!last)last=ts; T+=(ts-last)/PERIOD; last=ts;
-    if(T>=1)T=0;
-    const g=mapG(T); slider.value=Math.round(g*1000); draw(g);
-    requestAnimationFrame(frame);
-  }
-  function play(){playing=true;last=0;playBtn.innerHTML='&#10073;&#10073; Pause';requestAnimationFrame(frame);}
-  function pause(){playing=false;playBtn.innerHTML='&#9654; Play';}
+  let T=0, playing=false, last=0; const PERIOD=7000;
+  function frame(ts){if(!playing)return;if(!last)last=ts;T+=(ts-last)/PERIOD;last=ts;if(T>=1)T=0;
+    const [d,m]=stateAt(T); slider.value=Math.round(T*1000); draw(d,m); requestAnimationFrame(frame);}
+  function play(){playing=true;last=0;playBtn.innerHTML='&#10073;&#10073; 일시정지';requestAnimationFrame(frame);}
+  function pause(){playing=false;playBtn.innerHTML='&#9654; 재생';}
   playBtn.addEventListener('click',()=>{playing?pause():play();});
-  slider.addEventListener('input',()=>{pause();draw(slider.value/1000);});
-  document.getElementById('reset').addEventListener('click',()=>{pause();T=0;slider.value=0;draw(0);});
-  draw(0);
+  slider.addEventListener('input',()=>{pause();const [d,m]=stateAt(slider.value/1000);draw(d,m);});
+  document.getElementById('reset').addEventListener('click',()=>{pause();T=0;slider.value=0;draw(1,0);});
+  draw(1,0);
 })();
 </script>
 </body>
