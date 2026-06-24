@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문장 보정 로그 — 삶을 바꾸는 문장 지표</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@700&family=Lora:ital@0;1&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:860px;margin:0 auto;padding:28px 22px 56px;}
+  .back{display:inline-block;font-size:12px;color:#5a6a7a;text-decoration:none;margin-bottom:16px;}
+  .back:hover{color:#e8eaf0;}
+  .head{text-align:center;max-width:680px;margin:0 auto 18px;}
+  .kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:10px;}
+  .head h1{font-size:1.4em;font-weight:700;margin-bottom:12px;line-height:1.45;}
+  .head p{font-size:13px;color:#8899aa;line-height:1.9;}
+  .head p b{color:#d6dce6;}
+  .metric{background:#0e1220;border:1px solid #1e2740;border-radius:12px;padding:16px 20px;margin:0 auto 22px;font-size:13px;line-height:1.85;color:#cdd5e4;}
+  .metric b{color:#fff;}
+  .metric .eq{font-family:'Lora',serif;font-style:italic;color:#d4af37;}
+  .card{background:#0e1220;border:1px solid #1e2740;border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .ch{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:1px;color:#9a8a4a;background:#1a1606;border:1px solid #3a3010;border-radius:20px;padding:2px 10px;margin-bottom:10px;}
+  .q{font-family:'Noto Serif KR',serif;font-size:1.0em;font-weight:700;color:#e8c08a;margin-bottom:14px;line-height:1.5;}
+  .q::before{content:"🙋‍♀️ ";}
+  .ba{font-family:'Lora',Georgia,serif;font-size:13.5px;line-height:1.7;margin-bottom:8px;padding:9px 12px;border-radius:8px;}
+  .before{color:#8a93a6;background:#12141c;border-left:3px solid #5a4a4a;}
+  .before .tag,.after .tag{font-family:'Noto Sans KR',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:3px;}
+  .before .tag{color:#a06a6a;}
+  .after{color:#e8eef8;background:#101a24;border-left:3px solid #8ab6d6;}
+  .after .tag{color:#8ab6d6;}
+  .fix{font-size:12px;color:#7c8aa8;margin:8px 0 12px;}
+  .fix b{color:#cbd3e0;}
+  .gates{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid #1a2236;padding-top:12px;}
+  .gate{font-size:11px;}
+  .gate .gl{color:#6b7790;font-weight:700;letter-spacing:1px;margin-bottom:4px;}
+  .bars{display:flex;align-items:center;gap:7px;}
+  .pip{width:13px;height:13px;border-radius:3px;background:#1c2436;}
+  .pip.b{background:#5a4a4a;}
+  .pip.a{background:#8ab6d6;}
+  .arrow{color:#4a5a72;font-size:11px;}
+  .life{margin-left:auto;text-align:right;font-size:11px;color:#9aa6bc;}
+  .life b{font-family:'Lora',serif;font-size:1.5em;}
+  .lb{color:#a06a6a;} .la{color:#8ab6d6;}
+  .foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:18px;line-height:1.9;}
+  .foot a{color:#4A7A6B;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="ten_novels.html">&larr; the ten novels</a>
+  <div class="head">
+    <div class="kicker">문장 보정 로그 · BEFORE → AFTER</div>
+    <h1>책이 독자의 삶을 바꾸려면, 문장이 먼저 <i>도착</i>해야 한다</h1>
+    <p>독자의 🙋‍♀️ 물음은 모두 <b>"누가? 무슨 뜻?"</b> &mdash; 문장이 <b>도착(arrival)</b>하지 못한 자리다. 지시어가 안 풀리면, 아무리 좋은 뜻도 독자에게 닿기 전에 흩어진다.</p>
+  </div>
+  <div class="metric">
+    <b>삶을 바꾸는 문장 지표</b> &mdash; 세 관문을 순서대로 통과해야 한다 (각 0&ndash;2):<br>
+    ① <b>도착</b>(Arrival): 지시어가 풀려 한 번에 뜻이 닿는가 &middot; ② <b>연결</b>(Connection): 독자 자신의 삶/선택에 닿는가 &middot; ③ <b>잔류</b>(Residue): 기억에 남는 상(像)이 있는가.<br>
+    <span class="eq">삶 변화 = 도착 × 연결 × 잔류</span> &mdash; 곱이라, <b>도착=0이면 전체가 0</b>. 그래서 모든 보정은 ①부터.<br>
+    <span style="font-size:11.5px;color:#7c8aa8">바탕: 소통밀도 = 도착 / 해독비용 &middot; 품질 = fitness of use(LEXICON)</span>
+  </div>
+  <div id="cards"></div>
+  <div class="foot">
+    네 문장 모두 ①도착 0→2로 풀리며 삶 변화 지수 0 → 8 &middot; <a href="ten_novels.html">수정 반영된 소설 카드</a>
+  </div>
+</div>
+<script>
+  const GL=['도착','연결','잔류'];
+  const D=[
+    {ch:'4 시계 · Friday (Tournier)',
+     q:'"물에 빠진 사람을 구한 다음 마른 땅 위에서 천천히 익사시킨다"가 무슨 뜻이죠?',
+     before:'the borrowed order rescues the drowning man, and then drowns him slowly on dry land. Sometimes the explosion is the rescue.',
+     after:'borrowed order is the rope that hauls you out of the sea — then on dry land that same rope tightens into routine and strangles the self that could imagine another life. Robinson drowns not in water, but in his own calendar.',
+     fix:'은유의 두 항을 명시 — <b>물=난파의 혼돈</b>(구해줌) / <b>마른 땅=안전</b>인데 같은 질서가 <b>루틴이 되어 목을 조름</b>.',
+     g0:[0,1,1], g1:[2,2,2]},
+    {ch:'7 튤립 · The Black Tulip (Dumas)',
+     q:'뒤마가 "칼과 복수의 작가"라는 뜻? 삼총사·몬테크리스토 말하는 건가?',
+     before:'I am a writer of swords and vengeance, but here my weapon is patience.',
+     after:'I am the author of The Three Musketeers and The Count of Monte Cristo — swordfights and revenge are my usual trade. But here my weapon is patience.',
+     fix:'지시 대상(작품명)을 <b>직접 명명</b> → 독자가 "아, 그 뒤마"로 곧장 연결.',
+     g0:[0,1,1], g1:[2,2,2]},
+    {ch:'6 나비 · M. Butterfly (Hwang)',
+     q:'누구의 천재성?',
+     before:'The genius was never the physical disguise; it was knowing which dream the audience had bought.',
+     after:"Song's genius was never the physical disguise; it was knowing exactly which fantasy Gallimard had already bought.",
+     fix:'주어(<b>Song</b>)와 대상(<b>Gallimard</b>) 복원 — 추상명사 "the genius/the audience"를 인물로.',
+     g0:[0,1,2], g1:[2,2,2]},
+    {ch:'6 나비 · M. Butterfly (Hwang)',
+     q:'권력(power)을 어떻게 정의? — "원하는 대로 일이 되게 하는 힘"으로 lexicon에 추가하면?',
+     before:'To wear the mask while knowing it is a mask is power.',
+     after:'To wear the mask while knowing it is a mask is power — the power to make the room choose the outcome you intend.',
+     fix:'power 정의 삽입 — <b>좌중(the room)이 내 의도한 결과를 택하게 하는 힘</b> (Simon Johnson + Angie 정렬 정의, LEXICON 등재).',
+     g0:[1,1,1], g1:[2,2,2]},
+  ];
+  const prod=a=>a[0]*a[1]*a[2];
+  const pips=(v,cls)=>[0,1].map(i=>`<span class="pip ${i<v?cls:''}"></span>`).join('');
+  document.getElementById('cards').innerHTML=D.map(d=>`
+    <div class="card">
+      <span class="ch">CHAPTER ${d.ch}</span>
+      <div class="q">${d.q}</div>
+      <div class="ba before"><span class="tag">BEFORE — 도착 막힘</span>${d.before}</div>
+      <div class="ba after"><span class="tag">AFTER — 도착 ✓</span>${d.after}</div>
+      <div class="fix">고친 방식: ${d.fix}</div>
+      <div class="gates">
+        ${GL.map((g,i)=>`<div class="gate"><div class="gl">${g}</div><div class="bars">${pips(d.g0[i],'b')}<span class="arrow">→</span>${pips(d.g1[i],'a')}</div></div>`).join('')}
+        <div class="life">삶 변화 지수<br><b><span class="lb">${prod(d.g0)}</span> → <span class="la">${prod(d.g1)}</span></b></div>
+      </div>
+    </div>`).join('');
+</script>
+</body>
+</html>
