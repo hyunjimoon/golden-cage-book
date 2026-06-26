@@ -19,26 +19,30 @@ modified:
 
 ---
 
-## 🎁 편집자 공유 — 선별 (반드시 필요한 것만 · 품질순)
+## 🎁 편집자·독자 공유 — 채점 선별 (2026-06-27 갱신)
 
-> 이 책을 *읽는 데* 꼭 필요한 것만. **A급**만 먼저 공유. B급은 선택. 그 외(양자·Bayesian formal·내부 craft·구 구조표)는 *물밑 작업용*이라 비공유 — 아래 전체 표는 작업 SSOT로 보존.
+> **목적함수: 도입가치 = (필수성 × 레버리지) ÷ 해독비용** — "한 단어를 가르치는 비용당 *풀어주는 책의 양*". 동점 = **잔류(✦ memorable collision)**가 이긴다. 필수성 0(문맥 추론 가능)·물밑 전용은 *컷*. 옛 손-티어(A급11/B급6)는 git history에 보존, 본 채점이 대체.
 
-**A급 — 책의 뼈대 (decode 필수, 11)**
-1. **황금 새장** · **dG/dF=(−)** — 돈이 먼저 오면 성장이 꺾인다 (Movers 2.6× Stayers)
-2. **빌린 것을 갚다** · **빚 = 간극 ÷ 노력** (노력 멈추면 빚, 지속하면 청산)
-3. **새장 → 둥지** — 같은 구조, 빌린 것이냐 내 것이냐
-4. **1부 시지프스 / 2부 헤르메스** — 열린 것을 *확정*해 갇힘 / *넘겨* 새 이름 붙여 엶
-5. **카뮈 4단계 + §1~4 더블축** — 새장: 감각된 모방·생각의 붕괴·현실의 부조리·선택의 실천 / 둥지: 멈추고 감각·생각된 모방·현실을 넘김·실천된 매혹
-6. **다(DA) / 세(SE)** — 두 진행자 (Designer+Artist / Scientist+Engineer)
-7. **9-node 구조** — 1~4 새장 · 5 거울둥지(hub) · 6~9 둥지 · 10 닫음(101₃)
-8. **수면 / 물밑** — 1초에 decode되는 층(소설·대화) / 읽은 후 보상층(수식·학술)
-9. **위안 = technical debt** — 검증 안 된 가정 패치 (서사·능력·종교·계몽 4종)
-10. **★멈춤** — 5장 회전축 동작 (행동 전 "뭘 하려는가/최소지식은?")
-11. **장별 용어** — 장 이름·산업·선언문·소설 인물 (아래 *장별 용어* 표)
+**핵심 10 (독자 · 가치 ≥ 2 · 본문 첫 등장 시 글로스)**
+1. **황금 새장 · dG/dF=(−)** ✦ — 돈이 먼저 오면 성장이 꺾인다 (Movers 2.6×). *서사명=수면 / 수식=물밑* · 4.0
+2. **빚 = 간극 ÷ 노력** ✦ — 노력 멈추면 빚, 지속하면 청산 · 4.0
+3. **빌린 것을 갚다** ✦ — 안 갚으면 자기 것을 잃는다 · 4.0
+4. **새장 → 둥지** ✦ — 같은 구조, 빌린 것이냐 내 것이냐 · 4.0
+5. **다(DA) / 세(SE)** ✦ — 두 진행자 (Designer+Artist / Scientist+Engineer) · 4.0
+6. **★멈춤** — 행동 전 "뭘 하려는가 / 최소지식은?" (5장 회전축) · 4.0
+7. **위안 = 빚(technical debt)** — 검증 안 된 가정 패치 (서사·능력·종교·계몽 4종) · 2.0
+8. **트위스트(한 글자 비틂)** ✦ — φ 유지, 한 글자로 부호 반전 = 재명명 (모든 거울쌍 관통) · 2.0
+9. **수면 / 물밑** — 1초에 decode되는 층(소설·대화) / 읽은 후 보상층(수식·학술) · 2.0
 
-**B급 — reader aid (선택, 6)**: 신념≠확신(Weber·파늘루/리외) · 환상 무기화(지라르 삼각형) · 솔기(frame 공개) · 캐리오버 문법/4속도 · 빈손이되 맨손이 아니다 · révolte=반항
+**보조 6 (독자 · 가치 1.0 · 책 말미 용어해설, 동점은 ✦ 우선)**
+카뮈 4단계 + §1~4 더블축 · 9-node 구조(1-4 새장·5 hub·6-9 둥지·10 닫음 101₃) · 빈손이되 맨손이 아니다 ✦ · 신념 ≠ 확신(Weber·파늘루/리외) · 솔기(frame 공개) ✦ · 권력(power) ✦ *— 좌중이 내가 바라는 결론을 택하게 하는 힘*
+\+ **장별 용어 표** — 장 이름·산업·선언문·소설 인물 (아래 *장별 용어* 표)
 
-**비공유 (물밑 작업용)**: 양자 16종(ψ·중첩·collapse·decoherence·V·i·τ\*…) · Bayesian formal(S/U/s/u·contaminate·suppress·reposition·calibrate·calibration_식민화·Greenwald·NC⊗PC) · 내부 craft(Apollonian Illusion·Trickster 두 phase·stolen literacy·새 노래 정통성·Insulation·Complacency·PLoT·지롱 어조) · **구 구조표**(물리 4장 사면체·순환 4장 — *10장 구조로 대체됨, 갱신 필요*)
+**편집자용 (필수성↓ · 레버리지↑ · craft 논의 어휘, 본문엔 덜 노출)**
+1부 시지프스 / 2부 헤르메스(= Trickster 두 phase) · stolen literacy · 새 노래의 정통성 · Apollonian Illusion("Who made that rule up?") · 환상 무기화(지라르 삼각형) · 캐리오버 문법 / 4속도 / 4-근육 아크 · 기세 · 소진 · 전역/지역최적 · Insulation / Complacency · Nail↔Scale · 품질 = fitness of use · révolte = 반항 · 장난(作亂) · 거울 둥지(hub) · PLoT · 전쟁=평화\|기술 · 지롱 어조
+
+**컷 (비공유 · 물밑 작업용 — 필수성 0 + 비용 3 → 가치 ≈ 0. 아래 전체 표는 작업 SSOT로 보존)**
+양자 16종(ψ·중첩·eigenstate·coherence·decoherence·collapse·apparatus·pointer·amplitude·phase alignment·premature/calibrated collapse·noise·mixed state·V·i) · Bayesian formal 8(S/U/s/u·contaminate·suppress·reposition·calibrate) · calibration_식민화 · 전체주의적 자아(Greenwald) · NC⊗PC · **구 구조표**(물리 4장 사면체·순환 4장 — 10장 구조로 대체)
 
 ---
 
