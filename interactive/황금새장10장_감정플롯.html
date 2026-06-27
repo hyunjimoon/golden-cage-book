@@ -1,0 +1,379 @@
+   <!DOCTYPE html>
+<!--
+  황금새장을 열다 — 10장 지배 감정 플롯
+  색 체계 출처: 도구/감정교육/claude_emotions.md — 10-클러스터 emotional barometer
+  데이터 출처: 원고 10장 지배감정 분석 (2026-05-22)
+  디자인: ① 감정 우로보로스 고리 + ② 거울짝 대면 그리드 (30개 상상 → sort → 상위 2)
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>황금새장을 열다 — 10장 지배 감정</title>
+<style>
+  :root{
+    --ivory:#F2EDDF; --ink:#2A2520; --faint:#9A9080; --line:#D8CFB8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--ivory); color:var(--ink);
+    font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:1000px; margin:0 auto; padding:48px 40px 64px;}
+  h1{
+    font-family:"Nanum Myeongjo","Noto Serif KR",serif;
+    font-size:30px; font-weight:800; margin:0 0 6px; letter-spacing:-.5px;
+  }
+  .sub{color:var(--faint); font-size:14px; margin:0 0 4px;}
+  .fig-no{
+    font-family:"Nanum Myeongjo",serif; font-size:13px; font-weight:700;
+    color:#B0472E; letter-spacing:1px; margin:46px 0 2px;
+  }
+  .fig-title{
+    font-family:"Nanum Myeongjo",serif; font-size:21px; font-weight:800; margin:0 0 14px;
+  }
+  .fig-desc{font-size:13px; color:#5C5346; margin:0 0 18px; line-height:1.6;}
+  svg{display:block; margin:0 auto; max-width:100%;}
+
+  /* ── legend ── */
+  .legend{
+    display:flex; flex-wrap:wrap; gap:6px 16px; margin:20px 0 4px;
+    padding:14px 16px; background:#FBF8EF; border:1px solid var(--line); border-radius:10px;
+  }
+  .legend .lg{display:flex; align-items:center; gap:6px; font-size:12px;}
+  .legend .sw{width:13px; height:13px; border-radius:3px; display:inline-block;}
+
+  /* ── mirror grid ── */
+  .grid{display:grid; grid-template-columns:1fr 158px 1fr; gap:13px; align-items:stretch;}
+  .gh{font-size:12px; font-weight:700; letter-spacing:.5px; color:var(--faint); text-align:center; padding-bottom:2px;}
+  .axis{
+    grid-column:1/-1; display:flex; align-items:center; justify-content:center; gap:12px;
+    padding:13px 18px; border-radius:10px; background:#36302A; color:#F2EDDF;
+    font-size:13px; border:1px dashed #7E7363;
+  }
+  .axis .tag{font-weight:800; letter-spacing:1px; color:#E5B83C;}
+  .axis .mv{font-family:"Nanum Myeongjo",serif;}
+  .tile{
+    border-radius:11px; padding:14px 16px; min-height:118px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    box-shadow:0 2px 5px rgba(0,0,0,.10);
+  }
+  .tile .top{display:flex; align-items:baseline; gap:9px;}
+  .tile .num{font-family:"Nanum Myeongjo",serif; font-size:34px; font-weight:800; line-height:.9;}
+  .tile .nm{font-size:15px; font-weight:700;}
+  .tile .emo{font-size:12.5px; opacity:.92; margin-top:7px;}
+  .tile .emo b{font-weight:800;}
+  .tbar{margin-top:9px;}
+  .tbar .bar{height:9px; border-radius:5px;}
+  .tbar .cap{display:flex; justify-content:space-between; font-size:10.5px; opacity:.85; margin-top:3px;}
+  .arrowcell{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:3px;
+  }
+  .arrowcell .em{font-size:21px;}
+  .arrowcell .lab{font-size:11.5px; color:#5C5346; font-family:"Nanum Myeongjo",serif;}
+  .arrowcell .ar{font-size:15px; color:#B0472E; font-weight:800;}
+
+  .vacap{margin-top:8px; text-align:center; font-size:11px; color:#6B6358;
+    font-family:"Nanum Myeongjo",serif; line-height:1.8;}
+  .foot{margin-top:40px; padding-top:14px; border-top:1px solid var(--line);
+    font-size:11px; color:var(--faint); line-height:1.7;}
+  @media print{body{background:#fff;} .page{padding:20px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>황금새장을 열다 — 10장 지배 감정</h1>
+  <p class="sub">10-클러스터 emotional barometer · 한눈에 보는 감정 여정</p>
+
+  <!-- ════════ FIGURE 1 ════════ -->
+  <div class="fig-no">FIGURE 1</div>
+  <div class="fig-title">감정 우로보로스 고리</div>
+  <p class="fig-desc">
+    10장이 색 호(arc)로 원을 이룬다 — 띠 색 = 지배 감정, 안쪽 가는 띠 = 보조 감정.
+    오른쪽 호 = <b>CAGE</b>(1–4장, 빚에 갇힘), 왼쪽 호 = <b>NEST</b>(6–9장, 알면서 입음),
+    위·아래 = <b>회전축 101</b>(5·10장). 중심을 가로지르는 점선 = 거울짝(1↔6·2↔7·3↔8·4↔9).
+    위쪽 트인 곳의 화살표 = 10→1 회귀 — <i>책은 닫히지 않는다.</i>
+  </p>
+  <svg id="ring" viewBox="0 0 680 720" role="img" aria-label="감정 우로보로스 고리"></svg>
+
+  <!-- ════════ FIGURE 2 ════════ -->
+  <div class="fig-no">FIGURE 2</div>
+  <div class="fig-title">거울짝 대면 그리드</div>
+  <p class="fig-desc">
+    같은 빌린 것이 cage에서는 <b>갇히고</b>, nest에서는 <b>알면서 운용된다</b>.
+    행마다 거울짝이 마주 본다 — 감정의 <i>제거</i>가 아니라 <i>방향 전환</i>.
+    타일 아래 막대 = 장 시작→끝 감정 전이.
+  </p>
+  <div class="grid" id="grid"></div>
+
+  <!-- ════════ FIGURE 3 ════════ -->
+  <div class="fig-no">FIGURE 3</div>
+  <div class="fig-title">감정 원형 좌표 — 1→10장 궤적</div>
+  <p class="fig-desc">
+    가로축 = <b>쾌·불쾌(valence)</b>, 세로축 = <b>강도(intensity)</b>. 옅은 점 = 10 감정의 좌표,
+    숫자 원 = 각 장의 위치(지배 감정 72% + 보조 감정 28% 가중 — 같은 감정 장도 구별됨).
+    실선 = 1→10장 감정 궤적, 붉은 점선 = 10→1 회귀.
+    궤적이 <i>활성·불쾌</i>(좌상 — 공포·분노)에서 출발해 <i>쾌</i>(우측 — 자비)로 건너간다.
+  </p>
+  <svg id="va" viewBox="0 0 680 680" role="img" aria-label="감정 원형 좌표 궤적"></svg>
+  <div class="vacap" id="vacap"></div>
+
+  <!-- legend -->
+  <div class="legend" id="legend"></div>
+
+  <div class="foot">
+    색 체계 = <b>claude_emotions.md</b> 10-클러스터 emotional barometer (Sofroniew et al., Anthropic 2026).
+    데이터 = 황금새장을열다 원고 10장 지배감정 분석 (2026-05-22).
+    🟧환희·⬛소진은 8장 전체에서 부재 — 의도된 공백.
+    회전축 5·10장은 파일명과 본문 챕터 번호가 거꾸로임 — 위 그림은 <b>본문 챕터 번호</b> 기준:
+    5장 거울둥지 hub = file 10🧫_101, 10장 10101호 = file 5🔫_101.
+  </div>
+
+</div>
+
+<script>
+/* ── 10-클러스터 barometer 색 (claude_emotions.md) ── */
+const EMO = {
+  joy    : {ko:'환희', mk:'🟧', hex:'#E8923A'},
+  calm   : {ko:'평온', mk:'🟩', hex:'#6BA368'},
+  grace  : {ko:'자비', mk:'💗', hex:'#E08AAE'},
+  play   : {ko:'유희', mk:'🟪', hex:'#9B7BB5'},
+  pride  : {ko:'자긍', mk:'🟨', hex:'#E5B83C'},
+  drain  : {ko:'소진', mk:'⬛', hex:'#2A2A2A'},
+  guard  : {ko:'경계', mk:'⚫', hex:'#4A5159'},
+  anger  : {ko:'분노', mk:'🟥', hex:'#C7453E'},
+  fear   : {ko:'공포', mk:'🟫', hex:'#8A6244'},
+  despair: {ko:'절망', mk:'🟦', hex:'#4A7DA8'},
+};
+/* ── 원고 10장 데이터 ── */
+const CH = [
+  {n:1, name:'거울새장',  ic:'🪞',  grp:'cage', dom:'fear',    sub:'despair', from:'fear',  to:'despair'},
+  {n:2, name:'망원경새장',ic:'🔭',  grp:'cage', dom:'despair', sub:'calm',    from:'calm',  to:'despair'},
+  {n:3, name:'유리새장',  ic:'💒',  grp:'cage', dom:'anger',   sub:'fear',    from:'fear',  to:'anger'},
+  {n:4, name:'시계새장',  ic:'⏱️', grp:'cage', dom:'play',    sub:'calm',    from:'calm',  to:'play'},
+  {n:5, name:'거울둥지 hub',ic:'🧫', grp:'axis', dom:'guard',  sub:'fear',    from:'fear',  to:'guard'},
+  {n:6, name:'나비사용자',ic:'🦋',  grp:'nest', dom:'play',    sub:'guard',   from:'guard', to:'play'},
+  {n:7, name:'안개투자자',ic:'🌫️', grp:'nest', dom:'pride',   sub:'guard',   from:'despair',to:'pride'},
+  {n:8, name:'튤립경쟁자',ic:'🌷',  grp:'nest', dom:'guard',   sub:'pride',   from:'fear',  to:'guard'},
+  {n:9, name:'까마귀협력자',ic:'🐦‍⬛',grp:'nest',dom:'grace',  sub:'play',    from:'play',  to:'grace'},
+  {n:10,name:'10101호',  ic:'🔫',  grp:'axis', dom:'grace',   sub:'guard',   from:'guard', to:'grace'},
+];
+
+/* 명도 → 글자색 */
+function txt(hex){
+  const r=parseInt(hex.substr(1,2),16),g=parseInt(hex.substr(3,2),16),b=parseInt(hex.substr(5,2),16);
+  return (0.299*r+0.587*g+0.114*b)/255 > 0.62 ? '#2A2520' : '#FBF8EF';
+}
+
+/* ════════ FIGURE 1 — 우로보로스 고리 ════════ */
+(function(){
+  const cx=340, cy=350;
+  const rOut=240, rDom=198, rSub=182;          // 지배 band 198-240, 보조 16px stripe
+  const seg=32.4, gap=2, topGap=18;
+  const D=Math.PI/180;
+  const pol=(r,a)=>[cx+r*Math.cos(a*D), cy+r*Math.sin(a*D)];
+  function band(rO,rI,a0,a1){
+    const [x1,y1]=pol(rO,a0),[x2,y2]=pol(rO,a1),[x3,y3]=pol(rI,a1),[x4,y4]=pol(rI,a0);
+    return `M${x1} ${y1}A${rO} ${rO} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${rI} ${rI} 0 0 0 ${x4} ${y4}Z`;
+  }
+  function arc(r,a0,a1){const [x1,y1]=pol(r,a0),[x2,y2]=pol(r,a1);
+    return `M${x1} ${y1}A${r} ${r} 0 0 1 ${x2} ${y2}`;}
+
+  let s=`<defs><marker id="rh" markerWidth="9" markerHeight="9" refX="6" refY="3.2"
+    orient="auto"><path d="M0 0L7 3.2L0 6.4Z" fill="#B0472E"/></marker></defs>`;
+
+  // 각 장 각도
+  const A0=-90+topGap/2;
+  const segs=CH.map((c,i)=>{const a0=A0+i*(seg+gap); return {c,a0,a1:a0+seg,ac:a0+seg/2};});
+
+  // 거울짝 현 (뒤)
+  [[0,5],[1,6],[2,7],[3,8]].forEach(([i,j])=>{
+    const [x1,y1]=pol(rSub-4,segs[i].ac),[x2,y2]=pol(rSub-4,segs[j].ac);
+    s+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#B7AC92"
+      stroke-width="1.3" stroke-dasharray="3 4"/>`;
+  });
+
+  // 띠
+  segs.forEach(({c,a0,a1,ac})=>{
+    const d=EMO[c.dom], sub=EMO[c.sub];
+    s+=`<path d="${band(rOut,rDom,a0,a1)}" fill="${d.hex}"/>`;
+    s+=`<path d="${band(rDom,rSub,a0,a1)}" fill="${sub.hex}" opacity=".9"/>`;
+    const [nx,ny]=pol(222,ac), [ex,ey]=pol(207,ac), tc=txt(d.hex);
+    s+=`<text x="${nx}" y="${ny}" fill="${tc}" font-size="19" font-weight="800"
+      text-anchor="middle" dominant-baseline="central"
+      font-family="Nanum Myeongjo,serif">${c.n}</text>`;
+    s+=`<text x="${ex}" y="${ey}" font-size="13" text-anchor="middle"
+      dominant-baseline="central">${d.mk}</text>`;
+    // 바깥 이름
+    const [lx,ly]=pol(259,ac);
+    s+=`<text x="${lx}" y="${ly-5}" fill="#2A2520" font-size="12.5" font-weight="700"
+      text-anchor="middle" font-family="Nanum Myeongjo,serif">${c.ic} ${c.name}</text>`;
+    s+=`<text x="${lx}" y="${ly+10}" fill="#7C7259" font-size="10.5"
+      text-anchor="middle">${d.mk}${d.ko} · ${sub.mk}${sub.ko}</text>`;
+  });
+
+  // CAGE / NEST 호 + 라벨
+  s+=`<path d="${arc(247,segs[0].a0,segs[3].a1)}" fill="none" stroke="#C7453E"
+    stroke-width="3.5" opacity=".5" stroke-linecap="round"/>`;
+  s+=`<path d="${arc(247,segs[5].a0,segs[8].a1)}" fill="none" stroke="#6BA368"
+    stroke-width="3.5" opacity=".55" stroke-linecap="round"/>`;
+  let p=pol(290,(segs[0].a0+segs[3].a1)/2);
+  s+=`<text x="${p[0]}" y="${p[1]-4}" fill="#B0472E" font-size="13" font-weight="800"
+    text-anchor="middle" font-family="Nanum Myeongjo,serif">CAGE</text>
+    <text x="${p[0]}" y="${p[1]+11}" fill="#9A8F77" font-size="10"
+    text-anchor="middle">빚에 갇힘 · 1–4장</text>`;
+  p=pol(292,(segs[5].a0+segs[8].a1)/2);
+  s+=`<text x="${p[0]}" y="${p[1]-4}" fill="#3F7D49" font-size="13" font-weight="800"
+    text-anchor="middle" font-family="Nanum Myeongjo,serif">NEST</text>
+    <text x="${p[0]}" y="${p[1]+11}" fill="#9A8F77" font-size="10"
+    text-anchor="middle">알면서 입음 · 6–9장</text>`;
+  // 회전축 라벨 (5·10)
+  [segs[4],segs[9]].forEach(g=>{
+    const q=pol(283,g.ac);
+    s+=`<text x="${q[0]}" y="${q[1]}" fill="#8A7E64" font-size="10.5" font-weight="700"
+      text-anchor="middle" dominant-baseline="central"
+      font-family="Nanum Myeongjo,serif">↻ 회전축</text>`;
+  });
+
+  // 10→1 회귀 화살표 (위쪽 트임)
+  const gA0=segs[9].a1+2.5, gA1=segs[0].a0-2.5;
+  s+=`<path d="${arc(rOut+4,gA0,gA1)}" fill="none" stroke="#B0472E"
+    stroke-width="2.4" marker-end="url(#rh)"/>`;
+  s+=`<text x="${cx}" y="58" fill="#B0472E" font-size="12.5" font-weight="800"
+    text-anchor="middle" font-family="Nanum Myeongjo,serif">10 → 1 회귀</text>`;
+
+  // 중심
+  s+=`<circle cx="${cx}" cy="${cy}" r="92" fill="#FBF8EF" stroke="#D8CFB8"/>`;
+  s+=`<text x="${cx}" y="${cy-16}" fill="#2A2520" font-size="17" font-weight="800"
+    text-anchor="middle" font-family="Nanum Myeongjo,serif">10장</text>`;
+  s+=`<text x="${cx}" y="${cy+6}" fill="#2A2520" font-size="17" font-weight="800"
+    text-anchor="middle" font-family="Nanum Myeongjo,serif">감정 여정</text>`;
+  s+=`<text x="${cx}" y="${cy+30}" fill="#9A8F77" font-size="10.5"
+    text-anchor="middle">새장 → 둥지, 닫히지 않는 고리</text>`;
+
+  document.getElementById('ring').innerHTML=s;
+})();
+
+/* ════════ FIGURE 2 — 거울짝 대면 그리드 ════════ */
+(function(){
+  const byN=n=>CH.find(c=>c.n===n);
+  function tile(c){
+    const d=EMO[c.dom], sub=EMO[c.sub], tc=txt(d.hex),
+          f=EMO[c.from], t=EMO[c.to];
+    return `<div class="tile" style="background:${d.hex};color:${tc}">
+      <div class="top"><span class="num">${c.n}</span>
+        <span class="nm">${c.ic} ${c.name}</span></div>
+      <div>
+        <div class="emo">지배 <b>${d.mk} ${d.ko}</b> · 보조 ${sub.mk} ${sub.ko}</div>
+        <div class="tbar">
+          <div class="bar" style="background:linear-gradient(90deg,${f.hex},${t.hex})"></div>
+          <div class="cap"><span>${f.mk} ${f.ko}</span><span>${t.mk} ${t.ko}</span></div>
+        </div>
+      </div></div>`;
+  }
+  function arrowCell(cg,ns){
+    const a=EMO[cg.dom], b=EMO[ns.dom];
+    return `<div class="arrowcell">
+      <div class="em">${a.mk}<span class="ar"> ➜ </span>${b.mk}</div>
+      <div class="lab">${a.ko} → ${b.ko}</div>
+      <div class="lab" style="color:#9A8F77">거울짝 ${cg.n}↔${ns.n}</div></div>`;
+  }
+  function axis(c,where){
+    const f=EMO[c.from], t=EMO[c.to];
+    return `<div class="axis">
+      <span class="tag">↻ 회전축</span>
+      <span><b>${c.n}</b> ${c.ic} ${c.name}</span>
+      <span class="mv">${f.mk}${f.ko} → ${t.mk}${t.ko}</span>
+      <span style="color:#A89C82">${where}</span></div>`;
+  }
+  let h = axis(byN(5),'cage→nest 위 경첩');
+  h += `<div class="gh">CAGE — 빚에 갇힌다</div>
+        <div class="gh">변환</div>
+        <div class="gh">NEST — 알면서 입는다</div>`;
+  [[1,6],[2,7],[3,8],[4,9]].forEach(([a,b])=>{
+    h += tile(byN(a)) + arrowCell(byN(a),byN(b)) + tile(byN(b));
+  });
+  h += axis(byN(10),'8→1 ouroboros 아래 경첩');
+  document.getElementById('grid').innerHTML=h;
+})();
+
+/* ════════ FIGURE 3 — 감정 원형 좌표 + 1→10 궤적 ════════ */
+(function(){
+  /* 감정별 valence(쾌-불쾌) · intensity(강도) 좌표 — affective circumplex (Russell 1980) */
+  const va={
+    joy:[.75,.80], play:[.65,.55], pride:[.55,.35], grace:[.70,-.05], calm:[.60,-.70],
+    drain:[-.45,-.75], despair:[-.65,-.35], guard:[-.25,.45], anger:[-.65,.80], fear:[-.80,.70]
+  };
+  const cx=340, cy=352, R=246;
+  const px=v=>cx+v*R, py=a=>cy-a*R;
+  let s=`<defs>
+    <marker id="trD" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+      <path d="M0 0L6.4 3L0 6Z" fill="#3A332B"/></marker>
+    <marker id="trR" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+      <path d="M0 0L6.4 3L0 6Z" fill="#B0472E"/></marker></defs>`;
+  // 격자 ±.5
+  [-.5,.5].forEach(g=>{
+    s+=`<line x1="${px(g)}" y1="${py(1)}" x2="${px(g)}" y2="${py(-1)}" stroke="#E7DFC9"/>`;
+    s+=`<line x1="${px(-1)}" y1="${py(g)}" x2="${px(1)}" y2="${py(g)}" stroke="#E7DFC9"/>`;
+  });
+  // 사분면 라벨
+  [['활성 · 불쾌',-.99,.99,'start'],['활성 · 쾌',.99,.99,'end'],
+   ['비활성 · 불쾌',-.99,-.99,'start'],['비활성 · 쾌',.99,-.99,'end']].forEach(([t,v,a,an])=>{
+    s+=`<text x="${px(v)}" y="${py(a)}" font-size="10.5" fill="#BDB298"
+      text-anchor="${an}" font-style="italic">${t}</text>`;
+  });
+  // 축
+  s+=`<line x1="${px(-1)-16}" y1="${cy}" x2="${px(1)+16}" y2="${cy}" stroke="#B7AC92" stroke-width="1.6"/>`;
+  s+=`<line x1="${cx}" y1="${py(1)-16}" x2="${cx}" y2="${py(-1)+16}" stroke="#B7AC92" stroke-width="1.6"/>`;
+  s+=`<text x="${px(1)+19}" y="${cy-4}" font-size="11" font-weight="700" fill="#8A7E64">쾌 +</text>`;
+  s+=`<text x="${px(1)+19}" y="${cy+9}" font-size="8.5" fill="#A89C82">valence</text>`;
+  s+=`<text x="${px(-1)-19}" y="${cy-4}" font-size="11" font-weight="700" fill="#8A7E64" text-anchor="end">− 불쾌</text>`;
+  s+=`<text x="${cx}" y="${py(1)-22}" font-size="11" font-weight="700" fill="#8A7E64" text-anchor="middle">강도 ↑ intensity</text>`;
+  s+=`<text x="${cx}" y="${py(-1)+28}" font-size="11" font-weight="700" fill="#8A7E64" text-anchor="middle">↓ 약함</text>`;
+  // 감정 anchor (옅은 점)
+  Object.entries(va).forEach(([k,c])=>{
+    const e=EMO[k], x=px(c[0]), y=py(c[1]);
+    s+=`<circle cx="${x}" cy="${y}" r="6.5" fill="${e.hex}" stroke="#FBF8EF" stroke-width="1.5" opacity=".5"/>`;
+    const len=Math.hypot(c[0],c[1])||1, ox=c[0]/len, oy=c[1]/len;
+    const an=ox<-.25?'end':ox>.25?'start':'middle';
+    s+=`<text x="${x+ox*13}" y="${y-oy*13}" font-size="10" fill="#9A8F77"
+      text-anchor="${an}" dominant-baseline="central">${e.mk}${e.ko}</text>`;
+  });
+  // 챕터 waypoint (지배 72% + 보조 28%)
+  const wp=CH.map(c=>{
+    const d=va[c.dom], sb=va[c.sub];
+    return {c, x:px(.72*d[0]+.28*sb[0]), y:py(.72*d[1]+.28*sb[1]), hex:EMO[c.dom].hex};
+  });
+  // 궤적
+  function seg(p,q,dash){
+    const dx=q.x-p.x,dy=q.y-p.y,L=Math.hypot(dx,dy)||1,u=dx/L,w=dy/L;
+    return `<line x1="${p.x+u*15}" y1="${p.y+w*15}" x2="${q.x-u*18}" y2="${q.y-w*18}"
+      stroke="${dash?'#B0472E':'#3A332B'}" stroke-width="2.2"
+      ${dash?'stroke-dasharray="5 4"':''} marker-end="url(#${dash?'trR':'trD'})" opacity=".82"/>`;
+  }
+  for(let i=0;i<wp.length-1;i++) s+=seg(wp[i],wp[i+1],false);
+  s+=seg(wp[9],wp[0],true);
+  // waypoint 원
+  wp.forEach(w=>{
+    s+=`<circle cx="${w.x}" cy="${w.y}" r="13" fill="${w.hex}" stroke="#FBF8EF" stroke-width="2.2"/>`;
+    s+=`<text x="${w.x}" y="${w.y}" font-size="13.5" font-weight="800" fill="${txt(w.hex)}"
+      text-anchor="middle" dominant-baseline="central"
+      font-family="Nanum Myeongjo,serif">${w.c.n}</text>`;
+  });
+  document.getElementById('va').innerHTML=s;
+  document.getElementById('vacap').innerHTML =
+    CH.map(c=>`<b>${c.n}</b> ${c.name}`).join('  ·  ');
+})();
+
+/* ════════ LEGEND ════════ */
+(function(){
+  const order=['joy','calm','grace','play','pride','guard','anger','fear','despair','drain'];
+  document.getElementById('legend').innerHTML =
+    order.map(k=>{const e=EMO[k];
+      return `<span class="lg"><span class="sw" style="background:${e.hex}"></span>
+        ${e.mk} ${e.ko}</span>`;}).join('');
+})();
+</script>
+</body>
+</html>

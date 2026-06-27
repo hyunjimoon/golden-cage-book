@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>감정 자료원 — 황금새장을 열다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--accent:#4A7A6B;--ink:#c8d0dd;--dim:#8899aa;--faint:#5a6a7a;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#0a0e1a;color:var(--ink);font-family:'Noto Sans KR',sans-serif;line-height:1.7;}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 22px 80px;}
+  a{color:#5A8A9A;text-decoration:none;font-weight:600;}
+  a:hover{color:#7BAACB;text-decoration:underline;}
+  .back{font-size:12px;color:var(--faint);}
+  h1{font-size:26px;font-weight:700;margin:18px 0 6px;}
+  .sub{font-size:13px;color:var(--dim);border-left:2px solid var(--accent);padding-left:12px;margin:14px 0 28px;font-style:italic;}
+  /* HERO — 페이지 전체를 요약하는 수레바퀴 */
+  .hero{background:#0e1220;border-radius:10px;padding:24px 14px 14px;margin-bottom:14px;text-align:center;}
+  .hero svg{width:100%;max-width:440px;height:auto;}
+  .hero .cap{font-size:11.5px;color:var(--faint);margin-top:8px;}
+  h2{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:1px;margin:36px 0 14px;text-transform:uppercase;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:10px;}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid #1c2540;}
+  th{color:var(--faint);font-weight:600;font-size:11px;}
+  .card{background:#0e1220;border-radius:8px;padding:16px 18px;margin-bottom:12px;border-left:3px solid #1c2540;}
+  .card:hover{border-left-color:var(--accent);}
+  .card h3{font-size:14px;font-weight:600;margin:0 0 2px;color:#e2e8f0;}
+  .card .who{font-size:11px;color:var(--faint);margin-bottom:8px;}
+  .card .lesson{font-size:12.5px;margin:0;}
+  .foot{margin-top:40px;font-size:12px;color:var(--dim);border-top:1px solid #1c2540;padding-top:18px;}
+  .foot .big{color:var(--ink);font-size:13.5px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="back"><a href="../index.html">← 황금새장을 열다</a></div>
+  <h1>감정 자료원</h1>
+  <div class="sub">12 감정 × 4 계절 — 中庸의 中和를 Anthropic 12 probe로 시각화한 정전. 흩어진 감정 자산을 한자리에 모은다.</div>
+
+  <!-- 형식 규칙: 페이지 전체를 요약하는 다이어그램으로 시작 -->
+  <div class="hero">
+    <svg id="wheel" viewBox="0 0 440 440" role="img" aria-label="12 감정 4 계절 수레바퀴"></svg>
+    <div class="cap">中 = 미발(喜怒哀樂之未發, 감정 이전 평형) · 바깥 = 和(發而皆中節, 절도에 맞게 발현 = calibrated, 빚 0)</div>
+  </div>
+
+  <h2>표기 · 계절 = 喜怒哀樂 = 렌즈</h2>
+  <table>
+    <tr><th>계절</th><th>情(中庸)</th><th>3 감정</th><th>렌즈 (§장)</th></tr>
+    <tr><td>봄 春</td><td>怒</td><td>불안 · 놀람 · 분노</td><td>§1 감각 ⛰️</td></tr>
+    <tr><td>여름 夏</td><td>喜</td><td>영감 · 자긍 · 기쁨</td><td>§2 생각 🟣</td></tr>
+    <tr><td>가을 秋</td><td>樂</td><td>평온 · 사랑 · 슬픔</td><td>§3 현실 🟥</td></tr>
+    <tr><td>겨울 冬</td><td>哀</td><td>두려움 · 절박 · 죄책</td><td>§4 실천 ⭐️</td></tr>
+  </table>
+
+  <h2>흩어진 자산 모으기</h2>
+  <div class="card">
+    <h3><a href="emotion_trajectory.html">감정 궤적</a> <span style="font-weight:400;color:var(--faint);">/ <a href="emotion_trajectory_en.html">EN</a></span></h3>
+    <div class="who">시간에 따른 12 감정의 흐름</div>
+    <p class="lesson">한 인물·한 장이 어떤 감정 경로를 타는가 — 14일 진화 ×2.3.</p>
+  </div>
+  <div class="card">
+    <h3><a href="emotion_heatmap.html">감정 히트맵</a></h3>
+    <div class="who">장 × 감정 격자의 밀도</div>
+    <p class="lesson">어느 장에 어떤 계절이 몰리는가 — 484 격자의 열지도.</p>
+  </div>
+  <div class="card">
+    <h3><a href="황금새장10장_감정플롯.html">황금새장 10장 감정 플롯</a></h3>
+    <div class="who">새장→둥지 10장의 감정 곡선</div>
+    <p class="lesson">빚 누적(새장)→상환(둥지)이 감정의 사계로 그려진다.</p>
+  </div>
+
+  <h2>출처</h2>
+  <div class="card">
+    <h3>中庸 1장 · 中和</h3>
+    <p class="lesson"><i>喜怒哀樂之未發 謂之中, 發而皆中節 謂之和.</i> 致中和, 天地位焉, 萬物育焉 — calibrated emotion이 磁場을 낳는다.</p>
+  </div>
+  <div class="card">
+    <h3>Anthropic · Emotion Concepts (2026.04)</h3>
+    <p class="lesson">이름 붙은 12 probe. 옛 10-cluster(k-means)를 대체 — 가을=樂·겨울=哀로 비틀어(한 글자 비틂) 사계와 정합.</p>
+  </div>
+
+  <div class="foot">
+    <p class="big">감정도 calibration이다. 中(미발)에서 和(발이중절)로, 절도에 맞게 발현될 때 빚이 0이 된다.</p>
+    <p>계절 순서 = 렌즈 순서(⛰️→🟣→🟥→⭐️). 봄에서 겨울로, 감각에서 실천으로.</p>
+  </div>
+</div>
+
+<script>
+const seasons=[
+ {ko:'봄 春',ch:'怒',color:'#6B8E4B',items:['불안','놀람','분노']},
+ {ko:'여름 夏',ch:'喜',color:'#C2553E',items:['영감','자긍','기쁨']},
+ {ko:'가을 秋',ch:'樂',color:'#D98A3D',items:['평온','사랑','슬픔']},
+ {ko:'겨울 冬',ch:'哀',color:'#2E5276',items:['두려움','절박','죄책']},
+];
+const cx=220,cy=220,r1=78,r2=160,rLbl=190,rMid=120;
+function pt(r,deg){const a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+function sector(d0,d1){
+  const [ax,ay]=pt(r2,d0),[bx,by]=pt(r2,d1),[ccx,ccy]=pt(r1,d1),[dx,dy]=pt(r1,d0);
+  return `M${ax} ${ay} A${r2} ${r2} 0 0 1 ${bx} ${by} L${ccx} ${ccy} A${r1} ${r1} 0 0 0 ${dx} ${dy} Z`;
+}
+let s='';
+seasons.forEach((se,si)=>{
+  const start=-105+si*90, end=start+90;
+  s+=`<path d="${sector(start,end)}" fill="${se.color}" opacity="0.85"/>`;
+  // 계절 라벨 (호 중앙)
+  const [mx,my]=pt(rMid,start+45);
+  s+=`<text x="${mx}" y="${my-4}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${se.ch}</text>`;
+  s+=`<text x="${mx}" y="${my+11}" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">${se.ko}</text>`;
+  // 12 감정 라벨
+  se.items.forEach((emo,ei)=>{
+    const i=si*3+ei, deg=-90+i*30, [lx,ly]=pt(rLbl,deg);
+    s+=`<text x="${lx}" y="${ly+3}" text-anchor="middle" font-size="11" font-weight="600" fill="${se.color}">${emo}</text>`;
+    const [tx,ty]=pt(r2+4,deg),[ux,uy]=pt(r2+12,deg);
+    s+=`<line x1="${tx}" y1="${ty}" x2="${ux}" y2="${uy}" stroke="${se.color}" stroke-width="1"/>`;
+  });
+});
+// 중심 中
+s+=`<circle cx="${cx}" cy="${cy}" r="${r1-4}" fill="#0a0e1a" stroke="#4A7A6B" stroke-width="1"/>`;
+s+=`<text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="26" font-weight="700" fill="#4A7A6B">中</text>`;
+s+=`<text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="9" fill="#5a6a7a">미발 · 磁場</text>`;
+document.getElementById('wheel').innerHTML=s;
+</script>
+</body>
+</html>
