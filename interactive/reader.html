@@ -249,11 +249,15 @@ fetch(`../chapters/${file}.md`)
   .then(md=>{
     const banners={ch1_mirror_cage:'../img/ch1.png',ch2_telescope_cage:'../img/ch2.png',ch3_stained_glass_cage:'../img/ch3.png',ch4_clock_cage:'../img/ch4.png'};
     const banner=banners[file]?`<img class="ch-banner" src="${banners[file]}" alt="">`:'';
-    const tetraMap={ch1_mirror_cage:0,ch2_telescope_cage:1,ch3_stained_glass_cage:2,ch4_clock_cage:3};
-    let tetra='';
-    if(file in tetraMap){
-      const ci=tetraMap[file];
-      const vs=[{x:15,y:105,c:'#9B7A8B',l:'거울'},{x:95,y:55,c:'#7A8068',l:'망원경'},{x:110,y:105,c:'#4A7A6B',l:'스테인드글라스'},{x:60,y:10,c:'#5A8A9A',l:'시계'}];
+    // 1부 새장(아래꼭짓점=시계) ↔ 2부 둥지(거울상: 위아래 반전, 꼭짓점=까마귀)
+    const cageMap={ch1_mirror_cage:0,ch2_telescope_cage:1,ch3_stained_glass_cage:2,ch4_clock_cage:3};
+    const nestMap={ch6_play_nest:0,ch7_tulip_nest:1,ch8_mist_nest:2,ch9_raven_nest:3};
+    const cageV=[{x:15,y:105,c:'#9B7A8B',l:'거울'},{x:95,y:55,c:'#7A8068',l:'망원경'},{x:110,y:105,c:'#4A7A6B',l:'스테인드글라스'},{x:60,y:10,c:'#5A8A9A',l:'시계'}];
+    const nestV=[{x:15,y:15,c:'#6B8E4B',l:'나비'},{x:95,y:65,c:'#C97B3C',l:'튤립'},{x:110,y:15,c:'#5A8A9A',l:'안개'},{x:60,y:110,c:'#8B6BAA',l:'까마귀'}];
+    let tetra='', ci=-1, vs=null;
+    if(file in cageMap){ci=cageMap[file];vs=cageV;}
+    else if(file in nestMap){ci=nestMap[file];vs=nestV;}
+    if(vs){
       const es=[[0,1,'edge'],[0,2,'edge'],[0,3,'edge-d'],[1,2,'edge'],[1,3,'edge-d'],[2,3,'edge']];
       let svg='<div class="tetra-pos"><svg viewBox="0 0 125 120">';
       es.forEach(([a,b,cls])=>{svg+=`<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`;});
