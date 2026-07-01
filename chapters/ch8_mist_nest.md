@@ -16,6 +16,7 @@ modified:
 schema_version: v1.0
 coordinate: nest · 8장 · §1-4 · 2↔8
 atomic_unit: "[atom]"
+情: 喜  # 여름 · atom↔2망원경(여름喜)
 cc_owner: cc-거울
 mirror_anchor: ↔ 2🔭_망원경새장 (atom 동일 매질 — 멀리 보기↔가까운 안개 · 작가↔피조물 = 인간↔physical AI)
 ---

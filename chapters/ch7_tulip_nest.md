@@ -18,6 +18,7 @@ modified:
 schema_version: v1.0
 coordinate: nest · 7장 · §1-4 · 3↔7
 atomic_unit: "[cell]"
+情: 樂  # 가을 · cell↔3스테인드글라스(가을樂)
 cc_owner: cc-거울
 mirror_anchor: ↔ 3💒_스테인드글라스새장 (cell 동일 매질 — 닫힌 확신↔열린 옵션 · 스테인드글라스책임↔튤립기술)
 active_today: true

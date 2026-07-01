@@ -15,6 +15,7 @@ modified:
 schema_version: v1.0
 coordinate: nest · 9장 · §1-4 · 4↔9 + 9→5 ouroboros
 atomic_unit: "[second]"
+情: 哀  # 겨울 · second↔4시계(겨울哀)
 cc_owner: cc-pair-c
 mirror_anchor: ↔ 4⏱️_시계새장 (에너지, 협업자↔척도) + ↔ 5🪞🪺_거울둥지 (9→5 ouroboros 봉합)
 ---

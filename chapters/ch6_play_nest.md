@@ -14,6 +14,7 @@ modified:
 schema_version: v1.0
 coordinate: nest · 6장 · §1-4 · 5↔6
 atomic_unit: "[bit]"
+情: 怒  # 봄 · bit↔1거울(봄怒)
 cc_owner: cc-pair-c
 mirror_anchor: ↔ 5🪞🪺_거울둥지 (hub에서 첫 매혹 · 내 가치→우리 의미 번역무대)
 ---
