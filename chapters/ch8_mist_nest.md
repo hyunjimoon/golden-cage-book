@@ -12,14 +12,13 @@ modified:
   - 2026-05-17T03:54:11+09:00
   - 2026-05-17
   - 2026-06-15T08:30:13+09:00
+  - 2026-07-01T17:31:52+09:00
 schema_version: v1.0
 coordinate: nest · 8장 · §1-4 · 2↔8
 atomic_unit: "[atom]"
 cc_owner: cc-거울
 mirror_anchor: ↔ 2🔭_망원경새장 (atom 동일 매질 — 멀리 보기↔가까운 안개 · 작가↔피조물 = 인간↔physical AI)
 ---
-
-
 
 ## 🗺️ 양탄자 — 🌫️ 8 안개투자자 · 우나무노 안개 [atom]
 
