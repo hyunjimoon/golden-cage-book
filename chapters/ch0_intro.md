@@ -1,4 +1,5 @@
 ---
+created: 2026-04-28
 moc: 🟥
 title: 머릿말 — 황금새장을 열다
 modified:

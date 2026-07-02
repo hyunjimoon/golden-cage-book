@@ -1,4 +1,5 @@
 ---
+created: 2026-06-15
 moc: ⭐️
 title: 질문과 답 — 황금새장을 열다 (2차)
 modified:

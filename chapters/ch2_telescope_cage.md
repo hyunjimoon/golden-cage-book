@@ -1,4 +1,5 @@
 ---
+created: 2026-06-22
 version: 150p
 target_chars: ~7000
 modified:

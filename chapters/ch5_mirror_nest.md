@@ -1,4 +1,5 @@
 ---
+created: 2026-06-30
 version: 초안 2026-06-30 (전쟁=평화 축)
 target_chars: ~10000
 modified:
