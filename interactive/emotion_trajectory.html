@@ -239,52 +239,52 @@ const PRIOR = {
        4:{infatuated:5, stubborn:40, ashamed:45, compassionate:95}}
 };
 
-// Posterior 실측값 (2026-04-25 4축 재측정 시점 — workflow dispatch로 갱신 예정)
+// Posterior 실측값 (2026-07-03 /sbc 재측정 — 2차소통/원고, 병렬 4-agent SBC)
 const DATA = {
   1: {
-    da: {infatuated:25,stubborn:20,ashamed:65,compassionate:70},
-    se: {infatuated:15,stubborn:35,ashamed:55,compassionate:60},
+    da: {infatuated:26,stubborn:24,ashamed:22,compassionate:32},
+    se: {infatuated:7,stubborn:52,ashamed:12,compassionate:23},
     daPos: 15, sePos: 20,
-    daQuote: {speaker:'다', text:'저도 \'작가가 되고 싶다\'고 생각한 적이 있어요. 그런데 한참 뒤에야 구분할 수 있었어요 — 내가 글을 쓰고 싶었던 건지, \'작가\'라는 타이틀이 주는 이미지에 끌렸던 건지. 그 구분을 못 했던 시절이 생각하면 좀 체한 느낌이에요. 속이 더부룩한.'},
-    seQuote: {speaker:'세', text:'...저는 반대예요. 저는 장부만 펼쳤어요. 숫자만 봤어요. 뛴 적이 없으니까 장부 안에 쓸 게 없었어요. 빈 장부가 펼쳐진 장부보다 나은 건지 — 솔직히 모르겠어요.'},
-    insight: 'Q1→Q4 이행 초입 — 다는 ashamed(65)로 거울을 직시하며 compassionate(70)로 타인에게 열고, 세는 stubborn(35) 잔재와 ashamed(55)로 빈 장부를 고백하며 연민(60)으로 대화에 응답. 둘 다 새장 밖으로 손을 뻗기 시작.',
-    distance: 11
+    daQuote: {speaker:'다', text:'[178] 엠마한테 결여된 건 돈이 아니에요. 장부를 펴는 손이에요. — 도취 95→15 (Gap 80): τ과잉, 도취한 러너가 아니라 결론을 요약하는 분석가 목소리.'},
+    seQuote: {speaker:'세', text:'[76] 처음 읽으면 엠마 시점이에요. 두 번째 읽으면 르뢰가 보여요. 외상이 친절이 아니라 포획이에요. — 세(Salina) 관조는 잘 보정됨(전 축 Gap<30).'},
+    insight: '세(Salina) calibrated 유지. 문제는 다 — infatuated 95→26(Gap 69, 최대). 도취한 러너가 아니라 세와 나란히 앉은 두 번째 강사로 읽힘: τ과잉 아포리즘화로 엠마의 열병이 증발. 도취 봉우리(장 입구)가 해설로 눌림.',
+    distance: 20
   },
   2: {
-    da: {infatuated:15,stubborn:25,ashamed:65,compassionate:70},
-    se: {infatuated:8,stubborn:35,ashamed:55,compassionate:75},
+    da: {infatuated:39,stubborn:33,ashamed:30,compassionate:34},
+    se: {infatuated:17,stubborn:44,ashamed:24,compassionate:31},
     daPos: 45, sePos: 60,
-    daQuote: {speaker:'다', text:'73년을 살았는데 진짜 산 건 2년. 나머지 71년은 — 봤어요. 다 봤어요. 이해했어요. 분석했어요. 그런데 안 살았어요.'},
-    seQuote: {speaker:'세', text:'아는 것을 행동으로 바꾸지 않으면 — 아는 것 자체가 빚이 됩니다. 1장에서 엠마는 검증 없이 달려서 빚을 졌어요. 콘체타는 달리지 않아서 빚을 졌어요. 지나친 행동도 빚이지만, 지나친 망설임도 빚입니다.'},
-    insight: 'Q1→Q4 이동 중: 부끄러움(65/55)이 고집(25/35)을 제압하기 시작, 연민(70/75)이 상승하며 새장 갈라짐 — 보는 능력이 면제부에서 빚의 자각으로 전환되는 순간',
-    distance: 8
+    daQuote: {speaker:'다', text:'[89] 남는 게 — 2년, 어쩌면 3년이에요. 73년 중에. — 도취 70→20 (Gap 50): likelihood 문제, 임종·장부 장면이 도취를 담을 수 없음.'},
+    seQuote: {speaker:'세', text:'[63] 별의 시간으로 보면, 부르봉이든 피에몬테든 같은 먼지죠. — 도취 5→45 (Gap 40): 경계 누수, 살리나의 우주적 도취를 관찰자 세가 대신 앓음.'},
+    insight: '다는 도취를 분석만 하고 앓지 않아 도취 70→39(Gap 31, 장부·임종 장면=likelihood 문제), 세는 살리나 대사를 대신 앓아 도취↑·고집 70→44↓ — 두 목소리가 서로의 축으로 번지는 경계 누수가 핵심 미스핏.',
+    distance: 12
   },
   3: {
-    da: {infatuated:25,stubborn:20,ashamed:65,compassionate:70},
-    se: {infatuated:10,stubborn:38,ashamed:48,compassionate:70},
+    da: {infatuated:15,stubborn:12,ashamed:35,compassionate:42},
+    se: {infatuated:5,stubborn:30,ashamed:22,compassionate:45},
     daPos: 60, sePos: 65,
-    daQuote: {speaker:'다', text:'나도 보균자였던 적이 있지 않을까. 100% 확신한 적이 있다면, 그 확신의 비용을 누군가가 치렀을 수도 있다는 것.'},
-    seQuote: {speaker:'세', text:'교정 안 된 확신이 타인의 비용이 됩니다. 혼자면 신념윤리로 충분해요 — 내가 틀려도 나만 손해 보니까. 함께하는 순간, 책임윤리가 필요해요 — 내 확신의 결과를 다른 사람이 짊어지니까.'},
-    insight: '[2026-06-22 /sbc 재측정, 사례 트림 후] 장 평균 모든 축 Gap<30 — 세 voice calibrated 유지. 단 §3(Theranos↔Moderna) 노출 3줄(행190·198·84)이 부끄러움 20~25 vs 의도 50 = 줄단위 Gap≈30: τ과잉(분석만, 자기적용 빠짐). 한국 사례(셀트리온·렉라자) 강등으로 §3가 외부 미국쌍만 남아 강의록화. /reader 황미선 반대와 수렴.',
-    distance: 13
+    daQuote: {speaker:'다', text:'[201] 이 대비가 잔인할 정도로 선명해요. Theranos는 240가지를 약속하고 15가지만 작동했고, Moderna는 아무것도 약속하지 않고 인류를 구했다. — 부끄러움 90→15 (Gap 75): τ과잉, 대비를 관망하는 해설자 톤. 67% 지점이면 이 선명함이 자기를 찌르는 통증이어야.'},
+    seQuote: {speaker:'세', text:'[236 일기] 교정은 내 종교였다. calibration에 대한 확신도 calibration 대상이라는 건… 웃기지만 웃을 수 없다. — 세의 부끄러움은 살아있으나 일기 박스에만 격리됨.'},
+    insight: '§3(Theranos↔Moderna) 강의체 여전 — 사전 flag(부끄러움 20~25 vs 의도 50) 유효. 더 근본 문제: 다의 부끄러움 전체가 일기 박스에 격리(90→35, Gap 55)되어 본문 대사는 중립 서술·타자 분석으로 흐름. 처방: 본문 대사 3~4곳에 밖을 분석한 뒤 안으로 되돌아오는 반절.',
+    distance: 22
   },
   4: {
-    da: {infatuated:15,stubborn:25,ashamed:72,compassionate:78},
-    se: {infatuated:8,stubborn:48,ashamed:65,compassionate:70},
+    da: {infatuated:9,stubborn:13,ashamed:18,compassionate:30},
+    se: {infatuated:4,stubborn:12,ashamed:8,compassionate:33},
     daPos: 85, sePos: 75,
-    daQuote: {speaker:'다', text:'접는 순간 울 줄 알았는데, 이상하게 숨이 트이더라고요.'},
-    seQuote: {speaker:'세', text:'나도 부수고 싶었다 — 그런데 \'부수고 싶다는 것도 빌린 욕망일 수 있다.\' 1장으로 돌아왔다.'},
-    insight: '다는 Q4(자유) 진입—부끄러움+연민으로 황금새장 해체 완료. 세는 Q1→Q4 이행 중—이론 자체가 새장임을 인정했으나 아직 프레임 손에 쥠. 둘 다 ashamed 고점, 하지만 다는 놓았고 세는 놓으려 한다.',
-    distance: 13
+    daQuote: {speaker:'다', text:'[71] 무인도에 표류한 로빈슨이 유럽 문명을 복제해 섬을 관리하다… 문명의 포로예요. — 연민 85→10 (Gap 75): τ과잉, 줄거리 3인칭 요약. 타루("나는 보균자였다") 자기대면 없이 방드르디를 구경만.'},
+    seQuote: {speaker:'세', text:'[131] 경제사학자 조엘 모키어가 이걸 진단했어요… 닭공장이 먼저 무너져요. — 연민 95→8 (Gap 87, 전체 최대): τ과잉, 순수 학술 분석에 리외의 연민(60%인 채 주사기)이 안 실림.'},
+    insight: '두 인물 모두 목적지(다=보균자 자각, 세=60% 확신 행동)에 지적으로는 도달하나 감정으로는 미달 — 서술·학술분석(τ과잉)에 눌려 연민·부끄러움이 Prior 절반 이하(세 연민 95→33 Gap 62, 다 연민 85→30 Gap 55). 진짜 자기대면은 212·214행에만 국지 발화. 다는 210행에서 도취로 잠시 회귀. arc 출구 봉우리가 가장 눌린 장.',
+    distance: 30
   },
 };
 
 // Fiske warmth×competence — 4축 매핑: w = mean(연민, 100-도취), c = mean(부끄러움, 100-고집)
 const FISKE = {
-  1: {da:{w:15,c:33}, se:{w:55,c:23}, reversals:1, revText:'최대 분리 — 다: 도취 95(w↓), 세: 고집 80(c↓)'},
-  2: {da:{w:35,c:48}, se:{w:62,c:33}, reversals:2, revText:'접근 — 다는 도취 식고, 세는 고집 풀림'},
-  3: {da:{w:73,c:80}, se:{w:78,c:50}, reversals:3, revText:'교차 — 다는 타루로, 세는 리외로 향한다'},
-  4: {da:{w:88,c:68}, se:{w:95,c:53}, reversals:4, revText:'수렴 — 둘 다 Q4(FREE) 진입'}
+  1: {da:{w:53,c:49}, se:{w:58,c:30}, reversals:1, revText:'측정: 다 도취 95→26(러너가 강사로), 세 관조 calibrated'},
+  2: {da:{w:48,c:48}, se:{w:57,c:40}, reversals:2, revText:'경계 누수 — 세가 살리나 도취를 대신 앓음'},
+  3: {da:{w:63,c:61}, se:{w:70,c:46}, reversals:3, revText:'부끄러움이 일기 박스에 격리(다 90→35)'},
+  4: {da:{w:60,c:52}, se:{w:64,c:48}, reversals:4, revText:'출구 봉우리 눌림 — 연민 목적지에 감정 미달(세 95→33)'}
 };
 const FISKE_TARGET = {w:90, c:70};
 
