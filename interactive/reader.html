@@ -102,7 +102,7 @@ const CHAPTERS = [
   {id:'ch3_glass_cage', label:'💒 3장 유리새장'},
   {id:'ch4_clock_cage', label:'⏱️ 4장 시계새장'},
   {id:'ch5_mirror_nest', label:'🪞🪺 5장 거울둥지 (hub)'},
-  {id:'ch6_play_nest', label:'🎭 6장 연극둥지'},
+  {id:'ch6_butterfly_nest', label:'🦋 6장 나비둥지'},
   {id:'ch7_tulip_nest', label:'🌷 7장 튤립둥지'},
   {id:'ch8_mist_nest', label:'🌫️ 8장 안개둥지'},
   {id:'ch9_raven_nest', label:'🐦‍⬛ 9장 까마귀둥지'},
@@ -112,7 +112,7 @@ const CHAPTERS = [
 const CH_COLORS = {
   ch1_mirror_cage:'#862256', ch2_telescope_cage:'#8B7D3C',
   ch3_glass_cage:'#2D8B73', ch4_clock_cage:'#3D8A8E',
-  ch5_mirror_nest:'#5B3A8A', ch6_play_nest:'#8A5B3A',
+  ch5_mirror_nest:'#5B3A8A', ch6_butterfly_nest:'#8A5B3A',
   ch7_tulip_nest:'#8A3A5B', ch8_mist_nest:'#3A6B8A',
   ch9_raven_nest:'#3A8A6B'
 };
@@ -124,12 +124,13 @@ const ALIASES = {
   'ch5_epilogue': 'ch10_epilogue',       // 5-8장 추가 후 epilogue 위치 이동
   'ch9_epilogue': 'ch10_epilogue',       // 9→10 (hub 신설, 2026-05-18)
   'ch6_author_nest': 'ch8_mist_nest',    // 작가둥지 → 안개둥지 (2026-05-02)
-  'ch5_play_nest': 'ch6_play_nest',      // 놀이→연극 + 6장으로 이동 (2026-05-17, hub 신설)
+  'ch5_play_nest': 'ch6_butterfly_nest',  // 놀이→연극→나비 + 6장 (2026-05-17, hub 신설)
+  'ch6_play_nest': 'ch6_butterfly_nest',  // 연극→나비 (2026-07-04)
   'ch6_mist_nest': 'ch8_mist_nest',      // 6→7 (hub 신설, 2026-05-18)
   'ch7_doubt_nest': 'ch8_mist_nest',     // 의심→안개 (7·8 swap, 2026-05-18)
   'ch8_bird_nest': 'ch9_raven_nest',     // 새→까마귀 + 9장으로 (2026-05-18)
   'ch8_trick_nest': 'ch9_raven_nest',    // 트릭 → 까마귀 (2026-05-10)
-  'ch5_role_nest': 'ch6_play_nest',      // 역할 → 연극 (2026-05-10)
+  'ch5_role_nest': 'ch6_butterfly_nest',  // 역할 → 연극 → 나비 (2026-05-10)
   'ch7_language_nest': 'ch8_mist_nest',  // 언어 → 안개 (2026-05-10)
   'ch8_mirror_nest': 'ch9_raven_nest',   // 거울 → 까마귀 (2026-05-10)
   'ch3_stained_glass_cage': 'ch3_glass_cage' // 스테인드글라스 → 유리 (2026-05-18)
@@ -251,7 +252,7 @@ fetch(`../chapters/${file}.md`)
     const banner=banners[file]?`<img class="ch-banner" src="${banners[file]}" alt="">`:'';
     // 1부 새장(아래꼭짓점=시계) ↔ 2부 둥지(거울상: 위아래 반전, 꼭짓점=까마귀)
     const cageMap={ch1_mirror_cage:0,ch2_telescope_cage:1,ch3_stained_glass_cage:2,ch4_clock_cage:3};
-    const nestMap={ch6_play_nest:0,ch7_tulip_nest:1,ch8_mist_nest:2,ch9_raven_nest:3};
+    const nestMap={ch6_butterfly_nest:0,ch7_tulip_nest:1,ch8_mist_nest:2,ch9_raven_nest:3};
     const cageV=[{x:15,y:105,c:'#9B7A8B',l:'거울'},{x:95,y:55,c:'#7A8068',l:'망원경'},{x:110,y:105,c:'#4A7A6B',l:'스테인드글라스'},{x:60,y:10,c:'#5A8A9A',l:'시계'}];
     const nestV=[{x:15,y:15,c:'#6B8E4B',l:'나비'},{x:95,y:65,c:'#C97B3C',l:'튤립'},{x:110,y:15,c:'#5A8A9A',l:'안개'},{x:60,y:110,c:'#8B6BAA',l:'까마귀'}];
     let tetra='', ci=-1, vs=null;

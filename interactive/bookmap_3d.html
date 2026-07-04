@@ -39,7 +39,7 @@
 <script>
 (function(){
   const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
-  const SL={1:'ch1_mirror_cage',2:'ch2_telescope_cage',3:'ch3_glass_cage',4:'ch4_clock_cage',6:'ch6_play_nest',7:'ch7_tulip_nest',8:'ch8_mist_nest',9:'ch9_raven_nest'};
+  const SL={1:'ch1_mirror_cage',2:'ch2_telescope_cage',3:'ch3_glass_cage',4:'ch4_clock_cage',6:'ch6_butterfly_nest',7:'ch7_tulip_nest',8:'ch8_mist_nest',9:'ch9_raven_nest'};
   const S=205, CX=560, CY=480, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
   const proj=c=>{const[x,y,z]=c; const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
     const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
