@@ -1,0 +1,78 @@
+name: coverage-matrix
+
+on:
+  issues:
+    types: [opened, closed, reopened, labeled, unlabeled]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * *"
+
+permissions:
+  issues: read
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate coverage matrix
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p docs
+          CHAPTERS=("🪞1장-거울" "🔭2장-망원경" "💒3장-스테인드글라스" "⏱️4장-시계" "🐀5장-101호" "🦋6장-나비" "🌷7장-튤립구근" "🌫️8장-안개" "🐦‍⬛9장-까마귀" "⭐️10장-금새")
+          LENSES=("⛰️무엇-빚" "🟣왜-방향" "🟥어떻게-도구" "⭐️그래서-남음")
+          issues=$(gh issue list --state open --limit 500 --json labels)
+          {
+            echo "# 📖 금새 이슈 커버리지 매트릭스"
+            echo
+            echo "> 열린(open) 이슈 기준, 자동 생성 — 직접 편집 금지"
+            echo
+            printf "| 장 \\\\ 렌즈 |"
+            for l in "${LENSES[@]}"; do printf " %s |" "$l"; done
+            printf " 합계 |\n"
+            printf "|:--|"
+            for l in "${LENSES[@]}"; do printf ":--:|"; done
+            printf ":--:|\n"
+            declare -a coltot
+            for i in "${!LENSES[@]}"; do coltot[$i]=0; done
+            grand=0
+            for ch in "${CHAPTERS[@]}"; do
+              printf "| %s |" "$ch"
+              rowsum=0
+              for i in "${!LENSES[@]}"; do
+                l="${LENSES[$i]}"
+                c=$(echo "$issues" | jq --arg ch "$ch" --arg l "$l" '[.[] | select(([.labels[].name] | index($ch)) and ([.labels[].name] | index($l)))] | length')
+                rowsum=$((rowsum + c))
+                coltot[$i]=$(( ${coltot[$i]} + c ))
+                if [ "$c" -eq 0 ]; then printf " · |"; else printf " %s |" "$c"; fi
+              done
+              grand=$((grand + rowsum))
+              if [ "$rowsum" -eq 0 ]; then printf " · |\n"; else printf " %s |\n" "$rowsum"; fi
+            done
+            printf "| **합계** |"
+            for i in "${!LENSES[@]}"; do
+              t=${coltot[$i]}
+              if [ "$t" -eq 0 ]; then printf " · |"; else printf " **%s** |" "$t"; fi
+            done
+            if [ "$grand" -eq 0 ]; then printf " · |\n"; else printf " **%s** |\n" "$grand"; fi
+            echo
+            echo "🈳 빈 칸 = calibration gap (해당 장에 그 렌즈의 이슈가 없음)"
+          } > docs/coverage.md
+
+      - name: Commit if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain docs/coverage.md)" ]; then
+            echo "변경 없음 — 커밋 생략"
+            exit 0
+          fi
+          git add docs/coverage.md
+          git commit -m "chore: 커버리지 매트릭스 자동 갱신 [skip ci]"
+          git push

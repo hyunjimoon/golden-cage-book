@@ -1,0 +1,64 @@
+name: auto-label-chapter
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add matching chapter labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 키워드 → 라벨 맵. "N장" 숫자 토큰은 앞에 다른 숫자가 오면(11장·21장) 매칭 금지.
+            const MAP = [
+              { label: "🪞1장-거울",          keywords: ["1장", "거울", "보바리", "엠마", "르뢰"] },
+              { label: "🔭2장-망원경",         keywords: ["2장", "망원경", "표범", "살리나", "랑페두사", "벤디코"] },
+              { label: "💒3장-스테인드글라스", keywords: ["3장", "스테인드글라스", "페스트", "파늘루", "리외", "카뮈"] },
+              { label: "⏱️4장-시계",           keywords: ["4장", "시계", "방드르디", "로빈슨", "투르니에"] },
+              { label: "🐀5장-101호",          keywords: ["5장", "101호", "1984", "윈스턴", "빅브라더"] },
+              { label: "🦋6장-나비",           keywords: ["6장", "나비부인", "M.Butterfly", "버터플라이", "송릴링", "송 릴링", "갈리마르"] },
+              { label: "🌷7장-튤립구근",        keywords: ["7장", "튤립", "검은튤립", "구근", "코르넬리우스", "드비트", "De Witt"] },
+              { label: "🌫️8장-안개",           keywords: ["8장", "안개", "니에블라", "Niebla", "우나무노", "아우구스토", "살라망카"] },
+              { label: "🐦‍⬛9장-까마귀",        keywords: ["9장", "까마귀", "raven", "삼국유사", "일연", "트릭스터", "trickster"] },
+              { label: "⭐️10장-금새",          keywords: ["10장", "금새", "10101"] },
+            ];
+
+            const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            // 키워드를 정규식으로: "N장"은 negative-lookbehind로 앞 숫자 차단.
+            const toRegex = (kw) => {
+              const body = escapeRe(kw);
+              const numericChapter = /^\d+장$/.test(kw);
+              const src = numericChapter ? `(?<!\\d)${body}` : body;
+              return new RegExp(src, "i");
+            };
+
+            const issue = context.payload.issue;
+            const haystack = `${issue.title || ""}\n${issue.body || ""}`;
+            const existing = new Set((issue.labels || []).map((l) => (typeof l === "string" ? l : l.name)));
+
+            const toAdd = [];
+            for (const { label, keywords } of MAP) {
+              if (existing.has(label)) continue;
+              const hit = keywords.some((kw) => toRegex(kw).test(haystack));
+              if (hit) toAdd.push(label);
+            }
+
+            if (toAdd.length === 0) {
+              core.info("매칭되는 새 라벨 없음 — 변경 없음");
+              return;
+            }
+
+            core.info(`추가할 라벨: ${toAdd.join(", ")}`);
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: toAdd,
+            });
