@@ -11,6 +11,10 @@ permissions:
   issues: read
   contents: write
 
+concurrency:
+  group: coverage-matrix
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -75,4 +79,9 @@ jobs:
           fi
           git add docs/coverage.md
           git commit -m "chore: 커버리지 매트릭스 자동 갱신 [skip ci]"
-          git push
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0
+            echo "push attempt $attempt rejected — retrying"
+            sleep 3
+          done
+          echo "push failed after retries" && exit 1
