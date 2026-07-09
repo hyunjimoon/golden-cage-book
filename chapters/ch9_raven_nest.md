@@ -13,13 +13,15 @@ modified:
   - 2026-05-17T23:17:39+09:00
   - 2026-05-18T20:10:59+09:00
   - 2026-06-15T08:29:59+09:00
+  - 2026-07-09T21:36:28+09:00
 schema_version: v1.0
 coordinate: nest · 9장 · §1-4 · 4↔9 + 9→5 ouroboros
 atomic_unit: "[second]"
-情: 哀  # 겨울 · second↔4시계(겨울哀)
+情: 哀
 cc_owner: cc-pair-c
 mirror_anchor: ↔ 4⏱️_시계새장 (에너지, 협업자↔척도) + ↔ 5🪞🪺_거울둥지 (9→5 ouroboros 봉합)
 ---
+[[00_다이어그램_갤러리.base]]
 
 ## 🗺️ 양탄자 — 🐦‍⬛ 9 까마귀둥지 · 삼국유사 [second]
 
