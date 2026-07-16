@@ -13,7 +13,9 @@ purpose: 창업문학 작가로서의 목적함수 설정과 작법론 선언
 
 ## 1. 목적함수의 세 성분
 
-$$f_{\text{author}} = w_1 \cdot \text{Belief}(\text{Algorithm}) \times w_2 \cdot \text{Conversion}(\text{Reader} \to \text{Author}) \times w_3 \cdot \text{Genre}(\text{Structure})$$
+$$
+f_{\text{author}} = w_1 \cdot \text{Belief}(\text{Algorithm}) \times w_2 \cdot \text{Conversion}(\text{Reader} \rightarrow \text{Author}) \times w_3 \cdot \text{Genre}(\text{Structure})
+$$
 
 ### ① 삶의 최적화 알고리즘 존재 유무 (내 신념)
 * **영리함의 끝은 선(善)이다**: 과거의 고통(부정 정서)을 미래의 행동을 위한 연료(긍정 정서)로 프레임 비틀기(Reframing)를 수행하는 엔진이 내면에 실재한다는 믿음이다.
@@ -41,10 +43,31 @@ $$f_{\text{author}} = w_1 \cdot \text{Belief}(\text{Algorithm}) \times w_2 \cdot
 * 기술(방법론)과 사용자(환경)를 동시에 바꾸는 다대다 매칭은 최적화 효율을 극단적으로 떨어뜨린다. **하나의 좌표(예: 연구 주제 혹은 타겟 사용자)를 단단히 고정한 채 다른 축을 피보팅(Pivoting)**하며 단계적으로 궤도를 좁힌다.
 
 ### 3) 최선/최악의 시뮬레이션 (Worst-Case Constraint)
-* 의사결정을 내리기 전, **발생 가능한 최선의 시나리오와 최악의 시나리오(Downside Risk)를 상호 투명하게 시뮬레이션**하여 제약조건 집합(Feasibility Set)의 경계를 확정한다. 최악을 버텨낼 수 있을 때만 비로소 약속을 굳힌다.
+* 의사결정을 내리기 전, **발생 가능한 최선의 시나리오와 최악의 시나리오(<span style="color:#db2828;">Downside Risk</span>)를 상호 투명하게 시뮬레이션**하여 제약조건 집합(<span style="color:#21ba45;">Feasibility Set</span>)의 경계를 확정한다. 최악을 버텨낼 수 있을 때만 비로소 약속을 굳힌다.
 
 ### 4) 자(Meter)의 공동 감사 (Collaborative Metric Audit)
 * 미로 속을 달리는 행위자(창업자/작가)는 스스로의 자(Meter)를 객관적으로 측정할 수 없다. 반드시 **나를 외부에서 관찰하고 평가 기준(Evaluation Metric)의 왜곡을 짚어줄 협력자의 개입**을 통해 척도를 보정(Calibration)한다.
 
 ### 5) 선택을 사후에 옳게 만들기 (Post-Decision Right-Making)
 * 글로벌 최적의 정적 경로는 존재하지 않는다. **선택하기 전에 완벽한 답을 찾으려 망설이기보다, 일단 선택을 내린 후 온몸으로 그 길을 옳게 만들어가는 과정**이 최적화 알고리즘의 최종적인 연산이다.
+
+---
+
+## 3. 핵심 의사결정 개념 용어집 (B·I·O)
+
+창업문학의 서사 내부에서 작동하는 핵심 개념들의 정의와 색상 뼈대입니다.
+
+* **기술 (Technology)**: <span style="color:#21ba45;">useful applications</span>를 가진 지식.
+* **운영최적화 (Operational Optimization)**: <span style="color:#21ba45;">feasibility</span> set 위에서 <span style="color:#7C3AED; font-weight:600;">desirability</span>를 극대화하는 모델 시스템.
+  - 수학적 표현:
+  $$
+  \max_x \quad \color{#7C3AED}{\text{desirability}}(x) \quad \text{s.t.} \quad x \in \color{#21ba45}{\text{feasibility}}
+  $$
+* **베이즈계산 (Bayesian Computation)**: 모든 변수를 *이산확률변수*로 간주하고 조건화와 시뮬레이션을 통해 결정을 보정하는 기법.
+* **혁신 (Innovation)**: 발명이 상업화를 만나 채택되는 단계.
+  - 수학적 표현:
+  $$
+  \text{Innovation} = \text{invention} \times \color:#db2828}{\text{commercialization}}
+  $$
+* **혁신의사결정 (Innovative Decision-Making)**: <span style="color:#7C3AED; font-weight:600;">desirability</span>, <span style="color:#21ba45;">feasibility</span>, 그리고 <span style="color:#db2828;">viability</span>의 불확실성 위에서 내리는 하나의 결단.
+* **Feasible ↔ Viable의 경계**: <span style="color:#21ba45;">과학자</span>는 달까지의 다리(feasibility)를 놓을 수 있다고 제안하지만, <span style="color:#db2828;">공학자</span>는 비용과 채택 가능성(<span style="color:#db2828;">viability</span> 및 <span style="color:#db2828;">비즈니스 모델링</span>)이 검증될 때까지 다리를 놓지 않는다.
