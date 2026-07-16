@@ -197,6 +197,27 @@ function md2html(md) {
   md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
   md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2');
   md = md.replace(/\[\[([^\]]+)\]\]/g, '$1');
+
+  // Render block math $$ ... $$ via KaTeX synchronously
+  if (window.katex) {
+    md = md.replace(/\$\$([\s\S]*?)\$\$/g, function(match, tex) {
+      try {
+        return '\n<div class="katex-block-wrapper">' + katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false }) + '</div>\n';
+      } catch(e) {
+        return match;
+      }
+    });
+
+    // Render inline math $ ... $ via KaTeX synchronously
+    md = md.replace(/\$([^$\n]+)\$/g, function(match, tex) {
+      try {
+        return katex.renderToString(tex.trim(), { displayMode: false, throwOnError: false });
+      } catch(e) {
+        return match;
+      }
+    });
+  }
+
   let lines = md.split('\n'), html = '', inCode=false, inTable=false, inBQ=false, tRows=[];
   for (let i=0;i<lines.length;i++){
     let L=lines[i];
@@ -213,7 +234,13 @@ function md2html(md) {
     let im=L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
     if(im){html+=`<img src="${im[2]}" alt="${im[1]}">`;continue;}
     if(L.trim()==='')continue;
-    html+='<p>'+inl(L)+'</p>';
+    
+    // If the line contains a pre-rendered block wrapper, output it directly without wrapping in <p>
+    if (L.includes('katex-block-wrapper')) {
+      html += L;
+    } else {
+      html += '<p>' + inl(L) + '</p>';
+    }
   }
   if(inTable)html+=tbl(tRows);if(inBQ)html+='</blockquote>';if(inCode)html+='</code></pre>';
   return html;
@@ -247,20 +274,8 @@ function buildToc(){
   headings.forEach(h=>observer.observe(h));
 }
 
-function renderMath() {
-  if (window.renderMathInElement) {
-    renderMathInElement(document.getElementById('content'), {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false}
-      ],
-      throwOnError : false
-    });
-  }
-}
-
-// fetch
-fetch(`../chapters/${file}.md`)
+// fetch (with cache-busting timestamp to prevent cache issues)
+fetch(`../chapters/${file}.md?_=${Date.now()}`)
   .then(r=>{if(!r.ok)throw new Error(r.status);return r.text();})
   .then(md=>{
     const banners={ch1_mirror_cage:'../img/ch1.png',ch2_telescope_cage:'../img/ch2.png',ch3_stained_glass_cage:'../img/ch3.png',ch4_clock_cage:'../img/ch4.png'};
@@ -286,11 +301,11 @@ fetch(`../chapters/${file}.md`)
       svg+='</svg></div>';
       tetra=svg;
     }
-    document.getElementById('content').innerHTML=banner+tetra+md2html(md);window.scrollTo(0,0);buildToc(); if(window.renderMath) renderMath();
+    document.getElementById('content').innerHTML=banner+tetra+md2html(md);window.scrollTo(0,0);buildToc();
   })
   .catch(()=>{
     if(file.startsWith('app')){
-      fetch(`../appendices/${file}.md`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc(); if(window.renderMath) renderMath();})
+      fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();})
         .catch(()=>{document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';});
     } else {
       document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';
