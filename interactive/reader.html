@@ -72,6 +72,84 @@
     .pager{padding:0 20px 48px;}
     .menu-btn{display:block;}
   }
+  
+  /* Density control slider */
+  .density-control {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .density-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .density-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dim);
+    font-weight: 700;
+  }
+  .density-text {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+  }
+  .density-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .density-slider-wrap .emoji {
+    font-size: 18px;
+    user-select: none;
+  }
+  .density-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 130px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.08);
+    outline: none;
+    transition: background 0.2s;
+  }
+  .density-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 8px var(--accent);
+    transition: transform 0.1s, background-color 0.2s;
+  }
+  .density-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+  }
+
+  /* Density level display toggles */
+  .layout.show-level-1 [data-level="2"],
+  .layout.show-level-1 [data-level="3"] {
+    display: none !important;
+  }
+  .layout.show-level-2 [data-level="3"] {
+    display: none !important;
+  }
+  
+  /* Smooth transitions for block elements in content */
+  .flesh-item {
+    transition: opacity 0.2s ease;
+  }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -219,30 +297,43 @@ function md2html(md) {
   }
 
   let lines = md.split('\n'), html = '', inCode=false, inTable=false, inBQ=false, tRows=[];
+  let currentLevel = 3;
   for (let i=0;i<lines.length;i++){
     let L=lines[i];
-    if(L.trim().startsWith('```')){if(inCode){html+='</code></pre>';inCode=false;}else{html+='<pre><code>';inCode=true;}continue;}
+    let lvlMatch = L.match(/<!--\s*level\s*(\d+)\s*-->/);
+    if(lvlMatch) {
+      currentLevel = parseInt(lvlMatch[1]);
+      continue;
+    }
+    
+    let blockHtml = '';
+    if(L.trim().startsWith('```')){
+      if(inCode){blockHtml='</code></pre>';inCode=false;}else{blockHtml='<pre><code>';inCode=true;}
+      if(blockHtml) html+=`<div class="flesh-item" data-level="${currentLevel}">${blockHtml}</div>`;
+      continue;
+    }
     if(inCode){html+=L.replace(/</g,'&lt;')+'\n';continue;}
     if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(L.trim().replace(/[|:\-\s]/g,'').length>0)tRows.push(L);continue;}
-    else if(inTable){html+=tbl(tRows);inTable=false;tRows=[];}
-    if(L.trim().startsWith('>')){let q=L.replace(/^>\s*/,'');if(!inBQ){html+='<blockquote>';inBQ=true;}html+=inl(q)+'<br>';continue;}
-    else if(inBQ){html+='</blockquote>';inBQ=false;}
-    if(L.startsWith('### ')){html+='<h3 id="s'+i+'">'+inl(L.slice(4))+'</h3>';continue;}
-    if(L.startsWith('## ')){html+='<h2 id="s'+i+'">'+inl(L.slice(3))+'</h2>';continue;}
-    if(L.startsWith('# ')){html+='<h1>'+inl(L.slice(2))+'</h1>';continue;}
-    if(/^---+$/.test(L.trim())){html+='<hr>';continue;}
-    let im=L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
-    if(im){html+=`<img src="${im[2]}" alt="${im[1]}">`;continue;}
-    if(L.trim()==='')continue;
+    else if(inTable){html+=`<div class="flesh-item" data-level="${currentLevel}">${tbl(tRows)}</div>`;inTable=false;tRows=[];}
+    if(L.trim().startsWith('>')){let q=L.replace(/^>\s*/,'');if(!inBQ){html+=`<div class="flesh-item" data-level="${currentLevel}"><blockquote>`;inBQ=true;}html+=inl(q)+'<br>';continue;}
+    else if(inBQ){html+='</blockquote></div>';inBQ=false;}
     
-    // If the line contains a pre-rendered block wrapper, output it directly without wrapping in <p>
-    if (L.includes('katex-block-wrapper')) {
-      html += L;
-    } else {
-      html += '<p>' + inl(L) + '</p>';
+    if(L.startsWith('### ')){blockHtml='<h3 id="s'+i+'">'+inl(L.slice(4))+'</h3>';}
+    else if(L.startsWith('## ')){blockHtml='<h2 id="s'+i+'">'+inl(L.slice(3))+'</h2>';}
+    else if(L.startsWith('# ')){blockHtml='<h1>'+inl(L.slice(2))+'</h1>';}
+    else if(/^---+$/.test(L.trim())){blockHtml='<hr>';}
+    else {
+      let im=L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+      if(im){blockHtml=`<img src="${im[2]}" alt="${im[1]}">`;}
+      else if(L.trim()==='')continue;
+      else if (L.includes('katex-block-wrapper')) {blockHtml = L;}
+      else {blockHtml = '<p>' + inl(L) + '</p>';}
     }
+    html+=`<div class="flesh-item" data-level="${currentLevel}">${blockHtml}</div>`;
   }
-  if(inTable)html+=tbl(tRows);if(inBQ)html+='</blockquote>';if(inCode)html+='</code></pre>';
+  if(inTable)html+=`<div class="flesh-item" data-level="${currentLevel}">${tbl(tRows)}</div>`;
+  if(inBQ)html+='</blockquote></div>';
+  if(inCode)html+='</code></pre></div>';
   return html;
 }
 function inl(s){return s.replace(/\*\*다:\*\*/g,'<strong style="color:var(--accent);font-size:0.95em">다:</strong>').replace(/\*\*세:\*\*/g,'<strong style="color:#8899aa;font-size:0.95em">세:</strong>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');}
@@ -251,12 +342,21 @@ function tbl(rows){if(!rows.length)return '';let h='<table>';rows.forEach((r,i)=
 // build TOC from rendered headings
 function buildToc(){
   const toc=document.getElementById('sidebarToc');
+  // clear existing links except label
+  const label = toc.querySelector('.sidebar-toc-label');
+  toc.innerHTML = '';
+  if (label) toc.appendChild(label);
+  
   const headings=document.querySelectorAll('.content h2, .content h3');
   if(headings.length===0){toc.style.display='none';return;}
   headings.forEach(h=>{
     const a=document.createElement('a');
     a.href='#'+h.id;
     a.textContent=h.textContent;
+    const parent = h.closest('.flesh-item');
+    if (parent) {
+      a.setAttribute('data-level', parent.getAttribute('data-level') || '3');
+    }
     if(h.tagName==='H3')a.classList.add('h3');
     a.onclick=()=>document.querySelector('.sidebar').classList.remove('open');
     toc.appendChild(a);
@@ -301,7 +401,48 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
       svg+='</svg></div>';
       tetra=svg;
     }
-    document.getElementById('content').innerHTML=banner+tetra+md2html(md);window.scrollTo(0,0);buildToc();
+    const isChapter = file.startsWith('ch') && !file.includes('prologue') && !file.includes('intro') && !file.includes('roadmap') && !file.includes('epilogue');
+    const sliderHtml = isChapter ? `
+      <div class="density-control">
+        <div class="density-info">
+          <span class="density-label">독서 밀도 (Reading Density)</span>
+          <span id="densityText" class="density-text">🍖 살점 (Full - 288줄)</span>
+        </div>
+        <div class="density-slider-wrap">
+          <span class="emoji">🦴</span>
+          <input type="range" id="densitySlider" class="density-slider" min="1" max="3" value="3" step="1">
+          <span class="emoji">🍖</span>
+        </div>
+      </div>
+    ` : '';
+    
+    document.getElementById('content').innerHTML=banner+tetra+sliderHtml+md2html(md);
+    window.scrollTo(0,0);
+    buildToc();
+    
+    if (isChapter) {
+      const slider = document.getElementById('densitySlider');
+      const layout = document.querySelector('.layout');
+      const densityText = document.getElementById('densityText');
+      const texts = {
+        1: '🦴 뼈대 (Bones)',
+        2: '🍗 보통 (Normal)',
+        3: '🍖 살점 (Full)'
+      };
+      
+      function updateDensity(val) {
+        layout.classList.remove('show-level-1', 'show-level-2', 'show-level-3');
+        layout.classList.add('show-level-' + val);
+        if (densityText) densityText.textContent = texts[val];
+      }
+      
+      if (slider) {
+        slider.addEventListener('input', (e) => {
+          updateDensity(e.target.value);
+        });
+        updateDensity(3); // initialize
+      }
+    }
   })
   .catch(()=>{
     if(file.startsWith('app')){

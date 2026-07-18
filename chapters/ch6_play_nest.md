@@ -13,6 +13,7 @@ modified:
   - 2026-05-21T20:45:23+09:00
   - 2026-05-22T05:32:27+09:00
   - 2026-07-03T21:41:27+09:00
+  - 2026-07-17T05:35:57+09:00
 schema_version: v1.0
 coordinate: nest · 6장 · §1-4 · 5↔6
 atomic_unit: "[bit]"
@@ -21,6 +22,7 @@ cc_owner: cc-pair-c
 mirror_anchor: ↔ 5🪞🪺_거울둥지 (hub에서 첫 매혹 · 내 가치→우리 의미 번역무대)
 ---
 
+[[공간화음/🟣철학_WHY/NC ⊗ PC|NC ⊗ PC]]
 
 ## 🗺️ 양탄자 — 🦋 6 나비둥지 · M.Butterfly [bit]
 
