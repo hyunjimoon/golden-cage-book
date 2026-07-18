@@ -150,6 +150,117 @@
   .flesh-item {
     transition: opacity 0.2s ease;
   }
+
+  /* WikiLink and Drawer Styles */
+  .wiki-link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+    cursor: pointer;
+    padding: 0 2px;
+    transition: background-color 0.15s;
+    font-weight: 600;
+  }
+  .wiki-link:hover {
+    background-color: rgba(91, 154, 139, 0.08);
+  }
+  .element-drawer {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 400px;
+    height: 100vh;
+    background: rgba(14, 18, 32, 0.96);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border);
+    box-shadow: -10px 0 34px rgba(0, 0, 0, 0.55);
+    z-index: 1000;
+    transition: right 0.28s cubic-bezier(0.1, 0.85, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .element-drawer.open {
+    right: 0;
+  }
+  .drawer-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .drawer-header h3 {
+    margin: 0;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .drawer-close {
+    background: transparent;
+    border: none;
+    color: var(--dim);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .drawer-close:hover {
+    color: #fff;
+  }
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .drawer-section {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .drawer-section-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--dim);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .drawer-def {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .drawer-markdown {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .drawer-markdown h1, .drawer-markdown h2, .drawer-markdown h3 {
+    display: none;
+  }
+  .drawer-markdown blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 4px 0 4px 10px;
+    margin: 8px 0;
+    font-style: italic;
+    color: var(--dim);
+    font-size: 0.95em;
+    background: none;
+  }
+  .drawer-markdown p {
+    margin: 6px 0;
+  }
+  @media(max-width: 768px) {
+    .element-drawer {
+      width: 100%;
+      right: -100%;
+    }
+  }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -273,8 +384,12 @@ if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을
 function md2html(md) {
   md = md.replace(/^---[\s\S]*?---\s*/m, '');
   md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
-  md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, '$2');
-  md = md.replace(/\[\[([^\]]+)\]\]/g, '$1');
+  md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function(match, target, label) {
+    return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${label.replace(/'/g, "\\'")}')">${label}</span>`;
+  });
+  md = md.replace(/\[\[([^\]]+)\]\]/g, function(match, target) {
+    return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${target.replace(/'/g, "\\'")}')">${target}</span>`;
+  });
 
   // Render block math $$ ... $$ via KaTeX synchronously
   if (window.katex) {
@@ -452,6 +567,309 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
       document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';
     }
   });
+
+let graphData = null;
+let activeCanvasCancel = null;
+
+// Fetch graph data from reference_graph.html dynamically to ensure SSOT
+fetch('reference_graph.html')
+  .then(r => r.text())
+  .then(html => {
+    const match = html.match(/const DATA = (\{[\s\S]*?\});/);
+    if (match) {
+      try {
+        graphData = JSON.parse(match[1]);
+      } catch (e) {
+        console.error("Failed to parse reference graph data in reader:", e);
+      }
+    }
+  })
+  .catch(err => console.error("Error loading graph data in reader:", err));
+
+window.handleWikiLink = function(target, label) {
+  target = target.trim();
+  label = label.trim();
+  
+  // Chapter mapping index (translates Korean/symbol MOC nodes to slug filenames)
+  const nodeToFileMap = {
+    "1🪞_거울새장": "ch1_mirror_cage",
+    "2🔭_망원경새장": "ch2_telescope_cage",
+    "3💒_스테인굴레스새장": "ch3_glass_cage",
+    "3💒_유리새장": "ch3_glass_cage",
+    "4⏱️_시계새장": "ch4_clock_cage",
+    "5장_빅시스터_씬초안": "ch5_mirror_nest",
+    "10🧫_101": "ch5_mirror_nest",
+    "6🦋_나비사용자": "ch6_butterfly_nest",
+    "6🦋_나비둥지": "ch6_butterfly_nest",
+    "7🌷_튤립기술자": "ch7_tulip_nest",
+    "7🌷_튤립둥지": "ch7_tulip_nest",
+    "8🌫️_안개투자자": "ch8_mist_nest",
+    "8🌫️_안개둥지": "ch8_mist_nest",
+    "9🐦‍⬛_까마귀협력자": "ch9_raven_nest",
+    "9🐦‍⬛_까마귀둥지": "ch9_raven_nest",
+    "🤨_질문과답": "ch0_prologue",
+    "🤨_답과질문": "ch10_epilogue",
+    "⚕️머릿말_ouroboros": "ch0_intro",
+    "이책의길": "ch0_roadmap",
+    "00_roadmap": "ch0_roadmap",
+    "설계도": "ch0_roadmap"
+  };
+  
+  const cleanTarget = target.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
+  let fileId = nodeToFileMap[target] || nodeToFileMap[cleanTarget];
+  if (!fileId) {
+    const found = CHAPTERS.find(c => c.id === target || c.id === cleanTarget);
+    if (found) fileId = found.id;
+  }
+  
+  if (fileId) {
+    window.location.href = '?file=' + fileId;
+  } else {
+    window.openElementDrawer(target, label);
+  }
+};
+
+window.openElementDrawer = function(nodeId, label) {
+  const drawer = document.getElementById('elementDrawer');
+  const title = document.getElementById('drawerTitle');
+  const def = document.getElementById('drawerDef');
+  const content = document.getElementById('drawerContent');
+  
+  title.textContent = label || nodeId;
+  def.innerHTML = `<span style="color:var(--dim)">불러오는 중...</span>`;
+  content.innerHTML = `<span style="color:var(--dim)">불러오는 중...</span>`;
+  
+  drawer.classList.add('open');
+  
+  if (activeCanvasCancel) {
+    activeCanvasCancel();
+    activeCanvasCancel = null;
+  }
+  
+  // Clean nodeId to match filename
+  // Replace special characters if needed, or encodeURIComponent
+  const cleanId = encodeURIComponent(nodeId);
+  
+  fetch(`../chapters/elements/${cleanId}.md`)
+    .then(r => {
+      if (!r.ok) throw new Error("File not found");
+      return r.text();
+    })
+    .then(mdText => {
+      // Extract YAML frontmatter metadata
+      const defMatch = mdText.match(/정의:\s*"([^"]+)"/) || mdText.match(/정의:\s*([^\n]+)/);
+      const definition = defMatch ? defMatch[1].replace(/^"(.*)"$/, '$1') : '정의가 등록되지 않은 원소입니다.';
+      def.innerHTML = inl(definition);
+      
+      // Render body content
+      content.innerHTML = md2html(mdText);
+    })
+    .catch(err => {
+      def.innerHTML = `<span style="color:var(--dim)">${nodeId} 원소 정의</span>`;
+      content.innerHTML = `<span style="color:var(--dim)">세다의 생각원소 노트가 아직 이식되지 않았거나, 동기화 대기 중인 레코드입니다.</span>`;
+    });
+    
+  // Render the Local Molecular bonds Graph
+  if (graphData) {
+    const localNodesMap = {};
+    const localEdges = [];
+    
+    // Find edges connected directly to nodeId
+    graphData.edges.forEach(e => {
+      if (e.s === nodeId || e.t === nodeId) {
+        localEdges.push(e);
+        localNodesMap[e.s] = true;
+        localNodesMap[e.t] = true;
+      }
+    });
+    
+    // Also include self
+    localNodesMap[nodeId] = true;
+    
+    // Extract actual node objects
+    const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
+    
+    // Fallback: If no bonds found in global graph, draw a single floating node
+    if (localNodes.length === 0) {
+      localNodes.push({ id: nodeId, label: label || nodeId });
+    }
+    
+    const canvas = document.getElementById('drawerCanvas');
+    activeCanvasCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
+  }
+};
+
+window.closeDrawer = function() {
+  const drawer = document.getElementById('elementDrawer');
+  drawer.classList.remove('open');
+  if (activeCanvasCancel) {
+    activeCanvasCancel();
+    activeCanvasCancel = null;
+  }
+};
+
+function drawLocalGraph(canvas, centerNodeId, localNodes, localEdges) {
+  const ctx = canvas.getContext('2d');
+  
+  // Handle high DPR displays
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+  
+  const W = rect.width;
+  const H = rect.height;
+  
+  // Set up nodes
+  const nodes = localNodes.map(n => {
+    const isCenter = n.id === centerNodeId;
+    return {
+      id: n.id,
+      label: n.label || n.id,
+      isCenter: isCenter,
+      x: isCenter ? W/2 : W/2 + (Math.random()-0.5)*100,
+      y: isCenter ? H/2 : H/2 + (Math.random()-0.5)*100,
+      vx: 0,
+      vy: 0,
+      radius: isCenter ? 7 : (n.id.startsWith('g') ? 4.5 : 5.5),
+      color: isCenter ? 'var(--accent)' : (n.id.startsWith('g') ? '#6486b8' : '#efe3c0')
+    };
+  });
+  
+  const nodeMap = {};
+  nodes.forEach(n => nodeMap[n.id] = n);
+  
+  const edges = localEdges.map(e => ({
+    s: nodeMap[e.s],
+    t: nodeMap[e.t]
+  })).filter(e => e.s && e.t);
+  
+  let animationFrameId = null;
+  
+  function tick() {
+    // Repulsion forces
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        if (dist < 100) {
+          let force = (100 - dist) * 0.04;
+          a.vx += (dx / dist) * force;
+          a.vy += (dy / dist) * force;
+          b.vx -= (dx / dist) * force;
+          b.vy -= (dy / dist) * force;
+        }
+      }
+    }
+    
+    // Edge attraction forces
+    edges.forEach(e => {
+      let dx = e.t.x - e.s.x;
+      let dy = e.t.y - e.s.y;
+      let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+      let force = (dist - 55) * 0.045;
+      e.s.vx += (dx / dist) * force;
+      e.s.vy += (dy / dist) * force;
+      e.t.vx -= (dx / dist) * force;
+      e.t.vy -= (dy / dist) * force;
+    });
+    
+    // Central gravity & boundaries
+    nodes.forEach(n => {
+      if (n.isCenter) {
+        n.x = W/2;
+        n.y = H/2;
+        n.vx = 0;
+        n.vy = 0;
+      } else {
+        let dx = W/2 - n.x;
+        let dy = H/2 - n.y;
+        n.vx += dx * 0.015;
+        n.vy += dy * 0.015;
+        
+        n.x += n.vx;
+        n.y += n.vy;
+        n.vx *= 0.75;
+        n.vy *= 0.75;
+        
+        // boundary clamping
+        n.x = Math.max(15, Math.min(W - 15, n.x));
+        n.y = Math.max(15, Math.min(H - 15, n.y));
+      }
+    });
+    
+    ctx.clearRect(0, 0, W, H);
+    
+    // Draw edges
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
+    ctx.lineWidth = 1;
+    edges.forEach(e => {
+      ctx.beginPath();
+      ctx.moveTo(e.s.x, e.s.y);
+      ctx.lineTo(e.t.x, e.t.y);
+      ctx.stroke();
+    });
+    
+    // Draw nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.radius, 0, 2*Math.PI);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+      
+      if (n.isCenter) {
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      
+      // Node text labels
+      ctx.fillStyle = n.isCenter ? '#fff' : '#8c99b4';
+      ctx.font = n.isCenter ? '600 9.5px sans-serif' : '9px sans-serif';
+      ctx.textAlign = 'center';
+      
+      // Strip brackets and folder prefixes for clean view
+      let labelText = n.label.replace(/^g\d+_\d+_\*?/, '').replace(/_/, ' ');
+      if (labelText.length > 15) labelText = labelText.substring(0, 13) + '..';
+      
+      ctx.fillText(labelText, n.x, n.y - n.radius - 4);
+    });
+    
+    animationFrameId = requestAnimationFrame(tick);
+  }
+  
+  tick();
+  
+  return () => {
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+  };
+}
 </script>
+
+<div id="elementDrawer" class="element-drawer">
+  <div class="drawer-header">
+    <h3 id="drawerTitle">원소 상세</h3>
+    <button class="drawer-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-section">
+      <div class="drawer-section-title">정의 (Definition)</div>
+      <div id="drawerDef" class="drawer-def"></div>
+    </div>
+    <div class="drawer-section" id="drawerContentSection">
+      <div class="drawer-section-title">상세 노트 (Notes)</div>
+      <div id="drawerContent" class="drawer-markdown"></div>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-section-title">분자 결합망 (Molecular Bonds)</div>
+      <canvas id="drawerCanvas" style="background:rgba(9,12,22,0.4); border-radius:6px; display:block; width:100%; height:180px;"></canvas>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
