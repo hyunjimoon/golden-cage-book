@@ -120,14 +120,17 @@ const visible=n=>n.depth<=maxDepth;
 
 function tick(){
   const vis=nodes.filter(visible);const REP=250,L=48,SPR=0.028,G=0.02;
-  for(let i=0;i<vis.length;i++){const a=vis[i];
-    for(let j=i+1;j<vis.length;j++){const b=vis[j];
+  for(let i=0;i<vis.length;i++){const a=vis[i]; const mA=Math.max(1,a.deg);
+    for(let j=i+1;j<vis.length;j++){const b=vis[j]; const mB=Math.max(1,b.deg);
       let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01;if(d2>90000)continue;
-      let inv=REP/d2,d=Math.sqrt(d2),fx=dx/d*inv,fy=dy/d*inv;a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy;}
-    a.vx-=a.x*G;a.vy-=a.y*G;}
+      let inv=REP/d2,d=Math.sqrt(d2),fx=dx/d*inv,fy=dy/d*inv;
+      a.vx+=fx/mA;a.vy+=fy/mA;b.vx-=fx/mB;b.vy-=fy/mB;}
+    a.vx-=a.x*G/mA;a.vy-=a.y*G/mA;}
   for(const e of edges){if(!visible(e.s)||!visible(e.t))continue;
     let dx=e.t.x-e.s.x,dy=e.t.y-e.s.y,d=Math.sqrt(dx*dx+dy*dy)+.01,f=(d-L)*SPR;
-    let fx=dx/d*f,fy=dy/d*f;e.s.vx+=fx;e.s.vy+=fy;e.t.vx-=fx;e.t.vy-=fy;}
+    let fx=dx/d*f,fy=dy/d*f;
+    const mS=Math.max(1,e.s.deg), mT=Math.max(1,e.t.deg);
+    e.s.vx+=fx/mS;e.s.vy+=fy/mS;e.t.vx-=fx/mT;e.t.vy-=fy/mT;}
   for(const n of vis){if(n===dragNode)continue;n.vx*=0.84;n.vy*=0.84;n.x+=n.vx*alpha*1.7;n.y+=n.vy*alpha*1.7;}
   if(center){center.x=0;center.y=0;center.vx=center.vy=0;}
   alpha*=0.986;if(alpha<0.02)alpha=0.02;
