@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>📐자 — 랜딩 품질 상승 추이</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --ground:#0a0d14; --panel:rgba(255,255,255,.02); --ink:#e8eaf0; --ink-soft:#93a0b2;
+    --line:rgba(255,255,255,.08); --grid:rgba(255,255,255,.05);
+    --user:#5B92F5; --tech:#A17BF0; --investor:#F26D6D; --collab:#34C88A;
+    --gold:#c5a55a; --baseline:#5a6a7a; --sync:#6b7788;
+    --serif:'Noto Serif KR',Georgia,serif; --sans:'Noto Sans KR',system-ui,sans-serif;
+    --mono:'DM Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 24px 80px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:12px}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.1;margin-bottom:14px;letter-spacing:-.01em}
+  h1 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .lede{font-size:15px;color:var(--ink-soft);max-width:64ch;margin-bottom:36px}
+  .lede b{color:var(--ink);font-weight:600}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 20px;margin-bottom:26px}
+  .panel h2{font-family:var(--serif);font-size:19px;font-weight:700;margin-bottom:3px}
+  .panel .sub{font-size:13px;color:var(--ink-soft);margin-bottom:18px}
+  .chartbox{width:100%;overflow-x:auto}
+  svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+  .ax{fill:var(--ink-soft);font-size:12px;font-variant-numeric:tabular-nums}
+  .axlab{fill:var(--ink-soft);font-size:11px;letter-spacing:.04em}
+  .gridln{stroke:var(--grid);stroke-width:1}
+  .ceil{stroke:var(--gold);stroke-width:1.5;stroke-dasharray:3 4;opacity:.6}
+  .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px 18px;margin:16px 0 2px;list-style:none}
+  .steps li{display:flex;gap:9px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
+  .steps .n{font-variant-numeric:tabular-nums;font-weight:700;font-size:12px;width:18px;flex:none}
+  .dot{width:8px;height:8px;border-radius:50%;flex:none;align-self:center}
+  .steps .d{color:var(--ink-soft);font-size:12px;margin-left:auto;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tally{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
+  .chip{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;border-top:3px solid var(--c)}
+  .chip .lens{font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:6px}
+  .chip .big{font-family:var(--serif);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;color:var(--c)}
+  .chip .cap{font-size:11.5px;color:var(--ink-soft);margin-top:5px}
+  .qgrid{display:flex;flex-direction:column;gap:9px}
+  .qrow{display:grid;grid-template-columns:64px 1fr 42px;align-items:center;gap:12px}
+  .qrow .qlab{font-size:12px;font-weight:600;color:var(--ink-soft)}
+  .track{position:relative;height:16px;border-radius:8px;background:var(--grid);overflow:hidden}
+  .fill-base{position:absolute;left:0;top:0;bottom:0;background:var(--baseline);border-radius:8px}
+  .fill-gain{position:absolute;top:0;bottom:0;border-radius:8px;opacity:.95}
+  .qrow .delta{font-size:12px;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink-soft)}
+  .qrow .delta.up{color:var(--collab);font-weight:700}
+  .qrow .delta.flat{opacity:.5}
+  .legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin:18px 2px 0;font-size:12px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .sw{width:14px;height:8px;border-radius:3px;display:inline-block}
+  .foot{font-size:12.5px;color:var(--ink-soft);margin:22px 2px 0;max-width:66ch}
+  .foot b{color:var(--ink)}
+  .back{display:inline-block;margin-top:28px;font-size:12.5px;color:var(--gold);text-decoration:none}
+  @media(max-width:620px){.tally{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">golden-cage-book 랜딩 · /reader 4-agent 채점 · pivot-game 벤치마크</p>
+  <h1>📐자로 잰 랜딩 품질,<br><span class="num" id="h-base">16</span> → <span class="num" id="h-after">·</span> <span style="color:var(--ink-soft);font-weight:400">/ 36</span></h1>
+  <p class="lede">4 agent(<b>🦋user · 🌷tech · 🌫️investor · 🐦‍⬛collab</b> = 다이아몬드 4축)가 첫 방문자 12질문 커버리지를 채점했다. 개선 하나 = 한 계단, 계단 색 = 그 개선을 민 렌즈. 마지막 <b>정직 계단</b>은 커버리지를 안 올리고 <b>척도의 정직</b>(belief를 measurement로 위장하지 않기)을 굳힌다.</p>
+
+  <section class="panel">
+    <h2>상승 추이 — 개선 하나당 한 계단</h2>
+    <p class="sub" id="ascent-sub">누적 📐자 점수. 회색 첫 계단 = 세션 중 설계 sync(구조·airtime)로 이미 오른 몫.</p>
+    <div class="chartbox"><svg id="ascent" viewBox="0 0 800 400" role="img" aria-label="누적 점수 상승 꺾은선"></svg></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--user)"></i>🦋user 욕망</span>
+      <span><i class="sw" style="background:var(--tech)"></i>🌷tech 실현</span>
+      <span><i class="sw" style="background:var(--investor)"></i>🌫️investor 가치</span>
+      <span><i class="sw" style="background:var(--collab)"></i>🐦‍⬛collab 척도</span>
+      <span><i class="sw" style="background:var(--sync);opacity:.7"></i>설계 sync</span>
+      <span><i class="sw" style="background:var(--gold);opacity:.6"></i>36 만점 천장</span>
+    </div>
+    <ul class="steps" id="steplist"></ul>
+  </section>
+
+  <div class="tally" id="tally"></div>
+
+  <section class="panel">
+    <h2>어느 질문이 올랐나 — 질문별 전·후</h2>
+    <p class="sub">회색 = baseline(16/36), 색 = 개선 후(그 질문을 민 렌즈 색). 0–3점.</p>
+    <div class="qgrid" id="qgrid"></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--baseline)"></i>before</span>
+      <span><i class="sw" style="background:var(--ink-soft)"></i>after (렌즈색)</span>
+    </div>
+  </section>
+
+  <p class="foot"><b>읽는 법:</b> 가장 큰 상승은 <b>🐦‍⬛collab(+4)</b>과 🌫️investor(+4)에서 나왔다 — 자기보고 숫자(65%·78%·×2.3)를 <b>"적중률 아닌 belief"로 정직하게 재라벨</b>한 것이 오히려 점수를 올렸다. <b>정직이 곧 품질</b>이었다. 🦋user는 +2에 그쳤다: hero가 아직 독자를 <b>구경꾼</b>으로 세우고(Q2 "당신은 본다"), 진단 CTA가 서문으로 연결돼(Q3 약속-도착 불일치) — 다음 계단으로 남는다. baseline 16/36은 세션 시작 시 구버전 실측, after 29/36은 개선본(커밋 <span class="mono">e9e4700</span>) 재채점 실측. Q11(U→s)이 2에 멈춘 이유 = '작가' 페르소나에 저자 꿈이 얹힌 미세 누출.</p>
+
+  <a class="back" href="../index.html">← 랜딩으로</a>
+</div>
+
+<script>
+/* ── 데이터 (재채점 후 AFTER 값 patch) ──
+   Q = [id, 짧은라벨, before, after, lensVar] */
+var Q=[
+  ["Q1","누구를 위한",1,3,"--user"],
+  ["Q2","통증 공명",2,2,"--user"],
+  ["Q3","다음 행동",2,2,"--user"],
+  ["Q4","메커니즘",1,2,"--tech"],
+  ["Q5","증거 신뢰",1,3,"--tech"],
+  ["Q6","작동 가시성",2,2,"--tech"],
+  ["Q7","airtime",1,3,"--investor"],
+  ["Q8","채택 이유",1,2,"--investor"],
+  ["Q9","군더더기",1,2,"--investor"],
+  ["Q10","정직/gaming",1,3,"--collab"],
+  ["Q11","U→s 오염",1,2,"--collab"],
+  ["Q12","열린 고민",2,3,"--collab"]
+];
+/* 계단: [라벨, 렌즈var, 이 계단이 올린 총점, dashed]. 합 = after-base = 13 */
+var STEPS=[
+  ["설계 sync — 구조·airtime 재배치","--sync",2,false],
+  ["hero 통증언어 + '지금 불안한 당신' 첫 카드","--user",2,false],
+  ["dG/dF 인과사슬 + Movers 2.60× 앵커","--tech",1,false],
+  ["knowledge ↔ belief 분리 라벨","--tech",2,false],
+  ["판단자 근거·크레덴셜 전면화","--investor",2,false],
+  ["×2.3 → 저자 belief 재라벨","--collab",2,false],
+  ["Sell 90% 조건형 + hypo disclaimer","--collab",2,false]
+];
+
+var CAP=36;
+function cssv(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+
+/* ── 상승 꺾은선 ── */
+(function(){
+  var base=Q.reduce(function(s,q){return s+q[2];},0);
+  var after=Q.reduce(function(s,q){return s+q[3];},0);
+  document.getElementById('h-base').textContent=base;
+  document.getElementById('h-after').textContent=after;
+  /* 누적 점수 = base + steps (합이 after와 맞도록 STEPS 합 = after-base) */
+  var pts=[base]; STEPS.forEach(function(st){pts.push(pts[pts.length-1]+st[2]);});
+  var svg=document.getElementById('ascent');
+  var W=800,H=400,L=64,R=760,T=40,B=360;
+  var lo=Math.max(0,base-2), hi=CAP;
+  function y(v){return B-(v-lo)/(hi-lo)*(B-T);}
+  function x(i){return L+(R-L)*i/(pts.length-1);}
+  var el='';
+  /* 천장 */
+  el+='<line class="ceil" x1="'+L+'" y1="'+y(CAP)+'" x2="'+R+'" y2="'+y(CAP)+'"></line>';
+  el+='<text class="axlab" x="'+(R+4)+'" y="'+(y(CAP)+4)+'">'+CAP+' 만점</text>';
+  /* 격자 */
+  var ticks=[base, base+4, base+8, base+12, CAP-2].filter(function(v,i,a){return v<=CAP&&a.indexOf(v)===i;});
+  ticks.forEach(function(v){
+    el+='<line class="gridln" x1="'+L+'" y1="'+y(v)+'" x2="'+R+'" y2="'+y(v)+'"></line>';
+    el+='<text class="ax" x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v+'</text>';
+  });
+  el+='<text class="axlab" x="'+L+'" y="'+(B+22)+'" text-anchor="middle">시작</text>';
+  /* 선분 */
+  for(var i=0;i<STEPS.length;i++){
+    var st=STEPS[i], c=cssv(st[1]);
+    var dash=st[3]?' stroke-dasharray="2 5" opacity=".65"':'';
+    el+='<line x1="'+x(i)+'" y1="'+y(pts[i])+'" x2="'+x(i+1)+'" y2="'+y(pts[i+1])+'" stroke="'+c+'" stroke-width="3.5" stroke-linecap="round"'+dash+'></line>';
+  }
+  /* 마커 */
+  el+='<circle cx="'+x(0)+'" cy="'+y(pts[0])+'" r="5" fill="'+cssv('--baseline')+'"></circle>';
+  for(var j=0;j<STEPS.length;j++){
+    var last=(j===STEPS.length-1);
+    el+='<circle cx="'+x(j+1)+'" cy="'+y(pts[j+1])+'" r="'+(last?6.5:5)+'" fill="'+cssv(STEPS[j][1])+'"'+(last?' stroke="'+cssv('--ground')+'" stroke-width="2"':'')+'></circle>';
+  }
+  /* 값 라벨 */
+  el+='<text x="'+x(0)+'" y="'+(y(pts[0])-12)+'" text-anchor="middle" style="fill:'+cssv('--ink-soft')+';font-size:13px;font-weight:700">'+base+'</text>';
+  el+='<text x="'+x(pts.length-1)+'" y="'+(y(pts[pts.length-1])-14)+'" text-anchor="middle" style="fill:'+cssv('--collab')+';font-size:15px;font-weight:700">'+after+'</text>';
+  /* 계단 번호 */
+  for(var k=0;k<STEPS.length;k++){
+    el+='<text x="'+x(k+1)+'" y="'+(B+22)+'" text-anchor="middle" style="fill:'+cssv('--ink-soft')+';font-size:11px">'+(k+1)+'</text>';
+  }
+  el+='<text class="axlab" x="'+((L+R)/2)+'" y="'+(B+40)+'" text-anchor="middle">개선 적용 순서 →</text>';
+  svg.innerHTML=el;
+})();
+
+/* ── 계단 리스트 ── */
+(function(){
+  var host=document.getElementById('steplist');
+  STEPS.forEach(function(st,i){
+    var li=document.createElement('li');
+    li.innerHTML='<span class="n">'+(i+1)+'</span>'+
+      '<span class="dot" style="background:var('+st[1]+');'+(st[3]?'opacity:.6':'')+'"></span>'+
+      '<span>'+st[0]+'</span>'+
+      '<span class="d">+'+st[2]+(st[3]?' · 정직':'')+'</span>';
+    host.appendChild(li);
+  });
+})();
+
+/* ── 렌즈 tally ── */
+(function(){
+  var lenses=[["--user","🦋 user · 욕망"],["--tech","🌷 tech · 실현"],["--investor","🌫️ investor · 가치"],["--collab","🐦‍⬛ collab · 척도"]];
+  var host=document.getElementById('tally');
+  lenses.forEach(function(l){
+    var sum=Q.filter(function(q){return q[4]===l[0];}).reduce(function(s,q){return s+(q[3]-q[2]);},0);
+    var caps=Q.filter(function(q){return q[4]===l[0];}).map(function(q){return q[0];}).join('·');
+    var div=document.createElement('div');div.className='chip';div.style.setProperty('--c','var('+l[0]+')');
+    div.innerHTML='<p class="lens">'+l[1]+'</p><div class="big">+'+sum+'</div><p class="cap">'+caps+'</p>';
+    host.appendChild(div);
+  });
+})();
+
+/* ── 질문별 전후 ── */
+(function(){
+  var host=document.getElementById('qgrid');
+  Q.forEach(function(q){
+    var id=q[0],lab=q[1],b=q[2],a=q[3],c=q[4],up=a-b;
+    var row=document.createElement('div');row.className='qrow';
+    var d=up>0?'<span class="delta up">+'+up+'</span>':'<span class="delta flat">·</span>';
+    row.innerHTML='<span class="qlab">'+id+' '+lab+'</span>'+
+      '<span class="track"><span class="fill-base" style="width:'+(b/3*100)+'%"></span>'+
+      (up>0?'<span class="fill-gain" style="left:'+(b/3*100)+'%;width:'+(up/3*100)+'%;background:var('+c+')"></span>':'')+
+      '</span>'+d;
+    host.appendChild(row);
+  });
+})();
+</script>
+</body>
+</html>
