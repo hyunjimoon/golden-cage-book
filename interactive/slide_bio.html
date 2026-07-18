@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>B·I·O — 나의 세 목적함수</title>
+<style>
+  :root{
+    --ground:#F5F1E8; --panel:#FBF8F1; --ink:#2A2620; --muted:#6B6456; --faint:#9A9078;
+    --line:#CFC6B2; --line-strong:#B7AC93;
+    --O:#2563EB; --B:#7C3AED; --I:#DC2626; --M:#059669; --slogan:#C2410C;
+    --O-wash:#2563EB14; --B-wash:#7C3AED14; --I-wash:#DC262614;
+    --serif:'Nanum Myeongjo','AppleMyungjo',Georgia,'Times New Roman',serif;
+    --sans:'Apple SD Gothic Neo','Pretendard',-apple-system,system-ui,'Segoe UI',sans-serif;
+    --mono:'SF Mono','JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#16130E; --panel:#1E1A13; --ink:#EDE7D8; --muted:#A69C86; --faint:#7C725D;
+      --line:#3A3529; --line-strong:#4B4433;
+      --O:#6B9BF2; --B:#B08CF3; --I:#EF6B6B; --M:#37BC91; --slogan:#F08A4B;
+      --O-wash:#6B9BF21f; --B-wash:#B08CF31f; --I-wash:#EF6B6B1f;
+    }
+  }
+  :root[data-theme="light"]{
+    --ground:#F5F1E8; --panel:#FBF8F1; --ink:#2A2620; --muted:#6B6456; --faint:#9A9078;
+    --line:#CFC6B2; --line-strong:#B7AC93;
+    --O:#2563EB; --B:#7C3AED; --I:#DC2626; --M:#059669; --slogan:#C2410C;
+    --O-wash:#2563EB14; --B-wash:#7C3AED14; --I-wash:#DC262614;
+  }
+  :root[data-theme="dark"]{
+    --ground:#16130E; --panel:#1E1A13; --ink:#EDE7D8; --muted:#A69C86; --faint:#7C725D;
+    --line:#3A3529; --line-strong:#4B4433;
+    --O:#6B9BF2; --B:#B08CF3; --I:#EF6B6B; --M:#37BC91; --slogan:#F08A4B;
+    --O-wash:#6B9BF21f; --B-wash:#B08CF31f; --I-wash:#EF6B6B1f;
+  }
+
+  *{box-sizing:border-box;}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+    margin:0;padding:clamp(16px,3vw,40px);display:flex;justify-content:center;
+    align-items:center;min-height:100vh;-webkit-font-smoothing:antialiased;}
+
+  .slide{width:100%;max-width:1160px;aspect-ratio:16/9;min-height:0;
+    background:var(--panel);border:1px solid var(--line-strong);
+    border-radius:3px;position:relative;overflow:hidden;
+    padding:clamp(20px,3.4vw,44px) clamp(22px,3.8vw,52px);
+    display:flex;flex-direction:column;gap:clamp(12px,1.6vw,22px);
+    box-shadow:0 1px 0 var(--line),0 18px 46px -30px #00000055;}
+  /* blueprint corner ticks */
+  .slide::before,.slide::after{content:"";position:absolute;width:14px;height:14px;pointer-events:none;}
+  .slide::before{top:10px;left:10px;border-top:1.5px solid var(--line-strong);border-left:1.5px solid var(--line-strong);}
+  .slide::after{bottom:10px;right:10px;border-bottom:1.5px solid var(--line-strong);border-right:1.5px solid var(--line-strong);}
+
+  @media (max-width:720px){ .slide{aspect-ratio:auto;} }
+
+  /* header */
+  .eyebrow{font-family:var(--mono);font-size:clamp(9px,1.05vw,12px);letter-spacing:.14em;
+    text-transform:uppercase;color:var(--faint);display:flex;gap:.6em;align-items:center;}
+  .eyebrow .dash{flex:1;height:1px;background:var(--line);}
+  h1{font-family:var(--serif);font-weight:700;color:var(--ink);
+    font-size:clamp(24px,4.4vw,50px);line-height:1.02;margin:0;text-wrap:balance;
+    letter-spacing:-.01em;display:flex;align-items:baseline;gap:.34em;flex-wrap:wrap;}
+  h1 .lab{font-family:var(--mono);font-weight:700;}
+  h1 .b{color:var(--B);} h1 .i{color:var(--I);} h1 .o{color:var(--O);}
+  h1 .dot{color:var(--faint);font-weight:400;}
+  .sub{font-size:clamp(11px,1.35vw,15px);color:var(--muted);margin-top:.15em;}
+  .sub b{color:var(--ink);font-weight:600;}
+
+  /* three columns */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.3vw,18px);flex:1;min-height:0;}
+  .card{background:var(--ground);border:1px solid var(--line);border-top:3px solid var(--c);
+    border-radius:2px;padding:clamp(12px,1.5vw,20px) clamp(13px,1.5vw,20px);
+    display:flex;flex-direction:column;gap:clamp(6px,.8vw,11px);position:relative;min-width:0;}
+  .card.b{--c:var(--B);} .card.i{--c:var(--I);} .card.o{--c:var(--O);}
+  .cap{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+  .glyph{font-family:var(--mono);font-weight:700;color:var(--c);
+    font-size:clamp(30px,4.4vw,52px);line-height:.9;letter-spacing:-.02em;}
+  .role{font-family:var(--mono);font-size:clamp(8px,.95vw,11px);color:var(--muted);
+    text-align:right;line-height:1.25;letter-spacing:.02em;}
+  .role b{color:var(--c);}
+  .name{display:flex;flex-direction:column;gap:1px;}
+  .name .kr{font-family:var(--serif);font-weight:700;font-size:clamp(14px,1.75vw,21px);color:var(--ink);}
+  .name .en{font-family:var(--mono);font-size:clamp(9px,1.05vw,12px);color:var(--faint);letter-spacing:.03em;}
+  .def{font-size:clamp(10.5px,1.22vw,14px);line-height:1.5;color:var(--muted);}
+  .def em{color:var(--ink);font-style:normal;font-weight:600;}
+  .math{margin-top:auto;font-family:var(--mono);font-size:clamp(9.5px,1.06vw,12.5px);
+    line-height:1.55;color:var(--ink);background:var(--w);border:1px solid var(--line);
+    border-left:2px solid var(--c);border-radius:2px;padding:7px 9px;overflow-x:auto;white-space:nowrap;}
+  .card.b .math{--w:var(--B-wash);} .card.i .math{--w:var(--I-wash);} .card.o .math{--w:var(--O-wash);}
+  .math .k{color:var(--c);}
+  .lens{font-family:var(--mono);font-size:clamp(8px,.92vw,10.5px);letter-spacing:.03em;color:var(--faint);}
+  .lens .sw{display:inline-block;width:8px;height:8px;border-radius:50%;vertical-align:baseline;margin-right:3px;}
+
+  /* theme toggle & absolute nav links */
+  .theme-toggle{position:absolute;top:20px;right:20px;z-index:20;background:rgba(0,0,0,0.04);
+    border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:11px;color:var(--muted);
+    cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;}
+  .theme-toggle:hover{background:rgba(0,0,0,0.08);color:var(--ink);border-color:var(--line-strong);}
+  @media (prefers-color-scheme:dark){
+    .theme-toggle{background:rgba(255,255,255,0.04);}
+    .theme-toggle:hover{background:rgba(255,255,255,0.08);}
+  }
+  .nav-links{position:absolute;bottom:18px;left:24px;z-index:20;display:flex;gap:12px;font-size:11.5px;}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);text-decoration:underline;}
+
+  /* integrator strip */
+  .integ{border:1px dashed var(--line-strong);border-radius:2px;
+    padding:clamp(9px,1.15vw,15px) clamp(13px,1.6vw,20px);
+    display:flex;align-items:center;gap:clamp(10px,1.6vw,22px);flex-wrap:wrap;margin-bottom:6px;}
+  .integ .tag{font-family:var(--serif);font-weight:700;font-size:clamp(12px,1.5vw,18px);color:var(--ink);white-space:nowrap;}
+  .integ .tag .en{font-family:var(--mono);font-weight:400;font-size:.62em;color:var(--faint);letter-spacing:.04em;display:block;margin-top:1px;}
+  .integ .eq{font-family:var(--mono);font-size:clamp(10px,1.18vw,14px);color:var(--muted);line-height:1.5;}
+  .integ .eq b{color:var(--ink);font-weight:600;}
+  .chip{font-family:var(--mono);font-weight:600;padding:1px 6px;border-radius:999px;font-size:.92em;
+    border:1px solid currentColor;}
+  .chip.d{color:var(--O);} .chip.f{color:var(--B);} .chip.v{color:var(--I);}
+
+  /* footer */
+  footer{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+    border-top:1px solid var(--line);padding-top:clamp(7px,1vw,12px);margin-left:76px;}
+  .life{font-family:var(--serif);font-size:clamp(11px,1.42vw,17px);color:var(--ink);font-weight:700;}
+  .life .hl{color:var(--slogan);}
+  .formulas{display:flex;gap:clamp(10px,1.5vw,22px);font-family:var(--mono);
+    font-size:clamp(8.5px,1vw,11.5px);color:var(--muted);flex-wrap:wrap;}
+  .formulas span{white-space:nowrap;}
+  .formulas b{color:var(--ink);font-weight:600;}
+</style>
+</head>
+<body>
+
+<div class="slide">
+  <button class="theme-toggle" id="theme-toggle">🌓 테마 전환</button>
+
+  <header>
+    <div class="eyebrow"><span>공우 강연 · 물밑 프레임</span><span class="dash"></span><span>磁場</span></div>
+    <h1><span class="lab b">B</span><span class="dot">·</span><span class="lab i">I</span><span class="dot">·</span><span class="lab o">O</span>&nbsp;— 나의 세 목적함수</h1>
+    <div class="sub"><b>책의 세 목적함수 = 나의 세 능력.</b> 삶을 계산하고(B), 장르를 발명하고(I), 독자를 움직인다(O).</div>
+  </header>
+
+  <div class="cols">
+    <!-- B -->
+    <div class="card b">
+      <div class="cap">
+        <div class="glyph">B</div>
+        <div class="role">해밀토니언<br><b>생성자 H</b><br>결정법칙</div>
+      </div>
+      <div class="name"><span class="kr">베이즈계산</span><span class="en">Bayesian computation</span></div>
+      <div class="def"><em>모든 변수를 이산확률변수로</em> 두고, 불확실성 위에서 결정을 <em>보정(calibrate)</em>한다.</div>
+      <div class="lens"><span class="sw" style="background:var(--B)"></span>feasibility <span class="sw" style="background:var(--M)"></span>metric</div>
+      <div class="math"><span class="k">p</span>(θ|y) ∝ p(y|θ)·<span class="k">p</span>(θ)<br>calibrated ⟺ ∀α&nbsp; Pr[θ∈CI<sub>α</sub>]=α</div>
+    </div>
+    <!-- I -->
+    <div class="card i">
+      <div class="cap">
+        <div class="glyph">I</div>
+        <div class="role">해밀토니언<br><b>위치 q</b><br>새 자리 창조</div>
+      </div>
+      <div class="name"><span class="kr">혁신</span><span class="en">innovation</span></div>
+      <div class="def"><em>invention × commercialization</em> — 발명이 상업화를 만나 <em>채택</em>될 때 장르가 선다.</div>
+      <div class="lens"><span class="sw" style="background:var(--I)"></span>viability</div>
+      <div class="math"><span class="k">혁신</span> = invention × commercialization<br>측정: 규약수 · 채택 A · 이식성</div>
+    </div>
+    <!-- O -->
+    <div class="card o">
+      <div class="cap">
+        <div class="glyph">O</div>
+        <div class="role">해밀토니언<br><b>운동량 p</b><br>전달의 운동</div>
+      </div>
+      <div class="name"><span class="kr">운영최적화</span><span class="en">operational optimization</span></div>
+      <div class="def"><em>실현가능 집합 위에서 매력을 최대화</em>하도록 시스템을 설계 → 독자를 작가로 <em>움직인다</em>.</div>
+      <div class="lens"><span class="sw" style="background:var(--O)"></span>desirability</div>
+      <div class="math"><span class="k">max</span><sub>x</sub>&nbsp; desirability(x)&nbsp;&nbsp; <span class="k">s.t.</span>&nbsp; x ∈ feasibility</div>
+    </div>
+  </div>
+
+  <div class="integ">
+    <div class="tag">혁신의사결정<span class="en">innovative decision-making</span></div>
+    <div class="eq"><b>B</b>가 통합한다 — decision making on
+      <span class="chip d">desirability</span>
+      <span class="chip f">feasibility</span>
+      <span class="chip v">viability</span>
+      uncertainty. <b>세 불확실성 위의 한 결정.</b></div>
+  </div>
+
+  <div class="nav-links">
+    <a href="../index.html">← 책으로</a>
+    <a href="references.html">☰ 참고자료 표</a>
+    <a href="reference_graph.html">🕸️ 원고 지도</a>
+  </div>
+
+  <footer>
+    <div class="life">내 삶 = 이 세 목적함수의 <span class="hl">실행</span>.</div>
+    <div class="formulas">
+      <span>τ* = max{0, √(V/4i) − 1}</span>
+      <span>μ(1−μ) &gt; ε/B<sub>전략</sub></span>
+      <span><b>dG/dF = (−) (순환/금새 봉합)</b></span>
+      <span><b>물기: reader ➔ writer ➔ book ➔ reader</b></span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn.addEventListener('click', () => {
+    const curr = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+  });
+</script>
+</body>
+</html>
