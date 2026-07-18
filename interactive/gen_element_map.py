@@ -36,6 +36,14 @@ CHAP_NAME = {
 }
 AUX_HUB = "전반·부록·도식"  # 전/부N/dgm/session/Lex/감정/표지/feedback/전략 등
 
+# 장 번호 → reader.html 파일명 (SSOT: bookmap_3d.html SL 규약과 동일). 점 클릭 → 그 장으로.
+CHAP_FILE = {
+    "1": "ch1_mirror_cage", "2": "ch2_telescope_cage", "3": "ch3_glass_cage",
+    "4": "ch4_clock_cage", "5": "ch5_mirror_nest", "6": "ch6_butterfly_nest",
+    "7": "ch7_tulip_nest", "8": "ch8_mist_nest", "9": "ch9_raven_nest",
+    "10": "ch10_epilogue",
+}
+
 
 def parse_frontmatter(text):
     m = re.match(r"^---\s*\n(.*?)\n---", text, re.S)
@@ -122,6 +130,7 @@ def main():
         "families": {str(k): {"name": v[0], "color": v[1]} for k, v in FAMILIES.items()},
         "hubs": hubs,
         "elements": elements,
+        "chapFile": CHAP_FILE,
     }
     payload = json.dumps(data, ensure_ascii=False)
 
@@ -246,6 +255,7 @@ const DATA = /*__DATA__*/;
 const fams = DATA.families;               // {"1":{name,color},...}
 const hubs = DATA.hubs;                   // [{id,name,aux}]
 const elems = DATA.elements;              // [{id,title,fam,star,def,chaps}]
+const CHAP_FILE = DATA.chapFile || {};    // 장번호 → reader 파일명 (클릭 네비)
 document.getElementById('nCount').textContent = elems.length;
 const famOff = new Set();                  // 숨긴 족
 let tableOn = false;                        // 표 뷰 여부 (loop보다 먼저 선언)
@@ -339,6 +349,15 @@ function sim(){
   });
 }
 let dragNode=null;
+/* ── 클릭(드래그 아님) → 그 장의 구절로: reader.html?file=chN&q=원소이름 ── */
+let pressing=false,moved=false,pDownX=0,pDownY=0,pDownNode=null;
+function navTo(chaps,title){
+  const cand=(chaps||[]).filter(c=>c!=='__aux__');
+  const chap=(highlightHub&&cand.includes(highlightHub))?highlightHub:cand[0];
+  if(!chap)return;                          // 부록 전용 원소 = 이동 안 함
+  const f=CHAP_FILE[chap]; if(!f)return;
+  window.location.href='reader.html?file='+f+'&q='+encodeURIComponent(title);
+}
 
 /* ---------- 입체(다면체) : stella octangula ---------- */
 // bookmap_3d.html 정본 좌표(정육면체 꼭짓점) — cage4 + nest4 = 사면체 안의 사면체
@@ -426,7 +445,8 @@ function polyAt(mx,my){
 function showTip(e,mx,my){
   const chapNames=e.chaps.map(c=>c==='__aux__'?'전반·부록':(hubs.find(h=>h.id===c)?.name||c)).join(' · ');
   tip.innerHTML=`<div class="t-title">${e.star?'★ ':''}${e.title}</div>`+
-    (e.def?`<div>${e.def}</div>`:'')+`<div class="t-meta">${fams[e.fam].name} · 장 ${chapNames}</div>`;
+    (e.def?`<div>${e.def}</div>`:'')+`<div class="t-meta">${fams[e.fam].name} · 장 ${chapNames}`+
+    (e.chaps.some(c=>c!=='__aux__')?`<br><span style="color:var(--gold)">클릭 → 그 장의 구절로 →</span>`:'')+`</div>`;
   tip.style.opacity=1;let tx=mx+14,ty=my+14;
   if(tx+290>W)tx=mx-294;if(ty+120>H)ty=my-120;
   tip.style.left=tx+'px';tip.style.top=ty+'px';
@@ -485,6 +505,7 @@ function nodeAt(mx,my){
 }
 canvas.addEventListener('mousemove',ev=>{
   const mx=ev.clientX,my=ev.clientY;
+  if(pressing){const ddx=mx-pDownX,ddy=my-pDownY;if(ddx*ddx+ddy*ddy>20)moved=true;}
   if(polyOn){
     if(dragRot){ay+=(mx-lastMX)*0.008;ax+=(my-lastMY)*0.008;
       ax=Math.max(-1.4,Math.min(1.4,ax));lastMX=mx;lastMY=my;tip.style.opacity=0;return;}
@@ -501,7 +522,8 @@ canvas.addEventListener('mousemove',ev=>{
       const h=hubs.find(h=>h.id===c);return h?h.name:c;}).join(' · ');
     tip.innerHTML=`<div class="t-title">${n.star?'★ ':''}${n.label}</div>`+
       (n.def?`<div>${n.def}</div>`:'')+
-      `<div class="t-meta">${fams[n.fam].name} · 장 ${chapNames}</div>`;
+      `<div class="t-meta">${fams[n.fam].name} · 장 ${chapNames}`+
+      (n.chaps.some(c=>c!=='__aux__')?`<br><span style="color:var(--gold)">클릭 → 그 장의 구절로 →</span>`:'')+`</div>`;
     tip.style.opacity=1;
     let tx=mx+14,ty=my+14;
     if(tx+290>W)tx=mx-294;if(ty+120>H)ty=my-120;
@@ -509,8 +531,10 @@ canvas.addEventListener('mousemove',ev=>{
   }else{tip.style.opacity=0;}
 });
 canvas.addEventListener('mousedown',ev=>{
+  pressing=true;moved=false;pDownX=ev.clientX;pDownY=ev.clientY;pDownNode=null;
   if(polyOn){dragRot=true;lastMX=ev.clientX;lastMY=ev.clientY;canvas.classList.add('drag');return;}
   const n=nodeAt(ev.clientX,ev.clientY);
+  pDownNode=n;
   if(n){
     if(n.kind==='hub'){
       const hid=n.id.slice(4);
@@ -518,23 +542,36 @@ canvas.addEventListener('mousedown',ev=>{
     }else{dragNode=n;canvas.classList.add('drag');}
   }else{highlightHub=null;}
 });
-addEventListener('mouseup',()=>{dragNode=null;dragRot=false;canvas.classList.remove('drag');});
+addEventListener('mouseup',()=>{
+  if(pressing&&!moved){
+    if(polyOn){if(hoverPoly>=0)navTo(poly[hoverPoly].e.chaps,poly[hoverPoly].e.title);}
+    else if(pDownNode&&pDownNode.kind==='el'){navTo(pDownNode.chaps,pDownNode.label);}
+  }
+  pressing=false;pDownNode=null;dragNode=null;dragRot=false;canvas.classList.remove('drag');
+});
 canvas.addEventListener('mouseleave',()=>{tip.style.opacity=0;});
 // 터치
 canvas.addEventListener('touchstart',ev=>{
   const t=ev.touches[0];
-  if(polyOn){dragRot=true;lastMX=t.clientX;lastMY=t.clientY;return;}
-  const n=nodeAt(t.clientX,t.clientY);
+  pressing=true;moved=false;pDownX=t.clientX;pDownY=t.clientY;pDownNode=null;
+  if(polyOn){dragRot=true;lastMX=t.clientX;lastMY=t.clientY;hoverPoly=polyAt(t.clientX,t.clientY);return;}
+  const n=nodeAt(t.clientX,t.clientY);pDownNode=n;
   if(n&&n.kind==='hub'){const hid=n.id.slice(4);
     highlightHub=(highlightHub===hid)?null:hid;}
   else if(n){dragNode=n;}},{passive:true});
 canvas.addEventListener('touchmove',ev=>{
   const t=ev.touches[0];
+  if(pressing){const ddx=t.clientX-pDownX,ddy=t.clientY-pDownY;if(ddx*ddx+ddy*ddy>25)moved=true;}
   if(polyOn&&dragRot){ay+=(t.clientX-lastMX)*0.008;ax+=(t.clientY-lastMY)*0.008;
     ax=Math.max(-1.4,Math.min(1.4,ax));lastMX=t.clientX;lastMY=t.clientY;return;}
   if(dragNode){dragNode.x=t.clientX;dragNode.y=t.clientY;
     dragNode.vx=dragNode.vy=0;}},{passive:true});
-canvas.addEventListener('touchend',()=>{dragNode=null;dragRot=false;});
+canvas.addEventListener('touchend',()=>{
+  if(pressing&&!moved){
+    if(polyOn){if(hoverPoly>=0)navTo(poly[hoverPoly].e.chaps,poly[hoverPoly].e.title);}
+    else if(pDownNode&&pDownNode.kind==='el'){navTo(pDownNode.chaps,pDownNode.label);}
+  }
+  pressing=false;pDownNode=null;dragNode=null;dragRot=false;});
 
 /* ---------- 표 뷰 ---------- */
 const tableView=document.getElementById('tableView');

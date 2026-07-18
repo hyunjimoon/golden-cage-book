@@ -47,6 +47,7 @@
   .content p{margin:10px 0;}
   .content blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:20px 0;color:var(--text);font-style:italic;background:rgba(255,255,255,0.02);border-radius:0 6px 6px 0;font-size:1.05em;line-height:1.8;}
   .content strong{color:#fff;}
+  mark.qhit{background:var(--accent);color:#fff;border-radius:3px;padding:0 3px;box-shadow:0 0 0 4px rgba(255,255,255,.12);}
   .content em{color:var(--dim);}
   .content table{width:100%;border-collapse:collapse;margin:14px 0;font-family:'Noto Sans KR',sans-serif;font-size:13px;}
   .content th{background:var(--card);padding:8px 10px;text-align:left;font-weight:600;border:1px solid var(--border);}
@@ -330,7 +331,33 @@ const ALIASES = {
 const params = new URLSearchParams(window.location.search);
 const requestedFile = params.get('file') || 'ch0_prologue';
 const file = ALIASES[requestedFile] || requestedFile;
+const qTerm = (params.get('q')||'').trim();   // element_map 점프: 이 구절을 찾아 하이라이트
 const curIdx = CHAPTERS.findIndex(c => c.id === file);
+
+// element_map 등에서 &q=... 로 넘어오면 본문 로드 후 첫 일치 구절로 스크롤+형광
+function jumpToQuery(){
+  if(!qTerm) return;
+  const content=document.getElementById('content');
+  if(!content) return;
+  const walker=document.createTreeWalker(content,NodeFilter.SHOW_TEXT,null);
+  const t=qTerm.toLowerCase(); let node;
+  while(node=walker.nextNode()){
+    const pt=node.parentElement;
+    if(pt && /^(mark|script|style)$/i.test(pt.tagName)) continue;
+    const idx=node.nodeValue.toLowerCase().indexOf(t);
+    if(idx>=0){
+      try{
+        const range=document.createRange();
+        range.setStart(node,idx); range.setEnd(node,idx+qTerm.length);
+        const mk=document.createElement('mark'); mk.className='qhit';
+        range.surroundContents(mk);
+        mk.scrollIntoView({behavior:'smooth',block:'center'});
+      }catch(e){ if(node.parentElement) node.parentElement.scrollIntoView({behavior:'smooth',block:'center'}); }
+      return;   // 첫 일치만
+    }
+  }
+  // 일치 구절 없음 → 장 맨 위 유지(이미 scrollTo(0,0))
+}
 
 // apply chapter color as accent
 const chColor = CH_COLORS[file] || '#5B9A8B';
@@ -534,7 +561,8 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
     document.getElementById('content').innerHTML=banner+tetra+sliderHtml+md2html(md);
     window.scrollTo(0,0);
     buildToc();
-    
+    jumpToQuery();
+
     if (isChapter) {
       const slider = document.getElementById('densitySlider');
       const layout = document.querySelector('.layout');
@@ -561,7 +589,7 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
   })
   .catch(()=>{
     if(file.startsWith('app')){
-      fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();})
+      fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();jumpToQuery();})
         .catch(()=>{document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';});
     } else {
       document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';
