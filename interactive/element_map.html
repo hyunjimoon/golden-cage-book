@@ -97,6 +97,7 @@ const hubs = DATA.hubs;                   // [{id,name,aux}]
 const elems = DATA.elements;              // [{id,title,fam,star,def,chaps}]
 document.getElementById('nCount').textContent = elems.length;
 const famOff = new Set();                  // 숨긴 족
+let tableOn = false;                        // 표 뷰 여부 (loop보다 먼저 선언)
 
 /* ---------- 범례 ---------- */
 const legend = document.getElementById('legend');
@@ -277,7 +278,6 @@ canvas.addEventListener('touchend',()=>{dragNode=null;});
 
 /* ---------- 표 뷰 ---------- */
 const tableView=document.getElementById('tableView');
-let tableOn=false;
 function renderTable(){
   const cols=hubs;   // 장 허브 순서
   let h='<table><thead><tr><th class="name">생각</th>';
