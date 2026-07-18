@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>생각 지도 — 황금새장을열다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  :root{
+    --bg:#14110f; --panel:#1c1815; --line:#3a332c; --dim:#8a7f72;
+    --ink:#e8e0d4; --gold:#c5a55a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;background:var(--bg);color:var(--ink);
+    font-family:'Noto Sans KR',sans-serif;overflow:hidden;}
+  #wrap{position:relative;width:100vw;height:100vh;}
+  canvas{display:block;position:absolute;inset:0;cursor:grab;}
+  canvas.drag{cursor:grabbing;}
+
+  header{position:absolute;top:0;left:0;right:0;z-index:5;
+    padding:18px 22px 14px;pointer-events:none;
+    background:linear-gradient(180deg,rgba(20,17,15,.92),rgba(20,17,15,0));}
+  h1{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;
+    color:var(--gold);letter-spacing:.5px;}
+  .sub{font-size:13px;color:var(--dim);margin-top:3px;font-weight:300;}
+
+  .toggle{position:absolute;top:18px;right:22px;z-index:6;display:flex;
+    border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    pointer-events:auto;background:var(--panel);}
+  .toggle button{background:transparent;border:none;color:var(--dim);
+    font-family:'Noto Sans KR';font-size:13px;padding:7px 18px;cursor:pointer;}
+  .toggle button.on{background:var(--gold);color:#14110f;font-weight:500;}
+
+  .legend{position:absolute;left:22px;bottom:18px;z-index:6;
+    display:flex;flex-wrap:wrap;gap:10px 16px;max-width:62vw;
+    font-size:12px;color:var(--dim);pointer-events:auto;}
+  .legend .item{display:flex;align-items:center;gap:6px;cursor:pointer;
+    opacity:.95;transition:opacity .15s;user-select:none;}
+  .legend .item.off{opacity:.32;}
+  .legend .dot{width:11px;height:11px;border-radius:50%;flex:none;}
+  .legend .star{color:var(--gold);}
+
+  #tip{position:absolute;z-index:8;pointer-events:none;max-width:280px;
+    background:#0f0d0b;border:1px solid var(--line);border-radius:8px;
+    padding:9px 11px;font-size:12.5px;line-height:1.5;color:var(--ink);
+    box-shadow:0 6px 24px rgba(0,0,0,.5);opacity:0;transition:opacity .1s;}
+  #tip .t-title{font-weight:500;color:var(--gold);margin-bottom:3px;}
+  #tip .t-meta{color:var(--dim);font-size:11px;margin-top:4px;}
+
+  /* 표 뷰 */
+  #tableView{position:absolute;inset:0;z-index:4;display:none;
+    overflow:auto;padding:78px 22px 70px;background:var(--bg);}
+  #tableView.show{display:block;}
+  table{border-collapse:collapse;font-size:12px;width:max-content;min-width:100%;}
+  th,td{border:1px solid var(--line);padding:5px 8px;white-space:nowrap;}
+  th{position:sticky;top:0;background:var(--panel);color:var(--dim);
+    font-weight:500;z-index:2;}
+  td.name{text-align:left;max-width:340px;white-space:normal;}
+  td.cell{text-align:center;color:var(--gold);font-size:14px;}
+  tr.fam-head td{background:#221d18;color:var(--ink);font-weight:500;
+    font-family:'Noto Serif KR';letter-spacing:.3px;}
+  .star-mark{color:var(--gold);}
+  td.name .df{color:var(--dim);font-size:11px;display:block;margin-top:1px;}
+
+  a.back{position:absolute;left:22px;top:64px;z-index:6;font-size:12px;
+    color:var(--dim);text-decoration:none;border-bottom:1px dotted var(--line);
+    pointer-events:auto;}
+  a.back:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c"></canvas>
+  <div id="tableView"></div>
+
+  <header>
+    <h1>생각 지도</h1>
+    <div class="sub">이 책의 생각 <b id="nCount">0</b>개가 어느 장에 사는가 — 점을 끌어 보고, 장을 눌러 그 장의 생각을 밝혀보세요</div>
+  </header>
+  <a class="back" href="../index.html">← 메인으로</a>
+
+  <div class="toggle">
+    <button id="btnMap" class="on">지도</button>
+    <button id="btnTable">표</button>
+  </div>
+
+  <div class="legend" id="legend"></div>
+  <div id="tip"></div>
+</div>
+
+<script>
+const DATA = {"families": {"1": {"name": "1. 방정식·부등식", "color": "#5A8A9A"}, "2": {"name": "2. 프레임워크·구조", "color": "#6B8E4B"}, "3": {"name": "3. 이론·학자 anchor", "color": "#C97B3C"}, "4": {"name": "4. 메타포·상징", "color": "#8B6BAA"}, "5": {"name": "5. 연산·동작", "color": "#4A7A6B"}, "6": {"name": "6. 자장 고유 어휘", "color": "#9B7A8B"}}, "hubs": [{"id": "1", "name": "1 거울", "aux": false}, {"id": "2", "name": "2 망원경", "aux": false}, {"id": "3", "name": "3 스테인굴레스", "aux": false}, {"id": "4", "name": "4 시계", "aux": false}, {"id": "5", "name": "5 빅시스터", "aux": false}, {"id": "6", "name": "6 나비", "aux": false}, {"id": "7", "name": "7 튤립", "aux": false}, {"id": "8", "name": "8 안개", "aux": false}, {"id": "9", "name": "9 까마귀", "aux": false}, {"id": "10", "name": "10 에필로그", "aux": false}, {"id": "__aux__", "name": "전반·부록·도식", "aux": true}], "elements": [{"id": "g1_01_dG_dF_dG_dR_dR_dF", "title": "dG/dF=(dG/dR)(dR/dF)=(+)(−)=(−)", "fam": 1, "star": false, "def": "자금이 방향전환을 억압해 성장을 깎는 책의 중심식", "chaps": ["1", "8"]}, {"id": "g1_02_Debt_U_desire_φ_belief", "title": "Debt = U(desire) − φ(belief)", "fam": 1, "star": false, "def": "빚 = 욕망과 검증된 믿음의 거리", "chaps": ["__aux__"]}, {"id": "g1_03_τ_max_0_V_4i_1", "title": "τ\\* = max{0, √(V/4i) − 1}", "fam": 1, "star": false, "def": "OIL 정지시각 — 정밀도를 언제 사느냐", "chaps": ["__aux__"]}, {"id": "g1_04_V_4i", "title": "V < 4i", "fam": 1, "star": false, "def": "정보가치 < 4×비용이면 모호 유지(Nail)", "chaps": ["__aux__"]}, {"id": "g1_05_μ_1_μ_ε_B", "title": "μ(1−μ) > ε/B", "fam": 1, "star": false, "def": "새장 열림 조건(ergodic)", "chaps": ["3", "__aux__"]}, {"id": "g1_06_Fubini_E_s_E_U_E_U_E_s", "title": "Fubini: E_s[E_U]=E_U[E_s]", "fam": 1, "star": false, "def": "적분순서 무관 = calibrated = 빚 0", "chaps": ["__aux__"]}, {"id": "g1_07_Cromwell_prior_0_1", "title": "Cromwell: prior ≠ {0,1}", "fam": 1, "star": false, "def": "0/1로 못 박으면 비가역(δ붕괴)", "chaps": ["5", "7", "__aux__"]}, {"id": "g1_08_posterior_likelihood_pri", "title": "posterior ∝ likelihood × prior", "fam": 1, "star": false, "def": "베이즈 갱신 — 결과로 확신 교정", "chaps": ["3", "7"]}, {"id": "g1_09_δ_사랑의_지지집합", "title": "δ(사랑의 지지집합)", "fam": 1, "star": false, "def": "배신 옵션 0 → 사랑이 한 점 δ로 붕괴", "chaps": ["5"]}, {"id": "g1_10_파동_에너지_보존_A_B_Σ_100", "title": "파동 에너지 보존 A↑B↓ (Σ=100%)", "fam": 1, "star": false, "def": "다↔세 전이, 총량 보존 = 빚 0", "chaps": ["5"]}, {"id": "g1_11_Strong_duality_gap_0_KKT", "title": "Strong duality (gap=0)·KKT slack λ_F(F\\*−B)=0", "fam": 1, "star": false, "def": "founder-investor 쌍대 최적점", "chaps": ["__aux__"]}, {"id": "g1_12_f_f_Fenchel_biconjugate", "title": "f\\*\\*=f (Fenchel biconjugate)", "fam": 1, "star": false, "def": "거울 두 번 = 원본 복구", "chaps": ["__aux__"]}, {"id": "g1_13_Selection_Variation", "title": "Selection > Variation", "fam": 1, "star": false, "def": "인공선택이 변이 삼키면 성공이 빚", "chaps": ["4"]}, {"id": "g1_14_R_1", "title": "R̂ → 1", "fam": 1, "star": true, "def": "전략적 모호 = k posterior 정렬 수렴", "chaps": ["__aux__"]}, {"id": "g2_01_4렌즈", "title": "4렌즈 ⛰️🟣🟥⭐️", "fam": 2, "star": true, "def": "WHAT·WHY·HOW·SOWHAT — 한 문단=한 렌즈", "chaps": ["__aux__"]}, {"id": "g2_02_3왕국_Prior_Likelihood_Pos", "title": "3왕국 (Prior·Likelihood·Posterior)", "fam": 2, "star": true, "def": "공간화음·시간리듬·시공간멜로디", "chaps": ["__aux__"]}, {"id": "g2_03_ISRV", "title": "ISRV", "fam": 2, "star": true, "def": "Invent·Sense·Relate·Vision 덕목 순서", "chaps": ["__aux__"]}, {"id": "g2_04_3S_Scope_Sequence_Sync", "title": "3S (Scope·Sequence·Sync)", "fam": 2, "star": true, "def": "dG/dF 진단·보호 3축", "chaps": ["__aux__"]}, {"id": "g2_05_NOCS_Diamond", "title": "NOCS Diamond", "fam": 2, "star": true, "def": "사업모델 문법 (N·C·S·O 2×2)", "chaps": ["__aux__"]}, {"id": "g2_06_isrVRSI_계산끝낸물", "title": "isrVRSI 계산끝낸물", "fam": 2, "star": true, "def": "물밑 짓기(I→S→R→V)/수면 보여주기(V→R'→S'→I')", "chaps": ["__aux__"]}, {"id": "g2_07_사면체_cage4_nest4_회전축", "title": "사면체 (cage4+nest4+회전축)", "fam": 2, "star": false, "def": "바깥+안+무게중심 101₂↔101₃", "chaps": ["__aux__"]}, {"id": "g2_08_사면체_3단_깎기_수축_공명", "title": "사면체 3단 (깎기→수축→공명)", "fam": 2, "star": false, "def": "욕망 수축이 외부와 공명", "chaps": ["__aux__"]}, {"id": "g2_09_8단계_새장4_둥지4", "title": "8단계 (새장4+둥지4)", "fam": 2, "star": false, "def": "모방·위안·붕괴·선택 / 멈춤·모방·넘김·매혹", "chaps": ["__aux__"]}, {"id": "g2_10_새장4축_도취_고집_부끄러움_연민", "title": "새장4축 (도취·고집·부끄러움·연민)", "fam": 2, "star": false, "def": "다·세 감정 목적함수", "chaps": ["1", "2", "3", "4", "5"]}, {"id": "g2_11_둥지4축_멈춤_모방_넘김_매혹", "title": "둥지4축 (멈춤·모방·넘김·매혹)", "fam": 2, "star": false, "def": "상대 감정 목적함수 = trickster 4동작", "chaps": ["6", "7", "8", "9"]}, {"id": "g2_12_양탄자_4모서리_thesis_수렴", "title": "양탄자 (4모서리→thesis 수렴)", "fam": 2, "star": false, "def": "정치·학문·문학·산업 → 한 점", "chaps": ["__aux__"]}, {"id": "g2_13_4_산업_atomic_bit_atom_cel", "title": "4 산업 × atomic (bit·atom·cell·second)", "fam": 2, "star": true, "def": "정보·물질·생물·시간 단위", "chaps": ["__aux__"]}, {"id": "g2_14_삼각형_모방욕망_나_중재자_대상", "title": "삼각형 모방욕망 (나→중재자→대상)", "fam": 2, "star": false, "def": "지라르 욕망 구조", "chaps": ["1"]}, {"id": "g2_15_Habitus", "title": "Habitus", "fam": 2, "star": false, "def": "몸에 밴 지각·평가·행위 구조", "chaps": ["2"]}, {"id": "g2_16_신념_책임윤리_위계분포_99_1", "title": "신념/책임윤리 위계분포 (99/1)", "fam": 2, "star": false, "def": "이분법 아닌 가중치 분포", "chaps": ["3"]}, {"id": "g2_17_인공선택_vs_자연선택", "title": "인공선택 vs 자연선택", "fam": 2, "star": false, "def": "단기효율 vs 변화적응", "chaps": ["4"]}, {"id": "g2_18_부조리_구조_의미요구_침묵", "title": "부조리 구조 (의미요구↔침묵)", "fam": 2, "star": false, "def": "충돌점이 부조리", "chaps": ["3"]}, {"id": "g2_19_segment_replicate_platfo", "title": "segment→replicate→platformize", "fam": 2, "star": false, "def": "무대 고르기→복제→여러 측 균형", "chaps": ["6"]}, {"id": "g2_20_분포_vs_한_점", "title": "분포 vs 한 점", "fam": 2, "star": false, "def": "가역 갱신 vs 비가역 고착", "chaps": ["7"]}, {"id": "g2_21_novela_nivola", "title": "novela→nivola", "fam": 2, "star": false, "def": "인물이 작가 책상까지 — 한 글자 비틂", "chaps": ["8"]}, {"id": "g2_22_Crucial_Third_Position", "title": "Crucial Third Position", "fam": 2, "star": false, "def": "자본↔창업자 사이 제3 자리", "chaps": ["8"]}, {"id": "g2_23_Phase_2_Re_enchantment", "title": "Phase 2 Re-enchantment", "fam": 2, "star": false, "def": "부순 자리 재명명·재매혹", "chaps": ["9"]}, {"id": "g2_24_환상_윤리_3조건", "title": "환상 윤리 3조건", "fam": 2, "star": false, "def": "만든자 앎·받는자 앎·떠날 수 있음", "chaps": ["5"]}, {"id": "g2_25_이중나선_깎기1_5_짓기6_9", "title": "이중나선 (깎기1-5/짓기6-9)", "fam": 2, "star": false, "def": "101₂에서 X자 교차", "chaps": ["5"]}, {"id": "g2_26_Nail_V_4i_Scale_V_4i", "title": "Nail(V<4i)→Scale(V≥4i)", "fam": 2, "star": false, "def": "정보가치 순서대로 도구 적용", "chaps": ["__aux__"]}, {"id": "g2_27_NC_PC_Brinkerink", "title": "NC⊗PC (Brinkerink)", "fam": 2, "star": true, "def": "불확실 머묾 ⊗ 판단·행동 균형", "chaps": ["5"]}, {"id": "g2_28_건축_cage_텍스타일_nest", "title": "건축(cage)↔텍스타일(nest)", "fam": 2, "star": true, "def": "지어 가둠 ↔ 짜서 품음", "chaps": ["__aux__"]}, {"id": "g2_29_명주실_양탄자_둥지_1D_2D_3D", "title": "명주실→양탄자→둥지 (1D→2D→3D)", "fam": 2, "star": true, "def": "상처→실→면→그릇", "chaps": ["__aux__"]}, {"id": "g2_30_거울_5쌍_1_5_2_8_3_7_4_9_5_", "title": "거울 5쌍 (1↔5·2↔8·3↔7·4↔9·5↔10)", "fam": 2, "star": false, "def": "cage↔nest 한 글자 비틂 매핑", "chaps": ["__aux__"]}, {"id": "g3_01_Girard_모방욕망", "title": "Girard 모방욕망", "fam": 3, "star": false, "def": "타인이 욕망하는 걸 욕망한다", "chaps": ["1"]}, {"id": "g3_02_Goffman_연출_role_distance", "title": "Goffman 연출·role distance·front/back stage", "fam": 3, "star": false, "def": "자기와 역할 사이 공백", "chaps": ["1", "5", "6"]}, {"id": "g3_03_Bourdieu_Habitus", "title": "Bourdieu Habitus", "fam": 3, "star": false, "def": "사회가 몸에 새긴 구조", "chaps": ["2"]}, {"id": "g3_04_Clausewitz_Schwung_기세", "title": "Clausewitz Schwung(기세)", "fam": 3, "star": false, "def": "안개 속 움직이는 군대 > 멈춘 군대", "chaps": ["2", "__aux__"]}, {"id": "g3_05_Weber_신념_책임윤리", "title": "Weber 신념/책임윤리", "fam": 3, "star": false, "def": "Gesinnungs- vs Verantwortungsethik", "chaps": ["3"]}, {"id": "g3_06_Camus_부조리_반항", "title": "Camus 부조리/반항", "fam": 3, "star": false, "def": "침묵 인정하며 매일 행동", "chaps": ["3"]}, {"id": "g3_07_Luther_Hier_stehe_ich", "title": "Luther \"Hier stehe ich\"", "fam": 3, "star": false, "def": "다르게는 할 수 없다", "chaps": ["3"]}, {"id": "g3_08_Kennedy_O_Hagan_model_di", "title": "Kennedy-O'Hagan model discrepancy", "fam": 3, "star": true, "def": "y=η(x,θ)+δ(x)+ε, δ를 구조에 내장", "chaps": ["3", "7"]}, {"id": "g3_09_Mokyr_인공선택", "title": "Mokyr 인공선택", "fam": 3, "star": false, "def": "변이 풀이 생존 조건", "chaps": ["4"]}, {"id": "g3_10_Gould_Lewontin_spandrel", "title": "Gould-Lewontin spandrel", "fam": 3, "star": true, "def": "부산물이 기능으로 전용", "chaps": ["4"]}, {"id": "g3_11_Greenwald_전체주의적_자아_1980", "title": "Greenwald 전체주의적 자아 (1980)", "fam": 3, "star": false, "def": "내부 빅브라더 — 무오류성 강박", "chaps": ["5", "__aux__"]}, {"id": "g3_12_Foucault_헤테로토피아_heteroch", "title": "Foucault 헤테로토피아·heterochrony", "fam": 3, "star": false, "def": "거울 유토피아/타시간 박물관", "chaps": ["6", "9"]}, {"id": "g3_13_Caillois_4_놀이_AGON_ALEA_", "title": "Caillois 4 놀이 (AGON·ALEA·MIMICRY·ILINX)", "fam": 3, "star": false, "def": "경쟁·우연·모방·현기증", "chaps": ["5"]}, {"id": "g3_14_Bill_Aulet_24단계_beachhea", "title": "Bill Aulet 24단계·beachhead", "fam": 3, "star": false, "def": "극소 무대 먼저", "chaps": ["6"]}, {"id": "g3_15_Jan_de_Witt_1671_actuari", "title": "Jan de Witt 1671 actuarial", "fam": 3, "star": false, "def": "확률로 국가재정 — 합리 100%", "chaps": ["7"]}, {"id": "g3_16_Tali_Sharot_The_Influent", "title": "Tali Sharot The Influential Mind", "fam": 3, "star": false, "def": "능력자일수록 데이터 왜곡 능숙", "chaps": ["7"]}, {"id": "g3_17_Dumas_분포_생존", "title": "Dumas (분포 생존)", "fam": 3, "star": false, "def": "1/4 흑인·표절시비 속 협업 지속", "chaps": ["7"]}, {"id": "g3_18_Bezos_Day_1", "title": "Bezos Day 1", "fam": 3, "star": false, "def": "시장평가를 분포 표본으로", "chaps": ["7"]}, {"id": "g3_19_Ricœur_idem_ipse", "title": "Ricœur idem/ipse", "fam": 3, "star": false, "def": "동일성(정관) vs 서사정체성", "chaps": ["8"]}, {"id": "g3_20_Wasserman_rich_vs_king", "title": "Wasserman rich vs king", "fam": 3, "star": false, "def": "통제 vs 자본 딜레마", "chaps": ["8"]}, {"id": "g3_21_Ash_Patel_이사회_상사_고르기", "title": "Ash Patel \"이사회=상사 고르기\"", "fam": 3, "star": false, "def": "자본 액수보다 chemistry", "chaps": ["8"]}, {"id": "g3_22_Hyde_Trickster_Land_in_B", "title": "Hyde Trickster·Land in Between·Phase2", "fam": 3, "star": false, "def": "경계 사이·재매혹", "chaps": ["6", "9"]}, {"id": "g3_23_Coase_firm_vs_market_Gib", "title": "Coase firm vs market·Gibbons visible hand", "fam": 3, "star": false, "def": "새장도 시장도 아닌 3번째 자리", "chaps": ["9"]}, {"id": "g3_24_Appiah_Honor_Code", "title": "Appiah Honor Code", "fam": 3, "star": false, "def": "frame 숨기면 cage", "chaps": ["5"]}, {"id": "g3_25_일연_三國遺事_正_遺", "title": "일연 三國遺事 (正→遺)", "fam": 3, "star": false, "def": "정사 옆에 유사 — frame 공개", "chaps": ["9"]}, {"id": "g3_26_Douglass_Bailey_Douglass", "title": "Douglass (Bailey→Douglass)", "fam": 3, "star": false, "def": "노예→orator 재명명", "chaps": ["9"]}, {"id": "g3_27_Keats_Negative_Capabilit", "title": "Keats Negative Capability", "fam": 3, "star": false, "def": "불확실 속에 머무는 능력", "chaps": ["9"]}, {"id": "g3_28_노자_當其無", "title": "노자 當其無", "fam": 3, "star": false, "def": "비어야 수레가 굴러간다", "chaps": ["9"]}, {"id": "g3_29_Cromwell_s_rule", "title": "Cromwell's rule", "fam": 3, "star": false, "def": "사전확률 0/1 금지", "chaps": ["5", "7", "__aux__"]}, {"id": "g3_30_Moon_OIL_2025", "title": "Moon OIL (2025)", "fam": 3, "star": false, "def": "저자 thesis — 최적 무지", "chaps": ["__aux__"]}, {"id": "g3_31_Nemirovski_Yudin_Mirror_", "title": "Nemirovski-Yudin Mirror Descent", "fam": 3, "star": false, "def": "dual에서 갱신→primal 교정", "chaps": ["__aux__"]}, {"id": "g3_32_클라인_뇌는_변화를_거부_착각_7", "title": "클라인 뇌는 변화를 거부 (착각 7)", "fam": 3, "star": false, "def": "cage의 신경학 정의", "chaps": ["__aux__"]}, {"id": "g3_33_de_Finetti_coherence_Ram", "title": "de Finetti coherence / Ramsey belief×desire", "fam": 3, "star": true, "def": "agent=⟨U,p(s)⟩, Dutch book 불가", "chaps": ["__aux__"]}, {"id": "g3_34_Orwell_1984_3_슬로건_double", "title": "Orwell 1984 (3 슬로건·doublethink)", "fam": 3, "star": false, "def": "무지=힘·예속=자유·전쟁=평화", "chaps": ["5", "10"]}, {"id": "g3_35_中庸_中和_희로애락_4계절", "title": "中庸 中和 (희로애락 4계절)", "fam": 3, "star": true, "def": "미발(中)·중절(和)=calibrated emotion", "chaps": ["__aux__"]}, {"id": "g3_36_Benjamin_아우라", "title": "Benjamin 아우라", "fam": 3, "star": true, "def": "einmalige Erscheinung einer Ferne", "chaps": ["__aux__"]}, {"id": "g3_37_Shannon_source_coding", "title": "Shannon source coding", "fam": 3, "star": true, "def": "압축한계=엔트로피 H (cache warm-up)", "chaps": ["__aux__"]}, {"id": "g4_01_거울", "title": "거울", "fam": 4, "star": false, "def": "남의 시선에 비친 나 / 다음 trickster 비춤", "chaps": ["1", "5", "9"]}, {"id": "g4_02_망원경", "title": "망원경", "fam": 4, "star": false, "def": "다 보되 못 뛰는 관조", "chaps": ["2"]}, {"id": "g4_03_스테인굴레스", "title": "스테인굴레스", "fam": 4, "star": false, "def": "아름다운데 바깥 안 보이는 확신", "chaps": ["3"]}, {"id": "g4_04_시계", "title": "시계", "fam": 4, "star": false, "def": "빌린 질서 — 잘 돌수록 시계 없는 삶 못 상상", "chaps": ["4"]}, {"id": "g4_05_나비_옷_살", "title": "나비 / 옷↔살", "fam": 4, "star": false, "def": "알면서 입기 / 옷이 살 되면 cage", "chaps": ["6"]}, {"id": "g4_06_튤립구근_세_알", "title": "튤립구근 (세 알)", "fam": 4, "star": false, "def": "합리↔광기 사흘 옆 분포 사고", "chaps": ["7"]}, {"id": "g4_07_안개", "title": "안개", "fam": 4, "star": false, "def": "피조물이 작가에게 대면", "chaps": ["8"]}, {"id": "g4_08_까마귀_빛", "title": "까마귀 / 빛", "fam": 4, "star": false, "def": "빛 물고 굴뚝 뚫어 해·달·별 만듦", "chaps": ["9"]}, {"id": "g4_09_101호_101₂_101₃", "title": "101호 (101₂↔101₃)", "fam": 4, "star": false, "def": "빚 쓰는 방 ↔ 갚는 방", "chaps": ["5", "10"]}, {"id": "g4_10_우로보로스", "title": "우로보로스", "fam": 4, "star": false, "def": "닫힘이 곧 열림", "chaps": ["9", "10"]}, {"id": "g4_11_명주실_양탄자_둥지", "title": "명주실/양탄자/둥지", "fam": 4, "star": false, "def": "1D 실 → 2D 면 → 3D 그릇", "chaps": ["__aux__"]}, {"id": "g4_12_다이나모_자가발전", "title": "다이나모 (자가발전)", "fam": 4, "star": false, "def": "바퀴 밀려 전자기장 → 앞길 밝힘", "chaps": ["__aux__"]}, {"id": "g4_13_윙크_한_눈만_찌름", "title": "윙크 (한 눈만 찌름)", "fam": 4, "star": false, "def": "진단 못 박고(감음) 결정 맡김(뜸)", "chaps": ["9", "__aux__"]}, {"id": "g4_14_황금새장_둥지", "title": "황금새장 ↔ 둥지", "fam": 4, "star": false, "def": "갇혀 못 나감 ↔ 열렸는데 머묾", "chaps": ["__aux__"]}, {"id": "g4_15_개_그레이하운드_벤디코_텐", "title": "개 (그레이하운드·벤디코·텐)", "fam": 4, "star": false, "def": "충실한 것이 붕괴 비용 먼저 침", "chaps": ["1", "2", "4"]}, {"id": "g4_16_별_빛_샹들리에_천문대_촛불_태양", "title": "별·빛 (샹들리에·천문대·촛불·태양)", "fam": 4, "star": false, "def": "빌린 빛 → 자기 빛", "chaps": ["1", "2", "3", "4"]}, {"id": "g4_17_섬", "title": "섬", "fam": 4, "star": false, "def": "고립의 네 성격", "chaps": ["1", "2", "3", "4"]}, {"id": "g4_18_장부", "title": "장부", "fam": 4, "star": false, "def": "빌린 것 기록 — 5분 자문", "chaps": ["1"]}, {"id": "g4_19_주사기", "title": "주사기", "fam": 4, "star": false, "def": "들기 전 관찰일지 (행동 전 검증)", "chaps": ["3"]}, {"id": "g4_20_파도_수면", "title": "파도/수면", "fam": 4, "star": false, "def": "시계 멈출 때 처음 들리는 소리", "chaps": ["4"]}, {"id": "g4_21_vanity_mirror_분장실", "title": "vanity mirror / 분장실", "fam": 4, "star": false, "def": "같은 거울 정반대 동작 / 벗을 자리", "chaps": ["6"]}, {"id": "g4_22_창살_vs_거울", "title": "창살 (vs 거울)", "fam": 4, "star": false, "def": "거울은 반사, 창살은 통과(글·사랑)", "chaps": ["7"]}, {"id": "g4_23_Rosa의_손바닥", "title": "Rosa의 손바닥", "fam": 4, "star": false, "def": "분포를 밖으로 옮긴 첫 손", "chaps": ["7"]}, {"id": "g4_24_GitHub_frame공개_vs_비공개_ML", "title": "GitHub frame공개 vs 비공개 ML", "fam": 4, "star": false, "def": "frame 공개도가 cage↔nest 가름", "chaps": ["5", "10"]}, {"id": "g4_25_의심혈청", "title": "의심혈청", "fam": 4, "star": false, "def": "낭만 독을 분포로 무력화", "chaps": ["__aux__"]}, {"id": "g5_01_한_글자_비틂", "title": "한 글자 비틂", "fam": 5, "star": false, "def": "mirror 짝 A↔B 이동 (재명명)", "chaps": ["__aux__"]}, {"id": "g5_02_멈춤_NC", "title": "멈춤 (NC)", "fam": 5, "star": true, "def": "손 멈춰 아래 봄 — calibrated build 전제", "chaps": ["__aux__"]}, {"id": "g5_03_계산끝낸물_calibrate", "title": "계산끝낸물 (calibrate)", "fam": 5, "star": false, "def": "빚 식별→측정→구조 교정", "chaps": ["__aux__"]}, {"id": "g5_04_음화로_완성", "title": "음화로 완성", "fam": 5, "star": false, "def": "양화 옆 반례 자리 비우지 않기", "chaps": ["3", "__aux__"]}, {"id": "g5_05_과거_고통을_미래_연료로", "title": "과거 고통을 미래 연료로", "fam": 5, "star": false, "def": "빚(상처)을 둥지 재료로", "chaps": ["__aux__", "5"]}, {"id": "g5_06_장부를_펴다", "title": "장부를 펴다", "fam": 5, "star": false, "def": "빌린 것 식별·기록", "chaps": ["1"]}, {"id": "g5_07_순서를_타다", "title": "순서를 타다", "fam": 5, "star": false, "def": "되돌릴 수 있는 것부터 commit", "chaps": ["2"]}, {"id": "g5_08_교정_calibration", "title": "교정/calibration", "fam": 5, "star": false, "def": "결과로 확신 일관 수정", "chaps": ["3"]}, {"id": "g5_09_분포로_적기_확률적_사고", "title": "분포로 적기 (확률적 사고)", "fam": 5, "star": false, "def": "한 점 100% → 분포 60%", "chaps": ["7"]}, {"id": "g5_10_비틂_torsion_torque", "title": "비틂 torsion→torque", "fam": 5, "star": false, "def": "비틀어야 힘이 돈다", "chaps": ["7"]}, {"id": "g5_11_재명명_rename", "title": "재명명 (rename)", "fam": 5, "star": false, "def": "부순 자리 새 의미", "chaps": ["9"]}, {"id": "g5_12_segment_replicate_platfo", "title": "segment→replicate→platformize", "fam": 5, "star": false, "def": "무대→복제→플랫폼", "chaps": ["6"]}, {"id": "g5_13_evaluate_재는_손", "title": "evaluate (재는 손)", "fam": 5, "star": false, "def": "숫자 + 질적 칸 동시", "chaps": ["7"]}, {"id": "g5_14_제도화_institutionalize", "title": "제도화 (institutionalize)", "fam": 5, "star": false, "def": "의지→시스템 (Day1·결정메모)", "chaps": ["7"]}, {"id": "g5_15_capitalize_작가_자리_협상", "title": "capitalize (작가 자리 협상)", "fam": 5, "star": false, "def": "자본 받되 ipse 박기", "chaps": ["8"]}, {"id": "g5_16_역설계_투자자_미래_풀기", "title": "역설계 (투자자 미래 풀기)", "fam": 5, "star": false, "def": "책상 앉기 전 그가 믿는 세계", "chaps": ["8"]}, {"id": "g5_17_옆에_두기_juxtaposition", "title": "옆에 두기 (juxtaposition)", "fam": 5, "star": false, "def": "부수지 않고 옆에 배치", "chaps": ["9"]}, {"id": "g5_18_함께_명명하기", "title": "함께 명명하기", "fam": 5, "star": false, "def": "혼자=새장, 둘이=둥지", "chaps": ["9"]}, {"id": "g5_19_疑_義_비틂", "title": "疑→義 비틂", "fam": 5, "star": false, "def": "의심이 곧 옳음", "chaps": ["__aux__"]}, {"id": "g5_20_frame_공개", "title": "frame 공개", "fam": 5, "star": false, "def": "환상을 환상으로 모두가 앎", "chaps": ["5"]}, {"id": "g5_21_narrative_prior_4동사_공유_극", "title": "narrative prior 4동사 (공유·극복·분화·보편화)", "fam": 5, "star": true, "def": "상상 prior predictive 4 sampling", "chaps": ["__aux__"]}, {"id": "g5_22_simulation_belief", "title": "simulation ≠ belief", "fam": 5, "star": true, "def": "샘플 검사 vs 질량 집중", "chaps": ["5", "__aux__"]}, {"id": "g5_23_Mirrorback_dual_update", "title": "Mirrorback (dual update)", "fam": 5, "star": false, "def": "dual 갱신이 primal 교정", "chaps": ["__aux__"]}, {"id": "g5_24_트림_clarity_deletion", "title": "트림 (clarity deletion)", "fam": 5, "star": true, "def": "누적되면 자른다, 흐려지면 뺀다", "chaps": ["__aux__"]}, {"id": "g6_01_빚_틀린_모델", "title": "빚 = 틀린 모델", "fam": 6, "star": false, "def": "검증 안 된 가정 위 행동 = 인지비용 전가", "chaps": ["__aux__"]}, {"id": "g6_02_새장_황금새장_둥지", "title": "새장 / 황금새장 / 둥지", "fam": 6, "star": false, "def": "못 나감 / 금이라 안 나감 / 열렸는데 머묾", "chaps": ["__aux__"]}, {"id": "g6_03_낭만_위안", "title": "낭만 / 위안", "fam": 6, "star": false, "def": "현실보다 나은 미래 믿음 / 간극 덮는 서사", "chaps": ["__aux__"]}, {"id": "g6_04_磁場_자장", "title": "磁場 (자장)", "fam": 6, "star": true, "def": "힘 안 줘도 정렬되는 상태", "chaps": ["__aux__"]}, {"id": "g6_05_소통밀도", "title": "소통밀도", "fam": 6, "star": true, "def": "signal / 수신자 해독비용", "chaps": ["__aux__"]}, {"id": "g6_06_op_st_ambiguity", "title": "op/st ambiguity", "fam": 6, "star": true, "def": "운영모호=해소 / 전략모호=보존", "chaps": ["__aux__"]}, {"id": "g6_07_다_多_세_世", "title": "다(多)·세(世)", "fam": 6, "star": false, "def": "Fubini U·s 인격화 (belief×desire)", "chaps": ["5"]}, {"id": "g6_08_회전축_5_10", "title": "회전축 (5↔10)", "fam": 6, "star": false, "def": "차갑게 빚 씀 ↔ 뜨겁게 갚음", "chaps": ["5"]}, {"id": "g6_09_義味", "title": "義味", "fam": 6, "star": false, "def": "意(뜻) 아닌 義(옳음=calibration)", "chaps": ["__aux__"]}, {"id": "g6_10_제3의_길", "title": "제3의 길", "fam": 6, "star": false, "def": "새장도 시장도 아닌 visible hand", "chaps": ["8"]}, {"id": "g6_11_革新_革身", "title": "革新=革身", "fam": 6, "star": false, "def": "혁신은 자신을 바꾸는 것", "chaps": ["8", "9"]}, {"id": "g6_12_낭만보균자", "title": "낭만보균자", "fam": 6, "star": false, "def": "낭만에 감염된 자 — 함께 마심 배움", "chaps": ["__aux__"]}, {"id": "g6_13_가작_假作_佳作", "title": "가작 (假作+佳作)", "fam": 6, "star": false, "def": "주 결말 비우고 음화를 옆에", "chaps": ["__aux__"]}, {"id": "g6_14_기세", "title": "기세", "fam": 6, "star": false, "def": "정답 매일 갱신 = 진짜 자유", "chaps": ["__aux__"]}, {"id": "g6_15_함께_마심", "title": "함께 마심", "fam": 6, "star": false, "def": "활력·독 동시 마시며 다음 사람 보호", "chaps": ["9", "__aux__"]}, {"id": "g6_16_보균자", "title": "보균자", "fam": 6, "star": false, "def": "의도 선하나 틀린 모델로 해 퍼뜨림", "chaps": ["3"]}, {"id": "g6_17_wit_wisdom", "title": "wit / wisdom", "fam": 6, "star": true, "def": "wisdom 물밑(D) / wit 수면(R→V)", "chaps": ["__aux__"]}, {"id": "g6_18_아우라", "title": "아우라", "fam": 6, "star": true, "def": "반복된 존재선택으로 굳은 기운", "chaps": ["__aux__"]}, {"id": "g6_19_cache_warm_up", "title": "cache warm-up", "fam": 6, "star": true, "def": "코드북 정확도↑ → 소통밀도 단조증가", "chaps": ["__aux__"]}, {"id": "g6_20_action_prior_vs_full_pri", "title": "action prior vs full prior", "fam": 6, "star": true, "def": "결정에 닿는 최소 belief만 인출", "chaps": ["__aux__"]}, {"id": "g6_21_calibration_식민화", "title": "calibration_식민화", "fam": 6, "star": true, "def": "action prior가 full prior 잡아먹음", "chaps": ["__aux__"]}, {"id": "g6_22_4_atomic_unit_bit_atom_c", "title": "4 atomic unit (bit·atom·cell·second)", "fam": 6, "star": true, "def": "정보·물질·생물·시간", "chaps": ["__aux__"]}, {"id": "g6_23_사랑_꿈꾸고자_이해시도", "title": "사랑 = 꿈꾸고자 이해시도", "fam": 6, "star": false, "def": "옵션 쥔 채 사랑 = 자유 (제로섬 아님)", "chaps": ["__aux__"]}]};
+
+/* ---------- 공통 ---------- */
+const fams = DATA.families;               // {"1":{name,color},...}
+const hubs = DATA.hubs;                   // [{id,name,aux}]
+const elems = DATA.elements;              // [{id,title,fam,star,def,chaps}]
+document.getElementById('nCount').textContent = elems.length;
+const famOff = new Set();                  // 숨긴 족
+
+/* ---------- 범례 ---------- */
+const legend = document.getElementById('legend');
+Object.entries(fams).forEach(([k,v])=>{
+  const el=document.createElement('div');
+  el.className='item';el.dataset.fam=k;
+  el.innerHTML=`<span class="dot" style="background:${v.color}"></span>${v.name.replace(/^\d+\.\s*/,'')}`;
+  el.onclick=()=>{el.classList.toggle('off');
+    if(famOff.has(k))famOff.delete(k);else famOff.add(k);
+    rebuild();if(tableOn)renderTable();};
+  legend.appendChild(el);
+});
+const starItem=document.createElement('div');
+starItem.className='item';starItem.innerHTML=`<span class="star">★</span> 핵심 생각`;
+legend.appendChild(starItem);
+
+/* ---------- 그래프 물리 ---------- */
+const canvas=document.getElementById('c');
+const ctx=canvas.getContext('2d');
+let W,H,DPR;
+function resize(){DPR=window.devicePixelRatio||1;W=innerWidth;H=innerHeight;
+  canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+'px';
+  canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}
+addEventListener('resize',()=>{resize();});
+resize();
+
+let nodes=[], links=[], byId={};
+function buildGraph(){
+  nodes=[];links=[];byId={};
+  // 장 허브
+  hubs.forEach((h,i)=>{
+    const ang=(i/hubs.length)*Math.PI*2;
+    const n={id:'hub:'+h.id,kind:'hub',label:h.name,aux:h.aux,
+      x:W/2+Math.cos(ang)*Math.min(W,H)*0.30,
+      y:H/2+Math.sin(ang)*Math.min(W,H)*0.30,
+      vx:0,vy:0,r:h.aux?9:13,deg:0};
+    nodes.push(n);byId[n.id]=n;
+  });
+  // 원소
+  elems.forEach(e=>{
+    if(famOff.has(String(e.fam)))return;
+    const n={id:'el:'+e.id,kind:'el',fam:e.fam,star:e.star,label:e.title,
+      def:e.def,chaps:e.chaps,color:fams[e.fam].color,
+      x:W/2+(Math.random()-.5)*W*0.5,y:H/2+(Math.random()-.5)*H*0.5,
+      vx:0,vy:0,r:e.star?6.5:4};
+    nodes.push(n);byId[n.id]=n;
+    e.chaps.forEach(c=>{
+      const hid='hub:'+(c==='__aux__'?'__aux__':c);
+      if(byId[hid]){links.push({s:n.id,t:hid});byId[hid].deg++;}
+    });
+  });
+}
+function rebuild(){const keep={};nodes.forEach(n=>keep[n.id]=n);buildGraph();
+  // 위치 승계(깜빡임 방지)
+  nodes.forEach(n=>{if(keep[n.id]){n.x=keep[n.id].x;n.y=keep[n.id].y;}});}
+
+let hoverId=null, dragId=null, highlightHub=null;
+function sim(){
+  const K=0.012, REP=1400, LEN_H=150;
+  for(let i=0;i<nodes.length;i++){
+    const a=nodes[i];
+    for(let j=i+1;j<nodes.length;j++){
+      const b=nodes[j];let dx=a.x-b.x,dy=a.y-b.y;
+      let d2=dx*dx+dy*dy||0.01;let d=Math.sqrt(d2);
+      let f=REP/d2;if(d<1){d=1;}
+      const fx=dx/d*f,fy=dy/d*f;
+      if(a!==dragNode){a.vx+=fx;a.vy+=fy;}
+      if(b!==dragNode){b.vx-=fx;b.vy-=fy;}
+    }
+  }
+  links.forEach(l=>{
+    const a=byId[l.s],b=byId[l.t];if(!a||!b)return;
+    let dx=b.x-a.x,dy=b.y-a.y;let d=Math.sqrt(dx*dx+dy*dy)||0.01;
+    const target=b.kind==='hub'?LEN_H:60;
+    const f=(d-target)*0.02;const fx=dx/d*f,fy=dy/d*f;
+    if(a!==dragNode){a.vx+=fx;a.vy+=fy;}
+    if(b!==dragNode){b.vx-=fx;b.vy-=fy;}
+  });
+  nodes.forEach(n=>{
+    if(n===dragNode)return;
+    // 허브는 중앙 쪽으로 약하게 고정
+    n.vx+=(W/2-n.x)*(n.kind==='hub'?0.004:0.0016);
+    n.vy+=(H/2-n.y)*(n.kind==='hub'?0.004:0.0016);
+    n.vx*=0.86;n.vy*=0.86;n.x+=n.vx;n.y+=n.vy;
+    n.x=Math.max(n.r+8,Math.min(W-n.r-8,n.x));
+    n.y=Math.max(n.r+70,Math.min(H-n.r-60,n.y));
+  });
+}
+let dragNode=null;
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // 링크
+  links.forEach(l=>{
+    const a=byId[l.s],b=byId[l.t];if(!a||!b)return;
+    let hot=false;
+    if(highlightHub){hot=(l.t==='hub:'+highlightHub);}
+    else if(hoverId){hot=(l.s===hoverId||l.t===hoverId);}
+    ctx.strokeStyle=hot?'rgba(197,165,90,.55)':'rgba(120,110,96,.10)';
+    ctx.lineWidth=hot?1.4:0.7;
+    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+  });
+  // 노드
+  nodes.forEach(n=>{
+    if(n.kind==='hub'){
+      ctx.fillStyle=n.aux?'#2a241d':'#241f19';
+      ctx.strokeStyle=(highlightHub===n.id.slice(4))?'var(--gold)':'#5a4f3f';
+      ctx.strokeStyle=(highlightHub===n.id.slice(4))?'#c5a55a':'#6a5f4c';
+      ctx.lineWidth=(highlightHub===n.id.slice(4))?2.2:1.2;
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fill();ctx.stroke();
+      ctx.fillStyle='#e8e0d4';ctx.font="600 13px 'Noto Serif KR',serif";
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.label,n.x,n.y-n.r-9);
+    }else{
+      let dim=false;
+      if(highlightHub){dim=!n.chaps.some(c=>('__aux__'===c?'__aux__':c)===highlightHub);}
+      ctx.globalAlpha=dim?0.16:1;
+      ctx.fillStyle=n.color;
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fill();
+      if(n.star){ctx.strokeStyle='#c5a55a';ctx.lineWidth=1.6;
+        ctx.beginPath();ctx.arc(n.x,n.y,n.r+2.2,0,7);ctx.stroke();}
+      if(n.id===hoverId){ctx.strokeStyle='#e8e0d4';ctx.lineWidth=1.5;
+        ctx.beginPath();ctx.arc(n.x,n.y,n.r+3.5,0,7);ctx.stroke();}
+      ctx.globalAlpha=1;
+    }
+  });
+}
+function loop(){if(!tableOn){sim();draw();}requestAnimationFrame(loop);}
+buildGraph();loop();
+
+/* ---------- 상호작용 ---------- */
+const tip=document.getElementById('tip');
+function nodeAt(mx,my){
+  for(let i=nodes.length-1;i>=0;i--){const n=nodes[i];
+    const dx=mx-n.x,dy=my-n.y;const rr=(n.r+5);
+    if(dx*dx+dy*dy<=rr*rr)return n;}
+  return null;
+}
+canvas.addEventListener('mousemove',ev=>{
+  const mx=ev.clientX,my=ev.clientY;
+  if(dragNode){dragNode.x=mx;dragNode.y=my;dragNode.vx=dragNode.vy=0;return;}
+  const n=nodeAt(mx,my);
+  hoverId=n?n.id:null;
+  if(n&&n.kind==='el'){
+    const chapNames=n.chaps.map(c=>{
+      if(c==='__aux__')return '전반·부록';
+      const h=hubs.find(h=>h.id===c);return h?h.name:c;}).join(' · ');
+    tip.innerHTML=`<div class="t-title">${n.star?'★ ':''}${n.label}</div>`+
+      (n.def?`<div>${n.def}</div>`:'')+
+      `<div class="t-meta">${fams[n.fam].name} · 장 ${chapNames}</div>`;
+    tip.style.opacity=1;
+    let tx=mx+14,ty=my+14;
+    if(tx+290>W)tx=mx-294;if(ty+120>H)ty=my-120;
+    tip.style.left=tx+'px';tip.style.top=ty+'px';
+  }else{tip.style.opacity=0;}
+});
+canvas.addEventListener('mousedown',ev=>{
+  const n=nodeAt(ev.clientX,ev.clientY);
+  if(n){
+    if(n.kind==='hub'){
+      const hid=n.id.slice(4);
+      highlightHub=(highlightHub===hid)?null:hid;
+    }else{dragNode=n;canvas.classList.add('drag');}
+  }else{highlightHub=null;}
+});
+addEventListener('mouseup',()=>{dragNode=null;canvas.classList.remove('drag');});
+canvas.addEventListener('mouseleave',()=>{tip.style.opacity=0;});
+// 터치
+canvas.addEventListener('touchstart',ev=>{
+  const t=ev.touches[0];const n=nodeAt(t.clientX,t.clientY);
+  if(n&&n.kind==='hub'){const hid=n.id.slice(4);
+    highlightHub=(highlightHub===hid)?null:hid;}
+  else if(n){dragNode=n;}},{passive:true});
+canvas.addEventListener('touchmove',ev=>{
+  if(dragNode){const t=ev.touches[0];dragNode.x=t.clientX;dragNode.y=t.clientY;
+    dragNode.vx=dragNode.vy=0;}},{passive:true});
+canvas.addEventListener('touchend',()=>{dragNode=null;});
+
+/* ---------- 표 뷰 ---------- */
+const tableView=document.getElementById('tableView');
+let tableOn=false;
+function renderTable(){
+  const cols=hubs;   // 장 허브 순서
+  let h='<table><thead><tr><th class="name">생각</th>';
+  cols.forEach(c=>h+=`<th>${c.name}</th>`);
+  h+='</tr></thead><tbody>';
+  for(let f=1;f<=6;f++){
+    if(famOff.has(String(f)))continue;
+    const rows=elems.filter(e=>e.fam===f);
+    if(!rows.length)continue;
+    h+=`<tr class="fam-head"><td class="name" colspan="${cols.length+1}">`+
+       `<span style="color:${fams[f].color}">●</span> ${fams[f].name}</td></tr>`;
+    rows.forEach(e=>{
+      h+=`<tr><td class="name">${e.star?'<span class="star-mark">★</span> ':''}${e.title}`+
+         (e.def?`<span class="df">${e.def}</span>`:'')+`</td>`;
+      cols.forEach(c=>{
+        const inIt=e.chaps.some(x=>(x==='__aux__'?'__aux__':x)===c.id);
+        h+=`<td class="cell">${inIt?'●':''}</td>`;
+      });
+      h+='</tr>';
+    });
+  }
+  h+='</tbody></table>';
+  tableView.innerHTML=h;
+}
+const btnMap=document.getElementById('btnMap'), btnTable=document.getElementById('btnTable');
+btnMap.onclick=()=>{tableOn=false;tableView.classList.remove('show');
+  btnMap.classList.add('on');btnTable.classList.remove('on');};
+btnTable.onclick=()=>{tableOn=true;renderTable();tableView.classList.add('show');
+  btnTable.classList.add('on');btnMap.classList.remove('on');tip.style.opacity=0;};
+</script>
+</body>
+</html>

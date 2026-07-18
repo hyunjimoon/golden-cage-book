@@ -4,282 +4,456 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>황금새장을열다</title>
+<meta name="description" content="잘 되고 있는데 왜 불안한가 — 열 편의 소설이 그 불안의 구조를 진단하고, 빌린 것을 갚아 새장을 둥지로 연다. 창업소설.">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
-  /* hero */
-  .hero{display:flex;align-items:center;justify-content:center;gap:48px;max-width:900px;margin:0 auto;padding:64px 24px 48px;min-height:70vh;}
-  .hero-text{max-width:420px;}
-  .hero-text h1{font-size:1.8em;font-weight:700;letter-spacing:-0.5px;margin-bottom:12px;}
-  .hero-text p{font-size:14px;color:#8899aa;line-height:1.8;margin-bottom:12px;}
-  .hero-text .cta{display:inline-block;margin-top:20px;padding:10px 24px;background:#4A7A6B;color:#fff;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600;transition:background 0.2s;}
-  .hero-text .cta:hover{background:#5B9A8B;}
-  .hero-img{flex-shrink:0;}
-  .hero-img img{width:260px;border-radius:12px;}
-  @media(max-width:700px){.hero{flex-direction:column-reverse;gap:24px;padding-top:40px;min-height:auto;} .hero-img img{width:200px;}}
-
-  /* sections */
-  .section{max-width:900px;margin:0 auto;padding:0 24px 48px;}
-  .section-label{font-size:11px;color:#4a5568;letter-spacing:2px;margin-bottom:16px;font-weight:600;}
-
-  /* genre definition */
-  .genre{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;margin-bottom:16px;}
-  .genre-col{background:#0e1220;padding:20px;}
-  .genre-col h3{font-size:12px;font-weight:700;color:#5a6a7a;letter-spacing:1px;margin-bottom:12px;}
-  .genre-item{margin-bottom:10px;}
-  .genre-item .label{font-size:11px;color:#5a6a7a;margin-bottom:2px;}
-  .genre-item .value{font-size:13px;color:#c8d0dd;line-height:1.6;}
-  .genre-item .value em{color:#8899aa;font-style:normal;font-size:12px;}
-
-  /* 4 cages */
-  .map{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;margin-bottom:8px;}
-  .cell{background:#0e1220;padding:20px;text-decoration:none;color:#e8eaf0;transition:background 0.2s;}
-  .cell:hover{background:#141b2d;}
-  .cell .ch{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:4px;}
-  .cell .novel{font-size:13px;font-weight:300;color:#8899aa;margin-bottom:4px;}
-  .cell .event{font-size:11px;color:#5a6a7a;margin-bottom:8px;}
-  .cell .cure{font-size:12px;font-weight:600;}
-  .c1 .ch,.c1 .cure{color:#9B7A8B;} .c2 .ch,.c2 .cure{color:#7A8068;}
-  .c3 .ch,.c3 .cure{color:#4A7A6B;} .c4 .ch,.c4 .cure{color:#5A8A9A;}
-
-  /* audience */
-  .audience{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;}
-  .audience-card{background:#0e1220;padding:20px;}
-  .audience-card h4{font-size:12px;font-weight:700;color:#4A7A6B;margin-bottom:8px;}
-  .audience-card p{font-size:12px;color:#8899aa;line-height:1.7;}
-  .audience-card .detail{font-size:11px;color:#5a6a7a;margin-top:8px;line-height:1.6;}
-
-  /* hypotheses */
-  .hypo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
-  .hypo-card{background:#0e1220;border-radius:8px;padding:20px;border:1px solid rgba(255,255,255,0.05);}
-  .hypo-card h4{font-size:12px;font-weight:700;margin-bottom:6px;}
-  .hypo-card .pct{font-family:'DM Mono',monospace;font-size:1.6em;font-weight:700;margin-bottom:8px;}
-  .hypo-card p{font-size:11px;color:#8899aa;line-height:1.7;}
-  .hypo-card .bottleneck{font-size:11px;color:#5a6a7a;margin-top:8px;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;}
-  .hypo-s h4,.hypo-s .pct{color:#4A7A6B;}
-  .hypo-d h4,.hypo-d .pct{color:#5A8A9A;}
-
-  /* deliberations */
-  .delib{background:#0e1220;border-radius:10px;padding:20px;margin-top:24px;}
-  .delib h3{font-size:12px;color:#5a6a7a;letter-spacing:1px;margin-bottom:16px;font-weight:600;}
-  .delib-item{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .delib-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
-  .delib-item .q{font-size:13px;color:#c8d0dd;margin-bottom:6px;font-weight:600;}
-  .delib-item .status{font-size:12px;color:#8899aa;line-height:1.7;}
-  .delib-item a{color:#4A7A6B;text-decoration:none;font-size:11px;}
-  .delib-item a:hover{text-decoration:underline;}
-
-  .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;}
-  .links a{font-size:12px;color:#5a6a7a;text-decoration:none;transition:color 0.15s;}
-  .links a:hover{color:#e8eaf0;}
-
-  .footer{text-align:center;padding:48px 24px 32px;font-size:12px;color:#3a4050;}
-  @media(max-width:600px){.genre,.audience{grid-template-columns:1fr;} .map{grid-template-columns:1fr;} .hypo-grid{grid-template-columns:1fr;}}
-
-  /* policy designer panels */
-  .policy-buttons{display:flex;gap:6px;margin-top:12px;}
-  .policy-btn{
-    flex:1;padding:7px 10px;background:#141b2d;border:1px solid rgba(255,255,255,0.08);
-    color:#c8d0dd;font-family:inherit;font-size:11px;font-weight:600;
-    border-radius:6px;cursor:pointer;transition:all 0.2s;
+  :root{
+    /* scroll-morph: 1부 차가움 → 2부 온화함 (JS가 연속 보간) */
+    --bg:#0a0d14;
+    --ink:#c8d0dd;
+    --dim:#5a6a7a;
+    --line:rgba(255,255,255,.06);
+    --gold:#c5a55a;
+    --panel:rgba(255,255,255,.018);
   }
-  .policy-btn:hover{background:#1c2540;border-color:#4A7A6B;color:#fff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    transition:background-color .25s linear;}
+  a{color:inherit;}
+  .serif{font-family:'Noto Serif KR',serif;}
+  .mono{font-family:'DM Mono',monospace;}
+
+  /* ── 스크롤 진행 바 (디지털 서명) ── */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
+    background:linear-gradient(90deg,#4A7A6B,var(--gold));transition:width .1s linear;}
+
+  /* ── 좌측 국면 표시 ── */
+  #phase{position:fixed;left:20px;top:50%;transform:translateY(-50%);z-index:40;
+    display:flex;flex-direction:column;gap:16px;pointer-events:none;}
+  #phase .p{display:flex;align-items:center;gap:9px;font-size:10.5px;letter-spacing:1px;
+    color:var(--dim);opacity:.4;transition:opacity .4s,color .4s;font-weight:500;}
+  #phase .p .bead{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none;}
+  #phase .p.on{opacity:1;}
+  #phase .p1.on{color:#8aa0b8;} #phase .p2.on{color:var(--gold);} #phase .p3.on{color:#d69a6a;}
+  @media(max-width:820px){#phase{display:none;}}
+
+  /* ── HERO ── */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;padding:80px 24px 40px;position:relative;}
+  .cage-wrap{width:180px;height:210px;margin-bottom:6px;}
+  .cage-wrap svg{width:100%;height:100%;overflow:visible;}
+  .bar{stroke:var(--gold);stroke-width:2;transform-origin:50% 22px;
+    transition:transform 1.1s cubic-bezier(.6,0,.2,1),opacity 1.1s;}
+  .cage-frame{stroke:var(--gold);stroke-width:2;fill:none;}
+  .spark{fill:var(--gold);opacity:0;transition:transform 1.3s cubic-bezier(.5,0,.1,1),opacity 1.3s;}
+  /* 열림: 창살이 벌어지고 불꽃이 솟는다 */
+  body.opened .bar-l{transform:rotate(-26deg);}
+  body.opened .bar-r{transform:rotate(26deg);}
+  body.opened .bar-ll{transform:rotate(-14deg);}
+  body.opened .bar-rr{transform:rotate(14deg);}
+  body.opened .spark{opacity:1;transform:translateY(-64px) scale(1.1);}
+
+  .hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(2.1em,6vw,3.3em);
+    font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:20px;
+    background:linear-gradient(180deg,#f0ead9,#c5a55a);-webkit-background-clip:text;
+    background-clip:text;color:transparent;}
+  .hero .lead{font-size:clamp(15px,2.4vw,18px);color:#aeb9c9;line-height:1.9;max-width:540px;font-weight:300;}
+  .hero .lead b{color:#e8eaf0;font-weight:600;}
+  .hero .turn{margin-top:18px;font-size:13px;color:var(--dim);line-height:1.8;max-width:500px;
+    border-left:2px solid rgba(197,165,90,.4);padding-left:14px;text-align:left;font-style:italic;}
+  .hero .turn b{color:#c5b58a;font-style:normal;}
+  .cta-row{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .cta{display:inline-block;padding:12px 28px;border-radius:8px;text-decoration:none;
+    font-size:14px;font-weight:600;transition:all .2s;}
+  .cta.primary{background:var(--gold);color:#14110f;}
+  .cta.primary:hover{background:#d9bc70;transform:translateY(-2px);}
+  .cta.ghost{border:1px solid var(--line);color:#aeb9c9;}
+  .cta.ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    font-size:11px;letter-spacing:2px;color:var(--dim);animation:bob 2.4s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5;}50%{transform:translate(-50%,7px);opacity:1;}}
+
+  /* ── 공통 섹션 ── */
+  .band{max-width:1000px;margin:0 auto;padding:70px 24px;}
+  .kicker{font-size:11px;letter-spacing:4px;font-weight:700;margin-bottom:12px;}
+  .band h2{font-family:'Noto Serif KR',serif;font-size:clamp(1.5em,3.5vw,2em);
+    font-weight:700;letter-spacing:-.5px;line-height:1.35;margin-bottom:14px;}
+  .band .intro{font-size:14px;color:#93a0b2;line-height:1.95;max-width:640px;}
+  .band .intro b{color:#d6dce6;font-weight:600;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ── 장 카드 그리드 ── */
+  .rooms{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px;}
+  .room{display:block;text-decoration:none;color:var(--ink);background:var(--panel);
+    border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;
+    overflow:hidden;transition:transform .25s,border-color .25s,background .25s;}
+  .room:hover{transform:translateY(-4px);background:rgba(255,255,255,.035);}
+  .room .no{font-family:'DM Mono';font-size:11px;letter-spacing:1px;opacity:.7;}
+  .room .name{font-family:'Noto Serif KR',serif;font-size:1.25em;font-weight:700;margin:2px 0 3px;}
+  .room .novel{font-size:12px;color:var(--dim);margin-bottom:10px;}
+  .room .quote{font-size:12px;font-style:italic;color:#8493a6;line-height:1.6;
+    padding-left:10px;border-left:1px solid var(--line);margin-bottom:12px;min-height:36px;}
+  .room .cure{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;}
+  .room .cure::before{content:"→";opacity:.6;}
+  .room .edge{position:absolute;left:0;top:0;bottom:0;width:3px;}
+  .room:hover .edge{width:5px;}
+  @media(max-width:640px){.rooms{grid-template-columns:1fr;}}
+
+  /* ── ★ 멈춤 (pivot) ── */
+  .pivot{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;padding:60px 24px;position:relative;
+    background:radial-gradient(circle at 50% 42%,rgba(91,58,138,.14),transparent 60%);}
+  .star{font-size:34px;color:var(--gold);margin-bottom:8px;
+    filter:drop-shadow(0 0 22px rgba(197,165,90,.6));animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.75;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+  .pivot .axis{font-size:11px;letter-spacing:3px;color:#8a7aa8;font-weight:600;margin-bottom:18px;}
+  .pivot h2{font-family:'Noto Serif KR',serif;font-size:clamp(1.7em,4.5vw,2.6em);
+    font-weight:700;line-height:1.3;margin-bottom:18px;color:#efe9dc;}
+  .pivot .leap{font-size:clamp(15px,2.6vw,19px);color:var(--gold);font-weight:600;
+    letter-spacing:.5px;margin-bottom:10px;}
+  .pivot .sub{font-size:14px;color:#9a90ac;line-height:1.9;max-width:480px;}
+  .pivot a.hub{margin-top:28px;display:inline-block;padding:12px 26px;border-radius:8px;
+    border:1px solid rgba(197,165,90,.5);color:var(--gold);text-decoration:none;font-size:13px;
+    font-weight:600;transition:all .2s;}
+  .pivot a.hub:hover{background:rgba(197,165,90,.12);transform:translateY(-2px);}
+
+  /* ── 디지털 갤러리 ── */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px;}
+  .exp{display:block;text-decoration:none;color:var(--ink);background:var(--panel);
+    border:1px solid var(--line);border-radius:12px;padding:20px;transition:all .25s;position:relative;}
+  .exp:hover{transform:translateY(-4px);border-color:rgba(197,165,90,.45);
+    background:rgba(197,165,90,.05);}
+  .exp .ico{font-size:22px;margin-bottom:10px;display:block;}
+  .exp .t{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;margin-bottom:5px;}
+  .exp .d{font-size:11.5px;color:var(--dim);line-height:1.6;}
+  .exp.feature{grid-column:span 3;display:flex;align-items:center;gap:20px;
+    background:linear-gradient(120deg,rgba(197,165,90,.09),rgba(74,122,107,.06));
+    border-color:rgba(197,165,90,.3);}
+  .exp.feature .ico{font-size:38px;margin:0;}
+  .exp.feature .t{font-size:19px;}
+  .exp.feature .d{font-size:13px;}
+  .exp .new{position:absolute;top:14px;right:14px;font-size:9px;letter-spacing:1px;
+    background:var(--gold);color:#14110f;padding:2px 7px;border-radius:10px;font-weight:700;}
+  @media(max-width:720px){.gallery{grid-template-columns:1fr;}.exp.feature{grid-column:span 1;flex-direction:column;text-align:center;}}
+
+  /* ── 장르 / 페르소나 / 가설 (콘텐츠 보존, 재스타일) ── */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;}
+  .panel h3{font-size:11px;font-weight:700;color:var(--dim);letter-spacing:1.5px;margin-bottom:14px;text-transform:uppercase;}
+  .kv{margin-bottom:12px;}
+  .kv .k{font-size:11px;color:var(--dim);margin-bottom:2px;}
+  .kv .v{font-size:13.5px;color:#d0d8e2;line-height:1.65;}
+  .kv .v em{color:#93a0b2;font-style:normal;font-size:12px;}
+  .kv .v a{color:#7ba98f;text-decoration:none;border-bottom:1px solid rgba(123,169,143,.3);}
+
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;}
+  .pcard h4{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;color:#d9bc70;margin-bottom:9px;}
+  .pcard p{font-size:12.5px;color:#93a0b2;line-height:1.75;}
+  .pcard .detail{font-size:11px;color:var(--dim);margin-top:9px;line-height:1.6;}
+  .policy-buttons{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;}
+  .policy-btn{flex:1;min-width:110px;padding:8px 10px;background:rgba(255,255,255,.03);
+    border:1px solid var(--line);color:#c8d0dd;font-family:inherit;font-size:11px;font-weight:600;
+    border-radius:7px;cursor:pointer;transition:all .2s;text-decoration:none;text-align:center;}
+  .policy-btn:hover{border-color:#7ba98f;color:#fff;background:rgba(123,169,143,.1);}
   .policy-btn.active{background:#4A7A6B;border-color:#4A7A6B;color:#fff;}
-  .policy-panel{display:none;background:#0a0e1a;border-radius:6px;padding:14px;margin-top:10px;
-    border:1px solid rgba(74,122,107,0.2);font-size:11px;color:#8899aa;line-height:1.7;}
+  .policy-panel{display:none;background:rgba(0,0,0,.25);border-radius:8px;padding:15px;margin-top:10px;
+    border:1px solid rgba(123,169,143,.2);font-size:11.5px;color:#93a0b2;line-height:1.75;}
   .policy-panel.active{display:block;}
-  .policy-panel h5{color:#4A7A6B;font-size:11px;margin-bottom:6px;font-weight:700;letter-spacing:0.5px;margin-top:10px;}
+  .policy-panel h5{color:#7ba98f;font-size:11px;margin:10px 0 6px;font-weight:700;letter-spacing:.5px;}
   .policy-panel h5:first-child{margin-top:0;}
-  .policy-panel ul{padding-left:14px;margin:4px 0;}
-  .policy-panel li{margin-bottom:3px;}
-  .policy-panel .quote{color:#c8d0dd;border-left:2px solid #4A7A6B;padding-left:8px;margin:6px 0;font-size:11px;font-style:italic;}
-  .policy-panel a{color:#5A8A9A;text-decoration:none;font-weight:600;}
-  .policy-panel a:hover{text-decoration:underline;color:#7BAACB;}
-  .policy-panel .bb{background:rgba(74,122,107,0.08);border-radius:4px;padding:8px;margin-top:8px;font-size:10.5px;}
-  .policy-panel .bb strong{color:#c8d0dd;}
+  .policy-panel ul{padding-left:15px;margin:4px 0;}
+  .policy-panel li{margin-bottom:4px;}
+  .policy-panel .quote{color:#d0d8e2;border-left:2px solid #7ba98f;padding-left:9px;margin:7px 0;font-style:italic;}
+  .policy-panel a{color:#7ba98f;text-decoration:none;font-weight:600;}
+  .policy-panel .bb{background:rgba(123,169,143,.08);border-radius:6px;padding:9px;margin-top:9px;font-size:11px;}
+  .policy-panel .bb strong{color:#d0d8e2;}
+
+  .hypo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;}
+  .hcard{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:22px;transition:all .25s;}
+  .hcard:hover{transform:translateY(-3px);border-color:rgba(197,165,90,.35);}
+  .hcard h4{font-size:13px;font-weight:700;margin-bottom:6px;}
+  .hcard .pct{font-family:'DM Mono';font-size:2em;font-weight:500;margin-bottom:8px;}
+  .hcard p{font-size:12px;color:#93a0b2;line-height:1.7;}
+  .hcard .bn{font-size:11px;color:var(--dim);margin-top:9px;border-top:1px solid var(--line);padding-top:9px;line-height:1.6;}
+  .hs h4,.hs .pct{color:#c9a84e;} .hd h4,.hd .pct{color:#7ba98f;}
+
+  .delib{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin-top:16px;}
+  .delib h3{font-size:11px;color:var(--dim);letter-spacing:1.5px;margin-bottom:16px;font-weight:700;text-transform:uppercase;}
+  .ditem{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line);}
+  .ditem:last-child{margin:0;padding:0;border:none;}
+  .ditem .q{font-size:14px;color:#d0d8e2;margin-bottom:6px;font-weight:600;}
+  .ditem .st{font-size:12.5px;color:#93a0b2;line-height:1.75;}
+  .ditem a{color:#7ba98f;text-decoration:none;font-size:11px;}
+
+  .twins{background:linear-gradient(90deg,rgba(212,165,116,.07),rgba(74,122,107,.07));
+    border:1px solid var(--line);border-radius:10px;padding:16px;margin:18px 0;
+    font-size:12.5px;line-height:1.8;text-align:center;}
+  .twins .lbl{font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:5px;}
+  .twins b{color:#d6dce6;}
+
+  .morelinks{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;}
+  .morelinks a{font-size:12.5px;color:var(--dim);text-decoration:none;transition:color .15s;}
+  .morelinks a:hover{color:var(--gold);}
+
+  footer{text-align:center;padding:56px 24px 40px;font-size:13px;color:#8493a6;line-height:2;
+    border-top:1px solid var(--line);}
+  footer .oro{font-family:'Noto Serif KR',serif;font-size:16px;color:#c5b58a;margin-bottom:8px;}
+  footer .bio{font-size:11.5px;color:var(--dim);}
+  footer .bio a{color:#7ba98f;text-decoration:none;}
 </style>
 </head>
 <body>
 
-<!-- A. 한 문장 + 표지 -->
-<div class="hero">
-  <div class="hero-text">
-    <h1>황금새장을열다</h1>
-    <p><strong>잘 되고 있는데 왜 불안한가.</strong></p>
-    <p>열 편의 소설이 그 불안의 구조를 진단하고, <strong>빌린 것을 갚아 새장을 둥지로 연다.</strong></p>
-    <p style="font-size:12px;color:#5a6a7a;line-height:1.75;margin-top:14px;border-left:2px solid #4A7A6B;padding-left:10px;font-style:italic;">욕망·계산·신념·질서가 새장이 되고(<b style="color:#9aa8b8;font-weight:600;">시지프스</b>), 정중앙에서 한 번 멈춘 뒤(★), 사용자·기술·투자자·협력자와 그것을 둥지로 다시 짓는다(<b style="color:#9aa8b8;font-weight:600;">헤르메스</b>). 끝이 다시 시작이 된다.<br>— 소설이 먼저 실패하고, 독자가 <b style="color:#9aa8b8;font-weight:600;">세상을 짓는 trickster</b>로 변신한다.</p>
-    <a class="cta" href="interactive/reader.html?file=ch0_prologue">체험 시작 →</a>
-  </div>
-  <div class="hero-img">
-    <img src="img/hero.png" alt="황금새장">
-  </div>
+<div id="progress"></div>
+<div id="phase">
+  <div class="p p1 on"><span class="bead"></span>1부 · 부수기</div>
+  <div class="p p2"><span class="bead"></span>★ 멈춤</div>
+  <div class="p p3"><span class="bead"></span>2부 · 다시짓기</div>
 </div>
 
-<!-- A0. 항해 지도 — 사면체 안의 거꾸로 사면체 -->
-<style>
-  .bookmap{max-width:1000px;margin:0 auto;padding:6px 24px 36px;}
-  .bookmap-head{text-align:center;max-width:680px;margin:0 auto 6px;}
-  .bookmap-kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:12px;}
-  .bookmap-head h2{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.4;}
-  .bookmap-head p{font-size:13px;color:#8899aa;line-height:1.95;}
-  .bookmap-head p b{color:#d6dce6;font-weight:600;}
-  .bookmap-svg{width:100%;height:auto;display:block;margin:2px auto 0;}
-  .bookmap-img{width:100%;max-width:760px;height:auto;display:block;margin:10px auto 0;border-radius:10px;}
-  .bookmap-svg a{cursor:pointer;}
-  .bookmap-svg a:hover circle{stroke:#fff;stroke-width:2.5;}
-  .bookmap-svg a:hover text{fill:#fff !important;}
-  .bookmap-foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:4px;line-height:1.9;}
-</style>
-<section class="bookmap">
-  <div class="bookmap-head">
-    <div class="bookmap-kicker">THE MAP · 지도 없는 항해를 위한 한 장의 지도</div>
-    <h2>새장 사면체 안에, 둥지 사면체가 거꾸로 맞물린다</h2>
-    <p>1부 새장(시지프스)을 <b>한 번 멈춰</b> 뒤집으면 2부 둥지(헤르메스)가 된다 — 같은 골격이 감옥에서 둥지로. 빌린 것을 갚는 그 한 끗이 <b>새장을 연다</b>. 지도를 손에 쥔 자만이 그것을 버리고 항해를 떠난다. <b>세상을 짓는 trickster</b>가 된다.</p>
+<!-- ══════════ HERO — 닫힌 새장 ══════════ -->
+<section class="hero">
+  <div class="cage-wrap" aria-hidden="true">
+    <svg viewBox="0 0 120 150">
+      <!-- 불꽃(갇힌 새) : 열리면 솟는다 -->
+      <path class="spark" d="M60 96 C54 84 54 74 60 64 C66 74 66 84 60 96 Z"/>
+      <!-- 상단 고리 -->
+      <ellipse class="cage-frame" cx="60" cy="22" rx="7" ry="7"/>
+      <path class="cage-frame" d="M60 15 C60 9 60 9 60 6"/>
+      <!-- 돔 -->
+      <path class="cage-frame" d="M22 60 C22 34 98 34 98 60"/>
+      <!-- 창살 (열리면 벌어짐) -->
+      <line class="bar bar-l"  x1="60" y1="22" x2="24" y2="118"/>
+      <line class="bar bar-ll" x1="60" y1="22" x2="44" y2="118"/>
+      <line class="bar" x1="60" y1="22" x2="60" y2="118"/>
+      <line class="bar bar-rr" x1="60" y1="22" x2="76" y2="118"/>
+      <line class="bar bar-r"  x1="60" y1="22" x2="96" y2="118"/>
+      <!-- 바닥 -->
+      <ellipse class="cage-frame" cx="60" cy="118" rx="38" ry="9"/>
+      <rect class="cage-frame" x="34" y="118" width="52" height="12" rx="3"/>
+    </svg>
   </div>
-  <img class="bookmap-img" src="interactive/diagrams/00_geo_사면체안의사면체.png" alt="사면체 안의 사면체 — 바깥 새장 4 ⊃ 안 둥지 4, 중심 101호 (5↔10)">
-  <div class="bookmap-foot">바깥 검은 마름모 = 새장(시지프스) · 안쪽 = 둥지(헤르메스) · 점선 = 거울쌍(한 글자 비틂) · 중심 빨강 = 5&#8596;10 회전축 · <a href="interactive/bookmap_3d.html">3D로 체험 →</a></div>
+
+  <h1>황금새장을열다</h1>
+  <p class="lead"><b>잘 되고 있는데 왜 불안한가.</b><br>
+    열 편의 소설이 그 불안의 구조를 진단하고, <b>빌린 것을 갚아 새장을 둥지로 연다.</b></p>
+  <p class="turn">
+    욕망·계산·신념·질서가 새장이 되고(<b>시지프스</b>), 정중앙에서 한 번 멈춘 뒤(★),
+    사용자·기술·투자자·협력자와 그것을 둥지로 다시 짓는다(<b>헤르메스</b>). 끝이 다시 시작이 된다.<br>
+    — 소설이 먼저 실패하고, 독자가 <b>세상을 짓는 trickster</b>로 변신한다.
+  </p>
+  <div class="cta-row">
+    <a class="cta primary" href="interactive/reader.html?file=ch0_prologue">체험 시작 →</a>
+    <a class="cta ghost" href="interactive/element_map.html">생각 지도 열기</a>
+  </div>
+  <div class="scroll-cue">스크롤하며 새장을 연다 ↓</div>
 </section>
-<!-- B. 창업소설이란 — 장르의 품질척도 -->
-<div class="section">
-  <div class="section-label">창업소설이란</div>
-  <div class="genre">
-    <div class="genre-col">
+
+<!-- ══════════ 1부 · 부수기 (DISENCHANTMENT) ══════════ -->
+<section class="band">
+  <div class="reveal">
+    <div class="kicker" style="color:#8aa0b8;">PART 1 · 부수기 — DISENCHANTMENT</div>
+    <h2>네 개의 새장, 네 개의 청구서</h2>
+    <p class="intro">막스 베버가 말한 <b>각성(Entzauberung)</b> — 마법이 벗겨지는 순간. 욕망·품위·확신·질서가
+      어떻게 감옥이 되는지, 네 편의 고전이 먼저 실패한다. 자금이 방향전환을 억압할 때
+      성장이 깎인다(<b>dG/dF = (−)</b>). 여기서 <b>빚이 드러난다.</b></p>
+  </div>
+
+  <div class="rooms reveal">
+    <a class="room" href="interactive/reader.html?file=ch1_mirror_cage" style="--c:#9B7A8B;">
+      <span class="edge" style="background:#9B7A8B;"></span>
+      <div class="no">CH 1 · 거울</div>
+      <div class="name" style="color:#c39fb3;">마담 보바리</div>
+      <div class="novel">빌린 비전의 대가가 청구된다</div>
+      <div class="quote">"사실 가끔은 계산을 해 보려고 노력하기도 했다."</div>
+      <div class="cure" style="color:#c39fb3;">장부를 펴라</div>
+    </a>
+    <a class="room" href="interactive/reader.html?file=ch2_telescope_cage">
+      <span class="edge" style="background:#7A8068;"></span>
+      <div class="no">CH 2 · 망원경</div>
+      <div class="name" style="color:#a2a888;">표범</div>
+      <div class="novel">타이밍이 지나간다</div>
+      <div class="quote">"모든 것이 그대로이려면, 모든 것이 변해야 한다."</div>
+      <div class="cure" style="color:#a2a888;">순서를 타라</div>
+    </a>
+    <a class="room" href="interactive/reader.html?file=ch3_glass_cage">
+      <span class="edge" style="background:#4A7A6B;"></span>
+      <div class="no">CH 3 · 유리</div>
+      <div class="name" style="color:#6fa593;">페스트</div>
+      <div class="novel">확신이 현실에 부딪힌다</div>
+      <div class="quote">"여러분은 그 불행을 겪어 마땅합니다."</div>
+      <div class="cure" style="color:#6fa593;">확신을 교정하라</div>
+    </a>
+    <a class="room" href="interactive/reader.html?file=ch4_clock_cage">
+      <span class="edge" style="background:#5A8A9A;"></span>
+      <div class="no">CH 4 · 시계</div>
+      <div class="name" style="color:#82b0c0;">방드르디</div>
+      <div class="novel">빌린 구조가 무너진다</div>
+      <div class="quote">"새로운 시대가 도래하는 서곡 같았다."</div>
+      <div class="cure" style="color:#82b0c0;">다음 불을 피워라</div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════ ★ 멈춤 — PIVOT (창업혼의 도약) ══════════ -->
+<section class="pivot">
+  <div class="star">★</div>
+  <div class="axis">5 ↔ 10 회전축 · 101호</div>
+  <h2>새장을 부수는 게 아니라, <br>연다</h2>
+  <p class="leap">밀리기 전에 뛰어내려라.</p>
+  <p class="sub">정중앙에서 한 번 멈춘다. 빌린 것을 갚는 그 한 끗 —
+    지도를 손에 쥔 자만이 그것을 버리고 항해를 떠난다.
+    여기서 차가운 감옥이 따뜻한 둥지로 뒤집힌다. <b style="color:#c5b58a;">한 글자만 비틀면 된다.</b></p>
+  <a class="hub" href="interactive/reader.html?file=ch5_mirror_nest">5장 거울둥지 — 전환점으로 →</a>
+</section>
+
+<!-- ══════════ 2부 · 다시짓기 (RE-ENCHANTMENT) ══════════ -->
+<section class="band">
+  <div class="reveal">
+    <div class="kicker" style="color:#d69a6a;">PART 2 · 다시짓기 — RE-ENCHANTMENT</div>
+    <h2>같은 골격, 열린 둥지</h2>
+    <p class="intro">부서진 자리에서 <b>다시 매혹</b>시킨다(트릭스터의 재명명). 새장을 뒤집으면 같은 넷이
+      둥지가 된다 — 나비·튤립·안개·까마귀. 사용자·기술·투자자·협력자와 함께,
+      <b>세상을 짓는 자</b>로 변신한다. 끝(9)이 다시 시작(1)이 된다.</p>
+  </div>
+
+  <div class="rooms reveal">
+    <a class="room" href="interactive/reader.html?file=ch6_butterfly_nest">
+      <span class="edge" style="background:#C97B3C;"></span>
+      <div class="no">CH 6 · 나비 · 🦋 사용자</div>
+      <div class="name" style="color:#d99a5f;">M. 나비</div>
+      <div class="novel">환상을 알면서 입기</div>
+      <div class="quote">역할이 옷인 줄 안 채로 입는다.</div>
+      <div class="cure" style="color:#d99a5f;">역할을 입어라</div>
+    </a>
+    <a class="room" href="interactive/reader.html?file=ch7_tulip_nest">
+      <span class="edge" style="background:#C74B7B;"></span>
+      <div class="no">CH 7 · 튤립 · 🌷 기술자</div>
+      <div class="name" style="color:#d97ba0;">검은 튤립</div>
+      <div class="novel">분포로 의심하기</div>
+      <div class="quote">De Witt 학살 옆에서 피운 불가능한 꽃.</div>
+      <div class="cure" style="color:#d97ba0;">확률적으로 생각하라</div>
+    </a>
+    <a class="room" href="interactive/reader.html?file=ch8_mist_nest">
+      <span class="edge" style="background:#3A8AB0;"></span>
+      <div class="no">CH 8 · 안개 · 🌫️ 투자자</div>
+      <div class="name" style="color:#5fabcf;">안개 (니볼라)</div>
+      <div class="novel">선을 넘어 작가의 책상까지</div>
+      <div class="quote">우나무노에게 대드는 피조물 아우구스토.</div>
+      <div class="cure" style="color:#5fabcf;">선을 넘어라</div>
+    </a>
+    <a class="room" href="interactive/reader.html?file=ch9_raven_nest">
+      <span class="edge" style="background:#3A8A6B;"></span>
+      <div class="no">CH 9 · 까마귀 · 🐦‍⬛ 협력자</div>
+      <div class="name" style="color:#5fb08f;">까마귀 이야기</div>
+      <div class="novel">이름을 다시 짓기 (Phase 1+2)</div>
+      <div class="quote">까마귀가 빛을 물고 굴뚝을 뚫어 날아오른다.</div>
+      <div class="cure" style="color:#5fb08f;">너의 유사(遺事)를 써라</div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════ 디지털만의 특장 — "종이가 할 수 없는 것" ══════════ -->
+<section class="band">
+  <div class="reveal">
+    <div class="kicker" style="color:var(--gold);">DIGITAL ONLY · 종이가 할 수 없는 것</div>
+    <h2>읽지 말고, 들어가 보라</h2>
+    <p class="intro">이 책은 종이에서 시작해 화면에서 살아난다. 정적인 도표가 아니라
+      <b>끌고·뒤집고·재생하는</b> 살아 있는 구조 — 저자의 3년 실험이 그대로 돌아간다.</p>
+  </div>
+
+  <div class="gallery reveal">
+    <a class="exp feature" href="interactive/element_map.html">
+      <span class="new">NEW</span>
+      <span class="ico">🗺️</span>
+      <div>
+        <div class="t">생각 지도 — 153개의 생각이 어느 장에 사는가</div>
+        <div class="d">방정식·프레임워크·인물·상징·동작·고유어휘 여섯 갈래의 생각원소를 끌어 보고,
+          장을 눌러 그 장의 생각을 밝힌다. 표로도 볼 수 있다. 책 전체가 하나의 지도.</div>
+      </div>
+    </a>
+
+    <a class="exp" href="interactive/bookmap_3d.html">
+      <span class="ico">🔻</span>
+      <div class="t">3D 사면체</div>
+      <div class="d">새장 사면체 안에 둥지 사면체가 거꾸로 맞물린다. 돌려 보라.</div>
+    </a>
+    <a class="exp" href="interactive/tetrahedron.html">
+      <span class="ico">🧭</span>
+      <div class="t">나는 어느 새장에 있는가</div>
+      <div class="d">"자기 새장은 자기에게 안 보인다"를 구조로 체험한다.</div>
+    </a>
+    <a class="exp" href="interactive/emotion_trajectory.html">
+      <span class="ico">📈</span>
+      <div class="t">감정 궤적 — 14일 진화</div>
+      <div class="d">도취·고집·부끄러움·연민 4축으로 인물의 감정이 움직인다.</div>
+    </a>
+    <a class="exp" href="interactive/reference_graph.html">
+      <span class="ico">🕸️</span>
+      <div class="t">원고 지도</div>
+      <div class="d">원고와 장면이 어떻게 이어지는지 연결망으로 본다.</div>
+    </a>
+    <a class="exp" href="interactive/periodic_table_prototype.html">
+      <span class="ico">⚗️</span>
+      <div class="t">484 실패 주기율표</div>
+      <div class="d">50년 세계문학 484권 × 감정 격자, 라이브 데이터베이스.</div>
+    </a>
+    <a class="exp" href="interactive/symbols.html">
+      <span class="ico">🔮</span>
+      <div class="t">12개의 상징</div>
+      <div class="d">네 가지 빚을 갚은 자리에 남는 열두 상징.</div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════ 창업소설이란 ══════════ -->
+<section class="band">
+  <div class="reveal">
+    <div class="kicker" style="color:var(--dim);">창업소설이란</div>
+    <h2>무엇을 걸고, 무엇을 잃는가</h2>
+  </div>
+  <div class="duo reveal">
+    <div class="panel">
       <h3>구성 3요소</h3>
-      <div class="genre-item">
-        <div class="label">인물</div>
-        <div class="value">다 <em>— 낭만으로 뛰는 사람</em><br>세 <em>— 분석으로 보는 사람</em></div>
-      </div>
-      <div class="genre-item">
-        <div class="label">사건</div>
-        <div class="value">빚이 드러나는 순간 <em>— 청구서, 지나간 타이밍, 아이의 죽음, 담뱃대 폭발</em></div>
-      </div>
-      <div class="genre-item">
-        <div class="label">배경</div>
-        <div class="value">무도회장, 항구, 봉쇄된 도시, 섬</div>
-      </div>
+      <div class="kv"><div class="k">인물</div><div class="v">다 <em>— 낭만으로 뛰는 사람</em><br>세 <em>— 분석으로 보는 사람</em></div></div>
+      <div class="kv"><div class="k">사건</div><div class="v">빚이 드러나는 순간 <em>— 청구서, 지나간 타이밍, 아이의 죽음, 담뱃대 폭발</em></div></div>
+      <div class="kv"><div class="k">배경</div><div class="v">무도회장, 항구, 봉쇄된 도시, 섬</div></div>
     </div>
-    <div class="genre-col">
+    <div class="panel">
       <h3>소설 3요소</h3>
-      <div class="genre-item">
-        <div class="label">주제</div>
-        <div class="value">욕망·품위·확신·질서 — 네 가지 빚을 상환한 뒤 <a href="interactive/symbols.html" style="color:#4A7A6B;text-decoration:none;border-bottom:1px solid rgba(74,122,107,0.3);">12개의 상징</a>을 찾는다</div>
-      </div>
-      <div class="genre-item">
-        <div class="label">구성</div>
-        <div class="value">감각하기→이해하기→관찰하기→실천하기. 느끼고, 구조를 얻고, 확인하고, 행동한다</div>
-      </div>
-      <div class="genre-item">
-        <div class="label">문체</div>
-        <div class="value">문체를 완성해갈 때쯤엔 이미 그것을 넘어서 있다</div>
-      </div>
+      <div class="kv"><div class="k">주제</div><div class="v">욕망·품위·확신·질서 — 네 가지 빚을 상환한 뒤 <a href="interactive/symbols.html">12개의 상징</a>을 찾는다</div></div>
+      <div class="kv"><div class="k">구성</div><div class="v">감각하기 → 이해하기 → 관찰하기 → 실천하기. 느끼고, 구조를 얻고, 확인하고, 행동한다</div></div>
+      <div class="kv"><div class="k">문체</div><div class="v">문체를 완성해갈 때쯤엔 이미 그것을 넘어서 있다</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- C. 새장 4 + 허브 + 둥지 4 -->
-<div class="section">
-  <div class="section-label">네 개의 새장</div>
-  <div class="map">
-    <a class="cell c1" href="interactive/reader.html?file=ch1_mirror_cage">
-      <div class="ch">1 거울</div>
-      <div class="novel">마담 보바리</div>
-      <div class="event">빌린 비전의 대가가 청구된다</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">"사실 가끔은 계산을 해 보려고 노력하기도 했다."</div>
-      <div class="cure">장부를 펴라</div>
-    </a>
-    <a class="cell c2" href="interactive/reader.html?file=ch2_telescope_cage">
-      <div class="ch">2 망원경</div>
-      <div class="novel">표범</div>
-      <div class="event">타이밍이 지나간다</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">"모든 것이 그대로이려면, 모든 것이 변해야 한다."</div>
-      <div class="cure">순서를 타라</div>
-    </a>
-    <a class="cell c3" href="interactive/reader.html?file=ch3_glass_cage">
-      <div class="ch">3 유리</div>
-      <div class="novel">페스트</div>
-      <div class="event">확신이 현실에 부딪힌다</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">"여러분은 그 불행을 겪어 마땅합니다."</div>
-      <div class="cure">확신을 교정하라</div>
-    </a>
-    <a class="cell c4" href="interactive/reader.html?file=ch4_clock_cage">
-      <div class="ch">4 시계</div>
-      <div class="novel">방드르디</div>
-      <div class="event">빌린 구조가 무너진다</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">"새로운 시대가 도래하는 서곡 같았다."</div>
-      <div class="cure">다음 불을 피워라</div>
-    </a>
+<!-- ══════════ 누구의 삶을 바꾸는가 ══════════ -->
+<section class="band">
+  <div class="reveal">
+    <div class="kicker" style="color:var(--dim);">누구의 삶을 바꿀 이야기인가</div>
+    <h2>작가 · 독자 · 정책설계자</h2>
   </div>
-</div>
-
-<!-- C2. 5장 허브 -->
-<div class="section">
-  <div class="section-label" style="color:#5B3A8A;">5장 거울둥지 — 전환점 (★멈춤)</div>
-  <div class="map" style="justify-content:center;">
-    <a class="cell" href="interactive/reader.html?file=ch5_mirror_nest" style="border-color:#5B3A8A;background:linear-gradient(135deg,#f0ebfa,#fff);max-width:340px;">
-      <div class="ch" style="color:#5B3A8A;">5 거울둥지 HUB</div>
-      <div class="novel">cage ↔ nest 회전축</div>
-      <div class="event">5↔9 ouroboros · 한 글자 비틂</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">새장을 부수는 게 아니라 연다</div>
-      <div class="cure">멈추어라 · 거울을 찾아라</div>
-    </a>
-  </div>
-</div>
-
-<!-- C3. 네 개의 둥지 -->
-<div class="section">
-  <div class="section-label">네 개의 둥지</div>
-  <div class="map">
-    <a class="cell" href="interactive/reader.html?file=ch6_butterfly_nest" style="border-color:#8A5B3A;">
-      <div class="ch" style="color:#8A5B3A;">6 나비</div>
-      <div class="novel">M. 나비</div>
-      <div class="event">환상을 알면서 입기</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">역할이 옷인 줄 안 채로 입는다</div>
-      <div class="cure">역할을 입어라</div>
-    </a>
-    <a class="cell" href="interactive/reader.html?file=ch7_tulip_nest" style="border-color:#8A3A5B;">
-      <div class="ch" style="color:#8A3A5B;">7 튤립</div>
-      <div class="novel">검은 튤립</div>
-      <div class="event">분포로 의심하기</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">De Witt 학살 · 불가능한 꽃</div>
-      <div class="cure">확률적으로 생각하라</div>
-    </a>
-    <a class="cell" href="interactive/reader.html?file=ch8_mist_nest" style="border-color:#3A6B8A;">
-      <div class="ch" style="color:#3A6B8A;">8 안개</div>
-      <div class="novel">안개 (니볼라)</div>
-      <div class="event">선을 넘어 작가의 책상까지</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">우나무노↔아우구스토</div>
-      <div class="cure">선을 넘어라</div>
-    </a>
-    <a class="cell" href="interactive/reader.html?file=ch9_raven_nest" style="border-color:#3A8A6B;">
-      <div class="ch" style="color:#3A8A6B;">9 까마귀</div>
-      <div class="novel">까마귀 이야기</div>
-      <div class="event">Phase 1+2 · 이름을 다시 짓기</div>
-      <div style="font-size:11px;color:#5a6a7a;font-style:italic;margin:6px 0;line-height:1.5;">까마귀가 빛을 물고 날아오름</div>
-      <div class="cure">너의 유사를 써라</div>
-    </a>
-  </div>
-</div>
-
-<!-- D. 누구의 삶을 바꾸는가 -->
-<div class="section">
-  <div class="section-label">누구의 삶을 바꿀 이야기인가</div>
-  <div class="audience">
-    <div class="audience-card">
+  <div class="trio reveal">
+    <div class="pcard">
       <h4>작가</h4>
       <p>모두의창업 국가 프로젝트의 기회를 타고 작가가 한국 창업문화를 정립한다.</p>
       <div class="detail">꿈 = 훌륭한 작가. 선배 작가 8인이 저자에게 건넨 한 줄.</div>
-
       <div class="policy-buttons">
         <button class="policy-btn" onclick="togglePolicy('writer', this)">선배 작가의 조언 ▾</button>
-        <a class="policy-btn" href="interactive/writing-sources.html" style="text-decoration:none;display:inline-block;">글쓰기 자료원 →</a>
+        <a class="policy-btn" href="interactive/writing-sources.html">글쓰기 자료원 →</a>
       </div>
-
       <div id="policy-writer" class="policy-panel">
         <h5>짓고 · 비우고 · 견뎌라</h5>
         물밑에서 한 이미지를 끝까지 따라가 <b>구조를 짓고</b>, 수면에선 투명한 창으로 <b>비우되</b>, 목소리가 떠오를 때까지 침묵을 <b>견뎌라</b>.
-
         <h5>책 속 거장 — 당신이 인용하는 그 작가가</h5>
         <ul>
           <li><b>오웰</b>(1984·동물농장) — 투명한 창이 되어라. 학술은 주장을 명시, 서사는 생략으로 참여.</li>
@@ -288,134 +462,156 @@
           <li><b>우나무노</b>(안개) — 피조물이 작가에게 대들게 하라. 한 글자만 비틀어라.</li>
           <li><b>온다체</b>(기억의 빛) — 두 번째 읽기를 위해 첫 읽기를 설계하라.</li>
         </ul>
-
         <h5>현대 장인 — HowIWrite 진액</h5>
         <ul>
           <li><b>Harding</b> — 상징부터 가지 마라. 한 이미지를 끝까지 따라가면 감정 구조가 핀다.</li>
           <li><b>Z. Smith</b> — 목소리는 고르는 게 아니라 아래에서 떠오른다.</li>
           <li><b>Shafak</b> — 침묵을 인물처럼 다뤄라.</li>
         </ul>
-
         <div class="quote">"빌린 것을 갚으면 새장이 둥지가 된다."</div>
       </div>
     </div>
-    <div class="audience-card">
+    <div class="pcard">
       <h4>독자</h4>
       <p>창업언어와 창업소설 작문 체계로 독자가 자기 새장을 진단하고 둥지를 짓는다.</p>
       <div class="detail">산업별(문화·제조·의약·AI) · 타입별(로컬·기술) · 단계별(무도회장→항구→봉쇄도시→섬)</div>
       <div class="policy-buttons">
-        <a class="policy-btn" href="interactive/emotion-sources.html" style="text-decoration:none;display:inline-block;">감정 자료원 →</a>
+        <a class="policy-btn" href="interactive/emotion-sources.html">감정 자료원 →</a>
+        <a class="policy-btn" href="interactive/readers.html">12 독자 셀 →</a>
       </div>
     </div>
-    <div class="audience-card">
+    <div class="pcard">
       <h4>정책설계자</h4>
       <p>유연한 헌신을 통해 정책설계자가 생산적인 실패의 자가발전 회로를 가동한다.</p>
-      <div class="detail">경제경영(자금·인프라, 로컬·기술 관리) · 문화(창업오디션, 실패경험 데이터베이스)</div>
-
+      <div class="detail">경제경영(자금·인프라, 로컬·기술 관리) · 문화(창업오디션, 실패경험 DB)</div>
       <div class="policy-buttons">
         <button class="policy-btn" onclick="togglePolicy('econ', this)">경제경영 ▾</button>
         <button class="policy-btn" onclick="togglePolicy('culture', this)">문화 ▾</button>
       </div>
-
       <div id="policy-econ" class="policy-panel">
         <h5>정책 4축의 빈자리 = ⭐️ WHY</h5>
         기술·생산성·수출·성장에 빠진 축 — "왜 창업하나". 자금이 단계마다 dG/dF=(−)로 작동: 200만→ch1 · 2,000만→ch2 · 1억→ch3 · 10억→ch4.
-
         <div class="quote">"빌린 것을 갚으면 새장이 둥지가 된다."</div>
-
-        <div class="bb">
-          <strong>Bottleneck = Sell</strong> · S 65% × D 78% = <strong>곱 0.51</strong><br>
-          <strong>요청</strong>: 5,000명 중 5명 대표 <a href="interactive/readers.html">인터뷰</a> → Sell 90% → 곱 0.70.
-        </div>
+        <div class="bb"><strong>Bottleneck = Sell</strong> · S 65% × D 78% = <strong>곱 0.51</strong><br>
+          <strong>요청</strong>: 5,000명 중 5명 대표 <a href="interactive/readers.html">인터뷰</a> → Sell 90% → 곱 0.70.</div>
       </div>
-
       <div id="policy-culture" class="policy-panel">
         <h5>오디션 = 4 새장 진단 · 실패경험 DB = 484</h5>
         오디션 단계별 압박이 ch1~ch4와 1:1. 굿페일·재도전 = ch4 빈칸. 실패경험 DB = 50년 세계문학 484 + V×A 감정 격자.
-
         <div class="quote">"창업소설은 무엇을 걸고 무엇을 잃는지의 이야기."</div>
-
-        <div class="bb">
-          <strong>Deliver 78%</strong> · 곱 0.51 · 14일 진화 ×2.3 (<a href="interactive/emotion_trajectory.html">검증</a>)<br>
-          <strong>요청</strong>: 콘텐츠 채택 검토 — 종이 1부(진단) + 디지털 2부(<a href="interactive/periodic_table_prototype.html">484 라이브</a>) 두 트랙 독립 운영.
-        </div>
+        <div class="bb"><strong>Deliver 78%</strong> · 곱 0.51 · 14일 진화 ×2.3 (<a href="interactive/emotion_trajectory.html">검증</a>)<br>
+          <strong>요청</strong>: 콘텐츠 채택 검토 — 종이 1부(진단) + 디지털 2부(<a href="interactive/periodic_table_prototype.html">484 라이브</a>) 두 트랙 독립 운영.</div>
       </div>
     </div>
-
-    <script>
-      function togglePolicy(id, btn){
-        const panel = document.getElementById('policy-' + id);
-        const isActive = panel.classList.contains('active');
-        document.querySelectorAll('.policy-panel').forEach(p=>p.classList.remove('active'));
-        document.querySelectorAll('.policy-btn').forEach(b=>b.classList.remove('active'));
-        if(!isActive){
-          panel.classList.add('active');
-          btn.classList.add('active');
-        }
-      }
-    </script>
   </div>
-</div>
+</section>
 
-<!-- E. 고민 중인 것 — 두 가설 + 열린 문제 -->
-<div class="section">
-  <div class="section-label">고민 중인 것</div>
+<!-- ══════════ 고민 중인 것 ══════════ -->
+<section class="band">
+  <div class="reveal">
+    <div class="kicker" style="color:var(--dim);">고민 중인 것</div>
+    <h2>지금 저울질하고 있는 것들</h2>
+  </div>
 
-  <div class="hypo-grid">
-    <a href="interactive/readers.html" class="hypo-card hypo-s" style="text-decoration:none;">
+  <div class="hypo reveal">
+    <a href="interactive/readers.html" class="hcard hs">
       <h4>🟡 사용자에게 닿는가 (S)</h4>
       <div class="pct">65%</div>
       <p>가설: 12 독자 셀(3 페르소나 × 4 산업 📺⚙️🧬⚡️) 모두 자기 진입로를 갖는다</p>
-      <div class="bottleneck">진전: 4축 좌표계·산업 emoji·12 매트릭스 정착 · 남은 일: 한국 사례 1·3장 (옐로모바일·신라젠 펙사벡 후보)</div>
+      <div class="bn">진전: 4축 좌표계·산업 emoji·12 매트릭스 정착 · 남은 일: 한국 사례 1·3장 (옐로모바일·신라젠 펙사벡 후보)</div>
     </a>
-    <a href="interactive/emotion_trajectory.html" class="hypo-card hypo-d" style="text-decoration:none;">
+    <a href="interactive/emotion_trajectory.html" class="hcard hd">
       <h4>🟢 작가가 만들 수 있는가 (D)</h4>
       <div class="pct">78%</div>
       <p>가설: AI에게 감정교육이 가능하다 — 도취·고집·부끄러움·연민의 4축으로</p>
-      <div class="bottleneck">진전: 4축 자동 측정 안정화 · 다·세 거리 18→11 · Anthropic 2026 native probe 정합 (4.25 측정)</div>
+      <div class="bn">진전: 4축 자동 측정 안정화 · 다·세 거리 18→11 · Anthropic 2026 native probe 정합 (4.25 측정)</div>
     </a>
   </div>
-  <div style="text-align:center;margin:-8px 0 16px;font-size:11px;color:#5a6a7a;">
-    📈 14일 진화: <a href="interactive/probability_evolution.html" style="color:#8899aa;text-decoration:underline;">(40·55) → (65·78) 영상 보기</a> · 곱 0.22→0.51 (×2.3)
+
+  <div style="text-align:center;margin:14px 0;font-size:11.5px;color:var(--dim);">
+    📈 14일 진화: <a href="interactive/probability_evolution.html" style="color:#93a0b2;text-decoration:underline;">(40·55) → (65·78) 영상 보기</a> · 곱 0.22→0.51 (×2.3)
   </div>
-  <div style="background:linear-gradient(90deg, rgba(212,165,116,0.06), rgba(74,122,107,0.06));border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12px;line-height:1.7;text-align:center;border:1px solid rgba(255,255,255,0.04);">
-    <div style="font-size:10px;color:#5a6a7a;letter-spacing:1px;margin-bottom:4px;">한 진실의 두 자매</div>
+
+  <div class="twins reveal">
+    <div class="lbl">한 진실의 두 자매</div>
     🔥 밖에서: <b>낭만이 점화하면, 책임지며, 장난치며</b><br>
     📊 안에서: <b>도취 식고, 고집 풀며, 책임 안고 장난친다</b>
   </div>
 
-  <div class="delib">
+  <div class="delib reveal">
     <h3>판단하시는 분께 — 이런 고민 중입니다</h3>
-    <div class="delib-item">
+    <div class="ditem">
       <div class="q">종이로 완결되는가, 디지털로 확장되는가</div>
-      <div class="status">AI 프롬프트 실습이 본체인지 부록인지에 따라 종이 분량과 부록 위상이 달라집니다. 두 가지 구조를 모두 그려보고 있습니다.</div>
+      <div class="st">AI 프롬프트 실습이 본체인지 부록인지에 따라 종이 분량과 부록 위상이 달라집니다. 두 가지 구조를 모두 그려보고 있습니다.</div>
       <a href="https://github.com/hyunjimoon/golden-cage-book/issues/33">#33 본문 품질</a>
     </div>
-    <div class="delib-item">
+    <div class="ditem">
       <div class="q">한국 사례를 어떤 기준으로 고를까</div>
-      <div class="status">독자 인지도, 빚의 구조적 선명함, 저자 접근성 — 세 기준의 우선순위를 저울질하고 있습니다. 인터뷰를 준비 중입니다.</div>
+      <div class="st">독자 인지도, 빚의 구조적 선명함, 저자 접근성 — 세 기준의 우선순위를 저울질하고 있습니다. 인터뷰를 준비 중입니다.</div>
       <a href="https://github.com/hyunjimoon/golden-cage-book/issues/32">#32 사업 전략</a>
     </div>
-    <div class="delib-item">
+    <div class="ditem">
       <div class="q">4장의 관계를 어떤 형태로 보여줄까</div>
-      <div class="status">평면 2×2는 순환과 인쇄에 적합하고, 정사면체는 "자기 새장은 자기에게 안 보인다"를 구조 자체로 체험시킵니다. 병행을 검토 중입니다.</div>
+      <div class="st">평면 2×2는 순환과 인쇄에 적합하고, 정사면체는 "자기 새장은 자기에게 안 보인다"를 구조 자체로 체험시킵니다. 병행을 검토 중입니다.</div>
       <a href="https://github.com/hyunjimoon/golden-cage-book/issues/22">#22 창업소설 작법론</a>
     </div>
   </div>
 
-  <div class="links" style="margin-top:16px;">
-    <a href="interactive/tetrahedron.html">나는 어느 새장에 있는가? →</a>
-    <a href="interactive/references.html">빚진 목소리 — 참고자료 한눈에 →</a>
+  <div class="morelinks">
+    <a href="interactive/element_map.html">🗺️ 생각 지도 →</a>
+    <a href="interactive/references.html">📚 빚진 목소리 — 참고자료 →</a>
     <a href="interactive/slide_bio.html">B·I·O — 나의 세 목적함수 →</a>
     <a href="interactive/reader.html?file=docs/INTENT">2차 소통문 →</a>
     <a href="https://github.com/hyunjimoon/golden-cage-book/issues">열린 고민 전체 →</a>
   </div>
-</div>
+</section>
 
-<div class="footer" style="line-height:1.8;">
-  빌린 것을 갚으면 새장이 둥지가 된다.<br>
-  <span style="font-size:11px;color:#4a5568;">문현지 — 168,011 벤처 실증 · MIT SM (석사 논문 <i>Optimal Ignorance</i>) · 《AI 내부자들》 등 3권 · <a href="mailto:amoon@mit.edu" style="color:#5a6a7a;text-decoration:none;">amoon@mit.edu</a></span>
-</div>
+<footer>
+  <div class="oro">빌린 것을 갚으면 새장이 둥지가 된다.</div>
+  <div class="bio">문현지 — 168,011 벤처 실증 · MIT SM (석사 논문 <i>Optimal Ignorance</i>) · 《AI 내부자들》 등 3권 ·
+    <a href="mailto:amoon@mit.edu">amoon@mit.edu</a></div>
+</footer>
 
+<script>
+/* ── 스크롤 구동: 1부(차가움) → 2부(온화함) 연속 morph ── */
+const C1={bg:[10,13,20], ink:[200,208,221]};   // 새장(차가움)
+const C2={bg:[20,17,15], ink:[232,224,212]};   // 둥지(온화함)
+const lerp=(a,b,t)=>Math.round(a+(b-a)*t);
+const rootS=document.documentElement.style;
+let ticking=false;
+function paint(){
+  const max=document.body.scrollHeight-innerHeight;
+  const p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+  // 부드러운 ease
+  const e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+  rootS.setProperty('--bg',`rgb(${lerp(C1.bg[0],C2.bg[0],e)},${lerp(C1.bg[1],C2.bg[1],e)},${lerp(C1.bg[2],C2.bg[2],e)})`);
+  rootS.setProperty('--ink',`rgb(${lerp(C1.ink[0],C2.ink[0],e)},${lerp(C1.ink[1],C2.ink[1],e)},${lerp(C1.ink[2],C2.ink[2],e)})`);
+  document.getElementById('progress').style.width=(p*100)+'%';
+  // 새장 열림 (첫 스크롤)
+  if(scrollY>40) document.body.classList.add('opened');
+  // 국면 표시
+  const p1=document.querySelector('.p1'),p2=document.querySelector('.p2'),p3=document.querySelector('.p3');
+  [p1,p2,p3].forEach(x=>x.classList.remove('on'));
+  if(p<.34)p1.classList.add('on'); else if(p<.5)p2.classList.add('on'); else p3.classList.add('on');
+  ticking=false;
+}
+addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(paint);ticking=true;}},{passive:true});
+addEventListener('resize',paint); paint();
+
+/* ── reveal on scroll ── */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── 정책 패널 토글 (보존) ── */
+function togglePolicy(id, btn){
+  const panel=document.getElementById('policy-'+id);
+  const isActive=panel.classList.contains('active');
+  document.querySelectorAll('.policy-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.policy-btn').forEach(b=>b.classList.remove('active'));
+  if(!isActive){panel.classList.add('active');btn.classList.add('active');}
+}
+</script>
 </body>
 </html>
