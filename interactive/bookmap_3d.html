@@ -8,19 +8,22 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1000px;margin:0 auto;padding:28px 24px 48px;}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 24px 48px;}
   .back{display:inline-block;font-size:12px;color:#5a6a7a;text-decoration:none;margin-bottom:18px;transition:color 0.15s;}
   .back:hover{color:#e8eaf0;}
-  .head{text-align:center;max-width:680px;margin:0 auto 6px;}
+  .head{text-align:center;max-width:720px;margin:0 auto 6px;}
   .kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:12px;}
   .head h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.4;}
   .head p{font-size:13px;color:#8899aa;line-height:1.95;}
   .head p b{color:#d6dce6;font-weight:600;}
   .svg{width:100%;height:auto;display:block;margin:2px auto 0;}
   .svg a{cursor:pointer;}
-  .svg a:hover circle{stroke:#fff;stroke-width:2.5;}
+  .svg a:hover .node{stroke:#fff;stroke-width:2.5;}
   .svg a:hover text{fill:#fff !important;}
-  .foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:4px;line-height:1.9;}
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:6px auto 0;max-width:760px;font-size:11.5px;color:#8899aa;}
+  .legend .it{display:flex;align-items:center;gap:6px;}
+  .legend svg{width:16px;height:16px;overflow:visible;}
+  .foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:12px;line-height:1.9;}
   .foot a{color:#4A7A6B;text-decoration:none;}
   .foot a:hover{text-decoration:underline;}
 </style>
@@ -31,54 +34,96 @@
   <div class="head">
     <div class="kicker">THE MAP · 3D 체험판</div>
     <h1>새장 사면체 안에, 둥지 사면체가 거꾸로 맞물린다</h1>
-    <p>같은 골격이 감옥에서 둥지로. <b>자기 새장은 자기에게 잘 안 보인다</b> — 깊이를 돌려가며 보면 안쪽 사면체가 드러난다. 정본 평면 지도는 <a href="../index.html" style="color:#8ab6d6;text-decoration:none;">표지</a>에.</p>
+    <p>왼쪽 넷(새장 1–4)은 <b>내 안의 믿음 → prior</b>, 오른쪽 넷(둥지 6–9)은 <b>이해관계자에게 건네는 값</b>. 둘은 중심 <b>101호</b>를 지나 거울로 마주 본다 — 같은 네 능력(desire·feasibility·action·metric)이 <b>도형</b>으로 짝을 이룬다. <b>자기 새장은 자기에게 잘 안 보인다</b>: 돌려 봐야 안쪽 사면체가 드러난다.</p>
   </div>
-  <svg id="bookmap-svg" class="svg" viewBox="0 0 1120 1000" role="img" aria-label="황금새장을열다 책 지도 — 사면체 안의 거꾸로 사면체"></svg>
-  <div class="foot">노드를 누르면 그 장으로 항해 → · 같은 색 = 거울쌍(한 글자 비틂) · 중심 &#9733; = 5&#8596;10 회전축(101&#8322;&#8596;101&#8323;)</div>
+  <svg id="bookmap-svg" class="svg" viewBox="0 0 1120 1080" role="img" aria-label="황금새장을열다 책 지도 — 4능력 거울 사면체"></svg>
+  <div class="legend" id="legend"></div>
+  <div class="foot">노드를 누르면 그 장으로 항해 → · 같은 <b>도형·색</b> = 거울쌍(1↔6·2↔7·3↔8·4↔9, 한 글자 비틂) · 중심 &#9733; = 5&#8596;10 회전축(101&#8322;&#8596;101&#8323;)</div>
 </div>
 <script>
 (function(){
-  const U={bit:'#4a90d9',atom:'#3aa86a',cell:'#d24b3a',second:'#d9a92e'};
+  // 4 능력(faculty) = 4렌즈 다이아몬드 색 + 도형. 좌(새장)=믿음→prior · 우(둥지)=stakeholder 값.
+  const F={
+    desire:{col:'#4a8fd9', sh:'circle', nm:'desirability',  ko:'욕망·바람'},   // 🦋 사용자 (BLUE)
+    feas:  {col:'#9a6bd0', sh:'tri',    nm:'feasibility',   ko:'실현가능'},    // 🌷 기술자 (PURPLE)
+    action:{col:'#d2564b', sh:'square', nm:'action·viability', ko:'행동·값어치'}, // 🌫️ 투자자 (RED)
+    metric:{col:'#3aa86a', sh:'star',   nm:'metric',        ko:'척도'},        // 🐦‍⬛ 협력자 (GREEN)
+  };
   const SL={1:'ch1_mirror_cage',2:'ch2_telescope_cage',3:'ch3_glass_cage',4:'ch4_clock_cage',6:'ch6_butterfly_nest',7:'ch7_tulip_nest',8:'ch8_mist_nest',9:'ch9_raven_nest'};
-  const S=205, CX=560, CY=480, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
+  // 대척점(antipode)이 거울쌍이 되도록 7·8 위치 배정 → 2↔7, 3↔8 (canon 2026-07-01: 원자짝 2↔8·3↔7 철회)
+  const V=[
+    {c:[1,1,1],  n:1,g:'cage',f:'desire', role:'믿음→prior · desirability',        nov:'마담 보바리', slo:'장부를 펴라'},
+    {c:[1,-1,-1],n:2,g:'cage',f:'feas',   role:'믿음→prior · feasibility',         nov:'표범',       slo:'순서를 타라'},
+    {c:[-1,1,-1],n:3,g:'cage',f:'action', role:'행동의 윤리 · action',             nov:'페스트',     slo:'확신을 교정하라'},
+    {c:[-1,-1,1],n:4,g:'cage',f:'metric', role:'나의 척도 · metric',               nov:'방드르디',   slo:'다음 불을 피워라'},
+    {c:[-1,-1,-1],n:6,g:'nest',f:'desire', role:'사용자 · user sellability',        nov:'M.Butterfly', slo:'역할을 입어라'},
+    {c:[-1,1,1], n:7,g:'nest',f:'feas',   role:'기술자 · tech deliverability',     nov:'검은 튤립',   slo:'확률적으로 생각하라'}, // 2[1,-1,-1] 대척
+    {c:[1,-1,1], n:8,g:'nest',f:'action', role:'투자자 · investor viability',      nov:'안개',       slo:'선을 넘어라'},        // 3[-1,1,-1] 대척
+    {c:[1,1,-1], n:9,g:'nest',f:'metric', role:'협력자 · eval. metric',            nov:'삼국유사',   slo:'의미를 만들어라'},
+  ];
+  const S=190, CX=560, CY=505, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
   const proj=c=>{const[x,y,z]=c; const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
     const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
-  const V=[
-    {c:[1,1,1],n:1,g:'cage',u:'bit',nm:'거울새장',kw:'욕망',slo:'장부를 펴라',nov:'마담 보바리'},
-    {c:[1,-1,-1],n:2,g:'cage',u:'atom',nm:'망원경새장',kw:'계산',slo:'순서를 타라',nov:'표범'},
-    {c:[-1,1,-1],n:3,g:'cage',u:'cell',nm:'스테인드글라스',kw:'책임',slo:'확신을 교정하라',nov:'페스트'},
-    {c:[-1,-1,1],n:4,g:'cage',u:'second',nm:'시계새장',kw:'질서',slo:'다음 불을 피워라',nov:'방드르디'},
-    {c:[-1,-1,-1],n:6,g:'nest',u:'bit',nm:'나비둥지',kw:'사용자',slo:'역할을 입어라',nov:'M.Butterfly'},
-    {c:[-1,1,1],n:8,g:'nest',u:'atom',nm:'안개둥지',kw:'투자자',slo:'선을 넘어라',nov:'안개'},
-    {c:[1,-1,1],n:7,g:'nest',u:'cell',nm:'튤립둥지',kw:'기술',slo:'확률적으로 생각하라',nov:'검은 튤립'},
-    {c:[1,1,-1],n:9,g:'nest',u:'second',nm:'까마귀둥지',kw:'협력자',slo:'의미를 만들어라',nov:'삼국유사'},
-  ];
   V.forEach(v=>{const p=proj(v.c);v.x=p.x;v.y=p.y;v.d=p.d;});
   const dmin=Math.min(...V.map(v=>v.d)), dmax=Math.max(...V.map(v=>v.d)), norm=d=>(d-dmin)/(dmax-dmin||1);
   const diff=(a,b)=>{let n=0;for(let i=0;i<3;i++)if(a.c[i]!==b.c[i])n++;return n;};
   let E=[]; for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){const a=V[i],b=V[j];E.push({a,b,k:diff(a,b),dep:(norm(a.d)+norm(b.d))/2});}
   const ln=(a,b,at)=>`<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" ${at}/>`;
+
+  // 도형 (능력별) — 크기 r, 색 col, 채움
+  function shape(sh,cx,cy,r,col,op){
+    const A2=Math.PI/2;
+    if(sh==='circle') return `<circle class="node" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
+    if(sh==='square'){const s2=r*0.92;return `<rect class="node" x="${(cx-s2).toFixed(1)}" y="${(cy-s2).toFixed(1)}" width="${(2*s2).toFixed(1)}" height="${(2*s2).toFixed(1)}" rx="2" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;}
+    if(sh==='tri'){const pts=[];for(let i=0;i<3;i++){const a=-A2+i*2*Math.PI/3;pts.push(`${(cx+r*1.15*Math.cos(a)).toFixed(1)},${(cy+r*1.15*Math.sin(a)).toFixed(1)}`);}return `<polygon class="node" points="${pts.join(' ')}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;}
+    // star
+    const pts=[];for(let i=0;i<10;i++){const rr=i%2?r*0.46:r*1.15;const a=-A2+i*Math.PI/5;pts.push(`${(cx+rr*Math.cos(a)).toFixed(1)},${(cy+rr*Math.sin(a)).toFixed(1)}`);}
+    return `<polygon class="node" points="${pts.join(' ')}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
+  }
+
   let s='';
-  E.filter(e=>e.k===1).forEach(e=>{s+=ln(e.a,e.b,`stroke="#8aa0c0" stroke-width="1" opacity="${(0.08+0.16*e.dep).toFixed(2)}"`);});
-  E.filter(e=>e.k===3).forEach(e=>{s+=ln(e.a,e.b,`stroke="${U[e.a.u]}" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.45"`);});
-  E.filter(e=>e.k===2 && e.a.g===e.b.g).forEach(e=>{const o=(0.32+0.5*e.dep).toFixed(2);
+  // 정육면체 잔변(k=1) 아주 옅게
+  E.filter(e=>e.k===1).forEach(e=>{s+=ln(e.a,e.b,`stroke="#8aa0c0" stroke-width="1" opacity="${(0.06+0.12*e.dep).toFixed(2)}"`);});
+  // 거울쌍 대각(k=3) = 능력색, 중심 통과
+  E.filter(e=>e.k===3).forEach(e=>{s+=ln(e.a,e.b,`stroke="${F[e.a.f].col}" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.5"`);});
+  // 사면체 변(k=2, 같은 그룹) — 새장 금 실선 / 둥지 청 점선
+  E.filter(e=>e.k===2 && e.a.g===e.b.g).forEach(e=>{const o=(0.30+0.5*e.dep).toFixed(2);
     if(e.a.g==='cage') s+=ln(e.a,e.b,`stroke="#cbb487" stroke-width="${(1.5+1.6*e.dep).toFixed(1)}" opacity="${o}"`);
     else s+=ln(e.a,e.b,`stroke="#8ab6d6" stroke-width="${(1.3+1.1*e.dep).toFixed(1)}" stroke-dasharray="7 5" opacity="${o}"`);});
-  // hub (clickable -> ch5)
+
+  // 중심 101호 — 예속=자유 · 무지=힘 · 다↔세
+  const R=46;
   s+=`<a href="reader.html?file=ch5_mirror_nest">`;
-  s+=`<circle cx="${CX}" cy="${CY}" r="30" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.2" opacity="0.9"/>`;
-  s+=`<text x="${CX}" y="${CY-5}" text-anchor="middle" fill="#d4af37" font-size="18" font-family="serif">&#9733;</text>`;
+  s+=`<circle cx="${CX}" cy="${CY}" r="${R}" fill="#0b0a08" stroke="#d4af37" stroke-width="1.3" opacity="0.95"/>`;
+  s+=`<text x="${CX}" y="${CY-24}" text-anchor="middle" fill="#9a8a4a" font-size="10">예속 = 자유 · 무지 = 힘</text>`;
+  s+=`<text x="${CX}" y="${CY-7}" text-anchor="middle" fill="#d4af37" font-size="20" font-family="serif">&#9733;</text>`;
   s+=`<text x="${CX}" y="${CY+12}" text-anchor="middle" fill="#d4af37" font-size="10.5">5&#8596;10 회전축</text>`;
   s+=`<text x="${CX}" y="${CY+25}" text-anchor="middle" fill="#9a8a4a" font-size="9.5">101&#8322;&#8596;101&#8323;</text></a>`;
-  [...V].sort((p,q)=>p.d-q.d).forEach(v=>{const col=U[v.u], f=norm(v.d), r=(7+4.5*f).toFixed(1), op=(0.5+0.5*f).toFixed(2);
+  // 중심 좌우 축 라벨: 사용가치 ↔ 고환가치, 다(유연) ↔ 세(헌신)
+  s+=`<text x="${CX-R-8}" y="${CY-4}" text-anchor="end" fill="#8aa0c0" font-size="10.5">← 사용가치</text>`;
+  s+=`<text x="${CX-R-8}" y="${CY+11}" text-anchor="end" fill="#6f7f96" font-size="9">다 · hail with flexibility</text>`;
+  s+=`<text x="${CX+R+8}" y="${CY-4}" text-anchor="start" fill="#c99" font-size="10.5">고환가치 →</text>`;
+  s+=`<text x="${CX+R+8}" y="${CY+11}" text-anchor="start" fill="#997" font-size="9">세 · scale with commitment</text>`;
+
+  // 노드(도형) — 깊이 뒤부터
+  [...V].sort((p,q)=>p.d-q.d).forEach(v=>{const F0=F[v.f], col=F0.col, f=norm(v.d), r=(9+4.5*f), op=(0.55+0.45*f).toFixed(2);
     let dx=v.x-CX, dy=v.y-CY, L=Math.hypot(dx,dy)||1; dx/=L; dy/=L;
-    const gap=44+Math.max(0,150-L)*0.55, lx=v.x+dx*gap, ly=v.y+dy*gap, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
+    const gap=48+Math.max(0,150-L)*0.5, lx=v.x+dx*gap, ly=v.y+dy*gap, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
     s+=`<a href="reader.html?file=${SL[v.n]}">`;
-    s+=`<circle cx="${v.x.toFixed(1)}" cy="${v.y.toFixed(1)}" r="${r}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly-6).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="15" fill="${col}">${v.n} ${v.nm}</text>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly+11).toFixed(1)}" text-anchor="${anc}" font-size="12" fill="#cfd6e0">${v.kw} &#183; &#12300;${v.slo}&#12301;</text>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly+27).toFixed(1)}" text-anchor="${anc}" font-size="10.5" fill="#7c8aa8">${v.nov} &#183; [${v.u}]</text></a>`;});
+    s+=shape(F0.sh, v.x, v.y, r, col, op);
+    s+=`<text x="${lx.toFixed(1)}" y="${(ly-6).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="15" fill="${col}">${v.n} ${v.nov}</text>`;
+    s+=`<text x="${lx.toFixed(1)}" y="${(ly+11).toFixed(1)}" text-anchor="${anc}" font-size="11.5" fill="#cfd6e0">${v.role}</text>`;
+    s+=`<text x="${lx.toFixed(1)}" y="${(ly+27).toFixed(1)}" text-anchor="${anc}" font-size="10.5" fill="#7c8aa8">&#12300;${v.slo}&#12301;</text></a>`;});
   document.getElementById('bookmap-svg').innerHTML=s;
+
+  // 범례 (도형 = 능력)
+  const legIco={circle:'<circle cx="8" cy="8" r="6.5"/>',
+    tri:'<polygon points="8,1 14.9,13 1.1,13"/>',
+    square:'<rect x="2" y="2" width="12" height="12" rx="1.5"/>',
+    star:'<polygon points="8,0.5 9.8,5.6 15.2,5.6 10.8,8.9 12.5,14 8,10.8 3.5,14 5.2,8.9 0.8,5.6 6.2,5.6"/>'};
+  let lg='';
+  Object.values(F).forEach(x=>{lg+=`<div class="it"><svg viewBox="0 0 16 16"><g fill="${x.col}">${legIco[x.sh]}</g></svg>${x.nm} <span style="color:#5a6a7a">${x.ko}</span></div>`;});
+  document.getElementById('legend').innerHTML=lg;
 })();
 </script>
 </body>
