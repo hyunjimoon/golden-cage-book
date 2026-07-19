@@ -1,0 +1,58 @@
+name: reader-ascent
+
+# /reader 4 이해관계자로 각 장을 채점 → docs/ascent.html 상승 시각화.
+# pivot-game 📐자 과정(METHOD.md)의 소설판. RUBRIC.md 참조.
+
+on:
+  push:
+    paths:
+      - 'chapters/ch*.md'
+      - 'scripts/reader_score.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reader-ascent-main
+  cancel-in-progress: true
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Score chapters with /reader panel
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/reader_score.py
+
+      - name: Commit updated ascent
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet docs/ascent.html docs/reader_scores.json; then
+            echo "변경 없음 — 커밋 생략"
+            exit 0
+          fi
+          git add docs/ascent.html docs/reader_scores.json
+          git commit -m "auto: /reader 📐자 채점 갱신 — $(date +%Y-%m-%d) [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push; then
+              echo "Push succeeded on attempt $i"
+              exit 0
+            fi
+            echo "Push attempt $i failed, retrying..."
+            sleep $((i * 5))
+          done
+          echo "All push attempts failed"
+          exit 1
