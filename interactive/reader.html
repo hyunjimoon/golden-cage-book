@@ -580,7 +580,32 @@ function md2html(md) {
   if(inCode)html+='</code></pre></div>';
   return html;
 }
-function inl(s){return s.replace(/\*\*다:\*\*/g,'<strong style="color:var(--accent);font-size:0.95em">다:</strong>').replace(/\*\*세:\*\*/g,'<strong style="color:#8899aa;font-size:0.95em">세:</strong>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');}
+function colorizeKeywords(s) {
+  const colorMap = {
+    "사용자": "#a78bfa", "욕망": "#a78bfa",
+    "기술자": "#76c893", "기술": "#76c893", "상상": "#76c893",
+    "투자자": "#f87171", "행동": "#f87171",
+    "협력자": "#59a5d8", "척도": "#59a5d8"
+  };
+  const parts = s.split(/(<[^>]+>)/g);
+  for (let i = 0; i < parts.length; i++) {
+    if (parts[i] && !parts[i].startsWith('<')) {
+      parts[i] = parts[i].replace(/(사용자|욕망|기술자|기술|상상|투자자|행동|협력자|척도)/g, function(match) {
+        return `<span style="color:${colorMap[match]}; font-weight: 600;">${match}</span>`;
+      });
+    }
+  }
+  return parts.join('');
+}
+function inl(s){
+  let res = s.replace(/\*\*다:\*\*/g,'<strong style="color:var(--accent);font-size:0.95em">다:</strong>')
+             .replace(/\*\*세:\*\*/g,'<strong style="color:#8899aa;font-size:0.95em">세:</strong>')
+             .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+             .replace(/\*([^*]+)\*/g,'<em>$1</em>')
+             .replace(/`([^`]+)`/g,'<code>$1</code>')
+             .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');
+  return colorizeKeywords(res);
+}
 function tbl(rows){if(!rows.length)return '';let h='<table>';rows.forEach((r,i)=>{let c=r.split('|').filter(x=>x.trim());let t=i===0?'th':'td';h+='<tr>'+c.map(x=>`<${t}>${inl(x.trim())}</${t}>`).join('')+'</tr>';});return h+'</table>';}
 
 // build TOC from rendered headings
