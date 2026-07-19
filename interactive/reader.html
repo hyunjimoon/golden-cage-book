@@ -152,6 +152,59 @@
     transition: opacity 0.2s ease;
   }
 
+  /* Isomorphic Mode WikiLink adjustments */
+  .layout.show-level-1 .wiki-link {
+    border-bottom: none;
+    cursor: default;
+    font-weight: inherit;
+    color: inherit;
+    background: none !important;
+  }
+  .layout.show-level-2 .wiki-link {
+    border-bottom: 1.5px dashed var(--accent);
+    box-shadow: 0 1px 3px rgba(91, 154, 139, 0.1);
+  }
+  .layout.show-level-3 .wiki-link {
+    border-bottom: 1px dashed var(--accent);
+  }
+
+  .chapter-diagram-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    height: 140px;
+    position: relative;
+  }
+  #chapterGraphCanvas {
+    background: rgba(14, 18, 32, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 340px;
+    height: 140px;
+    display: none;
+  }
+  .tetra-pos {
+    margin-bottom: 0 !important;
+    display: none;
+  }
+  
+  /* Toggle diagrams visibility based on active isomorphic mode */
+  .layout.show-level-1 .chapter-diagram-container {
+    display: none;
+  }
+  .layout.show-level-2 .tetra-pos {
+    display: none !important;
+  }
+  .layout.show-level-2 #chapterGraphCanvas {
+    display: block;
+  }
+  .layout.show-level-3 .tetra-pos {
+    display: block;
+  }
+  .layout.show-level-3 #chapterGraphCanvas {
+    display: none !important;
+  }
+
   /* WikiLink and Drawer Styles */
   .wiki-link {
     color: var(--accent);
@@ -547,18 +600,38 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
     const sliderHtml = isChapter ? `
       <div class="density-control">
         <div class="density-info">
-          <span class="density-label">독서 밀도 (Reading Density)</span>
-          <span id="densityText" class="density-text">🍖 살점 (Full - 288줄)</span>
+          <span class="density-label">지식 형식 (Isomorphic View Mode)</span>
+          <span id="densityText" class="density-text">⬡ 다면체 (Polyhedron - 공간 기하)</span>
         </div>
         <div class="density-slider-wrap">
-          <span class="emoji">🦴</span>
+          <span class="emoji">▤</span>
           <input type="range" id="densitySlider" class="density-slider" min="1" max="3" value="3" step="1">
-          <span class="emoji">🍖</span>
+          <span class="emoji">⬡</span>
         </div>
       </div>
     ` : '';
     
-    document.getElementById('content').innerHTML=banner+tetra+sliderHtml+md2html(md);
+    let diagramsHtml = '';
+    if(vs){
+      // 1. Tetrahedron SVG (Polyhedron View)
+      const es=[[0,1,'edge'],[0,2,'edge'],[0,3,'edge-d'],[1,2,'edge'],[1,3,'edge-d'],[2,3,'edge']];
+      let svg='<div class="tetra-pos"><svg viewBox="0 0 125 120">';
+      es.forEach(([a,b,cls])=>{svg+=`<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`;});
+      vs.forEach((v,i)=>{
+        const cur=i===ci;
+        svg+=`<circle cx="${v.x}" cy="${v.y}" r="${cur?6:3.5}" fill="${v.c}" class="v${cur?' cur':''}"/>`;
+        const ly=i===3?v.y-8:v.y+14;
+        svg+=`<text x="${v.x}" y="${ly}" class="lbl${cur?' cur':''}">${v.l}</text>`;
+      });
+      svg+='</svg></div>';
+      
+      // 2. Chapter Graph Canvas (Graph View)
+      const canvas = `<canvas id="chapterGraphCanvas" style="background:rgba(9,12,22,0.4); border-radius:8px; display:none; width:340px; height:140px; margin:0 auto 24px;"></canvas>`;
+      
+      diagramsHtml = `<div class="chapter-diagram-container">${svg}${canvas}</div>`;
+    }
+    
+    document.getElementById('content').innerHTML=banner+diagramsHtml+sliderHtml+md2html(md);
     window.scrollTo(0,0);
     buildToc();
     jumpToQuery();
@@ -568,15 +641,30 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
       const layout = document.querySelector('.layout');
       const densityText = document.getElementById('densityText');
       const texts = {
-        1: '🦴 뼈대 (Bones)',
-        2: '🍗 보통 (Normal)',
-        3: '🍖 살점 (Full)'
+        1: '▤ 행렬 (Matrix - 순차 언어)',
+        2: '🕸️ 그래프 (Graph - 병렬 네트워크)',
+        3: '⬡ 다면체 (Polyhedron - 공간 기하)'
       };
       
       function updateDensity(val) {
         layout.classList.remove('show-level-1', 'show-level-2', 'show-level-3');
         layout.classList.add('show-level-' + val);
         if (densityText) densityText.textContent = texts[val];
+        
+        // Handle local graph canvas drawing for Graph Mode
+        if (parseInt(val) === 2) {
+          if (graphData) {
+            startChapterGraph();
+          } else {
+            shouldDrawChapterGraph = true;
+          }
+        } else {
+          shouldDrawChapterGraph = false;
+          if (activeChapterGraphCancel) {
+            activeChapterGraphCancel();
+            activeChapterGraphCancel = null;
+          }
+        }
       }
       
       if (slider) {
@@ -598,6 +686,57 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
 
 let graphData = null;
 let activeCanvasCancel = null;
+let activeChapterGraphCancel = null;
+let shouldDrawChapterGraph = false;
+
+function startChapterGraph() {
+  if (activeChapterGraphCancel) {
+    activeChapterGraphCancel();
+    activeChapterGraphCancel = null;
+  }
+  
+  const canvas = document.getElementById('chapterGraphCanvas');
+  if (!canvas || !graphData) return;
+  
+  const fileToNodeMap = {
+    "ch1_mirror_cage": "1🪞_거울새장",
+    "ch2_telescope_cage": "2🔭_망원경새장",
+    "ch3_glass_cage": "3💒_스테인굴레스새장",
+    "ch4_clock_cage": "4⏱️_시계새장",
+    "ch5_mirror_nest": "10🧫_101",
+    "ch6_butterfly_nest": "6🦋_나비사용자",
+    "ch7_tulip_nest": "7🌷_튤립기술자",
+    "ch8_mist_nest": "8🌫️_안개투자자",
+    "ch9_raven_nest": "9🐦‍⬛_까마귀협력자",
+    "ch0_prologue": "🤨_질문과답",
+    "ch10_epilogue": "🤨_답과질문",
+    "ch0_intro": "⚕️머릿말_ouroboros",
+    "ch0_roadmap": "00_roadmap"
+  };
+  
+  const nodeId = fileToNodeMap[file];
+  if (!nodeId) return;
+  
+  const localNodesMap = {};
+  const localEdges = [];
+  
+  graphData.edges.forEach(e => {
+    if (e.s === nodeId || e.t === nodeId) {
+      localEdges.push(e);
+      localNodesMap[e.s] = true;
+      localNodesMap[e.t] = true;
+    }
+  });
+  
+  localNodesMap[nodeId] = true;
+  const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
+  
+  if (localNodes.length === 0) {
+    localNodes.push({ id: nodeId, label: nodeId });
+  }
+  
+  activeChapterGraphCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
+}
 
 // Fetch graph data from reference_graph.html dynamically to ensure SSOT
 fetch('reference_graph.html')
@@ -607,6 +746,9 @@ fetch('reference_graph.html')
     if (match) {
       try {
         graphData = JSON.parse(match[1]);
+        if (shouldDrawChapterGraph || (document.getElementById('densitySlider') && document.getElementById('densitySlider').value == 2)) {
+          startChapterGraph();
+        }
       } catch (e) {
         console.error("Failed to parse reference graph data in reader:", e);
       }
