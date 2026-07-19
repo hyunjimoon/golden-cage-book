@@ -462,6 +462,7 @@ if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을
 
 // md → html
 function md2html(md) {
+  const hasLevelComments = md.includes('<!-- level');
   md = md.replace(/^---[\s\S]*?---\s*/m, '');
   md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
   md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function(match, target, label) {
@@ -502,31 +503,79 @@ function md2html(md) {
     }
     
     let blockHtml = '';
+    let itemLevel = hasLevelComments ? currentLevel : 3;
+    
     if(L.trim().startsWith('```')){
       if(inCode){blockHtml='</code></pre>';inCode=false;}else{blockHtml='<pre><code>';inCode=true;}
-      if(blockHtml) html+=`<div class="flesh-item" data-level="${currentLevel}">${blockHtml}</div>`;
+      if(blockHtml) {
+        let codeLevel = hasLevelComments ? currentLevel : 1;
+        html+=`<div class="flesh-item" data-level="${codeLevel}">${blockHtml}</div>`;
+      }
       continue;
     }
     if(inCode){html+=L.replace(/</g,'&lt;')+'\n';continue;}
     if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(L.trim().replace(/[|:\-\s]/g,'').length>0)tRows.push(L);continue;}
-    else if(inTable){html+=`<div class="flesh-item" data-level="${currentLevel}">${tbl(tRows)}</div>`;inTable=false;tRows=[];}
-    if(L.trim().startsWith('>')){let q=L.replace(/^>\s*/,'');if(!inBQ){html+=`<div class="flesh-item" data-level="${currentLevel}"><blockquote>`;inBQ=true;}html+=inl(q)+'<br>';continue;}
+    else if(inTable){
+      let tableLevel = hasLevelComments ? currentLevel : 1;
+      html+=`<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
+      inTable=false;tRows=[];
+    }
+    if(L.trim().startsWith('>')){
+      let q=L.replace(/^>\s*/,'');
+      if(!inBQ){
+        let bqLevel = hasLevelComments ? currentLevel : 2;
+        html+=`<div class="flesh-item" data-level="${bqLevel}"><blockquote>`;
+        inBQ=true;
+      }
+      html+=inl(q)+'<br>';
+      continue;
+    }
     else if(inBQ){html+='</blockquote></div>';inBQ=false;}
     
-    if(L.startsWith('### ')){blockHtml='<h3 id="s'+i+'">'+inl(L.slice(4))+'</h3>';}
-    else if(L.startsWith('## ')){blockHtml='<h2 id="s'+i+'">'+inl(L.slice(3))+'</h2>';}
-    else if(L.startsWith('# ')){blockHtml='<h1>'+inl(L.slice(2))+'</h1>';}
-    else if(/^---+$/.test(L.trim())){blockHtml='<hr>';}
+    if(L.startsWith('### ')){
+      blockHtml='<h3 id="s'+i+'">'+inl(L.slice(4))+'</h3>';
+      if(!hasLevelComments) itemLevel = 1;
+    }
+    else if(L.startsWith('## ')){
+      blockHtml='<h2 id="s'+i+'">'+inl(L.slice(3))+'</h2>';
+      if(!hasLevelComments) itemLevel = 1;
+    }
+    else if(L.startsWith('# ')){
+      blockHtml='<h1>'+inl(L.slice(2))+'</h1>';
+      if(!hasLevelComments) itemLevel = 1;
+    }
+    else if(/^---+$/.test(L.trim())){
+      blockHtml='<hr>';
+      if(!hasLevelComments) itemLevel = 1;
+    }
     else {
       let im=L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
-      if(im){blockHtml=`<img src="${im[2]}" alt="${im[1]}">`;}
-      else if(L.trim()==='')continue;
-      else if (L.includes('katex-block-wrapper')) {blockHtml = L;}
-      else {blockHtml = '<p>' + inl(L) + '</p>';}
+      if(im){
+        blockHtml=`<img src="${im[2]}" alt="${im[1]}">`;
+        if(!hasLevelComments) itemLevel = 2;
+      }
+      else if(L.trim()==='') continue;
+      else if (L.includes('katex-block-wrapper')) {
+        blockHtml = L;
+        if(!hasLevelComments) itemLevel = 1;
+      }
+      else {
+        blockHtml = '<p>' + inl(L) + '</p>';
+        if(!hasLevelComments) {
+          if (L.includes('wiki-link') || L.includes('**') || L.includes('*') || L.includes('`') || L.includes('href') || L.includes('</a>')) {
+            itemLevel = 2;
+          } else {
+            itemLevel = 3;
+          }
+        }
+      }
     }
-    html+=`<div class="flesh-item" data-level="${currentLevel}">${blockHtml}</div>`;
+    html+=`<div class="flesh-item" data-level="${itemLevel}">${blockHtml}</div>`;
   }
-  if(inTable)html+=`<div class="flesh-item" data-level="${currentLevel}">${tbl(tRows)}</div>`;
+  if(inTable){
+    let tableLevel = hasLevelComments ? currentLevel : 1;
+    html+=`<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
+  }
   if(inBQ)html+='</blockquote></div>';
   if(inCode)html+='</code></pre></div>';
   return html;
