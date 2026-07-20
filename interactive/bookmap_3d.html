@@ -3,127 +3,529 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D 지도 — 사면체 안의 거꾸로 사면체</title>
+<title>3D 대칭 지도 — 황금새장을 열다</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:#090c15;color:#e8eaf0;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1040px;margin:0 auto;padding:28px 24px 48px;}
-  .back{display:inline-block;font-size:12px;color:#5a6a7a;text-decoration:none;margin-bottom:18px;transition:color 0.15s;}
+  body{font-family:'Noto Sans KR',sans-serif;background:#0a0d14;color:#e8eaf0;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px;}
+  .back{display:inline-block;font-size:13px;color:#7c8aa8;text-decoration:none;margin-bottom:16px;transition:color 0.15s;}
   .back:hover{color:#e8eaf0;}
-  .head{text-align:center;max-width:720px;margin:0 auto 6px;}
-  .kicker{font-size:11px;letter-spacing:4px;color:#4A7A6B;font-weight:700;margin-bottom:12px;}
-  .head h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.4;}
-  .head p{font-size:13px;color:#8899aa;line-height:1.95;}
+  
+  .head{text-align:center;max-width:760px;margin:0 auto 20px;}
+  .kicker{font-size:11px;letter-spacing:3px;color:#c5a55a;font-weight:700;margin-bottom:8px;text-transform:uppercase;}
+  .head h1{font-size:1.6em;font-weight:700;letter-spacing:-0.5px;margin-bottom:10px;line-height:1.35;color:#f0f2f8;}
+  .head p{font-size:13.5px;color:#8c99b4;line-height:1.7;}
   .head p b{color:#d6dce6;font-weight:600;}
-  .svg{width:100%;height:auto;display:block;margin:2px auto 0;}
-  .svg a{cursor:pointer;}
-  .svg a:hover .node{stroke:#fff;stroke-width:2.5;}
-  .svg a:hover text{fill:#fff !important;}
-  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:6px auto 0;max-width:760px;font-size:11.5px;color:#8899aa;}
-  .legend .it{display:flex;align-items:center;gap:6px;}
-  .legend svg{width:16px;height:16px;overflow:visible;}
-  .foot{text-align:center;font-size:11px;color:#5a6a7a;margin-top:12px;line-height:1.9;}
-  .foot a{color:#4A7A6B;text-decoration:none;}
-  .foot a:hover{text-decoration:underline;}
+
+  /* 3D Viewport Container */
+  .canvas-container{
+    position:relative;
+    width:100%;
+    height:540px;
+    background:radial-gradient(circle at center, rgba(30,37,56,0.3) 0%, rgba(10,13,20,0.95) 75%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    box-shadow:0 12px 32px rgba(0,0,0,0.4);
+    overflow:hidden;
+    cursor:grab;
+    user-select:none;
+    margin-bottom:20px;
+  }
+  .canvas-container:active{cursor:grabbing;}
+  canvas{display:block;width:100%;height:100%;}
+
+  .canvas-hint{
+    position:absolute;
+    bottom:14px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    color:#7c8aa8;
+    background:rgba(10,13,20,0.85);
+    padding:6px 14px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.1);
+    pointer-events:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  /* Node Hover Detail Card Overlay */
+  .detail-card{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:280px;
+    background:rgba(16,21,33,0.92);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:10px;
+    padding:16px;
+    pointer-events:none;
+    opacity:0;
+    transform:translateY(-6px);
+    transition:opacity 0.2s, transform 0.2s;
+    box-shadow:0 8px 24px rgba(0,0,0,0.5);
+  }
+  .detail-card.active{opacity:1;transform:translateY(0);}
+  .detail-card .badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;}
+  .detail-card .title{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;font-family:'Noto Serif KR',serif;}
+  .detail-card .novel{font-size:12px;color:#8c99b4;margin-bottom:8px;}
+  .detail-card .slogan{font-size:12px;color:#c5a55a;font-style:italic;margin-bottom:8px;}
+  .detail-card .mirror-info{font-size:11.5px;color:#a0aec0;border-top:1px solid rgba(255,255,255,0.08);padding-top:8px;}
+
+  /* Faculty Legend Pills */
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin-bottom:30px;}
+  .legend-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#a0aec0;background:rgba(255,255,255,0.03);padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.06);}
+  .legend-dot{width:10px;height:10px;border-radius:50%;}
+
+  /* 2-Column Mirror Reference Grid */
+  .grid-title{font-size:16px;font-weight:700;color:#f0f2f8;margin-bottom:14px;text-align:center;}
+  .mirror-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:14px;}
+  .mirror-card{
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:10px;
+    padding:16px;
+    transition:all 0.2s;
+  }
+  .mirror-card:hover{
+    border-color:rgba(197,165,90,0.4);
+    background:rgba(255,255,255,0.04);
+  }
+  .mirror-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:12px;font-weight:700;}
+  .mirror-pair-body{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;font-size:12.5px;}
+  .mirror-node{text-align:center;}
+  .mirror-node .no{font-weight:700;color:#fff;display:block;}
+  .mirror-node .sub{font-size:11px;color:#7c8aa8;}
+  .mirror-arrow{color:#c5a55a;font-size:14px;}
+
+  @media(max-width:640px){
+    .canvas-container{height:420px;}
+    .detail-card{top:auto;bottom:16px;right:16px;left:16px;width:auto;}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="../index.html">← 표지 · 평면 지도로</a>
+  <a class="back" href="../index.html">← 표지 · 평면 지도로 돌아가기</a>
+  
   <div class="head">
-    <div class="kicker">THE MAP · 3D 체험판</div>
-    <h1>새장 사면체 안에, 둥지 사면체가 거꾸로 맞물린다</h1>
-    <p>왼쪽 넷(새장 1–4)은 <b>내 안의 믿음 → prior</b>, 오른쪽 넷(둥지 6–9)은 <b>이해관계자에게 건네는 값</b>. 둘은 중심 <b>101호</b>를 지나 거울로 마주 본다 — 같은 네 능력(desire·feasibility·action·metric)이 <b>도형</b>으로 짝을 이룬다. <b>자기 새장은 자기에게 잘 안 보인다</b>: 돌려 봐야 안쪽 사면체가 드러난다.</p>
+    <div class="kicker">3D Geometric Map</div>
+    <h1>새장 사면체(1–4)와 둥지 사면체(6–9)의 거울 결합</h1>
+    <p>화면을 <b>드래그하여 사면체를 360도 회전</b>시켜 보세요. 정중앙 <b>101₂ ↔ 101₃ 회전축</b>을 통과하는 거울쌍 노드에 마우스를 올리면 대칭 연결이 밝게 빛납니다.</p>
   </div>
-  <svg id="bookmap-svg" class="svg" viewBox="0 0 1120 1080" role="img" aria-label="황금새장을열다 책 지도 — 4능력 거울 사면체"></svg>
-  <div class="legend" id="legend"></div>
-  <div class="foot">노드를 누르면 그 장으로 항해 → · 같은 <b>도형·색</b> = 거울쌍(1↔6·2↔7·3↔8·4↔9, 한 글자 비틂) · 중심 &#9733; = 5&#8596;10 회전축(101&#8322;&#8596;101&#8323;)</div>
+
+  <!-- Interactive 3D Canvas Viewport -->
+  <div class="canvas-container" id="canvasContainer">
+    <canvas id="map3dCanvas"></canvas>
+    
+    <div class="canvas-hint">
+      <span>🖱️ 드래그하여 회전 · 마우스 휠로 확대/축소</span>
+    </div>
+
+    <!-- Node Hover Detail Overlay -->
+    <div class="detail-card" id="detailCard">
+      <span class="badge" id="cardBadge">1장 새장</span>
+      <div class="title" id="cardTitle">1장 마담 보바리</div>
+      <div class="novel" id="cardNovel">소설: 마담 보바리 (구스타프 플로베르)</div>
+      <div class="slogan" id="cardSlogan">「장부를 펴라」</div>
+      <div class="mirror-info" id="cardMirror">↔ 거울쌍: 6장 나비둥지 (M.Butterfly)</div>
+    </div>
+  </div>
+
+  <!-- Faculty Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#b5a3f8;"></div><b>👾 욕망 · 사용자</b> (1장 엠마 ↔ 6장 송 릴링)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#74c39c;"></div><b>⛰️ 상상 · 기술자</b> (2장 살리나 ↔ 7장 코르넬리우스)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e27f7f;"></div><b>🟥 행동 · 투자자</b> (3장 파늘루 ↔ 8장 우나무노)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7cb0db;"></div><b>🌀 척도 · 협력자</b> (4장 로빈슨 ↔ 9장 일연)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c5a55a;"></div><b>🪞 회전축</b> (5장 101₂ ↔ 10장 101₃)</div>
+  </div>
+
+  <!-- 2-Column Mirror Pair Reference Grid -->
+  <div class="grid-title">4대 거울쌍 (Mirror Invariants)</div>
+  <div class="mirror-grid">
+    <div class="mirror-card">
+      <div class="mirror-card-head" style="color:#b5a3f8;">
+        <span>👾 욕망 (Desire)</span>
+        <span>1↔6 Pair</span>
+      </div>
+      <div class="mirror-pair-body">
+        <div class="mirror-node">
+          <span class="no">1장 거울새장</span>
+          <span class="sub">장부를 펴라</span>
+        </div>
+        <span class="mirror-arrow">↔</span>
+        <div class="mirror-node">
+          <span class="no">6장 나비둥지</span>
+          <span class="sub">환상을 역이용하라</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mirror-card">
+      <div class="mirror-card-head" style="color:#74c39c;">
+        <span>⛰️ 상상 (Feasibility)</span>
+        <span>2↔7 Pair</span>
+      </div>
+      <div class="mirror-pair-body">
+        <div class="mirror-node">
+          <span class="no">2장 망원경새장</span>
+          <span class="sub">순서를 타라</span>
+        </div>
+        <span class="mirror-arrow">↔</span>
+        <div class="mirror-node">
+          <span class="no">7장 튤립둥지</span>
+          <span class="sub">확률적으로 생각하라</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mirror-card">
+      <div class="mirror-card-head" style="color:#e27f7f;">
+        <span>🟥 행동 (Action)</span>
+        <span>3↔8 Pair</span>
+      </div>
+      <div class="mirror-pair-body">
+        <div class="mirror-node">
+          <span class="no">3장 유리새장</span>
+          <span class="sub">확신을 교정하라</span>
+        </div>
+        <span class="mirror-arrow">↔</span>
+        <div class="mirror-node">
+          <span class="no">8장 안개둥지</span>
+          <span class="sub">선을 넘어라</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mirror-card">
+      <div class="mirror-card-head" style="color:#7cb0db;">
+        <span>🌀 척도 (Metric)</span>
+        <span>4↔9 Pair</span>
+      </div>
+      <div class="mirror-pair-body">
+        <div class="mirror-node">
+          <span class="no">4장 시계새장</span>
+          <span class="sub">다음 불을 피워라</span>
+        </div>
+        <span class="mirror-arrow">↔</span>
+        <div class="mirror-node">
+          <span class="no">9장 까마귀둥지</span>
+          <span class="sub">의미를 만들어라</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 <script>
 (function(){
-  // 4 능력(faculty) = 4렌즈 다이아몬드 색 + 도형. 좌(새장)=믿음→prior · 우(둥지)=stakeholder 값.
-  const F={
-    desire:{col:'#b5a3f8', sh:'circle', nm:'desirability',  ko:'욕망·사용자'},
-    feas:  {col:'#74c39c', sh:'tri',    nm:'feasibility',   ko:'상상·기술자'},
-    action:{col:'#e27f7f', sh:'square', nm:'action·viability', ko:'행동·투자자'},
-    metric:{col:'#7cb0db', sh:'star',   nm:'metric',        ko:'척도·협력자'},
-  };
-  const SL={1:'ch1_mirror_cage',2:'ch2_telescope_cage',3:'ch3_glass_cage',4:'ch4_clock_cage',6:'ch6_butterfly_nest',7:'ch7_tulip_nest',8:'ch8_mist_nest',9:'ch9_raven_nest'};
-  // 대척점(antipode)이 거울쌍이 되도록 7·8 위치 배정 → 2↔7, 3↔8 (canon 2026-07-01: 원자짝 2↔8·3↔7 철회)
-  const V=[
-    {c:[1,1,1],  n:1,g:'cage',f:'desire', role:'믿음→prior · desirability',        nov:'마담 보바리', slo:'장부를 펴라'},
-    {c:[1,-1,-1],n:2,g:'cage',f:'feas',   role:'믿음→prior · feasibility',         nov:'표범',       slo:'순서를 타라'},
-    {c:[-1,1,-1],n:3,g:'cage',f:'action', role:'행동의 윤리 · action',             nov:'페스트',     slo:'확신을 교정하라'},
-    {c:[-1,-1,1],n:4,g:'cage',f:'metric', role:'나의 척도 · metric',               nov:'방드르디',   slo:'다음 불을 피워라'},
-    {c:[-1,-1,-1],n:6,g:'nest',f:'desire', role:'사용자 · user sellability',        nov:'M.Butterfly', slo:'역할을 입어라'},
-    {c:[-1,1,1], n:7,g:'nest',f:'feas',   role:'기술자 · tech deliverability',     nov:'검은 튤립',   slo:'확률적으로 생각하라'}, // 2[1,-1,-1] 대척
-    {c:[1,-1,1], n:8,g:'nest',f:'action', role:'투자자 · investor viability',      nov:'안개',       slo:'선을 넘어라'},        // 3[-1,1,-1] 대척
-    {c:[1,1,-1], n:9,g:'nest',f:'metric', role:'협력자 · eval. metric',            nov:'삼국유사',   slo:'의미를 만들어라'},
-  ];
-  const S=190, CX=560, CY=505, B=Math.PI/6, A=26*Math.PI/180, cos=Math.cos, sin=Math.sin;
-  const proj=c=>{const[x,y,z]=c; const x1=x*cos(B)+z*sin(B), z1=-x*sin(B)+z*cos(B), y1=y;
-    const y2=y1*cos(A)-z1*sin(A), z2=y1*sin(A)+z1*cos(A); return {x:CX+x1*S, y:CY-y2*S, d:z2};};
-  V.forEach(v=>{const p=proj(v.c);v.x=p.x;v.y=p.y;v.d=p.d;});
-  const dmin=Math.min(...V.map(v=>v.d)), dmax=Math.max(...V.map(v=>v.d)), norm=d=>(d-dmin)/(dmax-dmin||1);
-  const diff=(a,b)=>{let n=0;for(let i=0;i<3;i++)if(a.c[i]!==b.c[i])n++;return n;};
-  let E=[]; for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){const a=V[i],b=V[j];E.push({a,b,k:diff(a,b),dep:(norm(a.d)+norm(b.d))/2});}
-  const ln=(a,b,at)=>`<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" ${at}/>`;
+  const canvas = document.getElementById('map3dCanvas');
+  const container = document.getElementById('canvasContainer');
+  const ctx = canvas.getContext('2d');
 
-  // 도형 (능력별) — 크기 r, 색 col, 채움
-  function shape(sh,cx,cy,r,col,op){
-    const A2=Math.PI/2;
-    if(sh==='circle') return `<circle class="node" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
-    if(sh==='square'){const s2=r*0.92;return `<rect class="node" x="${(cx-s2).toFixed(1)}" y="${(cy-s2).toFixed(1)}" width="${(2*s2).toFixed(1)}" height="${(2*s2).toFixed(1)}" rx="2" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;}
-    if(sh==='tri'){const pts=[];for(let i=0;i<3;i++){const a=-A2+i*2*Math.PI/3;pts.push(`${(cx+r*1.15*Math.cos(a)).toFixed(1)},${(cy+r*1.15*Math.sin(a)).toFixed(1)}`);}return `<polygon class="node" points="${pts.join(' ')}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;}
-    // star
-    const pts=[];for(let i=0;i<10;i++){const rr=i%2?r*0.46:r*1.15;const a=-A2+i*Math.PI/5;pts.push(`${(cx+rr*Math.cos(a)).toFixed(1)},${(cy+rr*Math.sin(a)).toFixed(1)}`);}
-    return `<polygon class="node" points="${pts.join(' ')}" fill="${col}" stroke="#090c15" stroke-width="2" opacity="${op}"/>`;
+  // World-class color palette
+  const PALETTE = {
+    desire: '#b5a3f8',  // Purple (1, 6)
+    feas:   '#74c39c',  // Green (2, 7)
+    action: '#e27f7f',  // Red (3, 8)
+    metric: '#7cb0db',  // Blue (4, 9)
+    gold:   '#c5a55a'   // Center Pivot
+  };
+
+  const URL_MAP = {
+    1:'ch1_mirror_cage', 2:'ch2_telescope_cage', 3:'ch3_glass_cage', 4:'ch4_clock_cage',
+    5:'ch5_mirror_nest', 6:'ch6_butterfly_nest', 7:'ch7_tulip_nest', 8:'ch8_mist_nest',
+    9:'ch9_raven_nest',  10:'ch10_mirror_close'
+  };
+
+  // Node coordinates (Symmetrical dual tetrahedron)
+  const NODES = [
+    { n:1, g:'cage', f:'desire', col:PALETTE.desire, pos:[ 1,  1,  1], label:'1장 마담 보바리', nov:'마담 보바리 (플로베르)', slo:'장부를 펴라', mirror:6 },
+    { n:2, g:'cage', f:'feas',   col:PALETTE.feas,   pos:[ 1, -1, -1], label:'2장 표범',         nov:'표범 (람페두사)',     slo:'순서를 타라', mirror:7 },
+    { n:3, g:'cage', f:'action', col:PALETTE.action, pos:[-1,  1, -1], label:'3장 페스트',       nov:'페스트 (카뮈)',       slo:'확신을 교정하라', mirror:8 },
+    { n:4, g:'cage', f:'metric', col:PALETTE.metric, pos:[-1, -1,  1], label:'4장 방드르디',     nov:'방드르디 (투르니에)', slo:'다음 불을 피워라', mirror:9 },
+    
+    { n:6, g:'nest', f:'desire', col:PALETTE.desire, pos:[-1, -1, -1], label:'6장 M.Butterfly',   nov:'M.Butterfly (황)',    slo:'환상을 역이용하라', mirror:1 },
+    { n:7, g:'nest', f:'feas',   col:PALETTE.feas,   pos:[-1,  1,  1], label:'7장 검은 튤립',     nov:'검은 튤립 (뒤마)',   slo:'확률적으로 생각하라', mirror:2 },
+    { n:8, g:'nest', f:'action', col:PALETTE.action, pos:[ 1, -1,  1], label:'8장 안개',         nov:'Niebla (우나무노)',    slo:'선을 넘어라', mirror:3 },
+    { n:9, g:'nest', f:'metric', col:PALETTE.metric, pos:[ 1,  1, -1], label:'9장 삼국유사',     nov:'삼국유사 (일연)',     slo:'의미를 만들어라', mirror:4 }
+  ];
+
+  // 3D rotation angles & scale
+  let rotX = 0.45;
+  let rotY = 0.65;
+  let zoom = 1.0;
+  let isDragging = false;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+  let hoveredNode = null;
+
+  function resizeCanvas(){
+    const dpr = window.devicePixelRatio || 1;
+    const rect = container.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Mouse / Touch Rotation Handling
+  container.addEventListener('mousedown', e => {
+    isDragging = true;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) {
+      checkHover(e);
+      return;
+    }
+    const dx = e.clientX - lastMouseX;
+    const dy = e.clientY - lastMouseY;
+    rotY += dx * 0.008;
+    rotX += dy * 0.008;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  });
+
+  window.addEventListener('mouseup', () => isDragging = false);
+
+  container.addEventListener('touchstart', e => {
+    if(e.touches.length === 1){
+      isDragging = true;
+      lastMouseX = e.touches[0].clientX;
+      lastMouseY = e.touches[0].clientY;
+    }
+  });
+
+  container.addEventListener('touchmove', e => {
+    if(isDragging && e.touches.length === 1){
+      const dx = e.touches[0].clientX - lastMouseX;
+      const dy = e.touches[0].clientY - lastMouseY;
+      rotY += dx * 0.008;
+      rotX += dy * 0.008;
+      lastMouseX = e.touches[0].clientX;
+      lastMouseY = e.touches[0].clientY;
+    }
+  });
+
+  container.addEventListener('touchend', () => isDragging = false);
+
+  container.addEventListener('wheel', e => {
+    e.preventDefault();
+    zoom += e.deltaY * -0.001;
+    zoom = Math.max(0.7, Math.min(1.6, zoom));
+  }, {passive:false});
+
+  container.addEventListener('click', () => {
+    if (hoveredNode) {
+      window.location.href = 'reader.html?file=' + URL_MAP[hoveredNode.n];
+    }
+  });
+
+  // Project 3D coordinate to 2D canvas
+  function project(pos) {
+    const W = container.clientWidth;
+    const H = container.clientHeight;
+    const S = 120 * zoom;
+
+    let x = pos[0];
+    let y = pos[1];
+    let z = pos[2];
+
+    // Rotate Y
+    let x1 = x * Math.cos(rotY) + z * Math.sin(rotY);
+    let z1 = -x * Math.sin(rotY) + z * Math.cos(rotY);
+    let y1 = y;
+
+    // Rotate X
+    let y2 = y1 * Math.cos(rotX) - z1 * Math.sin(rotX);
+    let z2 = y1 * Math.sin(rotX) + z1 * Math.cos(rotX);
+
+    return {
+      x: W/2 + x1 * S,
+      y: H/2 - y2 * S,
+      depth: z2
+    };
   }
 
-  let s='';
-  // 정육면체 잔변(k=1) 아주 옅게
-  E.filter(e=>e.k===1).forEach(e=>{s+=ln(e.a,e.b,`stroke="#8aa0c0" stroke-width="1" opacity="${(0.06+0.12*e.dep).toFixed(2)}"`);});
-  // 거울쌍 대각(k=3) = 능력색, 중심 통과
-  E.filter(e=>e.k===3).forEach(e=>{s+=ln(e.a,e.b,`stroke="${F[e.a.f].col}" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.5"`);});
-  // 사면체 변(k=2, 같은 그룹) — 새장 금 실선 / 둥지 청 점선
-  E.filter(e=>e.k===2 && e.a.g===e.b.g).forEach(e=>{const o=(0.30+0.5*e.dep).toFixed(2);
-    if(e.a.g==='cage') s+=ln(e.a,e.b,`stroke="#cbb487" stroke-width="${(1.5+1.6*e.dep).toFixed(1)}" opacity="${o}"`);
-    else s+=ln(e.a,e.b,`stroke="#8ab6d6" stroke-width="${(1.3+1.1*e.dep).toFixed(1)}" stroke-dasharray="7 5" opacity="${o}"`);});
+  function checkHover(e) {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
 
-  // 중심 101호 — 예속=자유 · 무지=힘 · 다↔세
-  const R=46;
-  s+=`<a href="reader.html?file=ch5_mirror_nest">`;
-  s+=`<circle cx="${CX}" cy="${CY}" r="${R}" fill="#0b0a08" stroke="#d4af37" stroke-width="1.3" opacity="0.95"/>`;
-  s+=`<text x="${CX}" y="${CY-24}" text-anchor="middle" fill="#9a8a4a" font-size="10">예속 = 자유 · 무지 = 힘</text>`;
-  s+=`<text x="${CX}" y="${CY-7}" text-anchor="middle" fill="#d4af37" font-size="20" font-family="serif">&#9733;</text>`;
-  s+=`<text x="${CX}" y="${CY+12}" text-anchor="middle" fill="#d4af37" font-size="10.5">5&#8596;10 회전축</text>`;
-  s+=`<text x="${CX}" y="${CY+25}" text-anchor="middle" fill="#9a8a4a" font-size="9.5">101&#8322;&#8596;101&#8323;</text></a>`;
-  // 중심 좌우 축 라벨: 사용가치 ↔ 교환가치, 다(유연) ↔ 세(헌신)
-  s+=`<text x="${CX-R-8}" y="${CY-4}" text-anchor="end" fill="#8aa0c0" font-size="10.5">← 사용가치</text>`;
-  s+=`<text x="${CX-R-8}" y="${CY+11}" text-anchor="end" fill="#6f7f96" font-size="9">다 · hail with flexibility</text>`;
-  s+=`<text x="${CX+R+8}" y="${CY-4}" text-anchor="start" fill="#e27f7f" font-size="10.5">교환가치 →</text>`;
-  s+=`<text x="${CX+R+8}" y="${CY+11}" text-anchor="start" fill="#997" font-size="9">세 · scale with commitment</text>`;
+    let found = null;
+    NODES.forEach(n => {
+      const p = project(n.pos);
+      const dist = Math.hypot(mx - p.x, my - p.y);
+      if (dist < 18) {
+        found = n;
+      }
+    });
 
-  // 노드(도형) — 깊이 뒤부터
-  [...V].sort((p,q)=>p.d-q.d).forEach(v=>{const F0=F[v.f], col=F0.col, f=norm(v.d), r=(9+4.5*f), op=(0.55+0.45*f).toFixed(2);
-    let dx=v.x-CX, dy=v.y-CY, L=Math.hypot(dx,dy)||1; dx/=L; dy/=L;
-    const gap=48+Math.max(0,150-L)*0.5, lx=v.x+dx*gap, ly=v.y+dy*gap, anc=dx>0.25?'start':(dx<-0.25?'end':'middle');
-    s+=`<a href="reader.html?file=${SL[v.n]}">`;
-    s+=shape(F0.sh, v.x, v.y, r, col, op);
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly-6).toFixed(1)}" text-anchor="${anc}" font-family="'Noto Serif KR',serif" font-weight="700" font-size="15" fill="${col}">${v.n} ${v.nov}</text>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly+11).toFixed(1)}" text-anchor="${anc}" font-size="11.5" fill="#cfd6e0">${v.role}</text>`;
-    s+=`<text x="${lx.toFixed(1)}" y="${(ly+27).toFixed(1)}" text-anchor="${anc}" font-size="10.5" fill="#7c8aa8">&#12300;${v.slo}&#12301;</text></a>`;});
-  document.getElementById('bookmap-svg').innerHTML=s;
+    if (found !== hoveredNode) {
+      hoveredNode = found;
+      updateDetailCard(hoveredNode);
+    }
+  }
 
-  // 범례 (도형 = 능력)
-  const legIco={circle:'<circle cx="8" cy="8" r="6.5"/>',
-    tri:'<polygon points="8,1 14.9,13 1.1,13"/>',
-    square:'<rect x="2" y="2" width="12" height="12" rx="1.5"/>',
-    star:'<polygon points="8,0.5 9.8,5.6 15.2,5.6 10.8,8.9 12.5,14 8,10.8 3.5,14 5.2,8.9 0.8,5.6 6.2,5.6"/>'};
-  let lg='';
-  Object.values(F).forEach(x=>{lg+=`<div class="it"><svg viewBox="0 0 16 16"><g fill="${x.col}">${legIco[x.sh]}</g></svg>${x.nm} <span style="color:#5a6a7a">${x.ko}</span></div>`;});
-  document.getElementById('legend').innerHTML=lg;
+  const detailCard = document.getElementById('detailCard');
+  const cardBadge = document.getElementById('cardBadge');
+  const cardTitle = document.getElementById('cardTitle');
+  const cardNovel = document.getElementById('cardNovel');
+  const cardSlogan = document.getElementById('cardSlogan');
+  const cardMirror = document.getElementById('cardMirror');
+
+  function updateDetailCard(node) {
+    if (!node) {
+      detailCard.classList.remove('active');
+      return;
+    }
+    const isCage = node.g === 'cage';
+    cardBadge.textContent = isCage ? `${node.n}장 새장 (Prior)` : `${node.n}장 둥지 (Stakeholder)`;
+    cardBadge.style.background = isCage ? 'rgba(197,165,90,0.2)' : 'rgba(124,176,219,0.2)';
+    cardBadge.style.color = isCage ? '#c5a55a' : '#7cb0db';
+
+    cardTitle.textContent = node.label;
+    cardTitle.style.color = node.col;
+    cardNovel.textContent = '소설: ' + node.nov;
+    cardSlogan.textContent = '「' + node.slo + '」';
+
+    const mirrorNode = NODES.find(x => x.n === node.mirror);
+    cardMirror.textContent = `↔ 대칭 거울쌍: ${mirrorNode.label} (「${mirrorNode.slo}」)`;
+    detailCard.classList.add('active');
+  }
+
+  // Main Render Loop
+  function render() {
+    const W = container.clientWidth;
+    const H = container.clientHeight;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Gently auto-rotate when not dragging
+    if (!isDragging) {
+      rotY += 0.0015;
+    }
+
+    const centerP = project([0,0,0]);
+
+    // Calculate projected positions
+    const projectedNodes = NODES.map(n => ({
+      ...n,
+      proj: project(n.pos)
+    }));
+
+    // Sort by depth for correct 3D rendering
+    projectedNodes.sort((a,b) => a.proj.depth - b.proj.depth);
+
+    // 1. Draw Mirror Pair Diagonals (Antipode lines through center)
+    const pairs = [[1,6],[2,7],[3,8],[4,9]];
+    pairs.forEach(([idA, idB]) => {
+      const nA = projectedNodes.find(x => x.n === idA);
+      const nB = projectedNodes.find(x => x.n === idB);
+      const isHovered = hoveredNode && (hoveredNode.n === idA || hoveredNode.n === idB);
+
+      ctx.beginPath();
+      ctx.moveTo(nA.proj.x, nA.proj.y);
+      ctx.lineTo(nB.proj.x, nB.proj.y);
+      ctx.strokeStyle = isHovered ? nA.col : 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = isHovered ? 2.5 : 1;
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // 2. Draw Tetrahedron Edges
+    const drawTetraEdges = (group, strokeColor, isDashed) => {
+      const groupNodes = projectedNodes.filter(x => x.g === group);
+      for(let i=0; i<groupNodes.length; i++){
+        for(let j=i+1; j<groupNodes.length; j++){
+          const a = groupNodes[i];
+          const b = groupNodes[j];
+          ctx.beginPath();
+          ctx.moveTo(a.proj.x, a.proj.y);
+          ctx.lineTo(b.proj.x, b.proj.y);
+          ctx.strokeStyle = strokeColor;
+          ctx.lineWidth = 1.4;
+          if(isDashed) ctx.setLineDash([6, 4]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      }
+    };
+
+    // Cage = Solid Imperial Gold, Nest = Dashed Ice Blue
+    drawTetraEdges('cage', 'rgba(197, 165, 90, 0.45)', false);
+    drawTetraEdges('nest', 'rgba(124, 176, 219, 0.45)', true);
+
+    // 3. Draw Center Pivot Star Node (101₂ ↔ 101₃)
+    ctx.beginPath();
+    ctx.arc(centerP.x, centerP.y, 16, 0, 2*Math.PI);
+    ctx.fillStyle = '#0a0d14';
+    ctx.strokeStyle = PALETTE.gold;
+    ctx.lineWidth = 2;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = PALETTE.gold;
+    ctx.font = '700 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('★', centerP.x, centerP.y);
+
+    ctx.font = '600 10px sans-serif';
+    ctx.fillStyle = '#c5a55a';
+    ctx.fillText('101₂ ↔ 101₃', centerP.x, centerP.y + 26);
+    ctx.fillStyle = '#7c8aa8';
+    ctx.fillText('사용가치 ↔ 교환가치', centerP.x, centerP.y + 38);
+
+    // 4. Draw Chapter Nodes & Crisp Badges
+    projectedNodes.forEach(n => {
+      const p = n.proj;
+      const isHovered = hoveredNode && (hoveredNode.n === n.n || hoveredNode.n === n.mirror);
+      const nodeRadius = isHovered ? 11 : 8;
+
+      // Glowing outer ring for hovered node
+      if(isHovered){
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, nodeRadius + 6, 0, 2*Math.PI);
+        ctx.fillStyle = n.col;
+        ctx.globalAlpha = 0.25;
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+
+      // Draw node circle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, nodeRadius, 0, 2*Math.PI);
+      ctx.fillStyle = n.col;
+      ctx.strokeStyle = '#0a0d14';
+      ctx.lineWidth = 2;
+      ctx.fill();
+      ctx.stroke();
+
+      // Node label badge
+      ctx.font = isHovered ? '700 12.5px "Noto Sans KR", sans-serif' : '600 11.5px "Noto Sans KR", sans-serif';
+      ctx.fillStyle = isHovered ? '#ffffff' : '#d6dce6';
+      ctx.textAlign = 'center';
+      
+      const badgeY = p.y < centerP.y ? p.y - 14 : p.y + 20;
+      ctx.fillText(`${n.n} ${n.label.replace(/^\d+장\s*/, '')}`, p.x, badgeY);
+    });
+
+    requestAnimationFrame(render);
+  }
+
+  render();
 })();
 </script>
 </body>
