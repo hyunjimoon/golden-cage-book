@@ -547,7 +547,7 @@ function jumpToQuery(){
 }
 
 // apply chapter color as accent
-const chColor = CH_COLORS[file] || '#5B9A8B';
+const chColor = CH_COLORS[file] || '#c5a55a';
 document.documentElement.style.setProperty('--accent', chColor);
 
 // sidebar nav — chapters
@@ -777,24 +777,27 @@ function md2html(md) {
 }
 function colorizeKeywords(s) {
   const colorMap = {
-    // Purple (Desire-Pain-User)
-    "사용자": "#c084fc", "욕망": "#c084fc", "고통": "#c084fc",
-    // Green (Imagination-Tech-Technician)
-    "기술자": "#4ade80", "기술": "#4ade80", "상상": "#4ade80",
-    // Red (Action-Profit/Loss-Investor)
-    "투자자": "#f87171", "행동": "#f87171", "손익": "#f87171",
-    // Blue (Ego-Evaluation Metric-Collaborator)
-    "협력자": "#38bdf8", "평가기준": "#38bdf8", "척도": "#38bdf8"
+    // Purple (Desire-Pain-User / 👾)
+    "사용자": "#c084fc", "욕망": "#c084fc", "고통": "#c084fc", "환상": "#c084fc",
+    // Green (Imagination-Tech-Technician / ⛰️)
+    "기술자": "#4ade80", "기술": "#4ade80", "상상": "#4ade80", "품위": "#4ade80", "작가": "#4ade80",
+    // Red (Action-Profit/Loss-Investor / 🟥)
+    "투자자": "#f87171", "행동": "#f87171", "손익": "#f87171", "신념": "#f87171", "확신": "#f87171",
+    // Blue (Ego-Evaluation Metric-Collaborator / 🌀)
+    "협력자": "#38bdf8", "평가기준": "#38bdf8", "척도": "#38bdf8", "질서": "#38bdf8", "명명": "#38bdf8"
   };
   const parts = s.split(/(<[^>]+>)/g);
   for (let i = 0; i < parts.length; i++) {
     if (parts[i] && !parts[i].startsWith('<')) {
       // 1. Colorize multi-character keywords
-      parts[i] = parts[i].replace(/(사용자|욕망|고통|기술자|기술|상상|투자자|행동|손익|협력자|평가기준|척도)/g, function(match) {
+      parts[i] = parts[i].replace(/(사용자|욕망|고통|환상|기술자|기술|상상|품위|작가|투자자|행동|손익|신념|확신|협력자|평가기준|척도|질서|명명)/g, function(match) {
         return `<span style="color:${colorMap[match]}; font-weight: 600;">${match}</span>`;
       });
-      // 2. Colorize standalone "자" safely (avoiding suffixes like 기술자, 한 자 등)
-      parts[i] = parts[i].replace(/(?<=^|[\s\(\[\{\'\"“])자(?=$|[\s\)\}\]\.\,\:\;\!\?\'\"”])/g, '<span style="color:#38bdf8; font-weight: 600;">자</span>');
+      // 2. Colorize standalone "자", "일", "빚" safely (avoiding suffixes and overlapping substrings)
+      parts[i] = parts[i].replace(/(?<=^|[\s\(\[\{\'\"“])(자|일|빚)(?=$|[\s\)\}\]\.\,\:\;\!\?\'\"”])/g, function(match) {
+        const standaloneColors = { "자": "#38bdf8", "일": "#c5a55a", "빚": "#c5a55a" };
+        return `<span style="color:${standaloneColors[match]}; font-weight: 600;">${match}</span>`;
+      });
     }
   }
   return parts.join('');
