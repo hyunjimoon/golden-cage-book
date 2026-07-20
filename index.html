@@ -208,6 +208,55 @@
   footer .oro{font-family:'Noto Serif KR',serif;font-size:16px;color:#c5b58a;margin-bottom:8px;}
   footer .bio{font-size:11.5px;color:var(--dim);}
   footer .bio a{color:#7ba98f;text-decoration:none;}
+
+  /* ── 캘리브레이션 위젯 (강연 loop를 책에서: 제안→수용→신호→예시) ── */
+  .calib-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:26px;
+    padding-top:16px;border-top:1px dashed var(--line);}
+  .calib-bar .lbl{font-size:11px;color:var(--dim);letter-spacing:.5px;margin-right:2px;}
+  .calib-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:20px;
+    border:1px solid var(--line);background:rgba(255,255,255,.02);color:#aeb9c9;
+    font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;}
+  .calib-btn:hover{transform:translateY(-1px);}
+  .calib-btn .n{font-family:'DM Mono';font-size:10px;opacity:.55;}
+  .calib-btn.got:hover,.calib-btn.got.hit{border-color:#7ba98f;color:#7ba98f;background:rgba(123,169,143,.08);}
+  .calib-btn.stuck:hover,.calib-btn.stuck.hit{border-color:#d69a6a;color:#d69a6a;background:rgba(214,154,106,.08);}
+  .calib-btn.ex:hover,.calib-btn.ex.on{border-color:var(--gold);color:var(--gold);background:rgba(197,165,90,.1);}
+  @keyframes cpulse{0%{transform:scale(1);}40%{transform:scale(1.14);}100%{transform:scale(1);}}
+  .calib-btn.pulse{animation:cpulse .32s ease;}
+  .calib-example{display:none;margin-top:12px;padding:16px 18px;border-radius:10px;
+    background:rgba(197,165,90,.06);border:1px solid rgba(197,165,90,.25);
+    font-size:12.5px;color:#c3ccd8;line-height:1.85;}
+  .calib-example.on{display:block;}
+  .calib-example .exlbl{font-size:10px;letter-spacing:1px;color:var(--gold);font-weight:700;
+    margin-bottom:7px;display:block;}
+  .calib-example .miss{color:var(--dim);font-style:italic;}
+
+  /* 떠 있는 소통밀도 dock */
+  .calib-dock{position:fixed;right:16px;bottom:16px;z-index:70;width:280px;max-width:calc(100vw - 32px);
+    background:rgba(12,15,22,.95);border:1px solid var(--line);border-radius:12px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:11px;color:#aeb9c9;
+    overflow:hidden;transform:translateY(calc(100% - 42px));
+    transition:transform .3s cubic-bezier(.6,0,.2,1);box-shadow:0 8px 30px rgba(0,0,0,.4);}
+  .calib-dock.open{transform:translateY(0);}
+  .calib-dock .hd{display:flex;align-items:center;justify-content:space-between;
+    padding:12px 14px;cursor:pointer;font-weight:700;color:#d0d8e2;letter-spacing:.4px;user-select:none;}
+  .calib-dock .hd .tog{font-size:10px;color:var(--dim);}
+  .calib-dock .body{padding:0 14px 14px;max-height:48vh;overflow-y:auto;}
+  .calib-dock .metric{font-size:10.5px;color:var(--dim);line-height:1.7;margin-bottom:10px;
+    padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .calib-dock .metric b{color:#7ba98f;}
+  .calib-dock .row{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:5px 0;border-bottom:1px solid rgba(255,255,255,.035);}
+  .calib-dock .row .sn{flex:1;color:#93a0b2;font-size:10.5px;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap;}
+  .calib-dock .row .sig{font-family:'DM Mono';font-size:10px;white-space:nowrap;}
+  .calib-dock .row .sig .g{color:#7ba98f;}.calib-dock .row .sig .s{color:#d69a6a;}.calib-dock .row .sig .e{color:var(--gold);}
+  .calib-dock .acts{display:flex;gap:6px;margin-top:11px;}
+  .calib-dock .acts button{flex:1;padding:6px;border-radius:6px;border:1px solid var(--line);
+    background:rgba(255,255,255,.02);color:#aeb9c9;font-family:inherit;font-size:10.5px;cursor:pointer;transition:all .18s;}
+  .calib-dock .acts button:hover{border-color:var(--gold);color:var(--gold);}
+  .calib-dock .note{font-size:9.5px;color:var(--dim);margin-top:9px;line-height:1.55;}
+  @media(max-width:640px){.calib-dock{width:calc(100vw - 32px);}}
 </style>
 </head>
 <body>
@@ -259,7 +308,7 @@
 </section>
 
 <!-- ══════════ 1부 · 부수기 (DISENCHANTMENT) ══════════ -->
-<section class="band">
+<section class="band" data-sec="part1" data-example="예: 한 커머스 스타트업이 시리즈B 300억을 받은 직후, 새 시장 실험 대신 기존 지표 방어에 팀을 묶었다. 여섯 달 뒤 경쟁사가 연 시장에 들어갈 인력이 없었다 — 자금(F)이 방향전환(R)을 억눌러 성장(G)을 깎은 <b>dG/dF=(−)</b>의 교과서.">
   <div class="reveal">
     <div class="kicker" style="color:#8aa0b8;">PART 1 · 부수기 — DISENCHANTMENT</div>
     <h2>네 개의 새장, 네 개의 청구서</h2>
@@ -306,7 +355,7 @@
 </section>
 
 <!-- ══════════ ★ 멈춤 — PIVOT (창업혼의 도약) ══════════ -->
-<section class="pivot">
+<section class="pivot" data-sec="pivot">
   <div class="star">★</div>
   <div class="axis">5 ↔ 10 회전축 · 101호</div>
   <h2>새장을 부수는 게 아니라, <br>연다</h2>
@@ -318,7 +367,7 @@
 </section>
 
 <!-- ══════════ 2부 · 다시짓기 (RE-ENCHANTMENT) ══════════ -->
-<section class="band">
+<section class="band" data-sec="part2">
   <div class="reveal">
     <div class="kicker" style="color:#d69a6a;">PART 2 · 다시짓기 — RE-ENCHANTMENT</div>
     <h2>같은 골격, 열린 둥지</h2>
@@ -364,7 +413,7 @@
 </section>
 
 <!-- ══════════ 디지털만의 특장 — "종이가 할 수 없는 것" ══════════ -->
-<section class="band">
+<section class="band" data-sec="digital">
   <div class="reveal">
     <div class="kicker" style="color:var(--gold);">DIGITAL ONLY · 종이가 할 수 없는 것</div>
     <h2>읽지 말고, 들어가 보라</h2>
@@ -417,7 +466,7 @@
 </section>
 
 <!-- ══════════ 창업소설이란 ══════════ -->
-<section class="band">
+<section class="band" data-sec="what" data-example="예: 4장 로빈슨은 30년 쌓은 섬의 질서(시계·달력·울타리)가 잘 돌수록 그것 없는 삶을 상상 못 했다. 방드르디의 담뱃대 불씨 하나가 화약고를 날리자 — 파괴가 아니라 <b>해방</b>이 왔다. '무엇을 걸고 무엇을 잃는가'가 곧 창업소설의 엔진.">
   <div class="reveal">
     <div class="kicker" style="color:var(--dim);">창업소설이란</div>
     <h2>무엇을 걸고, 무엇을 잃는가</h2>
@@ -439,7 +488,7 @@
 </section>
 
 <!-- ══════════ 누구의 삶을 바꾸는가 ══════════ -->
-<section class="band">
+<section class="band" data-sec="who">
   <div class="reveal">
     <div class="kicker" style="color:var(--dim);">누구의 삶을 바꿀 이야기인가</div>
     <h2>지금 불안한 당신 · 작가 · 독자 · 정책설계자</h2>
@@ -514,7 +563,7 @@
 </section>
 
 <!-- ══════════ 고민 중인 것 ══════════ -->
-<section class="band">
+<section class="band" data-sec="deliberate">
   <div class="reveal">
     <div class="kicker" style="color:var(--dim);">고민 중인 것</div>
     <h2>지금 저울질하고 있는 것들</h2>
@@ -621,6 +670,101 @@ function togglePolicy(id, btn){
   document.querySelectorAll('.policy-btn').forEach(b=>b.classList.remove('active'));
   if(!isActive){panel.classList.add('active');btn.classList.add('active');}
 }
+
+/* ══════════ 캘리브레이션 엔진 ══════════
+   강연 loop를 책에서: 제안 → 수용 → (👍이해 / 🤔막힘 / 📖예시 더) → online optimization(예시 펼침).
+   · 신호는 이 브라우저에만 저장(localStorage). 서버 없음 = 편집자-무관심 배려.
+   · 자(尺) = 도착률 = 👍/(👍+🤔). engagement(체류)가 아니라 소통밀도. 9장 metric≡eval metric 자기감사.
+   · 🤔·📖 많은 대목 = 다음 개고 1순위 = 실제 /reader (텔레메트리 likelihood → posterior 페이지). */
+(function(){
+  const KEY='gc_calib_v1';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}};
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}};
+  let data=load();
+  const secEl={};
+  const ensure=id=>{if(!data[id])data[id]={got:0,stuck:0,ex:0,dwell:0};return data[id];};
+
+  const secs=document.querySelectorAll('[data-sec]');
+  secs.forEach(sec=>{
+    const id=sec.getAttribute('data-sec'); secEl[id]=sec; ensure(id);
+    const bar=document.createElement('div'); bar.className='calib-bar'; bar.dataset.for=id;
+    bar.innerHTML='<span class="lbl">이 대목, 도착했나요?</span>'+
+      '<button class="calib-btn got" data-k="got">👍 이해됨 <span class="n"></span></button>'+
+      '<button class="calib-btn stuck" data-k="stuck">🤔 막힘 <span class="n"></span></button>'+
+      '<button class="calib-btn ex" data-k="ex">📖 예시 더 <span class="n"></span></button>';
+    const ex=document.createElement('div'); ex.className='calib-example';
+    const content=sec.getAttribute('data-example');
+    ex.innerHTML='<span class="exlbl">📖 물밑에서 꺼낸 예시</span>'+
+      (content?content:'<span class="miss">아직 이 대목엔 예시가 없습니다. 당신의 요청이 기록됐어요 — 저자가 다음 판에서 채웁니다.</span>');
+    sec.appendChild(bar); sec.appendChild(ex);
+    bar.addEventListener('click',e=>{
+      const b=e.target.closest('.calib-btn'); if(!b)return;
+      const k=b.dataset.k; ensure(id)[k]++; save(); syncBar(id); renderDock();
+      if(k==='ex'){ex.classList.toggle('on'); b.classList.toggle('on');}
+      else{b.classList.add('hit','pulse'); setTimeout(()=>b.classList.remove('pulse'),320);}
+    });
+    syncBar(id);
+  });
+
+  function syncBar(id){
+    const bar=document.querySelector('.calib-bar[data-for="'+id+'"]'); if(!bar)return;
+    const d=data[id]||{};
+    bar.querySelector('.got .n').textContent=d.got||'';
+    bar.querySelector('.stuck .n').textContent=d.stuck||'';
+    bar.querySelector('.ex .n').textContent=d.ex||'';
+  }
+
+  /* dwell = 섹션 체류(보조 신호) */
+  const inview={};
+  const dio=new IntersectionObserver(es=>{es.forEach(e=>{
+    const id=e.target.getAttribute('data-sec');
+    if(e.isIntersecting){inview[id]=Date.now();}
+    else if(inview[id]){ensure(id).dwell+=Math.round((Date.now()-inview[id])/1000);delete inview[id];save();renderDock();}
+  });},{threshold:.5});
+  secs.forEach(s=>dio.observe(s));
+  addEventListener('beforeunload',()=>{const now=Date.now();Object.keys(inview).forEach(id=>{ensure(id).dwell+=Math.round((now-inview[id])/1000);});save();});
+
+  /* dock */
+  const dock=document.createElement('div'); dock.className='calib-dock';
+  dock.innerHTML='<div class="hd">📊 소통밀도 신호 <span class="tog">▲ 열기</span></div><div class="body"></div>';
+  document.body.appendChild(dock);
+  dock.querySelector('.hd').addEventListener('click',()=>{
+    dock.classList.toggle('open');
+    dock.querySelector('.tog').textContent=dock.classList.contains('open')?'▼ 닫기':'▲ 열기';
+  });
+
+  function renderDock(){
+    const body=dock.querySelector('.body');
+    let g=0,s=0,ex=0; Object.values(data).forEach(d=>{g+=d.got||0;s+=d.stuck||0;ex+=d.ex||0;});
+    const density=(g+s)?Math.round(100*g/(g+s)):null;
+    let html='<div class="metric">자(尺) = <b>도착률 = 👍/(👍+🤔)</b> · engagement 아님<br>'+
+      '합계 👍'+g+' · 🤔'+s+' · 📖'+ex+(density!==null?' · 도착률 <b>'+density+'%</b>':'')+'</div>';
+    const rows=Object.keys(data).map(id=>Object.assign({id},data[id]))
+      .filter(r=>r.got||r.stuck||r.ex||r.dwell)
+      .sort((a,b)=>((b.stuck+b.ex)-(a.stuck+a.ex)));
+    rows.forEach(r=>{
+      const h=secEl[r.id]&&secEl[r.id].querySelector('h1,h2,h3');
+      const nm=(h?h.textContent:r.id).trim().slice(0,18);
+      html+='<div class="row"><span class="sn">'+nm+'</span><span class="sig">'+
+        '<span class="g">👍'+(r.got||0)+'</span> <span class="s">🤔'+(r.stuck||0)+'</span> '+
+        '<span class="e">📖'+(r.ex||0)+'</span> <span style="color:var(--dim)">'+(r.dwell||0)+'s</span></span></div>';
+    });
+    if(!rows.length)html+='<div class="note">아직 신호 없음. 각 대목 끝에서 👍 / 🤔 / 📖 를 눌러 보세요.</div>';
+    html+='<div class="acts"><button data-a="copy">신호 복사(JSON)</button><button data-a="reset">초기화</button></div>'+
+      '<div class="note">서버 없음 — 이 브라우저에만 저장. 🤔·📖 많은 대목이 다음 개고 1순위(offline /reader).</div>';
+    body.innerHTML=html;
+    body.querySelector('[data-a="copy"]').onclick=function(){
+      const txt=JSON.stringify(data,null,2);
+      if(navigator.clipboard)navigator.clipboard.writeText(txt);
+      this.textContent='복사됨 ✓'; setTimeout(()=>this.textContent='신호 복사(JSON)',1500);
+    };
+    body.querySelector('[data-a="reset"]').onclick=function(){
+      if(confirm('이 브라우저의 신호를 지울까요?')){data={};save();
+        secs.forEach(s=>syncBar(s.getAttribute('data-sec')));renderDock();}
+    };
+  }
+  renderDock();
+})();
 </script>
 </body>
 </html>
