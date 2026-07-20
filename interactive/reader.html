@@ -649,6 +649,7 @@ if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을
 // md → html
 function md2html(md) {
   const hasLevelComments = md.includes('<!-- level');
+  md = md.replace(/<!--[\s\S]*?-->/g, ''); // Strip all HTML comments (development notes/decisions)
   md = md.replace(/^---[\s\S]*?---\s*/m, '');
   md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
   md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function(match, target, label) {
