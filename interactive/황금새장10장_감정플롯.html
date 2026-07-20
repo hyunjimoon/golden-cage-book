@@ -126,8 +126,8 @@
     색 체계 = <b>claude_emotions.md</b> 10-클러스터 emotional barometer (Sofroniew et al., Anthropic 2026).
     데이터 = 황금새장을열다 원고 10장 지배감정 분석 (2026-05-22).
     🟧환희·⬛소진은 8장 전체에서 부재 — 의도된 공백.
-    회전축 5·10장은 파일명과 본문 챕터 번호가 거꾸로임 — 위 그림은 <b>본문 챕터 번호</b> 기준:
-    5장 거울둥지 hub = file 10🧫_101, 10장 10101호 = file 5🔫_101.
+    회전축 5·10장은 101₂호(5장)와 101₃호(10장) 거울쌍:
+    5장 거울둥지 = 101₂호(file 5🐀_101), 10장 = 101₃호(file 10🧫_101).
   </div>
 
 </div>
@@ -152,12 +152,12 @@ const CH = [
   {n:2, name:'망원경새장',ic:'🔭',  grp:'cage', dom:'despair', sub:'calm',    from:'calm',  to:'despair'},
   {n:3, name:'유리새장',  ic:'💒',  grp:'cage', dom:'anger',   sub:'fear',    from:'fear',  to:'anger'},
   {n:4, name:'시계새장',  ic:'⏱️', grp:'cage', dom:'play',    sub:'calm',    from:'calm',  to:'play'},
-  {n:5, name:'거울둥지 hub',ic:'🧫', grp:'axis', dom:'guard',  sub:'fear',    from:'fear',  to:'guard'},
+  {n:5, name:'거울둥지 (101₂호)',ic:'🪞', grp:'axis', dom:'guard',  sub:'fear',    from:'fear',  to:'guard'},
   {n:6, name:'나비사용자',ic:'🦋',  grp:'nest', dom:'play',    sub:'guard',   from:'guard', to:'play'},
-  {n:7, name:'안개투자자',ic:'🌫️', grp:'nest', dom:'pride',   sub:'guard',   from:'despair',to:'pride'},
-  {n:8, name:'튤립경쟁자',ic:'🌷',  grp:'nest', dom:'guard',   sub:'pride',   from:'fear',  to:'guard'},
+  {n:7, name:'튤립기술자',ic:'🌷',  grp:'nest', dom:'guard',   sub:'pride',   from:'fear',  to:'guard'},
+  {n:8, name:'안개투자자',ic:'🌫️', grp:'nest', dom:'pride',   sub:'guard',   from:'despair',to:'pride'},
   {n:9, name:'까마귀협력자',ic:'🐦‍⬛',grp:'nest',dom:'grace',  sub:'play',    from:'play',  to:'grace'},
-  {n:10,name:'10101호',  ic:'🔫',  grp:'axis', dom:'grace',   sub:'guard',   from:'guard', to:'grace'},
+  {n:10,name:'101₃호',    ic:'🧫',  grp:'axis', dom:'grace',   sub:'guard',   from:'guard', to:'grace'},
 ];
 
 /* 명도 → 글자색 */
