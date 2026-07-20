@@ -13,25 +13,159 @@
 
   /* layout */
   .layout{display:flex;min-height:100vh;}
-
+  
   /* sidebar */
-  .sidebar{width:240px;background:var(--sidebar);border-right:1px solid var(--border);position:fixed;top:0;left:0;bottom:0;overflow-y:auto;font-family:'Noto Sans KR',sans-serif;z-index:50;transition:transform 0.25s;}
-  .sidebar-head{padding:16px;border-bottom:1px solid var(--border);}
-  .sidebar-head a{color:var(--dim);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.5px;}
-  .sidebar-head a:hover{color:var(--text);}
-  .sidebar-nav{padding:8px 0;}
-  .sidebar-nav a{display:block;padding:6px 16px;font-size:13px;color:var(--dim);text-decoration:none;transition:all 0.15s;border-left:2px solid transparent;}
-  .sidebar-nav a:hover{color:var(--text);background:rgba(255,255,255,0.02);}
-  .sidebar-nav a.active{color:var(--accent);border-left-color:var(--accent);background:rgba(91,154,139,0.05);}
-  .sidebar-toc{padding:8px 0;border-top:1px solid var(--border);}
-  .sidebar-toc-label{padding:8px 16px;font-size:11px;color:var(--dim);letter-spacing:1px;font-weight:600;}
-  .sidebar-toc a{display:block;padding:3px 16px 3px 24px;font-size:12px;color:var(--dim);text-decoration:none;transition:color 0.15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .sidebar-toc a.h3{padding-left:36px;font-size:11px;}
-  .sidebar-toc a:hover{color:var(--text);}
-  .sidebar-toc a.toc-active{color:var(--accent);}
-
-  /* main */
-  .main{margin-left:240px;flex:1;min-width:0;}
+  .sidebar {
+    width: 250px;
+    background: rgba(12, 15, 24, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    font-family: 'Noto Sans KR', sans-serif;
+    z-index: 50;
+    transition: transform 0.25s;
+  }
+  .sidebar-head {
+    padding: 20px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .sidebar-head a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: 'Noto Serif KR', serif;
+    transition: color 0.15s;
+  }
+  .sidebar-head a:hover {
+    color: var(--text);
+  }
+  .sidebar-nav {
+    padding: 12px 0;
+  }
+  .sidebar-group-header {
+    padding: 18px 16px 6px;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+  .sidebar-nav a {
+    display: block;
+    padding: 7px 16px 7px 20px;
+    font-size: 12.5px;
+    color: var(--dim);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-nav a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.02);
+    padding-left: 22px;
+  }
+  .sidebar-nav a.active {
+    font-weight: 600;
+  }
+  
+  /* Isomorphic Views in Sidebar */
+  .isomorphic-views-section {
+    margin: 16px 12px;
+    padding: 10px;
+    background: rgba(91, 154, 139, 0.03);
+    border: 1px solid rgba(91, 154, 139, 0.12);
+    border-radius: 8px;
+  }
+  .iso-link {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 8px !important;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .iso-link:last-child {
+    margin-bottom: 0;
+  }
+  .iso-link:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+    transform: translateX(3px);
+  }
+  .iso-icon {
+    font-size: 14px;
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.04);
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .iso-meta {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .iso-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .iso-desc {
+    font-size: 9px;
+    color: var(--dim);
+    line-height: 1.25;
+    margin-top: 1px;
+  }
+  
+  .sidebar-toc {
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .sidebar-toc-label {
+    padding: 8px 16px;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .sidebar-toc a {
+    display: block;
+    padding: 4px 16px 4px 24px;
+    font-size: 12px;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.15s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sidebar-toc a.h3 {
+    padding-left: 36px;
+    font-size: 11px;
+  }
+  .sidebar-toc a:hover {
+    color: var(--text);
+  }
+  .sidebar-toc a.toc-active {
+    color: var(--accent);
+  }
+ 
+  .main{margin-left:250px;flex:1;min-width:0;}
   .content{max-width:680px;margin:0 auto;padding:32px 32px 80px;}
   .ch-banner{width:100%;max-height:260px;object-fit:cover;object-position:top;border-radius:8px;margin-bottom:24px;}
   .tetra-pos{display:flex;justify-content:center;margin-bottom:20px;}
@@ -418,14 +552,67 @@ document.documentElement.style.setProperty('--accent', chColor);
 
 // sidebar nav — chapters
 const sidebarNav = document.getElementById('sidebarNav');
-CHAPTERS.forEach(c => {
-  const a = document.createElement('a');
-  a.href = '?file=' + c.id;
-  a.textContent = c.label;
-  if (c.id === file) a.classList.add('active');
-  a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
-  sidebarNav.appendChild(a);
+const CHAPTER_GROUPS = [
+  { group: '서문', items: ['ch0_prologue', 'ch0_intro', 'ch0_roadmap'] },
+  { group: '1부. 새장 (Cages)', items: ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage'] },
+  { group: '회전축 (The Pivot)', items: ['ch5_mirror_nest'] },
+  { group: '2부. 둥지 (Nests)', items: ['ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest'] },
+  { group: '결말', items: ['ch10_epilogue'] }
+];
+
+CHAPTER_GROUPS.forEach(g => {
+  if (g.group !== '서문' && g.group !== '결말') {
+    const header = document.createElement('div');
+    header.className = 'sidebar-group-header';
+    header.textContent = g.group;
+    sidebarNav.appendChild(header);
+  }
+  g.items.forEach(id => {
+    const c = CHAPTERS.find(ch => ch.id === id);
+    if (!c) return;
+    const a = document.createElement('a');
+    a.href = '?file=' + c.id;
+    a.textContent = c.label;
+    if (c.id === file) {
+      a.classList.add('active');
+      const accentColor = CH_COLORS[c.id] || '#5B9A8B';
+      a.style.borderLeftColor = accentColor;
+      a.style.color = accentColor;
+      a.style.background = `rgba(${parseInt(accentColor.slice(1,3),16)}, ${parseInt(accentColor.slice(3,5),16)}, ${parseInt(accentColor.slice(5,7),16)}, 0.06)`;
+    }
+    a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
+    sidebarNav.appendChild(a);
+  });
 });
+
+// isomorphic views section injection
+const isoSection = document.createElement('div');
+isoSection.className = 'isomorphic-views-section';
+isoSection.innerHTML = `
+  <div class="sidebar-group-header" style="padding:0 0 6px;">지식 형식 (Isomorphism)</div>
+  <a href="references.html" class="iso-link">
+    <span class="iso-icon">▤</span>
+    <div class="iso-meta">
+      <span class="iso-title">행렬 (Matrix Table)</span>
+      <span class="iso-desc">생각원소 출처·맥락 행렬표</span>
+    </div>
+  </a>
+  <a href="reference_graph.html" class="iso-link">
+    <span class="iso-icon">🕸️</span>
+    <div class="iso-meta">
+      <span class="iso-title">그래프 (2D Graph)</span>
+      <span class="iso-desc">원소 유기적 흐름 연결망</span>
+    </div>
+  </a>
+  <a href="bookmap_3d.html" class="iso-link">
+    <span class="iso-icon">⬡</span>
+    <div class="iso-meta">
+      <span class="iso-title">다면체 (3D Map)</span>
+      <span class="iso-desc">새장·둥지 대칭 입체 지도</span>
+    </div>
+  </a>
+`;
+sidebarNav.appendChild(isoSection);
 
 // sidebar nav — appendices (3 groups)
 const APPENDICES = [
@@ -435,14 +622,13 @@ const APPENDICES = [
 ];
 APPENDICES.forEach(g => {
   const label = document.createElement('div');
-  label.style.cssText = 'padding:8px 16px 2px;font-size:10px;color:var(--dim);letter-spacing:1px;margin-top:8px;border-top:1px solid var(--border);';
+  label.className = 'sidebar-group-header';
   label.textContent = g.group;
   sidebarNav.appendChild(label);
   g.items.forEach(item => {
     const a = document.createElement('a');
     a.href = '?file=' + item.id;
     a.textContent = item.label;
-    a.style.fontSize = '12px';
     if (item.id === file) a.classList.add('active');
     a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
     sidebarNav.appendChild(a);
