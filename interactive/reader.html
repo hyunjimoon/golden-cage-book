@@ -768,17 +768,24 @@ function md2html(md) {
 }
 function colorizeKeywords(s) {
   const colorMap = {
-    "사용자": "#a78bfa", "욕망": "#a78bfa",
-    "기술자": "#76c893", "기술": "#76c893", "상상": "#76c893",
-    "투자자": "#f87171", "행동": "#f87171",
-    "협력자": "#59a5d8", "척도": "#59a5d8"
+    // Purple (Desire-Pain-User)
+    "사용자": "#c084fc", "욕망": "#c084fc", "고통": "#c084fc",
+    // Green (Imagination-Tech-Technician)
+    "기술자": "#4ade80", "기술": "#4ade80", "상상": "#4ade80",
+    // Red (Action-Profit/Loss-Investor)
+    "투자자": "#f87171", "행동": "#f87171", "손익": "#f87171",
+    // Blue (Ego-Evaluation Metric-Collaborator)
+    "협력자": "#38bdf8", "평가기준": "#38bdf8", "척도": "#38bdf8"
   };
   const parts = s.split(/(<[^>]+>)/g);
   for (let i = 0; i < parts.length; i++) {
     if (parts[i] && !parts[i].startsWith('<')) {
-      parts[i] = parts[i].replace(/(사용자|욕망|기술자|기술|상상|투자자|행동|협력자|척도)/g, function(match) {
+      // 1. Colorize multi-character keywords
+      parts[i] = parts[i].replace(/(사용자|욕망|고통|기술자|기술|상상|투자자|행동|손익|협력자|평가기준|척도)/g, function(match) {
         return `<span style="color:${colorMap[match]}; font-weight: 600;">${match}</span>`;
       });
+      // 2. Colorize standalone "자" safely (avoiding suffixes like 기술자, 한 자 등)
+      parts[i] = parts[i].replace(/(?<=^|[\s\(\[\{\'\"“])자(?=$|[\s\)\}\]\.\,\:\;\!\?\'\"”])/g, '<span style="color:#38bdf8; font-weight: 600;">자</span>');
     }
   }
   return parts.join('');
