@@ -679,7 +679,7 @@ function md2html(md) {
     });
   }
 
-  let lines = md.split('\n'), html = '', inCode=false, inTable=false, inBQ=false, tRows=[];
+  let lines = md.split('\n'), html = '', inCode=false, inTable=false, inBQ=false, tRows=[], codeLines=[];
   let currentLevel = 3;
   for (let i=0;i<lines.length;i++){
     let L=lines[i];
@@ -693,14 +693,18 @@ function md2html(md) {
     let itemLevel = hasLevelComments ? currentLevel : 3;
     
     if(L.trim().startsWith('```')){
-      if(inCode){blockHtml='</code></pre>';inCode=false;}else{blockHtml='<pre><code>';inCode=true;}
-      if(blockHtml) {
+      if(inCode){
+        let codeContent = codeLines.join('\n').replace(/</g,'&lt;');
         let codeLevel = hasLevelComments ? currentLevel : 1;
-        html+=`<div class="flesh-item" data-level="${codeLevel}">${blockHtml}</div>`;
+        html+=`<div class="flesh-item" data-level="${codeLevel}"><pre><code>${codeContent}</code></pre></div>`;
+        inCode=false;
+      } else {
+        codeLines=[];
+        inCode=true;
       }
       continue;
     }
-    if(inCode){html+=L.replace(/</g,'&lt;')+'\n';continue;}
+    if(inCode){codeLines.push(L);continue;}
     if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(L.trim().replace(/[|:\-\s]/g,'').length>0)tRows.push(L);continue;}
     else if(inTable){
       let tableLevel = hasLevelComments ? currentLevel : 1;
@@ -764,7 +768,11 @@ function md2html(md) {
     html+=`<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
   }
   if(inBQ)html+='</blockquote></div>';
-  if(inCode)html+='</code></pre></div>';
+  if(inCode){
+    let codeContent = codeLines.join('\n').replace(/</g,'&lt;');
+    let codeLevel = hasLevelComments ? currentLevel : 1;
+    html+=`<div class="flesh-item" data-level="${codeLevel}"><pre><code>${codeContent}</code></pre></div>`;
+  }
   return html;
 }
 function colorizeKeywords(s) {
