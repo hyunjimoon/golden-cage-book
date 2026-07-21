@@ -436,7 +436,11 @@ function renderTable(){
     h+=`<tr class="fam-head"><td class="name" colspan="${cols.length+1}">`+
        `<span style="color:${fams[f].color}">●</span> ${fams[f].name}</td></tr>`;
     rows.forEach(e=>{
-      h+=`<tr><td class="name">${e.star?'<span class="star-mark">★</span> ':''}${e.title}`+
+      const cands = e.chaps.filter(x=>x!=='__aux__');
+      const chap = cands[0];
+      const linkFile = CHAP_FILE[chap];
+      const clickAttr = linkFile ? `style="cursor:pointer;" onclick="window.location.href='reader.html?file=${linkFile}&q=${encodeURIComponent(e.title)}'"` : '';
+      h+=`<tr ${clickAttr}><td class="name">${e.star?'<span class="star-mark">★</span> ':''}${e.title}`+
          (e.def?`<span class="df">${e.def}</span>`:'')+`</td>`;
       cols.forEach(c=>{
         const inIt=e.chaps.some(x=>(x==='__aux__'?'__aux__':x)===c.id);
