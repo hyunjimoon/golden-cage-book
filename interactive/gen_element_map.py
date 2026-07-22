@@ -662,9 +662,19 @@ function nodeAt(mx,my){
 canvas.addEventListener('mousemove',ev=>{
   const mx=ev.clientX,my=ev.clientY;
   if(pressing){const ddx=mx-pDownX,ddy=my-pDownY;if(ddx*ddx+ddy*ddy>20)moved=true;}
+  if(geneOn){
+    if(geneDrag){geneDrag.x=mx;geneDrag.y=my;geneDrag.vx=geneDrag.vy=0;return;}
+    const n=geneAt(mx,my);geneHover=n;
+    if(n){showGeneTip(n,mx,my);}else{tip.style.opacity=0;}
+    return;
+  }
   if(polyOn){
     if(dragRot){ay+=(mx-lastMX)*0.008;ax+=(my-lastMY)*0.008;
-      ax=Math.max(-1.4,Math.min(1.4,ax));lastMX=mx;lastMY=my;tip.style.opacity=0;return;}
+      ax=Math.max(-1.4,Math.min(1.4,ax));lastMX=mx;lastMY=my;
+      tip.style.opacity=0;polyCard.classList.remove('on');hoverVert=null;return;}
+    const vc=polyVertexAt(mx,my);
+    if(vc){hoverVert=vc;hoverPoly=-1;showPolyCard(vc);tip.style.opacity=0;return;}
+    hoverVert=null;polyCard.classList.remove('on');
     const i=polyAt(mx,my);hoverPoly=i;
     if(i>=0){showTip(poly[i].e,mx,my);}else{tip.style.opacity=0;}
     return;
@@ -688,6 +698,8 @@ canvas.addEventListener('mousemove',ev=>{
 });
 canvas.addEventListener('mousedown',ev=>{
   pressing=true;moved=false;pDownX=ev.clientX;pDownY=ev.clientY;pDownNode=null;
+  if(geneOn){const g=geneAt(ev.clientX,ev.clientY);
+    if(g&&g.marr_layer!==0){geneDrag=g;canvas.classList.add('drag');}return;}
   if(polyOn){dragRot=true;lastMX=ev.clientX;lastMY=ev.clientY;canvas.classList.add('drag');return;}
   const n=nodeAt(ev.clientX,ev.clientY);
   pDownNode=n;
@@ -700,10 +712,14 @@ canvas.addEventListener('mousedown',ev=>{
 });
 addEventListener('mouseup',()=>{
   if(pressing&&!moved){
-    if(polyOn){if(hoverPoly>=0)navTo(poly[hoverPoly].e.chaps,poly[hoverPoly].e.title);}
+    if(geneOn){/* 계보: 드래그 핀만, 클릭 이동 없음 */}
+    else if(polyOn){
+      if(hoverVert&&CHAP_FILE[hoverVert]){window.location.href='reader.html?file='+CHAP_FILE[hoverVert];}
+      else if(hoverPoly>=0)navTo(poly[hoverPoly].e.chaps,poly[hoverPoly].e.title);
+    }
     else if(pDownNode&&pDownNode.kind==='el'){navTo(pDownNode.chaps,pDownNode.label);}
   }
-  pressing=false;pDownNode=null;dragNode=null;dragRot=false;canvas.classList.remove('drag');
+  pressing=false;pDownNode=null;dragNode=null;dragRot=false;geneDrag=null;canvas.classList.remove('drag');
 });
 canvas.addEventListener('mouseleave',()=>{tip.style.opacity=0;});
 // 터치
@@ -759,20 +775,40 @@ function renderTable(){
   h+='</tbody></table>';
   tableView.innerHTML=h;
 }
-const btnMap=document.getElementById('btnMap'),btnPoly=document.getElementById('btnPoly'),btnTable=document.getElementById('btnTable');
+const btnMap=document.getElementById('btnMap'),btnGene=document.getElementById('btnGene'),
+      btnPoly=document.getElementById('btnPoly'),btnTable=document.getElementById('btnTable');
+let _routing=false;
 function setView(v){
-  tableOn=(v==='table');polyOn=(v==='poly');
+  tableOn=(v==='table');polyOn=(v==='poly');geneOn=(v==='gene');
   tableView.classList.toggle('show',tableOn);
   if(tableOn)renderTable();
+  if(geneOn)geneInit();
   document.body.classList.toggle('poly',polyOn);
+  document.body.classList.toggle('gene',geneOn);
   btnMap.classList.toggle('on',v==='map');
+  btnGene.classList.toggle('on',v==='gene');
   btnPoly.classList.toggle('on',v==='poly');
   btnTable.classList.toggle('on',v==='table');
-  tip.style.opacity=0;highlightHub=null;hoverPoly=-1;
+  tip.style.opacity=0;highlightHub=null;hoverPoly=-1;hoverVert=null;
+  polyCard.classList.remove('on');geneHover=null;geneDrag=null;
+  const hash={map:'#map',gene:'#gene',poly:'#poly',table:'#table'}[v];
+  if(hash&&location.hash!==hash){_routing=true;location.hash=hash;_routing=false;}
 }
 btnMap.onclick=()=>setView('map');
+btnGene.onclick=()=>setView('gene');
 btnPoly.onclick=()=>setView('poly');
 btnTable.onclick=()=>setView('table');
+/* ---------- URL 해시 렌즈 라우팅 (딥링크: 리다이렉트 stub이 바로 해당 렌즈로) ---------- */
+function viewFromHash(){
+  const h=(location.hash||'').toLowerCase();
+  if(h==='#gene')return 'gene';
+  if(h==='#poly'||h==='#3d')return 'poly';
+  if(h==='#table'||h==='#matrix')return 'table';
+  if(h==='#map')return 'map';
+  return null;                                   // 없거나 모르는 해시 → 기본 지도
+}
+addEventListener('hashchange',()=>{if(_routing)return;const v=viewFromHash();if(v)setView(v);});
+(function(){const v=viewFromHash();if(v&&v!=='map')setView(v);})();
 </script>
 </body>
 </html>
