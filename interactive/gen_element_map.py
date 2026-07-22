@@ -726,6 +726,7 @@ canvas.addEventListener('mouseleave',()=>{tip.style.opacity=0;});
 canvas.addEventListener('touchstart',ev=>{
   const t=ev.touches[0];
   pressing=true;moved=false;pDownX=t.clientX;pDownY=t.clientY;pDownNode=null;
+  if(geneOn){const g=geneAt(t.clientX,t.clientY);if(g&&g.marr_layer!==0)geneDrag=g;return;}
   if(polyOn){dragRot=true;lastMX=t.clientX;lastMY=t.clientY;hoverPoly=polyAt(t.clientX,t.clientY);return;}
   const n=nodeAt(t.clientX,t.clientY);pDownNode=n;
   if(n&&n.kind==='hub'){const hid=n.id.slice(4);
@@ -734,6 +735,7 @@ canvas.addEventListener('touchstart',ev=>{
 canvas.addEventListener('touchmove',ev=>{
   const t=ev.touches[0];
   if(pressing){const ddx=t.clientX-pDownX,ddy=t.clientY-pDownY;if(ddx*ddx+ddy*ddy>25)moved=true;}
+  if(geneOn&&geneDrag){geneDrag.x=t.clientX;geneDrag.y=t.clientY;geneDrag.vx=geneDrag.vy=0;return;}
   if(polyOn&&dragRot){ay+=(t.clientX-lastMX)*0.008;ax+=(t.clientY-lastMY)*0.008;
     ax=Math.max(-1.4,Math.min(1.4,ax));lastMX=t.clientX;lastMY=t.clientY;return;}
   if(dragNode){dragNode.x=t.clientX;dragNode.y=t.clientY;
@@ -743,7 +745,7 @@ canvas.addEventListener('touchend',()=>{
     if(polyOn){if(hoverPoly>=0)navTo(poly[hoverPoly].e.chaps,poly[hoverPoly].e.title);}
     else if(pDownNode&&pDownNode.kind==='el'){navTo(pDownNode.chaps,pDownNode.label);}
   }
-  pressing=false;pDownNode=null;dragNode=null;dragRot=false;});
+  pressing=false;pDownNode=null;dragNode=null;dragRot=false;geneDrag=null;});
 
 /* ---------- 표 뷰 ---------- */
 const tableView=document.getElementById('tableView');
