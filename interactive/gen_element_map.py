@@ -538,9 +538,13 @@ function geneRadii(){const R=Math.min(W,H);return {1:R*0.15,2:R*0.30,3:R*0.44,0:
 function geneInit(){
   const rr=geneRadii();
   if(geneInited){geneNodes.forEach(n=>n.tr=rr[n.marr_layer]||0);return;}
+  // 층별 노드를 전체 원에 고르게 분포 = 동심원 3고리(sector 뭉침 제거, 반지름 하나만 뜻을 실음)
+  const lc={}; GENE.nodes.forEach(n=>{lc[n.marr_layer]=(lc[n.marr_layer]||0)+1;});
+  const li={};
   geneNodes=GENE.nodes.map(n=>{
-    const sec=n.sector||0, base=GENE_SECT[sec], ang=base+_rnd()*0.9, tr=rr[n.marr_layer]||0;
-    return {...n, tr, ta:base, fam:elemFam[n.id]||null,
+    const cnt=lc[n.marr_layer]||1, i=(li[n.marr_layer]=(li[n.marr_layer]||0)+1)-1;
+    const ang=(i/cnt)*Math.PI*2 + _rnd()*0.12, tr=rr[n.marr_layer]||0;
+    return {...n, tr, fam:elemFam[n.id]||null,
       rad:n.marr_layer===0?13:(n.marr_layer===1?11:(n.marr_layer===3?6.5:4.2)),
       x:W/2+Math.cos(ang)*(tr+_rnd()*20), y:H/2+Math.sin(ang)*(tr+_rnd()*20), vx:0, vy:0};
   });
@@ -555,8 +559,7 @@ function geneTick(){
     if(a===geneDrag)return;
     const dx=a.x-cx,dy=a.y-cy,cur=Math.hypot(dx,dy)||1,ca=Math.atan2(dy,dx);
     const rf=(a.tr-cur)*0.045; a.vx+=dx/cur*rf; a.vy+=dy/cur*rf;
-    let ad=a.ta-ca; while(ad>Math.PI)ad-=2*Math.PI; while(ad<-Math.PI)ad+=2*Math.PI;
-    a.vx+=-Math.sin(ca)*ad*cur*0.006; a.vy+=Math.cos(ca)*ad*cur*0.006;
+    // 각도 목표 인력 제거 → 반지름 유지 + 같은 층 반발만 = 고리 위 고른 분포
   });
   for(let i=0;i<geneNodes.length;i++){const a=geneNodes[i];if(a.marr_layer===0)continue;
     for(let j=i+1;j<geneNodes.length;j++){const b=geneNodes[j];if(b.marr_layer!==a.marr_layer)continue;
