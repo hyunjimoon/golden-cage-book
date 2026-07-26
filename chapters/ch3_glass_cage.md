@@ -6,7 +6,7 @@ modified:
 
 # 3 💒 스테인굴레스새장 — 설득해 / persuade
 
-> 🏗️ **재건 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
+> 🏗️ **개고 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
 
 ## Prior (설계도 §2·§7 발췌)
 - **거울쌍 3↔8**: cage *설득해* ↔ nest *투자자* [[8🌫️_안개투자자]] · 구동동사 **설득되다** · 정사면체 purple

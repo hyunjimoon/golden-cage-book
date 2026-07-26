@@ -6,7 +6,7 @@ modified:
 [[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/2차소통/🐦‍⬛협력자소통/엄마나삥뜯겼어.pdf|엄마나삥뜯겼어]]
 # 9 🐦‍⬛ 까마귀 — 협력자 (합력 internalize)
 
-> 🏗️ **재건 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
+> 🏗️ **개고 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
 
 ## 주제
 

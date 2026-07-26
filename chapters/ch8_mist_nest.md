@@ -8,7 +8,7 @@ modified:
 
 # 8 🌫️ 안개 — 투자자
 
-> 🏗️ **재건 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
+> 🏗️ **개고 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
 
 ## 주제
 

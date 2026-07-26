@@ -6,7 +6,7 @@ modified:
 
 # 4 ⏱️ 시계새장 — 폭파해 / detonate (합력 a=1)
 
-> 🏗️ **재건 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
+> 🏗️ **개고 대기**. 재생성 = `/update` × [[설계도]](Prior) × 2차 채석장(Likelihood) → 이 파일(Posterior). δ = 이 장의 빚.
 
 ## Prior (설계도 §2·§3·§7 발췌)
 - **거울쌍 4↔9**: cage *폭파해*(밖으로 터짐, 다 주도) ↔ nest *협력자*(안으로 모임) [[9🐦‍⬛_까마귀협력자]] · 정사면체 blue축(a-axis)
