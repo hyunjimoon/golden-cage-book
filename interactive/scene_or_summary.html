@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>장면인가 요약인가 — 네 문과 3초 자</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --ground:#0a0d14; --panel:rgba(255,255,255,.02); --ink:#e8eaf0; --ink-soft:#93a0b2;
+    --line:rgba(255,255,255,.08); --grid:rgba(255,255,255,.05);
+    --user:#5B92F5; --tech:#A17BF0; --investor:#F26D6D; --collab:#34C88A;
+    --gold:#c5a55a; --baseline:#5a6a7a; --sync:#6b7788;
+    --scene:#c5a55a; --summary:#4d7f92; --fail:#F26D6D;
+    --serif:'Noto Serif KR',Georgia,serif; --sans:'Noto Sans KR',system-ui,sans-serif;
+    --mono:'DM Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 24px 80px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:12px}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(27px,4.6vw,42px);line-height:1.14;margin-bottom:16px;letter-spacing:-.01em;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--gold)}
+  .lede{font-size:15px;color:var(--ink-soft);max-width:64ch;margin-bottom:14px}
+  .lede b{color:var(--ink);font-weight:600}
+  .rule{font-family:var(--serif);font-size:16.5px;line-height:1.75;color:var(--ink);border-left:2px solid var(--gold);padding:2px 0 2px 16px;margin:0 0 36px;max-width:66ch}
+  .rule b{color:var(--gold);font-weight:700}
+  .rule span{color:var(--ink-soft);font-size:14px;font-family:var(--sans)}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin-bottom:26px}
+  .panel h2{font-family:var(--serif);font-size:19px;font-weight:700;margin-bottom:3px}
+  .panel .sub{font-size:13px;color:var(--ink-soft);margin-bottom:18px;max-width:66ch}
+  .chartbox{width:100%;overflow-x:auto}
+  svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+
+  /* — 엔필라드 — */
+  .gname{fill:var(--ink);font-size:12.5px;font-weight:700;letter-spacing:.02em}
+  .gwho{fill:var(--ink-soft);font-size:10.5px;letter-spacing:.04em}
+  .gframe{fill:none;stroke:var(--line);stroke-width:1.5}
+  .gframe.on{stroke:var(--gold);stroke-width:2}
+  .gjamb{stroke:var(--grid);stroke-width:1}
+  .ghit{fill:transparent;cursor:pointer}
+  .chamber{fill:var(--gold);opacity:.07}
+  .chamber-t{fill:var(--gold);font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;text-anchor:middle}
+  .chamber-s{fill:var(--ink-soft);font-size:10.5px;text-anchor:middle;letter-spacing:.05em}
+  .shutter{fill:var(--fail);opacity:.13}
+  .shutter-l{stroke:var(--fail);stroke-width:1.6;opacity:.65}
+  .shutter-t{fill:var(--fail);font-size:12px;font-weight:700;text-anchor:middle}
+
+  .gatedetail{margin-top:16px;border-top:1px solid var(--line);padding-top:16px;min-height:112px}
+  .gatedetail .gd-h{font-family:var(--serif);font-size:16px;font-weight:700;margin-bottom:4px}
+  .gatedetail .gd-h i{font-style:normal;font-family:var(--mono);color:var(--gold);margin-right:8px}
+  .gatedetail .gd-rule{font-size:13.5px;margin-bottom:9px}
+  .gatedetail blockquote{font-size:12.5px;color:var(--ink-soft);border-left:2px solid var(--line);padding-left:12px;line-height:1.65}
+  .gatedetail blockquote cite{display:block;font-style:normal;font-size:11px;letter-spacing:.05em;margin-top:5px;opacity:.75}
+
+  /* — 슬라이더 — */
+  .slidebox{margin-top:6px}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;cursor:pointer;display:block}
+  input[type=range]:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:6px}
+  input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--summary),var(--gold))}
+  input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--summary),var(--gold))}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid var(--ground);box-shadow:0 0 0 1.5px var(--gold);margin-top:-7px}
+  input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--ink);border:3px solid var(--ground);box-shadow:0 0 0 1.5px var(--gold)}
+  .ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-top:-2px}
+  .ticks span{flex:1;text-align:center}
+  .ticks span:first-child{text-align:left}.ticks span:last-child{text-align:right}
+  .ticks span.on{color:var(--gold);font-weight:700}
+  .poles{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-soft);margin-bottom:4px;letter-spacing:.02em}
+  .poles b{color:var(--ink);font-weight:600}
+  .passage{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:20px 22px;background:rgba(197,165,90,.03)}
+  .passage .pmeta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;margin-bottom:12px}
+  .passage .pnum{font-family:var(--mono);font-size:12px;color:var(--gold);font-variant-numeric:tabular-nums}
+  .passage .pname{font-size:13px;font-weight:700}
+  .passage .pwho{font-size:11.5px;color:var(--ink-soft)}
+  .passage .ptext{font-family:var(--serif);font-size:16px;line-height:1.9;text-wrap:pretty}
+  .passage .pnote{font-size:12px;color:var(--ink-soft);margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+  .passage .pnote b{color:var(--gold)}
+  .flag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:20px;border:1px solid var(--gold);color:var(--gold)}
+
+  /* — 표 — */
+  .tablebox{width:100%;overflow-x:auto;margin-top:4px}
+  table{border-collapse:collapse;width:100%;min-width:760px;font-size:13px}
+  th{text-align:left;font-size:11px;letter-spacing:.08em;color:var(--ink-soft);font-weight:700;padding:0 10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:11px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+  tbody tr{cursor:pointer}
+  tbody tr:hover td{background:rgba(255,255,255,.025)}
+  tbody tr.sel td{background:rgba(197,165,90,.09)}
+  tbody tr.sel td:first-child{box-shadow:inset 2px 0 0 var(--gold)}
+  td.id{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap}
+  td.sec{font-size:12.5px}
+  td.want,td.need{font-size:12.5px;color:var(--ink-soft);min-width:150px}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap}
+  .tag.scene{color:var(--scene);background:rgba(197,165,90,.13)}
+  .tag.summary{color:var(--summary);background:rgba(77,127,146,.15)}
+  .marks{white-space:nowrap;font-family:var(--mono);font-size:13px;letter-spacing:2px}
+  .m-o{color:var(--collab)}.m-h{color:var(--gold);opacity:.8}.m-x{color:var(--fail);opacity:.75}
+
+  /* — 장면비율 — */
+  .ratio{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+  .rrow{display:grid;grid-template-columns:88px 1fr 40px;align-items:center;gap:12px}
+  .rrow .rlab{font-size:12px;color:var(--ink-soft);white-space:nowrap}
+  .rrow .rlab b{color:var(--ink);font-weight:600}
+  .rtrack{position:relative;height:14px;border-radius:7px;background:var(--grid);overflow:hidden}
+  .rfill{position:absolute;left:0;top:0;bottom:0;border-radius:7px}
+  .rrow .rval{font-size:12px;font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--ink-soft)}
+  .rrow.pivot .rlab b{color:var(--fail)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin:18px 2px 0;font-size:12px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .sw{width:14px;height:8px;border-radius:3px;display:inline-block}
+  .foot{font-size:12.5px;color:var(--ink-soft);margin:22px 2px 0;max-width:66ch}
+  .foot b{color:var(--ink)}
+  .srcs{list-style:none;display:grid;gap:11px;margin-top:6px}
+  .srcs li{font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--grid);padding-top:9px}
+  .srcs b{color:var(--ink);font-weight:600}
+  .srcs q{color:var(--ink);opacity:.8;font-style:italic}
+  .back{display:inline-block;margin-top:28px;font-size:12.5px;color:var(--gold);text-decoration:none}
+  .back:hover{text-decoration:underline}
+  @media(max-width:620px){.wrap{padding:34px 16px 60px}.panel{padding:20px 16px 18px}.rrow{grid-template-columns:74px 1fr 36px}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">황금새장을열다 · 작법 계기 · How I Write 5편 대조</p>
+  <h1>장면인가 요약인가 —<br><em>네 문</em>을 다 지난 것만 장면이 된다</h1>
+  <p class="lede">David Perell의 <b>How I Write</b> 127편에서 "언제 장면이고 언제 요약인가"에 결정규칙으로 답하는 다섯 편을 골라, 그 잣대를 <b>10장 「투향」</b>에 실제로 대봤다. 문은 순서가 있다 — 앞 문에서 걸리면 뒤는 볼 필요가 없다.</p>
+  <p class="rule">
+    <b>①</b> 사람이 있고 <span>(Connelly·Storr — 누구·원함·방해)</span> · <b>②</b> 물려 있고 <span>(A.Stanton)</span> · <b>③</b> 독자 머리가 비어 있고 <span>(Keefe)</span> · <b>④</b> 내가 비켜설 때 <span>(B.Stanton)</span> — 그때만 장면.<br>그리고 장면은 <b>3초 단위</b>로 짓는다 <span>(Max)</span>.
+  </p>
+
+  <!-- ─────────── 엔필라드 ─────────── -->
+  <section class="panel">
+    <h2>네 문 — 엔필라드</h2>
+    <p class="sub">문을 누르면 그 문의 규칙이 열린다. 아래 「투향」 표의 행을 누르면, 그 대목이 <em style="color:var(--fail);font-style:normal">어느 문에서 막히는지</em>가 여기 닫힌다. 가장 바깥에서 막힌 문 하나만 그린다 — 첫 문에서 걸리면 안쪽 방은 보이지도 않으므로.</p>
+    <div class="chartbox"><svg id="enfilade" viewBox="0 0 800 340" role="img" aria-label="네 개의 문이 겹친 엔필라드 도해"></svg></div>
+    <div class="gatedetail" id="gatedetail"></div>
+  </section>
+
+  <!-- ─────────── 슬라이더 ─────────── -->
+  <section class="panel">
+    <h2>넷째 문의 손잡이 — 자기표현 ↔ 자기삭제 슬라이더</h2>
+    <p class="sub">Perell이 Brandon Stanton에게 붙인 좌표. 양 끝이 사람 이름으로 박혀 있다 — <b>Hunter S. Thompson</b>(『Fear and Loathing』, 곤조) ↔ <b>HONY</b>(<q>I didn't even know your name for so many years</q>). 같은 대목(투향 §2, 오브라이언의 손가락 넷)을 다섯 위치에서 다시 썼다.</p>
+    <div class="slidebox">
+      <div class="poles"><span><b>0</b> 자기삭제 · 대상만</span><span>자기표현 · 나의 고백 <b>100</b></span></div>
+      <input type="range" id="slider" min="0" max="100" step="25" value="50" aria-label="자기표현 정도">
+      <div class="ticks" id="ticks"></div>
+    </div>
+    <div class="passage">
+      <div class="pmeta">
+        <span class="pnum" id="p-num">50</span>
+        <span class="pname" id="p-name"></span>
+        <span class="pwho" id="p-who"></span>
+        <span id="p-flag"></span>
+      </div>
+      <p class="ptext" id="p-text"></p>
+      <p class="pnote" id="p-note"></p>
+    </div>
+
+    <p class="sub" style="margin:26px 0 10px">이 자로 금새 열 장을 재면 — 9장까지 평평하다가 10장에서 튄다.</p>
+    <div class="chartbox"><svg id="axis" viewBox="0 0 800 130" role="img" aria-label="장별 자기표현 위치"></svg></div>
+    <p class="foot"><b>비어 있는 자리는 25다.</b> 인물의 눈으로 쓴 대목(자유간접화법)이 금새엔 거의 없다. 곤조(95)로 갈 거면 25를 먼저 벌어야 한다 — 넷째 문은 "나를 지워라"가 아니라 <b>"내가 설 자리를 고르라"</b>는 문이다.</p>
+  </section>
+
+  <!-- ─────────── 투향 표 ─────────── -->
+  <section class="panel">
+    <h2>10장 「투향」 — 열세 단위, 네 문 통과 여부</h2>
+    <p class="sub">행을 누르면 위 엔필라드가 반응한다. <b>want</b>는 문단 단위 표면 욕구(Connelly·Vonnegut — <q>물 한 잔이라도</q>), <b>need</b>는 장 단위 통제이론(Storr — <q>I am only safe if I ___</q>). 둘은 경쟁하지 않고 층이 다르다.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr>
+          <th>#</th><th>단위</th><th>형식</th><th>인물</th><th>want</th><th>need</th><th>①②③④</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--scene)"></i>장면 3 / 13</span>
+      <span><i class="sw" style="background:var(--summary)"></i>요약 10 / 13</span>
+      <span><span class="marks m-o">✓</span> 통과</span>
+      <span><span class="marks m-h">△</span> 아슬</span>
+      <span><span class="marks m-x">✕</span> 막힘</span>
+    </div>
+    <p class="foot"><b>사람 없는 카드가 다섯 장 연속이다</b> — S3·S5·S6·S9·S10. 투향의 물림은 §3 중반에서 끊긴다. 가장 급한 한 수는 <b>S7의 장면화</b>: 재료는 이미 본문에 있다 — <q>3월 13일, 제목이 바뀌었다.</q> 그날 밤 파일명을 고치는 손 한 컷이면 다섯 연속이 깨진다.</p>
+  </section>
+
+  <!-- ─────────── 장면 비율 ─────────── -->
+  <section class="panel">
+    <h2>새장은 장면으로, 둥지는 요약으로 지어졌다</h2>
+    <p class="sub">장별 장면 비율(§ 단위 분해 기준이 장마다 달라 대략치). 새장 넷(1–4)은 절반 이상이 장면인데, 회전축 5장과 둥지 넷(6–9)에서 무너진다. <b>물림이 가장 필요한 자리가 가장 비어 있다.</b></p>
+    <div class="ratio" id="ratio"></div>
+    <p class="foot">5장 §3의 <q>1년 뒤 박사과정으로 가는 알과, 1년 뒤 전업 작가가 되는 알</q> — 5장에서 유일하게 살아 있는 원함인데 기댓값 수식 뒤에 묻혀 있다. 이걸 §3 첫 문장으로 올리는 것이 원고 전체에서 물림 회복 효과가 가장 큰 단일 작업.</p>
+  </section>
+
+  <!-- ─────────── 출처 ─────────── -->
+  <section class="panel">
+    <h2>다섯 원문</h2>
+    <ul class="srcs" id="srcs"></ul>
+  </section>
+
+  <a class="back" href="../index.html">← golden-cage-book</a>
+</div>
+
+<script>
+"use strict";
+
+/* ══════════ 데이터 ══════════ */
+
+const GATES = [
+  { n:1, name:"사람", who:"Connelly · Storr",
+    rule:"이 대목에 누가 있고, 뭘 원하고, 뭐가 막고 있나. 셋 중 하나라도 비면 장면 자격 없음 — 요약으로 내려라.",
+    quote:"Make sure on every page every character wants something even if it's only a glass of water.",
+    cite:"Kurt Vonnegut, via Michael Connelly (EP111) · 그리고 Aaron Sorkin의 정지 시험 — Who is this person? What do they want? What's getting in their way? (Will Storr, EP044)" },
+  { n:2, name:"물림", who:"Andrew Stanton",
+    rule:"독자가 \"다음이 뭐지\"로 물려 있나. 케이블카가 체인을 물었다 놓았다 하며 가듯, 물린 구간만 실시간으로 쓰고 풀린 구간은 건너뛴다.",
+    quote:"케이블카처럼 관객을 물려(clamp) 앞으로 끌어, 다음이 궁금해 한눈팔 틈이 없게 만든다. 결말은 놀라우면서도 필연적이어야 한다.",
+    cite:"Andrew Stanton, Pixar (EP126)" },
+  { n:3, name:"머리 여백", who:"Patrick Radden Keefe",
+    rule:"독자 머리에 실린 개념 짐이 임계를 넘었나. 넘었으면 장면을 못 따라온다 — 요약을 앞당겨 짐을 덜고 나서 장면을 열어라.",
+    quote:"맥락 부하(context load)를 관리한다 — 배경을 한 번에 붓지 않고 장면 사이로 흘린다. 독자를 끝까지 끌고 갈 당나귀(추동 인물)를 세운다.",
+    cite:"Patrick Radden Keefe (EP115)" },
+  { n:4, name:"시선", who:"Brandon Stanton",
+    rule:"내가 무대에서 비켜섰나. 앞 세 문을 다 지나도 내가 서 있으면 그건 장면이 아니라 고백이다. 묘사는 작가가 아니라 인물의 눈으로.",
+    quote:"Every piece of writing sits along a sliding scale — how much of this is about the writer themselves.",
+    cite:"David Perell → Brandon Stanton (EP016)" }
+];
+
+const RULER = { name:"3초 자", who:"Tucker Max",
+  quote:"Every great story is three second increments described completely back to back. That's all the story is.",
+  cite:"Tucker Max (EP054)" };
+
+const STOPS = [
+  { v:0,  name:"대상만", who:"HONY 쪽 끝",
+    text:"오브라이언이 손가락 넷을 폈다. 윈스턴이 넷이라 답했다. 오브라이언이 다시 물었다.",
+    note:"기록만 남고 해석이 없다. <b>강하지만 이 책엔 못 쓴다</b> — 금새는 이 장면으로 '척도가 녹는다'를 말해야 한다." },
+  { v:25, name:"인물의 눈", who:"자유간접화법",
+    text:"넷이다. 넷인데 다섯째가 자꾸 어른거린다. 다섯이라 <em>말하면</em> 끝나나 — 아니, 다섯으로 <em>보여야</em> 한다.",
+    note:"<b>금새에 비어 있는 자리.</b> 해석을 작가가 아니라 윈스턴의 머릿속에서 일어나게 한다. 넷째 문을 통과하면서도 뜻이 전달되는 유일한 위치." },
+  { v:50, name:"화자 있음, 나 없음", who:"현 원고 §2",
+    text:"오브라이언이 요구한 것은 다섯이라 <em>말하는</em> 것이 아니라 다섯으로 <em>보고 싶어지는</em> 것이었다.",
+    note:"현재 투향 §2가 선 자리. 안전하지만 <b>서술자가 이미 앞서 있다</b> — 독자가 스스로 알아챌 자리를 뺏는다." },
+  { v:75, name:"나의 해석", who:"현 원고 §2 후반",
+    text:"이것이 이 책 전체의 병(病)을 한 장면으로 압축한다 — 욕망이 상태를 잡아먹으면, 넷을 재던 자[尺]가 녹아 없어진다.",
+    note:"논지는 여기서 가장 선명하다. 대신 <b>장면이 예시로 강등</b>된다. 요약임을 인정하고 짧게 쓰는 것이 정직하다." },
+  { v:100,name:"나의 고백", who:"곤조 쪽 끝",
+    text:"나는 지난 3월, 내 원고에 대해 다섯을 보고 싶었다. 커밋 303개가 그 증거다. 넷이었는데.",
+    note:"투향 §3–§5가 실제로 선 자리(95). <b>이 책에서만 정당한 위치</b> — 10장은 책 자신이 대상이므로. 단 1–9장에서 25를 벌지 못하면 급발진으로 읽힌다." }
+];
+
+const CHAPTERS = [
+  { n:1,  sym:"🪞", name:"거울새장",  x:35, ratio:50 },
+  { n:2,  sym:"🔭", name:"망원경",    x:32, ratio:50 },
+  { n:3,  sym:"💒", name:"스테인굴레스",x:60, ratio:63 },
+  { n:4,  sym:"⏱️", name:"시계",      x:45, ratio:56 },
+  { n:5,  sym:"🐀", name:"101 회전축", x:75, ratio:25, pivot:true },
+  { n:6,  sym:"🦋", name:"나비",      x:50, ratio:27 },
+  { n:7,  sym:"🌷", name:"튤립",      x:42, ratio:18 },
+  { n:8,  sym:"🌫️", name:"안개",      x:40, ratio:11 },
+  { n:9,  sym:"🐦‍⬛", name:"까마귀",    x:55, ratio:18 },
+  { n:10, sym:"🧫", name:"투향",      x:95, ratio:23, pivot:true }
+];
+
+// g: 4 문 통과 — 'o' 통과 / 'h' 아슬 / 'x' 막힘
+const SCENES = [
+  { id:"S1", sec:"도입 ⛰️ 네 빚", form:"요약", who:"당신",
+    want:"궤도를 닫고 끝내고 싶다", need:"덮어 가린 고통을 그대로 마주해야 한다", g:["h","o","o","o"] },
+  { id:"S2", sec:"§1 101호 · 쥐 철망", form:"장면", who:"윈스턴",
+    want:"이 얼굴에서 철망을 치우고 싶다", need:"사랑을 지킨 자기로 남는 것", g:["o","o","o","o"] },
+  { id:"S3", sec:"§1 문패 10101 · 건축 벡터", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","h","h","o"] },
+  { id:"S4", sec:"§2 오브라이언의 손가락 넷", form:"장면", who:"오브라이언 / 윈스턴",
+    want:"넷을 다섯이라 말하게 하고 싶다 / 고통을 멈추고 싶다", need:"권력이 현실을 만든다는 증명 / 잴 자를 잃지 않는 것", g:["o","o","o","o"] },
+  { id:"S5", sec:"§2 “넷은 넷이다” 해설", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","o","o","h"] },
+  { id:"S6", sec:"§3 아홉 장 되짚기", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","h","x","o"] },
+  { id:"S7", sec:"§3 커밋 연대기 Dec–Jul", form:"요약", who:"자장 (무대 밖)",
+    want:"책을 끝내고 싶다", need:"은유가 도착해야 문장이 정렬된다", g:["h","o","h","x"] },
+  { id:"S8", sec:"§4 줄탁동시 — Charlie 이메일", form:"장면", who:"자장 / Charlie",
+    want:"스승의 척도를 듣고 싶다 / 강요 없이 씨앗을 놓고 싶다", need:"밖의 부리가 같은 자리를 쪼아야 껍질이 깨진다", g:["o","o","o","h"] },
+  { id:"S9", sec:"§4 여섯 연장 표", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","x","x","o"] },
+  { id:"S10", sec:"§5 호러 / 판타지 두 믿음", form:"요약", who:"자장 (무대 밖)",
+    want:"전쟁을 막고 싶다", need:"최악과 최선 사이에만 잴 자가 있다", g:["h","h","x","x"] },
+  { id:"S11", sec:"§6 세다 탄생 — 다가 세를 쏘다", form:"요약", who:"다 / 세",
+    want:"앞서 달리고 싶다 / 지켜보고 싶다", need:"세를 이해해야 한다 / 다를 사랑해야 한다", g:["h","o","h","o"] },
+  { id:"S12", sec:"⭐️ 네 자리 — 세 지시", form:"요약", who:"당신",
+    want:"이 방을 닫고 싶다", need:"다섯으로 보고 싶은 넷을 짚어야 한다", g:["h","o","o","o"] },
+  { id:"S13", sec:"엔필라드 — 꺼진 무도회장, 빈 손", form:"장면", who:"당신",
+    want:"문을 열고 나가고 싶다", need:"손이 비어 있음을 견디는 것", g:["o","o","o","o"] }
+];
+
+const SRC = [
+  ["EP115 Patrick Radden Keefe", "맥락 부하 — 독자 머리의 짐을 재서 장면과 요약을 갈아탄다. write-around: 직접 장면이 없으면 요약이 아니라 <em>옆 장면</em>을 세운다."],
+  ["EP126 Andrew Stanton", "케이블카 물림. <q>fear denies a good father from being one</q> — 한 문장 전제(인물+갈등+결말)로 압축하고, 결말은 놀라우면서 필연적으로."],
+  ["EP111 Michael Connelly", "<q>Make sure on every page every character wants something even if it's only a glass of water.</q> 그리고 디테일은 다섯 중 <em>말해주는 것</em> 하나만 — 나머지는 momentum을 죽인다."],
+  ["EP044 Will Storr", "소킨의 정지 시험. 지루함의 진단법이다 — <q>Very often that will be why you're bored: the story hasn't made it clear who wants what and what's standing in their way.</q> 그리고 fractal — 인물에게도 장면에게도 목표와 장애물이 있다. 가장 깊은 장애물은 언제나 성격(theory of control)."],
+  ["EP016 Brandon Stanton", "sliding scale의 양 끝 — Hunter S. Thompson ↔ HONY. <q>I didn't even know your name for so many years.</q>"],
+  ["EP054 Tucker Max", "해상도 자 — <q>every great story is three second increments described completely back to back.</q> 그리고 <q>상처에서 쓰지 말라</q>는 부정확하다: 정확히는 <em>상처에서 출간하지 말라</em>."],
+  ["EP018 Susan Orlean", "5×8 카드 700장을 바닥에 펴 구조를 <em>공간으로</em> 본다. 안 들어가는 것은 포인터가 된다 — <q>card number 35, legal document</q>."]
+];
+
+/* ══════════ 엔필라드 ══════════ */
+
+const CX = 400, CY = 168;
+const doorGeo = i => {
+  const w = 640 - i*128, h = 250 - i*46;
+  return { w, h, x: CX - w/2, y: CY - h/2 };
+};
+let selGate = null, selScene = null;
+
+function drawEnfilade(){
+  const svg = document.getElementById("enfilade");
+  const inner = doorGeo(3);
+  let s = `<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" class="shutter-l"/></pattern></defs>`;
+
+  // 원근 바닥·천장선 (문 모서리 잇기)
+  for (let i=0;i<3;i++){
+    const a = doorGeo(i), b = doorGeo(i+1);
+    s += `<line class="gjamb" x1="${a.x}" y1="${a.y+a.h}" x2="${b.x}" y2="${b.y+b.h}"/>`;
+    s += `<line class="gjamb" x1="${a.x+a.w}" y1="${a.y+a.h}" x2="${b.x+b.w}" y2="${b.y+b.h}"/>`;
+    s += `<line class="gjamb" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`;
+    s += `<line class="gjamb" x1="${a.x+a.w}" y1="${a.y}" x2="${b.x+b.w}" y2="${b.y}"/>`;
+  }
+
+  // 안쪽 방 = 장면
+  s += `<rect class="chamber" x="${inner.x+9}" y="${inner.y+9}" width="${inner.w-18}" height="${inner.h-18}" rx="4"/>`;
+  s += `<text class="chamber-t" x="${CX}" y="${CY+2}">장면</text>`;
+  s += `<text class="chamber-s" x="${CX}" y="${CY+20}">3초 단위로 짓는다</text>`;
+
+  // 문 넷
+  GATES.forEach((g,i)=>{
+    const d = doorGeo(i), on = selGate === i;
+    s += `<rect class="gframe${on?" on":""}" data-frame="${i}" x="${d.x}" y="${d.y}" width="${d.w}" height="${d.h}" rx="3"/>`;
+    s += `<text class="gname" x="${d.x+11}" y="${d.y+17}">${g.n}. ${g.name}</text>`;
+    s += `<text class="gwho" x="${d.x+11}" y="${d.y+31}">${g.who}</text>`;
+  });
+
+  // 막힘 셔터 — 가장 바깥에서 막힌 문 하나만
+  if (selScene){
+    const idx = selScene.g.findIndex(v => v === "x");
+    if (idx >= 0){
+      const d = doorGeo(idx);
+      s += `<rect class="shutter" x="${d.x+3}" y="${d.y+3}" width="${d.w-6}" height="${d.h-6}" rx="3"/>`;
+      s += `<rect fill="url(#hatch)" opacity=".5" x="${d.x+3}" y="${d.y+3}" width="${d.w-6}" height="${d.h-6}" rx="3"/>`;
+      s += `<text class="shutter-t" x="${CX}" y="${d.y + d.h + 22}">${selScene.id} — ${idx+1}번 문 「${GATES[idx].name}」에서 막힘</text>`;
+    } else {
+      s += `<text class="shutter-t" x="${CX}" y="${doorGeo(0).y + doorGeo(0).h + 22}" style="fill:var(--gold)">${selScene.id} — 네 문 통과 · 장면</text>`;
+    }
+  }
+
+  // 클릭 히트영역 (프레임 테두리 근처)
+  GATES.forEach((g,i)=>{
+    const d = doorGeo(i), din = doorGeo(i+1);
+    const band = i < 3 ? (d.w - din.w)/2 : d.w/2;
+    s += `<rect class="ghit" data-gate="${i}" x="${d.x}" y="${d.y}" width="${Math.max(band,26)}" height="${d.h}"><title>${g.n}. ${g.name}</title></rect>`;
+    s += `<rect class="ghit" data-gate="${i}" x="${d.x+d.w-Math.max(band,26)}" y="${d.y}" width="${Math.max(band,26)}" height="${d.h}"><title>${g.n}. ${g.name}</title></rect>`;
+  });
+
+  svg.innerHTML = s;
+  svg.querySelectorAll("[data-gate]").forEach(el=>{
+    el.addEventListener("click", ()=>{ selGate = +el.dataset.gate; drawEnfilade(); showGate(); });
+  });
+}
+
+function showGate(){
+  const box = document.getElementById("gatedetail");
+  if (selGate === null){
+    box.innerHTML = `<div class="gd-h"><i>자</i>${RULER.name} <span style="font-size:12px;color:var(--ink-soft);font-weight:400">· ${RULER.who}</span></div>
+      <p class="gd-rule">네 문을 다 지난 장면은, 그다음 <b style="color:var(--gold)">해상도</b>의 문제가 된다 — 3초짜리 증분을 빠짐없이 이어 붙인 것이 장면이다.</p>
+      <blockquote>${RULER.quote}<cite>${RULER.cite}</cite></blockquote>`;
+    return;
+  }
+  const g = GATES[selGate];
+  const blocked = SCENES.filter(s => s.g[selGate] === "x").map(s => s.id);
+  box.innerHTML = `<div class="gd-h"><i>${g.n}</i>${g.name} <span style="font-size:12px;color:var(--ink-soft);font-weight:400">· ${g.who}</span></div>
+    <p class="gd-rule">${g.rule}</p>
+    <blockquote>${g.quote}<cite>${g.cite}</cite></blockquote>
+    <p class="gd-rule" style="margin-top:10px;font-size:12.5px;color:var(--ink-soft)">투향에서 이 문에 막히는 대목 — ${blocked.length ? `<b style="color:var(--fail)">${blocked.join(" · ")}</b>` : "없음"}</p>`;
+}
+
+/* ══════════ 슬라이더 ══════════ */
+
+function drawTicks(v){
+  document.getElementById("ticks").innerHTML =
+    STOPS.map(s => `<span class="${s.v===v?"on":""}">${s.v}</span>`).join("");
+}
+
+function renderStop(v){
+  const s = STOPS.find(x => x.v === v) || STOPS[2];
+  document.getElementById("p-num").textContent = String(s.v).padStart(3," ");
+  document.getElementById("p-name").textContent = s.name;
+  document.getElementById("p-who").textContent = "· " + s.who;
+  document.getElementById("p-text").innerHTML = s.text;
+  document.getElementById("p-note").innerHTML = s.note;
+  const flag = document.getElementById("p-flag");
+  flag.innerHTML = (s.v === 50 || s.v === 75) ? `<span class="flag">현 원고</span>`
+                 : (s.v === 25) ? `<span class="flag">비어 있음</span>` : "";
+  drawTicks(v);
+  drawAxis(v);
+}
+
+function drawAxis(cur){
+  const svg = document.getElementById("axis");
+  const L = 42, R = 758, Y = 62;
+  const px = x => L + (R - L) * x / 100;
+  let s = `<line x1="${L}" y1="${Y}" x2="${R}" y2="${Y}" stroke="var(--line)" stroke-width="1.5"/>`;
+  [0,25,50,75,100].forEach(t=>{
+    s += `<line x1="${px(t)}" y1="${Y-5}" x2="${px(t)}" y2="${Y+5}" stroke="var(--grid)" stroke-width="1"/>`;
+    s += `<text x="${px(t)}" y="${Y+22}" text-anchor="middle" fill="var(--ink-soft)" font-size="10.5" font-family="DM Mono,monospace">${t}</text>`;
+  });
+  if (cur !== undefined){
+    s += `<line x1="${px(cur)}" y1="${Y-30}" x2="${px(cur)}" y2="${Y+30}" stroke="var(--gold)" stroke-width="1" stroke-dasharray="3 4" opacity=".7"/>`;
+  }
+  // 25 빈자리 표시
+  s += `<rect x="${px(18)}" y="${Y-34}" width="${px(32)-px(18)}" height="68" fill="var(--fail)" opacity=".05" rx="4"/>`;
+  s += `<text x="${px(25)}" y="${Y-40}" text-anchor="middle" fill="var(--fail)" font-size="10.5" opacity=".8">비어 있는 자리</text>`;
+
+  CHAPTERS.forEach((c,i)=>{
+    const up = i % 2 === 0;
+    const y = up ? Y - 15 : Y + 15;
+    const col = c.n === 10 ? "var(--gold)" : "var(--ink-soft)";
+    const r = c.n === 10 ? 5.5 : 4;
+    s += `<circle cx="${px(c.x)}" cy="${Y}" r="${r}" fill="${col}"/>`;
+    s += `<text x="${px(c.x)}" y="${up ? y-4 : y+11}" text-anchor="middle" fill="${col}" font-size="11" font-weight="${c.n===10?700:400}">${c.n}${c.sym}</text>`;
+  });
+  s += `<text x="${L}" y="18" fill="var(--ink-soft)" font-size="11">← 자기삭제</text>`;
+  s += `<text x="${R}" y="18" text-anchor="end" fill="var(--ink-soft)" font-size="11">자기표현 →</text>`;
+  svg.innerHTML = s;
+}
+
+/* ══════════ 표 ══════════ */
+
+const MARK = { o:'<span class="m-o">✓</span>', h:'<span class="m-h">△</span>', x:'<span class="m-x">✕</span>' };
+
+function drawTable(){
+  document.getElementById("tbody").innerHTML = SCENES.map((s,i)=>`
+    <tr data-i="${i}">
+      <td class="id">${s.id}</td>
+      <td class="sec">${s.sec}</td>
+      <td><span class="tag ${s.form === "장면" ? "scene" : "summary"}">${s.form}</span></td>
+      <td class="sec" style="color:var(--ink-soft)">${s.who}</td>
+      <td class="want">${s.want}</td>
+      <td class="need">${s.need}</td>
+      <td class="marks">${s.g.map(v => MARK[v]).join("")}</td>
+    </tr>`).join("");
+
+  document.querySelectorAll("#tbody tr").forEach(tr=>{
+    tr.addEventListener("click", ()=>{
+      const s = SCENES[+tr.dataset.i];
+      selScene = (selScene === s) ? null : s;
+      document.querySelectorAll("#tbody tr").forEach(x => x.classList.remove("sel"));
+      if (selScene) tr.classList.add("sel");
+      drawEnfilade();
+    });
+  });
+}
+
+/* ══════════ 장면 비율 ══════════ */
+
+function drawRatio(){
+  document.getElementById("ratio").innerHTML = CHAPTERS.map(c=>{
+    const col = c.ratio >= 50 ? "var(--scene)" : c.ratio >= 25 ? "var(--summary)" : "var(--fail)";
+    return `<div class="rrow${c.pivot ? " pivot" : ""}">
+      <div class="rlab">${c.n}${c.sym} <b>${c.name}</b></div>
+      <div class="rtrack"><div class="rfill" style="width:${c.ratio}%;background:${col};opacity:.85"></div></div>
+      <div class="rval">${c.ratio}%</div>
+    </div>`;
+  }).join("");
+}
+
+/* ══════════ 부팅 ══════════ */
+
+document.getElementById("srcs").innerHTML =
+  SRC.map(([a,b]) => `<li><b>${a}</b> — ${b}</li>`).join("");
+
+drawEnfilade();
+showGate();
+drawTable();
+drawRatio();
+renderStop(50);
+
+const sl = document.getElementById("slider");
+sl.addEventListener("input", e => renderStop(+e.target.value));
+</script>
+</body>
+</html>
