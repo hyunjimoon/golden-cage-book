@@ -160,8 +160,8 @@
     </div>
 
     <p class="sub" style="margin:26px 0 10px">이 자로 금새 열 장을 재면 — 9장까지 평평하다가 10장에서 튄다.</p>
-    <div class="chartbox"><svg id="axis" viewBox="0 0 800 130" role="img" aria-label="장별 자기표현 위치"></svg></div>
-    <p class="foot"><b>비어 있는 자리는 25다.</b> 인물의 눈으로 쓴 대목(자유간접화법)이 금새엔 거의 없다. 곤조(95)로 갈 거면 25를 먼저 벌어야 한다 — 넷째 문은 "나를 지워라"가 아니라 <b>"내가 설 자리를 고르라"</b>는 문이다.</p>
+    <div class="chartbox"><svg id="axis" viewBox="0 0 800 136" role="img" aria-label="장별 자기표현 위치"></svg></div>
+    <p class="foot"><b>비어 있는 자리는 슬라이더의 25다.</b> 인물의 눈으로 쓴 대목(자유간접화법)이 금새 어느 장에도 거의 없다 — 장 평균은 중간이지만, 그 중간은 서술자(50)와 해석(75)을 오간 결과지 25를 지난 결과가 아니다. 10장의 곤조(95)로 가려면 25를 먼저 벌어야 한다 — 넷째 문은 "나를 지워라"가 아니라 <b>"내가 설 자리를 고르라"</b>는 문이다.</p>
   </section>
 
   <!-- ─────────── 투향 표 ─────────── -->
@@ -335,8 +335,12 @@ function drawEnfilade(){
   GATES.forEach((g,i)=>{
     const d = doorGeo(i), on = selGate === i;
     s += `<rect class="gframe${on?" on":""}" data-frame="${i}" x="${d.x}" y="${d.y}" width="${d.w}" height="${d.h}" rx="3"/>`;
-    s += `<text class="gname" x="${d.x+11}" y="${d.y+17}">${g.n}. ${g.name}</text>`;
-    s += `<text class="gwho" x="${d.x+11}" y="${d.y+31}">${g.who}</text>`;
+    // 좌·우 번갈아 걸어 겹침을 피한다 (문틀 인방 자리)
+    const left = i % 2 === 0;
+    const tx = left ? d.x + 12 : d.x + d.w - 12;
+    const anc = left ? "start" : "end";
+    s += `<text class="gname" x="${tx}" y="${d.y+18}" text-anchor="${anc}">${g.n}. ${g.name}</text>`;
+    s += `<text class="gwho" x="${tx}" y="${d.y+32}" text-anchor="${anc}">${g.who}</text>`;
   });
 
   // 막힘 셔터 — 가장 바깥에서 막힌 문 하나만
@@ -405,30 +409,32 @@ function renderStop(v){
 
 function drawAxis(cur){
   const svg = document.getElementById("axis");
-  const L = 42, R = 758, Y = 62;
+  const L = 52, R = 748, Y = 62;
   const px = x => L + (R - L) * x / 100;
   let s = `<line x1="${L}" y1="${Y}" x2="${R}" y2="${Y}" stroke="var(--line)" stroke-width="1.5"/>`;
   [0,25,50,75,100].forEach(t=>{
     s += `<line x1="${px(t)}" y1="${Y-5}" x2="${px(t)}" y2="${Y+5}" stroke="var(--grid)" stroke-width="1"/>`;
-    s += `<text x="${px(t)}" y="${Y+22}" text-anchor="middle" fill="var(--ink-soft)" font-size="10.5" font-family="DM Mono,monospace">${t}</text>`;
+    s += `<text x="${px(t)}" y="122" text-anchor="middle" fill="var(--ink-soft)" font-size="10.5" font-family="DM Mono,monospace">${t}</text>`;
   });
   if (cur !== undefined){
-    s += `<line x1="${px(cur)}" y1="${Y-30}" x2="${px(cur)}" y2="${Y+30}" stroke="var(--gold)" stroke-width="1" stroke-dasharray="3 4" opacity=".7"/>`;
+    s += `<line x1="${px(cur)}" y1="20" x2="${px(cur)}" y2="112" stroke="var(--gold)" stroke-width="1" stroke-dasharray="3 4" opacity=".55"/>`;
   }
-  // 25 빈자리 표시
-  s += `<rect x="${px(18)}" y="${Y-34}" width="${px(32)-px(18)}" height="68" fill="var(--fail)" opacity=".05" rx="4"/>`;
-  s += `<text x="${px(25)}" y="${Y-40}" text-anchor="middle" fill="var(--fail)" font-size="10.5" opacity=".8">비어 있는 자리</text>`;
-
-  CHAPTERS.forEach((c,i)=>{
-    const up = i % 2 === 0;
-    const y = up ? Y - 15 : Y + 15;
+  // x 순으로 위·아래 번갈아 놓고, 같은 층에서는 최소 간격을 강제해 겹침을 없앤다.
+  // 점은 실제 위치에 두고 라벨만 밀어낸 뒤 지시선으로 잇는다.
+  const sorted = [...CHAPTERS].sort((a,b) => a.x - b.x);
+  const lastX = [-1e9, -1e9], GAP = 92;
+  sorted.forEach((c,i)=>{
+    const up = i % 2 === 0, lane = up ? 0 : 1;
+    const lx = Math.max(px(c.x), lastX[lane] + GAP);
+    lastX[lane] = lx;
     const col = c.n === 10 ? "var(--gold)" : "var(--ink-soft)";
     const r = c.n === 10 ? 5.5 : 4;
+    s += `<line x1="${px(c.x)}" y1="${up ? Y-8 : Y+8}" x2="${lx}" y2="${up ? 36 : 84}" stroke="${col}" stroke-width="1" opacity=".3"/>`;
     s += `<circle cx="${px(c.x)}" cy="${Y}" r="${r}" fill="${col}"/>`;
-    s += `<text x="${px(c.x)}" y="${up ? y-4 : y+11}" text-anchor="middle" fill="${col}" font-size="11" font-weight="${c.n===10?700:400}">${c.n}${c.sym}</text>`;
+    s += `<text x="${lx}" y="${up ? 30 : 96}" text-anchor="middle" fill="${col}" font-size="11.5" font-weight="${c.n===10?700:400}">${c.n}${c.sym} ${c.name}</text>`;
   });
-  s += `<text x="${L}" y="18" fill="var(--ink-soft)" font-size="11">← 자기삭제</text>`;
-  s += `<text x="${R}" y="18" text-anchor="end" fill="var(--ink-soft)" font-size="11">자기표현 →</text>`;
+  s += `<text x="2" y="${Y+4}" fill="var(--ink-soft)" font-size="10.5">←삭제</text>`;
+  s += `<text x="798" y="${Y+4}" text-anchor="end" fill="var(--ink-soft)" font-size="10.5">표현→</text>`;
   svg.innerHTML = s;
 }
 
