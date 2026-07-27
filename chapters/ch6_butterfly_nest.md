@@ -48,7 +48,7 @@ $$\max_x \ \text{desirability}(x) \quad \text{s.t.} \quad x \in \text{feasibilit
 
 **황:** 무대의 말로 하면 — 배우는 분장을 *자기 손으로* 지울 수 있을 때만 배우예요. 남이 지워줘야 하는 순간, 그는 배역이 된 거예요.
 
-> **격자** · 🟢 시대: 1980s 미국 Asian Other 편견 │ 🔴 pain: Chinese American 2세대·동양 남성 stereotype 내면화 │ ★ 작품: ***M. Butterfly*** — *알면서 무대에 올린* 환상
+> **격자** · 🟢 시대: 1980s 미국 Asian Other 편견 │ 🔴 pain: Chinese American 2세대·동양 남성 stereotype 내면화 │ ★ 작품: ***M. Butterfly*** (데이비드 헨리 황, 1988 — 희곡, 민음사 세계문학전집 밖) — *알면서 무대에 올린* 환상
 
 *(황 퇴장. 세다만 남는다.)*
 
