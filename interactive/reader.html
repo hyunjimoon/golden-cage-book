@@ -1,595 +1,886 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>황금새장을열다</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600&display=swap');
-  :root{--bg:#090c15;--sidebar:#0e1220;--border:rgba(255,255,255,0.04);
-    --text:#e2e8f0;--dim:#5a6a7a;--accent:#5B9A8B;--card:#1a2234;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Serif KR',serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.9;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>황금새장을열다</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600&display=swap');
 
-  /* layout */
-  .layout{display:flex;min-height:100vh;}
-  
-  /* sidebar */
-  .sidebar {
-    width: 250px;
-    background: rgba(12, 15, 24, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    overflow-y: auto;
-    font-family: 'Noto Sans KR', sans-serif;
-    z-index: 50;
-    transition: transform 0.25s;
-  }
-  .sidebar-head {
-    padding: 20px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  }
-  .sidebar-head a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-family: 'Noto Serif KR', serif;
-    transition: color 0.15s;
-  }
-  .sidebar-head a:hover {
-    color: var(--text);
-  }
-  .sidebar-nav {
-    padding: 12px 0;
-  }
-  .sidebar-group-header {
-    padding: 18px 16px 6px;
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    opacity: 0.65;
-  }
-  .sidebar-nav a {
-    display: block;
-    padding: 7px 16px 7px 20px;
-    font-size: 12.5px;
-    color: var(--dim);
-    text-decoration: none;
-    transition: all 0.15s ease;
-    border-left: 3px solid transparent;
-  }
-  .sidebar-nav a:hover {
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.02);
-    padding-left: 22px;
-  }
-  .sidebar-nav a.active {
-    font-weight: 600;
-  }
-  
-  /* Isomorphic Views in Sidebar */
-  .isomorphic-views-section {
-    margin: 16px 12px;
-    padding: 10px;
-    background: rgba(91, 154, 139, 0.03);
-    border: 1px solid rgba(91, 154, 139, 0.12);
-    border-radius: 8px;
-  }
-  .iso-link {
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
-    padding: 8px !important;
-    margin-bottom: 5px;
-    border-radius: 6px;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-    border: none !important;
-    background: transparent !important;
-  }
-  .iso-link:last-child {
-    margin-bottom: 0;
-  }
-  .iso-link:hover {
-    background: rgba(255, 255, 255, 0.03) !important;
-    transform: translateX(3px);
-  }
-  .iso-icon {
-    font-size: 14px;
-    color: var(--accent);
-    background: rgba(255, 255, 255, 0.04);
-    width: 24px;
-    height: 24px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .iso-meta {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-  }
-  .iso-title {
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .iso-desc {
-    font-size: 9px;
-    color: var(--dim);
-    line-height: 1.25;
-    margin-top: 1px;
-  }
-  
-  .sidebar-toc {
-    padding: 12px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-  }
-  .sidebar-toc-label {
-    padding: 8px 16px;
-    font-size: 11px;
-    color: var(--dim);
-    letter-spacing: 1px;
-    font-weight: 600;
-  }
-  .sidebar-toc a {
-    display: block;
-    padding: 4px 16px 4px 24px;
-    font-size: 12px;
-    color: var(--dim);
-    text-decoration: none;
-    transition: color 0.15s;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .sidebar-toc a.h3 {
-    padding-left: 36px;
-    font-size: 11px;
-  }
-  .sidebar-toc a:hover {
-    color: var(--text);
-  }
-  .sidebar-toc a.toc-active {
-    color: var(--accent);
-  }
- 
-  .main{margin-left:250px;flex:1;min-width:0;}
-  .content{max-width:680px;margin:0 auto;padding:32px 32px 80px;}
-  .ch-banner{width:100%;max-height:260px;object-fit:cover;object-position:top;border-radius:8px;margin-bottom:24px;}
-  .tetra-pos{display:flex;justify-content:center;margin-bottom:20px;}
-  .tetra-pos svg{width:120px;height:120px;}
-  .tetra-pos .edge{stroke:rgba(255,255,255,0.06);stroke-width:0.6;}
-  .tetra-pos .edge-d{stroke:rgba(255,255,255,0.03);stroke-width:0.6;stroke-dasharray:2,2;}
-  .tetra-pos .v{opacity:0.25;} .tetra-pos .v.cur{opacity:1;filter:drop-shadow(0 0 6px var(--accent));}
-  .tetra-pos .lbl{font-size:7px;fill:#5a6a7a;text-anchor:middle;font-family:'Noto Sans KR',sans-serif;}
-  .tetra-pos .lbl.cur{fill:var(--accent);font-weight:700;font-size:8px;}
-  .content h1{font-size:1.8em;font-weight:700;margin:24px 0 16px;color:var(--accent);}
-  .content h2{font-size:1.3em;font-weight:700;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);color:var(--accent);}
-  .content h3{font-size:1em;font-weight:600;margin:24px 0 8px;}
-  .content p{margin:10px 0;}
-  .content blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:20px 0;color:var(--text);font-style:italic;background:rgba(255,255,255,0.02);border-radius:0 6px 6px 0;font-size:1.05em;line-height:1.8;}
-  .content strong{color:#fff;}
-  mark.qhit{background:var(--accent);color:#fff;border-radius:3px;padding:0 3px;box-shadow:0 0 0 4px rgba(255,255,255,.12);}
-  .content em{color:var(--dim);}
-  .content table{width:100%;border-collapse:collapse;margin:14px 0;font-family:'Noto Sans KR',sans-serif;font-size:13px;}
-  .content th{background:var(--card);padding:8px 10px;text-align:left;font-weight:600;border:1px solid var(--border);}
-  .content td{padding:8px 10px;border:1px solid var(--border);}
-  .content code{background:var(--card);padding:1px 5px;border-radius:3px;font-size:0.88em;}
-  .content pre{background:var(--card);padding:14px;border-radius:6px;overflow-x:auto;margin:14px 0;font-size:13px;line-height:1.6;}
-  .content pre code{background:none;padding:0;}
-  .content hr{border:none;border-top:1px solid var(--border);margin:28px 0;}
-  .content img{max-width:100%;border-radius:6px;margin:14px 0;}
-  .pager{display:flex;justify-content:space-between;max-width:680px;margin:0 auto;padding:0 32px 48px;font-family:'Noto Sans KR',sans-serif;}
-  .pager a{color:var(--dim);text-decoration:none;font-size:12px;padding:6px 14px;border-radius:4px;background:var(--card);transition:all 0.15s;}
-  .pager a:hover{color:var(--text);}
-  .pager .empty{visibility:hidden;}
-  .loading{text-align:center;padding:80px;color:var(--dim);font-family:'Noto Sans KR',sans-serif;font-size:13px;}
-
-  /* mobile toggle */
-  .menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:60;background:var(--sidebar);border:1px solid var(--border);color:var(--dim);padding:6px 10px;border-radius:4px;font-size:14px;cursor:pointer;}
-  @media(max-width:768px){
-    .sidebar{transform:translateX(-100%);}
-    .sidebar.open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,0.5);}
-    .main{margin-left:0;}
-    .content{padding:48px 20px 80px;}
-    .pager{padding:0 20px 48px;}
-    .menu-btn{display:block;}
-  }
-  
-  /* Density control slider */
-  .density-control {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: 'Noto Sans KR', sans-serif;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .density-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .density-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--dim);
-    font-weight: 700;
-  }
-  .density-text {
-    font-size: 14px;
-    color: #fff;
-    font-weight: 600;
-  }
-  .density-slider-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .density-slider-wrap .emoji {
-    font-size: 18px;
-    user-select: none;
-  }
-  .density-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 130px;
-    height: 6px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.08);
-    outline: none;
-    transition: background 0.2s;
-  }
-  .density-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--accent);
-    cursor: pointer;
-    box-shadow: 0 0 8px var(--accent);
-    transition: transform 0.1s, background-color 0.2s;
-  }
-  .density-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.25);
-  }
-
-  /* Density level display toggles */
-  .layout.show-level-1 [data-level="2"],
-  .layout.show-level-1 [data-level="3"] {
-    display: none !important;
-  }
-  .layout.show-level-2 [data-level="3"] {
-    display: none !important;
-  }
-  
-  /* Smooth transitions for block elements in content */
-  .flesh-item {
-    transition: opacity 0.2s ease;
-  }
-
-  /* Isomorphic Mode WikiLink adjustments */
-  .layout.show-level-1 .wiki-link {
-    border-bottom: none;
-    cursor: default;
-    font-weight: inherit;
-    color: inherit;
-    background: none !important;
-  }
-  .layout.show-level-2 .wiki-link {
-    border-bottom: 1.5px dashed var(--accent);
-    box-shadow: 0 1px 3px rgba(91, 154, 139, 0.1);
-  }
-  .layout.show-level-3 .wiki-link {
-    border-bottom: 1px dashed var(--accent);
-  }
-
-  .chapter-diagram-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 24px;
-    height: 140px;
-    position: relative;
-  }
-  #chapterGraphCanvas {
-    background: rgba(14, 18, 32, 0.4);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    width: 340px;
-    height: 140px;
-    display: none;
-  }
-  .tetra-pos {
-    margin-bottom: 0 !important;
-    display: none;
-  }
-  
-  /* Toggle diagrams visibility based on active isomorphic mode */
-  .layout.show-level-1 .chapter-diagram-container {
-    display: none;
-  }
-  .layout.show-level-2 .tetra-pos {
-    display: none !important;
-  }
-  .layout.show-level-2 #chapterGraphCanvas {
-    display: block;
-  }
-  .layout.show-level-3 .tetra-pos {
-    display: block;
-  }
-  .layout.show-level-3 #chapterGraphCanvas {
-    display: none !important;
-  }
-
-  /* WikiLink and Drawer Styles */
-  .wiki-link {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--accent);
-    cursor: pointer;
-    padding: 0 2px;
-    transition: background-color 0.15s;
-    font-weight: 600;
-  }
-  .wiki-link:hover {
-    background-color: rgba(91, 154, 139, 0.08);
-  }
-  .element-drawer {
-    position: fixed;
-    top: 0;
-    right: -420px;
-    width: 400px;
-    height: 100vh;
-    background: rgba(14, 18, 32, 0.96);
-    backdrop-filter: blur(16px);
-    border-left: 1px solid var(--border);
-    box-shadow: -10px 0 34px rgba(0, 0, 0, 0.55);
-    z-index: 1000;
-    transition: right 0.28s cubic-bezier(0.1, 0.85, 0.25, 1);
-    display: flex;
-    flex-direction: column;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-  .element-drawer.open {
-    right: 0;
-  }
-  .drawer-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .drawer-header h3 {
-    margin: 0;
-    font-family: 'Noto Serif KR', serif;
-    font-size: 16px;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .drawer-close {
-    background: transparent;
-    border: none;
-    color: var(--dim);
-    font-size: 24px;
-    cursor: pointer;
-    line-height: 1;
-  }
-  .drawer-close:hover {
-    color: #fff;
-  }
-  .drawer-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .drawer-section {
-    background: rgba(255, 255, 255, 0.015);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 16px;
-  }
-  .drawer-section-title {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--dim);
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-  .drawer-def {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--text);
-  }
-  .drawer-markdown {
-    font-size: 13px;
-    line-height: 1.65;
-    color: var(--text);
-  }
-  .drawer-markdown h1, .drawer-markdown h2, .drawer-markdown h3 {
-    display: none;
-  }
-  .drawer-markdown blockquote {
-    border-left: 2px solid var(--accent);
-    padding: 4px 0 4px 10px;
-    margin: 8px 0;
-    font-style: italic;
-    color: var(--dim);
-    font-size: 0.95em;
-    background: none;
-  }
-  .drawer-markdown p {
-    margin: 6px 0;
-  }
-  @media(max-width: 768px) {
-    .element-drawer {
-      width: 100%;
-      right: -100%;
+    :root {
+      --bg: #090c15;
+      --sidebar: #0e1220;
+      --border: rgba(255, 255, 255, 0.04);
+      --text: #e2e8f0;
+      --dim: #5a6a7a;
+      --accent: #5B9A8B;
+      --card: #1a2234;
     }
-  }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif KR', serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* layout */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* sidebar */
+    .sidebar {
+      width: 250px;
+      background: rgba(12, 15, 24, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      font-family: 'Noto Sans KR', sans-serif;
+      z-index: 50;
+      transition: transform 0.25s;
+    }
+
+    .sidebar-head {
+      padding: 20px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .sidebar-head a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-family: 'Noto Serif KR', serif;
+      transition: color 0.15s;
+    }
+
+    .sidebar-head a:hover {
+      color: var(--text);
+    }
+
+    .sidebar-nav {
+      padding: 12px 0;
+    }
+
+    .sidebar-group-header {
+      padding: 18px 16px 6px;
+      font-size: 10px;
+      color: var(--dim);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 7px 16px 7px 20px;
+      font-size: 12.5px;
+      color: var(--dim);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+      padding-left: 22px;
+    }
+
+    .sidebar-nav a.active {
+      font-weight: 600;
+    }
+
+    /* Isomorphic Views in Sidebar */
+    .isomorphic-views-section {
+      margin: 16px 12px;
+      padding: 10px;
+      background: rgba(91, 154, 139, 0.03);
+      border: 1px solid rgba(91, 154, 139, 0.12);
+      border-radius: 8px;
+    }
+
+    .iso-link {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      padding: 8px !important;
+      margin-bottom: 5px;
+      border-radius: 6px;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      border: none !important;
+      background: transparent !important;
+    }
+
+    .iso-link:last-child {
+      margin-bottom: 0;
+    }
+
+    .iso-link:hover {
+      background: rgba(255, 255, 255, 0.03) !important;
+      transform: translateX(3px);
+    }
+
+    .iso-icon {
+      font-size: 14px;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.04);
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .iso-meta {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .iso-title {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .iso-desc {
+      font-size: 9px;
+      color: var(--dim);
+      line-height: 1.25;
+      margin-top: 1px;
+    }
+
+    .sidebar-toc {
+      padding: 12px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .sidebar-toc-label {
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .sidebar-toc a {
+      display: block;
+      padding: 4px 16px 4px 24px;
+      font-size: 12px;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-toc a.h3 {
+      padding-left: 36px;
+      font-size: 11px;
+    }
+
+    .sidebar-toc a:hover {
+      color: var(--text);
+    }
+
+    .sidebar-toc a.toc-active {
+      color: var(--accent);
+    }
+
+    .main {
+      margin-left: 250px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 32px 80px;
+    }
+
+    .ch-banner {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tetra-pos {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tetra-pos svg {
+      width: 120px;
+      height: 120px;
+    }
+
+    .tetra-pos .edge {
+      stroke: rgba(255, 255, 255, 0.06);
+      stroke-width: 0.6;
+    }
+
+    .tetra-pos .edge-d {
+      stroke: rgba(255, 255, 255, 0.03);
+      stroke-width: 0.6;
+      stroke-dasharray: 2, 2;
+    }
+
+    .tetra-pos .v {
+      opacity: 0.25;
+    }
+
+    .tetra-pos .v.cur {
+      opacity: 1;
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+
+    .tetra-pos .lbl {
+      font-size: 7px;
+      fill: #5a6a7a;
+      text-anchor: middle;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .tetra-pos .lbl.cur {
+      fill: var(--accent);
+      font-weight: 700;
+      font-size: 8px;
+    }
+
+    .content h1 {
+      font-size: 1.8em;
+      font-weight: 700;
+      margin: 24px 0 16px;
+      color: var(--accent);
+    }
+
+    .content h2 {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin: 40px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .content h3 {
+      font-size: 1em;
+      font-weight: 600;
+      margin: 24px 0 8px;
+    }
+
+    .content p {
+      margin: 10px 0;
+    }
+
+    .content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 8px 16px;
+      margin: 20px 0;
+      color: var(--text);
+      font-style: italic;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0 6px 6px 0;
+      font-size: 1.05em;
+      line-height: 1.8;
+    }
+
+    .content strong {
+      color: #fff;
+    }
+
+    mark.qhit {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 3px;
+      padding: 0 3px;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, .12);
+    }
+
+    .content em {
+      color: var(--dim);
+    }
+
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+    }
+
+    .content th {
+      background: var(--card);
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+
+    .content td {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+    }
+
+    .content code {
+      background: var(--card);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.88em;
+    }
+
+    .content pre {
+      background: var(--card);
+      padding: 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 14px 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    .content img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 14px 0;
+    }
+
+    .pager {
+      display: flex;
+      justify-content: space-between;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 32px 48px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .pager a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: var(--card);
+      transition: all 0.15s;
+    }
+
+    .pager a:hover {
+      color: var(--text);
+    }
+
+    .pager .empty {
+      visibility: hidden;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 80px;
+      color: var(--dim);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+    }
+
+    /* mobile toggle */
+    .menu-btn {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 60;
+      background: var(--sidebar);
+      border: 1px solid var(--border);
+      color: var(--dim);
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    @media(max-width:768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .content {
+        padding: 48px 20px 80px;
+      }
+
+      .pager {
+        padding: 0 20px 48px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    /* Density control slider */
+    .density-control {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .density-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .density-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dim);
+      font-weight: 700;
+    }
+
+    .density-text {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .density-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .density-slider-wrap .emoji {
+      font-size: 18px;
+      user-select: none;
+    }
+
+    .density-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 130px;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .density-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent);
+      transition: transform 0.1s, background-color 0.2s;
+    }
+
+    .density-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+    }
+
+    /* Density level display toggles */
+    .layout.show-level-1 [data-level="2"],
+    .layout.show-level-1 [data-level="3"] {
+      display: none !important;
+    }
+
+    .layout.show-level-2 [data-level="3"] {
+      display: none !important;
+    }
+
+    /* Smooth transitions for block elements in content */
+    .flesh-item {
+      transition: opacity 0.2s ease;
+    }
+
+    /* Isomorphic Mode WikiLink adjustments */
+    .layout.show-level-1 .wiki-link {
+      border-bottom: none;
+      cursor: default;
+      font-weight: inherit;
+      color: inherit;
+      background: none !important;
+    }
+
+    .layout.show-level-2 .wiki-link {
+      border-bottom: 1.5px dashed var(--accent);
+      box-shadow: 0 1px 3px rgba(91, 154, 139, 0.1);
+    }
+
+    .layout.show-level-3 .wiki-link {
+      border-bottom: 1px dashed var(--accent);
+    }
+
+    .chapter-diagram-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+      height: 140px;
+      position: relative;
+    }
+
+    #chapterGraphCanvas {
+      background: rgba(14, 18, 32, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 340px;
+      height: 140px;
+      display: none;
+    }
+
+    .tetra-pos {
+      margin-bottom: 0 !important;
+      display: none;
+    }
+
+    /* Toggle diagrams visibility based on active isomorphic mode */
+    .layout.show-level-1 .chapter-diagram-container {
+      display: none;
+    }
+
+    .layout.show-level-2 .tetra-pos {
+      display: none !important;
+    }
+
+    .layout.show-level-2 #chapterGraphCanvas {
+      display: block;
+    }
+
+    .layout.show-level-3 .tetra-pos {
+      display: block;
+    }
+
+    .layout.show-level-3 #chapterGraphCanvas {
+      display: none !important;
+    }
+
+    /* WikiLink and Drawer Styles */
+    .wiki-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent);
+      cursor: pointer;
+      padding: 0 2px;
+      transition: background-color 0.15s;
+      font-weight: 600;
+    }
+
+    .wiki-link:hover {
+      background-color: rgba(91, 154, 139, 0.08);
+    }
+
+    .element-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background: rgba(14, 18, 32, 0.96);
+      backdrop-filter: blur(16px);
+      border-left: 1px solid var(--border);
+      box-shadow: -10px 0 34px rgba(0, 0, 0, 0.55);
+      z-index: 1000;
+      transition: right 0.28s cubic-bezier(0.1, 0.85, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .element-drawer.open {
+      right: 0;
+    }
+
+    .drawer-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-header h3 {
+      margin: 0;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .drawer-close {
+      background: transparent;
+      border: none;
+      color: var(--dim);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .drawer-close:hover {
+      color: #fff;
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .drawer-section {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .drawer-section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--dim);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .drawer-def {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .drawer-markdown {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .drawer-markdown h1,
+    .drawer-markdown h2,
+    .drawer-markdown h3 {
+      display: none;
+    }
+
+    .drawer-markdown blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 4px 0 4px 10px;
+      margin: 8px 0;
+      font-style: italic;
+      color: var(--dim);
+      font-size: 0.95em;
+      background: none;
+    }
+
+    .drawer-markdown p {
+      margin: 6px 0;
+    }
+
+    @media(max-width: 768px) {
+      .element-drawer {
+        width: 100%;
+        right: -100%;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 </head>
+
 <body>
 
-<button class="menu-btn" id="menuBtn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <button class="menu-btn" id="menuBtn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-head"><a href="../">황금새장을열다</a></div>
-    <div class="sidebar-nav" id="sidebarNav"></div>
-    <div class="sidebar-toc" id="sidebarToc">
-      <div class="sidebar-toc-label">이 장의 목차</div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head"><a href="../">황금새장을열다</a></div>
+      <div class="sidebar-nav" id="sidebarNav"></div>
+      <div class="sidebar-toc" id="sidebarToc">
+        <div class="sidebar-toc-label">이 장의 목차</div>
+      </div>
+    </aside>
+    <div class="main">
+      <div class="content" id="content">
+        <div class="loading">불러오는 중...</div>
+      </div>
+      <div class="pager" id="pager"></div>
     </div>
-  </aside>
-  <div class="main">
-    <div class="content" id="content"><div class="loading">불러오는 중...</div></div>
-    <div class="pager" id="pager"></div>
   </div>
-</div>
 
-<script>
-const CHAPTERS = [
-  {id:'ch0_prologue', label:'질문과 답'},
-  {id:'ch0_intro', label:'머리말'},
-  {id:'ch0_roadmap', label:'이 책의 길'},
-  {id:'ch1_mirror_cage', label:'🪞 1장 거울새장'},
-  {id:'ch2_telescope_cage', label:'🔭 2장 망원경새장'},
-  {id:'ch3_glass_cage', label:'💒 3장 유리새장'},
-  {id:'ch4_clock_cage', label:'⏱️ 4장 시계새장'},
-  {id:'ch5_mirror_nest', label:'🪞🪺 5장 101₂호'},
-  {id:'ch6_butterfly_nest', label:'🦋 6장 나비둥지'},
-  {id:'ch7_tulip_nest', label:'🌷 7장 튤립둥지'},
-  {id:'ch8_mist_nest', label:'🌫️ 8장 안개둥지'},
-  {id:'ch9_raven_nest', label:'🐦‍⬛ 9장 까마귀둥지'},
-  {id:'ch10_mirror_close', label:'🧫 10장 101₃호'},
-  {id:'ch10_epilogue', label:'답과 질문'}
-];
+  <script>
+    const CHAPTERS = [
+      { id: 'ch0_prologue', label: '질문과 답' },
+      { id: 'ch0_intro', label: '머리말' },
+      { id: 'ch0_roadmap', label: '이 책의 길' },
+      { id: 'ch1_mirror_cage', label: '🪞 1장 거울새장' },
+      { id: 'ch2_telescope_cage', label: '🔭 2장 망원경새장' },
+      { id: 'ch3_glass_cage', label: '💒 3장 유리새장' },
+      { id: 'ch4_clock_cage', label: '⏱️ 4장 시계새장' },
+      { id: 'ch5_mirror_nest', label: '🪞🪺 5장 101₂호' },
+      { id: 'ch6_butterfly_nest', label: '🦋 6장 나비둥지' },
+      { id: 'ch7_tulip_nest', label: '🌷 7장 튤립둥지' },
+      { id: 'ch8_mist_nest', label: '🌫️ 8장 안개둥지' },
+      { id: 'ch9_raven_nest', label: '🐦‍⬛ 9장 까마귀둥지' },
+      { id: 'ch10_mirror_close', label: '🧫 10장 101₃호' },
+      { id: 'ch10_epilogue', label: '답과 질문' }
+    ];
 
-const CH_COLORS = {
-  ch1_mirror_cage:'#862256', ch2_telescope_cage:'#8B7D3C',
-  ch3_glass_cage:'#2D8B73', ch4_clock_cage:'#3D8A8E',
-  ch5_mirror_nest:'#5B3A8A', ch6_butterfly_nest:'#8A5B3A',
-  ch7_tulip_nest:'#8A3A5B', ch8_mist_nest:'#3A6B8A',
-  ch9_raven_nest:'#3A8A6B', ch10_mirror_close:'#7C4A8A'
-};
+    const CH_COLORS = {
+      ch1_mirror_cage: '#862256', ch2_telescope_cage: '#8B7D3C',
+      ch3_glass_cage: '#2D8B73', ch4_clock_cage: '#3D8A8E',
+      ch5_mirror_nest: '#5B3A8A', ch6_butterfly_nest: '#8A5B3A',
+      ch7_tulip_nest: '#8A3A5B', ch8_mist_nest: '#3A6B8A',
+      ch9_raven_nest: '#3A8A6B', ch10_mirror_close: '#7C4A8A'
+    };
 
-// backward-compat aliases (옛 URL 살리기)
-const ALIASES = {
-  'ch7_mist_nest': 'ch8_mist_nest',   // 7·8 swap(2026-06-13): 옛 7안개 → 8안개
-  'ch8_tulip_nest': 'ch7_tulip_nest',  // 옛 8튤립 → 7튤립
-  'ch5_epilogue': 'ch10_epilogue',       // 5-8장 추가 후 epilogue 위치 이동
-  'ch9_epilogue': 'ch10_epilogue',       // 9→10 (hub 신설, 2026-05-18)
-  'ch6_author_nest': 'ch8_mist_nest',    // 작가둥지 → 안개둥지 (2026-05-02)
-  'ch5_play_nest': 'ch6_butterfly_nest',  // 놀이→연극→나비 + 6장 (2026-05-17, hub 신설)
-  'ch6_play_nest': 'ch6_butterfly_nest',  // 연극→나비 (2026-07-04)
-  'ch6_mist_nest': 'ch8_mist_nest',      // 6→7 (hub 신설, 2026-05-18)
-  'ch7_doubt_nest': 'ch8_mist_nest',     // 의심→안개 (7·8 swap, 2026-05-18)
-  'ch8_bird_nest': 'ch9_raven_nest',     // 새→까마귀 + 9장으로 (2026-05-18)
-  'ch8_trick_nest': 'ch9_raven_nest',    // 트릭 → 까마귀 (2026-05-10)
-  'ch5_role_nest': 'ch6_butterfly_nest',  // 역할 → 연극 → 나비 (2026-05-10)
-  'ch7_language_nest': 'ch8_mist_nest',  // 언어 → 안개 (2026-05-10)
-  'ch8_mirror_nest': 'ch9_raven_nest',   // 거울 → 까마귀 (2026-05-10)
-  'ch3_stained_glass_cage': 'ch3_glass_cage' // 스테인드글라스 → 유리 (2026-05-18)
-};
-const params = new URLSearchParams(window.location.search);
-const requestedFile = params.get('file') || 'ch0_prologue';
-const file = ALIASES[requestedFile] || requestedFile;
-const qTerm = (params.get('q')||'').trim();   // element_map 점프: 이 구절을 찾아 하이라이트
-const curIdx = CHAPTERS.findIndex(c => c.id === file);
+    // backward-compat aliases (옛 URL 살리기)
+    const ALIASES = {
+      'ch7_mist_nest': 'ch8_mist_nest',   // 7·8 swap(2026-06-13): 옛 7안개 → 8안개
+      'ch8_tulip_nest': 'ch7_tulip_nest',  // 옛 8튤립 → 7튤립
+      'ch5_epilogue': 'ch10_epilogue',       // 5-8장 추가 후 epilogue 위치 이동
+      'ch9_epilogue': 'ch10_epilogue',       // 9→10 (hub 신설, 2026-05-18)
+      'ch6_author_nest': 'ch8_mist_nest',    // 작가둥지 → 안개둥지 (2026-05-02)
+      'ch5_play_nest': 'ch6_butterfly_nest',  // 놀이→연극→나비 + 6장 (2026-05-17, hub 신설)
+      'ch6_play_nest': 'ch6_butterfly_nest',  // 연극→나비 (2026-07-04)
+      'ch6_mist_nest': 'ch8_mist_nest',      // 6→7 (hub 신설, 2026-05-18)
+      'ch7_doubt_nest': 'ch8_mist_nest',     // 의심→안개 (7·8 swap, 2026-05-18)
+      'ch8_bird_nest': 'ch9_raven_nest',     // 새→까마귀 + 9장으로 (2026-05-18)
+      'ch8_trick_nest': 'ch9_raven_nest',    // 트릭 → 까마귀 (2026-05-10)
+      'ch5_role_nest': 'ch6_butterfly_nest',  // 역할 → 연극 → 나비 (2026-05-10)
+      'ch7_language_nest': 'ch8_mist_nest',  // 언어 → 안개 (2026-05-10)
+      'ch8_mirror_nest': 'ch9_raven_nest',   // 거울 → 까마귀 (2026-05-10)
+      'ch3_stained_glass_cage': 'ch3_glass_cage' // 스테인드글라스 → 유리 (2026-05-18)
+    };
+    const params = new URLSearchParams(window.location.search);
+    const requestedFile = params.get('file') || 'ch0_prologue';
+    const file = ALIASES[requestedFile] || requestedFile;
+    const qTerm = (params.get('q') || '').trim();   // element_map 점프: 이 구절을 찾아 하이라이트
+    const curIdx = CHAPTERS.findIndex(c => c.id === file);
 
-// element_map 등에서 &q=... 로 넘어오면 본문 로드 후 첫 일치 구절로 스크롤+형광
-function jumpToQuery(){
-  if(!qTerm) return;
-  const content=document.getElementById('content');
-  if(!content) return;
-  const walker=document.createTreeWalker(content,NodeFilter.SHOW_TEXT,null);
-  const t=qTerm.toLowerCase(); let node;
-  while(node=walker.nextNode()){
-    const pt=node.parentElement;
-    if(pt && /^(mark|script|style)$/i.test(pt.tagName)) continue;
-    const idx=node.nodeValue.toLowerCase().indexOf(t);
-    if(idx>=0){
-      try{
-        const range=document.createRange();
-        range.setStart(node,idx); range.setEnd(node,idx+qTerm.length);
-        const mk=document.createElement('mark'); mk.className='qhit';
-        range.surroundContents(mk);
-        mk.scrollIntoView({behavior:'smooth',block:'center'});
-      }catch(e){ if(node.parentElement) node.parentElement.scrollIntoView({behavior:'smooth',block:'center'}); }
-      return;   // 첫 일치만
+    // element_map 등에서 &q=... 로 넘어오면 본문 로드 후 첫 일치 구절로 스크롤+형광
+    function jumpToQuery() {
+      if (!qTerm) return;
+      const content = document.getElementById('content');
+      if (!content) return;
+      const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null);
+      const t = qTerm.toLowerCase(); let node;
+      while (node = walker.nextNode()) {
+        const pt = node.parentElement;
+        if (pt && /^(mark|script|style)$/i.test(pt.tagName)) continue;
+        const idx = node.nodeValue.toLowerCase().indexOf(t);
+        if (idx >= 0) {
+          try {
+            const range = document.createRange();
+            range.setStart(node, idx); range.setEnd(node, idx + qTerm.length);
+            const mk = document.createElement('mark'); mk.className = 'qhit';
+            range.surroundContents(mk);
+            mk.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch (e) { if (node.parentElement) node.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+          return;   // 첫 일치만
+        }
+      }
+      // 일치 구절 없음 → 장 맨 위 유지(이미 scrollTo(0,0))
     }
-  }
-  // 일치 구절 없음 → 장 맨 위 유지(이미 scrollTo(0,0))
-}
 
-// apply chapter color as accent
-const chColor = CH_COLORS[file] || '#c5a55a';
-document.documentElement.style.setProperty('--accent', chColor);
+    // apply chapter color as accent
+    const chColor = CH_COLORS[file] || '#c5a55a';
+    document.documentElement.style.setProperty('--accent', chColor);
 
-// sidebar nav — chapters
-const sidebarNav = document.getElementById('sidebarNav');
-const CHAPTER_GROUPS = [
-  { group: '서문', items: ['ch0_prologue', 'ch0_intro', 'ch0_roadmap'] },
-  { group: '1부. 새장 (Cages)', items: ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage'] },
-  { group: '회전축 (The Pivot)', items: ['ch5_mirror_nest'] },
-  { group: '2부. 둥지 (Nests)', items: ['ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest'] },
-  { group: '결말 (Close)', items: ['ch10_mirror_close', 'ch10_epilogue'] }
-];
+    // sidebar nav — chapters
+    const sidebarNav = document.getElementById('sidebarNav');
+    const CHAPTER_GROUPS = [
+      { group: '서문', items: ['ch0_prologue', 'ch0_intro', 'ch0_roadmap'] },
+      { group: '1부. 새장 (Cages)', items: ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage'] },
+      { group: '회전축 (The Pivot)', items: ['ch5_mirror_nest'] },
+      { group: '2부. 둥지 (Nests)', items: ['ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest'] },
+      { group: '결말 (Close)', items: ['ch10_mirror_close', 'ch10_epilogue'] }
+    ];
 
-CHAPTER_GROUPS.forEach(g => {
-  if (g.group !== '서문' && g.group !== '결말') {
-    const header = document.createElement('div');
-    header.className = 'sidebar-group-header';
-    header.textContent = g.group;
-    sidebarNav.appendChild(header);
-  }
-  g.items.forEach(id => {
-    const c = CHAPTERS.find(ch => ch.id === id);
-    if (!c) return;
-    const a = document.createElement('a');
-    a.href = '?file=' + c.id;
-    a.textContent = c.label;
-    if (c.id === file) {
-      a.classList.add('active');
-      const accentColor = CH_COLORS[c.id] || '#5B9A8B';
-      a.style.borderLeftColor = accentColor;
-      a.style.color = accentColor;
-      a.style.background = `rgba(${parseInt(accentColor.slice(1,3),16)}, ${parseInt(accentColor.slice(3,5),16)}, ${parseInt(accentColor.slice(5,7),16)}, 0.06)`;
-    }
-    a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
-    sidebarNav.appendChild(a);
-  });
-});
+    CHAPTER_GROUPS.forEach(g => {
+      if (g.group !== '서문' && g.group !== '결말') {
+        const header = document.createElement('div');
+        header.className = 'sidebar-group-header';
+        header.textContent = g.group;
+        sidebarNav.appendChild(header);
+      }
+      g.items.forEach(id => {
+        const c = CHAPTERS.find(ch => ch.id === id);
+        if (!c) return;
+        const a = document.createElement('a');
+        a.href = '?file=' + c.id;
+        a.textContent = c.label;
+        if (c.id === file) {
+          a.classList.add('active');
+          const accentColor = CH_COLORS[c.id] || '#5B9A8B';
+          a.style.borderLeftColor = accentColor;
+          a.style.color = accentColor;
+          a.style.background = `rgba(${parseInt(accentColor.slice(1, 3), 16)}, ${parseInt(accentColor.slice(3, 5), 16)}, ${parseInt(accentColor.slice(5, 7), 16)}, 0.06)`;
+        }
+        a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
+        sidebarNav.appendChild(a);
+      });
+    });
 
-// isomorphic views section injection
-const isoSection = document.createElement('div');
-isoSection.className = 'isomorphic-views-section';
-isoSection.innerHTML = `
+    // isomorphic views section injection
+    const isoSection = document.createElement('div');
+    isoSection.className = 'isomorphic-views-section';
+    isoSection.innerHTML = `
   <div class="sidebar-group-header" style="padding:0 0 6px;">지식 형식 (Isomorphism)</div>
   <a href="references.html" class="iso-link">
     <span class="iso-icon">▤</span>
@@ -613,271 +904,271 @@ isoSection.innerHTML = `
     </div>
   </a>
 `;
-sidebarNav.appendChild(isoSection);
+    sidebarNav.appendChild(isoSection);
 
-// sidebar nav — appendices (3 groups)
-const APPENDICES = [
-  {group:'읽을거리', items:[{id:'app1_romantic_trilogy',label:'에세이'},{id:'app3_craft_of_startup_novel',label:'작법론'}]},
-  {group:'도구', items:[{id:'app5_prompting',label:'프롬프팅 예시'},{id:'app6_industry_debt',label:'산업별 빚'}]},
-  {group:'참고', items:[{id:'app2_glossary',label:'용어 해설'},{id:'app4_references',label:'생각 빚 장부'},{id:'app8_84_structure',label:'84구조 (책 SSOT)'}]}
-];
-APPENDICES.forEach(g => {
-  const label = document.createElement('div');
-  label.className = 'sidebar-group-header';
-  label.textContent = g.group;
-  sidebarNav.appendChild(label);
-  g.items.forEach(item => {
-    const a = document.createElement('a');
-    a.href = '?file=' + item.id;
-    a.textContent = item.label;
-    if (item.id === file) a.classList.add('active');
-    a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
-    sidebarNav.appendChild(a);
-  });
-});
-
-// pager
-const pager = document.getElementById('pager');
-const prev = curIdx > 0 ? CHAPTERS[curIdx - 1] : null;
-const next = curIdx < CHAPTERS.length - 1 ? CHAPTERS[curIdx + 1] : null;
-pager.innerHTML =
-  (prev ? `<a href="?file=${prev.id}">← ${prev.label}</a>` : '<span class="empty">-</span>') +
-  (next ? `<a href="?file=${next.id}">${next.label} →</a>` : '<span class="empty">-</span>');
-
-// title
-if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을열다';
-
-// md → html
-function md2html(md) {
-  const hasLevelComments = md.includes('<!-- level');
-  md = md.replace(/<!--[\s\S]*?-->/g, ''); // Strip all HTML comments (development notes/decisions)
-  md = md.replace(/^---[\s\S]*?---\s*/m, '');
-  md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
-  md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function(match, target, label) {
-    return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${label.replace(/'/g, "\\'")}')">${label}</span>`;
-  });
-  md = md.replace(/\[\[([^\]]+)\]\]/g, function(match, target) {
-    return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${target.replace(/'/g, "\\'")}')">${target}</span>`;
-  });
-
-  // Render block math $$ ... $$ via KaTeX synchronously
-  if (window.katex) {
-    md = md.replace(/\$\$([\s\S]*?)\$\$/g, function(match, tex) {
-      try {
-        return '\n<div class="katex-block-wrapper">' + katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false }) + '</div>\n';
-      } catch(e) {
-        return match;
-      }
+    // sidebar nav — appendices (3 groups)
+    const APPENDICES = [
+      { group: '읽을거리', items: [{ id: 'app1_romantic_trilogy', label: '에세이' }, { id: 'app3_craft_of_startup_novel', label: '작법론' }] },
+      { group: '도구', items: [{ id: 'app5_prompting', label: '프롬프팅 예시' }, { id: 'app6_industry_debt', label: '산업별 빚' }] },
+      { group: '참고', items: [{ id: 'app2_glossary', label: '용어 해설' }, { id: 'app4_references', label: '생각 빚 장부' }, { id: 'app8_84_structure', label: '84구조 (책 SSOT)' }] }
+    ];
+    APPENDICES.forEach(g => {
+      const label = document.createElement('div');
+      label.className = 'sidebar-group-header';
+      label.textContent = g.group;
+      sidebarNav.appendChild(label);
+      g.items.forEach(item => {
+        const a = document.createElement('a');
+        a.href = '?file=' + item.id;
+        a.textContent = item.label;
+        if (item.id === file) a.classList.add('active');
+        a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
+        sidebarNav.appendChild(a);
+      });
     });
 
-    // Render inline math $ ... $ via KaTeX synchronously
-    md = md.replace(/\$([^$\n]+)\$/g, function(match, tex) {
-      try {
-        return katex.renderToString(tex.trim(), { displayMode: false, throwOnError: false });
-      } catch(e) {
-        return match;
-      }
-    });
-  }
+    // pager
+    const pager = document.getElementById('pager');
+    const prev = curIdx > 0 ? CHAPTERS[curIdx - 1] : null;
+    const next = curIdx < CHAPTERS.length - 1 ? CHAPTERS[curIdx + 1] : null;
+    pager.innerHTML =
+      (prev ? `<a href="?file=${prev.id}">← ${prev.label}</a>` : '<span class="empty">-</span>') +
+      (next ? `<a href="?file=${next.id}">${next.label} →</a>` : '<span class="empty">-</span>');
 
-  let lines = md.split('\n'), html = '', inCode=false, inTable=false, inBQ=false, tRows=[], codeLines=[];
-  let currentLevel = 3;
-  for (let i=0;i<lines.length;i++){
-    let L=lines[i];
-    let lvlMatch = L.match(/<!--\s*level\s*(\d+)\s*-->/);
-    if(lvlMatch) {
-      currentLevel = parseInt(lvlMatch[1]);
-      continue;
-    }
-    
-    let blockHtml = '';
-    let itemLevel = hasLevelComments ? currentLevel : 3;
-    
-    if(L.trim().startsWith('```')){
-      if(inCode){
-        let codeContent = codeLines.join('\n').replace(/</g,'&lt;');
-        let codeLevel = hasLevelComments ? currentLevel : 1;
-        html+=`<div class="flesh-item" data-level="${codeLevel}"><pre><code>${codeContent}</code></pre></div>`;
-        inCode=false;
-      } else {
-        codeLines=[];
-        inCode=true;
+    // title
+    if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을열다';
+
+    // md → html
+    function md2html(md) {
+      const hasLevelComments = md.includes('<!-- level');
+      md = md.replace(/<!--[\s\S]*?--> / g, ''); // Strip all HTML comments (development notes/decisions)
+      md = md.replace(/^---[\s\S]*?---\s*/m, '');
+      md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
+      md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (match, target, label) {
+        return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${label.replace(/'/g, "\\'")}')">${label}</span>`;
+      });
+      md = md.replace(/\[\[([^\]]+)\]\]/g, function (match, target) {
+        return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${target.replace(/'/g, "\\'")}')">${target}</span>`;
+      });
+
+      // Render block math $$ ... $$ via KaTeX synchronously
+      if (window.katex) {
+        md = md.replace(/\$\$([\s\S]*?)\$\$/g, function (match, tex) {
+          try {
+            return '\n<div class="katex-block-wrapper">' + katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false }) + '</div>\n';
+          } catch (e) {
+            return match;
+          }
+        });
+
+        // Render inline math $ ... $ via KaTeX synchronously
+        md = md.replace(/\$([^$\n]+)\$/g, function (match, tex) {
+          try {
+            return katex.renderToString(tex.trim(), { displayMode: false, throwOnError: false });
+          } catch (e) {
+            return match;
+          }
+        });
       }
-      continue;
-    }
-    if(inCode){codeLines.push(L);continue;}
-    if(L.trim().startsWith('|')){if(!inTable){inTable=true;tRows=[];}if(L.trim().replace(/[|:\-\s]/g,'').length>0)tRows.push(L);continue;}
-    else if(inTable){
-      let tableLevel = hasLevelComments ? currentLevel : 1;
-      html+=`<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
-      inTable=false;tRows=[];
-    }
-    if(L.trim().startsWith('>')){
-      let q=L.replace(/^>\s*/,'');
-      if(!inBQ){
-        let bqLevel = hasLevelComments ? currentLevel : 2;
-        html+=`<div class="flesh-item" data-level="${bqLevel}"><blockquote>`;
-        inBQ=true;
-      }
-      html+=inl(q)+'<br>';
-      continue;
-    }
-    else if(inBQ){html+='</blockquote></div>';inBQ=false;}
-    
-    if(L.startsWith('### ')){
-      blockHtml='<h3 id="s'+i+'">'+inl(L.slice(4))+'</h3>';
-      if(!hasLevelComments) itemLevel = 1;
-    }
-    else if(L.startsWith('## ')){
-      blockHtml='<h2 id="s'+i+'">'+inl(L.slice(3))+'</h2>';
-      if(!hasLevelComments) itemLevel = 1;
-    }
-    else if(L.startsWith('# ')){
-      blockHtml='<h1>'+inl(L.slice(2))+'</h1>';
-      if(!hasLevelComments) itemLevel = 1;
-    }
-    else if(/^---+$/.test(L.trim())){
-      blockHtml='<hr>';
-      if(!hasLevelComments) itemLevel = 1;
-    }
-    else {
-      let im=L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
-      if(im){
-        blockHtml=`<img src="${im[2]}" alt="${im[1]}">`;
-        if(!hasLevelComments) itemLevel = 2;
-      }
-      else if(L.trim()==='') continue;
-      else if (L.includes('katex-block-wrapper')) {
-        blockHtml = L;
-        if(!hasLevelComments) itemLevel = 1;
-      }
-      else {
-        blockHtml = '<p>' + inl(L) + '</p>';
-        if(!hasLevelComments) {
-          if (L.includes('wiki-link') || L.includes('**') || L.includes('*') || L.includes('`') || L.includes('href') || L.includes('</a>')) {
-            itemLevel = 2;
+
+      let lines = md.split('\n'), html = '', inCode = false, inTable = false, inBQ = false, tRows = [], codeLines = [];
+      let currentLevel = 3;
+      for (let i = 0; i < lines.length; i++) {
+        let L = lines[i];
+        let lvlMatch = L.match(/<!--\s*level\s*(\d+)\s*-->/);
+        if (lvlMatch) {
+          currentLevel = parseInt(lvlMatch[1]);
+          continue;
+        }
+
+        let blockHtml = '';
+        let itemLevel = hasLevelComments ? currentLevel : 3;
+
+        if (L.trim().startsWith('```')) {
+          if (inCode) {
+            let codeContent = codeLines.join('\n').replace(/</g, '&lt;');
+            let codeLevel = hasLevelComments ? currentLevel : 1;
+            html += `<div class="flesh-item" data-level="${codeLevel}"><pre><code>${codeContent}</code></pre></div>`;
+            inCode = false;
           } else {
-            itemLevel = 3;
+            codeLines = [];
+            inCode = true;
+          }
+          continue;
+        }
+        if (inCode) { codeLines.push(L); continue; }
+        if (L.trim().startsWith('|')) { if (!inTable) { inTable = true; tRows = []; } if (L.trim().replace(/[|:\-\s]/g, '').length > 0) tRows.push(L); continue; }
+        else if (inTable) {
+          let tableLevel = hasLevelComments ? currentLevel : 1;
+          html += `<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
+          inTable = false; tRows = [];
+        }
+        if (L.trim().startsWith('>')) {
+          let q = L.replace(/^>\s*/, '');
+          if (!inBQ) {
+            let bqLevel = hasLevelComments ? currentLevel : 2;
+            html += `<div class="flesh-item" data-level="${bqLevel}"><blockquote>`;
+            inBQ = true;
+          }
+          html += inl(q) + '<br>';
+          continue;
+        }
+        else if (inBQ) { html += '</blockquote></div>'; inBQ = false; }
+
+        if (L.startsWith('### ')) {
+          blockHtml = '<h3 id="s' + i + '">' + inl(L.slice(4)) + '</h3>';
+          if (!hasLevelComments) itemLevel = 1;
+        }
+        else if (L.startsWith('## ')) {
+          blockHtml = '<h2 id="s' + i + '">' + inl(L.slice(3)) + '</h2>';
+          if (!hasLevelComments) itemLevel = 1;
+        }
+        else if (L.startsWith('# ')) {
+          blockHtml = '<h1>' + inl(L.slice(2)) + '</h1>';
+          if (!hasLevelComments) itemLevel = 1;
+        }
+        else if (/^---+$/.test(L.trim())) {
+          blockHtml = '<hr>';
+          if (!hasLevelComments) itemLevel = 1;
+        }
+        else {
+          let im = L.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+          if (im) {
+            blockHtml = `<img src="${im[2]}" alt="${im[1]}">`;
+            if (!hasLevelComments) itemLevel = 2;
+          }
+          else if (L.trim() === '') continue;
+          else if (L.includes('katex-block-wrapper')) {
+            blockHtml = L;
+            if (!hasLevelComments) itemLevel = 1;
+          }
+          else {
+            blockHtml = '<p>' + inl(L) + '</p>';
+            if (!hasLevelComments) {
+              if (L.includes('wiki-link') || L.includes('**') || L.includes('*') || L.includes('`') || L.includes('href') || L.includes('</a>')) {
+                itemLevel = 2;
+              } else {
+                itemLevel = 3;
+              }
+            }
           }
         }
+        html += `<div class="flesh-item" data-level="${itemLevel}">${blockHtml}</div>`;
       }
-    }
-    html+=`<div class="flesh-item" data-level="${itemLevel}">${blockHtml}</div>`;
-  }
-  if(inTable){
-    let tableLevel = hasLevelComments ? currentLevel : 1;
-    html+=`<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
-  }
-  if(inBQ)html+='</blockquote></div>';
-  if(inCode){
-    let codeContent = codeLines.join('\n').replace(/</g,'&lt;');
-    let codeLevel = hasLevelComments ? currentLevel : 1;
-    html+=`<div class="flesh-item" data-level="${codeLevel}"><pre><code>${codeContent}</code></pre></div>`;
-  }
-  return html;
-}
-function colorizeKeywords(s) {
-  const colorMap = {
-    // Blue (Desire-Pain-User / 🦋 사용자 / Desirability)
-    "사용자": "#3b82f6", "욕망": "#3b82f6", "고통": "#3b82f6", "환상": "#3b82f6",
-    // Purple (Knowledge-Belief-Technician / 🌷 기술자 / Feasibility)
-    "기술자": "#a855f7", "기술": "#a855f7", "상상": "#a855f7", "품위": "#a855f7", "작가": "#a855f7",
-    // Red (Action-Profit/Loss-Investor / 🌫️ 투자자 / Viability)
-    "투자자": "#ef4444", "행동": "#ef4444", "손익": "#ef4444", "신념": "#ef4444", "확신": "#ef4444",
-    // Green (Metric-Evaluation-Collaborator / 🐦‍⬛ 협력자 / Exchange Value)
-    "협력자": "#10b981", "평가기준": "#10b981", "척도": "#10b981", "질서": "#10b981", "명명": "#10b981"
-  };
-  const parts = s.split(/(<[^>]+>)/g);
-  for (let i = 0; i < parts.length; i++) {
-    if (parts[i] && !parts[i].startsWith('<')) {
-      // 1. Colorize multi-character keywords
-      parts[i] = parts[i].replace(/(사용자|욕망|고통|환상|기술자|기술|상상|품위|작가|투자자|행동|손익|신념|확신|협력자|평가기준|척도|질서|명명)/g, function(match) {
-        return `<span style="color:${colorMap[match]}; font-weight: 600;">${match}</span>`;
-      });
-      // 2. Colorize standalone "자", "일", "빚" safely (avoiding suffixes and overlapping substrings)
-      parts[i] = parts[i].replace(/(?<=^|[\s\(\[\{\'\"“])(자|일|빚)(?=$|[\s\)\}\]\.\,\:\;\!\?\'\"”])/g, function(match) {
-        const standaloneColors = { "자": "#10b981", "일": "#c5a55a", "빚": "#c5a55a" };
-        return `<span style="color:${standaloneColors[match]}; font-weight: 600;">${match}</span>`;
-      });
-    }
-  }
-  return parts.join('');
-}
-function inl(s){
-  let res = s.replace(/\*\*다:\*\*/g,'<strong style="color:var(--accent);font-size:0.95em">다:</strong>')
-             .replace(/\*\*세:\*\*/g,'<strong style="color:#8899aa;font-size:0.95em">세:</strong>')
-             .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
-             .replace(/\*([^*]+)\*/g,'<em>$1</em>')
-             .replace(/`([^`]+)`/g,'<code>$1</code>')
-             .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" style="color:var(--accent)">$1</a>');
-  return colorizeKeywords(res);
-}
-function tbl(rows){if(!rows.length)return '';let h='<table>';rows.forEach((r,i)=>{let c=r.split('|').filter(x=>x.trim());let t=i===0?'th':'td';h+='<tr>'+c.map(x=>`<${t}>${inl(x.trim())}</${t}>`).join('')+'</tr>';});return h+'</table>';}
-
-// build TOC from rendered headings
-function buildToc(){
-  const toc=document.getElementById('sidebarToc');
-  // clear existing links except label
-  const label = toc.querySelector('.sidebar-toc-label');
-  toc.innerHTML = '';
-  if (label) toc.appendChild(label);
-  
-  const headings=document.querySelectorAll('.content h2, .content h3');
-  if(headings.length===0){toc.style.display='none';return;}
-  headings.forEach(h=>{
-    const a=document.createElement('a');
-    a.href='#'+h.id;
-    a.textContent=h.textContent;
-    const parent = h.closest('.flesh-item');
-    if (parent) {
-      a.setAttribute('data-level', parent.getAttribute('data-level') || '3');
-    }
-    if(h.tagName==='H3')a.classList.add('h3');
-    a.onclick=()=>document.querySelector('.sidebar').classList.remove('open');
-    toc.appendChild(a);
-  });
-  // scroll spy
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        toc.querySelectorAll('a').forEach(a=>a.classList.remove('toc-active'));
-        const active=toc.querySelector(`a[href="#${e.target.id}"]`);
-        if(active)active.classList.add('toc-active');
+      if (inTable) {
+        let tableLevel = hasLevelComments ? currentLevel : 1;
+        html += `<div class="flesh-item" data-level="${tableLevel}">${tbl(tRows)}</div>`;
       }
-    });
-  },{rootMargin:'-20% 0px -70% 0px'});
-  headings.forEach(h=>observer.observe(h));
-}
-
-// fetch (with cache-busting timestamp to prevent cache issues)
-fetch(`../chapters/${file}.md?_=${Date.now()}`)
-  .then(r=>{if(!r.ok)throw new Error(r.status);return r.text();})
-  .then(md=>{
-    const banners={ch1_mirror_cage:'../img/ch1.png',ch2_telescope_cage:'../img/ch2.png',ch3_stained_glass_cage:'../img/ch3.png',ch4_clock_cage:'../img/ch4.png'};
-    const banner=banners[file]?`<img class="ch-banner" src="${banners[file]}" alt="">`:'';
-    // 1부 새장(아래꼭짓점=시계) ↔ 2부 둥지(거울상: 위아래 반전, 꼭짓점=까마귀)
-    const cageMap={ch1_mirror_cage:0,ch2_telescope_cage:1,ch3_stained_glass_cage:2,ch4_clock_cage:3};
-    const nestMap={ch6_butterfly_nest:0,ch7_tulip_nest:1,ch8_mist_nest:2,ch9_raven_nest:3};
-    const cageV=[{x:15,y:105,c:'#9B7A8B',l:'거울'},{x:95,y:55,c:'#7A8068',l:'망원경'},{x:110,y:105,c:'#4A7A6B',l:'스테인드글라스'},{x:60,y:10,c:'#5A8A9A',l:'시계'}];
-    const nestV=[{x:15,y:15,c:'#6B8E4B',l:'나비'},{x:95,y:65,c:'#C97B3C',l:'튤립'},{x:110,y:15,c:'#5A8A9A',l:'안개'},{x:60,y:110,c:'#8B6BAA',l:'까마귀'}];
-    let tetra='', ci=-1, vs=null;
-    if(file in cageMap){ci=cageMap[file];vs=cageV;}
-    else if(file in nestMap){ci=nestMap[file];vs=nestV;}
-    if(vs){
-      const es=[[0,1,'edge'],[0,2,'edge'],[0,3,'edge-d'],[1,2,'edge'],[1,3,'edge-d'],[2,3,'edge']];
-      let svg='<div class="tetra-pos"><svg viewBox="0 0 125 120">';
-      es.forEach(([a,b,cls])=>{svg+=`<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`;});
-      vs.forEach((v,i)=>{
-        const cur=i===ci;
-        svg+=`<circle cx="${v.x}" cy="${v.y}" r="${cur?6:3.5}" fill="${v.c}" class="v${cur?' cur':''}"/>`;
-        const ly=i===3?v.y-8:v.y+14;
-        svg+=`<text x="${v.x}" y="${ly}" class="lbl${cur?' cur':''}">${v.l}</text>`;
-      });
-      svg+='</svg></div>';
-      tetra=svg;
+      if (inBQ) html += '</blockquote></div>';
+      if (inCode) {
+        let codeContent = codeLines.join('\n').replace(/</g, '&lt;');
+        let codeLevel = hasLevelComments ? currentLevel : 1;
+        html += `<div class="flesh-item" data-level="${codeLevel}"><pre><code>${codeContent}</code></pre></div>`;
+      }
+      return html;
     }
-    const isChapter = file.startsWith('ch') && !file.includes('prologue') && !file.includes('intro') && !file.includes('roadmap') && !file.includes('epilogue');
-    const sliderHtml = isChapter ? `
+    function colorizeKeywords(s) {
+      const colorMap = {
+        // Blue (Desire-Pain-User / 🦋 사용자 / Desirability)
+        "사용자": "#3b82f6", "욕망": "#3b82f6", "고통": "#3b82f6", "환상": "#3b82f6",
+        // Purple (Knowledge-Belief-Technician / 🌷 기술자 / Feasibility)
+        "기술자": "#a855f7", "기술": "#a855f7", "상상": "#a855f7", "품위": "#a855f7", "작가": "#a855f7",
+        // Red (Action-Profit/Loss-Investor / 🌫️ 투자자 / Viability)
+        "투자자": "#ef4444", "행동": "#ef4444", "손익": "#ef4444", "신념": "#ef4444", "확신": "#ef4444",
+        // Green (Metric-Evaluation-Collaborator / 🐦‍⬛ 협력자 / Exchange Value)
+        "협력자": "#10b981", "평가기준": "#10b981", "척도": "#10b981", "질서": "#10b981", "명명": "#10b981"
+      };
+      const parts = s.split(/(<[^>]+>)/g);
+      for (let i = 0; i < parts.length; i++) {
+        if (parts[i] && !parts[i].startsWith('<')) {
+          // 1. Colorize multi-character keywords
+          parts[i] = parts[i].replace(/(사용자|욕망|고통|환상|기술자|기술|상상|품위|작가|투자자|행동|손익|신념|확신|협력자|평가기준|척도|질서|명명)/g, function (match) {
+            return `<span style="color:${colorMap[match]}; font-weight: 600;">${match}</span>`;
+          });
+          // 2. Colorize standalone "자", "일", "빚" safely (avoiding suffixes and overlapping substrings)
+          parts[i] = parts[i].replace(/(?<=^|[\s\(\[\{\'\"“])(자|일|빚)(?=$|[\s\)\}\]\.\,\:\;\!\?\'\"”])/g, function (match) {
+            const standaloneColors = { "자": "#10b981", "일": "#c5a55a", "빚": "#c5a55a" };
+            return `<span style="color:${standaloneColors[match]}; font-weight: 600;">${match}</span>`;
+          });
+        }
+      }
+      return parts.join('');
+    }
+    function inl(s) {
+      let res = s.replace(/\*\*다:\*\*/g, '<strong style="color:var(--accent);font-size:0.95em">다:</strong>')
+        .replace(/\*\*세:\*\*/g, '<strong style="color:#8899aa;font-size:0.95em">세:</strong>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--accent)">$1</a>');
+      return colorizeKeywords(res);
+    }
+    function tbl(rows) { if (!rows.length) return ''; let h = '<table>'; rows.forEach((r, i) => { let c = r.split('|').filter(x => x.trim()); let t = i === 0 ? 'th' : 'td'; h += '<tr>' + c.map(x => `<${t}>${inl(x.trim())}</${t}>`).join('') + '</tr>'; }); return h + '</table>'; }
+
+    // build TOC from rendered headings
+    function buildToc() {
+      const toc = document.getElementById('sidebarToc');
+      // clear existing links except label
+      const label = toc.querySelector('.sidebar-toc-label');
+      toc.innerHTML = '';
+      if (label) toc.appendChild(label);
+
+      const headings = document.querySelectorAll('.content h2, .content h3');
+      if (headings.length === 0) { toc.style.display = 'none'; return; }
+      headings.forEach(h => {
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        const parent = h.closest('.flesh-item');
+        if (parent) {
+          a.setAttribute('data-level', parent.getAttribute('data-level') || '3');
+        }
+        if (h.tagName === 'H3') a.classList.add('h3');
+        a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
+        toc.appendChild(a);
+      });
+      // scroll spy
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            toc.querySelectorAll('a').forEach(a => a.classList.remove('toc-active'));
+            const active = toc.querySelector(`a[href="#${e.target.id}"]`);
+            if (active) active.classList.add('toc-active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      headings.forEach(h => observer.observe(h));
+    }
+
+    // fetch (with cache-busting timestamp to prevent cache issues)
+    fetch(`../chapters/${file}.md?_=${Date.now()}`)
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(md => {
+        const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_stained_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png' };
+        const banner = banners[file] ? `<img class="ch-banner" src="${banners[file]}" alt="">` : '';
+        // 1부 새장(아래꼭짓점=시계) ↔ 2부 둥지(거울상: 위아래 반전, 꼭짓점=까마귀)
+        const cageMap = { ch1_mirror_cage: 0, ch2_telescope_cage: 1, ch3_stained_glass_cage: 2, ch4_clock_cage: 3 };
+        const nestMap = { ch6_butterfly_nest: 0, ch7_tulip_nest: 1, ch8_mist_nest: 2, ch9_raven_nest: 3 };
+        const cageV = [{ x: 15, y: 105, c: '#9B7A8B', l: '거울' }, { x: 95, y: 55, c: '#7A8068', l: '망원경' }, { x: 110, y: 105, c: '#4A7A6B', l: '스테인드글라스' }, { x: 60, y: 10, c: '#5A8A9A', l: '시계' }];
+        const nestV = [{ x: 15, y: 15, c: '#6B8E4B', l: '나비' }, { x: 95, y: 65, c: '#C97B3C', l: '튤립' }, { x: 110, y: 15, c: '#5A8A9A', l: '안개' }, { x: 60, y: 110, c: '#8B6BAA', l: '까마귀' }];
+        let tetra = '', ci = -1, vs = null;
+        if (file in cageMap) { ci = cageMap[file]; vs = cageV; }
+        else if (file in nestMap) { ci = nestMap[file]; vs = nestV; }
+        if (vs) {
+          const es = [[0, 1, 'edge'], [0, 2, 'edge'], [0, 3, 'edge-d'], [1, 2, 'edge'], [1, 3, 'edge-d'], [2, 3, 'edge']];
+          let svg = '<div class="tetra-pos"><svg viewBox="0 0 125 120">';
+          es.forEach(([a, b, cls]) => { svg += `<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`; });
+          vs.forEach((v, i) => {
+            const cur = i === ci;
+            svg += `<circle cx="${v.x}" cy="${v.y}" r="${cur ? 6 : 3.5}" fill="${v.c}" class="v${cur ? ' cur' : ''}"/>`;
+            const ly = i === 3 ? v.y - 8 : v.y + 14;
+            svg += `<text x="${v.x}" y="${ly}" class="lbl${cur ? ' cur' : ''}">${v.l}</text>`;
+          });
+          svg += '</svg></div>';
+          tetra = svg;
+        }
+        const isChapter = file.startsWith('ch') && !file.includes('prologue') && !file.includes('intro') && !file.includes('roadmap') && !file.includes('epilogue');
+        const sliderHtml = isChapter ? `
       <div class="density-control">
         <div class="density-info">
           <span class="density-label">지식 형식 (Isomorphic View Mode)</span>
@@ -890,436 +1181,438 @@ fetch(`../chapters/${file}.md?_=${Date.now()}`)
         </div>
       </div>
     ` : '';
-    
-    let diagramsHtml = '';
-    if(vs){
-      // 1. Tetrahedron SVG (Polyhedron View)
-      const es=[[0,1,'edge'],[0,2,'edge'],[0,3,'edge-d'],[1,2,'edge'],[1,3,'edge-d'],[2,3,'edge']];
-      let svg='<div class="tetra-pos"><svg viewBox="0 0 125 120">';
-      es.forEach(([a,b,cls])=>{svg+=`<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`;});
-      vs.forEach((v,i)=>{
-        const cur=i===ci;
-        svg+=`<circle cx="${v.x}" cy="${v.y}" r="${cur?6:3.5}" fill="${v.c}" class="v${cur?' cur':''}"/>`;
-        const ly=i===3?v.y-8:v.y+14;
-        svg+=`<text x="${v.x}" y="${ly}" class="lbl${cur?' cur':''}">${v.l}</text>`;
-      });
-      svg+='</svg></div>';
-      
-      // 2. Chapter Graph Canvas (Graph View)
-      const canvas = `<canvas id="chapterGraphCanvas" style="background:rgba(9,12,22,0.4); border-radius:8px; display:none; width:340px; height:140px; margin:0 auto 24px;"></canvas>`;
-      
-      diagramsHtml = `<div class="chapter-diagram-container">${svg}${canvas}</div>`;
-    }
-    
-    document.getElementById('content').innerHTML=banner+diagramsHtml+sliderHtml+md2html(md);
-    window.scrollTo(0,0);
-    buildToc();
-    jumpToQuery();
 
-    if (isChapter) {
-      const slider = document.getElementById('densitySlider');
-      const layout = document.querySelector('.layout');
-      const densityText = document.getElementById('densityText');
-      const texts = {
-        1: '▤ 행렬 (Matrix - 순차 언어)',
-        2: '🕸️ 그래프 (Graph - 병렬 네트워크)',
-        3: '⬡ 다면체 (Polyhedron - 공간 기하)'
-      };
-      
-      function updateDensity(val) {
-        layout.classList.remove('show-level-1', 'show-level-2', 'show-level-3');
-        layout.classList.add('show-level-' + val);
-        if (densityText) densityText.textContent = texts[val];
-        
-        // Handle local graph canvas drawing for Graph Mode
-        if (parseInt(val) === 2) {
-          if (graphData) {
-            startChapterGraph();
-          } else {
-            shouldDrawChapterGraph = true;
+        let diagramsHtml = '';
+        if (vs) {
+          // 1. Tetrahedron SVG (Polyhedron View)
+          const es = [[0, 1, 'edge'], [0, 2, 'edge'], [0, 3, 'edge-d'], [1, 2, 'edge'], [1, 3, 'edge-d'], [2, 3, 'edge']];
+          let svg = '<div class="tetra-pos"><svg viewBox="0 0 125 120">';
+          es.forEach(([a, b, cls]) => { svg += `<line x1="${vs[a].x}" y1="${vs[a].y}" x2="${vs[b].x}" y2="${vs[b].y}" class="${cls}"/>`; });
+          vs.forEach((v, i) => {
+            const cur = i === ci;
+            svg += `<circle cx="${v.x}" cy="${v.y}" r="${cur ? 6 : 3.5}" fill="${v.c}" class="v${cur ? ' cur' : ''}"/>`;
+            const ly = i === 3 ? v.y - 8 : v.y + 14;
+            svg += `<text x="${v.x}" y="${ly}" class="lbl${cur ? ' cur' : ''}">${v.l}</text>`;
+          });
+          svg += '</svg></div>';
+
+          // 2. Chapter Graph Canvas (Graph View)
+          const canvas = `<canvas id="chapterGraphCanvas" style="background:rgba(9,12,22,0.4); border-radius:8px; display:none; width:340px; height:140px; margin:0 auto 24px;"></canvas>`;
+
+          diagramsHtml = `<div class="chapter-diagram-container">${svg}${canvas}</div>`;
+        }
+
+        document.getElementById('content').innerHTML = banner + diagramsHtml + sliderHtml + md2html(md);
+        window.scrollTo(0, 0);
+        buildToc();
+        jumpToQuery();
+
+        if (isChapter) {
+          const slider = document.getElementById('densitySlider');
+          const layout = document.querySelector('.layout');
+          const densityText = document.getElementById('densityText');
+          const texts = {
+            1: '▤ 행렬 (Matrix - 순차 언어)',
+            2: '🕸️ 그래프 (Graph - 병렬 네트워크)',
+            3: '⬡ 다면체 (Polyhedron - 공간 기하)'
+          };
+
+          function updateDensity(val) {
+            layout.classList.remove('show-level-1', 'show-level-2', 'show-level-3');
+            layout.classList.add('show-level-' + val);
+            if (densityText) densityText.textContent = texts[val];
+
+            // Handle local graph canvas drawing for Graph Mode
+            if (parseInt(val) === 2) {
+              if (graphData) {
+                startChapterGraph();
+              } else {
+                shouldDrawChapterGraph = true;
+              }
+            } else {
+              shouldDrawChapterGraph = false;
+              if (activeChapterGraphCancel) {
+                activeChapterGraphCancel();
+                activeChapterGraphCancel = null;
+              }
+            }
           }
+
+          if (slider) {
+            slider.addEventListener('input', (e) => {
+              updateDensity(e.target.value);
+            });
+            updateDensity(3); // initialize
+          }
+        }
+      })
+      .catch(() => {
+        if (file.startsWith('app')) {
+          fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r => r.text()).then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); buildToc(); jumpToQuery(); })
+            .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });
         } else {
-          shouldDrawChapterGraph = false;
-          if (activeChapterGraphCancel) {
-            activeChapterGraphCancel();
-            activeChapterGraphCancel = null;
+          document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>';
+        }
+      });
+
+    let graphData = null;
+    let activeCanvasCancel = null;
+    let activeChapterGraphCancel = null;
+    let shouldDrawChapterGraph = false;
+
+    function startChapterGraph() {
+      if (activeChapterGraphCancel) {
+        activeChapterGraphCancel();
+        activeChapterGraphCancel = null;
+      }
+
+      const canvas = document.getElementById('chapterGraphCanvas');
+      if (!canvas || !graphData) return;
+
+      const fileToNodeMap = {
+        "ch1_mirror_cage": "1🪞_거울새장",
+        "ch2_telescope_cage": "2🔭_망원경새장",
+        "ch3_glass_cage": "3💒_스테인굴레스새장",
+        "ch4_clock_cage": "4⏱️_시계새장",
+        "ch5_mirror_nest": "10🧫_101",
+        "ch6_butterfly_nest": "6🦋_나비사용자",
+        "ch7_tulip_nest": "7🌷_튤립기술자",
+        "ch8_mist_nest": "8🌫️_안개투자자",
+        "ch9_raven_nest": "9🐦‍⬛_까마귀협력자",
+        "ch0_prologue": "🤨_질문과답",
+        "ch10_epilogue": "🤨_답과질문",
+        "ch0_intro": "⚕️머릿말_ouroboros",
+        "ch0_roadmap": "00_roadmap"
+      };
+
+      const nodeId = fileToNodeMap[file];
+      if (!nodeId) return;
+
+      const localNodesMap = {};
+      const localEdges = [];
+
+      graphData.edges.forEach(e => {
+        if (e.s === nodeId || e.t === nodeId) {
+          localEdges.push(e);
+          localNodesMap[e.s] = true;
+          localNodesMap[e.t] = true;
+        }
+      });
+
+      localNodesMap[nodeId] = true;
+      const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
+
+      if (localNodes.length === 0) {
+        localNodes.push({ id: nodeId, label: nodeId });
+      }
+
+      activeChapterGraphCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
+    }
+
+    // Fetch graph data from reference_graph.html dynamically to ensure SSOT
+    fetch('reference_graph.html')
+      .then(r => r.text())
+      .then(html => {
+        const match = html.match(/const DATA = (\{[\s\S]*?\});/);
+        if (match) {
+          try {
+            graphData = JSON.parse(match[1]);
+            if (shouldDrawChapterGraph || (document.getElementById('densitySlider') && document.getElementById('densitySlider').value == 2)) {
+              startChapterGraph();
+            }
+          } catch (e) {
+            console.error("Failed to parse reference graph data in reader:", e);
           }
         }
+      })
+      .catch(err => console.error("Error loading graph data in reader:", err));
+
+    window.handleWikiLink = function (target, label) {
+      target = target.trim();
+      label = label.trim();
+
+      // Chapter mapping index (translates Korean/symbol MOC nodes to slug filenames)
+      const nodeToFileMap = {
+        "1🪞_거울새장": "ch1_mirror_cage",
+        "2🔭_망원경새장": "ch2_telescope_cage",
+        "3💒_스테인굴레스새장": "ch3_glass_cage",
+        "3💒_유리새장": "ch3_glass_cage",
+        "4⏱️_시계새장": "ch4_clock_cage",
+        "5장_빅시스터_씬초안": "ch5_mirror_nest",
+        "10🧫_101": "ch5_mirror_nest",
+        "6🦋_나비사용자": "ch6_butterfly_nest",
+        "6🦋_나비둥지": "ch6_butterfly_nest",
+        "7🌷_튤립기술자": "ch7_tulip_nest",
+        "7🌷_튤립둥지": "ch7_tulip_nest",
+        "8🌫️_안개투자자": "ch8_mist_nest",
+        "8🌫️_안개둥지": "ch8_mist_nest",
+        "9🐦‍⬛_까마귀협력자": "ch9_raven_nest",
+        "9🐦‍⬛_까마귀둥지": "ch9_raven_nest",
+        "🤨_질문과답": "ch0_prologue",
+        "🤨_답과질문": "ch10_epilogue",
+        "⚕️머릿말_ouroboros": "ch0_intro",
+        "이책의길": "ch0_roadmap",
+        "00_roadmap": "ch0_roadmap",
+        "설계도": "ch0_roadmap"
+      };
+
+      const cleanTarget = target.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
+      let fileId = nodeToFileMap[target] || nodeToFileMap[cleanTarget];
+      if (!fileId) {
+        const found = CHAPTERS.find(c => c.id === target || c.id === cleanTarget);
+        if (found) fileId = found.id;
       }
-      
-      if (slider) {
-        slider.addEventListener('input', (e) => {
-          updateDensity(e.target.value);
-        });
-        updateDensity(3); // initialize
-      }
-    }
-  })
-  .catch(()=>{
-    if(file.startsWith('app')){
-      fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r=>r.text()).then(md=>{document.getElementById('content').innerHTML=md2html(md);window.scrollTo(0,0);buildToc();jumpToQuery();})
-        .catch(()=>{document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';});
-    } else {
-      document.getElementById('content').innerHTML='<div class="loading">파일을 찾을 수 없습니다.</div>';
-    }
-  });
 
-let graphData = null;
-let activeCanvasCancel = null;
-let activeChapterGraphCancel = null;
-let shouldDrawChapterGraph = false;
-
-function startChapterGraph() {
-  if (activeChapterGraphCancel) {
-    activeChapterGraphCancel();
-    activeChapterGraphCancel = null;
-  }
-  
-  const canvas = document.getElementById('chapterGraphCanvas');
-  if (!canvas || !graphData) return;
-  
-  const fileToNodeMap = {
-    "ch1_mirror_cage": "1🪞_거울새장",
-    "ch2_telescope_cage": "2🔭_망원경새장",
-    "ch3_glass_cage": "3💒_스테인굴레스새장",
-    "ch4_clock_cage": "4⏱️_시계새장",
-    "ch5_mirror_nest": "10🧫_101",
-    "ch6_butterfly_nest": "6🦋_나비사용자",
-    "ch7_tulip_nest": "7🌷_튤립기술자",
-    "ch8_mist_nest": "8🌫️_안개투자자",
-    "ch9_raven_nest": "9🐦‍⬛_까마귀협력자",
-    "ch0_prologue": "🤨_질문과답",
-    "ch10_epilogue": "🤨_답과질문",
-    "ch0_intro": "⚕️머릿말_ouroboros",
-    "ch0_roadmap": "00_roadmap"
-  };
-  
-  const nodeId = fileToNodeMap[file];
-  if (!nodeId) return;
-  
-  const localNodesMap = {};
-  const localEdges = [];
-  
-  graphData.edges.forEach(e => {
-    if (e.s === nodeId || e.t === nodeId) {
-      localEdges.push(e);
-      localNodesMap[e.s] = true;
-      localNodesMap[e.t] = true;
-    }
-  });
-  
-  localNodesMap[nodeId] = true;
-  const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
-  
-  if (localNodes.length === 0) {
-    localNodes.push({ id: nodeId, label: nodeId });
-  }
-  
-  activeChapterGraphCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
-}
-
-// Fetch graph data from reference_graph.html dynamically to ensure SSOT
-fetch('reference_graph.html')
-  .then(r => r.text())
-  .then(html => {
-    const match = html.match(/const DATA = (\{[\s\S]*?\});/);
-    if (match) {
-      try {
-        graphData = JSON.parse(match[1]);
-        if (shouldDrawChapterGraph || (document.getElementById('densitySlider') && document.getElementById('densitySlider').value == 2)) {
-          startChapterGraph();
-        }
-      } catch (e) {
-        console.error("Failed to parse reference graph data in reader:", e);
-      }
-    }
-  })
-  .catch(err => console.error("Error loading graph data in reader:", err));
-
-window.handleWikiLink = function(target, label) {
-  target = target.trim();
-  label = label.trim();
-  
-  // Chapter mapping index (translates Korean/symbol MOC nodes to slug filenames)
-  const nodeToFileMap = {
-    "1🪞_거울새장": "ch1_mirror_cage",
-    "2🔭_망원경새장": "ch2_telescope_cage",
-    "3💒_스테인굴레스새장": "ch3_glass_cage",
-    "3💒_유리새장": "ch3_glass_cage",
-    "4⏱️_시계새장": "ch4_clock_cage",
-    "5장_빅시스터_씬초안": "ch5_mirror_nest",
-    "10🧫_101": "ch5_mirror_nest",
-    "6🦋_나비사용자": "ch6_butterfly_nest",
-    "6🦋_나비둥지": "ch6_butterfly_nest",
-    "7🌷_튤립기술자": "ch7_tulip_nest",
-    "7🌷_튤립둥지": "ch7_tulip_nest",
-    "8🌫️_안개투자자": "ch8_mist_nest",
-    "8🌫️_안개둥지": "ch8_mist_nest",
-    "9🐦‍⬛_까마귀협력자": "ch9_raven_nest",
-    "9🐦‍⬛_까마귀둥지": "ch9_raven_nest",
-    "🤨_질문과답": "ch0_prologue",
-    "🤨_답과질문": "ch10_epilogue",
-    "⚕️머릿말_ouroboros": "ch0_intro",
-    "이책의길": "ch0_roadmap",
-    "00_roadmap": "ch0_roadmap",
-    "설계도": "ch0_roadmap"
-  };
-  
-  const cleanTarget = target.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
-  let fileId = nodeToFileMap[target] || nodeToFileMap[cleanTarget];
-  if (!fileId) {
-    const found = CHAPTERS.find(c => c.id === target || c.id === cleanTarget);
-    if (found) fileId = found.id;
-  }
-  
-  if (fileId) {
-    window.location.href = '?file=' + fileId;
-  } else {
-    window.openElementDrawer(target, label);
-  }
-};
-
-window.openElementDrawer = function(nodeId, label) {
-  const drawer = document.getElementById('elementDrawer');
-  const title = document.getElementById('drawerTitle');
-  const def = document.getElementById('drawerDef');
-  const content = document.getElementById('drawerContent');
-  
-  title.textContent = label || nodeId;
-  def.innerHTML = `<span style="color:var(--dim)">불러오는 중...</span>`;
-  content.innerHTML = `<span style="color:var(--dim)">불러오는 중...</span>`;
-  
-  drawer.classList.add('open');
-  
-  if (activeCanvasCancel) {
-    activeCanvasCancel();
-    activeCanvasCancel = null;
-  }
-  
-  // Clean nodeId to match filename
-  // Replace special characters if needed, or encodeURIComponent
-  const cleanId = encodeURIComponent(nodeId);
-  
-  fetch(`../chapters/elements/${cleanId}.md`)
-    .then(r => {
-      if (!r.ok) throw new Error("File not found");
-      return r.text();
-    })
-    .then(mdText => {
-      // Extract YAML frontmatter metadata
-      const defMatch = mdText.match(/정의:\s*"([^"]+)"/) || mdText.match(/정의:\s*([^\n]+)/);
-      const definition = defMatch ? defMatch[1].replace(/^"(.*)"$/, '$1') : '정의가 등록되지 않은 원소입니다.';
-      def.innerHTML = inl(definition);
-      
-      // Render body content
-      content.innerHTML = md2html(mdText);
-    })
-    .catch(err => {
-      def.innerHTML = `<span style="color:var(--dim)">${nodeId} 원소 정의</span>`;
-      content.innerHTML = `<span style="color:var(--dim)">세다의 생각원소 노트가 아직 이식되지 않았거나, 동기화 대기 중인 레코드입니다.</span>`;
-    });
-    
-  // Render the Local Molecular bonds Graph
-  if (graphData) {
-    const localNodesMap = {};
-    const localEdges = [];
-    
-    // Find edges connected directly to nodeId
-    graphData.edges.forEach(e => {
-      if (e.s === nodeId || e.t === nodeId) {
-        localEdges.push(e);
-        localNodesMap[e.s] = true;
-        localNodesMap[e.t] = true;
-      }
-    });
-    
-    // Also include self
-    localNodesMap[nodeId] = true;
-    
-    // Extract actual node objects
-    const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
-    
-    // Fallback: If no bonds found in global graph, draw a single floating node
-    if (localNodes.length === 0) {
-      localNodes.push({ id: nodeId, label: label || nodeId });
-    }
-    
-    const canvas = document.getElementById('drawerCanvas');
-    activeCanvasCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
-  }
-};
-
-window.closeDrawer = function() {
-  const drawer = document.getElementById('elementDrawer');
-  drawer.classList.remove('open');
-  if (activeCanvasCancel) {
-    activeCanvasCancel();
-    activeCanvasCancel = null;
-  }
-};
-
-function drawLocalGraph(canvas, centerNodeId, localNodes, localEdges) {
-  const ctx = canvas.getContext('2d');
-  
-  // Handle high DPR displays
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  ctx.scale(dpr, dpr);
-  
-  const W = rect.width;
-  const H = rect.height;
-  
-  // Set up nodes
-  const nodes = localNodes.map(n => {
-    const isCenter = n.id === centerNodeId;
-    return {
-      id: n.id,
-      label: n.label || n.id,
-      isCenter: isCenter,
-      x: isCenter ? W/2 : W/2 + (Math.random()-0.5)*100,
-      y: isCenter ? H/2 : H/2 + (Math.random()-0.5)*100,
-      vx: 0,
-      vy: 0,
-      radius: isCenter ? 7 : (n.id.startsWith('g') ? 4.5 : 5.5),
-      color: isCenter ? 'var(--accent)' : (n.id.startsWith('g') ? '#6486b8' : '#efe3c0')
-    };
-  });
-  
-  const nodeMap = {};
-  nodes.forEach(n => nodeMap[n.id] = n);
-  
-  const edges = localEdges.map(e => ({
-    s: nodeMap[e.s],
-    t: nodeMap[e.t]
-  })).filter(e => e.s && e.t);
-  
-  let animationFrameId = null;
-  
-  function tick() {
-    // Repulsion forces
-    for (let i = 0; i < nodes.length; i++) {
-      const a = nodes[i];
-      for (let j = i + 1; j < nodes.length; j++) {
-        const b = nodes[j];
-        let dx = a.x - b.x;
-        let dy = a.y - b.y;
-        let dist = Math.sqrt(dx*dx + dy*dy) || 1;
-        if (dist < 100) {
-          let force = (100 - dist) * 0.04;
-          a.vx += (dx / dist) * force;
-          a.vy += (dy / dist) * force;
-          b.vx -= (dx / dist) * force;
-          b.vy -= (dy / dist) * force;
-        }
-      }
-    }
-    
-    // Edge attraction forces
-    edges.forEach(e => {
-      let dx = e.t.x - e.s.x;
-      let dy = e.t.y - e.s.y;
-      let dist = Math.sqrt(dx*dx + dy*dy) || 1;
-      let force = (dist - 55) * 0.045;
-      e.s.vx += (dx / dist) * force;
-      e.s.vy += (dy / dist) * force;
-      e.t.vx -= (dx / dist) * force;
-      e.t.vy -= (dy / dist) * force;
-    });
-    
-    // Central gravity & boundaries
-    nodes.forEach(n => {
-      if (n.isCenter) {
-        n.x = W/2;
-        n.y = H/2;
-        n.vx = 0;
-        n.vy = 0;
+      if (fileId) {
+        window.location.href = '?file=' + fileId;
       } else {
-        let dx = W/2 - n.x;
-        let dy = H/2 - n.y;
-        n.vx += dx * 0.015;
-        n.vy += dy * 0.015;
-        
-        n.x += n.vx;
-        n.y += n.vy;
-        n.vx *= 0.75;
-        n.vy *= 0.75;
-        
-        // boundary clamping
-        n.x = Math.max(15, Math.min(W - 15, n.x));
-        n.y = Math.max(15, Math.min(H - 15, n.y));
+        window.openElementDrawer(target, label);
       }
-    });
-    
-    ctx.clearRect(0, 0, W, H);
-    
-    // Draw edges
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
-    ctx.lineWidth = 1;
-    edges.forEach(e => {
-      ctx.beginPath();
-      ctx.moveTo(e.s.x, e.s.y);
-      ctx.lineTo(e.t.x, e.t.y);
-      ctx.stroke();
-    });
-    
-    // Draw nodes
-    nodes.forEach(n => {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.radius, 0, 2*Math.PI);
-      ctx.fillStyle = n.color;
-      ctx.fill();
-      
-      if (n.isCenter) {
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-      
-      // Node text labels
-      ctx.fillStyle = n.isCenter ? '#fff' : '#8c99b4';
-      ctx.font = n.isCenter ? '600 9.5px sans-serif' : '9px sans-serif';
-      ctx.textAlign = 'center';
-      
-      // Strip brackets and folder prefixes for clean view
-      let labelText = n.label.replace(/^g\d+_\d+_\*?/, '').replace(/_/, ' ');
-      if (labelText.length > 15) labelText = labelText.substring(0, 13) + '..';
-      
-      ctx.fillText(labelText, n.x, n.y - n.radius - 4);
-    });
-    
-    animationFrameId = requestAnimationFrame(tick);
-  }
-  
-  tick();
-  
-  return () => {
-    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-  };
-}
-</script>
+    };
 
-<div id="elementDrawer" class="element-drawer">
-  <div class="drawer-header">
-    <h3 id="drawerTitle">원소 상세</h3>
-    <button class="drawer-close" onclick="closeDrawer()">×</button>
+    window.openElementDrawer = function (nodeId, label) {
+      const drawer = document.getElementById('elementDrawer');
+      const title = document.getElementById('drawerTitle');
+      const def = document.getElementById('drawerDef');
+      const content = document.getElementById('drawerContent');
+
+      title.textContent = label || nodeId;
+      def.innerHTML = `<span style="color:var(--dim)">불러오는 중...</span>`;
+      content.innerHTML = `<span style="color:var(--dim)">불러오는 중...</span>`;
+
+      drawer.classList.add('open');
+
+      if (activeCanvasCancel) {
+        activeCanvasCancel();
+        activeCanvasCancel = null;
+      }
+
+      // Clean nodeId to match filename
+      // Replace special characters if needed, or encodeURIComponent
+      const cleanId = encodeURIComponent(nodeId);
+
+      fetch(`../chapters/elements/${cleanId}.md`)
+        .then(r => {
+          if (!r.ok) throw new Error("File not found");
+          return r.text();
+        })
+        .then(mdText => {
+          // Extract YAML frontmatter metadata
+          const defMatch = mdText.match(/정의:\s*"([^"]+)"/) || mdText.match(/정의:\s*([^\n]+)/);
+          const definition = defMatch ? defMatch[1].replace(/^"(.*)"$/, '$1') : '정의가 등록되지 않은 원소입니다.';
+          def.innerHTML = inl(definition);
+
+          // Render body content
+          content.innerHTML = md2html(mdText);
+        })
+        .catch(err => {
+          def.innerHTML = `<span style="color:var(--dim)">${nodeId} 원소 정의</span>`;
+          content.innerHTML = `<span style="color:var(--dim)">세다의 생각원소 노트가 아직 이식되지 않았거나, 동기화 대기 중인 레코드입니다.</span>`;
+        });
+
+      // Render the Local Molecular bonds Graph
+      if (graphData) {
+        const localNodesMap = {};
+        const localEdges = [];
+
+        // Find edges connected directly to nodeId
+        graphData.edges.forEach(e => {
+          if (e.s === nodeId || e.t === nodeId) {
+            localEdges.push(e);
+            localNodesMap[e.s] = true;
+            localNodesMap[e.t] = true;
+          }
+        });
+
+        // Also include self
+        localNodesMap[nodeId] = true;
+
+        // Extract actual node objects
+        const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
+
+        // Fallback: If no bonds found in global graph, draw a single floating node
+        if (localNodes.length === 0) {
+          localNodes.push({ id: nodeId, label: label || nodeId });
+        }
+
+        const canvas = document.getElementById('drawerCanvas');
+        activeCanvasCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
+      }
+    };
+
+    window.closeDrawer = function () {
+      const drawer = document.getElementById('elementDrawer');
+      drawer.classList.remove('open');
+      if (activeCanvasCancel) {
+        activeCanvasCancel();
+        activeCanvasCancel = null;
+      }
+    };
+
+    function drawLocalGraph(canvas, centerNodeId, localNodes, localEdges) {
+      const ctx = canvas.getContext('2d');
+
+      // Handle high DPR displays
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+
+      const W = rect.width;
+      const H = rect.height;
+
+      // Set up nodes
+      const nodes = localNodes.map(n => {
+        const isCenter = n.id === centerNodeId;
+        return {
+          id: n.id,
+          label: n.label || n.id,
+          isCenter: isCenter,
+          x: isCenter ? W / 2 : W / 2 + (Math.random() - 0.5) * 100,
+          y: isCenter ? H / 2 : H / 2 + (Math.random() - 0.5) * 100,
+          vx: 0,
+          vy: 0,
+          radius: isCenter ? 7 : (n.id.startsWith('g') ? 4.5 : 5.5),
+          color: isCenter ? 'var(--accent)' : (n.id.startsWith('g') ? '#6486b8' : '#efe3c0')
+        };
+      });
+
+      const nodeMap = {};
+      nodes.forEach(n => nodeMap[n.id] = n);
+
+      const edges = localEdges.map(e => ({
+        s: nodeMap[e.s],
+        t: nodeMap[e.t]
+      })).filter(e => e.s && e.t);
+
+      let animationFrameId = null;
+
+      function tick() {
+        // Repulsion forces
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j];
+            let dx = a.x - b.x;
+            let dy = a.y - b.y;
+            let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            if (dist < 100) {
+              let force = (100 - dist) * 0.04;
+              a.vx += (dx / dist) * force;
+              a.vy += (dy / dist) * force;
+              b.vx -= (dx / dist) * force;
+              b.vy -= (dy / dist) * force;
+            }
+          }
+        }
+
+        // Edge attraction forces
+        edges.forEach(e => {
+          let dx = e.t.x - e.s.x;
+          let dy = e.t.y - e.s.y;
+          let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          let force = (dist - 55) * 0.045;
+          e.s.vx += (dx / dist) * force;
+          e.s.vy += (dy / dist) * force;
+          e.t.vx -= (dx / dist) * force;
+          e.t.vy -= (dy / dist) * force;
+        });
+
+        // Central gravity & boundaries
+        nodes.forEach(n => {
+          if (n.isCenter) {
+            n.x = W / 2;
+            n.y = H / 2;
+            n.vx = 0;
+            n.vy = 0;
+          } else {
+            let dx = W / 2 - n.x;
+            let dy = H / 2 - n.y;
+            n.vx += dx * 0.015;
+            n.vy += dy * 0.015;
+
+            n.x += n.vx;
+            n.y += n.vy;
+            n.vx *= 0.75;
+            n.vy *= 0.75;
+
+            // boundary clamping
+            n.x = Math.max(15, Math.min(W - 15, n.x));
+            n.y = Math.max(15, Math.min(H - 15, n.y));
+          }
+        });
+
+        ctx.clearRect(0, 0, W, H);
+
+        // Draw edges
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
+        ctx.lineWidth = 1;
+        edges.forEach(e => {
+          ctx.beginPath();
+          ctx.moveTo(e.s.x, e.s.y);
+          ctx.lineTo(e.t.x, e.t.y);
+          ctx.stroke();
+        });
+
+        // Draw nodes
+        nodes.forEach(n => {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = n.color;
+          ctx.fill();
+
+          if (n.isCenter) {
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Node text labels
+          ctx.fillStyle = n.isCenter ? '#fff' : '#8c99b4';
+          ctx.font = n.isCenter ? '600 9.5px sans-serif' : '9px sans-serif';
+          ctx.textAlign = 'center';
+
+          // Strip brackets and folder prefixes for clean view
+          let labelText = n.label.replace(/^g\d+_\d+_\*?/, '').replace(/_/, ' ');
+          if (labelText.length > 15) labelText = labelText.substring(0, 13) + '..';
+
+          ctx.fillText(labelText, n.x, n.y - n.radius - 4);
+        });
+
+        animationFrameId = requestAnimationFrame(tick);
+      }
+
+      tick();
+
+      return () => {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      };
+    }
+  </script>
+
+  <div id="elementDrawer" class="element-drawer">
+    <div class="drawer-header">
+      <h3 id="drawerTitle">원소 상세</h3>
+      <button class="drawer-close" onclick="closeDrawer()">×</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section">
+        <div class="drawer-section-title">정의 (Definition)</div>
+        <div id="drawerDef" class="drawer-def"></div>
+      </div>
+      <div class="drawer-section" id="drawerContentSection">
+        <div class="drawer-section-title">상세 노트 (Notes)</div>
+        <div id="drawerContent" class="drawer-markdown"></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-title">분자 결합망 (Molecular Bonds)</div>
+        <canvas id="drawerCanvas"
+          style="background:rgba(9,12,22,0.4); border-radius:6px; display:block; width:100%; height:180px;"></canvas>
+      </div>
+    </div>
   </div>
-  <div class="drawer-body">
-    <div class="drawer-section">
-      <div class="drawer-section-title">정의 (Definition)</div>
-      <div id="drawerDef" class="drawer-def"></div>
-    </div>
-    <div class="drawer-section" id="drawerContentSection">
-      <div class="drawer-section-title">상세 노트 (Notes)</div>
-      <div id="drawerContent" class="drawer-markdown"></div>
-    </div>
-    <div class="drawer-section">
-      <div class="drawer-section-title">분자 결합망 (Molecular Bonds)</div>
-      <canvas id="drawerCanvas" style="background:rgba(9,12,22,0.4); border-radius:6px; display:block; width:100%; height:180px;"></canvas>
-    </div>
-  </div>
-</div>
 
 </body>
+
 </html>
