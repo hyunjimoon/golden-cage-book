@@ -139,17 +139,17 @@
 
   <!-- Faculty Legend -->
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#b5a3f8;"></div><b>👾 욕망 · 사용자</b> (1장 엠마 ↔ 6장 송 릴링)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#74c39c;"></div><b>⛰️ 상상 · 기술자</b> (2장 살리나 ↔ 7장 코르넬리우스)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#e27f7f;"></div><b>🟥 행동 · 투자자</b> (3장 파늘루 ↔ 8장 우나무노)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#7cb0db;"></div><b>🌀 척도 · 협력자</b> (4장 로빈슨 ↔ 9장 일연)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div><b>👾 욕망 · 사용자</b> (1장 엠마 ↔ 6장 송 릴링)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#a855f7;"></div><b>⛰️ 상상 · 기술자</b> (2장 살리나 ↔ 7장 코르넬리우스)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444;"></div><b>🟥 행동 · 투자자</b> (3장 파늘루 ↔ 8장 우나무노)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#10b981;"></div><b>🌀 척도 · 협력자</b> (4장 로빈슨 ↔ 9장 일연)</div>
   </div>
 
   <!-- 2-Column Mirror Pair Reference Grid -->
   <div class="grid-title">4대 거울쌍 (Mirror Invariants)</div>
   <div class="mirror-grid">
     <div class="mirror-card">
-      <div class="mirror-card-head" style="color:#b5a3f8;">
+      <div class="mirror-card-head" style="color:#3b82f6;">
         <span>👾 욕망 (Desire)</span>
         <span>1↔6 Pair</span>
       </div>
@@ -167,7 +167,7 @@
     </div>
 
     <div class="mirror-card">
-      <div class="mirror-card-head" style="color:#74c39c;">
+      <div class="mirror-card-head" style="color:#a855f7;">
         <span>⛰️ 상상 (Feasibility)</span>
         <span>2↔7 Pair</span>
       </div>
@@ -185,7 +185,7 @@
     </div>
 
     <div class="mirror-card">
-      <div class="mirror-card-head" style="color:#e27f7f;">
+      <div class="mirror-card-head" style="color:#ef4444;">
         <span>🟥 행동 (Action)</span>
         <span>3↔8 Pair</span>
       </div>
@@ -203,7 +203,7 @@
     </div>
 
     <div class="mirror-card">
-      <div class="mirror-card-head" style="color:#7cb0db;">
+      <div class="mirror-card-head" style="color:#10b981;">
         <span>🌀 척도 (Metric)</span>
         <span>4↔9 Pair</span>
       </div>
@@ -230,10 +230,10 @@
 
   // World-class color palette
   const PALETTE = {
-    desire: '#b5a3f8',  // Purple (1, 6)
-    feas:   '#74c39c',  // Green (2, 7)
-    action: '#e27f7f',  // Red (3, 8)
-    metric: '#7cb0db',  // Blue (4, 9)
+    desire: '#3b82f6',  // Purple (1, 6)
+    feas:   '#a855f7',  // Green (2, 7)
+    action: '#ef4444',  // Red (3, 8)
+    metric: '#10b981',  // Blue (4, 9)
     gold:   '#c5a55a'   // Center Pivot
   };
 
@@ -391,7 +391,7 @@
     const isCage = node.g === 'cage';
     cardBadge.textContent = isCage ? `${node.n}장 새장 (Prior)` : `${node.n}장 둥지 (Stakeholder)`;
     cardBadge.style.background = isCage ? 'rgba(197,165,90,0.2)' : 'rgba(124,176,219,0.2)';
-    cardBadge.style.color = isCage ? '#c5a55a' : '#7cb0db';
+    cardBadge.style.color = isCage ? '#c5a55a' : '#10b981';
 
     cardTitle.textContent = node.label;
     cardTitle.style.color = node.col;

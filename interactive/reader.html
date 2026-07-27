@@ -778,14 +778,14 @@ function md2html(md) {
 }
 function colorizeKeywords(s) {
   const colorMap = {
-    // Purple (Desire-Pain-User / 👾)
-    "사용자": "#b5a3f8", "욕망": "#b5a3f8", "고통": "#b5a3f8", "환상": "#b5a3f8",
-    // Green (Imagination-Tech-Technician / ⛰️)
-    "기술자": "#74c39c", "기술": "#74c39c", "상상": "#74c39c", "품위": "#74c39c", "작가": "#74c39c",
-    // Red (Action-Profit/Loss-Investor / 🟥)
-    "투자자": "#e27f7f", "행동": "#e27f7f", "손익": "#e27f7f", "신념": "#e27f7f", "확신": "#e27f7f",
-    // Blue (Ego-Evaluation Metric-Collaborator / 🌀)
-    "협력자": "#7cb0db", "평가기준": "#7cb0db", "척도": "#7cb0db", "질서": "#7cb0db", "명명": "#7cb0db"
+    // Blue (Desire-Pain-User / 🦋 사용자 / Desirability)
+    "사용자": "#3b82f6", "욕망": "#3b82f6", "고통": "#3b82f6", "환상": "#3b82f6",
+    // Purple (Knowledge-Belief-Technician / 🌷 기술자 / Feasibility)
+    "기술자": "#a855f7", "기술": "#a855f7", "상상": "#a855f7", "품위": "#a855f7", "작가": "#a855f7",
+    // Red (Action-Profit/Loss-Investor / 🌫️ 투자자 / Viability)
+    "투자자": "#ef4444", "행동": "#ef4444", "손익": "#ef4444", "신념": "#ef4444", "확신": "#ef4444",
+    // Green (Metric-Evaluation-Collaborator / 🐦‍⬛ 협력자 / Exchange Value)
+    "협력자": "#10b981", "평가기준": "#10b981", "척도": "#10b981", "질서": "#10b981", "명명": "#10b981"
   };
   const parts = s.split(/(<[^>]+>)/g);
   for (let i = 0; i < parts.length; i++) {
@@ -796,7 +796,7 @@ function colorizeKeywords(s) {
       });
       // 2. Colorize standalone "자", "일", "빚" safely (avoiding suffixes and overlapping substrings)
       parts[i] = parts[i].replace(/(?<=^|[\s\(\[\{\'\"“])(자|일|빚)(?=$|[\s\)\}\]\.\,\:\;\!\?\'\"”])/g, function(match) {
-        const standaloneColors = { "자": "#7cb0db", "일": "#c5a55a", "빚": "#c5a55a" };
+        const standaloneColors = { "자": "#10b981", "일": "#c5a55a", "빚": "#c5a55a" };
         return `<span style="color:${standaloneColors[match]}; font-weight: 600;">${match}</span>`;
       });
     }

@@ -530,7 +530,7 @@ function showPolyCard(chapId){
 }
 
 /* ---------- 계보(은하수) : reference_graph 흡수 ---------- */
-const GENE_ROLE={0:'#efe3c0',1:'#b5a3f8',2:'#7cb0db',3:'#c5a55a'};
+const GENE_ROLE={0:'#efe3c0',1:'#3b82f6',2:'#10b981',3:'#c5a55a'};
 const GENE_SECT=[0,Math.PI/2,Math.PI,3*Math.PI/2];
 const elemFam={}; elems.forEach(e=>elemFam[e.id]=e.fam);
 let geneNodes=[],geneEdges=[],geneById={},geneInited=false,geneHover=null,geneDrag=null;
