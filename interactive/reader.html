@@ -910,7 +910,8 @@
     const APPENDICES = [
       { group: '읽을거리', items: [{ id: 'app1_romantic_trilogy', label: '에세이' }, { id: 'app3_craft_of_startup_novel', label: '작법론' }] },
       { group: '도구', items: [{ id: 'app5_prompting', label: '프롬프팅 예시' }, { id: 'app6_industry_debt', label: '산업별 빚' }] },
-      { group: '참고', items: [{ id: 'app2_glossary', label: '용어 해설' }, { id: 'app4_references', label: '생각 빚 장부' }, { id: 'app8_84_structure', label: '84구조 (책 SSOT)' }] }
+      // 생각 빚 장부는 references.html(자동생성 SSOT)이 정본 — app4_references.md는 stale 사본이라 2026-07-27 삭제
+      { group: '참고', items: [{ id: 'app2_glossary', label: '용어 해설' }, { id: 'app8_84_structure', label: '84구조 (책 SSOT)' }] }
     ];
     APPENDICES.forEach(g => {
       const label = document.createElement('div');
