@@ -334,7 +334,8 @@ function drawEnfilade(){
   // 문 넷
   GATES.forEach((g,i)=>{
     const d = doorGeo(i), on = selGate === i;
-    s += `<rect class="gframe${on?" on":""}" data-frame="${i}" x="${d.x}" y="${d.y}" width="${d.w}" height="${d.h}" rx="3"/>`;
+    const ajar = selScene && selScene.g[i] === "h";
+    s += `<rect class="gframe${on?" on":""}" ${ajar?'stroke="var(--gold)" stroke-dasharray="4 4" stroke-width="1.8"':""} data-frame="${i}" x="${d.x}" y="${d.y}" width="${d.w}" height="${d.h}" rx="3"/>`;
     // 좌·우 번갈아 걸어 겹침을 피한다 (문틀 인방 자리)
     const left = i % 2 === 0;
     const tx = left ? d.x + 12 : d.x + d.w - 12;
@@ -350,9 +351,13 @@ function drawEnfilade(){
       const d = doorGeo(idx);
       s += `<rect class="shutter" x="${d.x+3}" y="${d.y+3}" width="${d.w-6}" height="${d.h-6}" rx="3"/>`;
       s += `<rect fill="url(#hatch)" opacity=".5" x="${d.x+3}" y="${d.y+3}" width="${d.w-6}" height="${d.h-6}" rx="3"/>`;
-      s += `<text class="shutter-t" x="${CX}" y="${d.y + d.h + 22}">${selScene.id} — ${idx+1}번 문 「${GATES[idx].name}」에서 막힘</text>`;
+      s += `<text class="shutter-t" x="${CX}" y="${d.y + d.h + 22}">${selScene.id} — ${idx+1}번 문 「${GATES[idx].name}」에서 막힘 · 요약이 정직하다</text>`;
     } else {
-      s += `<text class="shutter-t" x="${CX}" y="${doorGeo(0).y + doorGeo(0).h + 22}" style="fill:var(--gold)">${selScene.id} — 네 문 통과 · 장면</text>`;
+      const aj = selScene.g.findIndex(v => v === "h");
+      const yBase = doorGeo(0).y + doorGeo(0).h + 22;
+      s += aj >= 0
+        ? `<text class="shutter-t" x="${CX}" y="${yBase}" style="fill:var(--gold)">${selScene.id} — ${aj+1}번 문 「${GATES[aj].name}」이 아슬 · 장면으로 세우려면 여기부터</text>`
+        : `<text class="shutter-t" x="${CX}" y="${yBase}" style="fill:var(--gold)">${selScene.id} — 네 문 통과 · 장면</text>`;
     }
   }
 
