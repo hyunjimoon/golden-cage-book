@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 1010" width="1220" height="1010" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <title>황금새장을열다 — 두 부 평면 지도 (1부 새장 D·B·A → 점 · 2부 둥지 S·De·Vbl → 향)</title>
+  <rect width="1220" height="1010" fill="#FBF8F0"/>
+
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1B1B1E"/>
+    </marker>
+    <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2D5FA8"/>
+    </marker>
+    <marker id="arR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C8102E"/>
+    </marker>
+  </defs>
+
+  <!-- ══════════ 표제 ══════════ -->
+  <text x="40" y="38" font-size="15" fill="#8a8a80" letter-spacing="1">황금새장을 열다 · 두 부 평면 지도 (거울정본 계열)</text>
+
+  <!-- ══════════════════ 1부 새장 ══════════════════ -->
+  <text x="40" y="88" font-size="24" font-weight="bold" fill="#1B1B1E">1부 · 새장</text>
+  <text x="40" y="112" font-size="15" fill="#1B1B1E" font-weight="bold">시지프스</text>
+  <text x="105" y="112" font-size="13" fill="#8a8a80">같은 돌을 다시 민다</text>
+  <line x1="52" y1="132" x2="52" y2="430" stroke="#1B1B1E" stroke-width="1.6" marker-end="url(#ar)"/>
+  <text x="66" y="252" font-size="15" fill="#1B1B1E">고독</text>
+  <text x="66" y="272" font-size="12" fill="#8a8a80">solitude</text>
+  <text x="66" y="426" font-size="15" fill="#1B1B1E">섬 · 점</text>
+
+  <!-- 1장 -->
+  <rect x="252" y="70" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="280" y="87" font-size="13" fill="#1B1B1E" text-anchor="middle">1장</text>
+  <text x="280" y="150" font-size="26" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+
+  <!-- 2장 : D→B -->
+  <rect x="492" y="70" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="520" y="87" font-size="13" fill="#1B1B1E" text-anchor="middle">2장</text>
+  <text x="546" y="140" font-size="26" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+  <line x1="538" y1="152" x2="500" y2="196" stroke="#2D5FA8" stroke-width="2" marker-end="url(#arD)"/>
+  <text x="486" y="216" font-size="26" font-weight="bold" fill="#B0821F" text-anchor="middle">B</text>
+
+  <!-- 3장 : D→B→A -->
+  <rect x="742" y="70" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="770" y="87" font-size="13" fill="#1B1B1E" text-anchor="middle">3장</text>
+  <text x="748" y="140" font-size="26" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+  <line x1="742" y1="152" x2="712" y2="196" stroke="#2D5FA8" stroke-width="2" marker-end="url(#arD)"/>
+  <line x1="756" y1="152" x2="800" y2="196" stroke="#2D5FA8" stroke-width="2" marker-end="url(#arD)"/>
+  <text x="698" y="216" font-size="26" font-weight="bold" fill="#B0821F" text-anchor="middle">B</text>
+  <line x1="716" y1="209" x2="798" y2="209" stroke="#B0821F" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="818" y="216" font-size="26" font-weight="bold" fill="#C8102E" text-anchor="middle">A</text>
+
+  <!-- 4장 : 십자 + 섬 -->
+  <rect x="352" y="252" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="380" y="269" font-size="13" fill="#1B1B1E" text-anchor="middle">4장</text>
+  <text x="380" y="310" font-size="26" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+  <line x1="380" y1="320" x2="380" y2="404" stroke="#1B1B1E" stroke-width="1.8"/>
+  <line x1="322" y1="360" x2="438" y2="360" stroke="#1B1B1E" stroke-width="1.8"/>
+  <line x1="373" y1="320" x2="336" y2="352" stroke="#1B1B1E" stroke-width="1.8"/>
+  <text x="306" y="367" font-size="26" font-weight="bold" fill="#B0821F" text-anchor="middle">B</text>
+  <text x="456" y="367" font-size="26" font-weight="bold" fill="#C8102E" text-anchor="middle">A</text>
+  <circle cx="380" cy="424" r="26" fill="#fff" stroke="#1B1B1E" stroke-width="1.8"/>
+  <text x="380" y="430" font-size="14" fill="#1B1B1E" text-anchor="middle">섬</text>
+
+  <!-- 5장 101₂ : 십자 + 점 -->
+  <rect x="622" y="248" width="100" height="30" rx="4" fill="#E0A526" fill-opacity="0.16" stroke="#E0A526" stroke-width="1.6"/>
+  <text x="672" y="269" font-size="16" fill="#8A6A12" text-anchor="middle">101₂ · 5장</text>
+  <text x="672" y="310" font-size="26" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+  <line x1="672" y1="320" x2="672" y2="418" stroke="#1B1B1E" stroke-width="1.8"/>
+  <line x1="614" y1="360" x2="730" y2="360" stroke="#1B1B1E" stroke-width="1.8"/>
+  <line x1="665" y1="320" x2="628" y2="352" stroke="#1B1B1E" stroke-width="1.8"/>
+  <text x="598" y="367" font-size="26" font-weight="bold" fill="#B0821F" text-anchor="middle">B</text>
+  <text x="748" y="367" font-size="26" font-weight="bold" fill="#C8102E" text-anchor="middle">A</text>
+  <circle cx="672" cy="424" r="6" fill="#E0A526" stroke="#8A6A12" stroke-width="1.2"/>
+  <text x="694" y="430" font-size="14" fill="#1B1B1E">점</text>
+
+  <!-- 1부 범례 -->
+  <text x="930" y="300" font-size="18" font-weight="bold" fill="#2D5FA8">D · 욕망 desire</text>
+  <text x="930" y="330" font-size="18" font-weight="bold" fill="#B0821F">B · 믿음 belief</text>
+  <text x="930" y="360" font-size="18" font-weight="bold" fill="#C8102E">A · 행동 action</text>
+  <text x="930" y="392" font-size="13" fill="#8a8a80">안에서 짓는다 — 빚이 쌓인다</text>
+
+  <line x1="40" y1="478" x2="1180" y2="478" stroke="#d8d2c2" stroke-width="1"/>
+
+  <!-- ══════════════════ 2부 둥지 ══════════════════ -->
+  <text x="40" y="548" font-size="24" font-weight="bold" fill="#1B1B1E">2부 · 둥지</text>
+  <text x="40" y="572" font-size="15" fill="#E0A526" font-weight="bold">헤르메스</text>
+  <text x="112" y="572" font-size="13" fill="#8a8a80">경계를 넘어 전한다</text>
+  <line x1="52" y1="592" x2="52" y2="906" stroke="#1B1B1E" stroke-width="1.6" marker-end="url(#ar)"/>
+  <text x="66" y="716" font-size="15" fill="#1B1B1E">공명</text>
+  <text x="66" y="736" font-size="12" fill="#8a8a80">resonance</text>
+  <text x="66" y="902" font-size="15" fill="#1B1B1E">상 · 향</text>
+
+  <!-- 6장 : D–P₁–S -->
+  <rect x="252" y="530" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="280" y="547" font-size="13" fill="#1B1B1E" text-anchor="middle">6장</text>
+  <text x="258" y="596" font-size="24" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+  <line x1="266" y1="606" x2="316" y2="676" stroke="#2D5FA8" stroke-width="2.2"/>
+  <circle cx="291" cy="641" r="6" fill="#fff" stroke="#2D5FA8" stroke-width="2"/>
+  <text x="302" y="638" font-size="15" fill="#1B1B1E">P₁</text>
+  <text x="326" y="698" font-size="24" font-weight="bold" fill="#2D5FA8" text-anchor="middle">S</text>
+
+  <!-- 7장 : B–P₂–De -->
+  <rect x="492" y="530" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="520" y="547" font-size="13" fill="#1B1B1E" text-anchor="middle">7장</text>
+  <text x="486" y="596" font-size="24" font-weight="bold" fill="#B0821F" text-anchor="middle">B</text>
+  <line x1="496" y1="606" x2="552" y2="676" stroke="#B0821F" stroke-width="2.2"/>
+  <circle cx="524" cy="641" r="6" fill="#fff" stroke="#B0821F" stroke-width="2"/>
+  <text x="500" y="662" font-size="15" fill="#1B1B1E">P₂</text>
+  <text x="572" y="698" font-size="24" font-weight="bold" fill="#B0821F" text-anchor="middle">De</text>
+
+  <!-- 8장 : A–P₃–Vbl -->
+  <rect x="742" y="530" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="770" y="547" font-size="13" fill="#1B1B1E" text-anchor="middle">8장</text>
+  <text x="800" y="596" font-size="24" font-weight="bold" fill="#C8102E" text-anchor="middle">A</text>
+  <line x1="792" y1="606" x2="742" y2="676" stroke="#C8102E" stroke-width="2.2"/>
+  <circle cx="767" cy="641" r="6" fill="#fff" stroke="#C8102E" stroke-width="2"/>
+  <text x="778" y="660" font-size="15" fill="#1B1B1E">P₃</text>
+  <text x="730" y="698" font-size="24" font-weight="bold" fill="#C8102E" text-anchor="middle">Vbl</text>
+
+  <!-- 9장 : 육방 + 상 -->
+  <rect x="352" y="742" width="56" height="24" rx="3" fill="none" stroke="#555"/>
+  <text x="380" y="759" font-size="13" fill="#1B1B1E" text-anchor="middle">9장</text>
+  <g stroke-width="1.8">
+    <line x1="380" y1="866" x2="380" y2="792" stroke="#2D5FA8"/>
+    <line x1="380" y1="866" x2="380" y2="940" stroke="#2D5FA8"/>
+    <line x1="380" y1="866" x2="312" y2="838" stroke="#B0821F"/>
+    <line x1="380" y1="866" x2="448" y2="894" stroke="#B0821F"/>
+    <line x1="380" y1="866" x2="430" y2="820" stroke="#C8102E"/>
+    <line x1="380" y1="866" x2="330" y2="912" stroke="#C8102E"/>
+  </g>
+  <circle cx="380" cy="866" r="7" fill="#E0A526" stroke="#8A6A12" stroke-width="1.2"/>
+  <text x="380" y="788" font-size="20" font-weight="bold" fill="#2D5FA8" text-anchor="middle">D</text>
+  <text x="292" y="838" font-size="20" font-weight="bold" fill="#B0821F" text-anchor="middle">B</text>
+  <text x="446" y="812" font-size="20" font-weight="bold" fill="#C8102E" text-anchor="middle">A</text>
+  <text x="466" y="902" font-size="20" font-weight="bold" fill="#B0821F" text-anchor="middle">De</text>
+  <text x="312" y="928" font-size="20" font-weight="bold" fill="#C8102E" text-anchor="middle">V</text>
+  <text x="380" y="958" font-size="20" font-weight="bold" fill="#2D5FA8" text-anchor="middle">S</text>
+  <text x="404" y="884" font-size="15" fill="#1B1B1E">상</text>
+
+  <!-- 10장 101₃ : 나침반 + 향 -->
+  <rect x="622" y="738" width="112" height="30" rx="4" fill="#E0A526" fill-opacity="0.16" stroke="#E0A526" stroke-width="1.6"/>
+  <text x="678" y="759" font-size="16" fill="#8A6A12" text-anchor="middle">101₃ · 10장</text>
+  <text x="700" y="838" font-size="22" font-weight="bold" fill="#C8102E" text-anchor="middle">Act</text>
+  <line x1="676" y1="880" x2="704" y2="852" stroke="#C8102E" stroke-width="3" marker-end="url(#arB)"/>
+  <text x="660" y="908" font-size="22" font-weight="bold" fill="#C8102E" text-anchor="middle">Vbl</text>
+  <text x="734" y="870" font-size="16" fill="#1B1B1E">향</text>
+
+  <!-- 2부 범례 -->
+  <text x="930" y="790" font-size="18" font-weight="bold" fill="#2D5FA8">S · 팔림 sellability</text>
+  <text x="930" y="820" font-size="18" font-weight="bold" fill="#B0821F">De · 지어짐 deliverability</text>
+  <text x="930" y="850" font-size="18" font-weight="bold" fill="#C8102E">Vbl · 버팀 viability</text>
+  <text x="930" y="882" font-size="13" fill="#8a8a80">밖에서 잰다 — 빚이 갚아진다</text>
+
+  <text x="930" y="946" font-size="12" fill="#8a8a80">같은 세 글자 101, 진법만 2→3.</text>
+  <text x="930" y="964" font-size="12" fill="#8a8a80">한 글자 비틂이 두 부를 가른다.</text>
+</svg>

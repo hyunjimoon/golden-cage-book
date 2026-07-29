@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" font-family="'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#1a1a1a" flood-opacity="0.12"/></filter>
+  </defs>
+
+  <rect width="1440" height="1000" fill="#FBFAF6"/>
+
+  <!-- ===== zone shading: 위=둥지(따뜻) 아래=새장(차갑) ===== -->
+  <rect x="0" y="0" width="1440" height="500" fill="#FBF3E6" opacity="0.5"/>
+  <rect x="0" y="500" width="1440" height="500" fill="#EDF1F7" opacity="0.5"/>
+  <text x="1400" y="40" text-anchor="end" font-size="13" font-weight="700" fill="#B0895A">둥지 · nest (벼려진 산물)</text>
+  <text x="1400" y="978" text-anchor="end" font-size="13" font-weight="700" fill="#7C8BA6">새장 · cage (날 기관)</text>
+
+  <!-- title -->
+  <text x="700" y="42" text-anchor="middle" font-size="26" font-weight="800" fill="#1a1a1a" letter-spacing="-0.6">황금새장을 열다 · BIO 관통도 (DFV 방사)</text>
+  <text x="700" y="67" text-anchor="middle" font-size="14" fill="#8a8a80">네 렌즈가 경첩(5·10)에서 교차한다 — cage 날 기관이 nest 벼려진 산물로. 축색 = DFV 거울쌍(정본 단위색 아님).</text>
+
+  <!-- ===== 4 diameters (축) ===== -->
+  <!-- V red: 투자자(1029,310) ↔ 스테인굴레스(371,690) -->
+  <line x1="1029" y1="310" x2="371" y2="690" stroke="#C0392B" stroke-width="2.6"/>
+  <!-- D blue: 사용자(830,143) ↔ 욕망(570,857) -->
+  <line x1="830" y1="143" x2="570" y2="857" stroke="#2E5FA3" stroke-width="2.6"/>
+  <!-- F purple: 기술자(570,143) ↔ 상상(830,857) -->
+  <line x1="570" y1="143" x2="830" y2="857" stroke="#7A3FB0" stroke-width="2.6"/>
+  <!-- commit green: 협력자(371,310) ↔ 시계(1029,690) -->
+  <line x1="371" y1="310" x2="1029" y2="690" stroke="#2E8B57" stroke-width="2.6"/>
+
+  <!-- ===== hub 5·10 경첩 ===== -->
+  <circle cx="700" cy="500" r="150" fill="#EDEBE6" opacity="0.65"/>
+  <circle cx="700" cy="500" r="34" fill="#F7DDD9" stroke="#8a8a80" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="700" y="497" text-anchor="middle" font-size="19" font-weight="800" fill="#C0392B">★</text>
+  <text x="700" y="516" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a5a55">5·10 경첩</text>
+
+  <!-- ===== 축별 가치개념 pill (nest쪽 축 위) — Marx(D·V) + Orwell(F·commit) ===== -->
+  <g font-size="13" font-weight="700">
+    <!-- 사용가치 blue toward 사용자 70° -->
+    <rect x="700" y="333" width="76" height="24" rx="12" fill="#E7ECF4" stroke="#2E5FA3" stroke-width="1.2"/>
+    <text x="738" y="349" text-anchor="middle" fill="#2E5FA3">사용가치</text>
+    <!-- 무지=힘 purple toward 기술자 110° -->
+    <rect x="600" y="333" width="72" height="24" rx="12" fill="#EEE6F3" stroke="#7A3FB0" stroke-width="1.2"/>
+    <text x="636" y="349" text-anchor="middle" fill="#7A3FB0">무지=힘</text>
+    <!-- 교환가치 red toward 투자자 30° -->
+    <rect x="800" y="405" width="76" height="24" rx="12" fill="#F7DDD9" stroke="#C0392B" stroke-width="1.2"/>
+    <text x="838" y="421" text-anchor="middle" fill="#C0392B">교환가치</text>
+    <!-- 예속=자유 green toward 협력자 150° -->
+    <rect x="516" y="405" width="80" height="24" rx="12" fill="#E4F1EA" stroke="#2E8B57" stroke-width="1.2"/>
+    <text x="556" y="421" text-anchor="middle" fill="#2E8B57">예속=자유</text>
+  </g>
+
+  <!-- ===== endpoint 신체·산물 라벨 (Re=235) ===== -->
+  <g font-size="14.5" font-weight="700">
+    <text x="904" y="386" text-anchor="middle" fill="#C0392B">손익</text>
+    <text x="780" y="283" text-anchor="middle" fill="#2E5FA3">고통</text>
+    <text x="620" y="283" text-anchor="middle" fill="#7A3FB0">지식</text>
+    <text x="496" y="386" text-anchor="middle" fill="#2E8B57">기준</text>
+    <text x="496" y="622" text-anchor="middle" fill="#C0392B">손</text>
+    <text x="620" y="725" text-anchor="middle" fill="#2E5FA3">장</text>
+    <text x="780" y="725" text-anchor="middle" fill="#7A3FB0">뇌</text>
+    <text x="904" y="622" text-anchor="middle" fill="#2E8B57">자</text>
+  </g>
+
+  <!-- ===== 8 pole nodes + role labels ===== -->
+  <!-- nest (top) -->
+  <g>
+    <!-- 투자자 8 (V red, 30) -->
+    <circle cx="1029" cy="310" r="13" fill="#C0392B"/><text x="1029" y="315" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">8</text>
+    <text x="1029" y="289" text-anchor="middle" font-size="19" font-weight="800" fill="#C0392B">투자자</text>
+    <!-- 사용자 6 (D blue, 70) -->
+    <circle cx="830" cy="143" r="13" fill="#2E5FA3"/><text x="830" y="148" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">6</text>
+    <text x="830" y="122" text-anchor="middle" font-size="19" font-weight="800" fill="#2E5FA3">사용자</text>
+    <!-- 기술자 7 (F purple, 110) -->
+    <circle cx="570" cy="143" r="13" fill="#7A3FB0"/><text x="570" y="148" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">7</text>
+    <text x="570" y="122" text-anchor="middle" font-size="19" font-weight="800" fill="#7A3FB0">기술자</text>
+    <!-- 협력자 9 (commit green, 150) -->
+    <circle cx="371" cy="310" r="13" fill="#2E8B57"/><text x="371" y="315" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">9</text>
+    <text x="371" y="289" text-anchor="middle" font-size="19" font-weight="800" fill="#2E8B57">협력자</text>
+  </g>
+  <!-- cage (bottom) -->
+  <g>
+    <!-- 스테인굴레스 3 (V red, 210) -->
+    <circle cx="371" cy="690" r="13" fill="#C0392B"/><text x="371" y="695" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">3</text>
+    <text x="371" y="723" text-anchor="middle" font-size="18" font-weight="800" fill="#C0392B">스테인굴레스</text>
+    <!-- 욕망 1 (D blue, 250) -->
+    <circle cx="570" cy="857" r="13" fill="#2E5FA3"/><text x="570" y="862" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">1</text>
+    <text x="570" y="890" text-anchor="middle" font-size="19" font-weight="800" fill="#2E5FA3">욕망</text>
+    <!-- 상상 2 (F purple, 290) -->
+    <circle cx="830" cy="857" r="13" fill="#7A3FB0"/><text x="830" y="862" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">2</text>
+    <text x="830" y="890" text-anchor="middle" font-size="19" font-weight="800" fill="#7A3FB0">상상</text>
+    <!-- 시계 4 (commit green, 330) -->
+    <circle cx="1029" cy="690" r="13" fill="#2E8B57"/><text x="1029" y="695" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">4</text>
+    <text x="1029" y="723" text-anchor="middle" font-size="19" font-weight="800" fill="#2E8B57">시계</text>
+  </g>
+
+  <!-- ===== legend (bottom band) ===== -->
+  <rect x="60" y="922" width="1320" height="60" rx="10" fill="#FFFFFF" stroke="#e2ded4" stroke-width="1.4"/>
+  <g font-size="13.5">
+    <circle cx="92" cy="943" r="7" fill="#2E5FA3"/><text x="106" y="948" fill="#333"><tspan font-weight="800">D 원함</tspan> 사용자(1↔6)·장→고통 · <tspan fill="#8a8a80">사용가치</tspan></text>
+    <circle cx="92" cy="968" r="7" fill="#7A3FB0"/><text x="106" y="973" fill="#333"><tspan font-weight="800">F 됨</tspan> 기술자(2↔7)·뇌→지식 · <tspan fill="#8a8a80">무지=힘</tspan></text>
+    <circle cx="470" cy="943" r="7" fill="#C0392B"/><text x="484" y="948" fill="#333"><tspan font-weight="800">V 버팀</tspan> 투자자(3↔8)·손→손익 · <tspan fill="#8a8a80">교환가치</tspan></text>
+    <circle cx="470" cy="968" r="7" fill="#2E8B57"/><text x="484" y="973" fill="#333"><tspan font-weight="800">commit</tspan> 협력자(4↔9)·자→기준 · <tspan fill="#8a8a80">예속=자유</tspan></text>
+    <text x="860" y="948" font-size="12.5" fill="#666">cage 극 = 날 기관 · nest 극 = 벼려진 산물. 각 축 = 한 글자 비틂 거울쌍.</text>
+    <text x="860" y="972" font-size="12" fill="#a0968a">중심 가치개념 — 사용/교환가치: Marx · 무지=힘/예속=자유: Orwell 『1984』</text>
+  </g>
+</svg>

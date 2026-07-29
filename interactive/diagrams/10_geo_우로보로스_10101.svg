@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="auto">
+  <style>
+    .bg { fill: #F3EEE3; }
+    .ink { fill: #2b2620; }
+    .ink-soft { fill: #6a6355; }
+    .hair { stroke: #d8cfbc; stroke-width: 1; }
+    .grid { stroke: #d8cfbc; stroke-width: 0.5; stroke-dasharray: 4,4; }
+    .inv { stroke: #D22E2E; fill: #D22E2E; }
+    .inv-fill { fill: #D22E2E; }
+    .tech { stroke: #7B33C9; }
+    .user { stroke: #2E5FD1; }
+    .pivot { stroke: #4a443a; fill: #4a443a; }
+    .text-title { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 18px; font-weight: 800; }
+    .text-body { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 13px; font-weight: 500; }
+    .text-caption { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 11px; fill: #6a6355; }
+    .bold { font-weight: 700; }
+  </style>
+
+  <rect width="600" height="400" class="bg"/>
+
+  <line x1="50" y1="50" x2="550" y2="50" class="grid"/>
+  <line x1="50" y1="200" x2="550" y2="200" class="grid"/>
+  <line x1="300" y1="50" x2="300" y2="350" class="grid"/>
+  <line x1="50" y1="350" x2="550" y2="350" class="grid"/>
+
+  <text x="550" y="45" text-anchor="end" class="text-title ink bold">10장 101₃호 — 우로보로스 [삼진법]</text>
+  <text x="550" y="65" text-anchor="end" class="text-caption">🔥 뜨겁게 · 빚을 갚는 방 (세 → 다 궤도)</text>
+
+  <line x1="300" y1="200" x2="100" y2="200" stroke="#2b2620" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
+  <line x1="300" y1="200" x2="300" y2="320" stroke="#2b2620" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
+  <text x="85" y="204" text-anchor="end" class="text-body ink bold">세 (Belief, p(s))</text>
+  <text x="300" y="335" text-anchor="middle" class="text-body ink bold">다 (Desire, U)</text>
+
+  <path d="M 120,200 C 120,80 480,80 480,200 C 480,320 120,320 120,200" fill="none" stroke="#D22E2E" stroke-width="2.5" stroke-dasharray="1,1" marker-end="url(#arrow-red)"/>
+  <text x="55" y="100" class="text-body inv-fill bold">상환 (Calibration)</text>
+  <text x="55" y="116" class="text-caption">세가 다를 이해함 (공명)</text>
+  <text x="55" y="132" class="text-caption">우로보로스 9 → 5 → 1 봉합</text>
+
+  <circle cx="300" cy="200" r="8" class="pivot"/>
+  <circle cx="300" cy="200" r="16" fill="none" stroke="#4a443a" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="315" y="180" class="text-body ink bold">세다 (Centroid)</text>
+  <text x="315" y="195" class="text-caption">빚 = 0 인 이음새</text>
+
+  <line x1="300" y1="360" x2="500" y2="360" class="hair"/>
+  <line x1="300" y1="355" x2="300" y2="365" class="hair"/>
+  <line x1="500" y1="355" x2="500" y2="365" class="hair"/>
+  <text x="400" y="352" text-anchor="middle" class="text-caption">삼진법의 방 (다·세·세다 세 자리)</text>
+
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#2b2620"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#D22E2E"/>
+    </marker>
+  </defs>
+</svg>

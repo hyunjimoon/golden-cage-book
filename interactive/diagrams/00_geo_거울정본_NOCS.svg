@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" font-family="'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <marker id="fub" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M1,1 L10,6 L1,11 Z" fill="#5B6472"/></marker>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="2" stdDeviation="2.6" flood-color="#1a1a1a" flood-opacity="0.12"/></filter>
+  </defs>
+
+  <rect width="1440" height="1000" fill="#FBFAF6"/>
+
+  <!-- title -->
+  <text x="560" y="44" text-anchor="middle" font-size="27" font-weight="800" fill="#1a1a1a" letter-spacing="-0.6">황금새장을 열다 · 주력 다이어그램</text>
+  <text x="560" y="70" text-anchor="middle" font-size="14.5" fill="#8a8a80">2D 다이아몬드 평면 지도 · 거울상 정본 — 바깥 네모=새장(cage) · 안 네모=둥지(nest) · 중심 5.10=경첩</text>
+
+  <!-- ===== zone shading ===== -->
+  <polygon points="560,150 860,450 560,750 260,450" fill="#EDF1F7" opacity="0.55"/>
+  <polygon points="560,305 705,450 560,595 415,450" fill="#FBF1E6" opacity="0.85"/>
+
+  <!-- ===== Fubini 진단축 (far left) ===== -->
+  <line x1="105" y1="150" x2="105" y2="750" stroke="#5B6472" stroke-width="2" marker-start="url(#fub)" marker-end="url(#fub)"/>
+  <text x="105" y="134" text-anchor="middle" font-size="15" font-weight="800" fill="#B03030">오염 a=1</text>
+  <text x="105" y="772" text-anchor="middle" font-size="15" font-weight="800" fill="#2E6B4F">억압 a=0</text>
+  <text x="95" y="188" text-anchor="middle" font-size="11.5" fill="#9a9a90" transform="rotate(-90 95 188)">U→s · 원하니 시장도 원할 것</text>
+  <text x="95" y="716" text-anchor="middle" font-size="11.5" fill="#9a9a90" transform="rotate(-90 95 716)">s→U · 어려우니 나도 포기</text>
+  <rect x="58" y="430" width="94" height="40" rx="7" fill="#F7DDD9" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="105" y="448" text-anchor="middle" font-size="14" font-weight="800" fill="#C0392B">빚 = 0</text>
+  <text x="105" y="464" text-anchor="middle" font-size="10.5" fill="#C0392B">calibrated</text>
+  <text x="105" y="806" text-anchor="middle" font-size="11" font-style="italic" fill="#8a8a80">U ⊥ s 진단축</text>
+
+  <!-- ===== squares outline ===== -->
+  <polygon points="560,150 860,450 560,750 260,450" fill="none" stroke="#3a3a3a" stroke-width="2.4"/>
+  <polygon points="560,305 705,450 560,595 415,450" fill="none" stroke="#8a7f70" stroke-width="1.6" stroke-dasharray="2 4"/>
+
+  <!-- ===== mirror diameters ===== -->
+  <line x1="560" y1="150" x2="560" y2="750" stroke="#B0A89C" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="260" y1="450" x2="860" y2="450" stroke="#B0A89C" stroke-width="1.5" stroke-dasharray="7 6"/>
+
+  <!-- ===== twist-verb pills on diagonals (핵심 메시지 키워드) ===== -->
+  <g font-size="12.5" font-style="italic">
+    <rect x="470" y="222" width="180" height="25" rx="12.5" fill="#FBF3E0" stroke="#B8860B" stroke-width="1.3"/>
+    <text x="560" y="239" text-anchor="middle" fill="#5a4a20"><tspan font-weight="800" fill="#B8860B">2→7</tspan> 관조 마비 → 분포 사고</text>
+    <rect x="452" y="666" width="216" height="25" rx="12.5" fill="#F1EBF6" stroke="#7A3FB0" stroke-width="1.3"/>
+    <text x="560" y="683" text-anchor="middle" fill="#4a3a5a"><tspan font-weight="800" fill="#7A3FB0">4→9</tspan> 빌린 질서 → 正→遺 명명</text>
+    <rect x="300" y="356" width="204" height="25" rx="12.5" fill="#E9F4EE" stroke="#2E8B57" stroke-width="1.3"/>
+    <text x="402" y="373" text-anchor="middle" fill="#204a34"><tspan font-weight="800" fill="#2E8B57">3→8</tspan> 닫힌 확신 → 열린 협상</text>
+    <rect x="612" y="356" width="196" height="25" rx="12.5" fill="#EAEFF6" stroke="#3B5B86" stroke-width="1.3"/>
+    <text x="710" y="373" text-anchor="middle" fill="#2a3a52"><tspan font-weight="800" fill="#3B5B86">1→6</tspan> 모르고 → 알면서 입기</text>
+  </g>
+
+  <!-- ===================== NODES ===================== -->
+  <!-- cage 4 시계 top (second) -->
+  <circle cx="560" cy="150" r="54" fill="#EEE6F3" stroke="#7A3FB0" stroke-width="3" filter="url(#sh)"/>
+  <text x="560" y="149" text-anchor="middle" font-size="21" font-weight="800" fill="#7A3FB0">시계</text>
+  <text x="560" y="170" text-anchor="middle" font-size="11.5" fill="#9a8fae">질서</text>
+  <circle cx="526" cy="118" r="13" fill="#7A3FB0"/><text x="526" y="123" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">4</text>
+
+  <!-- cage 3 스테인굴레스 right (cell) -->
+  <circle cx="858" cy="450" r="57" fill="#E4F1EA" stroke="#2E8B57" stroke-width="3" filter="url(#sh)"/>
+  <text x="858" y="443" text-anchor="middle" font-size="15.5" font-weight="800" fill="#2E8B57">스테인드</text>
+  <text x="858" y="462" text-anchor="middle" font-size="15.5" font-weight="800" fill="#2E8B57">글라스</text>
+  <text x="858" y="481" text-anchor="middle" font-size="11" fill="#7fae95">책임</text>
+  <circle cx="822" cy="416" r="13" fill="#2E8B57"/><text x="822" y="421" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">3</text>
+
+  <!-- cage 2 망원경 bottom (atom) -->
+  <circle cx="560" cy="750" r="54" fill="#F5ECD6" stroke="#B8860B" stroke-width="3" filter="url(#sh)"/>
+  <text x="560" y="749" text-anchor="middle" font-size="21" font-weight="800" fill="#B8860B">망원경</text>
+  <text x="560" y="770" text-anchor="middle" font-size="11.5" fill="#c0a765">계산</text>
+  <circle cx="526" cy="718" r="13" fill="#B8860B"/><text x="526" y="723" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">2</text>
+
+  <!-- cage 1 거울 left (bit) -->
+  <circle cx="260" cy="450" r="54" fill="#E7ECF4" stroke="#3B5B86" stroke-width="3" filter="url(#sh)"/>
+  <text x="260" y="449" text-anchor="middle" font-size="21" font-weight="800" fill="#3B5B86">거울</text>
+  <text x="260" y="470" text-anchor="middle" font-size="11.5" fill="#8b9bb4">욕망</text>
+  <circle cx="226" cy="418" r="13" fill="#3B5B86"/><text x="226" y="423" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">1</text>
+
+  <!-- nest 7 툴립 top-inner (atom·feasibility) ← 2 -->
+  <circle cx="560" cy="305" r="42" fill="#F5ECD6" stroke="#B8860B" stroke-width="2.4"/>
+  <text x="560" y="303" text-anchor="middle" font-size="16" font-weight="800" fill="#B8860B">툴립</text>
+  <text x="560" y="320" text-anchor="middle" font-size="10" fill="#c0a765">기술·저자</text>
+  <circle cx="533" cy="280" r="11" fill="#B8860B"/><text x="533" y="284.5" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">7</text>
+
+  <!-- nest 6 나비 right-inner (bit) ← 1 -->
+  <circle cx="705" cy="450" r="42" fill="#E7ECF4" stroke="#3B5B86" stroke-width="2.4"/>
+  <text x="705" y="448" text-anchor="middle" font-size="16" font-weight="800" fill="#3B5B86">나비</text>
+  <text x="705" y="465" text-anchor="middle" font-size="10" fill="#8b9bb4">사용자·독자</text>
+  <circle cx="678" cy="425" r="11" fill="#3B5B86"/><text x="678" y="429.5" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">6</text>
+
+  <!-- nest 9 까마귀 bottom-inner (second) ← 4 -->
+  <circle cx="560" cy="595" r="42" fill="#EEE6F3" stroke="#7A3FB0" stroke-width="2.4"/>
+  <text x="560" y="593" text-anchor="middle" font-size="16" font-weight="800" fill="#7A3FB0">까마귀</text>
+  <text x="560" y="610" text-anchor="middle" font-size="10" fill="#9a8fae">협력자·편집자</text>
+  <circle cx="531" cy="570" r="11" fill="#7A3FB0"/><text x="531" y="574.5" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">9</text>
+
+  <!-- nest 8 안개 left-inner (cell·viability) ← 3 -->
+  <circle cx="415" cy="450" r="42" fill="#E4F1EA" stroke="#2E8B57" stroke-width="2.4"/>
+  <text x="415" y="448" text-anchor="middle" font-size="16" font-weight="800" fill="#2E8B57">안개</text>
+  <text x="415" y="465" text-anchor="middle" font-size="10" fill="#7fae95">투자자·출판사</text>
+  <circle cx="388" cy="425" r="11" fill="#2E8B57"/><text x="388" y="429.5" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">8</text>
+
+  <!-- hub 5.10 -->
+  <circle cx="560" cy="450" r="47" fill="#F7DDD9" stroke="#C0392B" stroke-width="3.2" filter="url(#sh)"/>
+  <text x="560" y="446" text-anchor="middle" font-size="21" font-weight="800" fill="#C0392B">5·10</text>
+  <text x="560" y="466" text-anchor="middle" font-size="10.5" fill="#C0392B">경첩 hub</text>
+
+  <!-- ===== structure panel (right) — units·회전축 (chiasmus 폐기 2026-07-20) ===== -->
+  <text x="920" y="150" text-anchor="start" font-size="17" font-weight="800" fill="#1a1a1a">거울쌍 구조</text>
+  <text x="920" y="172" text-anchor="start" font-size="11.5" fill="#8a8a80">안 네모 = 바깥 네모의 <tspan font-weight="700" fill="#C0392B">점대칭</tspan>(거울상). 두 대각선이 곧 거울.</text>
+
+  <g font-size="13.5">
+    <circle cx="932" cy="210" r="7" fill="#3B5B86"/><circle cx="956" cy="210" r="7" fill="#3B5B86"/>
+    <text x="974" y="215" fill="#333"><tspan font-weight="700">1↔6</tspan>  거울↔나비  <tspan fill="#8a8a80">bit·bit 일치</tspan></text>
+    <circle cx="932" cy="242" r="7" fill="#B8860B"/><circle cx="956" cy="242" r="7" fill="#B8860B"/>
+    <text x="974" y="247" fill="#333"><tspan font-weight="700">2↔7</tspan>  망원경↔툴립  <tspan fill="#8a8a80">atom·atom 일치 (feasibility)</tspan></text>
+    <circle cx="932" cy="274" r="7" fill="#2E8B57"/><circle cx="956" cy="274" r="7" fill="#2E8B57"/>
+    <text x="974" y="279" fill="#333"><tspan font-weight="700">3↔8</tspan>  스테인굴레스↔안개  <tspan fill="#8a8a80">cell·cell 일치 (viability)</tspan></text>
+    <circle cx="932" cy="306" r="7" fill="#7A3FB0"/><circle cx="956" cy="306" r="7" fill="#7A3FB0"/>
+    <text x="974" y="311" fill="#333"><tspan font-weight="700">4↔9</tspan>  시계↔까마귀  <tspan fill="#8a8a80">second·second 일치</tspan></text>
+    <circle cx="932" cy="338" r="7" fill="#C0392B"/><circle cx="956" cy="338" r="7" fill="#C0392B"/>
+    <text x="974" y="343" fill="#333"><tspan font-weight="700">5↔10</tspan>  거울↔자석  <tspan fill="#8a8a80">차갑게 씀↔뜨겁게 갚음</tspan></text>
+  </g>
+  <text x="920" y="366" text-anchor="start" font-size="11.5" fill="#a0a096">※ 네 쌍 단위 나란히 일치 — nest: atom=feasibility · cell=viability</text>
+
+  <line x1="920" y1="392" x2="1400" y2="392" stroke="#e2ded4" stroke-width="1"/>
+  <text x="920" y="420" text-anchor="start" font-size="13" fill="#666">중심 5.10 = 무게중심 2:1 = 경첩. 여기서</text>
+  <text x="920" y="440" text-anchor="start" font-size="13" fill="#666">회전축이 돈다: 5장(차갑게) ↔ 10장(뜨겁게).</text>
+  <text x="920" y="466" text-anchor="start" font-size="13" fill="#666">바깥→안은 재발견 아닌 <tspan font-weight="800" fill="#C0392B">재명명</tspan> — 한 글자 비틂.</text>
+
+  <!-- ===== 진단 caption band ===== -->
+  <rect x="60" y="838" width="1320" height="78" rx="10" fill="#FFF6E9" stroke="#C0392B" stroke-width="1.6"/>
+  <text x="82" y="868" text-anchor="start" font-size="16.5" font-weight="800" fill="#C0392B">진단 —</text>
+  <text x="180" y="868" text-anchor="start" font-size="15.5" fill="#333">당신은 지금 <tspan font-weight="800" fill="#B03030">오염(a=1, 원하니 시장도 원할 것)</tspan>인가, <tspan font-weight="800" fill="#2E6B4F">억압(a=0, 시장이 어려우니 나도 포기)</tspan>인가?</text>
+  <text x="82" y="898" text-anchor="start" font-size="15.5" fill="#333">지도(map)를 거울(mirror)로 — <tspan font-weight="800" fill="#C0392B">중심 5.10(빚=0)</tspan>에 얼마나 가까운가. 멀수록 위로 오염, 아래로 억압.</text>
+
+  <!-- ===== atomic legend (units demoted here) ===== -->
+  <g font-size="13">
+    <text x="300" y="957" font-weight="700" fill="#888">단위</text>
+    <circle cx="378" cy="952" r="8" fill="#3B5B86"/><text x="393" y="957" fill="#555">bit·정보</text>
+    <circle cx="520" cy="952" r="8" fill="#B8860B"/><text x="535" y="957" fill="#555">atom·물질</text>
+    <circle cx="672" cy="952" r="8" fill="#2E8B57"/><text x="687" y="957" fill="#555">cell·생물</text>
+    <circle cx="820" cy="952" r="8" fill="#7A3FB0"/><text x="835" y="957" fill="#555">second·시간</text>
+    <circle cx="1000" cy="952" r="8" fill="#C0392B"/><text x="1015" y="957" fill="#555">5·10 경첩 hub</text>
+  </g>
+</svg>
