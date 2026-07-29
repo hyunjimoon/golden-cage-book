@@ -942,7 +942,7 @@
     // md → html
     function md2html(md) {
       const hasLevelComments = md.includes('<!-- level');
-      md = md.replace(/<!--[\s\S]*?-->/g, ''); // Strip all HTML comments (development notes/decisions)
+      md = md.replace(/<!--[\s\S]*?--> / g, ''); // Strip all HTML comments (development notes/decisions)
       md = md.replace(/^---[\s\S]*?---\s*/m, '');
       md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
       md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (match, target, label) {
@@ -1120,10 +1120,10 @@
       if (window.renderMathInElement) {
         renderMathInElement(document.getElementById('content'), {
           delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-            {left: '\\(', right: '\\)', display: false},
-            {left: '\\[', right: '\\]', display: true}
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
           ],
           throwOnError: false
         });
