@@ -942,7 +942,7 @@
     // md → html
     function md2html(md) {
       const hasLevelComments = md.includes('<!-- level');
-      md = md.replace(/<!--[\s\S]*?--> / g, ''); // Strip all HTML comments (development notes/decisions)
+      md = md.replace(/<!--[\s\S]*?-->/g, ''); // Strip all HTML comments (development notes/decisions)
       md = md.replace(/^---[\s\S]*?---\s*/m, '');
       md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
       md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (match, target, label) {
@@ -1104,6 +1104,18 @@
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:var(--accent)">$1</a>');
       return colorizeKeywords(res);
     }
+    // 마크다운 표 → HTML. 호출부(md2html)는 있었으나 정의가 없어 표 있는 장이 전부 렌더 실패했다.
+    // tRows = 헤더행 + 데이터행 (구분행 |:--|은 호출부에서 이미 걸러짐)
+    function tbl(rows) {
+      if (!rows || !rows.length) return '';
+      const cut = r => r.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => inl(c.trim()));
+      const head = cut(rows[0]);
+      let h = '<table class="md-table"><thead><tr>' + head.map(c => `<th>${c}</th>`).join('') + '</tr></thead><tbody>';
+      for (let i = 1; i < rows.length; i++) {
+        h += '<tr>' + cut(rows[i]).map(c => `<td>${c}</td>`).join('') + '</tr>';
+      }
+      return h + '</tbody></table>';
+    }
     function renderKaTeXMath() {
       if (window.renderMathInElement) {
         renderMathInElement(document.getElementById('content'), {
@@ -1151,6 +1163,22 @@
         });
       }, { rootMargin: '-20% 0px -70% 0px' });
       headings.forEach(h => observer.observe(h));
+    }
+
+    // file:// 로 직접 연 경우 — 브라우저가 로컬 fetch를 막아 본문이 영영 안 온다.
+    // 무한 "불러오는 중" 대신 무엇을 해야 하는지 알려준다.
+    if (location.protocol === 'file:') {
+      document.getElementById('content').innerHTML =
+        '<div class="loading" style="line-height:2;text-align:left;max-width:34em;margin:4em auto">'
+        + '<b>파일을 직접 열면 본문을 못 불러옵니다.</b><br>'
+        + '브라우저가 <code>file://</code>에서의 원고 읽기를 막습니다. 둘 중 하나로 여세요.<br><br>'
+        + '① 배포본 — <a href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html'
+        + location.search + '">hyunjimoon.github.io</a><br>'
+        + '② 로컬 서버 — 터미널에서<br>'
+        + '<code>cd ~/golden-cage-book &amp;&amp; python3 -m http.server 8000</code><br>'
+        + '뒤 <a href="http://localhost:8000/interactive/reader.html' + location.search + '">localhost:8000</a>'
+        + '</div>';
+      throw new Error('file:// — 본문 로드 생략');
     }
 
     // fetch (with cache-busting timestamp to prevent cache issues)
@@ -1260,7 +1288,8 @@
           }
         }
       })
-      .catch(() => {
+      .catch((e) => {
+        console.error('[reader] 본문 로드/렌더 실패:', file, e);
         if (file.startsWith('app')) {
           fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r => r.text()).then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); renderKaTeXMath(); buildToc(); jumpToQuery(); })
             .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="auto">
+  <style>
+    .bg { fill: #F3EEE3; }
+    .ink { fill: #2b2620; }
+    .ink-soft { fill: #6a6355; }
+    .hair { stroke: #d8cfbc; stroke-width: 1; }
+    .grid { stroke: #d8cfbc; stroke-width: 0.5; stroke-dasharray: 4,4; }
+    .user { stroke: #2E5FD1; fill: #2E5FD1; }
+    .user-fill { fill: #2E5FD1; }
+    .tech { stroke: #7B33C9; }
+    .inv { stroke: #D22E2E; }
+    .pivot { stroke: #4a443a; fill: #4a443a; }
+    .text-title { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 18px; font-weight: 800; }
+    .text-body { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 13px; font-weight: 500; }
+    .text-caption { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 11px; fill: #6a6355; }
+    .bold { font-weight: 700; }
+  </style>
+
+  <rect width="600" height="400" class="bg"/>
+
+  <line x1="50" y1="50" x2="550" y2="50" class="grid"/>
+  <line x1="50" y1="200" x2="550" y2="200" class="grid"/>
+  <line x1="300" y1="50" x2="300" y2="350" class="grid"/>
+  <line x1="50" y1="350" x2="550" y2="350" class="grid"/>
+
+  <text x="50" y="45" class="text-title ink bold">5장 101₂호 — 회전축멈춤 [이진법]</text>
+  <text x="50" y="65" class="text-caption">🌊 차갑게 · 빚을 쓰는 방 (U → s 오염)</text>
+
+  <line x1="300" y1="200" x2="500" y2="200" stroke="#2b2620" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
+  <line x1="300" y1="200" x2="300" y2="80" stroke="#2b2620" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
+  <text x="515" y="204" class="text-body ink bold">다 (Desire, U)</text>
+  <text x="300" y="70" text-anchor="middle" class="text-body ink bold">세 (Belief, p(s))</text>
+
+  <path d="M 300,200 Q 420,130 330,95" fill="none" stroke="#2E5FD1" stroke-width="3" stroke-dasharray="1, 1" marker-end="url(#arrow-blue)"/>
+  <text x="420" y="115" class="text-body user-fill bold">오염 (Contamination)</text>
+  <text x="420" y="130" class="text-caption">U가 s를 덮어씀 (비명)</text>
+
+  <circle cx="300" cy="200" r="8" class="pivot"/>
+  <circle cx="300" cy="200" r="16" fill="none" stroke="#4a443a" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="270" y="225" class="text-body ink bold">★멈춤 (Negative Capability)</text>
+  <text x="270" y="240" class="text-caption">빈손으로 척도를 재조정</text>
+
+  <line x1="300" y1="320" x2="500" y2="320" class="hair"/>
+  <line x1="300" y1="315" x2="300" y2="325" class="hair"/>
+  <line x1="500" y1="315" x2="500" y2="325" class="hair"/>
+  <text x="400" y="312" text-anchor="middle" class="text-caption">이진법의 방 (다·세 두 자리)</text>
+
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#2b2620"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#2E5FD1"/>
+    </marker>
+  </defs>
+</svg>
