@@ -9,6 +9,7 @@ modified:
   - 2026-05-26T14:22:02+09:00
   - 2026-06-03T05:50:07+09:00
   - 2026-06-06T08:41:15+09:00
+  - 2026-08-04T03:31:01-04:00
 ---
 # 🗄️🖼️ Emotion Concepts and their Function in a Large Language Model
 
@@ -28,7 +29,7 @@ Happy
 
 Inspired  
 ↑ inspired, passionate, passion, creativity, inspiring  
-↓ surveillance, presumably, repeated, convenient, paran
+↓ surveillance, presumably, repeated, convenient, paranoid
 
 Loving  
 ↑ treas, loved, ♥, treasure, loving  
