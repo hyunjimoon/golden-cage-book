@@ -1185,10 +1185,11 @@
     fetch(`../chapters/${file}.md?_=${Date.now()}`)
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(md => {
-        const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_stained_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png' };
+        // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
+        const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png' };
         const banner = banners[file] ? `<img class="ch-banner" src="${banners[file]}" alt="">` : '';
         // 1부 새장(아래꼭짓점=시계) ↔ 2부 둥지(거울상: 위아래 반전, 꼭짓점=까마귀)
-        const cageMap = { ch1_mirror_cage: 0, ch2_telescope_cage: 1, ch3_stained_glass_cage: 2, ch4_clock_cage: 3 };
+        const cageMap = { ch1_mirror_cage: 0, ch2_telescope_cage: 1, ch3_glass_cage: 2, ch4_clock_cage: 3 };
         const nestMap = { ch6_butterfly_nest: 0, ch7_tulip_nest: 1, ch8_mist_nest: 2, ch9_raven_nest: 3 };
         const cageV = [{ x: 15, y: 105, c: '#9B7A8B', l: '거울' }, { x: 95, y: 55, c: '#7A8068', l: '망원경' }, { x: 110, y: 105, c: '#4A7A6B', l: '스테인드글라스' }, { x: 60, y: 10, c: '#5A8A9A', l: '시계' }];
         const nestV = [{ x: 15, y: 15, c: '#6B8E4B', l: '나비' }, { x: 95, y: 65, c: '#C97B3C', l: '튤립' }, { x: 110, y: 15, c: '#5A8A9A', l: '안개' }, { x: 60, y: 110, c: '#8B6BAA', l: '까마귀' }];
@@ -1290,8 +1291,14 @@
       })
       .catch((e) => {
         console.error('[reader] 본문 로드/렌더 실패:', file, e);
-        if (file.startsWith('app')) {
-          fetch(`../appendices/${file}.md?_=${Date.now()}`).then(r => r.text()).then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); renderKaTeXMath(); buildToc(); jumpToQuery(); })
+        // chapters/ 밖에 사는 문서들의 폴백. app*=부록, docs/*=소통문·용어집(랜딩 "2차 소통문" 링크가 여기로 온다, 2026-08-07)
+        const alt = file.startsWith('app') ? `../appendices/${file}.md`
+                  : file.startsWith('docs/') ? `../${file}.md`
+                  : null;
+        if (alt) {
+          fetch(`${alt}?_=${Date.now()}`)
+            .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+            .then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); renderKaTeXMath(); buildToc(); jumpToQuery(); })
             .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });
         } else {
           document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>';
