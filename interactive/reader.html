@@ -982,7 +982,10 @@
     // md → html
     function md2html(md) {
       const hasLevelComments = md.includes('<!-- level');
-      md = md.replace(/<!--[\s\S]*?--> / g, ''); // Strip all HTML comments (development notes/decisions)
+      // ⚠️ 정규식 플래그는 슬래시에 붙여 쓴다. `/…/ g` 로 띄면 `/…/`(리터럴) + `g`(식별자)로 파싱돼
+      //    인라인 <script> 전체가 SyntaxError로 죽고 모든 장이 "불러오는 중…"에서 멈춘다.
+      //    이력: da15b38에서 한 번 고쳤다가 763b070 sync에서 재발 → 2026-08-07 재수정.
+      md = md.replace(/<!--[\s\S]*?-->/g, ''); // Strip all HTML comments (development notes/decisions)
       md = md.replace(/^---[\s\S]*?---\s*/m, '');
       md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
       md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (match, target, label) {
