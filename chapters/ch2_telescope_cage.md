@@ -27,7 +27,7 @@ modified:
 
 ---
 
-## Posterior (재건 中)
+## Posterior (개고 대기)
 
 ### §2.1 씬 — 별의 시간 (망원경)
 
