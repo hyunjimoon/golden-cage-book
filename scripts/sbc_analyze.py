@@ -17,7 +17,7 @@ except ImportError:
 CHAPTERS = [
     ("ch1_mirror_cage", "1장 거울새장"),
     ("ch2_telescope_cage", "2장 망원경새장"),
-    ("ch3_stained_glass_cage", "3장 스테인드글라스새장"),
+    ("ch3_glass_cage", "3장 스테인굴레스새장"),
     ("ch4_clock_cage", "4장 시계새장"),
 ]
 
@@ -58,10 +58,12 @@ PROMPT_TEMPLATE = """다음은 창업소설 "황금새장을열다"의 {chapter_
   "se": {{"infatuated":N,"stubborn":N,"ashamed":N,"compassionate":N}},
   "daPos": N,
   "sePos": N,
-  "daQuote": "대사 원문",
-  "seQuote": "대사 원문",
+  "daEvidence": {{"quote": "다 대사 원문 (본문에서 한 글자도 바꾸지 말고 그대로 복사)", "line": N}},
+  "seEvidence": {{"quote": "세 대사 원문 (본문에서 한 글자도 바꾸지 말고 그대로 복사)", "line": N}},
   "insight": "한 줄 진단 (사분면 이동 + 핵심 감정 포함)"
 }}
+
+daEvidence/seEvidence는 필수다. quote가 본문에 원문 그대로 존재하지 않으면 분석 전체가 기각된다 — 요약·의역·짜깁기 금지.
 
 본문:
 {text}
@@ -79,6 +81,41 @@ def extract_dialogue(text: str) -> str:
                 result.append(lines[i - 1])
             result.append(line)
     return "\n".join(result)
+
+
+def _normalize(s: str) -> str:
+    """Strip markdown emphasis and collapse whitespace for quote matching."""
+    s = re.sub(r"[*_`]", "", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def verify_evidence(data: dict, full_text: str, chapter_name: str) -> bool:
+    """daEvidence/seEvidence 필수 + quote가 원고에 원문 그대로 있어야 통과.
+
+    line은 모델 응답을 믿지 않고 원고에서 실측해 덮어쓴다 —
+    개정으로 근거가 어긋나면 여기서 즉시 기각된다 (조용한 drift 차단).
+    """
+    lines = full_text.split("\n")
+    norm_lines = [_normalize(l) for l in lines]
+    ok = True
+    for key in ("daEvidence", "seEvidence"):
+        ev = data.get(key)
+        if not isinstance(ev, dict) or not ev.get("quote"):
+            print(f"  REJECT {chapter_name}: {key} 누락 — 증거 없는 채점은 받지 않는다")
+            ok = False
+            continue
+        needle = _normalize(ev["quote"])
+        found = next((i + 1 for i, nl in enumerate(norm_lines) if needle and needle in nl), None)
+        if found is None:
+            print(f"  REJECT {chapter_name}: {key}.quote가 원고에 없음 — \"{ev['quote'][:60]}…\"")
+            ok = False
+        else:
+            ev["line"] = found  # 실측 줄번호로 덮어쓰기
+    if ok:
+        # HTML 인용은 검증된 증거만 쓴다 — quote 필드 drift 원천 차단
+        data["daQuote"] = data["daEvidence"]["quote"]
+        data["seQuote"] = data["seEvidence"]["quote"]
+    return ok
 
 
 def analyze_chapter(client, chapter_id: str, chapter_name: str) -> dict:
@@ -105,7 +142,10 @@ def analyze_chapter(client, chapter_id: str, chapter_name: str) -> dict:
         print(f"  Warning: Could not parse JSON for {chapter_name}")
         print(f"  Response: {content[:200]}")
         return None
-    return json.loads(match.group())
+    data = json.loads(match.group())
+    if not verify_evidence(data, text, chapter_name):
+        return None
+    return data
 
 
 def euclidean_distance(da: dict, se: dict) -> int:
