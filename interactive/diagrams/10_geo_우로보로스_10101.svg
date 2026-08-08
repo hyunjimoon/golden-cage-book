@@ -5,11 +5,11 @@
     .ink-soft { fill: #6a6355; }
     .hair { stroke: #d8cfbc; stroke-width: 1; }
     .grid { stroke: #d8cfbc; stroke-width: 0.5; stroke-dasharray: 4,4; }
-    .inv { stroke: #D22E2E; fill: #D22E2E; }
-    .inv-fill { fill: #D22E2E; }
-    .tech { stroke: #7B33C9; }
-    .user { stroke: #2E5FD1; }
-    .pivot { stroke: #4a443a; fill: #4a443a; }
+    .desire { fill: #2D5FA8; }      /* 靑 — 다(欲望 Desire) */
+    .belief { fill: #B0821F; }      /* 金 — 세(믿음 Belief), 선·글자만 */
+    .act    { fill: #C8102E; }      /* 赤 — 작용(오염/상환) */
+    .hinge-fill { fill: #E0A526; }  /* 黃 — 경첩(중앙), 면만 */
+    .hinge-text { fill: #8A6A12; }  /* 먹황 — 黃 위 글자 */
     .text-title { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 18px; font-weight: 800; }
     .text-body { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 13px; font-weight: 500; }
     .text-caption { font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; font-size: 11px; fill: #6a6355; }
@@ -26,19 +26,19 @@
   <text x="550" y="45" text-anchor="end" class="text-title ink bold">10장 101₃호 — 우로보로스 [삼진법]</text>
   <text x="550" y="65" text-anchor="end" class="text-caption">🔥 뜨겁게 · 빚을 갚는 방 (세 → 다 궤도)</text>
 
-  <line x1="300" y1="200" x2="100" y2="200" stroke="#2b2620" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
-  <line x1="300" y1="200" x2="300" y2="320" stroke="#2b2620" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
-  <text x="85" y="204" text-anchor="end" class="text-body ink bold">세 (Belief, p(s))</text>
-  <text x="300" y="335" text-anchor="middle" class="text-body ink bold">다 (Desire, U)</text>
+  <line x1="300" y1="200" x2="100" y2="200" stroke="#B0821F" stroke-width="1.8" marker-end="url(#arrow-belief)"/>
+  <line x1="300" y1="200" x2="300" y2="320" stroke="#2D5FA8" stroke-width="1.8" marker-end="url(#arrow-desire)"/>
+  <text x="85" y="204" text-anchor="end" class="text-body bold belief">세 (Belief, p(s))</text>
+  <text x="300" y="335" text-anchor="middle" class="text-body bold desire">다 (Desire, U)</text>
 
-  <path d="M 120,200 C 120,80 480,80 480,200 C 480,320 120,320 120,200" fill="none" stroke="#D22E2E" stroke-width="2.5" stroke-dasharray="1,1" marker-end="url(#arrow-red)"/>
-  <text x="55" y="100" class="text-body inv-fill bold">상환 (Calibration)</text>
+  <path d="M 120,200 C 120,80 480,80 480,200 C 480,320 120,320 120,200" fill="none" stroke="#C8102E" stroke-width="2.5" stroke-dasharray="1,1" marker-end="url(#arrow-act)"/>
+  <text x="55" y="100" class="text-body bold act">상환 (Calibration)</text>
   <text x="55" y="116" class="text-caption">세가 다를 이해함 (공명)</text>
   <text x="55" y="132" class="text-caption">우로보로스 9 → 5 → 1 봉합</text>
 
-  <circle cx="300" cy="200" r="8" class="pivot"/>
-  <circle cx="300" cy="200" r="16" fill="none" stroke="#4a443a" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="315" y="180" class="text-body ink bold">세다 (Centroid)</text>
+  <circle cx="300" cy="200" r="10" class="hinge-fill"/>
+  <circle cx="300" cy="200" r="18" fill="none" stroke="#8A6A12" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="315" y="180" class="text-body bold hinge-text">세다 (Centroid)</text>
   <text x="315" y="195" class="text-caption">빚 = 0 인 이음새</text>
 
   <line x1="300" y1="360" x2="500" y2="360" class="hair"/>
@@ -47,11 +47,14 @@
   <text x="400" y="352" text-anchor="middle" class="text-caption">삼진법의 방 (다·세·세다 세 자리)</text>
 
   <defs>
-    <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0,0 L 10,5 L 0,10 z" fill="#2b2620"/>
+    <marker id="arrow-desire" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#2D5FA8"/>
     </marker>
-    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0,0 L 10,5 L 0,10 z" fill="#D22E2E"/>
+    <marker id="arrow-belief" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="arrow-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#C8102E"/>
     </marker>
   </defs>
 </svg>
