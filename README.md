@@ -4,9 +4,22 @@
 
 > 왜 이른 자원이 창업을 가두는가 — 그리고 어떻게 그 새장을 *둥지*로 여는가.
 
-**저자**: 문현지 (Angie Hyunji Moon) · 號 자장(磁場)
+**저자**: 문현지 (Angie Hyunji Moon) 
 **출판**: 민음사 (검토 중)
-**근거 논문**: [Optimal Ignorance / Golden Cage](https://github.com/hyunjimoon/golden-cage-thesis) — MIT SM Thesis (2026), N = 168,011
+**근거 논문**: 
+1. [Golden Cage: Paradox of Early Funding and Growth](https://github.com/hyunjimoon/golden-cage-thesis) — MIT SM Thesis (2026), N = 168,011
+> abstract: Flexibility predicts startup growth, yet the funding that enables growth systematically suppresses flexibility. The mechanism is belief-based sorting. When founders commit to specific strategies, investors who share those beliefs fund; skeptics self-select out. The resulting board lacks cognitive diversity to advocate pivots. I formalize this phenomena as golden cage theory: founders cannot reposition because governance lacks advocates for alternatives.
+
+> Analyzing 168,011 U.S. ventures, I establish three empirical regularities. First, early funding predicts less repositioning. Second, repositioning predicts success. Third, the early funding and growth correlation varies systematically by industry: negative where dominant designs constrain exploration (e.g. Hardware and Mobility), neutral or positive where uncertainty releases the cage (Software and Quantum).
+
+> Three contributions emerge. Empirically, the funding-growth paradox holds as a robust regularity across 168,011 ventures. Theoretically, belief-based sorting in governance explains why commitment and flexibility trade off. Prescriptively, founders can balance commitment and flexibility with the 3S framework: Scope (commit to thesis, not architecture—moderate breadth outperforms both extremes), Sequencing (stage capital from non-dilutive to thesisdriven VC, delaying governance lock-in until market signals clarify), and Synchronization (match capability investment to market validation, avoiding the traps of over-building or over-promising).
+
+2. Optimal Ignorance: Designing Promise Precision to Convert Uncertainty into Adaptive Capacity (2025)
+> abstract: Entrepreneurial ventures must calibrate promise precision—the specificity of external commitments that mobilize stakeholders yet constrain adaptation. Precision creates a fundamental tension: specific promises mobilize resources but kill adaptability; vague promises preserve options but repel stakeholders. This paper develops the Optimal Ignorance Level (OIL) framework that controls judgment and belief precision into one variable by formulating success probability as a random variable and objective value. The solution prescribes a threshold rule: maintain strategic ambiguity until value exceeds integration costs fourfold, then earn precision proportional to the square root of the value-to-cost ratio. The key intuition is that entrepreneurial ignorance, when honestly signaled through vague promises, preserves adaptive capacity. A comparative case (Tesla vs. Better Place) illustrates how trajectories of precision, value, and information integration cost align with the model’s predictions, while acknowledging contextual confounds.
+
+3. STRAP-ping Stakeholders for Entrepreneurial Decision-Making (2025)
+> abstract: Entrepreneurs face extreme uncertainty across multiple stakeholder domains, yet lack principled frameworks to coordinate these uncertainties eﬃciently. This research introduces STRAP (Strategic Threshold Resolution for Actionable Priorities), a decision framework built on a fundamental equivalence: systematically reducing uncertainty directly increases venture success probability. STRAP transforms entrepreneurship into a structured cycle of Perception (modeling stakeholder uncertainties using Bayesian logit models) and Action (selecting experiments that maximize information gain per resource unit). The framework explicitly maps venture attributes to stakeholder choice probabilities, quantiﬁes uncertainty through information-theoretic entropy, and optimizes sequential action selection through a primal-dual formulation. My key contribution demonstrates that successful ventures should target the “bottleneck” uncertainty oﬀering the highest uncertainty reduction per resource unit while balancing stakeholder thresholds through dual variables. Using Sublime Systems’ low-carbon cement commercialization as a case study, I demonstrate that STRAP-guided decision making achieves a I2% reduction in weighted uncertainty while meeting all stakeholder thresholds.
+
 
 ---
 
@@ -20,7 +33,7 @@
 dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 ```
 
-자원(F)이 방향전환(R)을 억압하고, 방향전환이 성장(G)을 만든다. 미국 벤처 168,011건 실증 — 방향 바꾼 자(Movers)가 머문 자(Stayers)보다 **2.60배** 성장.
+방향전환(R)이 성장(G)을 만들지만, 자원(F)이 방향전환 억압. 미국 벤처 168,011건 실증 — 방향 바꾼 자(Movers)가 머문 자(Stayers)보다 **2.60배** 성장.
 
 ## 2중 척추 구조 (Dual-Spine Architecture)
 
@@ -43,7 +56,7 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 
 ## 가치제안 — 알은 빼고, 둥지만 공유한다
 
-완성된 제품(알)을 보여주는 대신, 사용자·발명가·투자자·협력자 *각자의 알*을 품을 수 있는 **빈 둥지**(가치제안서)를 공유한다. 둥지가 넷을 모두 품으면 — 책은 새장이 아니라 둥지가 된다.
+완성된 제품(알)을 보여주는 대신, 사용자·기술자·투자자·협력자 *각자의 알*을 품을 수 있는 **빈 둥지**(가치제안서)를 공유한다. 둥지가 넷을 모두 품으면 — 책은 새장이 아니라 둥지가 된다.
 
 ## 방법 — 짓고 · 펼치고 · 내보내고 · 다시 못박다
 
@@ -66,11 +79,6 @@ interactive/    인터랙티브 (주기율표, 감정궤적, 본문 뷰어)
 docs/           LEXICON · CHANGELOG · INTENT
 img/            다이어그램
 ```
-
-## 관련 레포
-
-- [golden-cage-thesis](https://github.com/hyunjimoon/golden-cage-thesis) — 근거 논문 (N = 168,011)
-
 ---
 
 *빌린 것을 갚으면, 새장이 둥지가 된다.*
