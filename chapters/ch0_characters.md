@@ -1,9 +1,3 @@
----
-moc: ⭐️
-modified:
-  - 2026-03-18T17:46:49+09:00
-  - 2026-03-19T09:33:56+09:00
----
 
 # 인물소개
 
@@ -143,17 +137,13 @@ modified:
 다는 **회전자**(rotor) — 벗을 잃은 모멘텀, 빌린 욕망의 잔열, 무대 위 모든 동작이 보존된 운동에너지.
 세는 **자기장**(stator) — Golden Cage의 패턴, dG/dF=(−)의 구조, 관객석에서 본 정렬.
 
-<svg viewBox="0 0 420 250" style="width:100%;max-width:500px;display:block;margin:28px auto" xmlns="http://www.w3.org/2000/svg"><defs><marker id="aS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8899aa"/></marker><marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B9A8B"/></marker><marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFD700"/></marker></defs><rect x="20" y="40" width="380" height="170" fill="none" stroke="#5B9A8B" stroke-opacity="0.35" stroke-dasharray="6,4" rx="8"/><text x="210" y="28" text-anchor="middle" fill="#5B9A8B" font-size="12" font-weight="700" font-family="Noto Sans KR,sans-serif">자장(磁場)</text><text x="65" y="125" text-anchor="middle" fill="#8899aa" font-size="24" font-weight="700" font-family="Noto Sans KR,sans-serif">세</text><text x="65" y="146" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="Noto Sans KR,sans-serif">stator</text><line x1="92" y1="130" x2="148" y2="130" stroke="#8899aa" stroke-width="1.5" marker-end="url(#aS)"/><circle cx="210" cy="130" r="44" fill="none" stroke="#5B9A8B" stroke-width="2.5"/><text x="210" y="128" text-anchor="middle" fill="#5B9A8B" font-size="26" font-weight="700" font-family="Noto Sans KR,sans-serif">다</text><text x="210" y="148" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="Noto Sans KR,sans-serif">rotor</text><path d="M 210 84 A 46 46 0 0 1 256 128" fill="none" stroke="#5B9A8B" stroke-width="1.6" marker-end="url(#aR)"/><line x1="328" y1="130" x2="272" y2="130" stroke="#8899aa" stroke-width="1.5" marker-end="url(#aS)"/><text x="355" y="125" text-anchor="middle" fill="#8899aa" font-size="24" font-weight="700" font-family="Noto Sans KR,sans-serif">세</text><text x="355" y="146" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="Noto Sans KR,sans-serif">stator</text><line x1="210" y1="174" x2="210" y2="200" stroke="#FFD700" stroke-width="2.5" marker-end="url(#aO)"/><text x="210" y="223" text-anchor="middle" fill="#FFD700" font-size="14" font-weight="700" font-family="Noto Sans KR,sans-serif">⚡ 책</text><text x="210" y="240" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="Noto Sans KR,sans-serif">induced current = 즐거움 발전기</text></svg>
+![자가발전기 — 두 세(자기장·stator) 사이에서 다(회전자·rotor)가 돌고, 유도전류(⚡ 책)가 흐른다](diagrams/00_인물_자가발전.svg)
 
 다 혼자 — 회전이 마찰열로 흩어진다. *한 번의 실패를 전부로 일반화하는* 빚.
 세 혼자 — 자기장만 있고 코일이 정지한다. 전류 0. *영원한 60%의* 빚.
-**둘이 만날 때만** 유도전류가 흐른다 — 회전자가 자기장을 *빠르게 통과*할수록 전압이 높다. 회전 속도 = *Z-motion*(구체↔추상 진동). 흐른 전류는 책이 된다.
+**둘이 만날 때만** 유도전류가 흐른다 — 회전자가 자기장을 *빠르게 통과*할수록 전압이 높다. 회전 속도 = *구체와 추상 사이를 오가는 진동*. 흐른 전류는 책이 된다.
 
 이 발전기는 **자가발전**한다. **과거 고통이 미래 에너지가 되는 변환식.** 외부 충전이 필요 없으므로, cage가 닫히는 순간이 보인다 — F(funding)가 회전자를 *대신* 돌리기 시작할 때. 자기 운동이 사라지고 외부 동력이 그 자리를 차지할 때. 이것이 dG/dF=(−)의 정체다.
 
 > **Golden Cage = 자가발전이 멈춘 자리.**
 > **cage를 여는 일 = 다와 세를 다시 마주치게 하는 일.**
-
----
-
-인물별 상세 분석은 부록 2(용어 해설)를 참조.
