@@ -1,16 +1,3 @@
----
-created: 2026-06-15
-moc: ⭐️
-title: 질문과 답 — 황금새장을 열다 (2차)
-modified:
-  - 2026-05-15
-  - 2026-05-16
-schema_version: v1.0
-coordinate: frame · 앞 외피
-atomic_unit: —
-cc_owner: cc-grid
-mirror_anchor: ↔ 9🤨_답과질문 (외피 순환형)
----
 
 
 # 질문과 답

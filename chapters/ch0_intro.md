@@ -1,20 +1,3 @@
----
-created: 2026-04-28
-moc: 🟥
-title: 머릿말 — 황금새장을 열다
-modified:
-  - 2026-05-13
-  - 2026-05-16
-  - 2026-05-17T18:10:08+09:00
-  - 2026-05-18T19:51:04+09:00
-  - 2026-05-21T20:48:42+09:00
-  - 2026-05-22T14:55:29+09:00
-schema_version: v1.1
-coordinate: frame · ouroboros · 4↔9 봉합 + 1↔5 hub
-atomic_unit: —
-cc_owner: cc-grid
-mirror_anchor: 책 전체 (4↔9 꼭짓점 ouroboros + 1↔5 hub)
----
 
 
 
