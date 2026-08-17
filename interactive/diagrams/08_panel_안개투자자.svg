@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440">
+  <style>
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .t  { fill: #C8102E; }
+    .ink{ fill: #2b2620; }
+    .gy { fill: #6a6355; }
+  </style>
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">8장 안개 — 투자자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">Vbl 버팀 | 되물음을 보호로 받아라 | 안개 × MercadoLibre</text>
+
+  <!-- ② 좌측 표제 카드 — 3장의 그 창이 뿌예졌다 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+  <g stroke="#C8102E" fill="none" stroke-width="1.4" opacity="0.45">
+    <path d="M 112 196 L 112 124 Q 155 88 198 124 L 198 196 Z"/>
+    <line x1="155" y1="92" x2="155" y2="196"/>
+    <line x1="112" y1="136" x2="198" y2="136"/>
+    <line x1="112" y1="166" x2="198" y2="166"/>
+  </g>
+  <g stroke="#C8102E" fill="none" stroke-width="1.6">
+    <path d="M 96 124 C 122 116, 148 132, 176 124 C 196 118, 208 122, 216 126"/>
+    <path d="M 92 148 C 120 140, 150 156, 180 148 C 200 143, 210 146, 218 150"/>
+    <path d="M 96 172 C 124 164, 152 180, 180 172 C 198 167, 208 170, 214 174"/>
+    <path d="M 100 196 C 128 188, 154 204, 182 196 C 198 191, 206 194, 212 198"/>
+  </g>
+  <text x="155" y="234" text-anchor="middle" font-size="15" font-weight="700" class="t" letter-spacing="3">안개</text>
+  <text x="155" y="255" text-anchor="middle" font-size="10.5" class="ink">바깥이 보이는 쪽은, 뿌연 쪽이다</text>
+  <text x="155" y="283" text-anchor="middle" font-size="9" class="gy">아우구스토 — 작가의 서재로 걸어 들어간다</text>
+  <text x="155" y="298" text-anchor="middle" font-size="9" class="gy">MercadoLibre — 국가부도를 부트스트랩으로</text>
+  <text x="155" y="329" text-anchor="middle" font-size="10" class="t" font-style="italic">"이 그림이 시간과 자원</text>
+  <text x="155" y="342" text-anchor="middle" font-size="10" class="t" font-style="italic">위에서 버티는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 문은 반쯤 열렸을 때 가장 넓다 -->
+  <line x1="386" y1="96" x2="386" y2="240" stroke="#d8cfbc" stroke-width="1"/>
+  <line x1="386" y1="240" x2="694" y2="240" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="378" y="168" text-anchor="middle" font-size="8" class="gy" transform="rotate(-90,378,168)">지나갈 폭 →</text>
+
+  <path d="M 396 236 Q 536 -12 676 236" fill="none" stroke="#C8102E" stroke-width="2.2"/>
+  <line x1="396" y1="186" x2="676" y2="186" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4"/>
+  <text x="682" y="189" font-size="8" class="gy">마찰</text>
+
+  <line x1="432" y1="200" x2="640" y2="200" stroke="#C8102E" stroke-width="1" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="536" y="178" text-anchor="middle" font-size="8.5" font-weight="700" class="t">선택지가 사는 폭</text>
+
+  <text x="536" y="104" text-anchor="middle" font-size="9" class="ink">반쯤 열렸을 때 가장 넓다</text>
+  <text x="396" y="253" text-anchor="middle" font-size="7.5" class="gy">꽉 닫는다</text>
+  <text x="676" y="253" text-anchor="middle" font-size="7.5" class="gy">다 열어둔다</text>
+
+  <circle cx="536" cy="115" r="4.5" fill="#C8102E"/>
+  <text x="536" y="140" text-anchor="middle" font-size="8.5" font-weight="700" class="t">MercadoLibre · Nubank</text>
+  <text x="536" y="152" text-anchor="middle" font-size="7.5" class="ink">내일 아침 고쳐 쓸 폭을 남겼다</text>
+
+  <text x="392" y="116" font-size="8.5" font-weight="700" class="gy">Beyond Meat</text>
+  <text x="392" y="128" font-size="7.5" class="gy">약속을 일찍 굳혔다</text>
+  <text x="392" y="140" font-size="7.5" class="gy">240달러 → 5달러</text>
+  <line x1="410" y1="146" x2="412" y2="200" stroke="#6a6355" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <circle cx="412" cy="206" r="4.5" fill="none" stroke="#6a6355" stroke-width="1.4"/>
+  <text x="420" y="218" font-size="7.5" class="gy">폭 = 0</text>
+
+  <text x="516" y="276" text-anchor="middle" font-size="9.5" class="ink">모호함을 0이나 1로 무너뜨리면, 남아 있던 선택지가 한꺼번에 사라진다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="302" r="12" fill="none" stroke="#C8102E" stroke-width="1.2"/>
+  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="t">분기</text>
+
+  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#agy)"/>
+  <rect x="358" y="330" width="140" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="gy">확신 — 유리를 다시 세운다</text>
+  <text x="428" y="359" text-anchor="middle" font-size="8" class="gy">되물음을 모욕으로 여겨 삼킨다</text>
+  <text x="428" y="372" text-anchor="middle" font-size="8" class="gy">돈을 쥔 자의 펜 끝에 적히는 피조물</text>
+
+  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#C8102E" stroke-width="2.2" marker-end="url(#ar)"/>
+  <rect x="540" y="330" width="144" height="48" rx="3" fill="#C8102E" fill-opacity="0.05" stroke="#C8102E" stroke-width="1.4"/>
+  <text x="612" y="346" text-anchor="middle" font-size="10" font-weight="700" class="t">협상 — 안개에 나란히 선다</text>
+  <text x="612" y="359" text-anchor="middle" font-size="8" class="ink">되물음이 통과하는 폭을 남긴다</text>
+  <text x="612" y="372" text-anchor="middle" font-size="8" class="ink">언제든 책상 맞은편으로 걸어갈 저자성</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">같은 소리, 다른 한자</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">琉璃 — 파늘루가 갇힌 유리</text>
+  <text x="832" y="144" text-anchor="middle" font-size="8.5" class="ink">有利 — 협상 테이블에서 좇는 유리</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8" class="gy">有利만 좇는 설득은 제 손으로</text>
+  <text x="832" y="172" text-anchor="middle" font-size="8" class="gy">琉璃를 다시 세우는 일</text>
+  <line x1="758" y1="184" x2="906" y2="184" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="200" text-anchor="middle" font-size="8.5" class="gy">반례 · 그를 죽여 존엄을 지켰다 믿었으나</text>
+  <text x="832" y="215" text-anchor="middle" font-size="8.5" class="gy">→ 지배하려 드는 자가 지배당한다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">되물음을 모욕이 아니라 보호로 받아라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="gy">→ 이월 · "자리를 협상하던 방이, 이름을 새로 짓는 통로로 이어진다" → 9장</text>
+</svg>

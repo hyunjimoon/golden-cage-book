@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440">
+  <style>
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .t  { fill: #B0821F; }
+    .ink{ fill: #2b2620; }
+    .gy { fill: #6a6355; }
+  </style>
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">7장 튤립 — 기술자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">De 됨 | 세 자리에 나눠 걸어라 | 검은 튤립 × Tesla</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#B0821F" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#B0821F" stroke-width="2.5"/>
+  <!-- 손바닥 위의 구근 세 알 -->
+  <g stroke="#B0821F" fill="none" stroke-width="1.6">
+    <path d="M 108 176 C 118 196, 192 196, 202 176"/>
+    <path d="M 108 176 C 104 168, 108 162, 114 164" stroke-width="1.2"/>
+    <path d="M 202 176 C 206 168, 202 162, 196 164" stroke-width="1.2"/>
+    <path d="M 132 168 C 122 152, 132 134, 142 134 C 152 134, 160 152, 150 168 Z"/>
+    <path d="M 141 134 L 141 122" stroke-width="1.2"/>
+    <path d="M 166 170 C 158 158, 165 145, 173 145 C 181 145, 187 158, 179 170 Z"/>
+    <path d="M 173 145 L 173 136" stroke-width="1.2"/>
+    <path d="M 108 172 C 102 162, 108 150, 116 150 C 124 150, 129 162, 123 172 Z"/>
+    <path d="M 116 150 L 116 141" stroke-width="1.2"/>
+  </g>
+  <text x="155" y="222" text-anchor="middle" font-size="15" font-weight="700" class="t" letter-spacing="3">튤립 구근</text>
+  <text x="155" y="243" text-anchor="middle" font-size="10.5" class="ink">잘 보는 눈이 아니라, 나눠 거는 손</text>
+  <text x="155" y="271" text-anchor="middle" font-size="9" class="gy">코르넬리우스 — 세 알을 세 자리에</text>
+  <text x="155" y="286" text-anchor="middle" font-size="9" class="gy">Tesla — 성긴 눈금으로 시작했다</text>
+  <text x="155" y="316" text-anchor="middle" font-size="10" class="t" font-style="italic">"눈금이 흙에</text>
+  <text x="155" y="329" text-anchor="middle" font-size="10" class="t" font-style="italic">닿아 있는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 촘촘함과 본 횟수, 그 간격이 빚 -->
+  <line x1="386" y1="92" x2="386" y2="242" stroke="#d8cfbc" stroke-width="1"/>
+  <line x1="386" y1="242" x2="694" y2="242" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="380" y="100" text-anchor="end" font-size="7.5" class="gy">촘촘</text>
+  <text x="380" y="240" text-anchor="end" font-size="7.5" class="gy">성김</text>
+  <text x="540" y="257" text-anchor="middle" font-size="8" class="gy">실제로 본 횟수 →</text>
+  <text x="372" y="170" text-anchor="middle" font-size="8" class="gy" transform="rotate(-90,372,170)">주장한 눈금 →</text>
+
+  <!-- 대각선 = calibrated (기준선이므로 점선) -->
+  <line x1="396" y1="236" x2="676" y2="102" stroke="#B0821F" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="676" y="94" text-anchor="end" font-size="8" class="t">점선 = calibrated · 촘촘함 = 본 횟수</text>
+
+  <!-- Better Place: 1밀리 눈금 · 0회 관찰 -->
+  <circle cx="424" cy="112" r="4.5" fill="none" stroke="#6a6355" stroke-width="1.4"/>
+  <line x1="424" y1="119" x2="424" y2="220" stroke="#6a6355" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="432" y="108" font-size="8.5" font-weight="700" class="gy">Better Place</text>
+  <text x="432" y="120" font-size="7.5" class="gy">"5분 만에 전국망" · 관찰 0회</text>
+  <text x="432" y="168" font-size="8.5" font-weight="700" class="gy">간격 = 빚</text>
+  <text x="432" y="180" font-size="7.5" class="gy">8억 5천만 달러</text>
+
+  <!-- Tesla: 벌어서 잘게 (대각선을 타고 오른다) -->
+  <circle cx="480" cy="196" r="4.5" fill="#B0821F"/>
+  <circle cx="576" cy="150" r="4.5" fill="#B0821F"/>
+  <path d="M 488 192 L 566 155" fill="none" stroke="#B0821F" stroke-width="2.4" marker-end="url(#ag)"/>
+  <text x="480" y="216" text-anchor="middle" font-size="7.5" class="ink">"200마일 이상"</text>
+  <text x="584" y="167" font-size="7.5" class="ink">"244마일"</text>
+  <text x="546" y="190" font-size="8" class="t">벌어서 잘게</text>
+
+  <!-- ASML — 대각선 위 먼 오른쪽 -->
+  <circle cx="640" cy="119" r="4.5" fill="none" stroke="#B0821F" stroke-width="1.4"/>
+  <text x="634" y="128" text-anchor="end" font-size="7.5" class="ink">ASML — 20년, 수만 번</text>
+
+  <text x="516" y="278" text-anchor="middle" font-size="9.5" class="ink">분간할 수 있는 것보다 잘게 새기면, 눈금은 있는데 그 아래가 비어 있다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="302" r="12" fill="none" stroke="#B0821F" stroke-width="1.2"/>
+  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="t">분기</text>
+
+  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#agy)"/>
+  <rect x="358" y="330" width="140" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="gy">한 점에 건다</text>
+  <text x="428" y="359" text-anchor="middle" font-size="8" class="gy">수치는 정확했으나 한 몸에 모였다</text>
+  <text x="428" y="372" text-anchor="middle" font-size="8" class="gy">그 한 몸이 찢기자 계산도 찢겼다</text>
+
+  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#B0821F" stroke-width="2.2" marker-end="url(#ag)"/>
+  <rect x="540" y="330" width="144" height="48" rx="3" fill="none" stroke="#B0821F" stroke-width="2.2"/>
+  <text x="612" y="346" text-anchor="middle" font-size="10" font-weight="700" class="t">세 자리에 나눠 건다</text>
+  <text x="612" y="359" text-anchor="middle" font-size="8" class="ink">한 알이 짓밟혀도 분포는 산다</text>
+  <text x="612" y="372" text-anchor="middle" font-size="8" class="ink">창살을 건너 Rosa의 손바닥으로</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">같은 렌즈, 세 손</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">살리나 — 별 하나를 당겨 본다 (관조)</text>
+  <text x="832" y="144" text-anchor="middle" font-size="8.5" class="ink">복스텔 — 이웃 하나를 당겨 본다 (감시)</text>
+  <text x="832" y="158" text-anchor="middle" font-size="8.5" class="ink">코르넬리우스 — 렌즈를 내려놓는다</text>
+  <text x="832" y="174" text-anchor="middle" font-size="8" class="gy">렌즈는 정확해질수록 좁아진다</text>
+  <line x1="758" y1="185" x2="906" y2="185" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="201" text-anchor="middle" font-size="8.5" class="gy">반례 · 시샘꾼의 계산은 정확했다</text>
+  <text x="832" y="216" text-anchor="middle" font-size="8.5" class="gy">→ 로자와 윌리엄을 빼면</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">회사를 한 점에 걸지 말고, 구근처럼 세 자리에 나눠 걸어라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="gy">→ 이월 · "흙 속에서 확률로 키운 것을, 이제 자본 앞에 내놓는다" → 8장</text>
+</svg>

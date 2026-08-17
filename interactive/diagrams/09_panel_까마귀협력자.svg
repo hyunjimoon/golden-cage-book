@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440">
+  <style>
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .t  { fill: #1B1B1E; }
+    .ink{ fill: #2b2620; }
+    .gy { fill: #6a6355; }
+  </style>
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">9장 까마귀 — 협력자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">합류 6+7+8 | 주울 자리를 비워 던져라 | 삼국유사 × 토스</text>
+
+  <!-- ② 좌측 표제 카드 — 빛을 문 까마귀 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
+  <g stroke="#1B1B1E" fill="none" stroke-width="1.8">
+    <path d="M 110 176 C 114 154, 138 143, 158 148 C 174 152, 178 168, 166 176 C 148 187, 122 188, 110 176 Z"/>
+    <circle cx="164" cy="146" r="12"/>
+    <path d="M 128 168 C 140 158, 154 158, 164 165" stroke-width="1.1"/>
+    <path d="M 110 176 L 88 187 L 106 184 Z" stroke-width="1.5"/>
+    <path d="M 174 140 L 198 132 L 176 147 Z" stroke-width="1.5"/>
+    <circle cx="168" cy="142" r="1.7" fill="#1B1B1E"/>
+    <path d="M 136 185 L 134 197 M 152 186 L 154 198" stroke-width="1.4"/>
+  </g>
+  <circle cx="206" cy="128" r="7" fill="#E0A526"/>
+  <g stroke="#8A6A12" stroke-width="1">
+    <line x1="206" y1="114" x2="206" y2="108"/>
+    <line x1="220" y1="128" x2="226" y2="128"/>
+    <line x1="216" y1="118" x2="221" y2="113"/>
+  </g>
+  <text x="155" y="228" text-anchor="middle" font-size="15" font-weight="700" class="t" letter-spacing="3">까마귀</text>
+  <text x="155" y="249" text-anchor="middle" font-size="10.5" class="ink">삼키면 어둠, 던지면 해와 달과 별</text>
+  <text x="155" y="277" text-anchor="middle" font-size="9" class="gy">일연 — 正 옆에 遺 한 글자</text>
+  <text x="155" y="292" text-anchor="middle" font-size="9" class="gy">토스 — 송금·증권·보험·은행, 하나씩</text>
+  <text x="155" y="324" text-anchor="middle" font-size="10" class="t" font-style="italic">"재는 자와 재어지는 자가</text>
+  <text x="155" y="337" text-anchor="middle" font-size="10" class="t" font-style="italic">같은 자를 쓰는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B1B1E"/>
+    </marker>
+    <marker id="agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 셋이 모여 함이 되고, 던져서 고리가 닫힌다 -->
+  <text x="352" y="100" font-size="8" class="gy">모이는 것</text>
+  <text x="396" y="122" text-anchor="end" font-size="9" class="ink">6장 원함</text>
+  <text x="396" y="150" text-anchor="end" font-size="9" class="ink">7장 됨</text>
+  <text x="396" y="178" text-anchor="end" font-size="9" class="ink">8장 버팀</text>
+  <path d="M 404 119 C 434 122, 452 136, 472 146" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#ak)"/>
+  <path d="M 404 147 L 472 149" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#ak)"/>
+  <path d="M 404 175 C 434 172, 452 160, 472 152" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#ak)"/>
+
+  <rect x="478" y="130" width="80" height="40" rx="3" fill="none" stroke="#1B1B1E" stroke-width="2"/>
+  <text x="518" y="147" text-anchor="middle" font-size="10.5" font-weight="700" class="t">함</text>
+  <text x="518" y="161" text-anchor="middle" font-size="8" class="gy">곱해진다</text>
+
+  <line x1="560" y1="150" x2="606" y2="150" stroke="#1B1B1E" stroke-width="1.6" marker-end="url(#ak)"/>
+  <text x="583" y="143" text-anchor="middle" font-size="7.5" class="gy">던진다</text>
+
+  <rect x="610" y="130" width="82" height="40" rx="3" fill="none" stroke="#1B1B1E" stroke-width="1.6"/>
+  <text x="651" y="147" text-anchor="middle" font-size="10" font-weight="700" class="t">해·달·별</text>
+  <text x="651" y="161" text-anchor="middle" font-size="8" class="gy">빛이 셋으로 갈린다</text>
+
+  <text x="518" y="192" text-anchor="middle" font-size="8" class="gy">하나라도 0이면 합은 공허하다</text>
+
+  <!-- 우로보로스 -->
+  <path d="M 660 174 C 664 216, 520 226, 416 202" fill="none" stroke="#1B1B1E" stroke-width="1.4" stroke-dasharray="6,3" marker-end="url(#ak)"/>
+  <text x="540" y="236" text-anchor="middle" font-size="8.5" font-weight="700" class="t">9 → 5 → 1 — 끝이 시작을 문다</text>
+  <text x="540" y="248" text-anchor="middle" font-size="7.5" class="gy">꼭짓점에서 책이 닫히지 않는다</text>
+
+  <text x="516" y="274" text-anchor="middle" font-size="9.5" class="ink">부수는 손과 이름 짓는 손은 같은 손이다 — 다른 것은 던지느냐 쥐느냐다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="298" r="12" fill="none" stroke="#1B1B1E" stroke-width="1.2"/>
+  <text x="516" y="302" text-anchor="middle" font-size="8.5" font-weight="700" class="t">분기</text>
+
+  <path d="M 503 302 C 466 308, 442 312, 432 320" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#agy)"/>
+  <rect x="358" y="328" width="140" height="50" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="344" text-anchor="middle" font-size="10" font-weight="700" class="gy">잰 값을 올린다</text>
+  <text x="428" y="357" text-anchor="middle" font-size="8" class="gy">방향을 계약으로 못 박는다</text>
+  <text x="428" y="370" text-anchor="middle" font-size="7.5" class="gy">40억 달러 축배 뒤 남의 질서가 들어왔다</text>
+
+  <path d="M 529 302 C 566 308, 590 312, 600 320" fill="none" stroke="#1B1B1E" stroke-width="2.2" marker-end="url(#ak)"/>
+  <rect x="540" y="328" width="144" height="50" rx="3" fill="#1B1B1E" fill-opacity="0.05" stroke="#1B1B1E" stroke-width="1.6"/>
+  <text x="612" y="344" text-anchor="middle" font-size="10" font-weight="700" class="t">자를 감사하고 던진다</text>
+  <text x="612" y="357" text-anchor="middle" font-size="8" class="ink">하나씩 태워 다음으로 물린다</text>
+  <text x="612" y="370" text-anchor="middle" font-size="7.5" class="ink">순서는 느림이 아니라 옵션을 남기는 기술</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">자를 하나 더 놓아라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">정사 하나만 남으면 오염돼도</text>
+  <text x="832" y="143" text-anchor="middle" font-size="8.5" class="ink">아무도 못 느낀다 — 잴 자가 없어서</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8" class="gy">명명은 혼자 하면 새 정사가 되고,</text>
+  <text x="832" y="172" text-anchor="middle" font-size="8" class="gy">자리를 비워 던지면 전승이 된다</text>
+  <line x1="758" y1="184" x2="906" y2="184" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="200" text-anchor="middle" font-size="8.5" class="gy">반례 · 방드르디의 파괴는 정확했다</text>
+  <text x="832" y="215" text-anchor="middle" font-size="8.5" class="gy">→ 다만 아무것도 이름 붙이지 않았다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">다음 사람이 자기 이름으로 주울 자리를 비워, 빛을 삼키지 말고 던져라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="gy">→ 이월 · "빚을 쓰던 방이, 던진 빛을 받아 빚을 갚는 방으로 되비친다" → 10장</text>
+</svg>
