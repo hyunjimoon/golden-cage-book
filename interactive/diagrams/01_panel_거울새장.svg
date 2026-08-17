@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440">
+  <style>
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .t  { fill: #2D5FA8; }
+    .ink{ fill: #2b2620; }
+    .gy { fill: #6a6355; }
+  </style>
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">1장 거울새장 — 욕망해</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">D 욕망 | 볼 사람을 빼봐라 | 마담 보바리 × Quibi</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
+  <g stroke="#2D5FA8" stroke-width="6" opacity="0.16">
+    <line x1="76"  y1="74" x2="76"  y2="359"/>
+    <line x1="100" y1="74" x2="100" y2="359"/>
+    <line x1="124" y1="74" x2="124" y2="359"/>
+    <line x1="148" y1="74" x2="148" y2="359"/>
+    <line x1="172" y1="74" x2="172" y2="359"/>
+    <line x1="196" y1="74" x2="196" y2="359"/>
+    <line x1="220" y1="74" x2="220" y2="359"/>
+    <line x1="244" y1="74" x2="244" y2="359"/>
+  </g>
+  <rect x="60" y="160" width="190" height="130" fill="#F3EEE3" opacity="0.92"/>
+  <text x="155" y="185" text-anchor="middle" font-size="15" font-weight="700" class="t" letter-spacing="3">거울 새장</text>
+  <text x="155" y="207" text-anchor="middle" font-size="10.5" class="ink">남의 욕망이 내 욕망으로 비친다</text>
+  <text x="155" y="243" text-anchor="middle" font-size="9" class="gy">엠마 — 소설이 심어준 파리</text>
+  <text x="155" y="258" text-anchor="middle" font-size="9" class="gy">Quibi — 할리우드가 심어준 모바일</text>
+  <text x="155" y="336" text-anchor="middle" font-size="10.5" class="t" font-style="italic">"이 욕망은 어디서 왔는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <!-- ③ 중앙 개념도 — 지라르 삼각형 -->
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D5FA8"/>
+    </marker>
+    <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <circle cx="520" cy="95" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
+  <text x="520" y="92" text-anchor="middle" font-size="10.5" font-weight="700" class="t">매개자</text>
+  <text x="520" y="105" text-anchor="middle" font-size="8" class="gy">소설 · 할리우드 · 회의실</text>
+
+  <circle cx="420" cy="235" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
+  <text x="420" y="232" text-anchor="middle" font-size="10.5" font-weight="700" class="t">주체</text>
+  <text x="420" y="245" text-anchor="middle" font-size="8" class="gy">엠마 / 카첸버그</text>
+
+  <circle cx="620" cy="235" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
+  <text x="620" y="232" text-anchor="middle" font-size="10.5" font-weight="700" class="t">대상</text>
+  <text x="620" y="245" text-anchor="middle" font-size="8" class="gy">파리 / 프리미엄 모바일</text>
+
+  <line x1="497" y1="114" x2="443" y2="209" stroke="#2D5FA8" stroke-width="1.2" marker-start="url(#ar)"/>
+  <line x1="543" y1="114" x2="597" y2="209" stroke="#2D5FA8" stroke-width="1.2" marker-end="url(#ar)"/>
+  <line x1="450" y1="235" x2="590" y2="235" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4"/>
+  <text x="447" y="158" font-size="8.5" class="t" transform="rotate(-38,447,158)">모방</text>
+  <text x="575" y="158" font-size="8.5" class="t" transform="rotate(38,575,158)">욕망 투사</text>
+  <text x="520" y="228" text-anchor="middle" font-size="7.5" class="gy">"내가 원한다" — 착각</text>
+
+  <!-- ④ 분기 노드 -->
+  <circle cx="520" cy="286" r="13" fill="none" stroke="#2D5FA8" stroke-width="1.2"/>
+  <text x="520" y="290" text-anchor="middle" font-size="9" font-weight="700" class="t">분기</text>
+
+  <path d="M 506 291 C 468 300, 444 306, 434 314" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arg)"/>
+  <rect x="366" y="322" width="132" height="52" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="432" y="339" text-anchor="middle" font-size="10" font-weight="700" class="gy">무모 — 질주</text>
+  <text x="432" y="353" text-anchor="middle" font-size="8" class="gy">장부를 안 펴고 달린다</text>
+  <text x="432" y="367" text-anchor="middle" font-size="8" class="gy">Quibi 17.5억 달러 → 6개월</text>
+
+  <path d="M 534 291 C 572 300, 596 306, 606 314" fill="none" stroke="#2D5FA8" stroke-width="2.2" marker-end="url(#ar)"/>
+  <rect x="544" y="322" width="136" height="52" rx="3" fill="#2D5FA8" fill-opacity="0.06" stroke="#2D5FA8" stroke-width="1.2"/>
+  <text x="612" y="339" text-anchor="middle" font-size="10" font-weight="700" class="t">용기 — 검증</text>
+  <text x="612" y="353" text-anchor="middle" font-size="8" class="ink">장부를 펴고, 확인 후 뛴다</text>
+  <text x="612" y="367" text-anchor="middle" font-size="8" class="ink">아래를 보고 뛴 것 = 용기</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="108" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">삼각형 바깥에 서라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">Thiel — 모방 바깥이 독점</text>
+  <text x="832" y="145" text-anchor="middle" font-size="8.5" class="ink">Maples — 합의 바깥, 그리고 옳아야</text>
+  <line x1="758" y1="157" x2="906" y2="157" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="173" text-anchor="middle" font-size="8.5" class="gy">반례 · 오메 — 꿈 없이 살아남았다</text>
+  <text x="832" y="188" text-anchor="middle" font-size="8.5" class="gy">→ 살아남았으나 풍자로 끝났다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">빌린 옷은 벗는 순간이 아니라 알아채는 순간에 가벼워진다</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="gy">→ 이월 · "잘 보는 눈은, 움직이지 않을 이유도 잘 본다" → 2장</text>
+</svg>
