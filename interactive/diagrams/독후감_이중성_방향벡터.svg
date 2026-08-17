@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 880" width="1240" height="880" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <title>독후감_이중성 — 방향벡터 차이 (자장 blueprint 金 vs 현 설계도 黑, 잔차 赤)</title>
+  <rect width="1240" height="880" fill="#FBF8F0"/>
+
+  <defs>
+    <marker id="arK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1B1B1E"/>
+    </marker>
+    <marker id="arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="arR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="arThin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7A756C"/>
+    </marker>
+  </defs>
+
+  <!-- 표제 -->
+  <text x="40" y="42" font-size="25" font-weight="700" fill="#1B1B1E">방향벡터 차이 — 같은 원점, 반대편 조작 대상</text>
+  <text x="40" y="68" font-size="14.5" fill="#5E584E">독후감_이중성 · 2026-08-18 · 金 자장 blueprint(손글씨) ↔ 黑 현 설계도(파일에 옮긴 것) · 赤 잔차 = 흡수할 것</text>
+
+  <!-- ══════════ 좌표평면 ══════════ -->
+  <!-- 축 -->
+  <line x1="90" y1="470" x2="700" y2="470" stroke="#B8B0A2" stroke-width="1.4" marker-end="url(#arThin)" marker-start="url(#arThin)"/>
+  <line x1="395" y1="770" x2="395" y2="170" stroke="#B8B0A2" stroke-width="1.4" marker-end="url(#arThin)" marker-start="url(#arThin)"/>
+
+  <!-- 축 라벨 -->
+  <text x="90" y="452" font-size="13.5" font-weight="700" fill="#7A756C">← 분자를 서술</text>
+  <text x="90" y="435" font-size="12.5" fill="#7A756C">(D−O) 간극·감정 자체를 말한다</text>
+  <text x="700" y="452" text-anchor="end" font-size="13.5" font-weight="700" fill="#7A756C">분모를 설계 →</text>
+  <text x="700" y="435" text-anchor="end" font-size="12.5" fill="#7A756C">시간 t · 평가기준 E — 재는 장치를 짠다</text>
+  <text x="405" y="182" font-size="13.5" font-weight="700" fill="#7A756C">↑ 운영 명세 (기록 방식 · 해상도 · 금지선)</text>
+  <text x="405" y="766" font-size="13.5" font-weight="700" fill="#7A756C">↓ 문학 은유 (씻김 · 봉우리 · 거울)</text>
+
+  <!-- 공유 원점 -->
+  <circle cx="395" cy="470" r="9" fill="#E0A526" stroke="#8A6A12" stroke-width="1.6"/>
+  <rect x="248" y="486" width="300" height="52" rx="6" fill="#E0A526" fill-opacity="0.16" stroke="#8A6A12" stroke-width="1"/>
+  <text x="398" y="505" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8A6A12">공유 원점 — 합의된 진단</text>
+  <text x="398" y="522" text-anchor="middle" font-size="11.8" fill="#5E584E">공간분리로 이중 감정을 소거하면</text>
+  <text x="398" y="534" text-anchor="middle" font-size="11.8" fill="#5E584E">변하는 환경에 적응 못한다</text>
+
+  <!-- 黑 벡터: 왼쪽·아래 -->
+  <line x1="395" y1="470" x2="182" y2="612" stroke="#1B1B1E" stroke-width="4.5" marker-end="url(#arK)"/>
+  <text x="150" y="646" font-size="15.5" font-weight="700" fill="#1B1B1E">현 설계도 (黑)</text>
+  <text x="150" y="668" font-size="12.3" fill="#3B382F">· 자(尺)가 둘 = 도덕 / 윤리</text>
+  <text x="150" y="686" font-size="12.3" fill="#3B382F">· 종착점 = 도태(陶汰 씻김)</text>
+  <text x="150" y="704" font-size="12.3" fill="#3B382F">· 봉우리 지형 · 내려오는 구간</text>
+  <text x="150" y="722" font-size="12.3" fill="#3B382F">· 셋째 층 = 사회(지배계급 위선)</text>
+  <text x="150" y="740" font-size="12.3" fill="#3B382F">· 해결 = 디킨스 테스트 <tspan font-style="italic">은유</tspan></text>
+
+  <!-- 金 벡터: 오른쪽·위 -->
+  <line x1="395" y1="470" x2="628" y2="300" stroke="#B0821F" stroke-width="4.5" marker-end="url(#arG)"/>
+  <text x="560" y="272" font-size="15.5" font-weight="700" fill="#8A6A12">자장 blueprint (金)</text>
+  <text x="560" y="250" font-size="12.3" fill="#6B5314">· 감정 = (D−O) / E — 분수</text>
+  <text x="560" y="232" font-size="12.3" fill="#6B5314">· E 갱신 허용 / 죄 사면 목적 조작 금지</text>
+  <text x="560" y="214" font-size="12.3" fill="#6B5314">· 시간분리 = 역사 기록 + 관찰 해상도</text>
+  <text x="560" y="196" font-size="12.3" fill="#6B5314">· 효과 vs 효율 2축 · 셋째 층 = 개인+타인</text>
+  <text x="560" y="178" font-size="12.3" fill="#6B5314">· 불순물(인위) vs 안개(자연)</text>
+
+  <!-- 각도 표시 -->
+  <path d="M 455 508 A 75 75 0 0 1 452 425" fill="none" stroke="#C8102E" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="470" y="470" font-size="12.5" font-weight="700" fill="#C8102E">≈ 150°</text>
+  <text x="470" y="486" font-size="11.5" fill="#C8102E">작은 보정이 아니라 재조준</text>
+
+  <!-- 赤 잔차 -->
+  <line x1="182" y1="612" x2="628" y2="300" stroke="#C8102E" stroke-width="2.6" stroke-dasharray="8 5" marker-end="url(#arR)"/>
+  <text x="300" y="392" font-size="13.5" font-weight="700" fill="#C8102E" transform="rotate(-35 300 392)">잔차 = 흡수할 6가지 →</text>
+
+  <!-- ══════════ 오른쪽 대조표 ══════════ -->
+  <text x="740" y="120" font-size="16" font-weight="700" fill="#1B1B1E">잔차 명세 — 무엇을 바꿔 다시 겨누나</text>
+
+  <line x1="740" y1="134" x2="1200" y2="134" stroke="#1B1B1E" stroke-width="1.2"/>
+  <text x="740" y="152" font-size="11.5" font-weight="700" fill="#7A756C">칸</text>
+  <text x="812" y="152" font-size="11.5" font-weight="700" fill="#1B1B1E">현 설계도 (黑)</text>
+  <text x="1000" y="152" font-size="11.5" font-weight="700" fill="#8A6A12">blueprint (金)</text>
+  <line x1="740" y1="160" x2="1200" y2="160" stroke="#B8B0A2" stroke-width="1"/>
+
+  <g font-size="11.8">
+    <text x="740" y="184" font-weight="700" fill="#7A756C">종착점</text>
+    <text x="812" y="184" fill="#3B382F">도태 = 씻김</text>
+    <text x="1000" y="184" fill="#6B5314">적응 실패 (효과·효율 2축)</text>
+    <text x="812" y="200" font-size="10.8" fill="#C8102E">→ 金 채택, 도태는 은유로 강등</text>
+    <line x1="740" y1="212" x2="1200" y2="212" stroke="#E2DBCC" stroke-width="1"/>
+
+    <text x="740" y="236" font-weight="700" fill="#7A756C">감정 형식</text>
+    <text x="812" y="236" fill="#3B382F">자가 둘 (도덕/윤리)</text>
+    <text x="1000" y="236" fill="#6B5314">(D−O)/E 분수 · 분모가 둘</text>
+    <text x="812" y="252" font-size="10.8" fill="#C8102E">→ 분수로 재작성, 도덕/윤리는 E의 두 값</text>
+    <line x1="740" y1="264" x2="1200" y2="264" stroke="#E2DBCC" stroke-width="1"/>
+
+    <text x="740" y="288" font-weight="700" fill="#7A756C">셋째 층</text>
+    <text x="812" y="288" fill="#3B382F">사회 = 지배계급 위선</text>
+    <text x="1000" y="288" fill="#6B5314">개인+타인 = 죄책·수치 vs 자긍</text>
+    <text x="812" y="304" font-size="10.8" fill="#C8102E">→ 金 채택, 위선은 타인층의 근거로 격하</text>
+    <line x1="740" y1="316" x2="1200" y2="316" stroke="#E2DBCC" stroke-width="1"/>
+
+    <text x="740" y="340" font-weight="700" fill="#7A756C">해결 몸통</text>
+    <text x="812" y="340" fill="#3B382F">디킨스 테스트 은유</text>
+    <text x="1000" y="340" fill="#6B5314">D·O 재설정 명세 (역사 기록 · 관찰 해상도 · 반복 관측)</text>
+    <text x="812" y="356" font-size="10.8" fill="#C8102E">→ 명세를 본문으로, 은유는 예시 한 줄로</text>
+    <line x1="740" y1="368" x2="1200" y2="368" stroke="#E2DBCC" stroke-width="1"/>
+
+    <text x="740" y="392" font-weight="700" fill="#7A756C">금지선</text>
+    <text x="812" y="392" fill="#3B382F">없음 (calibration 언급만)</text>
+    <text x="1000" y="392" fill="#6B5314">죄 사면 목적의 E 조작 금지</text>
+    <text x="812" y="408" font-size="10.8" fill="#C8102E">→ 신설 = 이 글의 redline (U가 s를 오염)</text>
+    <line x1="740" y1="420" x2="1200" y2="420" stroke="#E2DBCC" stroke-width="1"/>
+
+    <text x="740" y="444" font-weight="700" fill="#7A756C">불순물</text>
+    <text x="812" y="444" fill="#3B382F">지킬 실패 조항 (단독)</text>
+    <text x="1000" y="444" fill="#6B5314">불순물(인위) ↔ 안개(자연) 짝</text>
+    <text x="812" y="460" font-size="10.8" fill="#C8102E">→ mirror pair로 승격 · 재귀성·역사·부정확 기록 축</text>
+    <line x1="740" y1="472" x2="1200" y2="472" stroke="#B8B0A2" stroke-width="1.2"/>
+  </g>
+
+  <!-- 분수 도해 -->
+  <text x="740" y="512" font-size="15" font-weight="700" fill="#1B1B1E">blueprint의 심장 — 두 분모</text>
+  <g font-size="13.5" fill="#1B1B1E">
+    <text x="760" y="556" font-size="16">D − O</text>
+    <line x1="752" y1="566" x2="828" y2="566" stroke="#1B1B1E" stroke-width="1.6"/>
+    <text x="782" y="588" font-size="16" text-anchor="middle">t</text>
+    <text x="850" y="558" font-size="12" fill="#5E584E">자연층 — 시간이 짧아지면 요구 노력↑</text>
+    <text x="850" y="574" font-size="12" fill="#5E584E">→ 간극을 <tspan font-style="italic">안 보이게 하기</tspan>가 싸 보인다</text>
+
+    <text x="760" y="640" font-size="16">D − O</text>
+    <line x1="752" y1="650" x2="828" y2="650" stroke="#B0821F" stroke-width="2.2"/>
+    <text x="786" y="672" font-size="16" text-anchor="middle" fill="#8A6A12">E</text>
+    <text x="850" y="642" font-size="12" fill="#5E584E">개인·타인층 — E = 평가기준</text>
+    <text x="850" y="658" font-size="12" fill="#5E584E">죄책·수치 = 타인의 E · 자긍 = 확장된 나의 E</text>
+    <text x="850" y="674" font-size="12" fill="#C8102E">E를 <tspan font-weight="700">갱신</tspan>은 성장 / <tspan font-weight="700">조작</tspan>은 자기기만</text>
+  </g>
+
+  <!-- 하단 결론 배너 -->
+  <rect x="60" y="792" width="1120" height="56" rx="8" fill="#E0A526" fill-opacity="0.18" stroke="#8A6A12" stroke-width="1.2"/>
+  <text x="620" y="818" text-anchor="middle" font-size="17" font-weight="700" fill="#8A6A12">공간분리 = E를 두 몸에 복제·격리 &#160;/&#160; 시간분리 = 한 몸에서 E를 순차 갱신</text>
+  <text x="620" y="838" text-anchor="middle" font-size="12.5" fill="#5E584E">적응 = E 갱신 속도가 환경 변화 속도를 따라가는 것 (효과 = 맞는 E, 효율 = 적은 비용)</text>
+</svg>
