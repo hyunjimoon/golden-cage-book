@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 600" width="1040" height="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <title>부끄러움의 네 갈래 — 같은 분수, 다른 손</title>
+  <rect width="1040" height="600" fill="#FBF8F0"/>
+
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2D5FA8"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B0821F"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8102E"/></marker>
+    <marker id="k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B1B1E"/></marker>
+  </defs>
+
+  <text x="36" y="42" font-size="23" font-weight="700" fill="#1B1B1E">마음이 무거울 때 손댈 수 있는 곳은 네 군데</text>
+  <text x="36" y="66" font-size="13.5" fill="#5E584E">속상함의 크기 = (바라는 나 − 지금의 나) ÷ 잣대. 윗칸이 하나, 아랫칸이 셋.</text>
+
+  <!-- 중앙 분수 -->
+  <rect x="40" y="222" width="268" height="150" rx="10" fill="#E0A526" fill-opacity="0.18" stroke="#8A6A12" stroke-width="1.6"/>
+  <text x="174" y="280" text-anchor="middle" font-size="19" fill="#1B1B1E">바라는 나 − 지금의 나</text>
+  <line x1="70" y1="298" x2="278" y2="298" stroke="#1B1B1E" stroke-width="2.4"/>
+  <text x="174" y="340" text-anchor="middle" font-size="26" fill="#8A6A12">잣 대</text>
+  <text x="174" y="208" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8A6A12">지금 느껴지는 속상함</text>
+  <text x="174" y="394" text-anchor="middle" font-size="11.8" fill="#5E584E">잣대 = 이 일을 재는 자</text>
+
+  <!-- 1 윗칸 -->
+  <line x1="308" y1="262" x2="392" y2="140" stroke="#2D5FA8" stroke-width="3.4" marker-end="url(#b)"/>
+  <rect x="400" y="94" width="600" height="76" rx="8" fill="#FFFFFF" stroke="#2D5FA8" stroke-width="1.6"/>
+  <text x="418" y="120" font-size="15" font-weight="700" fill="#2D5FA8">① 윗칸을 줄인다 — 그냥 더 잘한다</text>
+  <text x="418" y="142" font-size="12.3" fill="#3B382F">느리게 가벼워진다. 거리가 진짜로 줄어드는 유일한 길.</text>
+  <text x="418" y="160" font-size="12.3" fill="#5E584E">확인법 — 남이 봐도 달라졌나</text>
+
+  <!-- 2 갱신 -->
+  <line x1="308" y1="290" x2="392" y2="252" stroke="#B0821F" stroke-width="3.4" marker-end="url(#g)"/>
+  <rect x="400" y="196" width="600" height="98" rx="8" fill="#FFFFFF" stroke="#B0821F" stroke-width="2.2"/>
+  <text x="418" y="222" font-size="15" font-weight="700" fill="#8A6A12">② 잣대를 갈아 끼운다 — 한 사람이 차례차례</text>
+  <text x="418" y="244" font-size="12.3" fill="#3B382F">무겁긴 한데 방향이 생긴다. 스크루지가 하룻밤에 한 일.</text>
+  <text x="418" y="286" font-size="12.3" fill="#C8102E">확인법 — 새 잣대를 대기 <tspan font-weight="700">전에</tspan> 무슨 일이 생길지 먼저 적어뒀나</text>
+  <g font-size="12.5" fill="#8A6A12">
+    <text x="420" y="266">어제의 잣대</text><text x="512" y="266">→</text><text x="536" y="266">오늘의 잣대</text><text x="626" y="266">→</text><text x="650" y="266">내일의 잣대</text>
+  </g>
+
+  <!-- 3 조작 -->
+  <line x1="308" y1="322" x2="392" y2="366" stroke="#C8102E" stroke-width="3.4" marker-end="url(#r)"/>
+  <rect x="400" y="320" width="600" height="76" rx="8" fill="#C8102E" fill-opacity="0.06" stroke="#C8102E" stroke-width="1.6" stroke-dasharray="7 4"/>
+  <text x="418" y="346" font-size="15" font-weight="700" fill="#C8102E">③ 잣대를 슬쩍 낮춘다 — 봐주는 자로 바꾼다 ✗</text>
+  <text x="418" y="368" font-size="12.3" fill="#3B382F">②와 겉모습이 똑같다. 다른 건 내용이 아니라 <tspan font-weight="700">순서</tspan>다.</text>
+  <text x="418" y="386" font-size="12.3" fill="#C8102E">확인법 — 그 잣대가 사건 <tspan font-weight="700">뒤에</tspan> 생겼나</text>
+
+  <!-- 4 분리 -->
+  <line x1="308" y1="350" x2="392" y2="474" stroke="#1B1B1E" stroke-width="3.4" marker-end="url(#k)"/>
+  <rect x="400" y="422" width="600" height="94" rx="8" fill="#1B1B1E" fill-opacity="0.05" stroke="#1B1B1E" stroke-width="1.6"/>
+  <text x="418" y="448" font-size="15" font-weight="700" fill="#1B1B1E">④ 잣대를 둘로 쪼개 딴 몸에 준다 ✗ &#160;— 지킬 박사의 길</text>
+  <text x="418" y="470" font-size="12.3" fill="#3B382F">즉시 사라진다. 갈라놓으니 각자는 깔끔해졌는데,</text>
+  <text x="418" y="488" font-size="12.3" fill="#3B382F">깔끔해진 순간 <tspan font-weight="700">서로를 재줄 눈</tspan>이 없어졌다.</text>
+  <text x="418" y="506" font-size="12.3" fill="#C8102E">확인법 — 두 잣대가 서로를 볼 수 있나</text>
+
+  <!-- 하단 배너 -->
+  <rect x="36" y="540" width="964" height="44" rx="8" fill="#E0A526" fill-opacity="0.18" stroke="#8A6A12" stroke-width="1.2"/>
+  <text x="518" y="568" text-anchor="middle" font-size="15.5" font-weight="700" fill="#8A6A12">마음이 시끄러운 건 고장이 아니다 — 잣대 둘이 아직 한 사람 안에서 겨루는 중이다</text>
+</svg>
