@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>확률 진화 — 4.11 → 4.25 — 황금새장을열다</title>
+<title>확률 진화 — 4.11 → 8.20 — 황금새장을열다</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500;700&display=swap');
   :root{
@@ -51,25 +51,68 @@
   .chart-title{font-size:11px;color:var(--text2);font-weight:600;margin-bottom:8px;letter-spacing:0.5px;}
   svg{width:100%;display:block;}
 
-  .legend{display:flex;justify-content:center;gap:18px;font-size:11px;color:var(--text2);margin-top:6px;}
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:11px;color:var(--text2);margin-top:8px;}
   .legend span{display:flex;align-items:center;gap:5px;}
-  .legend .dot{width:10px;height:10px;border-radius:50%;}
+  .legend .dot{width:10px;height:10px;border-radius:50%;flex:none;}
+  .legend .dot-hollow{width:10px;height:10px;border-radius:50%;border:1.6px solid var(--text2);background:transparent;flex:none;}
+  .legend .band{width:14px;height:10px;background:rgba(255,255,255,0.10);flex:none;}
+  .legend .staple{width:14px;height:8px;border:1.2px dashed var(--text2);border-top:none;flex:none;}
+  .legend-note{text-align:center;font-size:11px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
+  .legend-note b{color:var(--text);}
 
   .summary{background:var(--surface);border-radius:8px;padding:14px 16px;font-size:12px;color:var(--text2);}
   .summary b{color:var(--text);}
   .summary .delta-up{color:#7CB342;font-weight:700;}
 
+  .frame-type{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.5px;
+    padding:2px 6px;border-radius:4px;display:inline-block;margin-right:8px;vertical-align:1px;}
+  .t-BUILD{background:rgba(124,179,66,0.16);color:#8CC152;}
+  .t-METHOD{background:rgba(74,122,107,0.22);color:#6FA894;}
+  .t-SETBACK{background:rgba(212,165,116,0.16);color:var(--s);}
+  .t-REFLECT{background:rgba(148,163,184,0.16);color:var(--text2);}
+  .t-ext{border:1px solid rgba(255,255,255,0.22);background:transparent;}
+
+  .box{background:var(--surface);border-radius:8px;padding:15px 17px;margin-top:14px;font-size:12px;
+    color:var(--text2);line-height:1.75;}
+  .box-caveat{border-left:3px solid var(--s);}
+  .box-unknown{border-left:3px solid var(--d);}
+  .box-title{font-size:11px;font-weight:700;letter-spacing:0.6px;color:var(--text);margin-bottom:8px;}
+  .box b{color:var(--text);}
+  .box ul{list-style:none;}
+  .box li{margin-top:7px;padding-left:14px;position:relative;}
+  .box li::before{content:'·';position:absolute;left:2px;color:var(--dim);}
+
+  .rules{width:100%;border-collapse:collapse;font-size:11px;margin-top:10px;}
+  .rules td{padding:3px 8px 3px 0;border-top:1px solid var(--border);vertical-align:top;}
+  .rules td:last-child{font-family:'DM Mono',monospace;color:var(--text);text-align:right;white-space:nowrap;}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  code{font-family:'DM Mono',monospace;font-size:0.92em;color:var(--text);}
+
+  .lessons{margin-top:22px;}
+  .lessons h2{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .lessons .lead{font-size:11.5px;color:var(--text2);margin-bottom:12px;line-height:1.7;}
+  .lesson{background:var(--card);border-radius:10px;padding:15px 17px;margin-bottom:10px;font-size:12px;
+    color:var(--text2);line-height:1.8;}
+  .lesson-n{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--dim);margin-right:8px;}
+  .lesson-h{color:var(--text);font-weight:600;}
+  .lesson b{color:var(--text);}
+  .caveat{display:block;margin-top:9px;padding:9px 11px;border-radius:6px;font-size:11px;line-height:1.7;
+    background:rgba(212,165,116,0.07);border-left:2px solid var(--s);color:var(--text2);}
+  .caveat b{color:var(--s);}
+
   @media(max-width:560px){
     .card-num{font-size:2.6em;}
     .controls{flex-wrap:wrap;}
+    .cards{grid-template-columns:1fr;}
+    .legend{gap:6px 12px;font-size:10px;}
   }
 </style>
 </head>
 <body>
 <div class="page">
   <a class="back" href="../">← 대문</a>
-  <h1>약속의 정밀화 — 2026.4.11 → 4.25</h1>
-  <div class="sub">한 문장의 약속이 14일간 어떻게 좁혀졌는가 · 19 milestone · ▶ 재생</div>
+  <h1>약속의 정밀화 — 2026.4.11 → 8.20</h1>
+  <div class="sub">한 문장의 약속이 131일간 어떻게 좁혀졌는가 · 51 milestone · ▶ 재생</div>
 
   <div style="background:linear-gradient(135deg, rgba(212,165,116,0.08), rgba(74,122,107,0.08));border-radius:10px;padding:18px 20px;margin-bottom:18px;font-size:13.5px;line-height:1.85;color:var(--text);border:1px solid rgba(255,255,255,0.06);">
     <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;margin-bottom:8px;">이 책이 약속하는 것 — 한 진실의 두 자매</div>
@@ -83,7 +126,7 @@
     <b style="color:var(--text);">두 막대 모두가 자라야 약속이 산다.</b> 한쪽만 높으면 —
     <span style="color:#9B7A8B;font-weight:600;">D &gt; S = 살리나 마비</span> (좋은데 안 팔림) ·
     <span style="color:#D4A574;font-weight:600;">S &gt; D = 보바리 조산</span> (약속만 있고 못 만듦).
-    두 측 균형을 향한 14일 기록입니다.
+    두 측 균형을 향한 131일 기록입니다.
   </div>
 
   <div class="cards">
@@ -119,6 +162,7 @@
   </div>
 
   <div class="frame-info">
+    <span class="frame-type" id="frameType" style="display:none"></span>
     <span class="frame-date" id="frameDate">4-11</span>
     <span class="frame-sha" id="frameSha">e93790f</span>
     <span class="frame-msg" id="frameMsg">베이스라인 — D 35%→55% 상향</span>
@@ -131,18 +175,99 @@
     <div class="legend">
       <span><div class="dot" style="background:var(--s)"></div>S 팔 수 있는가</span>
       <span><div class="dot" style="background:var(--d)"></div>D 만들 수 있는가</span>
+      <span><div class="dot" style="background:var(--text2)"></div>속 찬 = 안에서 찾음</span>
+      <span><div class="dot-hollow"></div>속 빈 = 밖에서 옴</span>
+      <span><div class="staple"></div>발견↔수정 톱니</span>
+      <span><div class="band"></div>월별 발견 건수</span>
+    </div>
+    <div class="legend-note">
+      <b>밖에서 온 지적은 팔림에만 왔다.</b> — 속 빈 점은 하나도 D를 깎지 못했다. D가 내려간 자리는 전부 속이 차 있다.
     </div>
   </div>
 
   <div class="summary" id="summary">
-    <b>14일 요약 — 약속이 모호함에서 정밀로:</b><br>
-    🟡 사용자에게 닿는가 <span class="delta-up">40% → 65%</span> — 4 산업·12셀·4축으로 진입로 다양화, 언어·시각 단순화<br>
-    🟢 작가가 만들 수 있는가 <span class="delta-up">55% → 78%</span> — 자동 측정·외부 학술 어휘·CI 안정으로 재현성 확보<br>
-    📈 두 측의 곱 <span class="delta-up">0.22 → 0.51 (×2.3)</span> — 책 출간 가능성이 두 배 이상으로
+    <b>131일 요약 — 약속이 모호함에서 정밀로:</b><br>
+    🟡 사용자에게 닿는가 <span class="delta-up">40% → 75%</span> — 4 산업·12셀·4축으로 진입로를 열고, 트림·정명(「투향」)으로 좁힘<br>
+    🟢 작가가 만들 수 있는가 <span class="delta-up">55% → 88%</span> — 자(尺) 넷(build_docx · 작업메모 삭제 · <code>/egg</code> 6지표 · 3층 문지기)으로 재현성 확보<br>
+    📈 두 측의 곱 <span class="delta-up">0.22 → 0.66 (×3.0)</span><br>
+    <span style="color:var(--dim);">그림이 말하는 하루 — <b style="color:var(--text)">8-14</b>: 같은 날 S가 84(최고)에서 69로 떨어진다. 발송 빌드가 전 검증을 통과한 그날, 밖에서 온 한 줄이 15를 깎았다. <b style="color:var(--text)">D는 88 그대로다.</b></span>
   </div>
 
-  <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:11.5px;color:var(--text2);line-height:1.7;">
-    <b style="color:var(--text);">두 막대를 더 키우려면</b> — 🟡 사용자 측: 한국 1·3장 사례(옐로모바일·신라젠 펙사벡) 본문 삽입 · 🟢 작가 측: 표지 4사분면 디자인 · 민음사 시연 카드 12장 인쇄
+  <div class="box box-caveat">
+    <div class="box-title">⚠️ 이 값은 순위(rank)이지 측정(measurement)이 아니다</div>
+    아래 규칙으로 <b>재현할 수 있을 뿐</b>, 확률의 참값이 아니다. 증감은 <b>남은 거리(100−현재값)의 비율</b>로 준다 —
+    100에 자연히 수렴하고 후반 증분이 작아진다. <b>복리의 반대다.</b>
+    <div class="scroll-x"><table class="rules">
+      <tr><td>BUILD 장·부 단위</td><td>남은 거리 +20%</td></tr>
+      <tr><td>BUILD 절 단위</td><td>+10%</td></tr>
+      <tr><td>BUILD 외부 도달(발송·정명)</td><td>+30%</td></tr>
+      <tr><td>METHOD 자(尺) 신설</td><td>+20%</td></tr>
+      <tr><td>SETBACK 되돌리기 한 줄 · 하루치 · 이틀 이상 · 이미 밖에 나감</td><td>현재값 −4% · −7% · −11% · −14%</td></tr>
+      <tr><td>↳ 외부 지적이면</td><td>−3%p 추가</td></tr>
+    </table></div>
+    <div style="margin-top:10px;">
+      <b>SETBACK 크기는 심각도가 아니라 되돌리기 비용이다.</b> 그래서 T29(8장 무효 직전)가 −4%다 —
+      무서웠지만 <b>한 줄로 고쳐졌다.</b> 반대로 T30(웹 노출)은 −14%다 — 이미 남이 볼 수 있었다.
+    </div>
+  </div>
+
+  <div class="box box-unknown">
+    <div class="box-title">「모른다」 — 빈칸을 감추면 이 페이지가 자기가 말하는 규약을 어긴다</div>
+    <ul>
+      <li><b>실제 발송 일시를 모른다.</b> docx 14개 중 <i>어느 것이 편집자에게 갔는지</i> 기록이 없다.
+        표에는 발송이 아니라 <b>빌드</b>로만 적었다. → <b>다음 회차에 반드시 기록할 것.</b></li>
+      <li><b>6월 dip이 0건이다.</b> 없었는지, 기록 습관이 없었는지 <b>모른다.</b> (교훈 02가 가설인 이유)</li>
+      <li><b>NFC 유령쌍 수치가 세 번 갈렸다</b>(519 / 520 / 612엔트리). 어느 것이 중간 계측인지 <b>모른다.</b></li>
+    </ul>
+  </div>
+
+  <div class="lessons">
+    <h2>교훈 — 데이터에서만 뽑았다 (다섯)</h2>
+    <div class="lead">다섯 다 <b style="color:var(--text)">세는 수(count)</b>에서 나왔고 <b style="color:var(--text)">매기는 점수(score)</b>에 기대지 않는다. 곡선 값이 틀려도 교훈은 선다.</div>
+
+    <div class="lesson">
+      <span class="lesson-n">01</span><span class="lesson-h">외부는 지어짐의 결함을 4개월간 0건 잡았다.</span>
+      밖에서 온 지적 8건은 전부 <i>읽어서 보이는</i> 것이었고, 파이프라인을 열어야 보이는 결함은
+      <b>한 건도 밖에서 오지 않았다(0/9)</b>. T28·T29·T30을 짚어준 외부인은 없다. →
+      <b>편집자를 아무리 보여줘도 지어짐의 결함은 줄지 않는다. 그 자는 스스로 만들어야 한다.</b>
+      METHOD 넷(build_docx · 작업메모 삭제 · <code>/egg</code> · 3층 문지기)이 그 자를 만든 사건이고,
+      <b>자가 선 뒤에야 T28·T29·T30이 보였다.</b>
+      <span class="caveat"><b>⚠️ 이 교훈은 고쳐진 이력이 있다.</b> 초안은 <i>"밖에서 온 지적은 전부 팔림이었다(8/8)"</i>였으나
+      <b>거의 동어반복</b>이라 /reader 8:0으로 방향을 뒤집었다(한정우💰 "축을 사후에 붙였다" · 오세진💰 "8/8·9/9는 너무 깨끗하다").
+      <b>축 배정 규칙(사전)</b>: 발견 주체가 아니라 <b>관측 가능성</b> — <i>읽어서 보이면 S / 파이프라인을 열어야 보이면 D</i>.
+      이 규칙으로 팩트체크(#21)·sync 유실(#36)을 D→S 재배정했고 완벽한 9/9는 깨졌다.</span>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-n">02</span><span class="lesson-h">dip이 느는 것이 나빠지는 신호가 아닐 수 있다.</span>
+      발견 건수가 2→4→10→14→21로 단조증가하는데 곡선은 같이 오른다.
+      T28·T29 둘 다 <i>vault에선 안 보이고 docx를 열어야 보이는</i> 유형이었다.
+      <span class="caveat"><b>⚠️ 가설이다.</b> 5~6월에 dip이 적었던 게 <i>도구가 없어 못 본 것</i>인지 <i>실제로 적었던 것</i>인지
+      <b>모른다</b>(위 「모른다」). 「매끈함은 실명이다」는 매력적이지만 아직 증명되지 않았다.</span>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-n">03</span><span class="lesson-h">첫 다수결은 답이 아니었다.</span>
+      투표 여섯 건이 1라운드에서 뒤집혔고(5:3→8:0 · 7:1→8:0 · 5:3→7:1 …), 매번 <b>반대표가 수정안을 만들었다.</b>
+      사면체는 반대 3이 <i>사라진 D·F·V</i>를 가리켜 복원됐고, 3D 지도는 <i>드래그가 텍스트 선택된다</i>는 실측으로 뒤집혔다. →
+      <b>반대는 다수결의 잡음이 아니라 답의 재료다.</b>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-n">04</span><span class="lesson-h">짓는 시간과 곡선을 움직인 사건이 어긋난다.</span>
+      커밋은 BUILD가 <b>75%</b>인데 마일스톤 40개 중 <b>절반이 SETBACK</b>이다.
+      <span class="caveat"><b>⚠️ 단 선별 편향일 수 있다</b> — 극적인 사건이 마일스톤으로 뽑히기 쉽다. 양쪽을 함께 남긴다.</span>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-n">05</span><span class="lesson-h">발견만 기록하고 수정을 기록하지 않으면 곡선이 거짓말을 한다.</span>
+      ← <b>이 사양을 만들다 발견했다.</b> 1차 계산에서 S가 6월 84 → 8월 69로 <b>떨어졌다.</b>
+      8월 원고가 6월보다 나쁠 리 없는데도. 원인은 규칙이 아니라 <b>사건 목록</b>이었다 —
+      T28·T29·T30의 <i>발견</i>은 넣고 <i>수정</i>을 안 넣었다. 우리 기록 습관이 그랬기 때문이다:
+      <b>보드에도 이슈에도 "찾았다"는 남고 "고쳤다"는 커밋 메시지에만 남는다.</b><br>
+      → 수정 이벤트 셋(41b·42b·44b)을 넣자 톱니가 되고 곡선이 제자리를 찾았다.
+      <b>다음 회차에는 발견과 수정을 같은 층에 기록할 것.</b>
+    </div>
   </div>
 
   <div style="margin-top:18px;font-size:10px;color:var(--dim);text-align:center;line-height:1.6;">
@@ -209,6 +334,104 @@ const FRAMES = [
   {date:'4-25',sha:'1ace4ee',S:65,D:78,msg:'타루의 동기 정확화 — 영웅주의',
    sNote:'카뮈 페스트의 핵심 모티프',dNote:'',
    why:'평탄. 인물 정확화.'},
+
+  // ── 4-28 → 8-20 · 32 milestone (채굴 40후보 → ⚓ 선별 → /reader 8:0 두 차례) ──
+  {date:'4-28',sha:'cd9968ed',S:72,D:82,msg:'5~8장 본문 1001행 + 커버레터',type:'BUILD',origin:'—',
+   sNote:'커버레터가 붙어 밖에 내밀 형태가 됨',dNote:'5~8장 본문 1001행',
+   why:'장·부 단위 BUILD — 본문과 커버레터가 함께 서면서 양쪽이 오른다.'},
+  {date:'4-29',sha:'62be9d12',S:67,D:82,msg:'팩트체크 Critical·High 22건',type:'SETBACK',origin:'self',
+   sNote:'읽어서 보이는 결함 22건',dNote:'',
+   why:'안에서 스스로 찾은 하루치 되돌림. 읽어서 보이므로 축 배정 규칙에 따라 D가 아니라 S다.'},
+  {date:'4-30',sha:'181797f3',S:62,D:82,msg:'책 지도 투표 되돌림 — 재투표',type:'SETBACK',origin:'ext',
+   sNote:'합의된 지도가 한 번 무너짐',dNote:'',
+   why:'밖에서 온 되돌림. 외부 지적이라 낙폭에 −3%p가 더 붙는다.'},
+  {date:'5-13',sha:'c926cae9',S:62,D:73,msg:'7장 앵커 1984 폐기 → 검은 튤립',type:'SETBACK',origin:'self',
+   sNote:'',dNote:'앵커를 갈아 7장 설계를 다시 지어야 함',
+   why:'지어짐 쪽 dip. 앵커 번복은 파이프라인을 열어야 보인다.'},
+  {date:'5-13',sha:'bc76a5ac',S:62,D:79,msg:'★ build_docx.sh — 첫 자(尺)',type:'METHOD',origin:'—',
+   sNote:'',dNote:'원고가 늘 같은 절차로 문서가 된다 — 첫 자(尺)',
+   why:'METHOD 자 신설. 자가 선 뒤에야 뒤의 T28·T29·T30이 보였다.'},
+  {date:'5-14',sha:'ebd91cb8',S:56,D:79,msg:'대표독자 7인 — 본질만 남기는 트림',type:'SETBACK',origin:'ext',
+   sNote:'독자 일곱이 덜어내라 했다',dNote:'',
+   why:'밖에서 온 지적 — 읽어서 보이는 것이라 팔림에만 왔다.'},
+  {date:'5-17',sha:'8f7b788c',S:65,D:83,msg:'8장→9장 구조 변경 · 5장 회전축',type:'BUILD',origin:'—',
+   sNote:'구조가 한 번에 설명되는 형태로',dNote:'5장이 회전축으로 자리 잡음',
+   why:'장·부 단위 BUILD — 구조 변경이 양쪽을 함께 올린다.'},
+  {date:'6-03',sha:'111de46f',S:72,D:86,msg:'10장 체제 확정(ring · 5↔10)',type:'BUILD',origin:'—',
+   sNote:'열 장 고리로 책 전체가 한 그림',dNote:'5↔10 거울쌍이 닫힘',
+   why:'장·부 단위 BUILD — 체제가 확정되자 양쪽이 함께 오른다.'},
+  {date:'6-03',sha:'803a6b89',S:72,D:83,msg:'한글 파일명 NFC/NFD 첫 발현',type:'SETBACK',origin:'self',
+   sNote:'',dNote:'같은 이름이 두 벌로 갈림',
+   why:'파이프라인을 열어야 보이는 결함 — 지어짐 쪽만 내려간다.'},
+  {date:'6-04',sha:'f3a98288',S:80,D:83,msg:'★ 2차 원고 발송',type:'BUILD',origin:'—',
+   sNote:'밖으로 나간 두 번째 원고',dNote:'',
+   why:'외부 도달 — 남은 거리의 30%. 곡선을 가장 크게 미는 유형이다.'},
+  {date:'6-14',sha:'f018e3f1',S:84,D:83,msg:'작업메모 20파일 삭제 ※S 상반기 최고',type:'METHOD',origin:'—',
+   sNote:'내부 메모가 걷히고 읽는 면만 남았다 — 상반기 최고',dNote:'',
+   why:'METHOD — 무엇을 안 보일지 정하는 것도 자(尺)다.'},
+  {date:'7-04',sha:'c49cd694',S:84,D:86,msg:'3차 원고 10장 재건 착수',type:'BUILD',origin:'—',
+   sNote:'',dNote:'열 장을 처음부터 다시 세운다',
+   why:'장 단위 BUILD — 아직 밖에 안 나갔으므로 지어짐만 오른다.'},
+  {date:'7-10',sha:'tolzul#52',S:78,D:86,msg:'투표 뒤집힘 — "명령형 6회 = 도끼"',type:'SETBACK',origin:'ext',
+   sNote:'명령형 여섯 번이 독자를 민다는 지적',dNote:'',
+   why:'밖에서 온 지적 — 읽어서 보이는 것이라 또 팔림에만 왔다. 반대표가 수정안을 만들었다.'},
+  {date:'7-18',sha:'tolzul#55',S:73,D:86,msg:'3D 지도 실측 버그 → 2D',type:'SETBACK',origin:'ext',
+   sNote:'드래그가 텍스트를 선택한다는 실측',dNote:'',
+   why:'다수결이 아니라 반대 하나의 실측이 답의 재료가 됐다.'},
+  {date:'7-18',sha:'66fd0f7d',S:78,D:89,msg:'10장 개고 — git 연대기 ※D 최고',type:'BUILD',origin:'—',
+   sNote:'',dNote:'git 연대기로 10장을 다시 썼다 — 전 구간 최고 89',
+   why:'장 단위 BUILD. 지어짐이 이 지점에서 가장 높다.'},
+  {date:'7-25',sha:'59509c1d',S:78,D:79,msg:'이틀 전 만든 3기구 폐기',type:'SETBACK',origin:'self',
+   sNote:'',dNote:'이틀치를 통째로 되돌림',
+   why:'이틀 이상 되돌리기. 낙폭은 심각도가 아니라 되돌리기 비용이다.'},
+  {date:'7-26',sha:'b38e801e',S:73,D:79,msg:'10장 §6이 sync에 덮여 유실',type:'SETBACK',origin:'self',
+   sNote:'읽는 면이 통째로 사라졌다',dNote:'',
+   why:'유실은 읽어서 보이므로 축 배정 규칙에 따라 D→S로 재배정했다.'},
+  {date:'7-27',sha:'cb92962b',S:68,D:79,msg:'내부 연료 485행이 샐 뻔 ※S 저점',type:'SETBACK',origin:'self',
+   sNote:'내부 연료 485행이 밖에 나갈 뻔했다 — 하반기 저점 68',dNote:'',
+   why:'밖에 나갈 뻔한 만큼 되돌리기 비용이 컸다.'},
+  {date:'8-05',sha:'e60ad3f9',S:77,D:79,msg:'★ 정명 — 「투향」',type:'BUILD',origin:'—',
+   sNote:'제목이 하나로 섰다 — 「투향」',dNote:'',
+   why:'외부 도달 유형(+30%). 이름이 서야 밖에서 부를 수 있다.'},
+  {date:'8-06',sha:'tolzul#62',S:72,D:79,msg:'해독밀도 역전 — "한 장 한 못"',type:'SETBACK',origin:'ext',
+   sNote:'한 장에 못 하나 — 읽는 비용이 뒤집혔다는 지적',dNote:'',
+   why:'밖에서 온 지적 — 세 번째로 팔림에만 왔다.'},
+  {date:'8-07',sha:'159adf93',S:78,D:79,msg:'★ /egg 6지표 — 한 인상을 재는 자',type:'METHOD',origin:'—',
+   sNote:'한 인상을 재는 자가 섰다',dNote:'',
+   why:'METHOD — 셋째 자(尺). 자가 선 뒤에야 이어지는 T28·T29·T30이 보였다.'},
+  {date:'8-09',sha:'T28',S:72,D:79,msg:'발송본에 집필 지시가 실려 있었다',type:'SETBACK',origin:'self',
+   sNote:'밖으로 갈 문서에 안에서만 쓸 말이 남아 있었다',dNote:'',
+   why:'vault에선 안 보이고 docx를 열어야 보이는 유형. 밖에서는 아무도 짚어주지 않았다.'},
+  {date:'8-09',sha:'T28',S:78,D:79,msg:'└ 수정 — 마커 부착, 잔여 0',type:'BUILD',origin:'—',
+   sNote:'마커를 붙여 잔여 0',dNote:'',
+   why:'발견과 같은 날의 수정. 발견만 적고 수정을 안 적으면 곡선이 거짓말을 한다.'},
+  {date:'8-09',sha:'T29',S:78,D:76,msg:'각주 삭제 순서가 뒤집혀 8장 무효 직전',type:'SETBACK',origin:'self',
+   sNote:'',dNote:'삭제 순서가 뒤집혀 8장이 무효가 될 뻔했다',
+   why:'무서웠지만 되돌리기는 한 줄 — 그래서 −4%다.'},
+  {date:'8-09',sha:'T29',S:78,D:81,msg:'└ 수정 — -e 두 식 순서 교체(한 줄)',type:'BUILD',origin:'—',
+   sNote:'',dNote:'-e 두 식의 순서를 바꾼 한 줄',
+   why:'한 줄로 고쳐졌다. 낙폭이 작았던 이유가 사후에 확인된다.'},
+  {date:'8-09',sha:'T23',S:82,D:81,msg:'「네 자리」 승격 10/10 — 신작 0건',type:'BUILD',origin:'—',
+   sNote:'열 장 모두에 「네 자리」가 섰다 — 신작 0건',dNote:'',
+   why:'있던 것을 승격했을 뿐 새로 지은 것은 없다.'},
+  {date:'8-13',sha:'T30',S:71,D:81,msg:'공개 웹에 스캐폴딩이 떠 있었다(495줄)',type:'SETBACK',origin:'self',
+   sNote:'495줄이 이미 남이 볼 수 있는 자리에 있었다',dNote:'',
+   why:'이미 밖에 나갔으므로 되돌리기 비용이 가장 크다 — 규칙상 −14%.'},
+  {date:'8-13',sha:'T30',S:79,D:81,msg:'└ 수정 — strip 공유, 게시본 0',type:'BUILD',origin:'—',
+   sNote:'strip을 공유해 게시본 0',dNote:'',
+   why:'같은 날 수정. 톱니의 오른쪽 이가 없으면 8월이 통째로 나빠 보인다.'},
+  {date:'8-13',sha:'T17',S:79,D:85,msg:'★ 3층 문지기 — 차단·경고·이중확인',type:'METHOD',origin:'—',
+   sNote:'',dNote:'차단·경고·이중확인 3층',
+   why:'METHOD — 넷째 자(尺). 같은 사고가 다시 밖으로 나가지 못하게 한다.'},
+  {date:'8-14',sha:'754593d7',S:84,D:88,msg:'발송 빌드 — 금지어 0·고아 각주 0 ※S 최고',type:'BUILD',origin:'—',
+   sNote:'금지어 0 · 고아 각주 0 — 구간 최고 84',dNote:'모든 자를 통과한 빌드',
+   why:'네 자가 다 통과한 날. 이 값이 팔림의 최고점이다.'},
+  {date:'8-14',sha:'gcb#88',S:69,D:88,msg:'편집자 — "경영서 읽는 거 같아요" ※최대 낙폭',type:'SETBACK',origin:'ext',
+   sNote:'같은 날 84에서 69로 — 밖에서 온 한 줄이 15를 깎았다',dNote:'D는 88 그대로다',
+   why:'전 검증을 통과한 그날, 밖에서 온 한 줄이 팔림만 깎았다. 지어짐은 움직이지 않았다.'},
+  {date:'8-20',sha:'T40',S:75,D:88,msg:'부제 삭제·세다 정의 반영 후 재빌드',type:'BUILD',origin:'—',
+   sNote:'부제를 지우고 세다 정의를 반영해 다시 빌드',dNote:'',
+   why:'밖에서 온 한 줄에 대한 응답. 끝점 S 75 · D 88.'},
 ];
 
 const $ = id => document.getElementById(id);
@@ -227,6 +450,15 @@ function render(i){
   if(f.sNote) $('sNote').textContent = f.sNote;
   if(f.dNote) $('dNote').textContent = f.dNote;
 
+  const badge = $('frameType');
+  if(f.type){
+    badge.style.display = 'inline-block';
+    badge.textContent = f.type + (f.origin === 'ext' ? ' · 밖' : (f.origin === 'self' ? ' · 안' : ''));
+    badge.className = 'frame-type t-' + f.type + (f.origin === 'ext' ? ' t-ext' : '');
+  } else {
+    badge.style.display = 'none';
+  }
+
   $('frameDate').textContent = f.date;
   $('frameSha').textContent = f.sha;
   $('frameMsg').textContent = f.msg;
@@ -239,48 +471,93 @@ function render(i){
   drawChart(i);
 }
 
+// 월별 발견(SETBACK) 건수 — 배경 띠 밀도
+const MONTH_DISCOVERY = {4:2, 5:4, 6:10, 7:14, 8:21};
+const C_S = '#D4A574', C_D = '#4A7A6B', C_CARD = '#1a2234';
+
 function drawChart(highlightIdx){
   const svg = $('chart');
-  const W=720, H=240, P={l:38,r:18,t:18,b:30};
+  const W=720, H=240, P={l:38,r:22,t:26,b:30};
   const cw = W-P.l-P.r, ch = H-P.t-P.b;
-  const xs = FRAMES.map((_,i) => P.l + (i/(FRAMES.length-1))*cw);
-  const yS = v => P.t + ch - (v/100)*ch;
-  const yD = v => P.t + ch - (v/100)*ch;
+  const n = FRAMES.length;
+  const xs = FRAMES.map((_,i) => P.l + (i/(n-1))*cw);
+  const gap = cw/(n-1);
+  const y = v => P.t + ch - (v/100)*ch;
 
   let html = '';
+
+  // ② SETBACK 밀도 배경 띠 (월별 발견 건수) — 곡선 뒤에 깔린다
+  const span = {};
+  FRAMES.forEach((f,i) => {
+    const m = parseInt(f.date.split('-')[0], 10);
+    if(!(m in span)) span[m] = {a:i, b:i}; else span[m].b = i;
+  });
+  const maxC = Math.max.apply(null, Object.keys(MONTH_DISCOVERY).map(k => MONTH_DISCOVERY[k]));
+  Object.keys(span).forEach(m => {
+    const c = MONTH_DISCOVERY[m];
+    if(c == null) return;
+    const x1 = Math.max(P.l, xs[span[m].a] - gap/2);
+    const x2 = Math.min(W-P.r, xs[span[m].b] + gap/2);
+    const a = (0.02 + (c/maxC)*0.10).toFixed(3);
+    html += `<rect x="${x1}" y="${P.t}" width="${Math.max(0, x2-x1)}" height="${ch}" fill="rgba(255,255,255,${a})"/>`;
+    html += `<text x="${(x1+x2)/2}" y="${P.t-9}" text-anchor="middle" fill="#5a6a7a" font-size="9" font-family="DM Mono">${m}월 ${c}</text>`;
+  });
+
   // grid
   for(let v=0; v<=100; v+=20){
-    const y = yS(v);
-    html += `<line x1="${P.l}" x2="${W-P.r}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,0.05)"/>`;
-    html += `<text x="${P.l-6}" y="${y+4}" text-anchor="end" fill="#5a6a7a" font-size="10" font-family="DM Mono">${v}</text>`;
+    const gy = y(v);
+    html += `<line x1="${P.l}" x2="${W-P.r}" y1="${gy}" y2="${gy}" stroke="rgba(255,255,255,0.05)"/>`;
+    html += `<text x="${P.l-6}" y="${gy+4}" text-anchor="end" fill="#5a6a7a" font-size="10" font-family="DM Mono">${v}</text>`;
   }
   // x labels (selected)
-  const xLabels = [0, 6, 8, 12, 18];
-  xLabels.forEach(i => {
-    if(i < FRAMES.length){
+  [0, 19, 22, 26, 30, 37, 50].forEach(i => {
+    if(i < n){
       html += `<text x="${xs[i]}" y="${H-10}" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="DM Mono">${FRAMES[i].date}</text>`;
     }
   });
 
   // S line
-  const sPts = FRAMES.slice(0, highlightIdx+1).map((f,i)=>`${xs[i]},${yS(f.S)}`).join(' ');
-  html += `<polyline points="${sPts}" stroke="#D4A574" stroke-width="2" fill="none"/>`;
+  const sPts = FRAMES.slice(0, highlightIdx+1).map((f,i)=>`${xs[i]},${y(f.S)}`).join(' ');
+  html += `<polyline points="${sPts}" stroke="${C_S}" stroke-width="2" fill="none"/>`;
   // D line
-  const dPts = FRAMES.slice(0, highlightIdx+1).map((f,i)=>`${xs[i]},${yD(f.D)}`).join(' ');
-  html += `<polyline points="${dPts}" stroke="#4A7A6B" stroke-width="2" fill="none"/>`;
+  const dPts = FRAMES.slice(0, highlightIdx+1).map((f,i)=>`${xs[i]},${y(f.D)}`).join(' ');
+  html += `<polyline points="${dPts}" stroke="${C_D}" stroke-width="2" fill="none"/>`;
 
-  // dots
+  // ③ 발견↔수정 톱니 — 같은 날 한 사건임을 선으로 묶는다
+  FRAMES.forEach((f,i) => {
+    if(i === 0 || i > highlightIdx || f.msg.indexOf('└') !== 0) return;
+    const p = FRAMES[i-1];
+    const useS = (f.S !== p.S);
+    const col = useS ? C_S : C_D;
+    const y1 = useS ? y(p.S) : y(p.D);
+    const y2 = useS ? y(f.S) : y(f.D);
+    const yb = Math.max(y1, y2) + 13;
+    html += `<path d="M${xs[i-1]},${y1} L${xs[i-1]},${yb} L${xs[i]},${yb} L${xs[i]},${y2}"`
+         +  ` fill="none" stroke="${col}" stroke-width="1.2" stroke-dasharray="2 2" stroke-opacity="0.9"/>`;
+    html += `<text x="${(xs[i-1]+xs[i])/2}" y="${yb+9}" text-anchor="middle" fill="${col}" font-size="9" font-family="DM Mono">↺</text>`;
+  });
+
+  // dots — ① origin: ext(밖에서 옴)=속 빈 · self/—(안에서 찾음)=속 찬
   FRAMES.forEach((f,i) => {
     if(i > highlightIdx) return;
-    const r = i === highlightIdx ? 5 : 2.5;
-    html += `<circle cx="${xs[i]}" cy="${yS(f.S)}" r="${r}" fill="#D4A574"/>`;
-    html += `<circle cx="${xs[i]}" cy="${yD(f.D)}" r="${r}" fill="#4A7A6B"/>`;
+    const r = i === highlightIdx ? 5 : 2.6;
+    const ext = f.origin === 'ext';
+    [[f.S, C_S], [f.D, C_D]].forEach(([v, col]) => {
+      html += ext
+        ? `<circle cx="${xs[i]}" cy="${y(v)}" r="${r}" fill="${C_CARD}" stroke="${col}" stroke-width="1.6"/>`
+        : `<circle cx="${xs[i]}" cy="${y(v)}" r="${r}" fill="${col}"/>`;
+    });
   });
 
   // current value labels
   const cur = FRAMES[highlightIdx];
-  html += `<text x="${xs[highlightIdx]+8}" y="${yS(cur.S)+4}" fill="#D4A574" font-size="11" font-family="DM Mono" font-weight="700">${cur.S}</text>`;
-  html += `<text x="${xs[highlightIdx]+8}" y="${yD(cur.D)+4}" fill="#4A7A6B" font-size="11" font-family="DM Mono" font-weight="700">${cur.D}</text>`;
+  const flip = xs[highlightIdx] > W - P.r - 46;
+  const lx = xs[highlightIdx] + (flip ? -9 : 9);
+  const anchor = flip ? 'end' : 'start';
+  const sy = y(cur.S), dy = y(cur.D);
+  const push = Math.abs(sy - dy) < 12 ? (sy <= dy ? -5 : 5) : 0;
+  html += `<text x="${lx}" y="${sy+4-push}" text-anchor="${anchor}" fill="${C_S}" font-size="11" font-family="DM Mono" font-weight="700">${cur.S}</text>`;
+  html += `<text x="${lx}" y="${dy+4+push}" text-anchor="${anchor}" fill="${C_D}" font-size="11" font-family="DM Mono" font-weight="700">${cur.D}</text>`;
 
   svg.innerHTML = html;
 }
