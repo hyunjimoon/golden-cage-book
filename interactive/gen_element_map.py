@@ -16,7 +16,9 @@ import os, re, json, glob, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-ELEM_DIR = os.path.join(ROOT, "chapters", "elements")
+# 2026-09-05: sync가 elements를 층으로 갈랐다 — thought(🍇 L2) / episode(🎞️ L3).
+# 이 지도는 L2 생각원소만 그린다. 구 경로(elements/*.md)는 sync가 지우므로 glob이 0을 낸다.
+ELEM_DIR = os.path.join(ROOT, "chapters", "elements", "thought")
 OUT = os.path.join(HERE, "element_map.html")
 
 FAMILIES = {
@@ -31,8 +33,10 @@ FAMILIES = {
 # 장 번호 → 사람 이름(허브 라벨). 5·10은 회전축 거울쌍.
 CHAP_NAME = {
     "1": "1 거울", "2": "2 망원경", "3": "3 스테인굴레스", "4": "4 시계",
-    "5": "5 빅시스터", "6": "6 나비", "7": "7 튤립", "8": "8 안개",
-    "9": "9 까마귀", "10": "10 에필로그",
+    "5": "5 101호", "6": "6 나비", "7": "7 튤립", "8": "8 안개",
+    "9": "9 까마귀", "10": "10 투향",
+    # 2026-09-05 교정: 5·10 라벨이 구판이었다(빅시스터·에필로그).
+    # 현행 원고는 5🐀_101(101₂호) · 10🧫_101(101₃호, 제목 「투향」).
 }
 AUX_HUB = "전반·부록·도식"  # 전/부N/dgm/session/Lex/감정/표지/feedback/전략 등
 
