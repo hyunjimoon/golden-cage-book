@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 1470" width="980" height="1470" font-family="Noto Sans KR, Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<rect width="980" height="1470" fill="#FFFFFF"/>
+<defs><pattern id="hp" width="7" height="7" patternTransform="rotate(40)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#14130F" stroke-width="0.9" opacity="0.30"/></pattern></defs>
+<text x="56" y="60" font-size="19" font-weight="700" fill="#14130F">그림 1 — 판 두 개, 한 번의 반전</text>
+<text x="56" y="84" font-size="12.5" fill="#6E6961">방 넷은 판에 눕고 한 방(4·9)만 판을 뚫고 선다. 두 판은 중심을 지나 뒤집으면 포개진다.</text>
+<line x1="296.0" y1="370.0" x2="684.0" y2="830.0" stroke="#6E6961" stroke-width="1.0" stroke-dasharray="5 4" opacity="0.9"/>
+<line x1="684.0" y1="370.0" x2="296.0" y2="830.0" stroke="#6E6961" stroke-width="1.0" stroke-dasharray="5 4" opacity="0.9"/>
+<line x1="396.9" y1="540.2" x2="583.1" y2="659.8" stroke="#6E6961" stroke-width="1.0" stroke-dasharray="5 4" opacity="0.9"/>
+<line x1="490.0" y1="176.0" x2="490.0" y2="1024.0" stroke="#6E6961" stroke-width="1.0" stroke-dasharray="5 4" opacity="0.9"/>
+<line x1="490.0" y1="370.0" x2="490.0" y2="830.0" stroke="#6E6961" stroke-width="1.0" stroke-dasharray="5 4" opacity="0.9"/>
+<polygon points="191.6,549.8 591.6,549.8 788.4,190.2 388.4,190.2" fill="#FFFFFF" stroke="#6E6961" stroke-width="0.9" stroke-opacity="0.75"/>
+<line x1="388.4" y1="190.2" x2="788.4" y2="190.2" stroke="#14130F" stroke-width="2.2"/>
+<polygon points="490.0,370.0 296.0,370.0 490.0,176.0" fill="url(#hp)" stroke="#14130F" stroke-width="0.9" stroke-opacity="0.4"/>
+<polygon points="490.0,370.0 684.0,370.0 396.9,540.2" fill="none" stroke="#14130F" stroke-width="0.9" stroke-opacity="0.28" stroke-dasharray="4 4"/>
+<line x1="446.0" y1="370.0" x2="296.0" y2="370.0" stroke="#14130F" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="296.0" cy="370.0" r="15" fill="#FFFFFF" stroke="#14130F" stroke-width="1.8"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="290.2,377.2 290.2,368.3" fill="none"/><polyline points="290.2,368.3 295.9,363.4 301.6,368.3 301.6,377.2" fill="none"/><line x1="295.9" y1="364.2" x2="295.9" y2="377.2"/><line x1="290.2" y1="371.5" x2="301.6" y2="371.5"/></g>
+<text x="265.0" y="375.0" font-size="15" font-weight="700" text-anchor="end" fill="#14130F">3</text>
+<line x1="534.0" y1="370.0" x2="684.0" y2="370.0" stroke="#14130F" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="684.0" cy="370.0" r="15" fill="#FFFFFF" stroke="#14130F" stroke-width="1.8"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="677.4,374.8 682.3,369.9 690.4,363.4" fill="none"/><polyline points="679.9,377.2 684.7,372.3" fill="none"/><circle cx="690.0" cy="363.8" r="1.3" fill="none"/></g>
+<text x="715.0" y="375.0" font-size="15" font-weight="700" text-anchor="start" fill="#14130F">2</text>
+<line x1="468.9" y1="408.6" x2="396.9" y2="540.2" stroke="#14130F" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="396.9" cy="540.2" r="15" fill="#FFFFFF" stroke="#14130F" stroke-width="1.8"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="391.9" y="532.8" width="9.7" height="14.6" rx="4.0" fill="none"/><line x1="394.3" y1="536.0" x2="394.3" y2="542.5"/></g>
+<text x="382.0" y="572.4" font-size="15" font-weight="700" text-anchor="end" fill="#14130F">1</text>
+<line x1="490.0" y1="326.0" x2="490.0" y2="176.0" stroke="#14130F" stroke-width="7" stroke-linecap="round"/>
+<circle cx="490.0" cy="176.0" r="17" fill="#FFFFFF" stroke="#14130F" stroke-width="2.4"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="489.9" cy="175.9" r="7.8" fill="none"/><line x1="489.9" y1="175.9" x2="489.9" y2="171.3"/><line x1="489.9" y1="175.9" x2="493.6" y2="177.7"/></g>
+<text x="490.0" y="148.0" font-size="15" font-weight="700" text-anchor="middle" fill="#14130F">4</text>
+<line x1="490.0" y1="196.2" x2="490.0" y2="184.2" stroke="#FFFFFF" stroke-width="10"/>
+<polyline points="499.0,178.2 511.0,178.2 511.0,190.2" fill="none" stroke="#14130F" stroke-width="1.2"/>
+<polygon points="526.0,370.0 527.4,367.2 528.5,364.5 529.2,361.8 529.7,359.2 529.9,356.7 529.8,354.2 529.4,351.9 528.7,349.7 527.7,347.7 526.4,345.8 524.8,344.1 523.0,342.7 520.9,341.4 518.6,340.3 516.0,339.5 513.3,338.9 510.4,338.5 507.3,338.4 504.1,338.5 500.8,338.9 497.4,339.5 493.9,340.3 490.5,341.4 487.0,342.7 483.5,344.1 480.1,345.8 476.8,347.7 473.5,349.7 470.4,351.9 467.5,354.2 464.7,356.7 462.1,359.2 459.7,361.8 457.5,364.5 455.6,367.2 454.0,370.0 452.6,372.8 451.5,375.5 450.8,378.2 450.3,380.8 450.1,383.3 450.2,385.8 450.6,388.1 451.3,390.3 452.3,392.3 453.6,394.2 455.2,395.9 457.0,397.3 459.1,398.6 461.4,399.7 464.0,400.5 466.7,401.1 469.6,401.5 472.7,401.6 475.9,401.5 479.2,401.1 482.6,400.5 486.1,399.7 489.5,398.6 493.0,397.3 496.5,395.9 499.9,394.2 503.2,392.3 506.5,390.3 509.6,388.1 512.5,385.8 515.3,383.3 517.9,380.8 520.3,378.2 522.5,375.5 524.4,372.8" fill="#FFFFFF" stroke="#14130F" stroke-width="2"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="483.9" y="351.6" width="10.1" height="8.6" rx="1.1" fill="none"/><circle cx="488.9" cy="355.9" r="1.3" fill="none"/></g>
+<text x="490" y="383" font-size="14" font-weight="700" text-anchor="middle" fill="#14130F">5</text>
+<text x="244" y="176" font-size="12" font-weight="700" letter-spacing="2" fill="#6E6961">1부 · 새장</text>
+<polygon points="191.6,1009.8 591.6,1009.8 788.4,650.2 388.4,650.2" fill="#FFFFFF" stroke="#6E6961" stroke-width="0.9" stroke-opacity="0.75"/>
+<line x1="388.4" y1="650.2" x2="788.4" y2="650.2" stroke="#14130F" stroke-width="2.2"/>
+<polygon points="490.0,830.0 684.0,830.0 490.0,1024.0" fill="url(#hp)" stroke="#14130F" stroke-width="0.9" stroke-opacity="0.4"/>
+<polygon points="490.0,830.0 296.0,830.0 583.1,659.8" fill="none" stroke="#14130F" stroke-width="0.9" stroke-opacity="0.28" stroke-dasharray="4 4"/>
+<line x1="534.0" y1="830.0" x2="684.0" y2="830.0" stroke="#14130F" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="684.0" cy="830.0" r="15" fill="#FFFFFF" stroke="#14130F" stroke-width="1.8"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="677.4,826.7 681.5,825.0 686.3,827.5 690.4,825.9" fill="none"/><polyline points="677.4,830.7 681.5,829.1 686.3,831.5 690.4,829.9" fill="none"/><polyline points="677.4,834.8 681.5,833.1 686.3,835.6 690.4,834.0" fill="none"/></g>
+<text x="715.0" y="835.0" font-size="15" font-weight="700" text-anchor="start" fill="#14130F">8</text>
+<line x1="446.0" y1="830.0" x2="296.0" y2="830.0" stroke="#14130F" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="296.0" cy="830.0" r="15" fill="#FFFFFF" stroke="#14130F" stroke-width="1.8"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="295.9" cy="827.5" r="4.5" fill="none"/><line x1="295.9" y1="831.9" x2="295.9" y2="837.2"/><polyline points="295.9,834.8 291.1,833.1" fill="none"/><polyline points="295.9,834.8 300.8,833.1" fill="none"/></g>
+<text x="265.0" y="835.0" font-size="15" font-weight="700" text-anchor="end" fill="#14130F">7</text>
+<line x1="511.1" y1="791.4" x2="583.1" y2="659.8" stroke="#14130F" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="583.1" cy="659.8" r="15" fill="#FFFFFF" stroke="#14130F" stroke-width="1.8"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="583.1,659.7 576.6,654.1 577.4,663.8 583.1,659.7 589.5,654.1 588.7,663.8 583.1,659.7" fill="none"/></g>
+<text x="598.0" y="637.6" font-size="15" font-weight="700" text-anchor="start" fill="#14130F">6</text>
+<line x1="490.0" y1="874.0" x2="490.0" y2="1024.0" stroke="#14130F" stroke-width="7" stroke-linecap="round"/>
+<circle cx="490.0" cy="1024.0" r="17" fill="#FFFFFF" stroke="#14130F" stroke-width="2.4"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="482.6,1025.7 491.7,1020.2 497.2,1025.7 491.7,1029.4 482.6,1025.7" fill="none"/><circle cx="488.1" cy="1024.8" r="1.3" fill="none"/></g>
+<text x="490.0" y="1062.0" font-size="15" font-weight="700" text-anchor="middle" fill="#14130F">9</text>
+<line x1="490.0" y1="1003.8" x2="490.0" y2="1015.8" stroke="#FFFFFF" stroke-width="10"/>
+<polyline points="481.0,1021.8 469.0,1021.8 469.0,1009.8" fill="none" stroke="#14130F" stroke-width="1.2"/>
+<polygon points="526.0,830.0 527.4,827.2 528.5,824.5 529.2,821.8 529.7,819.2 529.9,816.7 529.8,814.2 529.4,811.9 528.7,809.7 527.7,807.7 526.4,805.8 524.8,804.1 523.0,802.7 520.9,801.4 518.6,800.3 516.0,799.5 513.3,798.9 510.4,798.5 507.3,798.4 504.1,798.5 500.8,798.9 497.4,799.5 493.9,800.3 490.5,801.4 487.0,802.7 483.5,804.1 480.1,805.8 476.8,807.7 473.5,809.7 470.4,811.9 467.5,814.2 464.7,816.7 462.1,819.2 459.7,821.8 457.5,824.5 455.6,827.2 454.0,830.0 452.6,832.8 451.5,835.5 450.8,838.2 450.3,840.8 450.1,843.3 450.2,845.8 450.6,848.1 451.3,850.3 452.3,852.3 453.6,854.2 455.2,855.9 457.0,857.3 459.1,858.6 461.4,859.7 464.0,860.5 466.7,861.1 469.6,861.5 472.7,861.6 475.9,861.5 479.2,861.1 482.6,860.5 486.1,859.7 489.5,858.6 493.0,857.3 496.5,855.9 499.9,854.2 503.2,852.3 506.5,850.3 509.6,848.1 512.5,845.8 515.3,843.3 517.9,840.8 520.3,838.2 522.5,835.5 524.4,832.8" fill="#FFFFFF" stroke="#14130F" stroke-width="2"/>
+<g stroke="#14130F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="483.9" y1="821.0" x2="493.2" y2="811.6"/><polyline points="488.9,810.9 494.0,810.9 494.0,815.9" fill="none"/></g>
+<text x="490" y="843" font-size="14" font-weight="700" text-anchor="middle" fill="#14130F">10</text>
+<text x="244" y="636" font-size="12" font-weight="700" letter-spacing="2" fill="#6E6961">2부 · 둥지</text>
+<circle cx="490" cy="600.0" r="20" fill="#FFFFFF"/>
+<circle cx="490" cy="600.0" r="9" fill="none" stroke="#14130F" stroke-width="1.8"/>
+<circle cx="490" cy="600.0" r="2.6" fill="#14130F"/>
+<text x="516" y="596.0" font-size="12" font-weight="700" fill="#14130F">반전 중심</text>
+<text x="516" y="612.0" font-size="11" fill="#6E6961">다섯 짝이 여기서 만난다</text>
+<line x1="56" y1="1110" x2="924" y2="1110" stroke="#14130F" stroke-width="0.9"/>
+<text x="56" y="1136" font-size="12.5" font-weight="700" fill="#14130F">1</text>
+<text x="86" y="1136" font-size="12.5" fill="#14130F">거울새장</text>
+<text x="226" y="1136" font-size="12" fill="#6E6961">욕망해</text>
+<text x="306" y="1136" font-size="11.5" fill="#6E6961">짝 6 나비</text>
+<text x="56" y="1162" font-size="12.5" font-weight="700" fill="#14130F">2</text>
+<text x="86" y="1162" font-size="12.5" fill="#14130F">망원경새장</text>
+<text x="226" y="1162" font-size="12" fill="#6E6961">상상해</text>
+<text x="306" y="1162" font-size="11.5" fill="#6E6961">짝 7 튤립</text>
+<text x="56" y="1188" font-size="12.5" font-weight="700" fill="#14130F">3</text>
+<text x="86" y="1188" font-size="12.5" fill="#14130F">스테인굴레스</text>
+<text x="226" y="1188" font-size="12" fill="#6E6961">설득해</text>
+<text x="306" y="1188" font-size="11.5" fill="#6E6961">짝 8 안개</text>
+<text x="56" y="1214" font-size="12.5" font-weight="700" fill="#14130F">4</text>
+<text x="86" y="1214" font-size="12.5" fill="#14130F">시계새장</text>
+<text x="226" y="1214" font-size="12" fill="#6E6961">폭파해</text>
+<text x="306" y="1214" font-size="11.5" fill="#6E6961">짝 9 까마귀</text>
+<text x="56" y="1240" font-size="12.5" font-weight="700" fill="#14130F">5</text>
+<text x="86" y="1240" font-size="12.5" fill="#14130F">101₂호</text>
+<text x="226" y="1240" font-size="12" fill="#6E6961">★멈춤</text>
+<text x="306" y="1240" font-size="11.5" fill="#6E6961">짝 10 투향</text>
+<text x="508" y="1136" font-size="12.5" font-weight="700" fill="#14130F">6</text>
+<text x="538" y="1136" font-size="12.5" fill="#14130F">나비</text>
+<text x="678" y="1136" font-size="12" fill="#6E6961">사용자</text>
+<text x="758" y="1136" font-size="11.5" fill="#6E6961">짝 1 거울새장</text>
+<text x="508" y="1162" font-size="12.5" font-weight="700" fill="#14130F">7</text>
+<text x="538" y="1162" font-size="12.5" fill="#14130F">튤립</text>
+<text x="678" y="1162" font-size="12" fill="#6E6961">기술자</text>
+<text x="758" y="1162" font-size="11.5" fill="#6E6961">짝 2 망원경새장</text>
+<text x="508" y="1188" font-size="12.5" font-weight="700" fill="#14130F">8</text>
+<text x="538" y="1188" font-size="12.5" fill="#14130F">안개</text>
+<text x="678" y="1188" font-size="12" fill="#6E6961">투자자</text>
+<text x="758" y="1188" font-size="11.5" fill="#6E6961">짝 3 스테인굴레스</text>
+<text x="508" y="1214" font-size="12.5" font-weight="700" fill="#14130F">9</text>
+<text x="538" y="1214" font-size="12.5" fill="#14130F">까마귀</text>
+<text x="678" y="1214" font-size="12" fill="#6E6961">협력자</text>
+<text x="758" y="1214" font-size="11.5" fill="#6E6961">짝 4 시계새장</text>
+<text x="508" y="1240" font-size="12.5" font-weight="700" fill="#14130F">10</text>
+<text x="538" y="1240" font-size="12.5" fill="#14130F">투향</text>
+<text x="678" y="1240" font-size="12" fill="#6E6961">101₃호</text>
+<text x="758" y="1240" font-size="11.5" fill="#6E6961">짝 5 101₂호</text>
+<text x="56" y="1288" font-size="11.5" fill="#6E6961">빗금 날개는 판을 뚫는 팔이 낀 날개, 점선 날개는 판에 누운 날개다. 두 날개가 어긋나 한 판만으로는 점대칭이 아니다 — 그것이 뒤틀림이고, 그래서 판이 둘이다.</text>
+<text x="56" y="1314" font-size="11.5" font-weight="700" fill="#14130F">한 글자 비틂 — <tspan font-weight="400" fill="#6E6961">뒤집으면 무엇이 무엇으로 바뀌나</tspan></text>
+<text x="56" y="1336" font-size="11.5" fill="#6E6961"><tspan font-weight="700" fill="#14130F">1↔6</tspan>  모르고 입기 → 알면서 입기</text>
+<text x="508" y="1336" font-size="11.5" fill="#6E6961"><tspan font-weight="700" fill="#14130F">2↔7</tspan>  관조 마비 → 분포 사고</text>
+<text x="56" y="1356" font-size="11.5" fill="#6E6961"><tspan font-weight="700" fill="#14130F">3↔8</tspan>  닫힌 확신 → 열린 협상</text>
+<text x="508" y="1356" font-size="11.5" fill="#6E6961"><tspan font-weight="700" fill="#14130F">4↔9</tspan>  빌린 질서 → 正→遺 명명</text>
+<text x="56" y="1376" font-size="11.5" fill="#6E6961"><tspan font-weight="700" fill="#14130F">5↔10</tspan>  빚을 쓴다 → 빚을 갚는다</text>
+<line x1="56" y1="1408" x2="924" y2="1408" stroke="#6E6961" stroke-width="0.6" opacity="0.5"/>
+<text x="56" y="1428" font-size="11.5" fill="#14130F"><tspan font-weight="700">실측</tspan>  para 3짝 부피 3↔8 1.14× · 2↔7 1.29× · 4↔9 1.22×  →  불균형 4.8%   (목표 1.00× · 0%)</text>
+</svg>
