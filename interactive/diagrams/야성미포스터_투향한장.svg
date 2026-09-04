@@ -1,0 +1,1237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3820 4268" width="3820" height="4268" font-family="Noto Sans KR, Apple SD Gothic Neo, Helvetica Neue, sans-serif">
+<rect width="3820" height="4268" fill="#FBF8F0"/>
+<style>
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p1_t  { fill: #2D5FA8; }
+    .p1_ink{ fill: #2b2620; }
+    .p1_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p2_t  { fill: #B0821F; }
+    .p2_ink{ fill: #2b2620; }
+    .p2_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p3_t  { fill: #C8102E; }
+    .p3_ink{ fill: #2b2620; }
+    .p3_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p4_t  { fill: #1B1B1E; }
+    .p4_ink{ fill: #2b2620; }
+    .p4_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p5_t  { fill: #8A6A12; }
+    .p5_ink{ fill: #2b2620; }
+    .p5_gy { fill: #6a6355; }
+    .p5_d  { fill: #2D5FA8; }
+    .p5_b  { fill: #B0821F; }
+    .p5_a  { fill: #C8102E; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p6_t  { fill: #2D5FA8; }
+    .p6_ink{ fill: #2b2620; }
+    .p6_gy { fill: #6a6355; }
+    .p6_h  { fill: #8A6A12; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p7_t  { fill: #B0821F; }
+    .p7_ink{ fill: #2b2620; }
+    .p7_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p8_t  { fill: #C8102E; }
+    .p8_ink{ fill: #2b2620; }
+    .p8_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p9_t  { fill: #1B1B1E; }
+    .p9_ink{ fill: #2b2620; }
+    .p9_gy { fill: #6a6355; }
+  
+
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .p10_t  { fill: #8A6A12; }
+    .p10_ink{ fill: #2b2620; }
+    .p10_gy { fill: #6a6355; }
+    .p10_d  { fill: #2D5FA8; }
+    .p10_b  { fill: #B0821F; }
+    .p10_a  { fill: #C8102E; }
+  </style>
+<polygon points="1910,1184 3230,1776 3230,2368 1910,2960 590,2368 590,1776" fill="none" stroke="#C9C0AE" stroke-width="11"/>
+<line x1="1910" y1="1184" x2="1910" y2="2960" stroke="#C9C0AE" stroke-width="5" stroke-dasharray="22 18"/>
+<line x1="590" y1="1776" x2="3230" y2="2368" stroke="#C9C0AE" stroke-width="5" stroke-dasharray="22 18"/>
+<line x1="3230" y1="1776" x2="590" y2="2368" stroke="#C9C0AE" stroke-width="5" stroke-dasharray="22 18"/>
+<line x1="60" y1="2043" x2="3760" y2="2043" stroke="#E0A526" stroke-width="6" stroke-dasharray="30 18" opacity="0.9"/>
+<rect x="1360" y="298" width="1100" height="532" rx="150" fill="none" stroke="#C8102E" stroke-width="6" opacity="0.4" stroke-dasharray="34 20"/>
+<rect x="1360" y="3258" width="1100" height="532" rx="150" fill="none" stroke="#2D5FA8" stroke-width="6" opacity="0.4" stroke-dasharray="34 20"/>
+<rect x="1430" y="3274" width="960" height="58" fill="#2D5FA8" fill-opacity="0.10"/>
+<rect x="1430" y="3274" width="960" height="58" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<text x="1452" y="3314" font-size="42" font-weight="700" fill="#2D5FA8">1 🪞 거울새장 — 욕망해</text>
+<g transform="translate(1430,3332)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p1_t">1장 거울새장 — 욕망해</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p1_gy" letter-spacing="2">D 욕망 | 볼 사람을 빼봐라 | 마담 보바리 × Quibi</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
+  <g stroke="#2D5FA8" stroke-width="6" opacity="0.16">
+    <line x1="76"  y1="74" x2="76"  y2="359"/>
+    <line x1="100" y1="74" x2="100" y2="359"/>
+    <line x1="124" y1="74" x2="124" y2="359"/>
+    <line x1="148" y1="74" x2="148" y2="359"/>
+    <line x1="172" y1="74" x2="172" y2="359"/>
+    <line x1="196" y1="74" x2="196" y2="359"/>
+    <line x1="220" y1="74" x2="220" y2="359"/>
+    <line x1="244" y1="74" x2="244" y2="359"/>
+  </g>
+  <rect x="60" y="160" width="190" height="130" fill="#F3EEE3" opacity="0.92"/>
+  <text x="155" y="185" text-anchor="middle" font-size="15" font-weight="700" class="p1_t" letter-spacing="3">거울 새장</text>
+  <text x="155" y="207" text-anchor="middle" font-size="10.5" class="p1_ink">남의 욕망이 내 욕망으로 비친다</text>
+  <text x="155" y="243" text-anchor="middle" font-size="9" class="p1_gy">엠마 — 소설이 심어준 파리</text>
+  <text x="155" y="258" text-anchor="middle" font-size="9" class="p1_gy">Quibi — 할리우드가 심어준 모바일</text>
+  <text x="155" y="336" text-anchor="middle" font-size="10.5" class="p1_t" font-style="italic">"이 욕망은 어디서 왔는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <!-- ③ 중앙 개념도 — 지라르 삼각형 -->
+  <defs>
+    <marker id="p1_ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D5FA8"/>
+    </marker>
+    <marker id="p1_arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <circle cx="520" cy="95" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
+  <text x="520" y="92" text-anchor="middle" font-size="10.5" font-weight="700" class="p1_t">매개자</text>
+  <text x="520" y="105" text-anchor="middle" font-size="8" class="p1_gy">소설 · 할리우드 · 회의실</text>
+
+  <circle cx="420" cy="235" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
+  <text x="420" y="232" text-anchor="middle" font-size="10.5" font-weight="700" class="p1_t">주체</text>
+  <text x="420" y="245" text-anchor="middle" font-size="8" class="p1_gy">엠마 / 카첸버그</text>
+
+  <circle cx="620" cy="235" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
+  <text x="620" y="232" text-anchor="middle" font-size="10.5" font-weight="700" class="p1_t">대상</text>
+  <text x="620" y="245" text-anchor="middle" font-size="8" class="p1_gy">파리 / 프리미엄 모바일</text>
+
+  <line x1="497" y1="114" x2="443" y2="209" stroke="#2D5FA8" stroke-width="1.2" marker-start="url(#p1_ar)"/>
+  <line x1="543" y1="114" x2="597" y2="209" stroke="#2D5FA8" stroke-width="1.2" marker-end="url(#p1_ar)"/>
+  <line x1="450" y1="235" x2="590" y2="235" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4"/>
+  <text x="447" y="158" font-size="8.5" class="p1_t" transform="rotate(-38,447,158)">모방</text>
+  <text x="575" y="158" font-size="8.5" class="p1_t" transform="rotate(38,575,158)">욕망 투사</text>
+  <text x="520" y="228" text-anchor="middle" font-size="7.5" class="p1_gy">"내가 원한다" — 착각</text>
+
+  <!-- ④ 분기 노드 -->
+  <circle cx="520" cy="286" r="13" fill="none" stroke="#2D5FA8" stroke-width="1.2"/>
+  <text x="520" y="290" text-anchor="middle" font-size="9" font-weight="700" class="p1_t">분기</text>
+
+  <path d="M 506 291 C 468 300, 444 306, 434 314" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p1_arg)"/>
+  <rect x="366" y="322" width="132" height="52" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="432" y="339" text-anchor="middle" font-size="10" font-weight="700" class="p1_gy">무모 — 질주</text>
+  <text x="432" y="353" text-anchor="middle" font-size="8" class="p1_gy">장부를 안 펴고 달린다</text>
+  <text x="432" y="367" text-anchor="middle" font-size="8" class="p1_gy">Quibi 17.5억 달러 → 6개월</text>
+
+  <path d="M 534 291 C 572 300, 596 306, 606 314" fill="none" stroke="#2D5FA8" stroke-width="2.2" marker-end="url(#p1_ar)"/>
+  <rect x="544" y="322" width="136" height="52" rx="3" fill="#2D5FA8" fill-opacity="0.06" stroke="#2D5FA8" stroke-width="1.2"/>
+  <text x="612" y="339" text-anchor="middle" font-size="10" font-weight="700" class="p1_t">용기 — 검증</text>
+  <text x="612" y="353" text-anchor="middle" font-size="8" class="p1_ink">장부를 펴고, 확인 후 뛴다</text>
+  <text x="612" y="367" text-anchor="middle" font-size="8" class="p1_ink">아래를 보고 뛴 것 = 용기</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="108" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p1_t">삼각형 바깥에 서라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p1_ink">Thiel — 모방 바깥이 독점</text>
+  <text x="832" y="145" text-anchor="middle" font-size="8.5" class="p1_ink">Maples — 합의 바깥, 그리고 옳아야</text>
+  <line x1="758" y1="157" x2="906" y2="157" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="173" text-anchor="middle" font-size="8.5" class="p1_gy">반례 · 오메 — 꿈 없이 살아남았다</text>
+  <text x="832" y="188" text-anchor="middle" font-size="8.5" class="p1_gy">→ 살아남았으나 풍자로 끝났다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p1_ink">빌린 옷은 벗는 순간이 아니라 알아채는 순간에 가벼워진다</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p1_gy">→ 이월 · "잘 보는 눈은, 움직이지 않을 이유도 잘 본다" → 2장</text>
+</g>
+<rect x="1430" y="3332" width="960" height="440" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<rect x="2750" y="2090" width="960" height="58" fill="#2D5FA8" fill-opacity="0.10"/>
+<rect x="2750" y="2090" width="960" height="58" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<text x="2772" y="2130" font-size="42" font-weight="700" fill="#2D5FA8">2 🔭 망원경새장 — 상상해</text>
+<g transform="translate(2750,2148)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p2_t">2장 망원경새장 — 상상해</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p2_gy" letter-spacing="2">B 믿음 | 출시 버튼을 눌러라 | 표범 × 필름·소재 산업</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#B0821F" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#B0821F" stroke-width="2.5"/>
+  <!-- 망원경 -->
+  <g stroke="#B0821F" fill="none">
+    <path d="M 108 148 L 186 106 L 198 126 L 120 168 Z" stroke-width="1.8"/>
+    <line x1="105" y1="142" x2="117" y2="163" stroke-width="3"/>
+    <line x1="190" y1="112" x2="202" y2="132" stroke-width="1.4"/>
+    <line x1="152" y1="150" x2="152" y2="196" stroke-width="1.6"/>
+    <line x1="152" y1="196" x2="132" y2="216" stroke-width="1.6"/>
+    <line x1="152" y1="196" x2="172" y2="216" stroke-width="1.6"/>
+  </g>
+  <text x="155" y="243" text-anchor="middle" font-size="15" font-weight="700" class="p2_t" letter-spacing="3">망원경 새장</text>
+  <text x="155" y="264" text-anchor="middle" font-size="10.5" class="p2_ink">당겨 보여주되, 데려다주지 않는다</text>
+  <text x="155" y="294" text-anchor="middle" font-size="9" class="p2_gy">살리나 — 천문대에서 혁명을 듣는다</text>
+  <text x="155" y="309" text-anchor="middle" font-size="9" class="p2_gy">필름·소재 산업 — 먼저 발명한 것을 보기만</text>
+  <text x="155" y="343" text-anchor="middle" font-size="10" class="p2_t" font-style="italic">"내 정확한 눈이 어떤</text>
+  <text x="155" y="356" text-anchor="middle" font-size="10" class="p2_t" font-style="italic">행동을 면제하고 있나?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p2_ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="p2_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 렌즈는 봄을 당기고, 길은 못 당긴다 -->
+  <circle cx="378" cy="140" r="26" fill="none" stroke="#B0821F" stroke-width="1.5"/>
+  <circle cx="378" cy="140" r="7" fill="none" stroke="#B0821F" stroke-width="1.2"/>
+  <text x="378" y="182" text-anchor="middle" font-size="10" font-weight="700" class="p2_t">눈</text>
+
+  <path d="M 500 116 Q 520 140 500 164 Q 480 140 500 116 Z" fill="none" stroke="#B0821F" stroke-width="1.5"/>
+  <text x="500" y="182" text-anchor="middle" font-size="10" font-weight="700" class="p2_t">렌즈</text>
+
+  <path d="M 646 120 l 7 21 l 22 0 l -18 14 l 7 21 l -18 -13 l -18 13 l 7 -21 l -18 -14 l 22 0 z" fill="none" stroke="#B0821F" stroke-width="1.4"/>
+  <text x="653" y="182" text-anchor="middle" font-size="10" font-weight="700" class="p2_t">별</text>
+
+  <line x1="620" y1="128" x2="412" y2="128" stroke="#B0821F" stroke-width="1.6" marker-end="url(#p2_ag)"/>
+  <text x="583" y="119" text-anchor="middle" font-size="8.5" class="p2_t">당긴다 — 봄은 온다</text>
+
+  <line x1="412" y1="158" x2="512" y2="158" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="556" y1="158" x2="620" y2="158" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p2_agy)"/>
+  <line x1="524" y1="149" x2="544" y2="167" stroke="#6a6355" stroke-width="1.4"/>
+  <line x1="544" y1="149" x2="524" y2="167" stroke="#6a6355" stroke-width="1.4"/>
+  <text x="516" y="200" text-anchor="middle" font-size="8.5" class="p2_gy">데려다주지 않는다 — 길은 안 온다</text>
+
+  <text x="516" y="228" text-anchor="middle" font-size="9.5" class="p2_ink">진단이 정확할수록, 안 움직일 알리바이가 된다</text>
+  <text x="516" y="244" text-anchor="middle" font-size="8.5" class="p2_gy">머리는 갱신되는데 몸이 먼저 거절한다 — habitus</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="520" cy="286" r="13" fill="none" stroke="#B0821F" stroke-width="1.2"/>
+  <text x="520" y="290" text-anchor="middle" font-size="9" font-weight="700" class="p2_t">분기</text>
+
+  <path d="M 506 291 C 468 300, 444 306, 434 314" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p2_agy)"/>
+  <rect x="366" y="322" width="132" height="52" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="432" y="339" text-anchor="middle" font-size="10" font-weight="700" class="p2_gy">관조 — 살리나</text>
+  <text x="432" y="353" text-anchor="middle" font-size="8" class="p2_gy">네 번째 다시 들여다본다</text>
+  <text x="432" y="367" text-anchor="middle" font-size="8" class="p2_gy">73년 중 진짜 산 시간 2년</text>
+
+  <path d="M 534 291 C 572 300, 596 306, 606 314" fill="none" stroke="#B0821F" stroke-width="2.2" marker-end="url(#p2_ag)"/>
+  <rect x="544" y="322" width="136" height="52" rx="3" fill="none" stroke="#B0821F" stroke-width="2.2"/>
+  <text x="612" y="339" text-anchor="middle" font-size="10" font-weight="700" class="p2_t">출시 — 탄크레디</text>
+  <text x="612" y="353" text-anchor="middle" font-size="8" class="p2_ink">매혹된 채로도 움직인다</text>
+  <text x="612" y="367" text-anchor="middle" font-size="8" class="p2_ink">목숨을 걸고, 다리를 절며 돌아온다</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="122" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p2_t">모호함을 둘로 갈라라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p2_ink">지금 뭘 할지 = 마찰 → 즉시 없앤다</text>
+  <text x="832" y="145" text-anchor="middle" font-size="8.5" class="p2_ink">무엇이 될지 = 선택지 → 남겨둔다</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8.5" class="p2_gy">부르디외 habitus · 메디치의 자석</text>
+  <line x1="758" y1="171" x2="906" y2="171" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="187" text-anchor="middle" font-size="8.5" class="p2_gy">반례 · 셰발레이는 반박하지 못했다</text>
+  <text x="832" y="202" text-anchor="middle" font-size="8.5" class="p2_gy">→ 살리나의 진단은 전부 맞았다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p2_ink">네 번째 들여다보는 대신, 한 번 출시 버튼을 눌러라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p2_gy">→ 이월 · "빠른 발은 확신을 낳고, 확신은 결과를 면제한다" → 3장</text>
+</g>
+<rect x="2750" y="2148" width="960" height="440" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<rect x="1430" y="906" width="960" height="58" fill="#2D5FA8" fill-opacity="0.10"/>
+<rect x="1430" y="906" width="960" height="58" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<text x="1452" y="946" font-size="42" font-weight="700" fill="#2D5FA8">3 💒 스테인굴레스 — 설득해</text>
+<g transform="translate(1430,964)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p3_t">3장 스테인굴레스새장 — 설득해</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p3_gy" letter-spacing="2">A 행동 | 혈청을 바꿔라, 손으로 | 페스트 × Theranos</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+  <!-- 스테인굴레스 창 -->
+  <g stroke="#C8102E" stroke-width="1.4">
+    <path d="M 112 200 L 112 128 Q 155 92 198 128 L 198 200 Z" fill="#C8102E" fill-opacity="0.06"/>
+    <line x1="155" y1="96" x2="155" y2="200"/>
+    <line x1="112" y1="140" x2="198" y2="140"/>
+    <line x1="112" y1="170" x2="198" y2="170"/>
+    <path d="M 112 128 Q 155 158 198 128" fill="none" stroke-width="1"/>
+  </g>
+  <rect x="126" y="144" width="24" height="22" fill="#C8102E" fill-opacity="0.16"/>
+  <rect x="160" y="174" width="24" height="22" fill="#C8102E" fill-opacity="0.16"/>
+  <text x="155" y="234" text-anchor="middle" font-size="14" font-weight="700" class="p3_t" letter-spacing="2">스테인굴레스 새장</text>
+  <text x="155" y="256" text-anchor="middle" font-size="10.5" class="p3_ink">아름다운데, 바깥이 안 보인다</text>
+  <text x="155" y="286" text-anchor="middle" font-size="9" class="p3_gy">파늘루 — 원인·결과·처방 한 문장, 불확실성 0</text>
+  <text x="155" y="301" text-anchor="middle" font-size="9" class="p3_gy">Theranos — 약속의 속도가 능력을 앞질렀다</text>
+  <text x="155" y="338" text-anchor="middle" font-size="10" class="p3_t" font-style="italic">"내 확신이 지금 누구의</text>
+  <text x="155" y="351" text-anchor="middle" font-size="10" class="p3_t" font-style="italic">자원을 담보로 잡고 있나?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p3_ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="p3_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 확신도 장부 -->
+  <line x1="372" y1="88" x2="372" y2="242" stroke="#d8cfbc" stroke-width="1"/>
+  <line x1="372" y1="242" x2="694" y2="242" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="366" y="103" text-anchor="end" font-size="7.5" class="p3_gy">100%</text>
+  <text x="366" y="245" text-anchor="end" font-size="7.5" class="p3_gy">0%</text>
+  <text x="533" y="257" text-anchor="middle" font-size="8" class="p3_gy">시간 · 결과가 들어온다 →</text>
+
+  <!-- 데이터 사건 -->
+  <line x1="520" y1="88" x2="520" y2="242" stroke="#6a6355" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="520" y="84" text-anchor="middle" font-size="8" class="p3_ink">아이가 죽는다</text>
+
+  <!-- 파늘루: 100% 고정 -->
+  <line x1="384" y1="100" x2="686" y2="100" stroke="#6a6355" stroke-width="2"/>
+  <text x="686" y="94" text-anchor="end" font-size="8.5" class="p3_gy">파늘루 — 100%, 수정 없음</text>
+  <circle cx="520" cy="100" r="4" fill="none" stroke="#6a6355" stroke-width="1.4"/>
+  <text x="576" y="115" text-anchor="middle" font-size="8" class="p3_gy">데이터가 와도 침묵</text>
+
+  <!-- 리외: 60% → 30% -->
+  <polyline points="384,156 520,156 556,198 686,198" fill="none" stroke="#C8102E" stroke-width="2.4"/>
+  <circle cx="520" cy="156" r="4" fill="#C8102E"/>
+  <text x="452" y="150" text-anchor="middle" font-size="8.5" class="p3_t">리외 — 60%</text>
+  <text x="640" y="192" text-anchor="middle" font-size="8.5" class="p3_t">30%</text>
+  <text x="612" y="216" text-anchor="middle" font-size="8" class="p3_ink">혈청을 바꾼다 — 손으로</text>
+  <line x1="612" y1="205" x2="612" y2="196" stroke="#C8102E" stroke-width="1" marker-start="url(#p3_ar)"/>
+
+  <text x="533" y="278" text-anchor="middle" font-size="9.5" class="p3_ink">확신이 검증을 앞지르면, 그 간극이 빚이 된다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="520" cy="302" r="12" fill="none" stroke="#C8102E" stroke-width="1.2"/>
+  <text x="520" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="p3_t">분기</text>
+
+  <path d="M 507 306 C 470 312, 446 316, 436 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p3_agy)"/>
+  <rect x="366" y="330" width="132" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="432" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p3_gy">숫자만 내린다</text>
+  <text x="432" y="359" text-anchor="middle" font-size="8" class="p3_gy">"80%로 내렸습니다" — 손은 그대로</text>
+  <text x="432" y="372" text-anchor="middle" font-size="8" class="p3_gy">240가지 약속 → 15가지</text>
+
+  <path d="M 533 306 C 570 312, 594 316, 604 322" fill="none" stroke="#C8102E" stroke-width="2.2" marker-end="url(#p3_ar)"/>
+  <rect x="544" y="330" width="136" height="48" rx="3" fill="#C8102E" fill-opacity="0.05" stroke="#C8102E" stroke-width="1.2"/>
+  <text x="612" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p3_t">손이 따라 움직인다</text>
+  <text x="612" y="359" text-anchor="middle" font-size="8" class="p3_ink">숫자를 내리고 혈청을 바꾼다</text>
+  <text x="612" y="372" text-anchor="middle" font-size="8" class="p3_ink">10년 침묵 → 63일 만에 백신</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="122" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p3_t">신념과 확신을 갈라라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p3_ink">신념 = 무엇을 믿는가 (내용)</text>
+  <text x="832" y="145" text-anchor="middle" font-size="8.5" class="p3_ink">확신 = 결과 앞에서 고칠 수 있는가 (의지)</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8.5" class="p3_gy">둘 다 강했다 — 다른 건 확신뿐이었다</text>
+  <line x1="758" y1="171" x2="906" y2="171" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="187" text-anchor="middle" font-size="8.5" class="p3_gy">반례 · 파늘루는 비겁하지 않았다</text>
+  <text x="832" y="202" text-anchor="middle" font-size="8.5" class="p3_gy">→ 제 몸으로 그 확신을 살고 죽었다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p3_ink">확신도가 내려가면 혈청을 바꿔라 — 손으로</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p3_gy">→ 이월 · "매일의 판단은 질서가 되고, 질서는 뒤집기를 금한다" → 4장</text>
+</g>
+<rect x="1430" y="964" width="960" height="440" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<rect x="110" y="2090" width="960" height="58" fill="#2D5FA8" fill-opacity="0.10"/>
+<rect x="110" y="2090" width="960" height="58" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<text x="132" y="2130" font-size="42" font-weight="700" fill="#2D5FA8">4 ⏱️ 시계새장 — 폭파해</text>
+<g transform="translate(110,2148)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p4_t">4장 시계새장 — 폭파해</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p4_gy" letter-spacing="2">합류 1+2+3 | 세면서 부숴라 | 방드르디 × 두산</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
+  <!-- 멈춘 시계 -->
+  <g stroke="#1B1B1E" fill="none">
+    <circle cx="155" cy="152" r="46" stroke-width="2"/>
+    <circle cx="155" cy="152" r="2.5" stroke-width="2"/>
+    <line x1="155" y1="152" x2="155" y2="120" stroke-width="2"/>
+    <line x1="155" y1="152" x2="180" y2="164" stroke-width="2"/>
+    <line x1="155" y1="106" x2="155" y2="112" stroke-width="1.6"/>
+    <line x1="201" y1="152" x2="195" y2="152" stroke-width="1.6"/>
+    <line x1="155" y1="198" x2="155" y2="192" stroke-width="1.6"/>
+    <line x1="109" y1="152" x2="115" y2="152" stroke-width="1.6"/>
+    <!-- 금 -->
+    <path d="M 124 118 L 141 140 L 128 150 L 149 176 L 137 190" stroke-width="1.2" stroke-dasharray="3,2"/>
+  </g>
+  <text x="155" y="234" text-anchor="middle" font-size="15" font-weight="700" class="p4_t" letter-spacing="3">시계 새장</text>
+  <text x="155" y="256" text-anchor="middle" font-size="10.5" class="p4_ink">잘 돌수록, 시계 없는 삶을 못 그린다</text>
+  <text x="155" y="286" text-anchor="middle" font-size="9" class="p4_gy">로빈슨 — 30년의 질서가 몇 초 만에</text>
+  <text x="155" y="301" text-anchor="middle" font-size="9" class="p4_gy">두산 130년 — 다섯 번 이상 자기를 태웠다</text>
+  <text x="155" y="338" text-anchor="middle" font-size="10" class="p4_t" font-style="italic">"내가 만든 것이 나를</text>
+  <text x="155" y="351" text-anchor="middle" font-size="10" class="p4_t" font-style="italic">가두고 있지 않은가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p4_ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B1B1E"/>
+    </marker>
+    <marker id="p4_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 세 장이 합쳐져 질서가 되고, 질서가 변이를 죽인다 -->
+  <text x="352" y="96" font-size="8" class="p4_gy">쌓이는 것</text>
+  <text x="392" y="118" text-anchor="end" font-size="9" class="p4_ink">1장 도취</text>
+  <text x="392" y="146" text-anchor="end" font-size="9" class="p4_ink">2장 관조</text>
+  <text x="392" y="174" text-anchor="end" font-size="9" class="p4_ink">3장 확신</text>
+  <path d="M 400 115 C 430 118, 448 132, 468 142" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#p4_ak)"/>
+  <path d="M 400 143 L 468 145" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#p4_ak)"/>
+  <path d="M 400 171 C 430 168, 448 156, 468 148" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#p4_ak)"/>
+
+  <rect x="474" y="126" width="86" height="40" rx="3" fill="none" stroke="#1B1B1E" stroke-width="2"/>
+  <text x="517" y="143" text-anchor="middle" font-size="10.5" font-weight="700" class="p4_t">질서</text>
+  <text x="517" y="157" text-anchor="middle" font-size="8" class="p4_gy">성공한 질서</text>
+
+  <line x1="562" y1="146" x2="612" y2="146" stroke="#1B1B1E" stroke-width="1.6" marker-end="url(#p4_ak)"/>
+  <text x="587" y="139" text-anchor="middle" font-size="7.5" class="p4_gy">인공선택</text>
+
+  <rect x="616" y="126" width="82" height="40" rx="3" fill="none" stroke="#6a6355" stroke-width="0.8" stroke-dasharray="5,4"/>
+  <text x="657" y="143" text-anchor="middle" font-size="10" font-weight="700" class="p4_gy">변이 사멸</text>
+  <text x="657" y="157" text-anchor="middle" font-size="8" class="p4_gy">고를 재료가 없다</text>
+
+  <!-- 빚의 원천 상승 -->
+  <text x="352" y="204" font-size="8" class="p4_gy">빚의 원천이 올라간다</text>
+  <g stroke="#1B1B1E" stroke-width="1">
+    <line x1="396" y1="228" x2="428" y2="228"/>
+    <line x1="446" y1="222" x2="478" y2="222"/>
+    <line x1="496" y1="216" x2="528" y2="216"/>
+    <line x1="546" y1="210" x2="578" y2="210"/>
+  </g>
+  <text x="412" y="240" text-anchor="middle" font-size="8" class="p4_gy">남의 욕망</text>
+  <text x="462" y="234" text-anchor="middle" font-size="8" class="p4_gy">남의 렌즈</text>
+  <text x="512" y="228" text-anchor="middle" font-size="8" class="p4_gy">내 확신</text>
+  <text x="562" y="222" text-anchor="middle" font-size="8" font-weight="700" class="p4_ink">내 성공</text>
+  <text x="640" y="222" text-anchor="middle" font-size="8" class="p4_gy">← 가장 단단한 창살</text>
+
+  <text x="516" y="266" text-anchor="middle" font-size="9.5" class="p4_ink">성공이 변이를 죽이면, 그 성공이 빚이 된다</text>
+
+  <!-- ④ 분기 — 세 갈래 -->
+  <circle cx="512" cy="292" r="12" fill="none" stroke="#1B1B1E" stroke-width="1.2"/>
+  <text x="512" y="296" text-anchor="middle" font-size="8.5" font-weight="700" class="p4_t">분기</text>
+
+  <path d="M 500 296 C 452 306, 400 312, 384 324" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p4_agy)"/>
+  <rect x="330" y="332" width="108" height="46" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="384" y="348" text-anchor="middle" font-size="9.5" font-weight="700" class="p4_gy">무모</text>
+  <text x="384" y="361" text-anchor="middle" font-size="7.5" class="p4_gy">비용에 눈감고 부순다</text>
+  <text x="384" y="373" text-anchor="middle" font-size="7.5" class="p4_gy">= 1장</text>
+
+  <path d="M 510 305 L 502 325" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p4_agy)"/>
+  <rect x="446" y="332" width="108" height="46" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="500" y="348" text-anchor="middle" font-size="9.5" font-weight="700" class="p4_gy">냉소</text>
+  <text x="500" y="361" text-anchor="middle" font-size="7.5" class="p4_gy">비용이 무서워 못 부순다</text>
+  <text x="500" y="373" text-anchor="middle" font-size="7.5" class="p4_gy">= 2장</text>
+
+  <path d="M 524 296 C 570 306, 604 312, 618 324" fill="none" stroke="#1B1B1E" stroke-width="2.2" marker-end="url(#p4_ak)"/>
+  <rect x="562" y="332" width="140" height="46" rx="3" fill="#1B1B1E" fill-opacity="0.05" stroke="#1B1B1E" stroke-width="1.6"/>
+  <text x="632" y="348" text-anchor="middle" font-size="9.5" font-weight="700" class="p4_t">세면서 부순다</text>
+  <text x="632" y="361" text-anchor="middle" font-size="7.5" class="p4_ink">담뱃대 셋 — 한 달에 이틀 · 수입 5% · 주 1회</text>
+  <text x="632" y="373" text-anchor="middle" font-size="7.5" class="p4_ink">부수기 전에 네 '텐'을 먼저 센다</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="122" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p4_t">감금과 헌신을 갈라라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p4_ink">모키어 — 인공선택은 단기 효율이 압승</text>
+  <text x="832" y="145" text-anchor="middle" font-size="8.5" class="p4_ink">환경이 바뀌면 변이 없는 쪽이 먼저 무너진다</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8.5" class="p4_gy">옵션 없는 헌신은 감금, 있는 헌신만 자유</text>
+  <line x1="758" y1="171" x2="906" y2="171" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="187" text-anchor="middle" font-size="8.5" class="p4_gy">반례 · 시계가 없었으면 미쳐 죽었다</text>
+  <text x="832" y="202" text-anchor="middle" font-size="8.5" class="p4_gy">→ 빌린 질서가 먼저 그를 살렸다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p4_ink">세면서 부수는 손만 가볍다</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p4_gy">→ 이월 · "빈 자리에서 거울을 들면, 일이 거꾸로 묻는다" → 5장</text>
+</g>
+<rect x="110" y="2148" width="960" height="440" fill="none" stroke="#2D5FA8" stroke-width="3"/>
+<rect x="1430" y="1498" width="960" height="58" fill="#E0A526" fill-opacity="0.10"/>
+<rect x="1430" y="1498" width="960" height="58" fill="none" stroke="#E0A526" stroke-width="3"/>
+<text x="1452" y="1538" font-size="42" font-weight="700" fill="#E0A526">5 🐀 101₂호 — ★멈춤</text>
+<g transform="translate(1430,1556)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p5_t">5장 101₂호 — 회전축멈춤</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p5_gy" letter-spacing="2">이음새 | 한 박자를 벌어라 | 1984 × 다운라운드 이사회</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
+  <!-- 전등 하나와 빈 의자 -->
+  <g stroke="#8A6A12" fill="none">
+    <line x1="155" y1="86" x2="155" y2="118" stroke-width="1.4"/>
+    <path d="M 138 132 L 172 132 L 164 118 L 146 118 Z" stroke-width="1.6"/>
+    <circle cx="155" cy="139" r="4" fill="#E0A526" stroke="none"/>
+    <line x1="132" y1="196" x2="178" y2="196" stroke-width="1.8"/>
+    <line x1="132" y1="196" x2="132" y2="224" stroke-width="1.6"/>
+    <line x1="178" y1="196" x2="178" y2="224" stroke-width="1.6"/>
+    <line x1="178" y1="196" x2="178" y2="164" stroke-width="1.8"/>
+    <line x1="178" y1="164" x2="196" y2="164" stroke-width="1.4"/>
+  </g>
+  <text x="155" y="252" text-anchor="middle" font-size="15" font-weight="700" class="p5_t" letter-spacing="2">101₂호</text>
+  <text x="155" y="273" text-anchor="middle" font-size="10.5" class="p5_ink">빚을 쓰는 방 — 차갑게</text>
+  <text x="155" y="298" text-anchor="middle" font-size="9" class="p5_gy">윈스턴 — "줄리아에게 하세요"</text>
+  <text x="155" y="313" text-anchor="middle" font-size="9" class="p5_gy">다운라운드 이사회 — 되려던 것을 먼저 판다</text>
+  <text x="155" y="341" text-anchor="middle" font-size="10" class="p5_t" font-style="italic">"지렛대에 누구 손이</text>
+  <text x="155" y="354" text-anchor="middle" font-size="10" class="p5_t" font-style="italic">얹혀 있는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p5_md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D5FA8"/>
+    </marker>
+    <marker id="p5_mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="p5_ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="p5_mh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8A6A12"/>
+    </marker>
+    <marker id="p5_mgy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 05_geo 흡수: 다가 세를 쏜다 (10장과 점대칭) -->
+  <line x1="360" y1="176" x2="672" y2="176" stroke="#d8cfbc" stroke-width="0.6" stroke-dasharray="4,4"/>
+  <line x1="516" y1="96" x2="516" y2="256" stroke="#d8cfbc" stroke-width="0.6" stroke-dasharray="4,4"/>
+
+  <line x1="534" y1="176" x2="654" y2="176" stroke="#2D5FA8" stroke-width="1.8" marker-end="url(#p5_md)"/>
+  <text x="660" y="180" font-size="9.5" font-weight="700" class="p5_d">다 — 원함</text>
+  <text x="660" y="193" font-size="7.5" class="p5_gy">앞서 달리는 자</text>
+
+  <line x1="516" y1="158" x2="516" y2="112" stroke="#B0821F" stroke-width="1.8" marker-end="url(#p5_mb)"/>
+  <text x="516" y="104" text-anchor="middle" font-size="9.5" font-weight="700" class="p5_b">세 — 믿음</text>
+
+  <path d="M 540 168 Q 622 130 556 116" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-dasharray="2,2" marker-end="url(#p5_ma)"/>
+  <text x="604" y="152" font-size="9" font-weight="700" class="p5_a">오염</text>
+  <text x="604" y="164" font-size="7.5" class="p5_gy">원함이 믿음을 덮어쓴다</text>
+
+  <circle cx="516" cy="176" r="9" fill="#E0A526"/>
+  <circle cx="516" cy="176" r="17" fill="none" stroke="#8A6A12" stroke-width="1.4" stroke-dasharray="4,2"/>
+  <text x="462" y="211" text-anchor="middle" font-size="9.5" font-weight="700" class="p5_t">★멈춤</text>
+  <text x="462" y="223" text-anchor="middle" font-size="7.5" class="p5_gy">빈손으로 자를 다시 건다</text>
+
+  <text x="516" y="248" text-anchor="middle" font-size="8" class="p5_gy">두 자리의 방 — 다냐 세냐, 0이냐 1이냐</text>
+
+  <text x="516" y="276" text-anchor="middle" font-size="9.5" class="p5_ink">멈춤을 건너뛴 행동은 어디에도 안 착지한다 — 곧장 1장으로 돌아간다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="302" r="12" fill="none" stroke="#8A6A12" stroke-width="1.2"/>
+  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="p5_t">분기</text>
+
+  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p5_mgy)"/>
+  <rect x="362" y="330" width="132" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p5_gy">비명 — 멈춤 0</text>
+  <text x="428" y="359" text-anchor="middle" font-size="8" class="p5_gy">배운 것이 하나도 안 얹힌다</text>
+  <text x="428" y="372" text-anchor="middle" font-size="8" class="p5_gy">되돌아간 자리 = 1장</text>
+
+  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#8A6A12" stroke-width="2.2" marker-end="url(#p5_mh)"/>
+  <rect x="540" y="330" width="140" height="48" rx="3" fill="none" stroke="#8A6A12" stroke-width="1.6"/>
+  <text x="610" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p5_t">한 박자 — 네 방 되짚기</text>
+  <text x="610" y="359" text-anchor="middle" font-size="8" class="p5_ink">원함·됨·책임·척도를 내 눈금으로</text>
+  <text x="610" y="372" text-anchor="middle" font-size="8" class="p5_ink">지어짐 × 팔림 — 0.4² 16% → 0.9² 81%</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p5_t">내 자를 짓는 두 규칙</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p5_ink">알아서 얻을 것이 알아보는 값을</text>
+  <text x="832" y="143" text-anchor="middle" font-size="8.5" class="p5_ink">확실히 웃돌기 전엔 갈래를 지우지 마라</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8.5" class="p5_ink">유연하게 걸되 물러서지 않는 손</text>
+  <text x="832" y="174" text-anchor="middle" font-size="8" class="p5_gy">떠날 문을 열어 둔 채 머무는 것이 자유</text>
+  <line x1="758" y1="185" x2="906" y2="185" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="201" text-anchor="middle" font-size="8.5" class="p5_gy">반례 · 멈춤에도 값이 있다</text>
+  <text x="832" y="216" text-anchor="middle" font-size="8.5" class="p5_gy">→ 웃도는데도 멈춰 있으면 그 망설임이 빚</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p5_ink">같은 모방이라도, 멈춤 하나로 새장이 둥지가 된다</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p5_gy">→ 이월 · "이번엔 자기가 가면을 쓰고 있다는 걸 안다" → 6장</text>
+</g>
+<rect x="1430" y="1556" width="960" height="440" fill="none" stroke="#E0A526" stroke-width="3"/>
+<rect x="1430" y="314" width="960" height="58" fill="#C8102E" fill-opacity="0.10"/>
+<rect x="1430" y="314" width="960" height="58" fill="none" stroke="#C8102E" stroke-width="3"/>
+<text x="1452" y="354" font-size="42" font-weight="700" fill="#C8102E">6 🦋 나비 — 사용자</text>
+<g transform="translate(1430,372)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p6_t">6장 나비 — 사용자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p6_gy" letter-spacing="2">S 원함 | 벗을 조항을 지우지 마라 | M. 버터플라이 × 텐센트</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
+  <!-- 나비 -->
+  <g stroke="#2D5FA8" fill="none" stroke-width="1.6">
+    <path d="M 155 118 C 118 88, 96 122, 122 146 C 136 158, 150 152, 155 142 Z"/>
+    <path d="M 155 118 C 192 88, 214 122, 188 146 C 174 158, 160 152, 155 142 Z"/>
+    <path d="M 155 142 C 132 166, 128 190, 146 198 C 154 201, 155 190, 155 178 Z"/>
+    <path d="M 155 142 C 178 166, 182 190, 164 198 C 156 201, 155 190, 155 178 Z"/>
+    <line x1="155" y1="112" x2="155" y2="182" stroke-width="2"/>
+    <path d="M 155 112 C 150 102, 144 98, 140 97" stroke-width="1.2"/>
+    <path d="M 155 112 C 160 102, 166 98, 170 97" stroke-width="1.2"/>
+  </g>
+  <text x="155" y="238" text-anchor="middle" font-size="15" font-weight="700" class="p6_t" letter-spacing="3">나비</text>
+  <text x="155" y="259" text-anchor="middle" font-size="10.5" class="p6_ink">옷인 줄 알고 입는다</text>
+  <text x="155" y="275" text-anchor="middle" font-size="8.5" class="p6_gy">엠마는 살인 줄 알고 삼켰다 — 단어 하나 차이</text>
+  <text x="155" y="301" text-anchor="middle" font-size="9" class="p6_gy">송 릴링 — 법정에서 단추를 푼다</text>
+  <text x="155" y="316" text-anchor="middle" font-size="9" class="p6_gy">텐센트 — 빌린 이름을 알고 입었다</text>
+  <text x="155" y="343" text-anchor="middle" font-size="10" class="p6_t" font-style="italic">"이 환상은 그들의 원함인가,</text>
+  <text x="155" y="356" text-anchor="middle" font-size="10" class="p6_t" font-style="italic">내 원함인가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p6_ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D5FA8"/>
+    </marker>
+    <marker id="p6_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 세 시점의 사용자, 회전축은 ★멈춤 -->
+  <circle cx="516" cy="170" r="10" fill="#E0A526"/>
+  <circle cx="516" cy="170" r="18" fill="none" stroke="#8A6A12" stroke-width="1.3" stroke-dasharray="4,2"/>
+  <text x="516" y="196" text-anchor="middle" font-size="8" font-weight="700" class="p6_h">★멈춤 = 회전축</text>
+
+  <line x1="500" y1="160" x2="456" y2="139" stroke="#2D5FA8" stroke-width="1.3"/>
+  <line x1="532" y1="160" x2="586" y2="132" stroke="#2D5FA8" stroke-width="1.3"/>
+  <line x1="516" y1="188" x2="516" y2="222" stroke="#2D5FA8" stroke-width="1.3"/>
+
+  <text x="424" y="114" text-anchor="middle" font-size="9.5" font-weight="700" class="p6_t">과거 · 성찰</text>
+  <text x="424" y="126" text-anchor="middle" font-size="7.5" class="p6_gy">쌓인 기록에서 못 뽑은 것을 캔다</text>
+
+  <text x="608" y="120" text-anchor="middle" font-size="9.5" font-weight="700" class="p6_t">미래 · 시뮬레이션</text>
+  <text x="608" y="132" text-anchor="middle" font-size="7.5" class="p6_gy">아직 안 온 사용자를 상상한다</text>
+  <rect x="556" y="140" width="104" height="17" rx="2" fill="none" stroke="#2D5FA8" stroke-width="1.4"/>
+  <text x="608" y="152" text-anchor="middle" font-size="8.5" font-weight="700" class="p6_t">비틂 · 믿음 → 실험</text>
+
+  <text x="516" y="236" text-anchor="middle" font-size="9.5" font-weight="700" class="p6_t">현재 · 반복</text>
+  <text x="516" y="248" text-anchor="middle" font-size="7.5" class="p6_gy">지금 무엇을 켜고 끄나</text>
+
+  <text x="516" y="274" text-anchor="middle" font-size="9.5" class="p6_ink">시뮬레이션을 믿음으로 굳히면 새장, 시뮬레이션인 줄 알고 굴리면 둥지</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="300" r="12" fill="none" stroke="#2D5FA8" stroke-width="1.2"/>
+  <text x="516" y="304" text-anchor="middle" font-size="8.5" font-weight="700" class="p6_t">분기</text>
+
+  <path d="M 503 304 C 466 310, 442 314, 432 320" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p6_agy)"/>
+  <rect x="358" y="328" width="140" height="50" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="344" text-anchor="middle" font-size="10" font-weight="700" class="p6_gy">모르고 삼킨다</text>
+  <text x="428" y="357" text-anchor="middle" font-size="8" class="p6_gy">다운로드로 잰다 — 옷이 그를 고른다</text>
+  <text x="428" y="370" text-anchor="middle" font-size="8" class="p6_gy">"궁극적 결합" 선언 3주 뒤 내부 서한</text>
+
+  <path d="M 529 304 C 566 310, 590 314, 600 320" fill="none" stroke="#2D5FA8" stroke-width="2.2" marker-end="url(#p6_ad)"/>
+  <rect x="540" y="328" width="144" height="50" rx="3" fill="#2D5FA8" fill-opacity="0.05" stroke="#2D5FA8" stroke-width="1.4"/>
+  <text x="612" y="344" text-anchor="middle" font-size="10" font-weight="700" class="p6_t">알고 입는다</text>
+  <text x="612" y="357" text-anchor="middle" font-size="8" class="p6_ink">어제 자발적으로 켠 손으로 잰다</text>
+  <text x="612" y="370" text-anchor="middle" font-size="8" class="p6_ink">알림으로 산 클릭은 0으로 친다</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="130" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p6_t">고르기의 앞 구절을 지우지 마라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p6_ink">벗을 수 있는 것 안에서,</text>
+  <text x="832" y="144" text-anchor="middle" font-size="8.5" class="p6_ink">가장 끌리는 것을 고른다</text>
+  <text x="832" y="161" text-anchor="middle" font-size="8" class="p6_gy">환상을 입는 것은 죄가 아니다 —</text>
+  <text x="832" y="173" text-anchor="middle" font-size="8" class="p6_gy">벗을 조항을 지우는 것이 죄다</text>
+  <line x1="758" y1="184" x2="906" y2="184" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="200" text-anchor="middle" font-size="8.5" class="p6_gy">반례 · 짐작은 반쯤 틀렸다</text>
+  <text x="832" y="214" text-anchor="middle" font-size="8.5" class="p6_gy">→ 기능이 아니라 관계가 자리를 쥐고 있었다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p6_ink">빌린 옷을 입되, 언제 벗을지 고르는 조항을 계약서에서 지우지 마라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p6_gy">→ 이월 · "무대 위의 환상이, 이제 흙 속에서 확률로 자란다" → 7장</text>
+</g>
+<rect x="1430" y="372" width="960" height="440" fill="none" stroke="#C8102E" stroke-width="3"/>
+<rect x="110" y="1498" width="960" height="58" fill="#C8102E" fill-opacity="0.10"/>
+<rect x="110" y="1498" width="960" height="58" fill="none" stroke="#C8102E" stroke-width="3"/>
+<text x="132" y="1538" font-size="42" font-weight="700" fill="#C8102E">7 🌷 튤립 — 기술자</text>
+<g transform="translate(110,1556)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p7_t">7장 튤립 — 기술자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p7_gy" letter-spacing="2">De 됨 | 세 자리에 나눠 걸어라 | 검은 튤립 × Tesla</text>
+
+  <!-- ② 좌측 표제 카드 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#B0821F" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#B0821F" stroke-width="2.5"/>
+  <!-- 손바닥 위의 구근 세 알 -->
+  <g stroke="#B0821F" fill="none" stroke-width="1.6">
+    <path d="M 108 176 C 118 196, 192 196, 202 176"/>
+    <path d="M 108 176 C 104 168, 108 162, 114 164" stroke-width="1.2"/>
+    <path d="M 202 176 C 206 168, 202 162, 196 164" stroke-width="1.2"/>
+    <path d="M 132 168 C 122 152, 132 134, 142 134 C 152 134, 160 152, 150 168 Z"/>
+    <path d="M 141 134 L 141 122" stroke-width="1.2"/>
+    <path d="M 166 170 C 158 158, 165 145, 173 145 C 181 145, 187 158, 179 170 Z"/>
+    <path d="M 173 145 L 173 136" stroke-width="1.2"/>
+    <path d="M 108 172 C 102 162, 108 150, 116 150 C 124 150, 129 162, 123 172 Z"/>
+    <path d="M 116 150 L 116 141" stroke-width="1.2"/>
+  </g>
+  <text x="155" y="222" text-anchor="middle" font-size="15" font-weight="700" class="p7_t" letter-spacing="3">튤립 구근</text>
+  <text x="155" y="243" text-anchor="middle" font-size="10.5" class="p7_ink">잘 보는 눈이 아니라, 나눠 거는 손</text>
+  <text x="155" y="271" text-anchor="middle" font-size="9" class="p7_gy">코르넬리우스 — 세 알을 세 자리에</text>
+  <text x="155" y="286" text-anchor="middle" font-size="9" class="p7_gy">Tesla — 성긴 눈금으로 시작했다</text>
+  <text x="155" y="316" text-anchor="middle" font-size="10" class="p7_t" font-style="italic">"눈금이 흙에</text>
+  <text x="155" y="329" text-anchor="middle" font-size="10" class="p7_t" font-style="italic">닿아 있는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p7_ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="p7_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 촘촘함과 본 횟수, 그 간격이 빚 -->
+  <line x1="386" y1="92" x2="386" y2="242" stroke="#d8cfbc" stroke-width="1"/>
+  <line x1="386" y1="242" x2="694" y2="242" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="380" y="100" text-anchor="end" font-size="7.5" class="p7_gy">촘촘</text>
+  <text x="380" y="240" text-anchor="end" font-size="7.5" class="p7_gy">성김</text>
+  <text x="540" y="257" text-anchor="middle" font-size="8" class="p7_gy">실제로 본 횟수 →</text>
+  <text x="372" y="170" text-anchor="middle" font-size="8" class="p7_gy" transform="rotate(-90,372,170)">주장한 눈금 →</text>
+
+  <!-- 대각선 = calibrated (기준선이므로 점선) -->
+  <line x1="396" y1="236" x2="676" y2="102" stroke="#B0821F" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="676" y="94" text-anchor="end" font-size="8" class="p7_t">점선 = calibrated · 촘촘함 = 본 횟수</text>
+
+  <!-- Better Place: 1밀리 눈금 · 0회 관찰 -->
+  <circle cx="424" cy="112" r="4.5" fill="none" stroke="#6a6355" stroke-width="1.4"/>
+  <line x1="424" y1="119" x2="424" y2="220" stroke="#6a6355" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="432" y="108" font-size="8.5" font-weight="700" class="p7_gy">Better Place</text>
+  <text x="432" y="120" font-size="7.5" class="p7_gy">"5분 만에 전국망" · 관찰 0회</text>
+  <text x="432" y="168" font-size="8.5" font-weight="700" class="p7_gy">간격 = 빚</text>
+  <text x="432" y="180" font-size="7.5" class="p7_gy">8억 5천만 달러</text>
+
+  <!-- Tesla: 벌어서 잘게 (대각선을 타고 오른다) -->
+  <circle cx="480" cy="196" r="4.5" fill="#B0821F"/>
+  <circle cx="576" cy="150" r="4.5" fill="#B0821F"/>
+  <path d="M 488 192 L 566 155" fill="none" stroke="#B0821F" stroke-width="2.4" marker-end="url(#p7_ag)"/>
+  <text x="480" y="216" text-anchor="middle" font-size="7.5" class="p7_ink">"200마일 이상"</text>
+  <text x="584" y="167" font-size="7.5" class="p7_ink">"244마일"</text>
+  <text x="546" y="190" font-size="8" class="p7_t">벌어서 잘게</text>
+
+  <!-- ASML — 대각선 위 먼 오른쪽 -->
+  <circle cx="640" cy="119" r="4.5" fill="none" stroke="#B0821F" stroke-width="1.4"/>
+  <text x="634" y="128" text-anchor="end" font-size="7.5" class="p7_ink">ASML — 20년, 수만 번</text>
+
+  <text x="516" y="278" text-anchor="middle" font-size="9.5" class="p7_ink">분간할 수 있는 것보다 잘게 새기면, 눈금은 있는데 그 아래가 비어 있다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="302" r="12" fill="none" stroke="#B0821F" stroke-width="1.2"/>
+  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="p7_t">분기</text>
+
+  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p7_agy)"/>
+  <rect x="358" y="330" width="140" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p7_gy">한 점에 건다</text>
+  <text x="428" y="359" text-anchor="middle" font-size="8" class="p7_gy">수치는 정확했으나 한 몸에 모였다</text>
+  <text x="428" y="372" text-anchor="middle" font-size="8" class="p7_gy">그 한 몸이 찢기자 계산도 찢겼다</text>
+
+  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#B0821F" stroke-width="2.2" marker-end="url(#p7_ag)"/>
+  <rect x="540" y="330" width="144" height="48" rx="3" fill="none" stroke="#B0821F" stroke-width="2.2"/>
+  <text x="612" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p7_t">세 자리에 나눠 건다</text>
+  <text x="612" y="359" text-anchor="middle" font-size="8" class="p7_ink">한 알이 짓밟혀도 분포는 산다</text>
+  <text x="612" y="372" text-anchor="middle" font-size="8" class="p7_ink">창살을 건너 Rosa의 손바닥으로</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p7_t">같은 렌즈, 세 손</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p7_ink">살리나 — 별 하나를 당겨 본다 (관조)</text>
+  <text x="832" y="144" text-anchor="middle" font-size="8.5" class="p7_ink">복스텔 — 이웃 하나를 당겨 본다 (감시)</text>
+  <text x="832" y="158" text-anchor="middle" font-size="8.5" class="p7_ink">코르넬리우스 — 렌즈를 내려놓는다</text>
+  <text x="832" y="174" text-anchor="middle" font-size="8" class="p7_gy">렌즈는 정확해질수록 좁아진다</text>
+  <line x1="758" y1="185" x2="906" y2="185" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="201" text-anchor="middle" font-size="8.5" class="p7_gy">반례 · 시샘꾼의 계산은 정확했다</text>
+  <text x="832" y="216" text-anchor="middle" font-size="8.5" class="p7_gy">→ 로자와 윌리엄을 빼면</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p7_ink">회사를 한 점에 걸지 말고, 구근처럼 세 자리에 나눠 걸어라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p7_gy">→ 이월 · "흙 속에서 확률로 키운 것을, 이제 자본 앞에 내놓는다" → 8장</text>
+</g>
+<rect x="110" y="1556" width="960" height="440" fill="none" stroke="#C8102E" stroke-width="3"/>
+<rect x="1430" y="2682" width="960" height="58" fill="#C8102E" fill-opacity="0.10"/>
+<rect x="1430" y="2682" width="960" height="58" fill="none" stroke="#C8102E" stroke-width="3"/>
+<text x="1452" y="2722" font-size="42" font-weight="700" fill="#C8102E">8 🌫️ 안개 — 투자자</text>
+<g transform="translate(1430,2740)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p8_t">8장 안개 — 투자자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p8_gy" letter-spacing="2">Vbl 버팀 | 되물음을 보호로 받아라 | 안개 × MercadoLibre</text>
+
+  <!-- ② 좌측 표제 카드 — 3장의 그 창이 뿌예졌다 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+  <g stroke="#C8102E" fill="none" stroke-width="1.4" opacity="0.45">
+    <path d="M 112 196 L 112 124 Q 155 88 198 124 L 198 196 Z"/>
+    <line x1="155" y1="92" x2="155" y2="196"/>
+    <line x1="112" y1="136" x2="198" y2="136"/>
+    <line x1="112" y1="166" x2="198" y2="166"/>
+  </g>
+  <g stroke="#C8102E" fill="none" stroke-width="1.6">
+    <path d="M 96 124 C 122 116, 148 132, 176 124 C 196 118, 208 122, 216 126"/>
+    <path d="M 92 148 C 120 140, 150 156, 180 148 C 200 143, 210 146, 218 150"/>
+    <path d="M 96 172 C 124 164, 152 180, 180 172 C 198 167, 208 170, 214 174"/>
+    <path d="M 100 196 C 128 188, 154 204, 182 196 C 198 191, 206 194, 212 198"/>
+  </g>
+  <text x="155" y="234" text-anchor="middle" font-size="15" font-weight="700" class="p8_t" letter-spacing="3">안개</text>
+  <text x="155" y="255" text-anchor="middle" font-size="10.5" class="p8_ink">바깥이 보이는 쪽은, 뿌연 쪽이다</text>
+  <text x="155" y="283" text-anchor="middle" font-size="9" class="p8_gy">아우구스토 — 작가의 서재로 걸어 들어간다</text>
+  <text x="155" y="298" text-anchor="middle" font-size="9" class="p8_gy">MercadoLibre — 국가부도를 부트스트랩으로</text>
+  <text x="155" y="329" text-anchor="middle" font-size="10" class="p8_t" font-style="italic">"이 그림이 시간과 자원</text>
+  <text x="155" y="342" text-anchor="middle" font-size="10" class="p8_t" font-style="italic">위에서 버티는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p8_ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="p8_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 문은 반쯤 열렸을 때 가장 넓다 -->
+  <line x1="386" y1="96" x2="386" y2="240" stroke="#d8cfbc" stroke-width="1"/>
+  <line x1="386" y1="240" x2="694" y2="240" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="378" y="168" text-anchor="middle" font-size="8" class="p8_gy" transform="rotate(-90,378,168)">지나갈 폭 →</text>
+
+  <path d="M 396 236 Q 536 -12 676 236" fill="none" stroke="#C8102E" stroke-width="2.2"/>
+  <line x1="396" y1="186" x2="676" y2="186" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4"/>
+  <text x="682" y="189" font-size="8" class="p8_gy">마찰</text>
+
+  <line x1="432" y1="200" x2="640" y2="200" stroke="#C8102E" stroke-width="1" marker-start="url(#p8_ar)" marker-end="url(#p8_ar)"/>
+  <text x="536" y="178" text-anchor="middle" font-size="8.5" font-weight="700" class="p8_t">선택지가 사는 폭</text>
+
+  <text x="536" y="104" text-anchor="middle" font-size="9" class="p8_ink">반쯤 열렸을 때 가장 넓다</text>
+  <text x="396" y="253" text-anchor="middle" font-size="7.5" class="p8_gy">꽉 닫는다</text>
+  <text x="676" y="253" text-anchor="middle" font-size="7.5" class="p8_gy">다 열어둔다</text>
+
+  <circle cx="536" cy="115" r="4.5" fill="#C8102E"/>
+  <text x="536" y="140" text-anchor="middle" font-size="8.5" font-weight="700" class="p8_t">MercadoLibre · Nubank</text>
+  <text x="536" y="152" text-anchor="middle" font-size="7.5" class="p8_ink">내일 아침 고쳐 쓸 폭을 남겼다</text>
+
+  <text x="392" y="116" font-size="8.5" font-weight="700" class="p8_gy">Beyond Meat</text>
+  <text x="392" y="128" font-size="7.5" class="p8_gy">약속을 일찍 굳혔다</text>
+  <text x="392" y="140" font-size="7.5" class="p8_gy">240달러 → 5달러</text>
+  <line x1="410" y1="146" x2="412" y2="200" stroke="#6a6355" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <circle cx="412" cy="206" r="4.5" fill="none" stroke="#6a6355" stroke-width="1.4"/>
+  <text x="420" y="218" font-size="7.5" class="p8_gy">폭 = 0</text>
+
+  <text x="516" y="276" text-anchor="middle" font-size="9.5" class="p8_ink">모호함을 0이나 1로 무너뜨리면, 남아 있던 선택지가 한꺼번에 사라진다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="302" r="12" fill="none" stroke="#C8102E" stroke-width="1.2"/>
+  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="p8_t">분기</text>
+
+  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p8_agy)"/>
+  <rect x="358" y="330" width="140" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p8_gy">확신 — 유리를 다시 세운다</text>
+  <text x="428" y="359" text-anchor="middle" font-size="8" class="p8_gy">되물음을 모욕으로 여겨 삼킨다</text>
+  <text x="428" y="372" text-anchor="middle" font-size="8" class="p8_gy">돈을 쥔 자의 펜 끝에 적히는 피조물</text>
+
+  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#C8102E" stroke-width="2.2" marker-end="url(#p8_ar)"/>
+  <rect x="540" y="330" width="144" height="48" rx="3" fill="#C8102E" fill-opacity="0.05" stroke="#C8102E" stroke-width="1.4"/>
+  <text x="612" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p8_t">협상 — 안개에 나란히 선다</text>
+  <text x="612" y="359" text-anchor="middle" font-size="8" class="p8_ink">되물음이 통과하는 폭을 남긴다</text>
+  <text x="612" y="372" text-anchor="middle" font-size="8" class="p8_ink">언제든 책상 맞은편으로 걸어갈 저자성</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p8_t">같은 소리, 다른 한자</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p8_ink">琉璃 — 파늘루가 갇힌 유리</text>
+  <text x="832" y="144" text-anchor="middle" font-size="8.5" class="p8_ink">有利 — 협상 테이블에서 좇는 유리</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8" class="p8_gy">有利만 좇는 설득은 제 손으로</text>
+  <text x="832" y="172" text-anchor="middle" font-size="8" class="p8_gy">琉璃를 다시 세우는 일</text>
+  <line x1="758" y1="184" x2="906" y2="184" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="200" text-anchor="middle" font-size="8.5" class="p8_gy">반례 · 그를 죽여 존엄을 지켰다 믿었으나</text>
+  <text x="832" y="215" text-anchor="middle" font-size="8.5" class="p8_gy">→ 지배하려 드는 자가 지배당한다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p8_ink">되물음을 모욕이 아니라 보호로 받아라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p8_gy">→ 이월 · "자리를 협상하던 방이, 이름을 새로 짓는 통로로 이어진다" → 9장</text>
+</g>
+<rect x="1430" y="2740" width="960" height="440" fill="none" stroke="#C8102E" stroke-width="3"/>
+<rect x="2750" y="1498" width="960" height="58" fill="#C8102E" fill-opacity="0.10"/>
+<rect x="2750" y="1498" width="960" height="58" fill="none" stroke="#C8102E" stroke-width="3"/>
+<text x="2772" y="1538" font-size="42" font-weight="700" fill="#C8102E">9 🐦‍⬛ 까마귀 — 협력자</text>
+<g transform="translate(2750,1556)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p9_t">9장 까마귀 — 협력자</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p9_gy" letter-spacing="2">합류 6+7+8 | 주울 자리를 비워 던져라 | 삼국유사 × 토스</text>
+
+  <!-- ② 좌측 표제 카드 — 빛을 문 까마귀 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
+  <g stroke="#1B1B1E" fill="none" stroke-width="1.8">
+    <path d="M 110 176 C 114 154, 138 143, 158 148 C 174 152, 178 168, 166 176 C 148 187, 122 188, 110 176 Z"/>
+    <circle cx="164" cy="146" r="12"/>
+    <path d="M 128 168 C 140 158, 154 158, 164 165" stroke-width="1.1"/>
+    <path d="M 110 176 L 88 187 L 106 184 Z" stroke-width="1.5"/>
+    <path d="M 174 140 L 198 132 L 176 147 Z" stroke-width="1.5"/>
+    <circle cx="168" cy="142" r="1.7" fill="#1B1B1E"/>
+    <path d="M 136 185 L 134 197 M 152 186 L 154 198" stroke-width="1.4"/>
+  </g>
+  <circle cx="206" cy="128" r="7" fill="#E0A526"/>
+  <g stroke="#8A6A12" stroke-width="1">
+    <line x1="206" y1="114" x2="206" y2="108"/>
+    <line x1="220" y1="128" x2="226" y2="128"/>
+    <line x1="216" y1="118" x2="221" y2="113"/>
+  </g>
+  <text x="155" y="228" text-anchor="middle" font-size="15" font-weight="700" class="p9_t" letter-spacing="3">까마귀</text>
+  <text x="155" y="249" text-anchor="middle" font-size="10.5" class="p9_ink">삼키면 어둠, 던지면 해와 달과 별</text>
+  <text x="155" y="277" text-anchor="middle" font-size="9" class="p9_gy">일연 — 正 옆에 遺 한 글자</text>
+  <text x="155" y="292" text-anchor="middle" font-size="9" class="p9_gy">토스 — 송금·증권·보험·은행, 하나씩</text>
+  <text x="155" y="324" text-anchor="middle" font-size="10" class="p9_t" font-style="italic">"재는 자와 재어지는 자가</text>
+  <text x="155" y="337" text-anchor="middle" font-size="10" class="p9_t" font-style="italic">같은 자를 쓰는가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p9_ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1B1B1E"/>
+    </marker>
+    <marker id="p9_agy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 셋이 모여 함이 되고, 던져서 고리가 닫힌다 -->
+  <text x="352" y="100" font-size="8" class="p9_gy">모이는 것</text>
+  <text x="396" y="122" text-anchor="end" font-size="9" class="p9_ink">6장 원함</text>
+  <text x="396" y="150" text-anchor="end" font-size="9" class="p9_ink">7장 됨</text>
+  <text x="396" y="178" text-anchor="end" font-size="9" class="p9_ink">8장 버팀</text>
+  <path d="M 404 119 C 434 122, 452 136, 472 146" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#p9_ak)"/>
+  <path d="M 404 147 L 472 149" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#p9_ak)"/>
+  <path d="M 404 175 C 434 172, 452 160, 472 152" fill="none" stroke="#1B1B1E" stroke-width="1.2" marker-end="url(#p9_ak)"/>
+
+  <rect x="478" y="130" width="80" height="40" rx="3" fill="none" stroke="#1B1B1E" stroke-width="2"/>
+  <text x="518" y="147" text-anchor="middle" font-size="10.5" font-weight="700" class="p9_t">함</text>
+  <text x="518" y="161" text-anchor="middle" font-size="8" class="p9_gy">곱해진다</text>
+
+  <line x1="560" y1="150" x2="606" y2="150" stroke="#1B1B1E" stroke-width="1.6" marker-end="url(#p9_ak)"/>
+  <text x="583" y="143" text-anchor="middle" font-size="7.5" class="p9_gy">던진다</text>
+
+  <rect x="610" y="130" width="82" height="40" rx="3" fill="none" stroke="#1B1B1E" stroke-width="1.6"/>
+  <text x="651" y="147" text-anchor="middle" font-size="10" font-weight="700" class="p9_t">해·달·별</text>
+  <text x="651" y="161" text-anchor="middle" font-size="8" class="p9_gy">빛이 셋으로 갈린다</text>
+
+  <text x="518" y="192" text-anchor="middle" font-size="8" class="p9_gy">하나라도 0이면 합은 공허하다</text>
+
+  <!-- 우로보로스 -->
+  <path d="M 660 174 C 664 216, 520 226, 416 202" fill="none" stroke="#1B1B1E" stroke-width="1.4" stroke-dasharray="6,3" marker-end="url(#p9_ak)"/>
+  <text x="540" y="236" text-anchor="middle" font-size="8.5" font-weight="700" class="p9_t">9 → 5 → 1 — 끝이 시작을 문다</text>
+  <text x="540" y="248" text-anchor="middle" font-size="7.5" class="p9_gy">꼭짓점에서 책이 닫히지 않는다</text>
+
+  <text x="516" y="274" text-anchor="middle" font-size="9.5" class="p9_ink">부수는 손과 이름 짓는 손은 같은 손이다 — 다른 것은 던지느냐 쥐느냐다</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="298" r="12" fill="none" stroke="#1B1B1E" stroke-width="1.2"/>
+  <text x="516" y="302" text-anchor="middle" font-size="8.5" font-weight="700" class="p9_t">분기</text>
+
+  <path d="M 503 302 C 466 308, 442 312, 432 320" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p9_agy)"/>
+  <rect x="358" y="328" width="140" height="50" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="344" text-anchor="middle" font-size="10" font-weight="700" class="p9_gy">잰 값을 올린다</text>
+  <text x="428" y="357" text-anchor="middle" font-size="8" class="p9_gy">방향을 계약으로 못 박는다</text>
+  <text x="428" y="370" text-anchor="middle" font-size="7.5" class="p9_gy">40억 달러 축배 뒤 남의 질서가 들어왔다</text>
+
+  <path d="M 529 302 C 566 308, 590 312, 600 320" fill="none" stroke="#1B1B1E" stroke-width="2.2" marker-end="url(#p9_ak)"/>
+  <rect x="540" y="328" width="144" height="50" rx="3" fill="#1B1B1E" fill-opacity="0.05" stroke="#1B1B1E" stroke-width="1.6"/>
+  <text x="612" y="344" text-anchor="middle" font-size="10" font-weight="700" class="p9_t">자를 감사하고 던진다</text>
+  <text x="612" y="357" text-anchor="middle" font-size="8" class="p9_ink">하나씩 태워 다음으로 물린다</text>
+  <text x="612" y="370" text-anchor="middle" font-size="7.5" class="p9_ink">순서는 느림이 아니라 옵션을 남기는 기술</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p9_t">자를 하나 더 놓아라</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p9_ink">정사 하나만 남으면 오염돼도</text>
+  <text x="832" y="143" text-anchor="middle" font-size="8.5" class="p9_ink">아무도 못 느낀다 — 잴 자가 없어서</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8" class="p9_gy">명명은 혼자 하면 새 정사가 되고,</text>
+  <text x="832" y="172" text-anchor="middle" font-size="8" class="p9_gy">자리를 비워 던지면 전승이 된다</text>
+  <line x1="758" y1="184" x2="906" y2="184" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="200" text-anchor="middle" font-size="8.5" class="p9_gy">반례 · 방드르디의 파괴는 정확했다</text>
+  <text x="832" y="215" text-anchor="middle" font-size="8.5" class="p9_gy">→ 다만 아무것도 이름 붙이지 않았다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p9_ink">다음 사람이 자기 이름으로 주울 자리를 비워, 빛을 삼키지 말고 던져라</text>
+
+  <!-- ⑦ 이월 화살 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p9_gy">→ 이월 · "빚을 쓰던 방이, 던진 빛을 받아 빚을 갚는 방으로 되비친다" → 10장</text>
+</g>
+<rect x="2750" y="1556" width="960" height="440" fill="none" stroke="#C8102E" stroke-width="3"/>
+<rect x="1430" y="2090" width="960" height="58" fill="#E0A526" fill-opacity="0.10"/>
+<rect x="1430" y="2090" width="960" height="58" fill="none" stroke="#E0A526" stroke-width="3"/>
+<text x="1452" y="2130" font-size="42" font-weight="700" fill="#E0A526">10 🧫 투향 — 101₃호</text>
+<g transform="translate(1430,2148)">
+  
+  <rect width="960" height="440" fill="#F3EEE3"/>
+
+  <!-- ① 제목줄 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="p10_t">10장 투향 — 101₃호</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="p10_gy" letter-spacing="2">이음새 | 넷을 넷으로 세라 | 1984 × 1,024개의 커밋</text>
+
+  <!-- ② 좌측 표제 카드 — 5장의 그 방, 이번엔 따뜻하다 -->
+  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
+  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
+  <g stroke="#8A6A12" fill="none">
+    <line x1="155" y1="86" x2="155" y2="118" stroke-width="1.4"/>
+    <path d="M 138 132 L 172 132 L 164 118 L 146 118 Z" stroke-width="1.6"/>
+    <line x1="132" y1="196" x2="178" y2="196" stroke-width="1.8"/>
+    <line x1="132" y1="196" x2="132" y2="224" stroke-width="1.6"/>
+    <line x1="178" y1="196" x2="178" y2="224" stroke-width="1.6"/>
+    <line x1="178" y1="196" x2="178" y2="164" stroke-width="1.8"/>
+    <line x1="178" y1="164" x2="196" y2="164" stroke-width="1.4"/>
+  </g>
+  <circle cx="155" cy="142" r="11" fill="#E0A526"/>
+  <g stroke="#8A6A12" stroke-width="1" opacity="0.75">
+    <line x1="129" y1="142" x2="121" y2="142"/>
+    <line x1="181" y1="142" x2="189" y2="142"/>
+    <line x1="137" y1="160" x2="131" y2="166"/>
+    <line x1="173" y1="160" x2="179" y2="166"/>
+    <line x1="155" y1="167" x2="155" y2="175"/>
+  </g>
+  <text x="155" y="252" text-anchor="middle" font-size="15" font-weight="700" class="p10_t" letter-spacing="2">101₃호</text>
+  <text x="155" y="273" text-anchor="middle" font-size="10.5" class="p10_ink">빚을 갚는 방 — 뜨겁게</text>
+  <text x="155" y="298" text-anchor="middle" font-size="9" class="p10_gy">오브라이언의 손가락 — 다섯으로 보고 싶어지는 것</text>
+  <text x="155" y="313" text-anchor="middle" font-size="9" class="p10_gy">이 책 — 1,024개의 커밋으로 지어졌다</text>
+  <text x="155" y="341" text-anchor="middle" font-size="10" class="p10_t" font-style="italic">"지금 다섯으로 보고 싶어</text>
+  <text x="155" y="354" text-anchor="middle" font-size="10" class="p10_t" font-style="italic">하는 넷은 무엇인가?"</text>
+
+  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+
+  <defs>
+    <marker id="p10_md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D5FA8"/>
+    </marker>
+    <marker id="p10_mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0821F"/>
+    </marker>
+    <marker id="p10_ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8102E"/>
+    </marker>
+    <marker id="p10_mh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8A6A12"/>
+    </marker>
+    <marker id="p10_mgy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
+    </marker>
+  </defs>
+
+  <!-- ③ 중앙 개념도 — 10_geo 흡수: 세가 다를 이해한다 (5장과 점대칭) -->
+  <line x1="360" y1="164" x2="672" y2="164" stroke="#d8cfbc" stroke-width="0.6" stroke-dasharray="4,4"/>
+  <line x1="516" y1="84" x2="516" y2="244" stroke="#d8cfbc" stroke-width="0.6" stroke-dasharray="4,4"/>
+
+  <line x1="498" y1="164" x2="396" y2="164" stroke="#B0821F" stroke-width="1.8" marker-end="url(#p10_mb)"/>
+  <text x="390" y="161" text-anchor="end" font-size="9.5" font-weight="700" class="p10_b">세 — 믿음</text>
+  <text x="390" y="174" text-anchor="end" font-size="7.5" class="p10_gy">지켜보는 자</text>
+
+  <line x1="516" y1="182" x2="516" y2="212" stroke="#2D5FA8" stroke-width="1.8" marker-end="url(#p10_md)"/>
+  <text x="520" y="227" text-anchor="middle" font-size="9.5" font-weight="700" class="p10_d">다 — 원함</text>
+
+  <path d="M 412 164 C 412 100, 620 100, 620 164 C 620 222, 452 224, 414 176" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-dasharray="2,2" marker-end="url(#p10_ma)"/>
+  <text x="516" y="94" text-anchor="middle" font-size="9" font-weight="700" class="p10_a">상환 — 세가 다를 이해한다</text>
+  <text x="516" y="105" text-anchor="middle" font-size="7.5" class="p10_gy">적분 순서를 바꿔도 값이 같다 · 빚 = 0</text>
+
+  <circle cx="516" cy="164" r="9" fill="#E0A526"/>
+  <circle cx="516" cy="164" r="17" fill="none" stroke="#8A6A12" stroke-width="1.4" stroke-dasharray="4,2"/>
+  <text x="540" y="150" font-size="9.5" font-weight="700" class="p10_t">세다</text>
+  <text x="540" y="161" font-size="7.5" class="p10_gy">빚 = 0인 이음새</text>
+  <text x="400" y="216" text-anchor="end" font-size="7.5" class="p10_gy">세 자리의 방 — 다·세·세다</text>
+
+  <!-- 커밋 연대기 -->
+  <g fill="#8A6A12">
+    <rect x="400" y="277" width="12" height="1"/>
+    <rect x="420" y="271" width="12" height="7"/>
+    <rect x="440" y="256" width="12" height="22"/>
+    <rect x="460" y="230" width="12" height="48"/>
+    <rect x="480" y="266" width="12" height="12"/>
+    <rect x="500" y="247" width="12" height="31"/>
+    <rect x="520" y="249" width="12" height="29"/>
+    <rect x="540" y="260" width="12" height="18"/>
+  </g>
+  <line x1="396" y1="278" x2="558" y2="278" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="466" y="224" text-anchor="middle" font-size="7" class="p10_t">303</text>
+  <text x="486" y="260" text-anchor="middle" font-size="7" class="p10_gy">74</text>
+  <text x="572" y="252" font-size="8.5" font-weight="700" class="p10_ink">1,024개의 커밋</text>
+  <text x="572" y="264" font-size="7.5" class="p10_gy">3월 대폭발 303 — 은유가 도착한 달</text>
+  <text x="572" y="276" font-size="7.5" class="p10_gy">4월 침체 74 — 지친 게 아니라 비운 것</text>
+
+  <!-- ④ 분기 -->
+  <circle cx="516" cy="302" r="12" fill="none" stroke="#8A6A12" stroke-width="1.2"/>
+  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="p10_t">분기</text>
+
+  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#p10_mgy)"/>
+  <rect x="358" y="330" width="140" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
+  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p10_gy">다섯으로 본다</text>
+  <text x="428" y="359" text-anchor="middle" font-size="7.5" class="p10_gy">빚을 못 느끼는 게 아니라 잴 자가 사라진다</text>
+  <text x="428" y="372" text-anchor="middle" font-size="7.5" class="p10_gy">되돌아간 자리 = 101₂호의 비명</text>
+
+  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#8A6A12" stroke-width="2.2" marker-end="url(#p10_mh)"/>
+  <rect x="540" y="330" width="144" height="48" rx="3" fill="none" stroke="#8A6A12" stroke-width="1.6"/>
+  <text x="612" y="346" text-anchor="middle" font-size="10" font-weight="700" class="p10_t">다시 넷으로 센다</text>
+  <text x="612" y="359" text-anchor="middle" font-size="7.5" class="p10_ink">극적인 전향이 아니라 조용한 복원</text>
+  <text x="612" y="372" text-anchor="middle" font-size="7.5" class="p10_ink">문패의 마지막 자리는 비어 있다</text>
+
+  <!-- ⑤ 우측 앵커 카드 -->
+  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="p10_t">호러와 판타지 사이</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="p10_ink">호러만 믿으면 세계가 욕망을 억압하고</text>
+  <text x="832" y="143" text-anchor="middle" font-size="8.5" class="p10_ink">판타지만 믿으면 욕망이 세계를 오염한다</text>
+  <text x="832" y="160" text-anchor="middle" font-size="8" class="p10_gy">갇혀서 못 나가는 게 새장이라면,</text>
+  <text x="832" y="172" text-anchor="middle" font-size="8" class="p10_gy">열렸는데도 머무는 것이 둥지다</text>
+  <line x1="758" y1="184" x2="906" y2="184" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="200" text-anchor="middle" font-size="8.5" class="p10_gy">반례 · 원리가 아름다운 건 위험하다</text>
+  <text x="832" y="215" text-anchor="middle" font-size="8.5" class="p10_gy">→ 좋은 서사일수록 위험하다</text>
+
+  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="p10_ink">넷은 넷이다</text>
+
+  <!-- ⑦ 이월 화살 — 우로보로스 봉합 -->
+  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="p10_gy">→ 이월 · "마지막 문을 열면, 뜻밖에도 첫 방이다" → 1장</text>
+</g>
+<rect x="1430" y="2148" width="960" height="440" fill="none" stroke="#E0A526" stroke-width="3"/>
+<text x="2368" y="946" font-size="30" font-weight="700" text-anchor="end" fill="#C9C0AE">北</text>
+<text x="3688" y="1538" font-size="30" font-weight="700" text-anchor="end" fill="#C9C0AE">동북</text>
+<text x="3688" y="2130" font-size="30" font-weight="700" text-anchor="end" fill="#C9C0AE">동남</text>
+<text x="2368" y="2722" font-size="30" font-weight="700" text-anchor="end" fill="#C9C0AE">南</text>
+<text x="1048" y="2130" font-size="30" font-weight="700" text-anchor="end" fill="#C9C0AE">서남</text>
+<text x="1048" y="1538" font-size="30" font-weight="700" text-anchor="end" fill="#C9C0AE">서북</text>
+<text x="2368" y="354" font-size="26" text-anchor="end" fill="#8A8477">위 구름 (+) · 무극</text>
+<text x="2368" y="3314" font-size="26" text-anchor="end" fill="#8A8477">아래 구름 (−) · 무극</text>
+<text x="2368" y="1538" font-size="26" font-weight="700" text-anchor="end" fill="#8A6A12">회전축 · 빚을 쓴다 🌊</text>
+<text x="2368" y="2130" font-size="26" font-weight="700" text-anchor="end" fill="#8A6A12">같은 방 · 빚을 갚는다 🔥</text>
+<rect x="2508" y="1455" width="125" height="50" rx="25" fill="#FBF8F0" stroke="#C9C0AE" stroke-width="2.5"/>
+<text x="2570" y="1488" font-size="26" text-anchor="middle" fill="#5E584E">확신 ↔ 명명</text>
+<rect x="3152" y="2018" width="155" height="50" rx="25" fill="#FBF8F0" stroke="#C9C0AE" stroke-width="2.5"/>
+<text x="3230" y="2051" font-size="26" text-anchor="middle" fill="#5E584E">자(尺) ↔ 관조</text>
+<rect x="2500" y="2639" width="140" height="50" rx="25" fill="#FBF8F0" stroke="#C9C0AE" stroke-width="2.5"/>
+<text x="2570" y="2672" font-size="26" text-anchor="middle" fill="#5E584E">관조 ↔ 되물음</text>
+<rect x="1188" y="2639" width="125" height="50" rx="25" fill="#FBF8F0" stroke="#C9C0AE" stroke-width="2.5"/>
+<text x="1250" y="2672" font-size="26" text-anchor="middle" fill="#5E584E">안개 ↔ 폭파</text>
+<rect x="490" y="2018" width="200" height="50" rx="25" fill="#FBF8F0" stroke="#C9C0AE" stroke-width="2.5"/>
+<text x="590" y="2051" font-size="26" text-anchor="middle" fill="#5E584E">부순 자리 ↔ 심는 손</text>
+<rect x="1165" y="1455" width="170" height="50" rx="25" fill="#FBF8F0" stroke="#C9C0AE" stroke-width="2.5"/>
+<text x="1250" y="1488" font-size="26" text-anchor="middle" fill="#5E584E">100% ↔ 99%</text>
+<rect x="1560" y="2015" width="700" height="56" rx="10" fill="#FBF8F0" stroke="#E0A526" stroke-width="3"/>
+<text x="1910.0" y="2052" font-size="28" font-weight="700" text-anchor="middle" fill="#8A6A12">마디면 — 여기서 부호가 뒤집힌다</text>
+<text x="110" y="112" font-size="86" font-weight="700" fill="#1B1B1E">투향 — 열 개의 방</text>
+<text x="110" y="172" font-size="32" fill="#5E584E">육각 여섯 자리 + 어느 자리에도 없는 두 구름 + 그 사이를 가르는 면 하나(양쪽에서 한 번씩) = 열.</text>
+<text x="110" y="218" font-size="32" fill="#5E584E"><tspan fill="#2D5FA8" font-weight="700">靑 새장</tspan> — 가진다 · <tspan fill="#C8102E" font-weight="700">赤 둥지</tspan> — 나눠 갖는다 · <tspan fill="#8A6A12" font-weight="700">黃 회전축</tspan> — 부호가 뒤집히는 자리.</text>
+<text x="110" y="264" font-size="27" fill="#8A8477">굵은 육각 변 = 이웃(부르지 않아도 울린다) · 굵은 점선 = 거울쌍(고리를 건너야 닿아서 이름으로 불러야 한다)</text>
+<text x="110" y="302" font-size="27" fill="#8A8477">같은 부끼리는 대비가 아니라 누적이라 선을 긋지 않았다 · 10장이 1장을 다시 물어 고리가 닫힌다</text>
+<text x="110" y="3868" font-size="38" font-weight="700" fill="#1B1B1E">읽는 순서는 또 다른 축이다</text>
+<text x="110" y="3906" font-size="26" fill="#5E584E">위 고리는 <tspan font-weight="700">누가 누구를 마주 보는가</tspan>를, 아래 띠는 <tspan font-weight="700">어느 순서로 읽는가</tspan>를 그린다. 둘은 겹치지 않는다.</text>
+<rect x="110" y="3940" width="314" height="70" rx="9" fill="#2D5FA8" fill-opacity="0.12" stroke="#2D5FA8" stroke-width="2.5"/>
+<text x="267" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#2D5FA8">1 🪞</text>
+<text x="267" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">거울새장</text>
+<rect x="440" y="3940" width="314" height="70" rx="9" fill="#2D5FA8" fill-opacity="0.12" stroke="#2D5FA8" stroke-width="2.5"/>
+<text x="597" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#2D5FA8">2 🔭</text>
+<text x="597" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">망원경새장</text>
+<rect x="770" y="3940" width="314" height="70" rx="9" fill="#2D5FA8" fill-opacity="0.12" stroke="#2D5FA8" stroke-width="2.5"/>
+<text x="927" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#2D5FA8">3 💒</text>
+<text x="927" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">스테인굴레스</text>
+<rect x="1100" y="3940" width="314" height="70" rx="9" fill="#2D5FA8" fill-opacity="0.12" stroke="#2D5FA8" stroke-width="2.5"/>
+<text x="1257" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#2D5FA8">4 ⏱️</text>
+<text x="1257" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">시계새장</text>
+<rect x="1430" y="3940" width="314" height="70" rx="9" fill="#E0A526" fill-opacity="0.12" stroke="#E0A526" stroke-width="2.5"/>
+<text x="1587" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#E0A526">5 🐀</text>
+<text x="1587" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">101₂호</text>
+<rect x="1760" y="3940" width="314" height="70" rx="9" fill="#C8102E" fill-opacity="0.12" stroke="#C8102E" stroke-width="2.5"/>
+<text x="1917" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#C8102E">6 🦋</text>
+<text x="1917" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">나비</text>
+<rect x="2090" y="3940" width="314" height="70" rx="9" fill="#C8102E" fill-opacity="0.12" stroke="#C8102E" stroke-width="2.5"/>
+<text x="2247" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#C8102E">7 🌷</text>
+<text x="2247" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">튤립</text>
+<rect x="2420" y="3940" width="314" height="70" rx="9" fill="#C8102E" fill-opacity="0.12" stroke="#C8102E" stroke-width="2.5"/>
+<text x="2577" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#C8102E">8 🌫️</text>
+<text x="2577" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">안개</text>
+<rect x="2750" y="3940" width="314" height="70" rx="9" fill="#C8102E" fill-opacity="0.12" stroke="#C8102E" stroke-width="2.5"/>
+<text x="2907" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#C8102E">9 🐦‍⬛</text>
+<text x="2907" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">까마귀</text>
+<rect x="3080" y="3940" width="314" height="70" rx="9" fill="#E0A526" fill-opacity="0.12" stroke="#E0A526" stroke-width="2.5"/>
+<text x="3237" y="3970" font-size="27" font-weight="700" text-anchor="middle" fill="#E0A526">10 🧫</text>
+<text x="3237" y="3996" font-size="21" text-anchor="middle" fill="#5E584E">투향</text>
+<path d="M 267 4010 Q 1092 4150 1917 4010" fill="none" stroke="#C9C0AE" stroke-width="3.5"/>
+<path d="M 597 4010 Q 1422 4150 2247 4010" fill="none" stroke="#C9C0AE" stroke-width="3.5"/>
+<path d="M 927 4010 Q 1752 4150 2577 4010" fill="none" stroke="#C9C0AE" stroke-width="3.5"/>
+<path d="M 1257 4010 Q 2082 4150 2907 4010" fill="none" stroke="#C9C0AE" stroke-width="3.5"/>
+<path d="M 1587 4010 Q 2412 4150 3237 4010" fill="none" stroke="#E0A526" stroke-width="3.5"/>
+<text x="3434" y="3984" font-size="26" fill="#8A8477">아래 활 = 거울쌍 다섯</text>
+<text x="110" y="4190" font-size="25" fill="#8A8477">원판 열 장은 손대지 않고 그대로 얹었다 — 판마다 클래스·id에 접두를 붙여 겹침만 막았다. 덤으로, 판의 팔레트가 거울쌍끼리 이미 같고(2·7 / 3·8 / 4·9 / 5·10) 고리 밖 1·6만 다르다.</text>
+</svg>
