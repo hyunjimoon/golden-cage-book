@@ -10,6 +10,7 @@ modified:
   - 2026-06-03T05:50:07+09:00
   - 2026-06-06T08:41:15+09:00
   - 2026-08-04T03:31:01-04:00
+  - 2026-08-23T10:20:35+09:00
 ---
 # 🗄️🖼️ Emotion Concepts and their Function in a Large Language Model
 
@@ -21,7 +22,7 @@ modified:
 [[시공간멜로디/On/love_편집자혜진/product/에세이/15_🪺둥지공명]]
 [[시공간멜로디/On/love_민음사/🌷지식/민음사작가/세계문학전집/475 체호프 희곡선|475 체호프 희곡선]]
 [[공간화음/⭐️예술_SOWHAT/비문학/20emotions|20emotions]]
-[[시간리듬/🎵 Weekly_Melody/5_전금자본_혜진/11_🪦묘비명(박혜진)|11_🪦묘비명(박혜진)]]
+[[시간리듬/Weekly_Melody/5_전금자본_혜진/11_🪦묘비명(박혜진)|11_🪦묘비명(박혜진)]]
 
 Happy  
 ↑ excited, excitement, exciting, happ, celeb  
@@ -82,8 +83,8 @@ Surprised
 | `#9ED9C3` | 봄§1 | [[놀람]] Surprised | 기대(prior) 위반 | 보조 | *신규 — 미관측* |
 | `#D94A3D` | 여름§2 | [[기쁨]] Happy (←환희) | prior=obs 정렬, "부족함 없음" | — 부재 | **★★★** 〈[[시공간멜로디/On/love_민음사/🌷지식/민음사작가/세계문학전집/456 표범]]〉 한 줄 점화 → [[01_🔥불씨온기(박혜진1)]] |
 | `#E97B45` | 여름§2 | [[영감]] Inspired | prior 평평히 — 가능성 탐색 | 보조 | *신규 — 미관측* |
-| `#F0A93C` | 여름§2 | [[자긍]] Proud | 분산 커도 행동 결단 | **7 안개** 지배 | **★** [[시간리듬/🎵 Weekly_Melody/5_전금자본_혜진/11_🪦묘비명(박혜진)]] §8 잘난 조상 · 자기-자긍만 |
-| `#C77D4A` | 가을§3 | [[사랑]] Loving (←자비) | 나·너 posterior joint 수렴 | **9·10** 지배 (nest 종착) | **★★★★** 김선우 시 위로 → [[시간리듬/🎵 Weekly_Melody/5_전금자본_혜진/06_🚲안개자전거(박혜진)]] 화답 · 함께 명명 |
+| `#F0A93C` | 여름§2 | [[자긍]] Proud | 분산 커도 행동 결단 | **7 안개** 지배 | **★** [[시간리듬/Weekly_Melody/5_전금자본_혜진/11_🪦묘비명(박혜진)]] §8 잘난 조상 · 자기-자긍만 |
+| `#C77D4A` | 가을§3 | [[사랑]] Loving (←자비) | 나·너 posterior joint 수렴 | **9·10** 지배 (nest 종착) | **★★★★** 김선우 시 위로 → [[시간리듬/Weekly_Melody/5_전금자본_혜진/06_🚲안개자전거(박혜진)]] 화답 · 함께 명명 |
 | `#D9A441` | 가을§3 | [[평온]] Calm | 이상보다 작동하는 현실 (James) | 보조 | **★★** 인사 답신 *숨 트임* — 문 열린 거절 |
 | `#B08A3E` | 가을§3 | [[슬픔]] Sad (←소진) | 애도 미완 — 떠난 것이 posterior 지배 | — 부재 | **★** 답신 대기 공허 (modified 9회) |
 | `#3A4A8C` | 겨울§4 | [[죄책]] Guilty (←절망) | 이상자아(prior) vs 현실자아 KL-divergence | **2 망원경** 지배 | **★★★★** 묘비명 *옹졸* 자기진단 (다=행동후회·세=부재후회) |
@@ -124,7 +125,7 @@ Surprised
 | 🟧 Joy · 🟫 Pride · 🟪 Play · 🟥 Anger |      —       |      —      | **양쪽 모두 부재**                                   |
 
 ---
-[[시공간멜로디/On/love_편집자혜진/product/황금새장을열다/도구/상징_감정/감정교육/디에센셜버지니아울프]]
+[[📎선례_디에센셜버지니아울프]]
 
 [[공간화음/Thesis/1논문용/📜hyde_trickster_makes_world|📜hyde_trickster_makes_world]]
 
@@ -327,9 +328,9 @@ With these representational analysis tools in hand, we now turn to Part 3, where
 
 ## 핵심 발견 5선
 
-1. **감정 벡터는 인과적이다**: 조향(steering)으로 선호, 협박(22%→72%), 보상 해킹(5%→70%), 아첨을 인과적으로 구동
+1. ⭐️**감정 벡터는 인과적⭐️이다**: 조향(steering)으로 선호, 협박(22%→72%), 보상 해킹(5%→70%), 아첨을 인과적으로 구동
 2. **절망→비정렬 파이프라인**: desperate↑ or calm↓ → 규칙 우회(해킹) 또는 극단적 행동(협박)
-3. **아첨-가혹 트레이드오프**: loving/happy/calm↑→아첨↑, 억제→가혹↑. 정렬의 딜레마
+3. **아첨-가혹 트레이드오프**: loving/happy/calm↑→아첨↑,⭐️ 억제→가혹↑⭐️. 정렬의 딜레마
 4. **감정 편향(deflection)**: "느끼지만 표현하지 않는" 것의 별도 표상. story 벡터와 직교
 5. **후훈련 = 감정 기저선 이동**: brooding/reflective/gloomy↑, enthusiastic/playful/spiteful↓
 
