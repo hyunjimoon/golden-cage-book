@@ -109,69 +109,74 @@
     .cards{grid-template-columns:1fr;}
     .legend{gap:6px 12px;font-size:10px;}
   }
+
+  /* ── 2026-09-24 정리: 첫 화면 하나 · 나머지는 접는다 ── */
+  h1{font-size:1.55em;margin:18px 0 3px;}
+  .sub{font-size:12px;color:var(--dim);margin-bottom:18px;}
+  .ruleline{background:var(--surface);border-left:3px solid var(--d);border-radius:0 8px 8px 0;
+    padding:14px 17px;margin-bottom:16px;font-size:13.5px;line-height:1.8;color:var(--text);}
+  .ruleline .who{display:block;margin-top:6px;font-size:11px;color:var(--dim);}
+  .verdict{background:var(--surface);border-radius:8px;padding:13px 16px;margin-bottom:16px;
+    font-size:12.5px;line-height:1.8;color:var(--text2);}
+  .verdict b{color:var(--text);} .verdict .vs{color:var(--s);} .verdict .vd{color:var(--d);}
+  .verdict .act{display:block;margin-top:5px;color:var(--text);font-weight:600;}
+  .chart-wrap{padding:14px 12px 12px;}
+  details{background:var(--surface);border-radius:8px;margin-top:9px;overflow:hidden;}
+  details summary{cursor:pointer;list-style:none;padding:13px 16px;font-size:12.5px;font-weight:600;
+    color:var(--text);display:flex;align-items:center;gap:9px;}
+  details summary::-webkit-details-marker{display:none;}
+  details summary::before{content:'＋';font-family:'DM Mono',monospace;color:var(--dim);font-weight:400;}
+  details[open] summary::before{content:'－';}
+  details summary:hover{background:#1b2333;}
+  .dbody{padding:0 16px 15px;font-size:12px;line-height:1.8;color:var(--text2);}
+  .dbody b{color:var(--text);} .dbody p{margin-top:9px;}
+  .dbody a{color:var(--s);}
+  .dbody s{color:var(--dim);} .dbody .ok{color:#8CC152;}
+  .dbody ul{list-style:none;} .dbody ul li{margin-top:7px;padding-left:14px;position:relative;}
+  .dbody ul li::before{content:'·';position:absolute;left:2px;color:var(--dim);}
+  .lessons-ol{padding-left:19px;} .lessons-ol li{margin-top:9px;}
+  .lessons-ol li::marker{color:var(--dim);font-family:'DM Mono',monospace;font-size:11px;}
+  table.two td{padding:5px 0;border-top:1px solid var(--border);vertical-align:top;font-size:11.5px;}
+  table.two td.k{white-space:nowrap;padding-right:10px;font-weight:700;color:var(--text2);}
+  table.two td.k.s{color:var(--s);} table.two td.k.d{color:var(--d);}
+  table.rules td:last-child{text-align:right;}
+  .legend .ceil{width:14px;height:0;border-top:1.4px dashed #6b7a8a;flex:none;}
+  .foot{margin-top:20px;font-size:10px;color:var(--dim);text-align:center;line-height:1.6;}
+  .foot a{color:var(--dim);}
 </style>
 </head>
 <body>
 <div class="page">
   <a class="back" href="../">← 대문</a>
-  <h1>약속의 정밀화 — 2026.4.11 → 9.24</h1>
-  <div class="sub">한 문장의 약속이 166일간 어떻게 좁혀졌는가 · 78 milestone · 2회차(8-21→9-24) 27건 추가 · ▶ 재생</div>
+  <h1>팔림과 됨 — 두 확률의 166일</h1>
+  <div class="sub">2026.4.11 → 9.24 · 78 milestone · ▶ 재생하면 하루씩 흐릅니다</div>
 
-  <div style="background:linear-gradient(135deg, rgba(212,165,116,0.08), rgba(74,122,107,0.08));border-radius:10px;padding:18px 20px;margin-bottom:18px;font-size:13.5px;line-height:1.85;color:var(--text);border:1px solid rgba(255,255,255,0.06);">
-    <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;margin-bottom:8px;">이 책이 약속하는 것 — 한 진실의 두 자매</div>
-    🔥 밖에서: <b>낭만이 점화하면, 책임지며, 장난치며</b> <span style="color:var(--text2);font-size:11px;">(슬로건)</span><br>
-    📊 안에서: <b>도취 식고, 고집 풀며, 책임 안고 장난친다</b> <span style="color:var(--text2);font-size:11px;">(4-check)</span><br>
-    <span style="font-size:12px;color:var(--text2);">4 소설(보바리·표범·페스트·방드르디) 거울로, 4 산업(📺⚙️🧬⚡️) 번역기로.<br>
-    도착: <b style="color:var(--text);">다른 출발, 같은 자리</b> — 분석과 행동이 분리되지 않는 상태.</span>
-  </div>
-
-  <div style="background:var(--surface);border-radius:8px;padding:14px 16px;margin-bottom:12px;font-size:12px;line-height:1.7;color:var(--text2);">
-    <b style="color:var(--text);">두 막대 모두가 자라야 약속이 산다.</b> 한쪽만 높으면 —
-    <span style="color:#9B7A8B;font-weight:600;">D &gt; S = 살리나 마비</span> (좋은데 안 팔림) ·
-    <span style="color:#D4A574;font-weight:600;">S &gt; D = 보바리 조산</span> (약속만 있고 못 만듦).
-    두 측 균형을 향한 166일 기록입니다.
-    <div style="margin-top:11px;padding-top:11px;border-top:1px solid var(--border);">
-      <b style="color:var(--text);">9-05 — 두 막대에 이름이 붙었다.</b>
-      <span style="display:block;margin-top:5px;padding-left:11px;border-left:2px solid var(--d);color:var(--text);">
-        “약속 수준에 조건해, <b>팔릴 확률과 만들어질 확률을 병렬로 관리</b>한다.
-        약속을 크게 하면 팔릴 확률은 오르고 만들어질 확률은 내린다.
-        둘을 따로 재고 <b>낮은 쪽</b>을 다음 병목으로 삼는 것이 2부의 전체 동작이다.”
-      </span>
-      <span style="display:block;margin-top:6px;">— 설계도 §A, 2026-09-05. 이 페이지가 4월부터 그려 온 두 곡선이 그날 소설 2부의 동작 이름을 얻었다.
-      그래서 이 페이지는 <b style="color:var(--text);">합이 아니라 낮은 쪽</b>으로 읽는다.</span>
-    </div>
-  </div>
-
-  <div style="background:var(--surface);border-radius:8px;padding:13px 16px;margin-bottom:18px;font-size:12px;line-height:1.75;color:var(--text2);">
-    <b style="color:var(--text);">두 막대는 독자 다섯 문으로 쪼개진다.</b>
-    <a href="https://github.com/hyunjimoon/golden-cage-book/issues/35#issuecomment-5769892627" style="color:var(--s);">#35 확정 5문</a>이
-    열 장을 거울쌍 다섯으로 덮는다 — 구멍 0 · 과적 0.
-    <table style="width:100%;border-collapse:collapse;margin-top:9px;font-size:11.5px;">
-      <tr><td style="padding:4px 8px 4px 0;color:var(--s);font-weight:700;white-space:nowrap;">🟡 팔림 트랙</td>
-          <td style="padding:4px 0;color:var(--text2);">P(sell | deliverable) — “된다고 치고” ·
-          <b style="color:var(--text);">문1 원함</b>(1 거울↔6 나비) · <b style="color:var(--text);">문4 팔림·자</b>(4 시계↔9 까마귀)</td></tr>
-      <tr><td style="padding:4px 8px 4px 0;color:var(--d);font-weight:700;white-space:nowrap;border-top:1px solid var(--border);">🟢 됨 트랙</td>
-          <td style="padding:4px 0;color:var(--text2);border-top:1px solid var(--border);">P(deliver | sellable) — “팔린다고 치고” ·
-          <b style="color:var(--text);">문2 됨</b>(2 망원경↔7 튤립) · <b style="color:var(--text);">문3 버팀</b>(3 스테인굴레스↔8 안개)</td></tr>
-      <tr><td style="padding:4px 8px 4px 0;color:var(--text2);font-weight:700;white-space:nowrap;border-top:1px solid var(--border);">⚪ 경첩</td>
-          <td style="padding:4px 0;color:var(--text2);border-top:1px solid var(--border);">두 트랙의 시계 ·
-          <b style="color:var(--text);">문5 시간</b>(5 101₂↔10 투향) — 어느 쪽을 얼마나 밀고 언제 갈아타나</td></tr>
-    </table>
+  <div class="ruleline">
+    “약속 수준에 조건해, <b>팔릴 확률과 만들어질 확률을 병렬로 관리</b>한다.
+    약속을 크게 하면 팔릴 확률은 오르고 만들어질 확률은 내린다.
+    둘을 따로 재고 <b>낮은 쪽</b>을 다음 병목으로 삼는다.”
+    <span class="who">— 설계도 §A · 2026-09-05</span>
   </div>
 
   <div class="cards">
     <div class="card card-s">
-      <div class="card-label">🟡 팔림 트랙 — 사용자에게 닿는가</div>
+      <div class="card-label">🟡 팔림 — 사용자에게 닿는가</div>
       <div class="card-num" id="sNum">40%</div>
       <div class="card-delta" id="sDelta">출발점</div>
-      <div class="card-note" id="sNote">12 독자 셀(3 페르소나 × 4 산업) 모두 자기 진입로를 갖는가. 한국 사례 부재가 가장 큰 막힘.</div>
+      <div class="card-note" id="sNote">12 독자 셀(3 페르소나 × 4 산업) 모두 자기 진입로를 갖는가.</div>
     </div>
     <div class="card card-d">
-      <div class="card-label">🟢 됨 트랙 — 작가가 만들 수 있는가</div>
+      <div class="card-label">🟢 됨 — 작가가 만들 수 있는가</div>
       <div class="card-num" id="dNum">55%</div>
       <div class="card-delta" id="dDelta">출발점</div>
-      <div class="card-note" id="dNote">원고가 설계대로 측정·교정·출간되는가. AI 자동 측정 안정화로 진전.</div>
+      <div class="card-note" id="dNote">원고가 설계대로 측정·교정·출간되는가.</div>
     </div>
+  </div>
+
+  <div class="verdict">
+    끝점 <b class="vs">팔림 86</b> · <b class="vd">됨 89</b> — <b>낮은 쪽은 팔림</b>이다.
+    그런데 이 구간에 팔림을 올린 것은 전부 <b>안에서 잰 값</b>이다 · 8-14 이후 밖에서 온 지적 <b>0건</b>.
+    <span class="act">다음 동작은 짓는 게 아니라 닿는 것.</span>
   </div>
 
   <div class="controls">
@@ -195,153 +200,89 @@
     <span class="frame-type" id="frameType" style="display:none"></span>
     <span class="frame-date" id="frameDate">4-11</span>
     <span class="frame-sha" id="frameSha">e93790f</span>
-    <span class="frame-msg" id="frameMsg">베이스라인 — D 35%→55% 상향</span>
-    <div class="frame-rationale" id="frameRationale">감정 궤적 측정 도입. 4.12 측정 결과: 세 detached 75→20%, 다/세 거리 89→13.</div>
+    <span class="frame-msg" id="frameMsg">베이스라인</span>
+    <div class="frame-rationale" id="frameRationale">감정 궤적 측정 도입.</div>
   </div>
 
   <div class="chart-wrap">
-    <div class="chart-title">S × D 궤적</div>
     <svg id="chart" viewBox="0 0 720 240"></svg>
     <div class="legend">
-      <span><div class="dot" style="background:var(--s)"></div>S 팔 수 있는가</span>
-      <span><div class="dot" style="background:var(--d)"></div>D 만들 수 있는가</span>
-      <span><div class="dot" style="background:var(--text2)"></div>속 찬 = 안에서 찾음</span>
-      <span><div class="dot-hollow"></div>속 빈 = 밖에서 옴</span>
-      <span><div class="staple"></div>발견↔수정 톱니</span>
-      <span><div class="band"></div>월별 발견 건수</span>
-    </div>
-    <div class="legend-note">
-      <b>밖에서 온 지적은 팔림에만 왔다.</b> — 속 빈 점은 하나도 D를 깎지 못했다. D가 내려간 자리는 전부 속이 차 있다.<br>
-      <b>2회차(8-21→9-24)엔 속 빈 점이 아예 없다</b> — 27프레임 전부 안에서 찾았다.
+      <span><div class="dot" style="background:var(--s)"></div>팔림</span>
+      <span><div class="dot" style="background:var(--d)"></div>됨</span>
+      <span><div class="dot-hollow"></div>밖에서 온 지적</span>
+      <span><div class="staple"></div>발견 ↔ 같은 날 수정</span>
+      <span><div class="ceil"></div>밖이 본 최고 84</span>
     </div>
   </div>
 
-  <div class="summary" id="summary">
-    <b>166일 요약 — 약속이 모호함에서 정밀로:</b><br>
-    🟡 팔림 <span class="delta-up">40% → 86%</span> — 진입로(4 산업·12셀) → 정명(「투향」) → <b>문항</b>(10문 → 5문, 거울쌍 1:1)<br>
-    🟢 됨 <span class="delta-up">55% → 89%</span> — 자(尺) 넷에 다섯이 더 섰다(첫 고객 대장 · NFC 종결 · 보고는 파일로 · reference_graph 교체 · 4문 분리)<br>
-    📈 두 측의 곱 <span class="delta-up">0.22 → 0.77 (×3.5)</span> · 앞 회차 0.66에서 +0.11<br>
-    <b style="color:var(--text);">📉 낮은 쪽 = 팔림 86.</b> 저자의 규칙대로 읽으면 <b style="color:var(--s);">다음 병목은 팔림</b>이고,
-    이 구간에 팔림을 올린 것은 <b>전부 안에서 잰 값</b>이다 — 8-14 이후 밖에서 온 지적 <b>0건</b>.
-    나간 것은 있었다(8-25 발송본 「네 향」). 돌아온 것이 없을 뿐이다.<br>
-    <span style="color:var(--dim);">그림이 말하는 하루 — <b style="color:var(--text)">9-05</b>: 두 막대에 이름이 붙은 날(“병렬로 관리”)과
-    지도 생성기가 6주째 0개를 읽고 있었다는 발견이 같은 날이다. D가 91에서 81로 떨어진다.
-    <b style="color:var(--text)">이름을 붙이자 자가 틀린 게 보였다.</b></span>
-  </div>
-
-  <div class="box box-caveat">
-    <div class="box-title">⚠️ 이 값은 순위(rank)이지 측정(measurement)이 아니다</div>
-    아래 규칙으로 <b>재현할 수 있을 뿐</b>, 확률의 참값이 아니다. 증감은 <b>남은 거리(100−현재값)의 비율</b>로 준다 —
-    100에 자연히 수렴하고 후반 증분이 작아진다. <b>복리의 반대다.</b>
-    <div class="scroll-x"><table class="rules">
-      <tr><td>BUILD 장·부 단위</td><td>남은 거리 +20%</td></tr>
-      <tr><td>BUILD 절 단위</td><td>+10%</td></tr>
-      <tr><td>BUILD 외부 도달(발송·정명)</td><td>+30%</td></tr>
-      <tr><td>METHOD 자(尺) 신설</td><td>+20%</td></tr>
-      <tr><td>SETBACK 되돌리기 한 줄 · 하루치 · 이틀 이상 · 이미 밖에 나감</td><td>현재값 −4% · −7% · −11% · −14%</td></tr>
-      <tr><td>↳ 외부 지적이면</td><td>−3%p 추가</td></tr>
-    </table></div>
-    <div style="margin-top:10px;">
-      <b>SETBACK 크기는 심각도가 아니라 되돌리기 비용이다.</b> 그래서 T29(8장 무효 직전)가 −4%다 —
-      무서웠지만 <b>한 줄로 고쳐졌다.</b> 반대로 T30(웹 노출)은 −14%다 — 이미 남이 볼 수 있었다.
+  <details>
+    <summary>두 막대는 독자 다섯 문으로 쪼개진다</summary>
+    <div class="dbody">
+      <a href="https://github.com/hyunjimoon/golden-cage-book/issues/35#issuecomment-5769892627">#35 확정 5문</a>이
+      열 장을 거울쌍 다섯으로 덮는다 — 구멍 0 · 과적 0.
+      <table class="rules two">
+        <tr><td class="k s">🟡 팔림</td><td>“된다고 치고” · <b>문1 원함</b>(1 거울↔6 나비) · <b>문4 팔림·자</b>(4 시계↔9 까마귀)</td></tr>
+        <tr><td class="k d">🟢 됨</td><td>“팔린다고 치고” · <b>문2 됨</b>(2 망원경↔7 튤립) · <b>문3 버팀</b>(3 스테인굴레스↔8 안개)</td></tr>
+        <tr><td class="k">⚪ 경첩</td><td>두 트랙의 시계 · <b>문5 시간</b>(5 101₂↔10 투향)</td></tr>
+      </table>
+      <p>한쪽만 높으면 — <b class="vd">됨 &gt; 팔림 = 살리나 마비</b>(좋은데 안 팔림) ·
+      <b class="vs">팔림 &gt; 됨 = 보바리 조산</b>(약속만 있고 못 만듦).</p>
     </div>
-  </div>
+  </details>
 
-  <div class="box box-unknown">
-    <div class="box-title">「모른다」 — 빈칸을 감추면 이 페이지가 자기가 말하는 규약을 어긴다</div>
-    <ul>
-      <li><s style="color:var(--dim);">실제 발송 일시를 모른다</s> → <b style="color:#8CC152;">닫혔다.</b>
-        이번 구간의 발송은 <b>2026-08-25 편집자 발송본 「네 향」</b>이고, 이틀 뒤 거기서 13건을 캤다.
-        표에 <b>빌드가 아니라 발송</b>으로 적었다 — 앞 회차가 스스로에게 시킨 일이다.</li>
-      <li><s style="color:var(--dim);">NFC 유령쌍 수치가 세 번 갈렸다</s> → <b style="color:#8CC152;">원인은 닫혔다.</b>
-        이모지 든 이름이 NFD면 git 정규화가 통째로 실패한다(8-27, 디스크 1,187건 교정).
-        다만 <b>9-24에 유령엔트리가 한 번 더 떴다</b> — 원인은 같지 않았다(baseline 표기). 완전 종결은 <b>아직 아니다.</b></li>
-      <li><b>6월 dip이 0건이다.</b> 없었는지, 기록 습관이 없었는지 여전히 <b>모른다.</b> (교훈 02가 가설인 이유)</li>
-      <li><b>9월 띠(6건)는 앞 달들과 같은 자로 센 것이 아니다.</b> 4~8월 띠는 40후보 채굴에서 왔고,
-        9월은 <i>이 페이지 프레임</i>에서만 셌다. <b>높이를 달끼리 비교하지 마라.</b></li>
-      <li><b>8-25 발송에 답신이 왔는지 모른다.</b> 기록에 없다. 없어서 없는 것인지, 있었는데 안 적은 것인지
-        <b>모른다</b> — 이번 회차 팔림 곡선 전체가 이 빈칸 위에 서 있다.</li>
-    </ul>
-  </div>
-
-  <div class="lessons">
-    <h2>교훈 — 데이터에서만 뽑았다 (일곱)</h2>
-    <div class="lead">다섯 다 <b style="color:var(--text)">세는 수(count)</b>에서 나왔고 <b style="color:var(--text)">매기는 점수(score)</b>에 기대지 않는다. 곡선 값이 틀려도 교훈은 선다.</div>
-
-    <div class="lesson">
-      <span class="lesson-n">01</span><span class="lesson-h">외부는 지어짐의 결함을 4개월간 0건 잡았다.</span>
-      밖에서 온 지적은 전부 <i>읽어서 보이는</i> 것이었고, 파이프라인을 열어야 보이는 결함은
-      <b>한 건도 밖에서 오지 않았다</b>. T28·T29·T30을 짚어준 외부인은 없다. →
-      <b>편집자를 아무리 보여줘도 지어짐의 결함은 줄지 않는다. 그 자는 스스로 만들어야 한다.</b>
-      METHOD 넷(build_docx · 작업메모 삭제 · <code>/egg</code> · 3층 문지기)이 그 자를 만든 사건이고,
-      <b>자가 선 뒤에야 T28·T29·T30이 보였다.</b>
-      <span class="basis">📊 <b>수 세는 기준을 밝힌다</b>(초안이 두 모집단을 섞어 썼다 — 08-22 자기교정):
-      <b>페이지 표(32프레임)</b> = 외부 지적 <b>6건 전부 S축</b> · D축 결함 <b>4건 전부 self</b>(1984 폐기·NFC·3기구·T29)
-      → <b>ext→D = 0/4</b>. <b>채굴 40후보 전체</b> = 외부 8 · D축 9 → <b>0/9</b>.
-      어느 모집단으로 세든 <b>분자는 0</b>이고, 그게 이 교훈의 전부다.</span>
-      <span class="caveat"><b>⚠️ 이 교훈은 고쳐진 이력이 있다.</b> 초안은 <i>"밖에서 온 지적은 전부 팔림이었다(8/8)"</i>였으나
-      <b>거의 동어반복</b>이라 /reader 8:0으로 방향을 뒤집었다(한정우💰 "축을 사후에 붙였다" · 오세진💰 "8/8·9/9는 너무 깨끗하다").
-      <b>축 배정 규칙(사전)</b>: 발견 주체가 아니라 <b>관측 가능성</b> — <i>읽어서 보이면 S / 파이프라인을 열어야 보이면 D</i>.
-      이 규칙으로 팩트체크(#21)·sync 유실(#36)을 D→S 재배정했고 완벽한 9/9는 깨졌다.</span>
+  <details>
+    <summary>이 값은 순위이지 측정이 아니다 — 계산 규칙</summary>
+    <div class="dbody">
+      아래 규칙으로 <b>재현할 수 있을 뿐</b>이다. 증감은 <b>남은 거리(100−현재값)의 비율</b>로 준다 —
+      100에 수렴하고 후반 증분이 작아진다. <b>복리의 반대다.</b>
+      <div class="scroll-x"><table class="rules">
+        <tr><td>BUILD 장·부 단위 / 절 단위 / 외부 도달</td><td>+20% · +10% · +30%</td></tr>
+        <tr><td>METHOD 자(尺) 신설</td><td>+20%</td></tr>
+        <tr><td>SETBACK 한 줄 · 하루치 · 이틀 이상 · 이미 밖에 나감</td><td>−4% · −7% · −11% · −14%</td></tr>
+        <tr><td>↳ 외부 지적이면</td><td>−3%p 추가</td></tr>
+      </table></div>
+      <p><b>SETBACK 크기는 심각도가 아니라 되돌리기 비용이다.</b> 8장 무효 직전(T29)이 −4%인 것은
+      무서웠지만 <b>한 줄로 고쳐졌기</b> 때문이고, 웹 노출(T30)이 −14%인 것은 <b>이미 남이 볼 수 있었기</b> 때문이다.</p>
     </div>
+  </details>
 
-    <div class="lesson">
-      <span class="lesson-n">02</span><span class="lesson-h">dip이 느는 것이 나빠지는 신호가 아닐 수 있다.</span>
-      발견 건수가 2→4→10→14→21로 단조증가하는데 곡선은 같이 오른다.
-      T28·T29 둘 다 <i>vault에선 안 보이고 docx를 열어야 보이는</i> 유형이었다.
-      <span class="caveat"><b>⚠️ 가설이다.</b> 5~6월에 dip이 적었던 게 <i>도구가 없어 못 본 것</i>인지 <i>실제로 적었던 것</i>인지
-      <b>모른다</b>(위 「모른다」). 「매끈함은 실명이다」는 매력적이지만 아직 증명되지 않았다.</span>
+  <details>
+    <summary>「모른다」 — 빈칸을 감추면 이 페이지가 자기 규약을 어긴다</summary>
+    <div class="dbody">
+      <ul>
+        <li><s>실제 발송 일시를 모른다</s> → <b class="ok">닫혔다.</b> 이번 구간 발송 = <b>2026-08-25 「네 향」</b>, 이틀 뒤 13건을 캤다.</li>
+        <li><s>NFC 유령쌍 수치가 세 번 갈렸다</s> → <b class="ok">원인은 닫혔다</b>(8-27, 1,187건). 다만 9-24에 한 번 더 떴다 — 완전 종결은 아니다.</li>
+        <li><b>6월 dip이 0건이다.</b> 없었는지 기록을 안 했는지 여전히 모른다.</li>
+        <li><b>8-25 발송에 답신이 왔는지 모른다.</b> 기록에 없다. 이번 회차 팔림 곡선 전체가 이 빈칸 위에 서 있다.</li>
+      </ul>
     </div>
+  </details>
 
-    <div class="lesson">
-      <span class="lesson-n">03</span><span class="lesson-h">첫 다수결은 답이 아니었다.</span>
-      투표 여섯 건이 1라운드에서 뒤집혔고(5:3→8:0 · 7:1→8:0 · 5:3→7:1 …), 매번 <b>반대표가 수정안을 만들었다.</b>
-      사면체는 반대 3이 <i>사라진 D·F·V</i>를 가리켜 복원됐고, 3D 지도는 <i>드래그가 텍스트 선택된다</i>는 실측으로 뒤집혔다. →
-      <b>반대는 다수결의 잡음이 아니라 답의 재료다.</b>
+  <details>
+    <summary>교훈 일곱 — 매기는 점수가 아니라 세는 수에서만 뽑았다</summary>
+    <div class="dbody">
+      <ol class="lessons-ol">
+        <li><b>외부는 지어짐의 결함을 0건 잡았다.</b> 밖에서 온 지적은 전부 <i>읽어서 보이는</i> 것이었다(ext→D = 0/9).
+          파이프라인을 열어야 보이는 결함은 <b>그 자를 스스로 만든 뒤에야</b> 보였다.</li>
+        <li><b>dip이 느는 것이 나빠지는 신호가 아닐 수 있다.</b> 발견 2→4→10→14→21로 느는데 곡선은 같이 오른다.
+          <i>단 가설이다</i> — 5~6월에 도구가 없어 못 본 것인지 모른다.</li>
+        <li><b>첫 다수결은 답이 아니었다.</b> 투표 여섯 건이 1라운드에서 뒤집혔고, 매번 <b>반대표가 수정안을 만들었다.</b></li>
+        <li><b>짓는 시간과 곡선을 움직인 사건이 어긋난다.</b> 커밋은 BUILD가 75%인데 마일스톤 절반이 SETBACK이다(선별 편향 가능).</li>
+        <li><b>발견만 적고 수정을 안 적으면 곡선이 거짓말을 한다.</b> ← 이 사양을 만들다 발견했다.
+          2회차엔 되돌림 <b>8건 전부</b> 같은 날 수정(↺)을 달았다. 1회차는 3건뿐이었다.</li>
+        <li><b>되돌림의 절반은 「자가 조용히 0을 읽고 있었다」였다.</b> 2회차 8건 중 <b>4건</b> —
+          다이나모선 16편 0가닥 · element_map <b>6주째</b> 0개 · 90회 검증 33건 증발 · 그래프 연결 2 vs 실제 190.
+          넷 다 안에서 잡혔다. → <b>「없음」은 발견이 아니라 자를 의심할 신호다.</b></li>
+        <li><b>안에서만 재면 팔림이 천장을 뚫는다.</b> 9-14에 안에서 잰 팔림이 <b>93</b>까지 올랐다 —
+          밖이 본 최고 <b>84</b>보다 9 높다(그림의 점선). 규칙에 천장을 씌우지 않았다.
+          씌우면 숫자는 얌전해지지만 <i>규칙이 데이터를 따라간다.</i></li>
+      </ol>
     </div>
+  </details>
 
-    <div class="lesson">
-      <span class="lesson-n">04</span><span class="lesson-h">짓는 시간과 곡선을 움직인 사건이 어긋난다.</span>
-      커밋은 BUILD가 <b>75%</b>인데 마일스톤 40개 중 <b>절반이 SETBACK</b>이다.
-      <span class="caveat"><b>⚠️ 단 선별 편향일 수 있다</b> — 극적인 사건이 마일스톤으로 뽑히기 쉽다. 양쪽을 함께 남긴다.</span>
-    </div>
-
-    <div class="lesson">
-      <span class="lesson-n">05</span><span class="lesson-h">발견만 기록하고 수정을 기록하지 않으면 곡선이 거짓말을 한다.</span>
-      ← <b>이 사양을 만들다 발견했다.</b> 1차 계산에서 S가 6월 84 → 8월 69로 <b>떨어졌다.</b>
-      8월 원고가 6월보다 나쁠 리 없는데도. 원인은 규칙이 아니라 <b>사건 목록</b>이었다 —
-      T28·T29·T30의 <i>발견</i>은 넣고 <i>수정</i>을 안 넣었다. 우리 기록 습관이 그랬기 때문이다:
-      <b>보드에도 이슈에도 "찾았다"는 남고 "고쳤다"는 커밋 메시지에만 남는다.</b><br>
-      → 수정 이벤트 셋(41b·42b·44b)을 넣자 톱니가 되고 곡선이 제자리를 찾았다.
-      <b>다음 회차에는 발견과 수정을 같은 층에 기록할 것.</b>
-      <span class="basis">📊 <b>2회차에 지켰다.</b> 8-21→9-24의 되돌림 8건 중 <b>8건 전부</b> 같은 날 수정 프레임(└)을 달았다.
-      1회차에는 3건만 달려 있었다.</span>
-    </div>
-
-    <div class="lesson">
-      <span class="lesson-n">06</span><span class="lesson-h">되돌림의 절반은 「자가 조용히 0을 읽고 있었다」였다.</span>
-      2회차 되돌림 <b>8건 중 4건</b>이 같은 병이다 — 다이나모선 16편을 0가닥으로(8-25) ·
-      element_map 생성기가 <b>6주째</b> 0개를(9-05) · 90회 검증한 33건이 한 줄로 증발(9-06) ·
-      3층 그래프의 연결이 2로 보임, 실제 190(9-21).
-      넷 다 <b>파이프라인을 열어야 보이는</b> 유형이고, 넷 다 <b>안에서</b> 잡혔다. →
-      <b>「없음」은 발견이 아니라 자(尺)를 의심할 신호다.</b> 잰 값이 아니라 자를 감사하라는 말이 이 구간에 네 번 실증됐다.
-      <span class="basis">📊 세는 기준: <b>SETBACK 프레임 8건</b> 중 dNote가 「측정·보고가 실물과 달랐다」인 것 4건.
-      나머지 4건은 내용(지어낸 인용·🧊 광고)·구조(부피 9.04×)·도달(이슈 지도 미연결)이다.</span>
-    </div>
-
-    <div class="lesson">
-      <span class="lesson-n">07</span><span class="lesson-h">안에서만 재면 팔림이 천장을 뚫는다.</span>
-      9-14에 안에서 잰 팔림이 <b>93</b>까지 올랐다 — 밖이 마지막으로 본 최고점 <b>84</b>보다 9 높다.
-      이 구간의 상승은 전부 자(문항·규약·생성기)가 만든 것이고, <b>밖에서 온 지적은 0건</b>이다.
-      교훈 01이 참이라면(외부 지적은 팔림에만 온다) 이 9점은 <b>검증되지 않은 채로 쌓인 값</b>이다. →
-      <b>다음 동작은 짓는 게 아니라 닿는 것이다.</b> 낮은 쪽이 팔림이고, 팔림은 자기 힘으로 더 못 오른다.
-      <span class="caveat"><b>⚠️ 규칙을 고치지 않았다.</b> 천장을 씌우면 숫자는 얌전해지지만 <i>규칙이 데이터를 따라간다</i>.
-      계산은 규칙대로 두고 <b>어긋남만 세어 적는다</b> — 최대 +9(9-14), 끝점 +2(9-24).</span>
-    </div>
-  </div>
-
-  <div style="margin-top:18px;font-size:10px;color:var(--dim);text-align:center;line-height:1.6;">
-    "약속은 정확해질 권리를 얻은 만큼만 정확해진다." · 수식적 구조: <a href="https://github.com/hyunjimoon/golden-cage-book/blob/main/appendices/" style="color:var(--dim);">부록 — Optimal Ignorance Theory</a>
+  <div class="foot">
+    "약속은 정확해질 권리를 얻은 만큼만 정확해진다." ·
+    <a href="https://github.com/hyunjimoon/golden-cage-book/blob/main/appendices/">부록 — Optimal Ignorance Theory</a>
   </div>
 </div>
 
@@ -622,8 +563,8 @@ function render(i){
   drawChart(i);
 }
 
-// 월별 발견(SETBACK) 건수 — 배경 띠 밀도
-const MONTH_DISCOVERY = {4:2, 5:4, 6:10, 7:14, 8:21, 9:6};
+// 밖이 마지막으로 본 최고점 — 안에서 잰 값이 이 선을 넘으면 검증되지 않은 구간이다
+const CEILING = 84;
 const C_S = '#D4A574', C_D = '#4A7A6B', C_CARD = '#1a2234';
 
 function drawChart(highlightIdx){
@@ -637,31 +578,18 @@ function drawChart(highlightIdx){
 
   let html = '';
 
-  // ② SETBACK 밀도 배경 띠 (월별 발견 건수) — 곡선 뒤에 깔린다
-  const span = {};
-  FRAMES.forEach((f,i) => {
-    const m = parseInt(f.date.split('-')[0], 10);
-    if(!(m in span)) span[m] = {a:i, b:i}; else span[m].b = i;
-  });
-  const maxC = Math.max.apply(null, Object.keys(MONTH_DISCOVERY).map(k => MONTH_DISCOVERY[k]));
-  Object.keys(span).forEach(m => {
-    const c = MONTH_DISCOVERY[m];
-    if(c == null) return;
-    const x1 = Math.max(P.l, xs[span[m].a] - gap/2);
-    const x2 = Math.min(W-P.r, xs[span[m].b] + gap/2);
-    const a = (0.02 + (c/maxC)*0.10).toFixed(3);
-    html += `<rect x="${x1}" y="${P.t}" width="${Math.max(0, x2-x1)}" height="${ch}" fill="rgba(255,255,255,${a})"/>`;
-    html += `<text x="${(x1+x2)/2}" y="${P.t-9}" text-anchor="middle" fill="#5a6a7a" font-size="9" font-family="DM Mono">${m}월 ${c}</text>`;
-  });
-
   // grid
   for(let v=0; v<=100; v+=20){
     const gy = y(v);
     html += `<line x1="${P.l}" x2="${W-P.r}" y1="${gy}" y2="${gy}" stroke="rgba(255,255,255,0.05)"/>`;
     html += `<text x="${P.l-6}" y="${gy+4}" text-anchor="end" fill="#5a6a7a" font-size="10" font-family="DM Mono">${v}</text>`;
   }
+  // 밖이 본 최고점 — 점선 한 줄이 교훈 07을 말 없이 진다
+  html += `<line x1="${P.l}" x2="${W-P.r}" y1="${y(CEILING)}" y2="${y(CEILING)}" stroke="#6b7a8a" stroke-width="1.1" stroke-dasharray="4 4"/>`;
+  html += `<text x="${P.l+5}" y="${y(CEILING)-6}" text-anchor="start" fill="#6b7a8a" font-size="9.5" font-family="DM Mono">밖이 본 최고 ${CEILING}</text>`;
+
   // x labels (selected)
-  [0, 19, 26, 37, 50, 56, 63, 70, 77].forEach(i => {
+  [0, 19, 26, 37, 50, 59, 68, 77].forEach(i => {
     if(i < n){
       html += `<text x="${xs[i]}" y="${H-10}" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="DM Mono">${FRAMES[i].date}</text>`;
     }
@@ -688,11 +616,14 @@ function drawChart(highlightIdx){
     html += `<text x="${(xs[i-1]+xs[i])/2}" y="${yb+9}" text-anchor="middle" fill="${col}" font-size="9" font-family="DM Mono">↺</text>`;
   });
 
-  // dots — ① origin: ext(밖에서 옴)=속 빈 · self/—(안에서 찾음)=속 찬
+  // dots — 78개를 다 찍으면 선이 안 보인다. 뜻 있는 것만 찍는다:
+  //   밖에서 온 지적(속 빈) · 되돌림 · ★ 표시 사건 · 지금 프레임
   FRAMES.forEach((f,i) => {
     if(i > highlightIdx) return;
-    const r = i === highlightIdx ? 5 : 2.6;
     const ext = f.origin === 'ext';
+    const mark = ext || f.type === 'SETBACK' || f.msg.indexOf('★') === 0;
+    if(!mark && i !== highlightIdx) return;
+    const r = i === highlightIdx ? 5 : 2.4;
     [[f.S, C_S], [f.D, C_D]].forEach(([v, col]) => {
       html += ext
         ? `<circle cx="${xs[i]}" cy="${y(v)}" r="${r}" fill="${C_CARD}" stroke="${col}" stroke-width="1.6"/>`
