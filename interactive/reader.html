@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>황금새장을열다</title>
+  <title>투향</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=Noto+Serif+KR:wght@400;600&display=swap');
 
@@ -789,7 +789,7 @@
 
   <div class="layout">
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-head"><a href="../">황금새장을열다</a></div>
+      <div class="sidebar-head"><a href="../">투향</a></div>
       <div class="sidebar-nav" id="sidebarNav"></div>
       <div class="sidebar-toc" id="sidebarToc">
         <div class="sidebar-toc-label">이 장의 목차</div>
@@ -807,6 +807,7 @@
     const CHAPTERS = [
       { id: 'ch0_prologue', label: '질문과 답' },
       { id: 'ch0_intro', label: '머리말' },
+      { id: 'ch0_characters', label: '인물소개' },
       { id: 'ch0_roadmap', label: '이 책의 길' },
       { id: 'ch1_mirror_cage', label: '🪞 1장 거울새장' },
       { id: 'ch2_telescope_cage', label: '🔭 2장 망원경새장' },
@@ -977,7 +978,7 @@
       (next ? `<a href="?file=${next.id}">${next.label} →</a>` : '<span class="empty">-</span>');
 
     // title
-    if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 황금새장을열다';
+    if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 투향';
 
     // md → html
     function md2html(md) {

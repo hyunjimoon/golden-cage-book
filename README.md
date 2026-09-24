@@ -1,4 +1,4 @@
-# 황금새장을열다: Opening the Golden Cage
+# 투향: Opening the Golden Cage
 
 책 홈페이지: https://hyunjimoon.github.io/golden-cage-book/
 
@@ -37,7 +37,7 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 
 ## 2중 척추 구조 (Dual-Spine Architecture)
 
-『황금새장을 열다』는 **"문학적 은유 (Literary Metaphor)"**로 인간의 갇힘과 열림을 진단하고, **"수학적/운영적 캘리브레이션 (Operational Math)"**으로 현장의 의사결정을 보정하는 10장 1:1 쌍대 구조로 설계되어 있습니다.
+『투향』는 **"문학적 은유 (Literary Metaphor)"**로 인간의 갇힘과 열림을 진단하고, **"수학적/운영적 캘리브레이션 (Operational Math)"**으로 현장의 의사결정을 보정하는 10장 1:1 쌍대 구조로 설계되어 있습니다.
 
 | 장 | 4대 렌즈 & 페르소나 | 📖 문학적 척추 (Literary Metaphor Spine) | 📐 운영/수학적 척추 (Operational Math Spine) |
 | :--- | :--- | :--- | :--- |

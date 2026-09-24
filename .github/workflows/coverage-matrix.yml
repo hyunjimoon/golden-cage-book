@@ -32,7 +32,7 @@ jobs:
           LENSES=("⛰️무엇-빚" "🟣왜-방향" "🟥어떻게-도구" "⭐️그래서-남음")
           issues=$(gh issue list --state open --limit 500 --json labels)
           {
-            echo "# 📖 금새 이슈 커버리지 매트릭스"
+            echo "# 📖 투향 이슈 커버리지 매트릭스"
             echo
             echo "> 열린(open) 이슈 기준, 자동 생성 — 직접 편집 금지"
             echo

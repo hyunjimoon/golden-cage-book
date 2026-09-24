@@ -1,6 +1,6 @@
 # 📐자 — 원고가 4 이해관계자를 만족시키는가
 
-> 이 원고가 [금새 4 이해관계자](README.md)(독자🙋·저자🛠️·출판사💰·편집자🤝)를 얼마나 *계산끝내* 만족시키는지 재는 자(尺).
+> 이 원고가 [투향 4 이해관계자](README.md)(독자🙋·저자🛠️·출판사💰·편집자🤝)를 얼마나 *계산끝내* 만족시키는지 재는 자(尺).
 > pivot-game [`RUBRIC.md`](https://github.com/hyunjimoon/pivot-game/blob/master/RUBRIC.md)의 강연판 → **소설판**. 과정 문법은 [pivot-game `METHOD.md`](https://github.com/hyunjimoon/pivot-game/blob/master/METHOD.md).
 >
 > 채점은 `/reader` 패널을 role-play하는 `scripts/reader_score.py`가 push마다 자동 수행 → [`docs/ascent.html`](docs/ascent.html).
