@@ -287,9 +287,24 @@
   .oldname{margin-top:7px;font-size:12.5px;opacity:.62;letter-spacing:.01em;}
   .oldname span{opacity:.72;}
 
-  .rig{margin:26px auto 22px;max-width:660px;}
-  .rig img{width:100%;height:auto;display:block;opacity:.94;}
-  .rig figcaption{margin-top:10px;font-size:12px;line-height:1.75;opacity:.6;text-align:center;}
+
+  .onepic{max-width:1080px;margin:0 auto;padding:12px 20px 6px;}
+  .onepic figure{margin:0;}
+  .onepic img{width:100%;height:auto;display:block;border-radius:6px;background:#fbf8f0;}
+  .onepic figcaption{margin-top:12px;font-size:12.5px;line-height:1.8;opacity:.62;max-width:760px;}
+  .onepic figcaption b{opacity:.95;}
+  .onepic figcaption span{display:block;margin-top:3px;}
+  .onepic figcaption a{color:var(--gold,#c5a572);}
+  .fold{padding-top:26px;padding-bottom:26px;}
+  .fold details{max-width:1080px;margin:0 auto;}
+  .fold summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:3px;padding:14px 0;}
+  .fold summary::-webkit-details-marker{display:none;}
+  .fold .fk{font-size:10.5px;letter-spacing:1.6px;opacity:.5;text-transform:uppercase;}
+  .fold .fh{font-size:clamp(19px,2.6vw,26px);font-weight:600;}
+  .fold .fh::after{content:' ＋';opacity:.4;font-weight:400;font-size:.7em;}
+  .fold details[open] .fh::after{content:' －';}
+  .fold .foldbody{padding-top:6px;}
+  .fold .shown{opacity:1 !important;transform:none !important;}
 </style>
 </head>
 <body>
@@ -342,6 +357,20 @@
 </section>
 
 <!-- ══════════ 1부 · 부수기 (DISENCHANTMENT) ══════════ -->
+<section class="onepic">
+  <figure>
+    <a href="interactive/diagrams/야성미포스터_투향한장.svg" target="_blank" rel="noopener">
+      <img src="interactive/diagrams/야성미포스터_투향한장.svg"
+           alt="투향 열 개의 방 — 열 방이 고리로 놓이고 마주 보는 짝이 선으로 이어진 구조도" loading="lazy">
+    </a>
+    <figcaption><b>열 개의 방 — 이 책의 전부.</b>
+      <span>마주 보는 짝(1↔6 · 2↔7 · 3↔8 · 4↔9 · 5↔10)은 같은 물건을 반대로 쥔다 —
+      새장에서 빚을 쓰고, 둥지에서 그 빚을 갚는다.
+      <a href="interactive/diagrams/야성미포스터_투향한장.svg" target="_blank" rel="noopener">크게 보기 →</a></span>
+    </figcaption>
+  </figure>
+</section>
+
 <section class="band" data-sec="part1" data-example="예: 한 커머스 스타트업이 시리즈B 300억을 받은 직후, 새 시장 실험 대신 기존 지표 방어에 팀을 묶었다. 여섯 달 뒤 경쟁사가 연 시장에 들어갈 인력이 없었다 — 자금(F)이 방향전환(R)을 억눌러 성장(G)을 깎은 <b>dG/dF=(−)</b>의 교과서.">
   <div class="reveal">
     <div class="kicker" style="color:#8aa0b8;">PART 1 · 부수기 — DISENCHANTMENT</div>
@@ -397,11 +426,6 @@
   <p class="sub">정중앙에서 한 번 멈춘다. 빌린 것을 갚는 그 한 끗 —
     지도를 손에 쥔 자만이 그것을 버리고 항해를 떠난다.
     여기서 차가운 감옥이 따뜻한 둥지로 뒤집힌다. <b style="color:#c5b58a;">한 글자만 비틀면 된다.</b></p>
-  <figure class="rig">
-    <img src="interactive/diagrams/투향_판두개_화면전용.svg" alt="새장 바람개비와 둥지 바람개비가 중심 101호를 지나 서로의 상으로 놓인 구조도" loading="lazy">
-    <figcaption>새장과 둥지는 같은 물건의 두 시점이 아니라 <b>서로의 상(像)</b>이다 — 왼손과 오른손.
-      짝을 잇는 다섯 선이 한 점에서 만난다.</figcaption>
-  </figure>
   <a class="hub" href="interactive/reader.html?file=ch5_mirror_nest">5장 거울둥지 — 전환점으로 →</a>
 </section>
 
@@ -543,12 +567,15 @@
 </section>
 
 <!-- ══════════ 창업소설이란 ══════════ -->
-<section class="band" data-sec="what" data-example="예: 4장 로빈슨은 30년 쌓은 섬의 질서(시계·달력·울타리)가 잘 돌수록 그것 없는 삶을 상상 못 했다. 방드르디의 담뱃대 불씨 하나가 화약고를 날리자 — 파괴가 아니라 <b>해방</b>이 왔다. '무엇을 걸고 무엇을 잃는가'가 곧 창업소설의 엔진.">
-  <div class="reveal">
-    <div class="kicker" style="color:var(--dim);">창업소설이란</div>
-    <h2>무엇을 걸고, 무엇을 잃는가</h2>
+<section class="band fold" data-sec="what" data-example="예: 4장 로빈슨은 30년 쌓은 섬의 질서(시계·달력·울타리)가 잘 돌수록 그것 없는 삶을 상상 못 했다. 방드르디의 담뱃대 불씨 하나가 화약고를 날리자 — 파괴가 아니라 <b>해방</b>이 왔다. '무엇을 걸고 무엇을 잃는가'가 곧 창업소설의 엔진.">
+  <details>
+    <summary><span class="fk">창업소설이란</span><span class="fh">무엇을 걸고, 무엇을 잃는가</span></summary>
+    <div class="foldbody">
+  <div class="shown">
+    
+    
   </div>
-  <div class="duo reveal">
+  <div class="duo">
     <div class="panel">
       <h3>구성 3요소</h3>
       <div class="kv"><div class="k">인물</div><div class="v">다 <em>— 낭만으로 뛰는 사람</em><br>세 <em>— 분석으로 보는 사람</em></div></div>
@@ -562,15 +589,20 @@
       <div class="kv"><div class="k">문체</div><div class="v">문체를 완성해갈 때쯤엔 이미 그것을 넘어서 있다</div></div>
     </div>
   </div>
+</div>
+  </details>
 </section>
 
 <!-- ══════════ 누구의 삶을 바꾸는가 ══════════ -->
-<section class="band" data-sec="who">
-  <div class="reveal">
-    <div class="kicker" style="color:var(--dim);">누구의 삶을 바꿀 이야기인가</div>
-    <h2>지금 불안한 당신 · 작가 · 독자 · 정책설계자</h2>
+<section class="band fold" data-sec="who">
+  <details>
+    <summary><span class="fk">누구의 삶을 바꿀 이야기인가</span><span class="fh">지금 불안한 당신 · 작가 · 독자 · 정책설계자</span></summary>
+    <div class="foldbody">
+  <div class="shown">
+    
+    
   </div>
-  <div class="trio reveal">
+  <div class="trio">
     <div class="pcard" style="border-top:2px solid #9B7A8B;">
       <h4 style="color:#c39fb3;">지금 불안한 당신</h4>
       <p>매출은 오르는데 왜 나는 새장 속 같은가. 네 개의 새장 중 내가 갇힌 것을 진단하고, 그것을 둥지로 여는 첫 문장을 얻는다.</p>
@@ -637,16 +669,21 @@
       </div>
     </div>
   </div>
+</div>
+  </details>
 </section>
 
 <!-- ══════════ 고민 중인 것 ══════════ -->
-<section class="band" data-sec="deliberate">
-  <div class="reveal">
-    <div class="kicker" style="color:var(--dim);">고민 중인 것</div>
-    <h2>지금 저울질하고 있는 것들</h2>
+<section class="band fold" data-sec="deliberate">
+  <details>
+    <summary><span class="fk">고민 중인 것</span><span class="fh">지금 저울질하고 있는 것들</span></summary>
+    <div class="foldbody">
+  <div class="shown">
+    
+    
   </div>
 
-  <div class="hypo reveal">
+  <div class="hypo">
     <a href="interactive/readers.html" class="hcard hs">
       <h4>🟡 팔림 트랙 — 사용자에게 닿는가 (S)</h4>
       <div class="pct">86%</div>
@@ -666,13 +703,13 @@
     📈 166일간 <b>저자 자가확신</b> 갱신(외부 측정 아님): <a href="interactive/probability_evolution.html" style="color:#93a0b2;text-decoration:underline;">(40·55) → (86·89) 영상</a> · 곱 0.22→0.77 · 78 milestone
   </div>
 
-  <div class="twins reveal">
+  <div class="twins">
     <div class="lbl">한 진실의 두 자매</div>
     🔥 밖에서: <b>낭만이 점화하면, 책임지며, 장난치며</b><br>
     📊 안에서: <b>도취 식고, 고집 풀며, 책임 안고 장난친다</b>
   </div>
 
-  <div class="delib reveal">
+  <div class="delib">
     <h3>판단하시는 분께 — 이런 고민 중입니다</h3>
     <div class="ditem">
       <div class="q">종이로 완결되는가, 디지털로 확장되는가</div>
@@ -699,6 +736,8 @@
     <a href="interactive/reader.html?file=docs/INTENT">2차 소통문 →</a>
     <a href="https://github.com/hyunjimoon/golden-cage-book/issues">열린 고민 전체 →</a>
   </div>
+</div>
+  </details>
 </section>
 
 <footer>
@@ -761,7 +800,7 @@ function togglePolicy(id, btn){
   const secEl={};
   const ensure=id=>{if(!data[id])data[id]={got:0,stuck:0,ex:0,dwell:0};return data[id];};
 
-  const secs=document.querySelectorAll('[data-sec]');
+  const secs=document.querySelectorAll('[data-sec="part1"],[data-sec="part2"],[data-sec="close"]');
   secs.forEach(sec=>{
     const id=sec.getAttribute('data-sec'); secEl[id]=sec; ensure(id);
     const bar=document.createElement('div'); bar.className='calib-bar'; bar.dataset.for=id;
