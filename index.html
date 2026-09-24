@@ -842,14 +842,20 @@ function togglePolicy(id, btn){
 
   /* dock */
   const dock=document.createElement('div'); dock.className='calib-dock';
-  dock.innerHTML='<div class="hd">📊 소통밀도 신호 <span class="tog">▲ 열기</span></div><div class="body"></div>';
+  dock.innerHTML='<div class="hd">📊 내가 남긴 신호 <span class="tog">▲ 열기</span></div><div class="body"></div>';
   document.body.appendChild(dock);
+  /* 2026-09-24: 처음 온 사람에게는 안 보인다.
+     한 번이라도 눌러야 뜬다 — 개발자 패널이 아니라 「내가 남긴 것」이므로. */
+  const hasSignal=()=>Object.values(data).some(d=>(d.got||0)+(d.stuck||0)+(d.ex||0)>0);
+  const syncDockVisibility=()=>{ dock.style.display = hasSignal() ? '' : 'none'; };
+  syncDockVisibility();
   dock.querySelector('.hd').addEventListener('click',()=>{
     dock.classList.toggle('open');
     dock.querySelector('.tog').textContent=dock.classList.contains('open')?'▼ 닫기':'▲ 열기';
   });
 
   function renderDock(){
+    if(typeof syncDockVisibility==='function') syncDockVisibility();
     const body=dock.querySelector('.body');
     let g=0,s=0,ex=0; Object.values(data).forEach(d=>{g+=d.got||0;s+=d.stuck||0;ex+=d.ex||0;});
     const density=(g+s)?Math.round(100*g/(g+s)):null;
