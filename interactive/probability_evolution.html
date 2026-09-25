@@ -57,6 +57,9 @@
   .legend .dot-hollow{width:10px;height:10px;border-radius:50%;border:1.6px solid var(--text2);background:transparent;flex:none;}
   .legend .band{width:14px;height:10px;background:rgba(255,255,255,0.10);flex:none;}
   .legend .staple{width:14px;height:8px;border:1.2px dashed var(--text2);border-top:none;flex:none;}
+  .hands-title{font-size:11px;color:var(--text2);font-weight:600;margin-bottom:2px;letter-spacing:0.5px;}
+  .hands-sub{font-size:11px;color:var(--dim);margin-bottom:10px;line-height:1.5;}
+  .hands-sub b{color:var(--text2);}
   .legend-note{text-align:center;font-size:11px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
   .legend-note b{color:var(--text);}
 
@@ -149,7 +152,7 @@
 <div class="page">
   <a class="back" href="../">← 대문</a>
   <h1>팔림과 됨 — 두 확률의 166일</h1>
-  <div class="sub">2026.4.11 → 9.24 · 78 milestone · ▶ 재생하면 하루씩 흐릅니다</div>
+  <div class="sub">2026.4.11 → 9.24 · 78 milestone · ▶ 재생하면 하루씩 흐릅니다<br>아래 둘째 그림 = <b style="color:#94a3b8">그 곡선을 움직인 두 손</b> (i↓ 34 · V↑ 22)</div>
 
   <div class="ruleline">
     “약속 수준에 조건해, <b>팔릴 확률과 만들어질 확률을 병렬로 관리</b>한다.
@@ -215,6 +218,28 @@
     </div>
   </div>
 
+  <div class="chart-wrap">
+    <div class="hands-title">두 손 — 위로 쌓고 아래로 판다 (누적)</div>
+    <div class="hands-sub">
+      위 곡선을 <b>무엇이 움직였나</b>. τ* = max{0, √(V/4i) − 1} 의 두 손을 커밋으로 센 것 —
+      <b>V↑</b>는 위로 쌓고(복제·자동화), <b>i↓</b>는 아래로 판다(함께하기·전문화·공정화).
+      끝값 <b>V↑ 22 : i↓ 34</b> — 이 구간은 짓기보다 <b>자를 벼린 달</b>이었다.
+    </div>
+    <svg id="handsChart" viewBox="0 0 720 230"></svg>
+    <div class="legend">
+      <span><div class="dot" style="background:#D4A574"></div>복제 12</span>
+      <span><div class="dot" style="background:#E8C9A0"></div>자동화 10</span>
+      <span><div class="dot" style="background:#4A7A6B"></div>함께하기 10</span>
+      <span><div class="dot" style="background:#6FA08F"></div>전문화 12</span>
+      <span><div class="dot" style="background:#8FBFAE"></div>공정화 12</span>
+      <span><div class="dot-hollow"></div>바깥 사람이 주어 2</span>
+    </div>
+    <div class="legend-note">
+      왼쪽 사선 구간은 값이 0이 아니라 <b>안 센 것</b>이다 — 표본이 8-27부터다.
+      <b>「없음」은 발견이 아니라 자를 의심할 신호다.</b>
+    </div>
+  </div>
+
   <details>
     <summary>두 막대는 독자 다섯 문으로 쪼개진다</summary>
     <div class="dbody">
@@ -254,6 +279,48 @@
         <li><s>NFC 유령쌍 수치가 세 번 갈렸다</s> → <b class="ok">원인은 닫혔다</b>(8-27, 1,187건). 다만 9-24에 한 번 더 떴다 — 완전 종결은 아니다.</li>
         <li><b>6월 dip이 0건이다.</b> 없었는지 기록을 안 했는지 여전히 모른다.</li>
         <li><b>8-25 발송에 답신이 왔는지 모른다.</b> 기록에 없다. 이번 회차 팔림 곡선 전체가 이 빈칸 위에 서 있다.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>두 손을 어떻게 셌나 — 시도 과정과 결과</summary>
+    <div class="dbody">
+      <p><b>시도.</b> 위 두 곡선은 <i>결과</i>다. 그 결과를 <b>어느 손으로 만들었는지</b>는 안 적혀 있었다.
+      그래서 커밋 <b>2,726건</b>(최근 90일 1,158건)을 τ* 의 두 손으로 되읽어, 해시를 붙일 수 있는 것만 뽑았다 —
+      <b>i↓ 34수 · V↑ 22수 = 56수</b>. 매긴 점수가 아니라 <b>센 수</b>다.</p>
+
+      <div class="scroll-x"><table class="rules">
+        <tr><td class="k d">🫲 i↓ 함께하기 <b>10</b></td><td>남의 눈을 들여 내 해독비용을 낮춘다 — 여덟 독자 투표 3 · 네 극 합주 발진문 · 심사관 3인 · 편집자 3인 <b>86건 적발</b>(철회 20)</td></tr>
+        <tr><td class="k d">🫲 i↓ 전문화 <b>12</b></td><td>이름·정의를 벼린다 — ★를 다섯 뜻에서 <b>한 뜻</b>으로 · τ* 정의 전수 교정 · 조어 14→2 · 생각원소 148→37 · 그래프 260→85 · 헌법 357→172행</td></tr>
+        <tr><td class="k d">🫲 i↓ 공정화 <b>12</b></td><td>규칙을 기계로 내린다 — 커밋 게이트 3중(디스크 NFD <b>1,187건</b> 뿌리 제거) · 이모지 폴더 차단 · 자 셋 신설</td></tr>
+        <tr><td class="k s">🫱 V↑ 복제 <b>12</b></td><td>한 틀로 편수를 늘린다 — 창업가 카드 4→30 · 라디오 42편 · 도해 대장 13→70 · 참조 그래프 85→160 노드</td></tr>
+        <tr><td class="k s">🫱 V↑ 자동화 <b>10</b></td><td>손을 기계로 — 배선 직조도 생성기(손 계수 0) · 집계를 내장 뷰로(스크립트 0개) · 죽어 있던 생성기 소생 4건</td></tr>
+      </table></div>
+
+      <p><b>결과 — 뽑힌 원리 다섯.</b></p>
+      <ol class="lessons-ol">
+        <li><b>i↓는 거의 언제나 뺄셈이다.</b> 148→37 · 34→19 · 260→85 · 357→172 · 14→2 · 5뜻→1.
+          더해서 i를 낮춘 커밋이 거의 없다. 한 커밋의 한 줄이 그 정식이다 — <i>같은 값을 세 번 말하던 것을 한 번으로.</i></li>
+        <li><b>잰 값이 아니라 자(尺)를 고친다.</b> i↓ 서른넷 중 <b>열하나</b>가 산출물이 아니라 자를 손본다.
+          값을 고치면 한 번 맞고, 자를 고치면 그다음 전부가 맞는다.</li>
+        <li><b>규칙 층은 실패한다 — 기계 층만 남는다.</b> <code>git add -A</code> 금지는 <i>이미 문서에 적혀 있었다.</i>
+          그런데도 미커밋 <b>42건</b>이 삼켜졌고, 그 뒤에야 훅이 생겼다.
+          <b>글로 쓴 규칙은 i를 안 낮춘다. 막는 것만 낮춘다.</b></li>
+        <li><b>틀을 먼저 세우고 편수를 채운다 — 반대 순서는 없다.</b>
+          폴더 열거를 <b>파일명 규칙</b>으로 바꾸자 그 자리에서 13이 70이 됐다. 한 편씩 짓는 것은 V↑가 아니라 노동이다.</li>
+        <li><b>생성기가 산출물을 이긴다 — 그런데 생성기는 폴더 이관을 못 따라온다.</b>
+          경로가 썩은 sync가 <i>소스가 빈 것을 「지워졌다」로 읽어</i> 공개 저장소 <b>144편을 삭제 커밋</b>했다(push 전 복구).
+          같은 병이 하루에 세 번 났다. <b>자동화의 부채는 틀린 값이 아니라 침묵이다.</b></li>
+      </ol>
+
+      <p><b>🌗 이 표가 못 세는 것 셋.</b></p>
+      <ul>
+        <li><b>표본이 8-27부터다.</b> 4-11~8-26 구간은 0이 아니라 <b>안 센 것</b>이고, 그림의 사선이 그것이다.</li>
+        <li><b>커밋으로만 셌다.</b> 통화·방문·읽기·생각은 커밋을 안 남겨 0으로 잡힌다 — 이 페이지가 이미 고백한 <b>선별 편향</b>이 여기에도 있다.</li>
+        <li><b>가장 큰 칸이 비었다.</b> 함께하기 열 건 중 여덟이 <i>내가 만든 도구가 남을 부른 것</i>이고,
+          <b>바깥 사람이 주어인 것은 둘뿐</b>이다(그림의 빈 동그라미).
+          <b>내 도구가 나를 부르는 것은 i↓가 아니라 자기 대화다.</b></li>
       </ul>
     </div>
   </details>
@@ -681,6 +748,117 @@ $('scrubber').onclick = (e) => {
   idx = Math.max(0, Math.min(FRAMES.length-1, idx));
   render(idx);
 };
+
+
+/* ══════════ 두 손 — 위로 쌓고 아래로 판다 ══════════
+   데이터 = 🐹기니피그 장부(i↓ 34 · V↑ 22)를 커밋 날짜로 펼친 것.
+   C 함께하기 · P 전문화 · F 공정화 (아래로) / R 복제 · A 자동화 (위로)      */
+const HANDS = [
+  {d:"8-27",A:1,C:1,F:5,R:1},
+  {d:"8-31",R:1},
+  {d:"9-2",C:1,P:1},
+  {d:"9-4",F:1},
+  {d:"9-5",A:1,F:1,P:3,R:1},
+  {d:"9-6",C:1,F:2,P:1,R:1},
+  {d:"9-7",P:1},
+  {d:"9-14",A:1,C:1},
+  {d:"9-17",A:1,C:2,F:1,P:3,R:1},
+  {d:"9-18",A:1,R:1},
+  {d:"9-20",A:2,C:2,P:2,R:1},
+  {d:"9-21",A:2,C:1,F:1,R:2},
+  {d:"9-22",A:1,F:1,R:1},
+  {d:"9-23",C:1},
+  {d:"9-24",P:1,R:1},
+  {d:"9-25",R:1},
+];
+/* 바깥 사람이 주어인 함께하기 둘 */
+const OUTSIDER = ["9-6","9-17"];
+
+function toDay(md){ const [m,d]=md.split('-').map(Number); return (m-1)*31 + d; }
+
+function renderHands(){
+  const svg = $('handsChart'); if(!svg) return;
+  const W=720, H=230, P={l:38,r:26,t:20,b:26};
+  const cw=W-P.l-P.r, chh=(H-P.t-P.b)/2, mid=P.t+chh;
+
+  /* x 축 = 4-11 → 9-25, 위 차트와 같은 창 */
+  const x0=toDay("4-11"), x1=toDay("9-25");
+  const X = md => P.l + ((toDay(md)-x0)/(x1-x0))*cw;
+
+  /* 누적 */
+  const up=['R','A'], dn=['C','P','F'];
+  const COL={R:'#D4A574',A:'#E8C9A0',C:'#4A7A6B',P:'#6FA08F',F:'#8FBFAE'};
+  let cum={R:0,A:0,C:0,P:0,F:0};
+  const series=[{md:"8-26",v:{R:0,A:0,C:0,P:0,F:0}}];
+  HANDS.forEach(h=>{ Object.keys(cum).forEach(k=>{ if(h[k]) cum[k]+=h[k]; });
+    series.push({md:h.d, v:Object.assign({},cum)}); });
+  const MAXUP=22, MAXDN=34, SCALE=Math.max(MAXUP,MAXDN);
+  const yUp = v => mid - (v/SCALE)*chh;
+  const yDn = v => mid + (v/SCALE)*chh;
+
+  let h='';
+  /* 미채굴 해칭 */
+  h+=`<defs><pattern id="unmined" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#5a6a7a" stroke-width="1" opacity="0.35"/></pattern></defs>`;
+  h+=`<rect x="${P.l}" y="${P.t}" width="${X("8-26")-P.l}" height="${chh*2}" fill="url(#unmined)"/>`;
+  h+=`<text x="${(P.l+X("8-26"))/2}" y="${mid+4}" text-anchor="middle" fill="#5a6a7a" font-size="10">미채굴 — 안 센 구간</text>`;
+
+  /* 눈금 */
+  [10,20,30].forEach(v=>{
+    if(v<=MAXUP){ h+=`<line x1="${P.l}" y1="${yUp(v)}" x2="${W-P.r}" y2="${yUp(v)}" stroke="rgba(255,255,255,0.05)"/>`;
+      h+=`<text x="${P.l-6}" y="${yUp(v)+3}" text-anchor="end" fill="#5a6a7a" font-size="9" font-family="DM Mono">${v}</text>`; }
+    h+=`<line x1="${P.l}" y1="${yDn(v)}" x2="${W-P.r}" y2="${yDn(v)}" stroke="rgba(255,255,255,0.05)"/>`;
+    h+=`<text x="${P.l-6}" y="${yDn(v)+3}" text-anchor="end" fill="#5a6a7a" font-size="9" font-family="DM Mono">${v}</text>`;
+  });
+
+  /* 계단 누적 영역 — 위 */
+  const stepPath=(keys,yf)=>{
+    let base=series.map(()=>0);
+    let out=[];
+    keys.forEach((k,ki)=>{
+      let top=series.map((s,i)=>base[i]+s.v[k]);
+      let d=`M ${X(series[0].md)} ${yf(base[0])}`;
+      for(let i=0;i<series.length;i++){
+        if(i>0) d+=` L ${X(series[i].md)} ${yf(top[i-1])}`;
+        d+=` L ${X(series[i].md)} ${yf(top[i])}`;
+      }
+      for(let i=series.length-1;i>=0;i--){
+        d+=` L ${X(series[i].md)} ${yf(base[i])}`;
+        if(i>0) d+=` L ${X(series[i].md)} ${yf(base[i-1])}`;
+      }
+      d+=' Z';
+      out.push(`<path d="${d}" fill="${COL[k]}" opacity="0.82"/>`);
+      base=top;
+    });
+    return out.join('');
+  };
+  h+=stepPath(up,yUp);
+  h+=stepPath(dn,yDn);
+
+  /* 0선 */
+  h+=`<line x1="${P.l}" y1="${mid}" x2="${W-P.r}" y2="${mid}" stroke="#94a3b8" stroke-width="1.2"/>`;
+
+  /* 바깥 주어 표시 */
+  OUTSIDER.forEach(md=>{
+    const s=series.find(s=>s.md===md); if(!s) return;
+    h+=`<circle cx="${X(md)}" cy="${yDn(s.v.C)}" r="4.2" fill="none" stroke="#f0f2f5" stroke-width="1.6"/>`;
+  });
+
+  /* 끝값 */
+  const last=series[series.length-1], lx=X(last.md);
+  h+=`<text x="${lx+5}" y="${yUp(MAXUP)+10}" fill="#D4A574" font-size="11" font-weight="700" font-family="DM Mono">V↑ 22</text>`;
+  h+=`<text x="${lx+5}" y="${yDn(MAXDN)-2}" fill="#8FBFAE" font-size="11" font-weight="700" font-family="DM Mono">i↓ 34</text>`;
+
+  /* 날짜 */
+  ["4-11","6-1","7-15","8-27","9-25"].forEach(md=>{
+    h+=`<text x="${X(md)}" y="${H-8}" text-anchor="middle" fill="#5a6a7a" font-size="10" font-family="DM Mono">${md}</text>`;
+  });
+  h+=`<text x="${P.l-6}" y="${P.t+9}" text-anchor="end" fill="#D4A574" font-size="9">V↑</text>`;
+  h+=`<text x="${P.l-6}" y="${H-P.b-2}" text-anchor="end" fill="#8FBFAE" font-size="9">i↓</text>`;
+
+  svg.innerHTML=h;
+}
+renderHands();
 
 render(0);
 // auto-play after 1.2s
