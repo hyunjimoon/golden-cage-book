@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420">
+  <style>
+    text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+    .ink{ fill:#2b2620 } .gy{ fill:#6a6355 } .a{ fill:#C8102E }
+  </style>
+  <rect width="960" height="420" fill="#F3EEE3"/>
+  <text x="480" y="34" text-anchor="middle" font-size="17" font-weight="700" class="ink">이 책이 지어진 궤적 — 1,024개의 커밋</text>
+  <text x="480" y="55" text-anchor="middle" font-size="10.5" class="gy">월별 커밋 수 · 에너지는 연속으로 흐르지 않는다. 궤도에서 궤도로 뛴다.</text>
+  <line x1="88" y1="336" x2="900" y2="336" stroke="#d8cfbc" stroke-width="1.2"/>
+  <rect x="104" y="334.5" width="62" height="1.5" fill="#2b2620"/>
+  <text x="135.0" y="327.5" text-anchor="middle" font-size="11" font-weight="700" class="ink">2</text>
+  <text x="135.0" y="354" text-anchor="middle" font-size="10.5" class="gy">12월'25</text>
+  <rect x="205" y="327.2" width="62" height="8.8" fill="#2b2620"/>
+  <text x="236.0" y="320.2" text-anchor="middle" font-size="11" font-weight="700" class="ink">12</text>
+  <text x="236.0" y="354" text-anchor="middle" font-size="10.5" class="gy">1월</text>
+  <rect x="306" y="233.4" width="62" height="102.6" fill="#2b2620"/>
+  <text x="337.0" y="226.4" text-anchor="middle" font-size="11" font-weight="700" class="ink">140</text>
+  <text x="337.0" y="354" text-anchor="middle" font-size="10.5" class="gy">2월</text>
+  <rect x="407" y="114.0" width="62" height="222.0" fill="#C8102E"/>
+  <text x="438.0" y="107.0" text-anchor="middle" font-size="11" font-weight="700" class="a">303</text>
+  <text x="438.0" y="354" text-anchor="middle" font-size="10.5" class="gy">3월</text>
+  <rect x="508" y="281.8" width="62" height="54.2" fill="#6a6355"/>
+  <text x="539.0" y="274.8" text-anchor="middle" font-size="11" font-weight="700" class="gy">74</text>
+  <text x="539.0" y="354" text-anchor="middle" font-size="10.5" class="gy">4월</text>
+  <rect x="609" y="192.4" width="62" height="143.6" fill="#2b2620"/>
+  <text x="640.0" y="185.4" text-anchor="middle" font-size="11" font-weight="700" class="ink">196</text>
+  <text x="640.0" y="354" text-anchor="middle" font-size="10.5" class="gy">5월</text>
+  <rect x="710" y="201.9" width="62" height="134.1" fill="#2b2620"/>
+  <text x="741.0" y="194.9" text-anchor="middle" font-size="11" font-weight="700" class="ink">183</text>
+  <text x="741.0" y="354" text-anchor="middle" font-size="10.5" class="gy">6월</text>
+  <rect x="811" y="252.5" width="62" height="83.5" fill="#2b2620"/>
+  <text x="842.0" y="245.5" text-anchor="middle" font-size="11" font-weight="700" class="ink">114</text>
+  <text x="842.0" y="354" text-anchor="middle" font-size="10.5" class="gy">7월*</text>
+  <text x="438.0" y="90" text-anchor="middle" font-size="10.5" font-weight="700" class="a">은유가 도착한 달</text>
+  <line x1="438.0" y1="96" x2="438.0" y2="92" stroke="#C8102E" stroke-width="0.9" stroke-dasharray="3,3"/>
+  <text x="539.0" y="256" text-anchor="middle" font-size="10.5" class="gy">비운 것 — ★멈춤</text>
+  <text x="88" y="378" font-size="10" class="gy">* 7월은 24일까지 · 총 1,024(막대 합 검산)</text>
+  <text x="900" y="378" text-anchor="end" font-size="10" class="gy">3월 대폭발 뒤 4월 골짜기 — 폭발 다음의 비움이 5장을 열었다</text>
+</svg>
