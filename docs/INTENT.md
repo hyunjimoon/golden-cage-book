@@ -29,7 +29,7 @@ purpose: 2차 소통 — 판단하시는 분께
 
 1. **4섹션 동사형으로 통일**: 감각하기(경험+문학)→이해하기(이론)→관찰하기(사례)→실천하기. 독자가 명사를 "읽는" 것이 아니라 동사를 "하는" 구조입니다. 소설 읽기는 "감각하기"에 포함 — 분석 대상이 아니라 체험입니다.
 2. **캐릭터 진단**: 다(DA)는 엠마→타루 아크 완성. 세(SE)는 살리나→리외 아크 75% — detached→calm-uncertain 전환에 아직 Gap이 있습니다.
-3. **대표독자 7명**: 매 구조 결정을 7명 debate으로 검증. [독자 패널](https://hyunjimoon.github.io/golden-cage-book/interactive/readers.html)
+3. **대표독자 7명**: 매 구조 결정을 7명 debate으로 검증. [독자 패널](https://hyunjimoon.github.io/golden-cage-book/interactive/reader_grid.html)
 4. **문장 교정**: Pinker(추상에 구체를), Gawande(아이디어+이야기 두 엔진), de Botton(독자를 동반자로), Pink(감정 먼저), Gioia(짧은 문장=전환점) — 5인의 원칙으로 전체 본문 1회 교정.
 
 ---
