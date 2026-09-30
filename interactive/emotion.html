@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>투향 — 감정 다섯 면</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@300;400;600&display=swap">
+<style>
+:root{--bg:#0a0d14;--ink:#c8d0dd;--dim:#5a6a7a;--line:rgba(255,255,255,.08);--gold:#c5a55a}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font-family:"Noto Serif KR",'Apple SD Gothic Neo',system-ui,serif;font-weight:300}
+#app{position:fixed;inset:0;display:flex;flex-direction:column}
+header{padding:14px 20px 0;border-bottom:1px solid var(--line)}
+.top{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+h1{font-size:18px;margin:0;font-weight:600;letter-spacing:.01em}
+.sub{font-size:12.5px;color:var(--dim);line-height:1.55;max-width:70ch}
+.home{margin-left:auto;font-size:12px;color:var(--dim);text-decoration:none;white-space:nowrap}
+.home:hover{color:var(--gold)}
+nav{display:flex;gap:2px;margin-top:12px;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:2px solid transparent;color:var(--dim);
+  padding:9px 14px;font:400 13.5px inherit;cursor:pointer;white-space:nowrap}
+nav button:hover{color:var(--ink)}
+nav button[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+nav button .n{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--dim);margin-right:6px}
+#note{padding:7px 20px 0;font-size:12px;color:var(--dim);line-height:1.5}
+#stage{flex:1;position:relative;margin-top:7px}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg)}
+@media(max-width:640px){h1{font-size:16px}.sub{display:none}}
+</style></head><body>
+<div id="app">
+  <header>
+    <div class="top">
+      <h1>투향 — 감정 다섯 면</h1>
+      <div class="sub">열 장의 감정을 다섯 자로 잰다. 궤적은 시간을, 히트맵은 밀도를, 플롯은 한 장의 지배 감정을, 자료원은 그 숫자가 어디서 왔는지를 보인다.</div>
+      <a class="home" href="../">← 황금새장을열다</a>
+    </div>
+    <nav id="nav"></nav>
+  </header>
+  <div id="note"></div>
+  <div id="stage"><iframe id="fr" title="감정 보기"></iframe></div>
+</div>
+<script>
+const VIEWS = [
+  {k:"trajectory", t:"감정 궤적",      n:"01", f:"emotion/emotion_trajectory.html",
+   d:"다·세·세다가 열 방을 지나며 빚을 쓰고 갚는 곡선. 166일 자가확신 갱신의 기록."},
+  {k:"heatmap",    t:"감정 히트맵",    n:"02", f:"emotion/emotion_heatmap.html",
+   d:"장면 × 감정 벡터. 어느 장이 뜨겁고 어느 장이 비었는지를 밀도로 본다."},
+  {k:"plot",       t:"10장 지배 감정", n:"03", f:"emotion/투향10장_감정플롯.html",
+   d:"한 장에 하나씩 — 그 방을 지배하는 감정 하나를 고리 위에 놓는다."},
+  {k:"sources",    t:"감정 자료원",    n:"04", f:"emotion/emotion-sources.html",
+   d:"위 셋의 숫자가 어디서 왔나. 빚 장부."},
+  {k:"en",         t:"Trajectory (EN)",n:"05", f:"emotion/emotion_trajectory_en.html",
+   d:"01의 영어판 — Shedding Borrowed Things."}
+];
+const nav = document.getElementById("nav"), fr = document.getElementById("fr"), note = document.getElementById("note");
+VIEWS.forEach(v => {
+  const b = document.createElement("button");
+  b.innerHTML = '<span class="n">' + v.n + '</span>' + v.t;
+  b.setAttribute("aria-selected", "false");
+  b.onclick = () => show(v.k, true);
+  v.btn = b; nav.appendChild(b);
+});
+function show(k, push){
+  const v = VIEWS.find(x => x.k === k) || VIEWS[0];
+  VIEWS.forEach(x => x.btn.setAttribute("aria-selected", String(x === v)));
+  if (fr.getAttribute("data-k") !== v.k){ fr.src = v.f; fr.setAttribute("data-k", v.k); }
+  note.textContent = v.d;
+  document.title = "투향 — " + v.t;
+  if (push) history.replaceState(null, "", "?v=" + v.k);
+}
+show(new URLSearchParams(location.search).get("v") || "trajectory", false);
+</script>
+</body></html>
