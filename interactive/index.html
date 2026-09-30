@@ -1,205 +1,75 @@
 <!doctype html><html lang="ko"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>투향 — 열일곱 개의 문</title>
-<meta name="description" content="golden-cage-book/interactive 전체 지도 — 수면 위 다섯, 접힘 아래 열둘.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+KR:wght@200;300;400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@300;600&display=swap">
 <style>
-/* 수면 위 다섯 · 접힘선 · 수면 아래 다섯 묶음. 사이트 토큰을 그대로 쓴다. */
-:root{
-  --bg:#0a0d14; --panel:#101521; --ink:#c8d0dd; --dim:#5a6a7a; --faint:#39435a;
-  --line:rgba(255,255,255,.08); --gold:#c5a55a; --gold-dim:#6d5c31;
-  --new:#7fa88a; --gen:#8792b8;
+:root{--bg:#0a0d14;--panel:#101521;--ink:#c8d0dd;--dim:#5a6a7a;--faint:#39435a;
+  --line:rgba(255,255,255,.08);--gold:#c5a55a;--gen:#8792b8;
   --serif:"Noto Serif KR",'Apple SD Gothic Neo',Georgia,serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
-  color-scheme:dark;
-}
+  --mono:"IBM Plex Mono",ui-monospace,monospace;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:300;
-  padding-inline:20px;padding-block:28px 56px;line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto}
+  padding-inline:20px;padding-block:30px 52px;line-height:1.65}
+.wrap{max-width:900px;margin:0 auto}
 a{color:inherit}
-.home{font-family:var(--mono);font-size:11.5px;color:var(--dim);text-decoration:none;
-  display:inline-block;margin-bottom:22px}
+.home{font-family:var(--mono);font-size:11.5px;color:var(--dim);text-decoration:none;display:inline-block;margin-bottom:20px}
 .home:hover{color:var(--gold)}
-.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold-dim);margin:0 0 10px}
-h1{font-size:clamp(25px,4.4vw,36px);font-weight:600;margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance}
-.lede{color:var(--dim);font-size:14.5px;max-width:62ch;margin:0}
+h1{font-size:clamp(24px,4vw,32px);font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+.lede{color:var(--dim);font-size:14px;max-width:58ch;margin:0 0 30px}
 .lede b{color:var(--ink);font-weight:400}
-.count{display:flex;gap:26px;flex-wrap:wrap;margin:24px 0 0;padding:14px 0;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.count div{min-width:0}
-.count .n{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--gold);
-  font-variant-numeric:tabular-nums;line-height:1.2}
-.count .n small{font-size:13px;color:var(--faint);font-weight:400}
-.count .l{font-size:11.5px;color:var(--dim);margin-top:2px}
-h2{font-size:13px;font-weight:600;margin:38px 0 3px;letter-spacing:.01em}
-h2 .badge{font-family:var(--mono);font-size:10px;color:var(--bg);background:var(--gold);
-  padding:2px 6px;border-radius:3px;margin-right:9px;letter-spacing:.06em;vertical-align:2px}
-.sect-note{font-size:12.5px;color:var(--dim);margin:0 0 16px}
-.surface{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:11px}
+h2{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 12px;font-weight:500}
+.five{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-bottom:34px}
 .card{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--gold);
-  border-radius:4px;padding:13px 14px 12px;min-width:0;display:flex;flex-direction:column;gap:7px;
-  text-decoration:none;transition:border-color .15s,background .15s}
-.card:hover{background:#141a29;border-color:rgba(197,165,90,.3);border-top-color:var(--gold)}
+  border-radius:4px;padding:13px 14px;min-width:0;text-decoration:none;transition:background .15s}
+.card:hover{background:#141a29}
 .card:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.card .t{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4}
-.card .d{font-size:12px;color:var(--dim);line-height:1.55;flex:1}
-.card .f{font-family:var(--mono);font-size:10.5px;color:var(--faint);
-  display:flex;gap:8px;align-items:center;flex-wrap:wrap;
-  border-top:1px solid var(--line);padding-top:7px;margin-top:2px}
-.card .f .path{color:var(--dim);word-break:break-all;min-width:0}
-.fold{display:flex;align-items:center;gap:14px;margin:34px 0 0}
-.fold .rule{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--gold-dim) 0 7px,transparent 7px 14px)}
-.fold .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--gold-dim);
-  text-transform:uppercase;white-space:nowrap}
-.below{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:11px;margin-top:20px}
-.grp{background:rgba(255,255,255,.017);border:1px solid var(--line);border-radius:4px;
-  padding:12px 13px 13px;min-width:0}
-.grp>.h{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);display:flex;justify-content:space-between;gap:8px;
-  padding-bottom:9px;margin-bottom:10px;border-bottom:1px solid var(--line)}
-.grp>.h .k{color:var(--faint)}
-.row{display:flex;flex-direction:column;gap:2px;padding:7px 0;
-  border-top:1px dotted rgba(255,255,255,.05);text-decoration:none}
-.row:first-of-type{border-top:0;padding-top:0}
-a.row:hover .n{color:var(--gold)}
-a.row:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.row .n{font-size:12.5px;color:var(--ink);font-weight:400;line-height:1.4;transition:color .15s}
-.row .p{font-family:var(--mono);font-size:10px;color:var(--faint);word-break:break-all}
-.row .p.nb{word-break:normal;overflow-wrap:normal}
-.tag{font-family:var(--mono);font-size:9.5px;padding:1px 5px;border-radius:3px;
-  letter-spacing:.04em;white-space:nowrap;border:1px solid}
-.tag.gen{color:var(--gen);border-color:rgba(135,146,184,.35)}
-.tag.new{color:var(--new);border-color:rgba(127,168,138,.4)}
-.tag.dup{color:var(--gold-dim);border-color:var(--gold-dim)}
-.deg{font-variant-numeric:tabular-nums;color:var(--faint)}
-.deg b{color:var(--dim);font-weight:500}
-.moved{margin-top:34px;border:1px solid var(--line);border-left:2px solid var(--new);
-  border-radius:4px;padding:14px 16px;background:rgba(127,168,138,.035)}
-.moved .h{font-size:13px;font-weight:600;margin:0 0 4px}
-.moved p{font-size:12.5px;color:var(--dim);margin:0 0 10px}
-.moved ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.moved li a{font-family:var(--mono);font-size:10.5px;color:var(--faint);text-decoration:none;
-  border:1px solid var(--line);border-radius:3px;padding:3px 7px;display:block}
-.moved li a:hover{color:var(--new);border-color:rgba(127,168,138,.4)}
-.legend{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
-  display:flex;gap:20px;flex-wrap:wrap;font-size:11.5px;color:var(--dim)}
-.legend span{display:flex;align-items:center;gap:7px}
-footer{margin-top:26px;font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:1.8}
-@media(max-width:430px){.count{gap:18px}.card .d{font-size:11.5px}}
+.card .t{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.card .d{font-size:12px;color:var(--dim);line-height:1.5}
+h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 12px;font-weight:500;
+  padding-top:16px;border-top:1px dashed rgba(197,165,90,.28)}
+.rest{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:4px 22px;margin-bottom:26px}
+.rest a{display:flex;gap:7px;align-items:baseline;padding:5px 0;font-size:13px;text-decoration:none;min-width:0}
+.rest a:hover{color:var(--gold)}
+.rest a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.rest .g{font-family:var(--mono);font-size:9.5px;color:var(--gen);
+  border:1px solid rgba(135,146,184,.35);border-radius:3px;padding:0 4px;flex:none}
+footer{font-size:12px;color:var(--faint);border-top:1px solid var(--line);padding-top:14px;line-height:1.8}
+footer .g{font-family:var(--mono);font-size:9.5px;color:var(--gen);
+  border:1px solid rgba(135,146,184,.35);border-radius:3px;padding:0 4px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <div class="wrap">
   <a class="home" href="../">← 황금새장을열다</a>
-  <p class="eyebrow">golden-cage-book / interactive</p>
   <h1>열일곱 개의 문</h1>
-  <p class="lede">사이트의 인터랙티브 갤러리 전부. <b>다섯</b>은 랜딩에 펼쳐져 있고 <b>열둘</b>은 「도구 전체 열넷」 아래 접혀 있다. 넷은 생성기가 만들므로 손으로 고치면 다음 sync에 덮인다.</p>
+  <p class="lede">사이트의 인터랙티브 갤러리 전부. <b>이 둘이면 시작됩니다.</b></p>
 
-  <div class="count">
-    <div><div class="n">17</div><div class="l">최상위 파일</div></div>
-    <div><div class="n">5</div><div class="l">랜딩에 펼침</div></div>
-    <div><div class="n">12</div><div class="l">접힘 아래</div></div>
-    <div><div class="n">4</div><div class="l">생성기 소유</div></div>
-    <div><div class="n">21 <small>→ 17</small></div><div class="l">2026-09-30 정리 전후</div></div>
+  <div class="five">
+    <a class="card" href="reader.html?file=ch0_prologue"><div class="t">원고 읽기</div><div class="d">열 장 전문. 네 새장을 지나 101호에서 돌아서고, 네 둥지를 거쳐 「투향」으로 닫는다.</div></a>
+    <a class="card" href="element_map.html"><div class="t">생각 지도</div><div class="d">어느 생각이 어느 장에 사는가. 지도·표·입체 세 뷰.</div></a>
   </div>
 
-  <h2><span class="badge">수면 위</span>처음 오면 이 다섯</h2>
-  <p class="sect-note">랜딩 「읽지 말고, 들어가 보라」에 카드로 펼쳐져 있다.</p>
-  <div class="surface">
-    <a class="card" href="reader.html?file=ch0_prologue">
-      <div class="t">원고 읽기</div>
-      <div class="d">열 장 전문. 네 새장을 지나 101호에서 돌아서고, 네 둥지를 거쳐 「투향」으로 닫는다.</div>
-      <div class="f"><span class="path">reader.html</span><span class="deg">피링크 <b>15</b></span><span class="tag dup">부록 2회 재사용</span></div>
-    </a>
-    <a class="card" href="element_map.html">
-      <div class="t">생각 지도</div>
-      <div class="d">여섯 갈래 생각원소 × 장. 지도·표·입체 세 뷰로 본다.</div>
-      <div class="f"><span class="path">element_map.html</span><span class="deg">피링크 <b>3</b></span><span class="tag gen">생성기</span></div>
-    </a>
-    <a class="card" href="probability_evolution.html">
-      <div class="t">확률 진화</div>
-      <div class="d">팔릴 확률과 만들어질 확률을 따로 재고 낮은 쪽을 병목으로 삼은 166일 기록.</div>
-      <div class="f"><span class="path">probability_evolution.html</span><span class="deg">피링크 <b>2</b></span></div>
-    </a>
-    <a class="card" href="reader_grid.html">
-      <div class="t">독자 12셀</div>
-      <div class="d">세 페르소나 × 네 산업. 각 칸이 자기 진입로를 갖는지 확인한다.</div>
-      <div class="f"><span class="path">reader_grid.html</span><span class="deg">피링크 <b>5</b></span><span class="tag new">2026-09-30 개명</span></div>
-    </a>
-    <a class="card" href="issue_map.html">
-      <div class="t">이슈 지도</div>
-      <div class="d">가로가 장, 세로가 종류. 137 이슈 · 357 선 · 평균 차수 5.21. 누르면 GitHub이 열린다.</div>
-      <div class="f"><span class="path">issue_map.html</span><span class="deg">피링크 <b>1</b></span><span class="tag gen">생성기</span></div>
-    </a>
+  <h3>나머지 열다섯</h3>
+  <div class="rest">
+    <a href="reference_graph.html">원고 지도 <span class="g">생성기</span></a>
+    <a href="bookmap_3d.html">3D 사면체</a>
+    <a href="symbols.html">12개의 상징</a>
+    <a href="tetrahedron.html">나는 어느 새장에 있는가</a>
+    <a href="emotion.html">감정 다섯 면</a>
+    <a href="probability_evolution.html">확률 진화</a>
+    <a href="reader_grid.html">독자 12셀</a>
+    <a href="issue_map.html">이슈 지도 <span class="g">생성기</span></a>
+    <a href="quality_ascent.html">품질 상승</a>
+    <a href="scene_or_summary.html">장면인가 요약인가</a>
+    <a href="periodic_table_prototype.html">484 실패 주기율표</a>
+    <a href="ten_novels.html">The Ten Novels (EN)</a>
+    <a href="reader.html?file=app1_romantic_trilogy">부록 · 에세이 / 작법론</a>
+    <a href="references.html">참고자료 <span class="g">생성기</span></a>
+    <a href="writing-sources.html">글쓰기 자료원</a>
+    <a href="slide_bio.html">B·I·O 슬라이드</a>
   </div>
 
-  <div class="fold">
-    <span class="lab">접힘 — 「도구 전체 열넷」</span>
-    <span class="rule"></span>
-  </div>
-
-  <div class="below">
-    <div class="grp">
-      <div class="h"><span>구조</span><span class="k">4</span></div>
-      <a class="row" href="reference_graph.html"><span class="n">원고 지도</span><span class="p">reference_graph.html <span class="tag gen">생성기</span></span></a>
-      <a class="row" href="bookmap_3d.html"><span class="n">3D 사면체</span><span class="p">bookmap_3d.html</span></a>
-      <a class="row" href="symbols.html"><span class="n">12개의 상징</span><span class="p">symbols.html</span></a>
-      <a class="row" href="tetrahedron.html"><span class="n">나는 어느 새장에 있는가</span><span class="p">tetrahedron.html</span></a>
-    </div>
-
-    <div class="grp">
-      <div class="h"><span>감정</span><span class="k">1</span></div>
-      <a class="row" href="emotion.html"><span class="n">감정 다섯 면</span><span class="p">emotion.html <span class="tag new">2026-09-30 5→1</span></span></a>
-      <div class="row">
-        <span class="n" style="color:var(--dim);font-size:11.5px">탭 다섯이 아래 폴더를 연다</span>
-        <span class="p nb">?v=trajectory · heatmap · plot · sources · en</span>
-      </div>
-    </div>
-
-    <div class="grp">
-      <div class="h"><span>자(尺)</span><span class="k">3</span></div>
-      <a class="row" href="quality_ascent.html"><span class="n">품질 상승</span><span class="p">quality_ascent.html</span></a>
-      <a class="row" href="scene_or_summary.html"><span class="n">장면인가 요약인가</span><span class="p">scene_or_summary.html</span></a>
-      <a class="row" href="periodic_table_prototype.html"><span class="n">484 실패 주기율표</span><span class="p">periodic_table_prototype.html</span></a>
-    </div>
-
-    <div class="grp">
-      <div class="h"><span>읽기</span><span class="k">1<span style="color:var(--gold-dim)"> +2</span></span></div>
-      <a class="row" href="ten_novels.html"><span class="n">The Ten Novels (EN)</span><span class="p">ten_novels.html</span></a>
-      <a class="row" href="reader.html?file=app1_romantic_trilogy"><span class="n">부록 · 에세이 / 작법론</span><span class="p">reader.html?file=… <span class="tag dup">위의 것과 같은 파일</span></span></a>
-    </div>
-
-    <div class="grp">
-      <div class="h"><span>빚 장부</span><span class="k">3</span></div>
-      <a class="row" href="references.html"><span class="n">참고자료 46건</span><span class="p">references.html <span class="tag gen">생성기</span></span></a>
-      <a class="row" href="writing-sources.html"><span class="n">글쓰기 자료원</span><span class="p">writing-sources.html</span></a>
-      <a class="row" href="slide_bio.html"><span class="n">B·I·O 슬라이드</span><span class="p">slide_bio.html</span></a>
-    </div>
-  </div>
-
-  <div class="moved">
-    <div class="h">2026-09-30 최상위에서 내려간 다섯 — <span style="font-family:var(--mono);font-size:12px;color:var(--dim)">interactive/emotion/</span></div>
-    <p>지운 게 아니라 옮겼다. <a href="emotion.html" style="color:var(--ink)">emotion.html</a>의 탭 다섯이 이 파일들을 연다. 갤러리 칸은 5에서 1로 줄고 내용은 한 줄도 안 없어졌다.</p>
-    <ul>
-      <li><a href="emotion.html?v=trajectory">emotion_trajectory.html</a></li>
-      <li><a href="emotion.html?v=heatmap">emotion_heatmap.html</a></li>
-      <li><a href="emotion.html?v=plot">투향10장_감정플롯.html</a></li>
-      <li><a href="emotion.html?v=sources">emotion-sources.html</a></li>
-      <li><a href="emotion.html?v=en">emotion_trajectory_en.html</a></li>
-    </ul>
-  </div>
-
-  <div class="legend">
-    <span><span class="tag gen">생성기</span> 손 편집 금지 — 생성기를 고친다</span>
-    <span><span class="tag new">2026-09-30</span> 이번 정리에서 바뀐 것</span>
-    <span><span class="tag dup">재사용</span> 같은 파일이 다른 주소로 또 걸림</span>
-    <span>피링크 = 사이트 안에서 이 파일을 가리키는 링크 수</span>
-  </div>
-
-  <footer>
-    실측 2026-09-30 · 갤러리 링크 19개가 파일 17개를 가리킨다 (reader.html이 3회 등장)<br>
-    이 지도 자신(interactive/index.html)은 문이 아니라 문간이라 열일곱에 안 셌다.
-  </footer>
+  <footer><span class="g">생성기</span> 표시된 넷은 손으로 고치면 다음 sync에 덮인다 — 생성기를 고친다.</footer>
 </div>
 </body></html>
