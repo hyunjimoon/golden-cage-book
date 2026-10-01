@@ -25,10 +25,10 @@
   .hero{padding:30px 0 6px;}
   .hero .eyebrow{font-size:11px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;}
   .hero h1{font-size:2.05em;font-weight:700;line-height:1.3;margin:9px 0 0;letter-spacing:-0.015em;}
-  .hero .say{font-size:.95em;color:var(--ink2);line-height:1.8;margin-top:14px;max-width:62ch;}
+  .hero .say{font-size:.95em;color:var(--ink2);line-height:1.8;margin-top:20px;max-width:64ch;}
   .hero .say b{color:var(--ink);}
-  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
-       background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:22px;}
+  .kpi{display:grid;margin-bottom:2px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+       background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:20px;}
   .kpi div{background:var(--surface);padding:15px 17px;}
   .kpi .v{font-size:2.1em;font-weight:700;line-height:1;color:var(--ink);}
   .kpi .k{font-size:.76em;color:var(--dim);margin-top:7px;line-height:1.5;}
@@ -146,6 +146,12 @@
   <div class="hero">
     <div class="eyebrow">투향 · 감정 측정</div>
     <h1>열 명이 내 자를 기각했다.</h1>
+    <div class="kpi">
+      <div><div class="v">10</div><div class="k" id="k10">현장 전문가 — 독립으로 답했다</div></div>
+      <div><div class="v">1</div><div class="k">그들이 내리게 한 지수 — 和</div></div>
+      <div><div class="v">4</div><div class="k">그들이 세우게 한 축 — 수치·무감·억울·안도</div></div>
+      <div><div class="v">23</div><div class="k">그들이 옮기게 한 Prior 칸 — 일곱 장</div></div>
+    </div>
     <div class="say">
       나는 원고의 감정을 열두 축으로 재고, 설계와 원고의 거리를 <b>和 지수</b>로 점수 매겼다.
       한국 창업 현장 전문가 열 명이 이 눈금을 함께 기각했다. 반례가 이 책 3장 안에 있었다 —
@@ -153,11 +159,6 @@
       아침 하늘을 보고 매일 고치는 리외는 和가 낮다.</b> 그 지수는 파늘루에게 1등을 준다.
       <br><br>
       그래서 점수판을 내렸다. 아래는 <b>잰 값</b>이 아니라 <b>자가 바뀐 기록</b>이다.
-    </div>
-    <div class="kpi">
-      <div><div class="v">1</div><div class="k">폐기한 지수 — 和</div></div>
-      <div><div class="v">4</div><div class="k">신설한 축 — 수치·무감·억울·안도</div></div>
-      <div><div class="v">23</div><div class="k">옮긴 Prior 칸 — 일곱 장에 걸쳐</div></div>
     </div>
   </div>
 
@@ -170,6 +171,8 @@
       <div class="sub">
         위로 솟을수록 <b>빚</b>(설계한 감정이 원고에 안 나온 양)이 크다. 점에 손을 올리면 그 방의 세 숫자가 나온다.
         <b>이 장을 고쳐 빚을 줄이지 마라</b> — 공포를 못 견디고 설계도로 도망친 흔적이 이 책에서 가장 정직한 자국이다.
+        <br><b style="color:var(--ink)">고칠 곳은 4장과 8장이다</b> — 장 합계로 4장 12(새장 넷 중 최대)·8장 10(둥지 최대).
+        4장엔 텐을 묻는 장면은 있는데 <i>묻는 손의 감정</i>이 없고, 8장은 멱살을 쥐는 대면이 대사 넷으로 요약된다.
       </div>
       <svg id="jsvg" viewBox="0 0 780 250" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="legend">
@@ -191,6 +194,8 @@
       <div class="sub">
         어느 장에서나 켜져 있거나(영감) 어느 장에서나 꺼져 있으면(분노) 열두 칸 중 한 칸을 먹으면서 정보는 0이다.
         열여섯 화자칸 중 <b>55 이상</b>이 켜짐, <b>30 미만</b>이 꺼짐. 한쪽이 열 칸을 넘으면 죽은 축으로 센다.
+        <br><b style="color:var(--ink)">아직 빼지 않았다.</b> 빼면 분모가 열둘에서 일곱으로 바뀌어 위 ①의 빚이 전부 다시 계산된다 —
+        그 재계산을 할지 말지가 룰링 대기다. 지금은 <i>죽은 채로 세고, 죽었다고 표시한다.</i>
       </div>
       <table id="discrim"></table>
       <div class="legend">
@@ -207,10 +212,7 @@
     <div class="ask">그래서 무엇을 바꿨나. 원고가 아니라 저자가 바뀐 자리.</div>
     <div class="fig">
       <div class="find">열 명이 독립으로 답했고, <em>과반이 같은 말을 한 것</em>만 옮겼다.</div>
-      <div class="sub">
-        벤처캐피털 심사역 · 연쇄창업자 · B2B SaaS 그로스 리드 · 딥테크 제조 창업자 · 바이오 임상 창업자 ·
-        액셀러레이터 디렉터 · 조직심리 코치 · 스타트업 피플 리드 · 스타트업 에디터 · 창업교육/TIPS 심사위원.
-      </div>
+      <div class="sub">머리의 <b>10</b>에 손을 올리면 누구인지 나온다.</div>
       <table class="chg">
         <tr><td>和가 파늘루를 이긴다</td><td>9/10</td>
             <td><b>和를 점수에서 내렸다.</b> 절대값 평균이라 2장 슬픔 +7(좋은 초과)과 5장 영감 +37(도피)이
@@ -229,6 +231,14 @@
             <td>"잘 도는 시계를 못 부수는 건 슬퍼서가 아니라 자랑스러워서다 — <b>자랑이 창살이다</b>."
                 → 4·5·8장 Prior 상향.</td></tr>
       </table>
+      <div style="margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:.82em;line-height:1.75;color:var(--ink2);">
+        <b style="color:var(--ink)">그리고 안 받은 것 셋</b> — ① 화자를 셋으로 한정한 범위.
+        다·세·세다는 세 사람이 아니라 한 베이즈 에이전트의 두 인수(U·p(s))와 그 무게중심이라,
+        제3자를 축으로 끼우면 다른 대시보드가 된다. 다만 6장에 <b>사용자의 원문 한 줄</b>을 증인으로 복원했다.
+        ② 억울·안도 두 축은 신설했으나 정전 밖으로 둔다.
+        ③ "독립 차원은 12가 아니라 5~6이고 죄책 × 절박의 <i>곱</i>이 안 보인다" — 미해결이다.
+        막대 열두 개로는 곱을 못 그린다.
+      </div>
     </div>
 
     <div class="redline">
@@ -543,6 +553,15 @@ for(let c=1;c<=10;c++){
   const g = AXES.map(a=>[a, Math.round(DATA[c][sp][a]-MED[a])]).sort((x,y)=>y[1]-x[1]);
   LEAD[c] = {sp, up:g[0], down:g[g.length-1]};
 }
+
+/* 머리 10에 손올림 — 누가 쟀나 (③에서 내려온 54어절) */
+(function(){
+  const el=document.getElementById('k10'); if(!el) return;
+  el.style.display='inline-block'; el.style.borderBottom='1px dotted #46556b'; el.style.cursor='help';
+  el.title='벤처캐피털 심사역 · 연쇄창업자 · B2B SaaS 그로스 리드 · 딥테크 제조 창업자 · '
+    +'바이오 임상 창업자 · 액셀러레이터 디렉터 · 조직심리 코치 · 스타트업 피플 리드 · '
+    +'스타트업 에디터 · 창업교육/TIPS 심사위원 (2026-08-22)';
+})();
 
 /* ── 손올림 ── */
 const tip=document.getElementById('tip');
