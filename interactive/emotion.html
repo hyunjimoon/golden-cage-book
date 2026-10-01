@@ -166,12 +166,13 @@
   </div>
 
   <div class="card">
-    <svg id="ring" viewBox="0 0 680 700" role="img" aria-label="열 장 감정 고리"></svg>
+    <svg id="ring" viewBox="0 0 820 650" role="img" aria-label="열 장 감정 고리"></svg>
     <div class="legend">
-      <span><i class="ldot" style="background:#C7453E"></i>CAGE 1–4 · 빚에 갇힘</span>
-      <span><i class="ldot" style="background:#6BA368"></i>NEST 6–9 · 알면서 입음</span>
-      <span><i class="ldot" style="background:#B7AC92;border-radius:2px"></i>거울짝 현 (1↔6·2↔7·3↔8·4↔9)</span>
-      <span><i class="ldot" style="background:#B0472E"></i>10→1 회귀</span>
+      <span><i class="ldot" style="background:#C7453E"></i>바깥 붉은 호 = <b style="color:#e07a5f">CAGE</b> 1–4장 · 빚에 갇힘</span>
+      <span><i class="ldot" style="background:#6BA368"></i>바깥 초록 호 = <b style="color:#6BA368">NEST</b> 6–9장 · 알면서 입음</span>
+      <span>↻ 5 · 10 = 마디 (101₂호 🌊 · 101₃호 🔥)</span>
+      <span><i class="ldot" style="background:#5a6a7a;border-radius:2px"></i>점선 = 거울짝 1↔6·2↔7·3↔8·4↔9</span>
+      <span><i class="ldot" style="background:#D9542B"></i>10→1 회귀</span>
     </div>
   </div>
 
@@ -570,7 +571,7 @@ for(let c=1;c<=10;c++){
 
 /* ── ① 고리 — 12정전 색, 데이터 파생 ── */
 (function(){
-  const cx=340, cy=340, rOut=238, rDom=198, rSub=184;
+  const cx=410, cy=320, rOut=238, rDom=198, rSub=184;
   const seg=32.4, gap0=2, topGap=18, D=Math.PI/180;
   const pol=(r,a)=>[cx+r*Math.cos(a*D), cy+r*Math.sin(a*D)];
   function band(rO,rI,a0,a1){
@@ -578,8 +579,14 @@ for(let c=1;c<=10;c++){
     return `M${x1} ${y1}A${rO} ${rO} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${rI} ${rI} 0 0 0 ${x4} ${y4}Z`;}
   function arc(r,a0,a1){const [x1,y1]=pol(r,a0),[x2,y2]=pol(r,a1);
     return `M${x1} ${y1}A${r} ${r} 0 0 1 ${x2} ${y2}`;}
-  function ink(hex){const r=parseInt(hex.substr(1,2),16),g=parseInt(hex.substr(3,2),16),b=parseInt(hex.substr(5,2),16);
-    return (0.299*r+0.587*g+0.114*b)/255 > 0.62 ? '#1A1F2E' : '#F3F5F8';}
+  function rgb(hex){return [parseInt(hex.substr(1,2),16),parseInt(hex.substr(3,2),16),parseInt(hex.substr(5,2),16)];}
+  function lum(hex){const [r,g,b]=rgb(hex); return (0.299*r+0.587*g+0.114*b)/255;}
+  function ink(hex){return lum(hex) > 0.62 ? '#1A1F2E' : '#F3F5F8';}
+  /* 어두운 배경에서는 색상은 두되 명도만 한 단 올린다 — 겨울 水 계열이 배경에 먹힌다 */
+  function lift(hex){ if(lum(hex)>=0.42) return hex;
+    const t=(0.42-lum(hex))/0.42*0.72, [r,g,b]=rgb(hex);
+    const m=v=>Math.round(v+(255-v)*t).toString(16).padStart(2,'0');
+    return '#'+m(r)+m(g)+m(b);}
 
   let s=`<defs><marker id="rh" markerWidth="9" markerHeight="9" refX="6" refY="3.2" orient="auto">
     <path d="M0 0L7 3.2L0 6.4Z" fill="#D9542B"/></marker></defs>`;
@@ -601,25 +608,18 @@ for(let c=1;c<=10;c++){
       text-anchor="middle" dominant-baseline="central">${g.n}</text>`;
     const [ex,ey]=pol(206,g.ac);
     s+=`<text x="${ex}" y="${ey}" font-size="12" text-anchor="middle" dominant-baseline="central">${m.emoji}</text>`;
-    const [lx,ly]=pol(258,g.ac);
-    s+=`<text x="${lx}" y="${ly-10}" fill="#cbd5e1" font-size="11.5" font-weight="700" text-anchor="middle">${m.name}</text>`;
-    s+=`<text x="${lx}" y="${ly+4}" fill="${upCol}" font-size="10.5" font-weight="600" text-anchor="middle">▲ ${AXKO[L.up[0]]} +${L.up[1]}</text>`;
-    s+=`<text x="${lx}" y="${ly+17}" fill="#64748b" font-size="10" text-anchor="middle">▼ ${AXKO[L.down[0]]} ${L.down[1]}</text>`;});
+    const cosv=Math.cos(g.ac*D);
+    const anchor = cosv>0.5?'start' : cosv<-0.5?'end' : 'middle';
+    const [lx,ly]=pol(anchor==='middle'?266:250, g.ac);
+    const hinge = (g.n===5||g.n===10) ? '↻ ' : '';
+    s+=`<text x="${lx}" y="${ly-10}" fill="#cbd5e1" font-size="11.5" font-weight="700" text-anchor="${anchor}">${hinge}${m.name}</text>`;
+    s+=`<text x="${lx}" y="${ly+4}" fill="${lift(upCol)}" font-size="10.5" font-weight="600" text-anchor="${anchor}">▲ ${AXKO[L.up[0]]} +${L.up[1]}</text>`;
+    s+=`<text x="${lx}" y="${ly+17}" fill="#64748b" font-size="10" text-anchor="${anchor}">▼ ${AXKO[L.down[0]]} ${L.down[1]}</text>`;});
 
   s+=`<path d="${arc(246,segs[0].a0,segs[3].a1)}" fill="none" stroke="#C7453E" stroke-width="3.5" opacity=".55" stroke-linecap="round"/>`;
   s+=`<path d="${arc(246,segs[5].a0,segs[8].a1)}" fill="none" stroke="#6BA368" stroke-width="3.5" opacity=".55" stroke-linecap="round"/>`;
-  let p=pol(300,(segs[0].a0+segs[3].a1)/2);
-  s+=`<text x="${p[0]}" y="${p[1]-4}" fill="#e07a5f" font-size="13" font-weight="800" text-anchor="middle">CAGE</text>
-      <text x="${p[0]}" y="${p[1]+11}" fill="#64748b" font-size="10" text-anchor="middle">빚에 갇힘 · 1–4장</text>`;
-  p=pol(302,(segs[5].a0+segs[8].a1)/2);
-  s+=`<text x="${p[0]}" y="${p[1]-4}" fill="#6BA368" font-size="13" font-weight="800" text-anchor="middle">NEST</text>
-      <text x="${p[0]}" y="${p[1]+11}" fill="#64748b" font-size="10" text-anchor="middle">알면서 입음 · 6–9장</text>`;
-  [segs[4],segs[9]].forEach(g=>{const q=pol(294,g.ac);
-    s+=`<text x="${q[0]}" y="${q[1]}" fill="#94a3b8" font-size="10.5" font-weight="700"
-      text-anchor="middle" dominant-baseline="central">↻ 마디</text>`;});
-
   s+=`<path d="${arc(rOut+4,segs[9].a1+2.5,segs[0].a0-2.5)}" fill="none" stroke="#D9542B" stroke-width="2.4" marker-end="url(#rh)"/>`;
-  s+=`<text x="${cx}" y="46" fill="#D9542B" font-size="12.5" font-weight="800" text-anchor="middle">10 → 1 회귀</text>`;
+  s+=`<text x="${cx}" y="26" fill="#D9542B" font-size="12.5" font-weight="800" text-anchor="middle">10 → 1 회귀</text>`;
 
   s+=`<circle cx="${cx}" cy="${cy}" r="96" fill="#111827" stroke="#263149"/>`;
   s+=`<text x="${cx}" y="${cy-20}" fill="#f0f2f5" font-size="16" font-weight="800" text-anchor="middle">열 방의 감정</text>`;
@@ -675,7 +675,7 @@ document.getElementById('legend').innerHTML = SEASONS.map(s=>`
     return `<div class="row">
       <div class="nm">${AXKO[r.a]}</div>
       <div class="trk" style="height:9px"><div class="fill" style="width:${r.med}%;background:${AXCOL[r.a]};height:100%;opacity:${stuckOn||stuckOff?.45:1}"></div></div>
-      <div class="val" style="min-width:150px">중앙 ${String(r.med).padStart(4,' ')} <span style="opacity:.5">· 켜짐 ${r.hi}/${N} · 꺼짐 ${r.lo}/${N}</span></div>
+      <div class="val" style="min-width:188px">중앙 ${String(r.med).padStart(4,' ')} <span style="opacity:.5">· 켜짐 ${r.hi}/${N} · 꺼짐 ${r.lo}/${N}</span></div>
       <div class="flag" style="width:56px;font-size:.66em">${tag}</div></div>`;}).join('')
     + `<div style="font-size:.92em;color:var(--dim);margin-top:8px;">`
     + `열여섯 화자칸 중 <b style="color:var(--text2)">55 이상이 몇 칸</b>(켜짐) · <b style="color:var(--text2)">30 미만이 몇 칸</b>(꺼짐). `
