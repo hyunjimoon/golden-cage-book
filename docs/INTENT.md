@@ -22,7 +22,7 @@ purpose: 2차 소통 — 판단하시는 분께
 |:--|:--|:--|
 | **구조** | 5섹션, 용어 혼재 | 4섹션(감각하기→이해하기→관찰하기→실천하기) × 4장. 용어 통일 완료 |
 | **부록** | 미정 | 6개 완성 — 에세이 3부작, 용어집, 작법론, 참고문헌, AI 프롬프트, 산업별 빚 지도 |
-| **측정** | 직감 | AI 감정 벡터로 캐릭터(다/세) 대사를 6축 측정. [감정궤적 대시보드](https://hyunjimoon.github.io/golden-cage-book/interactive/emotion.html?v=trajectory) |
+| **측정** | 직감 | AI 감정 벡터로 캐릭터(다·세·세다) 대사를 12축 측정. [감정궤적 대시보드](https://hyunjimoon.github.io/golden-cage-book/interactive/emotion.html#s1) |
 | **제목** | 후보 여럿 | **황금새장을열다** 확정 |
 
 ### 주요 편집 내역

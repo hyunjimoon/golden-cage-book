@@ -35,11 +35,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet interactive/emotion_trajectory.html; then
-            echo "No changes to emotion_trajectory.html"
+          if git diff --quiet interactive/emotion.html; then
+            echo "No changes to emotion.html"
             exit 0
           fi
-          git add interactive/emotion_trajectory.html
+          git add interactive/emotion.html
           git commit -m "auto: SBC 감정 데이터 갱신 — $(date +%Y-%m-%d)"
           for i in 1 2 3; do
             if git pull --rebase origin main && git push; then

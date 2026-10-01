@@ -253,7 +253,7 @@ def update_html(results: dict):
       FIELD_PRIOR                — 현장 4축 설계 의도
       CRIT / WITNESS             — 현장 비평단 주석·증인 인용
     """
-    html_path = Path("interactive/emotion_trajectory.html")
+    html_path = Path("interactive/emotion.html")
     html = html_path.read_text(encoding="utf-8")
 
     def esc(s):
