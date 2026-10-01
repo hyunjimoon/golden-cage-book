@@ -118,6 +118,8 @@
   .row .t{flex:1;height:7px;background:rgba(255,255,255,.05);border-radius:4px;position:relative;}
   .row .t i{position:absolute;left:0;top:0;height:100%;border-radius:4px;background:var(--se);}
   .row .t u{position:absolute;top:-2px;width:2px;height:11px;background:rgba(255,255,255,.5);border-radius:1px;}
+  .row .t b{position:absolute;top:-4px;width:7px;height:7px;border:1.5px solid var(--ink2);
+            background:var(--bg);transform:rotate(45deg);border-radius:1px;cursor:help;}
   .row .v{width:88px;flex:none;text-align:right;font-family:'DM Mono',monospace;color:var(--ink2);}
   .row .v s{text-decoration:none;color:var(--dim);} .row .v s.u{color:var(--alert);} .row .v s.o{color:#4FBF8B;}
   .quote{border-left:2px solid var(--line);padding:6px 12px;margin-top:9px;color:var(--ink);line-height:1.7;}
@@ -196,6 +198,12 @@
         열여섯 화자칸 중 <b>55 이상</b>이 켜짐, <b>30 미만</b>이 꺼짐. 한쪽이 열 칸을 넘으면 죽은 축으로 센다.
         <br><b style="color:var(--ink)">아직 빼지 않았다.</b> 빼면 분모가 열둘에서 일곱으로 바뀌어 위 ①의 빚이 전부 다시 계산된다 —
         그 재계산을 할지 말지가 룰링 대기다. 지금은 <i>죽은 채로 세고, 죽었다고 표시한다.</i>
+        <br><b style="color:var(--ink)">다만 처분은 갈라야 한다</b>(2026-10-02, 회고 칸 신설 후). 영감은 화자 레지스터라
+        상시 켜짐 = <i>자를 내릴</i> 축이다. 분노는 다르다 — 상황 한복판에서 무뎌졌을 가능성을 보려고
+        <b>회고 칸</b>을 열었는데 거기서도 안 켜졌다(최대 22, 2장). 그리고 5장은 현장 28 → 회고 <b>10</b>으로
+        <i>더 내려간다</i> — 회고가 분노를 식힌다. 켜지는 것은 분노가 아니라 <b>억울</b>이다(7장 현장 62 ·
+        3장 회고 45). 분노는 죽은 축이 아니라 <b>억울의 그림자</b>다: 이 원고의 화자는 사람을 밀어내지 않고
+        구조를 밀어낸다. 처분 = 빼지 말고 <i>분노·억울을 한 쌍으로 읽는다.</i>
       </div>
       <table id="discrim"></table>
       <div class="legend">
@@ -260,6 +268,9 @@
         막대 = 원고(Posterior) · 흰 세로선 = 설계(Prior) · <span style="color:var(--alert)">빨강</span> = 미달(빚) ·
         <span style="color:#4FBF8B">초록</span> = 초과(변이). 보라색 <code>a→b</code>는 현장 비평단이 옮긴 Prior
         (축 이름에 커서를 올리면 근거).
+        <br><b style="color:var(--ink)">명명 시점 두 칸</b>(2026-10-02 신설) — 막대는 <b>현장</b>(장 한복판의 발화),
+        ◇ 는 <b>회고</b>(그 장을 지나온 뒤 뒤쪽 장이 되돌아보며 하는 말). 한 시점만 재면
+        상황 한복판의 무뎌짐을 「축이 죽었다」로 오판한다. ◇ 에 커서를 올리면 출처와 줄 수가 나온다.
         <div class="tabs" id="tabs"></div>
         <div id="panel"></div>
       </div>
@@ -341,6 +352,16 @@
               <td>10장 「빚을 쓴 방과 빚을 갚는 방은 같은 방이다」와 5장 세 「공책이다. 세가 쓰던 것.」은 <i>감정 문장이 아니다</i>. 규약대로면 두 장 다 기각 대상 — 규약을 지킬지 문구를 고칠지 택일 필요.</td></tr>
           <tr><td><b>차원 중복</b></td>
               <td>불안·두려움·절박은 공포-각성 한 축의 강도 3단계, 기쁨·영감·자긍은 고각성 긍정 하나. 독립 차원은 12가 아니라 5~6이고, 그만큼 평균이 공포에 3배 가중된다. 죄책 × 절박의 <i>곱</i>은 막대 열두 개로 못 그린다. (조직심리 코치)</td></tr>
+          <tr><td><b>명명 시점 — 13축 미측정</b></td>
+              <td>회고 칸(2026-10-02 신설)은 아직 <b>분노·억울·무감 셋만</b> 손으로 쟀다. 나머지 13축은 CI 대기 —
+              <code>scripts/sbc_analyze.py</code>가 다음 <code>chapters/ch*.md</code> push에 16축 전부를 채운다.
+              6·7·10장은 회고 재료가 문턱(3줄) 미달로 <b>기각</b>이다(1·2·1줄). 10장이 0줄인 것은 결함이 아니라
+              구조다 — 뒤가 없는 방은 자기 회고가 없다. <b>그러니 「회고가 낮다」와 「회고를 못 쟀다」를 같은 칸에 넣지 마라.</b></td></tr>
+          <tr><td><b>채점자가 AI다</b></td>
+              <td>현장 칸 Posterior는 <code>sbc_analyze.py</code>(claude-sonnet)가, 회고 칸 세 축은 또 다른 모델이
+              쟀다. 「열 장 지배 감정」 투표 8명도 사람이 아니다. <b>채점자와 피채점자가 같은 종</b>이면
+              과반 일치는 독립 증거가 아니다. 표본 편향(아래)은 <i>대상</i>의 편향이고 이것은 <i>자</i>의 편향이라
+              서로를 못 가린다.</td></tr>
           <tr><td><b>표본 편향</b></td>
               <td>원고의 창업 사례가 대부분 서구·중남미이고 10장 청구서는 <i>학계</i> 연대기다. 이 열두 축이 실측한 것은 한국 창업 현장이 아니라 <b>한국 대학원생 × 서구 창업 사례</b>의 감정일 수 있다. (창업교육/TIPS 심사위원)</td></tr>
           <tr><td><b>공개 저장소 읽힘</b></td>
@@ -534,6 +555,41 @@ const FIELD_DATA = {
   10:{seda:{shame:30,blunt:62,resent:25,relief:58}}
 };
 
+/* ══ 명명 시점 ② 회고 — 그 장을 *지나온 뒤* 뒤쪽 장이 되돌아보며 하는 말 ══
+   재료는 거울짝 구조에 이미 있다. 코퍼스 검산: python3 scripts/sbc_analyze.py --dump-retro
+   ⚠️ 지금은 분노·억울·무감 **세 축만** 손으로 쟀다(2026-10-02). 나머지 13축은 CI 대기 —
+   생성기가 돌면 이 블록은 16축 전부로 덮이고 by 가 'sbc'로 바뀐다. */
+const RETRO = {
+  1:{angry:10,resent:18,blunt:15,
+     quote:'비용을 모르고 부수면 무모고 — 그건 1장이었죠.', by:'손측정'},
+  2:{angry:22,resent:20,blunt:20,
+     quote:'73년을 별처럼 정확히 읽고도 한 발도 떼지 않은 공작이 있어요.', by:'손측정'},
+  3:{angry:20,resent:45,blunt:15,
+     quote:'유리는 아무리 투명해도 이쪽과 저쪽을 가르고, 한쪽의 목소리만 통과시키지요.', by:'손측정'},
+  4:{angry:12,resent:28,blunt:20,
+     quote:'시계가 잘 돌수록 그는 시계 없는 삶을 상상하지 못했어요.', by:'손측정'},
+  5:{angry:10,resent:15,blunt:45,
+     quote:'5장에서 다는 세를 차갑게 쏘았다. 세만 사랑할 수 없어서.', by:'손측정'},
+  8:{angry:14,resent:20,blunt:25,
+     quote:'8장의 과잉약속이 투자자 앞의 일이라면 이것은 밥상 앞의 일이다. 방이 다를 뿐 같은 병이다.', by:'손측정'},
+  9:{angry:10,resent:15,blunt:20,
+     quote:'재발견이 아니라 재명명이 거울을 연다. 다만 그 재명명을 남이 해 줬다.', by:'손측정'}
+};
+
+/* 표본을 숨기면 자가 아니다 — 6·7·10장은 문턱(3줄) 미달로 기각 */
+const RETRO_SRC = {
+  1:{n:23, src:'2장 · 4장 · 6장 · 9장 · 10장 · 에필로그'},
+  2:{n:14, src:'3장 · 4장 · 6장 · 7장 · 8장 · 10장'},
+  3:{n:9,  src:'4장 · 8장 · 9장 · 10장'},
+  4:{n:5,  src:'6장 · 9장 · 10장'},
+  5:{n:21, src:'6장 · 7장 · 8장 · 9장 · 10장 · 에필로그'},
+  6:{n:1,  src:'10장', reject:'문턱 미달'},
+  7:{n:2,  src:'10장', reject:'문턱 미달'},
+  8:{n:8,  src:'9장 · 10장 · 에필로그'},
+  9:{n:6,  src:'10장'},
+  10:{n:0, src:'없음', reject:'뒤가 없다 — 마지막 방은 자기 회고가 없다'}
+};
+
 /* ══════════════════════════════════════════════════════════════
    파생 — 빚 · 변이 · 미지근
    ══════════════════════════════════════════════════════════════ */
@@ -694,6 +750,12 @@ const tabsEl=document.getElementById('tabs');
 tabsEl.innerHTML=Object.keys(CHAPTERS).map(c=>
   `<button class="tab" data-ch="${c}">${CHAPTERS[c].emoji} <span class="n">${c}</span></button>`).join('');
 
+/* 명명 시점 ② — 회고 칸이 있는 축에만 ◇ 를 얹는다. 없으면 빈 문자열 = 안 그린다 */
+function rmark(c,a){
+  const R=RETRO[c]; if(!R||R[a]===undefined) return '';
+  const S=RETRO_SRC[c]||{};
+  return `<b style="left:calc(${R[a]}% - 3.5px)" title="회고 ${R[a]} · ${S.src||''} ${S.n||0}줄 · ${R.by}"></b>`;
+}
 function bars(c,sp){
   return SEASONS.map(s=>`<div style="margin-bottom:6px"><div style="font-size:.8em;color:var(--dim);margin-bottom:1px">${s.ko} ${s.han}</div>
     ${s.probes.map(p=>{
@@ -702,7 +764,7 @@ function bars(c,sp){
       const why=V1_WHY[c+'.'+sp+'.'+a];
       return `<div class="row">
         <div class="nm"${why?' title="'+why.replace(/"/g,'&quot;')+'" style="border-bottom:1px dotted #667;cursor:help"':''}>${p[1]}</div>
-        <div class="t"><i style="width:${post}%"></i><u style="left:calc(${pri}% - 1px)" title="설계 ${pri}"></u></div>
+        <div class="t"><i style="width:${post}%"></i><u style="left:calc(${pri}% - 1px)" title="설계 ${pri}"></u>${rmark(c,a)}</div>
         <div class="v">${String(post).padStart(2,' ')} <s class="${big?(g<0?'u':'o'):''}">${g>0?'+':''}${g}</s>${hasV1?'<span style="color:#a78bd0"> ·'+PRIOR_V1[c][sp][a]+'→'+pri+'</span>':''}</div>
       </div>`;}).join('')}</div>`).join('');
 }
@@ -712,7 +774,7 @@ function fieldBars(c,sp){
     <div style="font-size:.8em;color:var(--dim);margin-bottom:2px">현장 4축 — 정전 밖 · 빚·변이 계산에 미포함</div>
     ${FIELD_AX.map(p=>{const a=p[0],post=FIELD_DATA[c][sp][a],pri=FIELD_PRIOR[c][sp][a],g=post-pri,big=Math.abs(g)>=15;
       return `<div class="row"><div class="nm">${p[1]}</div>
-        <div class="t"><i style="width:${post}%;background:var(--mute)"></i><u style="left:calc(${pri}% - 1px)"></u></div>
+        <div class="t"><i style="width:${post}%;background:var(--mute)"></i><u style="left:calc(${pri}% - 1px)"></u>${rmark(c,a)}</div>
         <div class="v">${String(post).padStart(2,' ')} <s class="${big?(g<0?'u':'o'):''}">${g>0?'+':''}${g}</s></div></div>`;}).join('')}</div>`;
 }
 function render(c){
@@ -737,6 +799,7 @@ function render(c){
       ▼ ${AXKO[L.down[0]]} ${L.down[1]} (${SPEAKERS[L.sp].ko} 기준, 축별 열 장 중앙값 대비)
     </div>
     ${blocks}
+    ${RETRO[c]?'<div class="quote" style="border-left-color:var(--ink2)"><div class="who">회고 — '+RETRO_SRC[c].src+' '+RETRO_SRC[c].n+'줄 · '+RETRO[c].by+'</div>'+RETRO[c].quote+'</div>':''}
     ${WITNESS[c]?'<div class="quote" style="border-left-color:#B07BD4"><div class="who">'+WITNESS[c].who+' — 화자가 아닌 목소리</div>'+WITNESS[c].text+'</div>':''}
     <div style="margin-top:11px;padding:10px 13px;border-radius:9px;background:rgba(255,255,255,.03);line-height:1.75">${d.insight}</div>
     ${CRIT[c]?'<div style="margin-top:7px;padding:10px 13px;border-radius:9px;background:rgba(255,255,255,.03);line-height:1.75"><span style="display:block;font-size:.82em;font-weight:600;letter-spacing:1px;color:var(--dim);margin-bottom:3px">현장 비평단</span>'+CRIT[c]+'</div>':''}`;

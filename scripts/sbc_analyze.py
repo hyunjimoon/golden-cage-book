@@ -10,7 +10,14 @@ SBC Emotion Analysis — 다·세·세다 감정 벡터 추출 (12 probe × 中�
    × 中庸 1장 희로애락 4계절. 구 4축(도취·고집·부끄러움·연민)은 2026-06-13 은퇴.
    + 현장 4축(수치·무감·억울·안도) — 정전 밖, 현장 비평단 10인(2026-08-22) 제안.
 
-이 스크립트가 쓰는 블록은 `const DATA` 와 `const FIELD_DATA` 둘뿐이다.
+**명명 시점 2칸** (2026-10-02 신설) — 같은 장을 두 자리에서 잰다.
+  현장(onsite) 장 한복판의 발화. 기존 측정 전부가 이 칸이었다
+  회고(retro)  그 장을 *지나온 뒤* 뒤쪽 장이 되돌아보며 하는 말
+회고 칸이 필요한 이유: 방어기제(호르몬·과부하·비현실감)로 상황 한복판에서 감정이 무뎌질 수 있다.
+한 시점만 재면 그 무뎌짐을 「축이 죽었다」로 오판한다 — 5장 무감 55(설계 20) 옆의 분노 28이 그 자리였다.
+회고 재료는 거울짝 구조에 이미 있다(6장→1장 7회 · 7장→2장 4회 · 8장→3장 3회 · 9장→4장 4회 · 10장→5장 10회).
+
+이 스크립트가 쓰는 블록은 `const DATA`·`const FIELD_DATA`·`const RETRO`·`const RETRO_SRC` 넷이다.
 PRIOR·PRIOR_V1·V1_WHY·FIELD_PRIOR·CRIT·WITNESS 는 사람이 쓴다 — 건드리지 않는다.
 
 GitHub Actions에서 자동 실행. chapters/ch*.md 변경 시 트리거.
@@ -24,8 +31,7 @@ from pathlib import Path
 try:
     import anthropic
 except ImportError:
-    print("anthropic package not installed. Run: pip install anthropic")
-    sys.exit(1)
+    anthropic = None  # --dump-retro 는 API 없이 돈다 (자의 재료를 눈으로 검산하는 길)
 
 MODEL = "claude-sonnet-4-5"
 
@@ -45,6 +51,13 @@ CHAPTERS = [
 ]
 
 SPEAKER_KO = {"da": "다", "se": "세", "seda": "세다"}
+
+# ── 회고 출처 ─────────────────────────────────────────────────────────────
+# 장 N의 회고 = N보다 뒤에 오는 글에서 "N장"을 호출하는 줄. 에필로그까지 센다.
+# ⚠️ ch6_play_nest.md 는 ch6_butterfly_nest.md 의 중복본이다 — 목록에 넣으면 6장 회고가 두 번 세어진다.
+RETRO_SOURCES = [(n, stem) for n, stem, _, _ in CHAPTERS] + [(11, "ch10_epilogue")]
+RETRO_SRC_KO = {11: "에필로그"}
+MIN_RETRO_LINES = 3  # 그 아래는 기각 — 두 줄로 16축을 재면 자가 아니라 점괘다
 
 # ── 12축 (계절 순 = 렌즈 순 ⛰️→🟣→🟥→⭐️) ───────────────────────────────
 SEASONS = {
@@ -127,6 +140,104 @@ quotes는 필수다. 원고에 원문 그대로 존재하지 않으면 이 장�
 본문:
 {text}
 """
+
+
+RETRO_PROMPT_TEMPLATE = """다음은 창업소설 「투향」에서 **{chapter_name}을 되돌아보며** 쓴 줄들이다.
+모두 그 장보다 **뒤에 오는 장**에서 긁어냈다 — 출처: {src_desc}.
+
+{corpus}
+
+위 줄들을 쓴 화자의 감정을 **16축**으로 측정하라 (정전 12 + 현장 4). 각 축 0~100.
+
+{axis_gloss}
+
+{field_gloss}
+
+측정 규칙 — 회고 칸의 규칙은 현장 칸과 다르다:
+- **되돌아보는 자의 온도를 재라.** {chapter_name} 안에서 인물이 느낀 것이 아니라,
+  그 장을 지나온 화자가 *지금* 그 일을 말하며 내는 온도다.
+- 현장에서 무뎠던 축이 회고에서 켜질 수 있다 — 방어기제가 풀리기 때문이다. 그 반대도 참이다.
+  **현장 값에 맞추려 하지 마라.** 어긋나는 것이 이 칸을 새로 만든 이유다.
+- 분석·요약하는 문장과 *아직 앓고 있는* 문장을 가려라. 후자만 점수다.
+- 분노(대상=사람)와 억울(대상=구조)을 섞지 마라. 되돌아보는 글은 사람을 지목하지 않고
+  구조를 지목하기 쉽다 — 그때 켜지는 것은 분노가 아니라 억울이다.
+
+또한:
+- quote: 감정이 가장 드러나는 문장 1개. **위 줄 중에서 한 글자도 바꾸지 말고 그대로 복사.**
+- insight: 한 줄 진단. 현장 칸과 어디서 갈리는지 포함
+
+반드시 아래 JSON 형식으로만 응답하라 (설명 없이):
+{{
+  "retro": {{{axis_schema}}},
+  "quote": "원문 그대로",
+  "insight": "한 줄 진단"
+}}
+"""
+
+
+def retro_corpus(target: int) -> tuple:
+    """장 target을 되돌아보는 줄 + 출처. 서술문도 센다.
+
+    5·10장엔 대사가 없어 역참조가 전부 서술문에 있다 — 화자 표시줄만 긁으면 0줄이 나온다.
+    """
+    hits = []
+    for n, stem in RETRO_SOURCES:
+        if n <= target:
+            continue
+        text = (Path("chapters") / f"{stem}.md").read_text(encoding="utf-8")
+        for i, line in enumerate(text.split("\n")):
+            if re.search(rf"(?<!\d){target}장", line) and len(line.strip()) > 12:
+                hits.append((n, i + 1, line.strip()))
+    srcs = sorted({n for n, _, _ in hits})
+    return hits, srcs
+
+
+def analyze_retro(client, target: int, chapter_name: str) -> dict:
+    hits, srcs = retro_corpus(target)
+    if len(hits) < MIN_RETRO_LINES:
+        print(f"  SKIP {chapter_name} 회고: {len(hits)}줄 — 문턱 {MIN_RETRO_LINES} 미달")
+        return None
+
+    def ko(n):
+        return RETRO_SRC_KO.get(n, f"{n}장")
+
+    corpus = "\n".join(f"[{ko(n)}:{i}] {l}" for n, i, l in hits)
+    prompt = RETRO_PROMPT_TEMPLATE.format(
+        chapter_name=chapter_name,
+        src_desc=" · ".join(f"{ko(n)}" for n in srcs),
+        corpus=corpus,
+        axis_gloss=AXIS_GLOSS,
+        field_gloss=FIELD_GLOSS,
+        axis_schema=",".join('"%s":N' % a for a in AXES + FIELD_AXES),
+    )
+    response = client.messages.create(
+        model=MODEL, max_tokens=2048, messages=[{"role": "user", "content": prompt}]
+    )
+    match = re.search(r"\{[\s\S]+\}", response.content[0].text.strip())
+    if not match:
+        print(f"  Warning: 회고 JSON 파싱 실패 — {chapter_name}")
+        return None
+    data = json.loads(match.group())
+
+    vec = data.get("retro")
+    if not isinstance(vec, dict):
+        print(f"  REJECT {chapter_name} 회고: 벡터 누락")
+        return None
+    for a in AXES + FIELD_AXES:
+        if a not in vec or not isinstance(vec[a], (int, float)) or not (0 <= vec[a] <= 100):
+            print(f"  REJECT {chapter_name} 회고: {a} = {vec.get(a)} (0~100 아님)")
+            return None
+
+    # 인용은 코퍼스 안에 있어야 한다 — 회고 칸은 원고 본문이 아니라 *뒤쪽 장*이 출처다
+    needle = _normalize(data.get("quote", ""))
+    if not needle or not any(needle in _normalize(l) for _, _, l in hits):
+        print(f"  REJECT {chapter_name} 회고: 인용이 코퍼스에 없음")
+        return None
+
+    data["n_lines"] = len(hits)
+    data["srcs"] = [ko(n) for n in srcs]
+    data["by"] = "sbc"
+    return data
 
 
 # ── 대사 추출 ─────────────────────────────────────────────────────────────
@@ -245,8 +356,8 @@ def analyze_chapter(client, stem: str, chapter_name: str, speakers: list) -> dic
     return data
 
 
-def update_html(results: dict):
-    """`const DATA` 와 `const FIELD_DATA` 블록만 교체.
+def update_html(results: dict, retro: dict):
+    """`const DATA`·`const FIELD_DATA`·`const RETRO`·`const RETRO_SRC` 블록만 교체.
 
     건드리지 않는 것 (사람이 쓴다):
       PRIOR / PRIOR_V1 / V1_WHY  — 설계 의도와 그 이동 근거
@@ -288,7 +399,29 @@ def update_html(results: dict):
         flines.append(f"  {ch}:{{{parts}}},")
     flines.append("};")
 
-    for name, block in (("DATA", "\n".join(lines)), ("FIELD_DATA", "\n".join(flines))):
+    # ── const RETRO  (명명 시점 = 회고). 16축 한 벌 + 출처·줄수·채점자
+    rlines = ["const RETRO = {"]
+    for ch, _stem, _name, _sp in CHAPTERS:
+        d = retro.get(ch)
+        if not d:
+            continue
+        vec = ",".join(f"{a}:{int(d['retro'][a])}" for a in AXES + FIELD_AXES)
+        rlines.append(f"  {ch}:{{{vec},")
+        rlines.append(f"     quote:'{esc(d['quote'])}', insight:'{esc(d['insight'])}', by:'{d['by']}'}},")
+    rlines.append("};")
+
+    # ── const RETRO_SRC  — 어느 장 몇 줄에서 긁었나. 표본을 숨기면 자가 아니다
+    slines = ["const RETRO_SRC = {"]
+    for ch, _stem, _name, _sp in CHAPTERS:
+        d = retro.get(ch)
+        if not d:
+            continue
+        srcs = " · ".join(d["srcs"])
+        slines.append(f"  {ch}:{{n:{d['n_lines']}, src:'{esc(srcs)}'}},")
+    slines.append("};")
+
+    for name, block in (("DATA", "\n".join(lines)), ("FIELD_DATA", "\n".join(flines)),
+                        ("RETRO", "\n".join(rlines)), ("RETRO_SRC", "\n".join(slines))):
         pattern = r"const %s = \{[\s\S]*?\n\};" % name
         if not re.search(pattern, html):
             print(f"ERROR: const {name} 블록을 찾지 못했다 — HTML 구조 변경 여부 확인")
@@ -299,7 +432,24 @@ def update_html(results: dict):
     print(f"Updated {html_path}")
 
 
+def dump_retro():
+    """회고 코퍼스를 그대로 찍는다 — 채점 전에 재료를 사람이 본다. API 불필요."""
+    for ch, _stem, name, _sp in CHAPTERS:
+        hits, srcs = retro_corpus(ch)
+        ko = lambda n: RETRO_SRC_KO.get(n, f"{n}장")  # noqa: E731
+        mark = "" if len(hits) >= MIN_RETRO_LINES else f"  ← 문턱 {MIN_RETRO_LINES} 미달 · 기각"
+        print(f"\n{'=' * 72}\n■ {name} 회고 — {len(hits)}줄 · 출처 {' · '.join(ko(n) for n in srcs) or '없음'}{mark}")
+        for n, i, l in hits:
+            print(f"  [{ko(n)}:{i}] {l[:240]}")
+
+
 def main():
+    if "--dump-retro" in sys.argv:
+        dump_retro()
+        return
+    if anthropic is None:
+        print("anthropic package not installed. Run: pip install anthropic")
+        sys.exit(1)
     client = anthropic.Anthropic()
     results = {}
     rejected = []
@@ -319,6 +469,25 @@ def main():
     if rejected:
         print(f"\n기각된 장 {len(rejected)}개 — 기존 값 유지: {', '.join(rejected)}")
 
+    # ── 회고 칸 (명명 시점 두 번째)
+    retro, retro_fail = {}, []
+    for ch, _stem, name, _sp in CHAPTERS:
+        print(f"Analyzing {name} 회고...")
+        try:
+            d = analyze_retro(client, ch, name)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ERROR {name} 회고: {e}")
+            d = None
+        hits, _ = retro_corpus(ch)
+        if d:
+            retro[ch] = d
+        elif len(hits) >= MIN_RETRO_LINES:
+            retro_fail.append(name)  # 문턱은 넘었는데 채점이 깨진 것 = 조용한 drift 위험
+
+    if retro_fail:
+        print(f"\n회고 채점 실패 {len(retro_fail)}개 — RETRO 블록 미갱신: {', '.join(retro_fail)}")
+        retro = None
+
     if not results:
         print("측정된 장이 없다 — HTML 미변경")
         return
@@ -328,7 +497,10 @@ def main():
         print("전량 성공이 아니므로 HTML을 덮지 않는다 (부분 갱신 = 조용한 drift)")
         return
 
-    update_html(results)
+    if retro is None:
+        print("회고 칸이 불완전하므로 RETRO를 덮지 않는다 — 기존 손측정 유지")
+        return
+    update_html(results, retro)
 
 
 if __name__ == "__main__":
