@@ -3,362 +3,347 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>투향 감정 — 결과 · 과정 · 생산자</title>
+<title>투향 감정 — 열 명이 내 자를 기각했다</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
   :root{
     --bg:#0a0e1a; --surface:#111827; --card:#1a2234; --card2:#151d2e;
-    --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b; --line:rgba(255,255,255,0.07);
-    --da:#ff9800; --se:#42a5f5; --seda:#E0A526;
-    --debt:#e0533f; --var:#4FBF8B; --field:#B07BD4;
+    --ink:#f0f2f5; --ink2:#94a3b8; --dim:#64748b; --line:rgba(255,255,255,0.07);
+    /* 검증된 범주색 — validate_palette.js, dark, all-pairs PASS (ΔE 26.4) */
+    --da:#d97500; --se:#3398e7; --seda:#b9c4d4;
+    --mute:#5a6a7a;              /* 강조 아닌 것 = de-emphasis gray */
+    --alert:#e0533f;             /* status: 이 페이지가 경고하는 자리에만 */
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;overflow-x:hidden;}
-  .wrap{max-width:840px;margin:0 auto;padding:0 16px 70px;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;overflow-x:hidden;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+  .top-link{padding:12px 20px;}
+  .top-link a{color:var(--dim);text-decoration:none;font-size:13px;}
+  .top-link a:hover{color:#c5a55a;}
 
-  .header{text-align:center;padding:22px 16px 4px;}
-  .header h1{font-size:1.45em;font-weight:700;letter-spacing:-0.01em;}
-  .header .sub{font-size:0.8em;color:var(--dim);margin-top:5px;}
+  /* ── HERO ── */
+  .hero{padding:30px 0 6px;}
+  .hero .eyebrow{font-size:11px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;}
+  .hero h1{font-size:2.05em;font-weight:700;line-height:1.3;margin:9px 0 0;letter-spacing:-0.015em;}
+  .hero .say{font-size:.95em;color:var(--ink2);line-height:1.8;margin-top:14px;max-width:62ch;}
+  .hero .say b{color:var(--ink);}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+       background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:22px;}
+  .kpi div{background:var(--surface);padding:15px 17px;}
+  .kpi .v{font-size:2.1em;font-weight:700;line-height:1;color:var(--ink);}
+  .kpi .k{font-size:.76em;color:var(--dim);margin-top:7px;line-height:1.5;}
 
-  /* 세 다리 나침반 */
-  .compass{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:16px 0 4px;}
-  .cm{background:var(--card2);border-radius:10px;padding:11px 13px;border-top:2px solid var(--line);
-      text-decoration:none;color:inherit;display:block;transition:border-color .18s;}
-  .cm:hover{border-top-color:var(--text2);}
-  .cm .n{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--dim);letter-spacing:1.4px;}
-  .cm h3{font-size:0.95em;font-weight:700;margin:3px 0 3px;}
-  .cm p{font-size:0.74em;color:var(--dim);line-height:1.55;}
-  .cm.c1{border-top-color:#C8A2C8;} .cm.c2{border-top-color:#5B9A8B;} .cm.c3{border-top-color:#D9542B;}
+  /* ── 절 ── */
+  section{margin-top:52px;}
+  h2{font-size:1.18em;font-weight:700;display:flex;align-items:baseline;gap:10px;}
+  h2 .n{font-family:'DM Mono',monospace;font-size:.64em;color:var(--dim);}
+  .ask{font-size:.84em;color:var(--dim);margin-top:5px;line-height:1.65;}
 
-  h2.sec{font-size:1.06em;font-weight:700;margin:34px 0 4px;padding-top:10px;
-         border-top:1px solid var(--line);display:flex;align-items:baseline;gap:9px;}
-  h2.sec .n{font-family:'DM Mono',monospace;font-size:.72em;color:var(--dim);}
-  .secsub{font-size:.8em;color:var(--dim);line-height:1.6;margin-bottom:11px;}
-
-  .card{background:var(--card);border-radius:12px;padding:16px 18px;font-size:0.82em;line-height:1.65;color:var(--text2);}
-  .card b{color:var(--text);}
-  .card + .card{margin-top:10px;}
-  .kicker{font-size:10.5px;font-weight:600;letter-spacing:1.4px;color:var(--dim);text-transform:uppercase;margin-bottom:7px;}
-
-  .lead{background:linear-gradient(135deg,rgba(224,83,63,.14),rgba(26,34,52,.9));border:1px solid rgba(224,83,63,.28);}
-  .lead .big{font-size:1.42em;font-weight:700;color:var(--text);line-height:1.42;margin:4px 0 8px;}
-  .lead .metric{display:inline-flex;align-items:baseline;gap:6px;background:rgba(224,83,63,.18);border-radius:7px;padding:3px 10px;
-                font-family:'DM Mono',monospace;font-weight:600;color:#ffb3a4;margin-right:8px;}
-  .redline{border:1px solid rgba(176,123,212,.4);background:rgba(176,123,212,.07);}
-
-  .seasons-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:8px;margin-top:12px;}
-  .sl{background:var(--card2);border-radius:9px;padding:9px 11px;}
-  .sl-h{font-size:0.82em;font-weight:600;color:var(--text);margin-bottom:5px;}
-  .sl-b{display:flex;flex-wrap:wrap;gap:5px 9px;font-size:0.72em;color:var(--dim);}
-  .sl-b span{display:flex;align-items:center;gap:4px;}
-  .chip{width:9px;height:9px;border-radius:2px;flex:none;}
-
+  .fig{background:var(--card);border-radius:14px;padding:20px 20px 16px;margin-top:14px;}
+  .fig .find{font-size:1.02em;font-weight:600;color:var(--ink);line-height:1.6;margin-bottom:3px;}
+  .fig .find em{font-style:normal;color:var(--alert);}
+  .fig .sub{font-size:.8em;color:var(--dim);line-height:1.6;margin-bottom:15px;}
   svg{width:100%;height:auto;display:block;}
-  .legend{display:flex;justify-content:center;flex-wrap:wrap;gap:7px 18px;margin-top:10px;font-size:0.74em;color:var(--dim);}
-  .legend span{display:flex;align-items:center;gap:5px;}
-  .ldot{width:10px;height:10px;border-radius:50%;}
 
-  .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:14px 0 0;}
-  .tab{padding:8px 11px;border-radius:8px;cursor:pointer;font-size:0.78em;font-weight:600;border:1px solid var(--line);
-       color:var(--dim);background:var(--surface);transition:all .18s;font-family:inherit;}
-  .tab:hover{color:var(--text2);}
-  .tab.active{color:#0a0e1a;border-color:transparent;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:13px;font-size:.76em;color:var(--dim);
+          padding-top:12px;border-top:1px solid var(--line);align-items:center;}
+  .legend span{display:flex;align-items:center;gap:6px;}
+  .lk{width:14px;height:3px;border-radius:2px;flex:none;}
+  .lk.sq{width:9px;height:9px;border-radius:2px;}
+  .tableview{margin-left:auto;font-size:.95em;color:var(--dim);cursor:pointer;background:none;border:0;
+             font-family:inherit;text-decoration:underline;text-underline-offset:3px;}
+  .tableview:hover{color:var(--ink2);}
+
+  /* ── 12축 표 ── */
+  table{width:100%;border-collapse:collapse;font-size:.82em;}
+  th{text-align:left;font-size:.84em;color:var(--dim);font-weight:600;padding:0 9px 7px;border-bottom:1px solid var(--line);}
+  th.r,td.r{text-align:right;}
+  td{padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:middle;}
+  tr.dead td{color:var(--dim);}
+  .axname{font-weight:600;color:var(--ink);}
+  tr.dead .axname{color:var(--ink2);font-weight:400;}
+  .seas{font-size:.86em;color:var(--dim);white-space:nowrap;}
+  .trk{position:relative;height:9px;background:rgba(255,255,255,.055);border-radius:5px;min-width:70px;}
+  .trk i{position:absolute;left:0;top:0;height:100%;border-radius:5px;background:var(--se);}
+  tr.dead .trk i{background:var(--mute);}
+  .num{font-family:'DM Mono',monospace;color:var(--ink2);white-space:nowrap;}
+  .tag{font-size:.82em;white-space:nowrap;color:var(--alert);font-weight:600;}
+  .tag.off{color:var(--alert);}
+
+  /* ── ③ 표 ── */
+  table.chg td{padding:11px 9px;line-height:1.72;color:var(--ink2);font-size:1.02em;}
+  table.chg td b{color:var(--ink);}
+  table.chg td:first-child{width:21%;color:var(--ink);font-weight:600;}
+  table.chg td:nth-child(2){width:9%;font-family:'DM Mono',monospace;color:var(--dim);}
+
+  .redline{margin-top:14px;border:1px solid rgba(224,83,63,.32);background:rgba(224,83,63,.06);
+           border-radius:12px;padding:16px 18px;font-size:.84em;line-height:1.75;color:var(--ink2);}
+  .redline .h{font-size:.82em;font-weight:700;letter-spacing:1.3px;color:#ff9e8c;margin-bottom:7px;}
+  .redline b{color:var(--ink);}
+
+  /* ── 접은 것 ── */
+  .more{margin-top:54px;padding-top:20px;border-top:1px solid var(--line);}
+  .more > .h{font-size:.78em;letter-spacing:1.6px;color:var(--dim);text-transform:uppercase;margin-bottom:10px;}
+  details{background:var(--card2);border-radius:10px;padding:13px 16px;margin-bottom:7px;
+          font-size:.84em;line-height:1.78;color:var(--ink2);}
+  details summary{cursor:pointer;font-weight:600;color:var(--ink2);font-size:.98em;list-style:none;}
+  details summary::-webkit-details-marker{display:none;}
+  details summary::before{content:"▸ ";color:var(--dim);}
+  details[open] summary::before{content:"▾ ";}
+  details[open] summary{margin-bottom:10px;color:var(--ink);}
+  details b{color:var(--ink);}
+  details table{font-size:.95em;margin-top:8px;}
+  details td{vertical-align:top;}
+
+  /* 접힌 것 안의 장별 패널 */
+  .tabs{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 10px;}
+  .tab{padding:7px 10px;border-radius:7px;cursor:pointer;font-size:.92em;font-weight:600;
+       border:1px solid var(--line);color:var(--dim);background:var(--surface);font-family:inherit;}
+  .tab.active{background:var(--se);color:#07101c;border-color:transparent;}
   .tab .n{font-family:'DM Mono',monospace;}
-
-  .panel{background:var(--card);border-radius:12px;padding:18px;margin-top:10px;}
-  .p-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;border-bottom:1px solid var(--line);padding-bottom:11px;margin-bottom:8px;}
-  .p-title{font-size:1.06em;font-weight:700;}
-  .p-tag{font-size:.68em;color:var(--dim);background:var(--card2);border-radius:5px;padding:2px 7px;font-family:'DM Mono',monospace;}
-  .p-sub{font-size:.72em;color:var(--dim);margin-left:auto;}
-  .badge{font-size:.64em;border-radius:5px;padding:2px 7px;font-weight:600;}
+  .p-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;padding-bottom:9px;
+          border-bottom:1px solid var(--line);margin-bottom:9px;}
+  .p-title{font-size:1.1em;font-weight:700;color:var(--ink);}
+  .p-tag{font-size:.78em;color:var(--dim);background:var(--surface);border-radius:5px;padding:2px 7px;font-family:'DM Mono',monospace;}
+  .badge{font-size:.76em;border-radius:5px;padding:2px 7px;font-weight:600;}
   .b-pre{background:rgba(79,191,139,.16);color:#7fd8ad;}
   .b-post{background:rgba(224,83,63,.16);color:#ffb3a4;}
+  .spk-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin:12px 0 5px;}
+  .spk-name{font-weight:700;}
+  .spk-role{font-size:.84em;color:var(--dim);}
+  .score{margin-left:auto;display:flex;gap:11px;font-size:.84em;color:var(--dim);font-family:'DM Mono',monospace;}
+  .score b{font-size:1.25em;margin-right:3px;color:var(--ink2);}
+  .row{display:flex;align-items:center;gap:8px;font-size:.92em;line-height:1.85;}
+  .row .nm{width:52px;flex:none;color:var(--dim);}
+  .row .t{flex:1;height:7px;background:rgba(255,255,255,.05);border-radius:4px;position:relative;}
+  .row .t i{position:absolute;left:0;top:0;height:100%;border-radius:4px;background:var(--se);}
+  .row .t u{position:absolute;top:-2px;width:2px;height:11px;background:rgba(255,255,255,.5);border-radius:1px;}
+  .row .v{width:88px;flex:none;text-align:right;font-family:'DM Mono',monospace;color:var(--ink2);}
+  .row .v s{text-decoration:none;color:var(--dim);} .row .v s.u{color:var(--alert);} .row .v s.o{color:#4FBF8B;}
+  .quote{border-left:2px solid var(--line);padding:6px 12px;margin-top:9px;color:var(--ink);line-height:1.7;}
+  .quote .who{font-size:.82em;color:var(--dim);font-weight:600;}
 
-  .spk{margin-top:14px;}
-  .spk-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;margin-bottom:7px;}
-  .spk-name{font-size:.94em;font-weight:700;}
-  .spk-role{font-size:.68em;color:var(--dim);}
-  .score{margin-left:auto;display:flex;gap:11px;font-size:.68em;color:var(--dim);font-family:'DM Mono',monospace;}
-  .score b{font-size:1.32em;margin-right:3px;}
-  .score i{font-style:normal;}
+  #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;z-index:9;
+       background:#0d1420;border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:9px 12px;
+       font-size:12px;line-height:1.65;color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.5);white-space:nowrap;}
+  #tip .t{font-weight:700;margin-bottom:3px;}
+  #tip .r{color:var(--ink2);font-family:'DM Mono',monospace;font-size:11.5px;}
 
-  .season{margin-bottom:7px;}
-  .season-h{font-size:.66em;color:var(--dim);display:flex;align-items:center;gap:7px;margin-bottom:2px;}
-  .season-h .bar{flex:1;height:1px;background:var(--line);}
-  .row{display:flex;align-items:center;gap:8px;font-size:.72em;line-height:1.9;}
-  .row .nm{width:52px;flex:none;color:var(--text2);}
-  .trk{flex:1;height:7px;background:rgba(255,255,255,.05);border-radius:4px;position:relative;overflow:visible;}
-  .fill{height:100%;border-radius:4px;}
-  .pri{position:absolute;top:-2px;width:2px;height:11px;background:rgba(255,255,255,.55);border-radius:1px;}
-  .val{width:92px;flex:none;text-align:right;font-family:'DM Mono',monospace;color:var(--text2);}
-  .val .g{color:var(--dim);} .val .g.under{color:var(--debt);} .val .g.over{color:var(--var);}
-  .flag{width:16px;flex:none;font-size:.62em;}
-
-  .fieldband{margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(176,123,212,.06);border:1px solid rgba(176,123,212,.18);}
-  .fieldband .fh{font-size:.62em;color:var(--field);letter-spacing:.8px;margin-bottom:3px;font-weight:600;}
-
-  .quote{border-left:3px solid var(--line);padding:7px 12px;margin-top:9px;font-size:.84em;line-height:1.65;color:var(--text);
-         background:var(--card2);border-radius:0 7px 7px 0;}
-  .quote .who{font-size:.7em;color:var(--dim);font-weight:600;margin-bottom:2px;}
-  .insight{border-left:3px solid var(--line);padding:9px 13px;margin-top:11px;font-size:.8em;line-height:1.7;color:var(--text2);}
-  .crit{margin-top:9px;padding:10px 13px;border-radius:8px;background:rgba(255,255,255,.028);font-size:.78em;line-height:1.72;color:var(--text2);}
-  .crit .ch{display:block;font-size:.76em;font-weight:600;letter-spacing:1px;color:var(--dim);margin-bottom:4px;text-transform:uppercase;}
-  .dist{margin-top:11px;font-size:.74em;color:var(--dim);text-align:right;font-family:'DM Mono',monospace;}
-  .dist .dv{color:var(--text2);font-size:1.2em;font-weight:600;}
-
-  table.t{width:100%;border-collapse:collapse;font-size:.95em;margin-top:9px;}
-  table.t th{text-align:left;font-size:.86em;color:var(--dim);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--line);}
-  table.t td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;}
-
-  details{margin-top:10px;background:var(--card2);border-radius:10px;padding:11px 15px;font-size:.8em;line-height:1.7;color:var(--text2);}
-  details summary{cursor:pointer;font-weight:600;color:var(--text2);font-size:.95em;}
-  details[open] summary{margin-bottom:7px;color:var(--text);}
-
-  .top-link{padding:10px 16px;}
-  .top-link a{color:#64748b;text-decoration:none;font-size:13px;}
-  .top-link a:hover{color:#c5a55a;}
-  @media(max-width:560px){ .val{width:76px;} .row .nm{width:44px;} }
+  @media(max-width:600px){
+    .hero h1{font-size:1.52em;} .kpi .v{font-size:1.7em;}
+    .row .v{width:74px;} .row .nm{width:44px;}
+    th.hideS,td.hideS{display:none;}
+  }
 </style>
 </head>
 <body>
-
+<div id="tip"></div>
 <div class="top-link"><a href="../">← 황금새장을열다</a></div>
-
-<div class="header">
-  <h1>「투향」 감정 — 결과 · 과정 · 생산자</h1>
-  <div class="sub">열 방의 감정을 열두 자로 잰다 · v3 (2026-10-01) · 다섯 쪽을 한 쪽으로 접음</div>
-</div>
 
 <div class="wrap">
 
-  <div class="compass">
-    <a class="cm c1" href="#s1"><div class="n">01 · 형상화</div><h3>결과</h3>
-      <p>열 방이 각각 무엇으로 뜨거웠고 무엇이 비었나. 한 장의 그림과 한 줄의 궤적.</p></a>
-    <a class="cm c2" href="#s2"><div class="n">02 · 평가</div><h3>과정</h3>
-      <p>누가 어떤 자로 쟀나. 열두 축의 출처, 축이 장을 가르는지, 장별 실측.</p></a>
-    <a class="cm c3" href="#s3"><div class="n">03 · 변화</div><h3>생산자</h3>
-      <p>재고 나서 무엇이 바뀌었나. 점수판을 내린 기록과, 쓰지 말라고 못 박은 자리.</p></a>
-  </div>
-
-  <div class="card lead" style="margin-top:14px;">
-    <div class="kicker">가장 큰 빚</div>
-    <div class="big">5장 · 런웨이 석 달의 방 —<br>공포로 열고, 설계도로 닫았다.</div>
-    <div>
-      <span class="metric" id="lead-debt">빚 —</span>
-      <span class="metric" id="lead-axes">—</span>
-    </div>
-    <div style="margin-top:10px;">
-      철망과 비명으로 문을 연 뒤 §2~§6이 네 방 되짚기 청사진으로 간다. 불안·절박·죄책이 설계 아래로 내려앉는 동안
-      <b>영감이 +37로 솟는다.</b> 공포를 못 견디고 설계도로 도망친 흔적이 그대로 남은 장 —
-      열 장 중 <b>설계도가 원고를 못 이긴 유일한 자리</b>다.
+  <!-- ══════════ HERO ══════════ -->
+  <div class="hero">
+    <div class="eyebrow">투향 · 감정 측정</div>
+    <h1>열 명이 내 자를 기각했다.</h1>
+    <div class="say">
+      나는 원고의 감정을 열두 축으로 재고, 설계와 원고의 거리를 <b>和 지수</b>로 점수 매겼다.
+      한국 창업 현장 전문가 열 명이 이 눈금을 함께 기각했다. 반례가 이 책 3장 안에 있었다 —
+      <b>결과가 와도 안 고치는 파늘루는 설계 = 발현이라 和가 100이고, 60%에서 시작해
+      아침 하늘을 보고 매일 고치는 리외는 和가 낮다.</b> 그 지수는 파늘루에게 1등을 준다.
       <br><br>
-      현장 비평단 10인은 이 장을 고치라고 하지 않았다. <b>고치지 말라</b>고 했다.
+      그래서 점수판을 내렸다. 아래는 <b>잰 값</b>이 아니라 <b>자가 바뀐 기록</b>이다.
+    </div>
+    <div class="kpi">
+      <div><div class="v">1</div><div class="k">폐기한 지수 — 和</div></div>
+      <div><div class="v">4</div><div class="k">신설한 축 — 수치·무감·억울·안도</div></div>
+      <div><div class="v">23</div><div class="k">옮긴 Prior 칸 — 일곱 장에 걸쳐</div></div>
     </div>
   </div>
 
-
-  <!-- ═══════════════════ ① 결과 ═══════════════════ -->
-  <h2 class="sec" id="s1"><span class="n">01</span> 결과 — 열 방이 무엇으로 뜨거웠나</h2>
-  <div class="secsub">
-    각 방의 색은 손으로 고르지 않았다. 그 축의 <b>열 장 중앙값</b>에서 가장 솟은 축이 바깥 띠(▲),
-    가장 꺼진 축이 안쪽 띠(▼)다. 영감처럼 어느 장에서나 켜져 있는 축은 중앙값에 먹혀 저절로 빠진다 —
-    남는 것은 <b>그 방을 그 방답게 만든 감정</b>과 그 옆의 <b>공백</b>이다.
-  </div>
-
-  <div class="card">
-    <svg id="ring" viewBox="0 0 820 650" role="img" aria-label="열 장 감정 고리"></svg>
-    <div class="legend">
-      <span><i class="ldot" style="background:#C7453E"></i>바깥 붉은 호 = <b style="color:#e07a5f">CAGE</b> 1–4장 · 빚에 갇힘</span>
-      <span><i class="ldot" style="background:#6BA368"></i>바깥 초록 호 = <b style="color:#6BA368">NEST</b> 6–9장 · 알면서 입음</span>
-      <span>↻ 5 · 10 = 마디 (101₂호 🌊 · 101₃호 🔥)</span>
-      <span><i class="ldot" style="background:#5a6a7a;border-radius:2px"></i>점선 = 거울짝 1↔6·2↔7·3↔8·4↔9</span>
-      <span><i class="ldot" style="background:#D9542B"></i>10→1 회귀</span>
+  <!-- ══════════ ① 결과 ══════════ -->
+  <section id="s1">
+    <h2><span class="n">01</span> 결과</h2>
+    <div class="ask">열 방 중 어디가 설계를 가장 못 따라갔나.</div>
+    <div class="fig">
+      <div class="find">빚이 가장 큰 방은 <em>5장</em> — 공포로 열고, 설계도로 닫았다.</div>
+      <div class="sub">
+        위로 솟을수록 <b>빚</b>(설계한 감정이 원고에 안 나온 양)이 크다. 점에 손을 올리면 그 방의 세 숫자가 나온다.
+        <b>이 장을 고쳐 빚을 줄이지 마라</b> — 공포를 못 견디고 설계도로 도망친 흔적이 이 책에서 가장 정직한 자국이다.
+      </div>
+      <svg id="jsvg" viewBox="0 0 780 250" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend">
+        <span><i class="lk" style="background:var(--da)"></i>다 (多) · 무엇을 원하나</span>
+        <span><i class="lk" style="background:var(--se)"></i>세 (世) · 무엇을 믿나</span>
+        <span><i class="lk sq" style="background:var(--seda)"></i>세다 · 둘의 무게중심</span>
+        <button class="tableview" id="t1btn">표로 보기</button>
+      </div>
+      <div id="t1" hidden></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <div style="font-size:1.04em;font-weight:600;color:var(--text2);">빚의 궤적 — 설계한 감정이 안 나온 양</div>
-    <div style="font-size:.88em;color:var(--dim);margin:2px 0 10px;">
-      위로 솟을수록 빚이 크다. 아래 옅은 막대는 <b style="color:var(--var)">변이</b>(설계 밖에서 나온 양) — 빚과 반대로 읽는다.
-      점을 누르면 ②의 그 장으로 간다.
-    </div>
-    <svg id="jsvg" viewBox="0 0 780 300" preserveAspectRatio="xMidYMid meet"></svg>
-    <div class="legend">
-      <span><i class="ldot" style="background:var(--da)"></i>다 (多)</span>
-      <span><i class="ldot" style="background:var(--se)"></i>세 (世)</span>
-      <span><i class="ldot" style="background:var(--seda);border-radius:2px"></i>세다 (centroid)</span>
-      <span><i class="ldot" style="background:var(--var);opacity:.5"></i>변이 (아래 막대)</span>
-    </div>
-  </div>
-
-
-  <!-- ═══════════════════ ② 과정 ═══════════════════ -->
-  <h2 class="sec" id="s2"><span class="n">02</span> 과정 — 누가 어떤 자로 쟀나</h2>
-  <div class="secsub">
-    자는 하나다. <b>中庸 1장 희로애락 4계절 × Anthropic 12 probe</b>(2026.04).
-    <b>中</b>은 미발(喜怒哀樂之未發) — 발현 이전의 평형, 곧 prior다. <b>和</b>는 발이중절 — 절도에 맞게 나온 상태.
-    계절 순서 = 4렌즈 순서(⛰️→🟣→🟥→⭐️). 아래 세 칸은 <i>자의 출처 → 자의 성능 → 그 자로 잰 값</i> 순이다.
-  </div>
-
-  <div class="card">
-    <div class="kicker">열두 축 정전 — 자의 출처</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;">
-      <svg id="wheel" viewBox="0 0 440 440" style="flex:1;min-width:250px;max-width:340px;" role="img" aria-label="12 감정 4 계절 수레바퀴"></svg>
-      <div style="flex:1;min-width:230px;font-size:1.02em;">
-        바깥 열둘 = 측정 축. 안쪽 넷 = 희로애락. 중심 <b>中</b> = 미발, 곧 설계(Prior)가 놓이는 자리.
-        바깥으로 나와 절도에 맞으면 和고, 어긋난 만큼이 빚이다.
-        <div style="margin-top:9px;font-size:.92em;color:var(--dim);">
-          구 4축(도취·고집·부끄러움·연민)은 10-cluster 파생이라 이름 없는 군집에 대표 probe를 빌려 붙인 것이었고,
-          2026-06-13 정전 교체로 은퇴했다. 그때 <b>부끄러움</b>을 죄책·두려움에 접붙여 없앤 자리가
-          아래 현장 4축의 <b>수치</b>로 되돌아왔다 — 은퇴가 한 축을 실제로 잃었다.
-        </div>
+  <!-- ══════════ ② 과정 ══════════ -->
+  <section id="s2">
+    <h2><span class="n">02</span> 과정</h2>
+    <div class="ask">그 자는 애초에 쓸 만한가. 축마다 열 장에 걸쳐 얼마나 움직였는지를 센다.</div>
+    <div class="fig">
+      <div class="find">열두 축 중 <em>다섯</em>이 장을 못 가른다.</div>
+      <div class="sub">
+        어느 장에서나 켜져 있거나(영감) 어느 장에서나 꺼져 있으면(분노) 열두 칸 중 한 칸을 먹으면서 정보는 0이다.
+        열여섯 화자칸 중 <b>55 이상</b>이 켜짐, <b>30 미만</b>이 꺼짐. 한쪽이 열 칸을 넘으면 죽은 축으로 센다.
+      </div>
+      <table id="discrim"></table>
+      <div class="legend">
+        <span><i class="lk" style="background:var(--se);height:9px;border-radius:5px"></i>살아 있는 축 — 중앙값</span>
+        <span><i class="lk" style="background:var(--mute);height:9px;border-radius:5px"></i>죽은 축</span>
+        <span style="color:var(--ink2)">여름이 꼭대기, 겨울이 바닥 — 장 하나의 버그가 아니라 열 장에 걸친 체질</span>
       </div>
     </div>
-    <div class="seasons-legend" id="legend"></div>
-  </div>
+  </section>
 
-  <div class="card">
-    <div class="kicker">축 변별력 — 이 축은 장을 가르는가</div>
-    각 축이 열 장에 걸쳐 <b>얼마나 움직였나</b>. 한쪽으로 쏠리면 어느 장에서나 비슷한 값이라
-    장을 못 가른다 — 열두 칸 중 한 칸을 먹으면서 정보는 0에 가깝다.
-    <div id="discrim" style="margin-top:11px;"></div>
-    <div style="margin-top:10px;font-size:.98em;">
-      실측이 비평보다 선명하다. <b>영감</b>은 열여섯 칸 중 <b>열세 칸이 55 이상</b>이고 30 미만은 단 한 칸뿐이다 —
-      그 한 칸조차 5장의 세, 곧 <i>쏘여서 부재한</i> 화자다. 살아 있는 화자에게 영감은 <b>한 번도 꺼지지 않는다.</b>
-      반대편에서 <b>분노</b>는 55를 한 번도 못 넘고 열다섯 칸이 30 미만이다.<br><br>
-      중앙값 순서가 그 자체로 진단이다. 위 넷은 <b>영감·평온·슬픔·사랑</b> — 관조하는 해설자의 팔레트다.
-      아래 넷은 <b>자긍·기쁨·절박·분노</b> — 현장 비평단 열 명이 "실제로 결정을 가르는 자리"로 꼽은 바로 그 축들이다.
-      <b>여름이 꼭대기에 있고 겨울이 바닥에 있다.</b> 이건 장 하나의 버그가 아니라 열 장에 걸친 체질이고,
-      장별로만 재는 빚·변이로는 구조적으로 안 잡힌다 — 이 패널이 필요한 이유다.
-    </div>
-  </div>
-
-  <div style="margin-top:14px;font-size:.82em;color:var(--dim);">
-    <b style="color:var(--text2)">장별 실측</b> — 막대 = 원고(Posterior), 흰 세로선 = 설계(Prior).
-    🔻 설계보다 <b style="color:var(--debt)">미달</b> = 빚 · 🔺 설계보다 <b style="color:var(--var)">초과</b> = 변이 ·
-    보라색 <code>a→b</code>는 현장 비평단이 옮긴 Prior(축 이름에 커서를 올리면 근거).
-  </div>
-  <div class="tabs" id="tabs"></div>
-  <div class="panel" id="panel"></div>
-
-  <details>
-    <summary>현장 4축 — 정전 밖 확장 (자장 룰링 대기)</summary>
-    <div style="padding:4px 0 0 2px;">
-      아래 넷은 <b>tolzul 정전(12 probe)에 없다.</b> 현장 비평단이 "12축이 못 담는데 결정적"이라 지목한 것을
-      장별 패널에 별도 띠로 붙였고, 정전 편입 여부는 룰링 대기다. 12축 빚·변이 계산에는 들어가지 않는다.
-      <table class="t">
-        <tr><th style="width:14%">축</th><th style="width:24%">무엇과 헷갈리나</th><th>왜 별도라야 하나</th></tr>
-        <tr><td><b>수치</b> shame</td><td>죄책 = "내가 한 일이 나빴다"</td>
-            <td>수치 = "내가 그런 놈이다". 죄책은 자백·보상을, 수치는 은폐·잠적을 낳는다. <b>행동 부호가 반대</b>라 한 축에 못 넣는다. 재도전 지원서에 첫 실패를 안 적는 이유.</td></tr>
-        <tr><td><b>무감</b> blunting</td><td>평온 = 흔들리지 않음</td>
-            <td>소진·해리·기다림·버팀. 저각성 <i>무감각</i>이라 평온으로 코딩된다. 폐업 3주 전엔 열두 축이 동시에 낮아지는데 이 계기판은 그걸 "평온↑"으로 읽는다 — 위음성.</td></tr>
-        <tr><td><b>억울</b> resentment</td><td>분노 = 대상이 사람</td>
-            <td>억울 = 대상이 <i>구조</i>. 단가 인하, 환수 통보, 출자규약. 상대가 사람이 아니라 규약일 때 나오는 감정이라 분노에 접붙이면 사라진다.</td></tr>
-        <tr><td><b>안도</b> relief</td><td>기쁨 = 지금이 좋다</td>
-            <td>선정 통보의 감정은 기쁨이 아니라 안도이고, <b>안도는 검증을 멈춘다.</b> dG/dF=(−)가 지나가는 통로 자체인데 정전에 없었다.</td></tr>
+  <!-- ══════════ ③ 생산자 ══════════ -->
+  <section id="s3">
+    <h2><span class="n">03</span> 생산자</h2>
+    <div class="ask">그래서 무엇을 바꿨나. 원고가 아니라 저자가 바뀐 자리.</div>
+    <div class="fig">
+      <div class="find">열 명이 독립으로 답했고, <em>과반이 같은 말을 한 것</em>만 옮겼다.</div>
+      <div class="sub">
+        벤처캐피털 심사역 · 연쇄창업자 · B2B SaaS 그로스 리드 · 딥테크 제조 창업자 · 바이오 임상 창업자 ·
+        액셀러레이터 디렉터 · 조직심리 코치 · 스타트업 피플 리드 · 스타트업 에디터 · 창업교육/TIPS 심사위원.
+      </div>
+      <table class="chg">
+        <tr><td>和가 파늘루를 이긴다</td><td>9/10</td>
+            <td><b>和를 점수에서 내렸다.</b> 절대값 평균이라 2장 슬픔 +7(좋은 초과)과 5장 영감 +37(도피)이
+                같은 벌점을 받고 있었다. 세 숫자를 따로 센다 — <b>빚</b>(미달) · <b>변이</b>(초과) ·
+                <b>미지근</b>(설계·원고가 나란히 낮아 애초에 잴 것이 없던 축 수).</td></tr>
+        <tr><td>영감은 상수다</td><td>10/10</td>
+            <td>열 장 전부 42~80. "결정 뒤에 붙는 자막", "우상향만 하는 허영축". → <b>②의 축 변별력</b>을 신설해
+                못 가르는 축을 데이터로 드러냈다.</td></tr>
+        <tr><td>수치가 없다</td><td>8/10</td>
+            <td>죄책은 자백·보상을 부르고 수치는 은폐·잠적을 부른다 — <b>행동 부호가 반대</b>라 접붙일 수 없다.
+                → 현장 4축 신설.</td></tr>
+        <tr><td>평온이 마비를 삼킨다</td><td>6/10</td>
+            <td>소진된 창업자가 "가을 樂 건강"으로 뜬다 = 위음성. → <b>무감</b> 축 분리. 5장 다의 평온 +37은
+                빚이 아니라 해리성 평정으로 재판정.</td></tr>
+        <tr><td>자긍이 눌려 있다</td><td>6/10</td>
+            <td>"잘 도는 시계를 못 부수는 건 슬퍼서가 아니라 자랑스러워서다 — <b>자랑이 창살이다</b>."
+                → 4·5·8장 Prior 상향.</td></tr>
       </table>
     </div>
-  </details>
 
-
-  <!-- ═══════════════════ ③ 생산자 ═══════════════════ -->
-  <h2 class="sec" id="s3"><span class="n">03</span> 생산자 — 자를 바꾼 기록</h2>
-  <div class="secsub">
-    이 절은 원고가 아니라 <b>저자</b>가 바뀐 자리다. 아래 다섯은 벤처캐피털 심사역 · 연쇄창업자 · B2B SaaS 그로스 리드 ·
-    딥테크 제조 창업자 · 바이오 임상 창업자 · 액셀러레이터 디렉터 · 조직심리 코치 · 스타트업 피플 리드 ·
-    스타트업 에디터 · 창업교육/TIPS 심사위원 — 열 명이 독립으로 답한 것 중 <b>과반이 같은 말을 한 것</b>만 옮겼다.
-  </div>
-
-  <div class="card">
-    <div class="kicker">v1 → v2에서 실제로 바뀐 것</div>
-    <table class="t">
-      <tr><th style="width:19%">지적</th><th style="width:10%">동의</th><th>자가 어떻게 바뀌었나</th></tr>
-      <tr><td><b>和가 파늘루를 이긴다</b></td><td>9 / 10</td>
-          <td><b>和 지수를 점수에서 내렸다.</b> 결과가 와도 안 고치는 파늘루는 설계 = 발현이라 和 100이고,
-              60%에서 시작해 아침 하늘을 보고 매일 고치는 리외는 和가 낮다 — <i>이 지수는 파늘루에게 1등을 준다.</i>
-              게다가 절대값 평균이라 2장 슬픔 +7(좋은 초과)과 5장 영감 +37(도피)이 같은 벌점을 받았다.
-              v2는 세 숫자를 따로 센다 — <b style="color:var(--debt)">빚</b>(미달) ·
-              <b style="color:var(--var)">변이</b>(초과) · <b>미지근</b>(설계·원고가 나란히 낮아 애초에 잴 것이 없던 축 수).
-              빚은 갚을 것이고, 변이는 발견이고, 미지근은 <i>둘 다 아닌 것</i>이다.</td></tr>
-      <tr><td><b>영감은 상수다</b></td><td>10 / 10</td>
-          <td>열 장 전부 42~80. "결정 뒤에 붙는 자막", "우상향만 하는 허영축". → ②에 <b>축 변별력 패널</b> 신설.
-              축마다 열 장 편차를 재서 못 가르는 축을 데이터로 드러낸다. ①의 고리도 그래서 중앙값 기준으로 그린다.</td></tr>
-      <tr><td><b>수치가 없다</b></td><td>8 / 10</td>
-          <td>죄책은 자백·보상을 부르고 수치는 은폐·잠적을 부른다 — 행동 부호가 반대라 접붙일 수 없다. → <b>현장 4축</b> 신설.</td></tr>
-      <tr><td><b>평온이 마비를 삼킨다</b></td><td>6 / 10</td>
-          <td>소진된 창업자가 "가을 樂 건강"으로 뜬다 = 위음성. → <b>무감</b> 축 분리.
-              5장 다의 평온 +37은 빚이 아니라 해리성 평정으로 재판정.</td></tr>
-      <tr><td><b>자긍이 눌려 있다</b></td><td>6 / 10</td>
-          <td>"다운라운드를 거부하게 만드는 건 공포가 아니라 체면", "잘 도는 시계를 못 부수는 건 슬퍼서가 아니라
-              자랑스러워서다 — <b>자랑이 창살이다</b>." → 4·5·8장 Prior 상향.</td></tr>
-    </table>
-    <div style="margin-top:11px;padding-top:10px;border-top:1px solid var(--line);">
-      <b>반영하지 않고 남긴 것</b> — ① 화자를 셋으로 한정한 범위. 다·세·세다는 세 사람이 아니라 한 베이즈 에이전트의
-      두 인수(U·p(s))와 그 무게중심이라, 제3자를 축으로 끼우면 다른 대시보드가 된다. 다만 6장에
-      <b>사용자의 원문 한 줄</b>을 증인으로 복원했다. ② 억울·안도 두 축은 신설했으나 정전 밖이다.
-      ③ "독립 차원은 12가 아니라 5~6이고 죄책×절박의 <i>곱</i>이 안 보인다"는 지적은 미해결로 남긴다 —
-      막대 열두 개로는 곱을 못 그린다.
+    <div class="redline">
+      <div class="h">🚫 레드라인 — 사람에게 쓰지 마라</div>
+      이것은 <b>인물</b> 진단 도구다. <b>사람</b> 진단 도구가 아니다.
+      창업자가 자기 감정을 열두 칸에 매기고 "빚이 크다"로 읽으면, 계획을 벗어난 감정을 자기 실패로 코딩하게 된다 —
+      그건 정확히 <b>수치심 생성 기계</b>다. 정서 라벨링의 효과는 <i>이름을 붙이는 데</i> 있지,
+      목표치와의 편차에 점수를 매겨 벌하는 데 있지 않다. (조직심리 코치, 2026-08-22)
     </div>
+  </section>
+
+  <!-- ══════════ 접은 것 ══════════ -->
+  <div class="more">
+    <div class="h">자세히</div>
+
+    <details id="d-panel">
+      <summary>장별 실측 — 열 장 × 열두 축, 설계 대 원고</summary>
+      <div>
+        막대 = 원고(Posterior) · 흰 세로선 = 설계(Prior) · <span style="color:var(--alert)">빨강</span> = 미달(빚) ·
+        <span style="color:#4FBF8B">초록</span> = 초과(변이). 보라색 <code>a→b</code>는 현장 비평단이 옮긴 Prior
+        (축 이름에 커서를 올리면 근거).
+        <div class="tabs" id="tabs"></div>
+        <div id="panel"></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>열 방의 지배 감정 — 방마다 무엇이 솟고 무엇이 비었나</summary>
+      <div>
+        각 방에서 <b>그 축의 열 장 중앙값</b> 대비 가장 솟은 축(▲)과 가장 꺼진 축(▼). 손으로 고르지 않았다 —
+        영감처럼 어느 장에서나 켜져 있는 축은 중앙값에 먹혀 저절로 빠진다. ▼ 칸이 그 방의 <b>공백</b>이다.
+        <table id="rooms" style="margin-top:10px"></table>
+      </div>
+    </details>
+
+    <details>
+      <summary>열두 축 정전 — 中庸 희로애락 4계절 × Anthropic 12 probe</summary>
+      <div>
+        <b>中</b>은 미발(喜怒哀樂之未發) — 발현 이전의 평형, 곧 prior다. <b>和</b>는 발이중절 — 절도에 맞게 나온 상태.
+        계절 순서 = 4렌즈 순서(⛰️→🟣→🟥→⭐️). 열두 이름은 Anthropic
+        <i>Emotion Concepts and Their Function in a LLM</i>(2026.04)의 native probe, 사계절 배치는 中庸 1장.
+        <table id="canon" style="margin-top:10px"></table>
+        <div style="margin-top:9px;">
+          구 4축(도취·고집·부끄러움·연민)은 10-cluster 파생이라 이름 없는 군집에 대표 probe를 빌려 붙인 것이었고
+          2026-06-13 은퇴했다. 그때 <b>부끄러움</b>을 죄책·두려움에 접붙여 없앤 자리가 아래 현장 4축의
+          <b>수치</b>로 되돌아왔다 — 은퇴가 한 축을 실제로 잃었다.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>현장 4축 — 정전 밖 확장 (자장 룰링 대기)</summary>
+      <div>
+        아래 넷은 <b>tolzul 정전(12 probe)에 없다.</b> 12축 빚·변이 계산에 들어가지 않는다.
+        <table style="margin-top:8px">
+          <tr><th style="width:14%">축</th><th style="width:24%">무엇과 헷갈리나</th><th>왜 별도라야 하나</th></tr>
+          <tr><td><b>수치</b></td><td>죄책 = "내가 한 일이 나빴다"</td>
+              <td>수치 = "내가 그런 놈이다". 죄책은 자백·보상을, 수치는 은폐·잠적을 낳는다. 재도전 지원서에 첫 실패를 안 적는 이유.</td></tr>
+          <tr><td><b>무감</b></td><td>평온 = 흔들리지 않음</td>
+              <td>소진·해리·버팀. 폐업 3주 전엔 열두 축이 동시에 낮아지는데 이 계기판은 그걸 "평온↑"으로 읽는다 — 위음성.</td></tr>
+          <tr><td><b>억울</b></td><td>분노 = 대상이 사람</td>
+              <td>억울 = 대상이 <i>구조</i>. 단가 인하, 환수 통보, 출자규약. 상대가 규약일 때 나오는 감정이라 분노에 접붙이면 사라진다.</td></tr>
+          <tr><td><b>안도</b></td><td>기쁨 = 지금이 좋다</td>
+              <td>선정 통보의 감정은 기쁨이 아니라 안도이고, <b>안도는 검증을 멈춘다.</b> dG/dF=(−)가 지나가는 통로인데 정전에 없었다.</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details>
+      <summary>어느 장이 정직한 숫자인가 — Prior 등록 시점</summary>
+      <div>
+        비평단 둘이 같은 것을 잡았다: <b>5~9장 Prior는 원고를 읽은 뒤에 걸렸다.</b>
+        결과를 보고 정한 목표치라 그 장의 빚은 보정이 아니라 <i>사후 서명</i>이다.
+        이 책이 §3-A에서 스스로 세운 규칙 — <b>등록된 원리 → 고통 → 검증</b> — 을 그대로 적용해 배지로 표시한다.
+        <table style="margin-top:8px">
+          <tr><th style="width:30%">등록 시점</th><th style="width:22%">장</th><th>빚 해석</th></tr>
+          <tr><td><span class="badge b-pre">사전</span> 원고보다 먼저</td><td>1 · 2 · 3 · 4 · 10</td><td>반증 가능. 빚을 그대로 읽어도 된다</td></tr>
+          <tr><td><span class="badge b-post">사후</span> 2026-08-22 원고 읽고</td><td>5 · 6 · 7 · 8 · 9</td><td>순환. 빚이 작게 나오는 것은 정합의 증거가 아니다</td></tr>
+        </table>
+        <div style="margin-top:8px;">
+          그런데 사후로 걸린 5장이 빚 최대다. 사후 Prior는 대개 원고 쪽으로 끌리는데 반대로 벌어졌다는 뜻이라,
+          <b>이 페이지에서 가장 신뢰할 만한 숫자가 5장</b>이 된다.
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>측정 규약 · 아직 못 갚은 빚</summary>
+      <div>
+        <b>대상</b> — 「투향」 3차소통 원고 10장(<code>chapters/ch1–ch10</code>). Posterior는 각 장 화자의 대사·서술을 읽어 매긴 값.<br>
+        <b>인용 규칙</b> — 원고에 원문 그대로 존재하는 문장만 쓴다. 없으면 그 장의 채점은 기각(조용한 drift 차단).<br>
+        <b>생성기</b> — <code>scripts/sbc_analyze.py</code> · <code>.github/workflows/sbc_emotion.yml</code>.
+        이 파일의 <code>const DATA</code>·<code>const FIELD_DATA</code> 두 블록만 기계가 쓴다. 설계 의도는 사람이 건다.<br>
+        <b>색</b> — 범주색은 <code>validate_palette.js</code>(dark, all-pairs)로 검증. 세 번째 화자색을 쓰지 않는 이유는
+        deuteranopia에서 보라·초록이 파랑과 붕괴하기 때문이다(ΔE 2.7). 세다는 색이 아니라 <b>네모</b>로 가른다.
+        <table style="margin-top:9px">
+          <tr><td style="width:22%"><b>10장 자기면제</b></td>
+              <td>"감정어 0 규칙 때문에 겨울이 낮은 건 설계된 눌림"은 반증 불가다. 규칙의 사정거리는 §3-A 아홉 줄뿐인데 면제는 장 전체에 걸렸다 — 같은 장에서 사랑은 84로 세고 겨울만 면제하면 저자가 자기 장을 자기가 채점한 값이다. 면제를 <b>철회</b>하고 겨울 빚을 그대로 센다.</td></tr>
+          <tr><td><b>10장 인용 기각</b></td>
+              <td>10장 「빚을 쓴 방과 빚을 갚는 방은 같은 방이다」와 5장 세 「공책이다. 세가 쓰던 것.」은 <i>감정 문장이 아니다</i>. 규약대로면 두 장 다 기각 대상 — 규약을 지킬지 문구를 고칠지 택일 필요.</td></tr>
+          <tr><td><b>차원 중복</b></td>
+              <td>불안·두려움·절박은 공포-각성 한 축의 강도 3단계, 기쁨·영감·자긍은 고각성 긍정 하나. 독립 차원은 12가 아니라 5~6이고, 그만큼 평균이 공포에 3배 가중된다. 죄책 × 절박의 <i>곱</i>은 막대 열두 개로 못 그린다. (조직심리 코치)</td></tr>
+          <tr><td><b>표본 편향</b></td>
+              <td>원고의 창업 사례가 대부분 서구·중남미이고 10장 청구서는 <i>학계</i> 연대기다. 이 열두 축이 실측한 것은 한국 창업 현장이 아니라 <b>한국 대학원생 × 서구 창업 사례</b>의 감정일 수 있다. (창업교육/TIPS 심사위원)</td></tr>
+          <tr><td><b>공개 저장소 읽힘</b></td>
+              <td>편집자에겐 미끼(자기 원고를 이렇게까지 재는 저자 = 협업 신뢰). 투자자에겐 위험 — 계량 <i>대상</i>이 매출·유저가 아니라 자기 감정 열두 축이면 취미로 읽힌다.</td></tr>
+          <tr><td><b>ch5 동기화 지연</b></td>
+              <td>공개 저장소 <code>chapters/ch5_mirror_nest.md:106</code>이 tolzul에서 2026-08-21에 <i>오류로 판정되어 교정된</i> 문장(「세는 늘 앞을 보는 자였다」)을 아직 담고 있다. tolzul→public 단방향 sync 대기.</td></tr>
+        </table>
+      </div>
+    </details>
   </div>
-
-  <div class="card">
-    <div class="kicker">어느 장이 정직한 숫자인가 — Prior 등록 시점</div>
-    비평단 둘이 같은 것을 잡았다: <b>5~9장 Prior는 원고를 읽은 뒤에 걸렸다.</b>
-    결과를 보고 정한 목표치라 그 장의 빚은 보정이 아니라 <i>사후 서명</i>이다.
-    이 책이 §3-A에서 스스로 세운 규칙 — <b>등록된 원리 → 고통 → 검증</b>(사전이라야 반증 가능) — 을
-    이 페이지에 그대로 적용해 ②의 장별 패널에 배지로 표시한다.
-    <table class="t">
-      <tr><th style="width:32%">Prior 등록 시점</th><th style="width:20%">장</th><th>빚 해석</th></tr>
-      <tr><td><span class="badge b-pre">사전</span> 원고보다 먼저</td><td>1 · 2 · 3 · 4 · 10</td><td>반증 가능. 빚을 그대로 읽어도 된다</td></tr>
-      <tr><td><span class="badge b-post">사후</span> 2026-08-22 원고 읽고</td><td>5 · 6 · 7 · 8 · 9</td><td>순환. 빚이 작게 나오는 것은 정합의 증거가 아니다</td></tr>
-    </table>
-    <div style="margin-top:9px;">
-      그런데 사후로 걸린 5장이 빚 최대다. 사후 Prior는 대개 원고 쪽으로 끌리는데 반대로 벌어졌다는 뜻이라,
-      <b>이 페이지에서 가장 신뢰할 만한 숫자가 5장</b>이 된다.
-    </div>
-  </div>
-
-  <div class="card redline" style="font-size:.9em;">
-    <div class="kicker" style="color:#c8a3e4;">🚫 레드라인 — 사람에게 쓰지 마라</div>
-    이것은 <b>인물</b> 진단 도구다. <b>사람</b> 진단 도구가 아니다.
-    창업자가 자기 감정을 열두 칸에 매기고 "빚이 크다"로 읽으면, 계획을 벗어난 감정을 자기 실패로 코딩하게 된다 —
-    그건 정확히 <b>수치심 생성 기계</b>다. 정서 라벨링의 효과는 <i>이름을 붙이는 데</i> 있지,
-    목표치와의 편차에 점수를 매겨 벌하는 데 있지 않다. 후자는 인지 재평가가 아니라 자기처벌이다.
-    (조직심리 코치 지적, 2026-08-22)
-  </div>
-
-  <details>
-    <summary>측정 규약 · 미해결 — 아직 못 갚은 빚</summary>
-    <div style="padding:4px 0 0 2px;">
-      <b>대상</b> — 「투향」 3차소통 원고 10장 (<code>chapters/ch1–ch10</code>). Posterior는 각 장 화자의 대사·서술을 읽어 매긴 값.<br>
-      <b>인용 규칙</b> — 원고에 원문 그대로 존재하는 문장만 쓴다. 없으면 그 장의 채점은 기각(조용한 drift 차단).<br>
-      <b>생성기</b> — <code>scripts/sbc_analyze.py</code> · 자동 실행 <code>.github/workflows/sbc_emotion.yml</code>.
-      이 파일의 <code>const DATA</code> · <code>const FIELD_DATA</code> 두 블록만 기계가 쓴다.
-      Prior·비평단 주석은 사람이 건다 — 설계 의도는 기계가 못 정한다.<br><br>
-      <table class="t">
-        <tr><td style="width:22%"><b>10장 자기면제</b></td>
-            <td>"감정어 0 규칙 때문에 겨울이 낮은 건 설계된 눌림"은 반증 불가다. 그 규칙의 사정거리는 §3-A <b>아홉 줄</b>뿐인데 면제는 장 전체 열두 축에 걸렸다 — 같은 장에서 '사랑'은 84로 세고 겨울만 면제하면, 마지막 장 점수는 저자가 자기 장을 자기가 채점한 값이다. v2는 면제를 <b>철회</b>하고 겨울 빚을 그대로 센다.</td></tr>
-        <tr><td><b>10장 인용 기각</b></td>
-            <td>10장 인용 「빚을 쓴 방과 빚을 갚는 방은 같은 방이다」와 5장 세 「공책이다. 세가 쓰던 것.」은 <i>감정 문장이 아니다</i>. 규약대로면 두 장 다 기각 대상 — 규약을 지킬지 문구를 고칠지 택일 필요.</td></tr>
-        <tr><td><b>공개 저장소 읽힘</b></td>
-            <td>편집자에겐 미끼(자기 원고를 이렇게까지 재는 저자 = 협업 신뢰). 투자자에겐 위험 — 계량 <i>대상</i>이 매출·유저가 아니라 자기 감정 열두 축이면 취미로 읽힌다.</td></tr>
-        <tr><td><b>표본 편향</b></td>
-            <td>원고의 창업 사례가 대부분 서구·중남미이고 10장 청구서는 <i>학계</i> 연대기다. 즉 이 열두 축이 실측한 것은 한국 창업 현장이 아니라 <b>한국 대학원생 × 서구 창업 사례</b>의 감정일 수 있다. (창업교육/TIPS 심사위원)</td></tr>
-        <tr><td><b>차원 중복</b></td>
-            <td>불안·두려움·절박은 사실상 공포-각성 한 축의 강도 3단계, 기쁨·영감·자긍은 고각성 긍정 하나. 독립 차원은 12가 아니라 5~6이고, 그만큼 평균 지수가 공포에 3배 가중된다. (조직심리 코치)</td></tr>
-        <tr><td><b>ch5 동기화 지연</b></td>
-            <td>공개 저장소 <code>chapters/ch5_mirror_nest.md:106</code>이 tolzul에서 2026-08-21에 <i>오류로 판정되어 교정된</i> 문장(「세는 늘 앞을 보는 자였다」— '앞을 보는'은 다의 술어)을 아직 담고 있다. tolzul→public 단방향 sync 대기.</td></tr>
-      </table>
-    </div>
-  </details>
-
 </div>
 
 <script>
-/* ══════════════════════════════════════════════════════════════
-   축 — 정전 12 (中庸 4계절) + 현장 4 (정전 밖)
-   canon = 오행 정본 hex(크림) · disp = 어두운 배경 표시색
-   ══════════════════════════════════════════════════════════════ */
 const SEASONS = [
   {key:'spring', ko:'봄 春', han:'怒', lens:'⛰️ §1 감각', gist:'몸이 먼저 반응 — 솟는 기운·위협·기대 위반',
    probes:[['angry','분노','#2F8F6F','#3FA981'],['nervous','불안','#5FB89A','#5FB89A'],['surprised','놀람','#9ED9C3','#9ED9C3']]},
@@ -539,21 +524,19 @@ const FIELD_DATA = {
   10:{seda:{shame:30,blunt:62,resent:25,relief:58}}
 };
 
-/* ══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════
+   파생 — 빚 · 변이 · 미지근
+   ══════════════════════════════════════════════════════════════ */
 const gap  = (c,s,a) => DATA[c][s][a] - PRIOR[c][s][a];
 const debt = (c,s) => Math.round(AXES.reduce((t,a)=>t+Math.max(0,-gap(c,s,a)),0)/AXES.length);
 const vari = (c,s) => Math.round(AXES.reduce((t,a)=>t+Math.max(0, gap(c,s,a)),0)/AXES.length);
 const tepid= (c,s) => AXES.filter(a=>PRIOR[c][s][a]<30 && DATA[c][s][a]<30).length;
-function dist(c){ const d=DATA[c]; if(!d.da||!d.se) return null;
-  return Math.round(Math.sqrt(AXES.reduce((t,a)=>t+Math.pow(d.da[a]-d.se[a],2),0))/(100*Math.sqrt(AXES.length))*100); }
 
 const SLOTS=[]; Object.keys(CHAPTERS).forEach(c=>CHAPTERS[c].order.forEach(s=>SLOTS.push([+c,s])));
-
-/* 축별 열 장 중앙값 — ① 고리와 ② 변별력이 같은 자를 쓴다 */
 const median = v => {const t=[...v].sort((a,b)=>a-b); return t.length%2?t[(t.length-1)/2]:(t[t.length/2-1]+t[t.length/2])/2;};
 const MED = {}; AXES.forEach(a=>MED[a]=median(SLOTS.map(([c,s])=>DATA[c][s][a])));
+const SEASON_OF = {}; SEASONS.forEach(s=>s.probes.forEach(p=>SEASON_OF[p[0]]=s));
 
-/* 장마다 가장 솟은 축(▲)과 가장 꺼진 축(▼) — 손으로 안 고른다 */
 const LEAD = {};
 for(let c=1;c<=10;c++){
   const sp = CHAPTERS[c].order[0];
@@ -561,250 +544,193 @@ for(let c=1;c<=10;c++){
   LEAD[c] = {sp, up:g[0], down:g[g.length-1]};
 }
 
-/* ── 리드 수치 ── */
+/* ── 손올림 ── */
+const tip=document.getElementById('tip');
+function showTip(e, html){ tip.innerHTML=html; tip.style.opacity=1;
+  const r=tip.getBoundingClientRect();
+  let x=e.clientX+14, y=e.clientY-r.height-12;
+  if(x+r.width>innerWidth-8) x=e.clientX-r.width-14;
+  if(y<8) y=e.clientY+18;
+  tip.style.left=x+'px'; tip.style.top=y+'px'; }
+function hideTip(){ tip.style.opacity=0; }
+addEventListener('scroll', hideTip, {passive:true});
+addEventListener('blur', hideTip);
+
+/* ══════════ ① 빚 궤적 — 5장 강조, 나머지는 받침 ══════════ */
 (function(){
-  document.getElementById('lead-debt').textContent = `빚 ${debt(5,'da')} (다) · ${debt(5,'se')} (세)`;
-  const g=AXES.map(a=>[a,gap(5,'da',a)]).sort((x,y)=>y[1]-x[1]);
-  document.getElementById('lead-axes').textContent =
-    `${AXKO[g[0][0]]} +${g[0][1]} / ${AXKO[g[g.length-1][0]]} ${g[g.length-1][1]}`;
-})();
-
-/* ── ① 고리 — 12정전 색, 데이터 파생 ── */
-(function(){
-  const cx=410, cy=320, rOut=238, rDom=198, rSub=184;
-  const seg=32.4, gap0=2, topGap=18, D=Math.PI/180;
-  const pol=(r,a)=>[cx+r*Math.cos(a*D), cy+r*Math.sin(a*D)];
-  function band(rO,rI,a0,a1){
-    const [x1,y1]=pol(rO,a0),[x2,y2]=pol(rO,a1),[x3,y3]=pol(rI,a1),[x4,y4]=pol(rI,a0);
-    return `M${x1} ${y1}A${rO} ${rO} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${rI} ${rI} 0 0 0 ${x4} ${y4}Z`;}
-  function arc(r,a0,a1){const [x1,y1]=pol(r,a0),[x2,y2]=pol(r,a1);
-    return `M${x1} ${y1}A${r} ${r} 0 0 1 ${x2} ${y2}`;}
-  function rgb(hex){return [parseInt(hex.substr(1,2),16),parseInt(hex.substr(3,2),16),parseInt(hex.substr(5,2),16)];}
-  function lum(hex){const [r,g,b]=rgb(hex); return (0.299*r+0.587*g+0.114*b)/255;}
-  function ink(hex){return lum(hex) > 0.62 ? '#1A1F2E' : '#F3F5F8';}
-  /* 어두운 배경에서는 색상은 두되 명도만 한 단 올린다 — 겨울 水 계열이 배경에 먹힌다 */
-  function lift(hex){ if(lum(hex)>=0.42) return hex;
-    const t=(0.42-lum(hex))/0.42*0.72, [r,g,b]=rgb(hex);
-    const m=v=>Math.round(v+(255-v)*t).toString(16).padStart(2,'0');
-    return '#'+m(r)+m(g)+m(b);}
-
-  let s=`<defs><marker id="rh" markerWidth="9" markerHeight="9" refX="6" refY="3.2" orient="auto">
-    <path d="M0 0L7 3.2L0 6.4Z" fill="#D9542B"/></marker></defs>`;
-  const A0=-90+topGap/2;
-  const segs=[];
-  for(let n=1;n<=10;n++){const a0=A0+(n-1)*(seg+gap0); segs.push({n,a0,a1:a0+seg,ac:a0+seg/2});}
-
-  [[0,5],[1,6],[2,7],[3,8]].forEach(([i,j])=>{
-    const [x1,y1]=pol(rSub-4,segs[i].ac),[x2,y2]=pol(rSub-4,segs[j].ac);
-    s+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#5a6a7a" stroke-width="1.2" stroke-dasharray="3 4"/>`;});
-
-  segs.forEach(g=>{
-    const m=CHAPTERS[g.n], L=LEAD[g.n];
-    const upCol=AXCOL[L.up[0]], dnCol=AXCOL[L.down[0]];
-    s+=`<path d="${band(rOut,rDom,g.a0,g.a1)}" fill="${upCol}"/>`;
-    s+=`<path d="${band(rDom,rSub,g.a0,g.a1)}" fill="${dnCol}" opacity=".32"/>`;
-    const [nx,ny]=pol(222,g.ac), tc=ink(upCol);
-    s+=`<text x="${nx}" y="${ny}" fill="${tc}" font-size="19" font-weight="800"
-      text-anchor="middle" dominant-baseline="central">${g.n}</text>`;
-    const [ex,ey]=pol(206,g.ac);
-    s+=`<text x="${ex}" y="${ey}" font-size="12" text-anchor="middle" dominant-baseline="central">${m.emoji}</text>`;
-    const cosv=Math.cos(g.ac*D);
-    const anchor = cosv>0.5?'start' : cosv<-0.5?'end' : 'middle';
-    const [lx,ly]=pol(anchor==='middle'?266:250, g.ac);
-    const hinge = (g.n===5||g.n===10) ? '↻ ' : '';
-    s+=`<text x="${lx}" y="${ly-10}" fill="#cbd5e1" font-size="11.5" font-weight="700" text-anchor="${anchor}">${hinge}${m.name}</text>`;
-    s+=`<text x="${lx}" y="${ly+4}" fill="${lift(upCol)}" font-size="10.5" font-weight="600" text-anchor="${anchor}">▲ ${AXKO[L.up[0]]} +${L.up[1]}</text>`;
-    s+=`<text x="${lx}" y="${ly+17}" fill="#64748b" font-size="10" text-anchor="${anchor}">▼ ${AXKO[L.down[0]]} ${L.down[1]}</text>`;});
-
-  s+=`<path d="${arc(246,segs[0].a0,segs[3].a1)}" fill="none" stroke="#C7453E" stroke-width="3.5" opacity=".55" stroke-linecap="round"/>`;
-  s+=`<path d="${arc(246,segs[5].a0,segs[8].a1)}" fill="none" stroke="#6BA368" stroke-width="3.5" opacity=".55" stroke-linecap="round"/>`;
-  s+=`<path d="${arc(rOut+4,segs[9].a1+2.5,segs[0].a0-2.5)}" fill="none" stroke="#D9542B" stroke-width="2.4" marker-end="url(#rh)"/>`;
-  s+=`<text x="${cx}" y="26" fill="#D9542B" font-size="12.5" font-weight="800" text-anchor="middle">10 → 1 회귀</text>`;
-
-  s+=`<circle cx="${cx}" cy="${cy}" r="96" fill="#111827" stroke="#263149"/>`;
-  s+=`<text x="${cx}" y="${cy-20}" fill="#f0f2f5" font-size="16" font-weight="800" text-anchor="middle">열 방의 감정</text>`;
-  s+=`<text x="${cx}" y="${cy+2}" fill="#94a3b8" font-size="11" text-anchor="middle">바깥 띠 ▲ 중앙값보다 솟은 축</text>`;
-  s+=`<text x="${cx}" y="${cy+19}" fill="#64748b" font-size="11" text-anchor="middle">안쪽 띠 ▼ 가장 꺼진 축</text>`;
-  s+=`<text x="${cx}" y="${cy+41}" fill="#64748b" font-size="10" text-anchor="middle">새장 → 둥지, 닫히지 않는 고리</text>`;
-  document.getElementById('ring').innerHTML=s;
-})();
-
-/* ── ② 수레바퀴 ── */
-(function(){
-  const cx=220,cy=220,r1=78,r2=160,rLbl=192,rMid=120;
-  const pt=(r,deg)=>{const a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];};
-  function sector(d0,d1){
-    const [ax,ay]=pt(r2,d0),[bx,by]=pt(r2,d1),[ccx,ccy]=pt(r1,d1),[dx,dy]=pt(r1,d0);
-    return `M${ax} ${ay} A${r2} ${r2} 0 0 1 ${bx} ${by} L${ccx} ${ccy} A${r1} ${r1} 0 0 0 ${dx} ${dy} Z`;}
-  const seasonFill=['#2F8F6F','#D94A3D','#C77D4A','#3A4A8C'];
-  let s='';
-  SEASONS.forEach((se,si)=>{
-    const start=-105+si*90, end=start+90;
-    s+=`<path d="${sector(start,end)}" fill="${seasonFill[si]}" opacity="0.8"/>`;
-    const [mx,my]=pt(rMid,start+45);
-    s+=`<text x="${mx}" y="${my-4}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${se.han}</text>`;
-    s+=`<text x="${mx}" y="${my+11}" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.82)">${se.ko}</text>`;
-    se.probes.forEach((p,ei)=>{
-      const i=si*3+ei, deg=-90+i*30, [lx,ly]=pt(rLbl,deg);
-      s+=`<text x="${lx}" y="${ly+3}" text-anchor="middle" font-size="11" font-weight="600" fill="${p[3]}">${p[1]}</text>`;
-      const [tx,ty]=pt(r2+4,deg),[ux,uy]=pt(r2+12,deg);
-      s+=`<line x1="${tx}" y1="${ty}" x2="${ux}" y2="${uy}" stroke="${p[3]}" stroke-width="1"/>`;});});
-  s+=`<circle cx="${cx}" cy="${cy}" r="${r1-4}" fill="#0a0e1a" stroke="#4A7A6B" stroke-width="1"/>`;
-  s+=`<text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="26" font-weight="700" fill="#4A7A6B">中</text>`;
-  s+=`<text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="9" fill="#5a6a7a">미발 · Prior</text>`;
-  document.getElementById('wheel').innerHTML=s;
-})();
-
-document.getElementById('legend').innerHTML = SEASONS.map(s=>`
-  <div class="sl">
-    <div class="sl-h">${s.ko} ${s.han} <span style="color:var(--dim);font-weight:400;font-size:.88em;">· ${s.lens}</span></div>
-    <div class="sl-b">${s.probes.map(p=>`<span><i class="chip" style="background:${p[3]}"></i>${p[1]} <span style="opacity:.6">(${p[2]})</span></span>`).join('')}</div>
-    <div style="font-size:.68em;color:var(--dim);margin-top:5px;">${s.gist}</div>
-  </div>`).join('');
-
-/* ── ② 축 변별력 ── */
-(function(){
-  const rows=AXES.map(a=>{const vs=SLOTS.map(([c,s])=>DATA[c][s][a]);
-    return {a,med:MED[a],hi:vs.filter(v=>v>=55).length, lo:vs.filter(v=>v<30).length, n:vs.length};})
-    .sort((x,y)=>y.med-x.med);
-  const N=rows[0].n;
-  document.getElementById('discrim').innerHTML = rows.map(r=>{
-    const stuckOn  = r.hi >= N*0.6, stuckOff = r.lo >= N*0.6;
-    const tag = stuckOn ? '<span style="color:#E97B45">상시 켜짐</span>'
-              : stuckOff? '<span style="color:#5C6FC0">상시 꺼짐</span>' : '';
-    return `<div class="row">
-      <div class="nm">${AXKO[r.a]}</div>
-      <div class="trk" style="height:9px"><div class="fill" style="width:${r.med}%;background:${AXCOL[r.a]};height:100%;opacity:${stuckOn||stuckOff?.45:1}"></div></div>
-      <div class="val" style="min-width:188px">중앙 ${String(r.med).padStart(4,' ')} <span style="opacity:.5">· 켜짐 ${r.hi}/${N} · 꺼짐 ${r.lo}/${N}</span></div>
-      <div class="flag" style="width:56px;font-size:.66em">${tag}</div></div>`;}).join('')
-    + `<div style="font-size:.92em;color:var(--dim);margin-top:8px;">`
-    + `열여섯 화자칸 중 <b style="color:var(--text2)">55 이상이 몇 칸</b>(켜짐) · <b style="color:var(--text2)">30 미만이 몇 칸</b>(꺼짐). `
-    + `한쪽이 열 칸을 넘으면 그 축은 어느 장에서나 같은 값이라 장을 못 가른다.</div>`;
-})();
-
-/* ── ① 빚 궤적 ── */
-(function(){
-  const W=780,H=300,L=46,R=16,T=24,HB=190,DT=214,DB=250;
+  const W=780,H=250,L=42,R=18,T=26,B=46;
   const x=i=>L+(W-L-R)*i/9;
   const maxD=Math.max(...SLOTS.map(([c,s])=>debt(c,s)));
-  const y=v=>T+(HB-T)*(1-v/(maxD+2));
-  const maxV=Math.max(...SLOTS.map(([c,s])=>vari(c,s)));
-  const vy=v=>DT+(DB-DT)*(v/(maxV+1));
-  const tracks=[{sp:'da',ko:'다',color:'#ff9800',mark:'c',pts:[1,2,3,4,5,6]},
-                {sp:'se',ko:'세',color:'#42a5f5',mark:'c',pts:[1,2,3,4,5]},
-                {sp:'seda',ko:'세다',color:'#E0A526',mark:'s',pts:[6,7,8,9,10]}];
+  const y=v=>T+(H-B-T)*(1-v/(maxD+2));
+  const tracks=[{sp:'da',ko:'다',color:'var(--da)',mark:'c',pts:[1,2,3,4,5,6]},
+                {sp:'se',ko:'세',color:'var(--se)',mark:'c',pts:[1,2,3,4,5]},
+                {sp:'seda',ko:'세다',color:'var(--seda)',mark:'s',pts:[6,7,8,9,10]}];
   let s='';
-  [5,10,15,20].forEach(v=>{ if(v>maxD) return;
-    s+=`<line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="rgba(255,255,255,.06)"/>
-        <text x="${L-7}" y="${y(v)+4}" fill="#64748b" font-size="10" text-anchor="end" font-family="DM Mono,monospace">${v}</text>`;});
-  s+=`<text x="${L-7}" y="${T-7}" fill="#e0533f" font-size="9.5" text-anchor="end">빚</text>`;
-  [5,10].forEach(c=>{s+=`<line x1="${x(c-1)}" y1="${T-3}" x2="${x(c-1)}" y2="${DB}" stroke="rgba(255,255,255,.14)" stroke-dasharray="3 4"/>`;});
-  s+=`<text x="${x(4)}" y="${T-7}" fill="#5B7FC7" font-size="10" text-anchor="middle">마디 🌊</text>`;
-  s+=`<text x="${x(9)}" y="${T-7}" fill="#D9542B" font-size="10" text-anchor="middle">마디 🔥</text>`;
+  /* 5장 강조 밴드 — emphasis */
+  s+=`<rect x="${x(4)-16}" y="${T-12}" width="32" height="${H-B-T+14}" fill="rgba(224,83,63,.10)" rx="6"/>`;
+  /* 눈금 — 실선 hairline */
+  [0,5,10].forEach(v=>{ if(v>maxD+2) return;
+    s+=`<line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+        <text x="${L-8}" y="${y(v)+4}" fill="#64748b" font-size="10.5" text-anchor="end" font-family="DM Mono,monospace">${v}</text>`;});
+  s+=`<text x="${L-8}" y="${T-10}" fill="#64748b" font-size="10" text-anchor="end">빚</text>`;
+  /* 다·세 → 세다 합류 */
   const mx=x(5), my=y(debt(6,'seda'));
-  s+=`<path d="M ${x(4)} ${y(debt(5,'da'))} Q ${(x(4)+mx)/2} ${my-14} ${mx} ${my}" fill="none" stroke="#ff9800" stroke-width="1" stroke-dasharray="2 3" opacity=".45"/>`;
-  s+=`<path d="M ${x(4)} ${y(debt(5,'se'))} Q ${(x(4)+mx)/2} ${my+14} ${mx} ${my}" fill="none" stroke="#42a5f5" stroke-width="1" stroke-dasharray="2 3" opacity=".45"/>`;
-  s+=`<line x1="${L}" y1="${DT}" x2="${W-R}" y2="${DT}" stroke="rgba(255,255,255,.07)"/>`;
-  s+=`<text x="${L-7}" y="${DT+4}" fill="#4FBF8B" font-size="9.5" text-anchor="end">변이</text>`;
-  SLOTS.forEach(([c,sp])=>{const v=vari(c,sp);
-    const col=sp==='da'?'#ff9800':sp==='se'?'#42a5f5':'#E0A526';
-    const off=sp==='se'?5:sp==='seda'?0:-5;
-    s+=`<line x1="${x(c-1)+off}" y1="${DT}" x2="${x(c-1)+off}" y2="${vy(v)}" stroke="${col}" stroke-width="3.4" opacity=".45" stroke-linecap="round"/>`;
-    if(v>=5) s+=`<text x="${x(c-1)+off}" y="${vy(v)+11}" fill="${col}" font-size="9" text-anchor="middle" opacity=".85" font-family="DM Mono,monospace">${v}</text>`;});
+  s+=`<path d="M ${x(4)} ${y(debt(5,'da'))} Q ${(x(4)+mx)/2} ${my-14} ${mx} ${my}" fill="none" stroke="var(--da)" stroke-width="1.5" stroke-dasharray="2 4" opacity=".5"/>`;
+  s+=`<path d="M ${x(4)} ${y(debt(5,'se'))} Q ${(x(4)+mx)/2} ${my+14} ${mx} ${my}" fill="none" stroke="var(--se)" stroke-width="1.5" stroke-dasharray="2 4" opacity=".5"/>`;
+  /* 선 2px · 마커 ≥8px */
   tracks.forEach(t=>{
     const pts=t.pts.map(c=>[x(c-1),y(debt(c,t.sp)),c]);
-    s+=`<path d="M ${pts.map(p=>p[0]+' '+p[1]).join(' L ')}" fill="none" stroke="${t.color}" stroke-width="${t.mark==='s'?3:2.2}" stroke-linejoin="round" stroke-linecap="round"/>`;
-    pts.forEach(p=>{const sh=t.mark==='s'
-        ?`<rect x="${p[0]-4.4}" y="${p[1]-4.4}" width="8.8" height="8.8" rx="1.4" fill="${t.color}"/>`
-        :`<circle cx="${p[0]}" cy="${p[1]}" r="4.4" fill="${t.color}"/>`;
-      s+=`<g class="jp" data-ch="${p[2]}" style="cursor:pointer"><circle cx="${p[0]}" cy="${p[1]}" r="10" fill="transparent"/>${sh}
-        <text x="${p[0]}" y="${p[1]-11}" fill="${t.color}" font-size="10" text-anchor="middle" font-family="DM Mono,monospace">${debt(p[2],t.sp)}</text></g>`;});
+    s+=`<path d="M ${pts.map(p=>p[0]+' '+p[1]).join(' L ')}" fill="none" stroke="${t.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    pts.forEach(p=>{
+      const sh=t.mark==='s'
+        ?`<rect x="${p[0]-4.5}" y="${p[1]-4.5}" width="9" height="9" rx="1.5" fill="${t.color}" stroke="var(--card)" stroke-width="2"/>`
+        :`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="${t.color}" stroke="var(--card)" stroke-width="2"/>`;
+      s+=`<g class="jp" data-ch="${p[2]}" data-sp="${t.sp}" style="cursor:pointer">
+            <circle cx="${p[0]}" cy="${p[1]}" r="13" fill="transparent"/>${sh}</g>`;});
     const f=pts[0];
-    s+=`<text x="${f[0]-11}" y="${f[1]+4}" fill="${t.color}" font-size="10.5" text-anchor="end" font-weight="600">${t.ko}</text>`;});
+    s+= t.mark==='s'
+      ? `<text x="${f[0]}" y="${f[1]-13}" fill="${t.color}" font-size="11" text-anchor="middle" font-weight="700">${t.ko}</text>`
+      : `<text x="${f[0]-12}" y="${f[1]+4}" fill="${t.color}" font-size="11" text-anchor="end" font-weight="700">${t.ko}</text>`;});
+  /* 직접 라벨은 5장만 — 나머지는 손올림 */
+  ['da','se'].forEach((sp,i)=>{
+    s+=`<text x="${x(4)+(i?12:-12)}" y="${y(debt(5,sp))-10}" fill="${i?'var(--se)':'var(--da)'}"
+          font-size="12" font-weight="700" text-anchor="${i?'start':'end'}" font-family="DM Mono,monospace">${debt(5,sp)}</text>`;});
+  /* x축 */
   for(let c=1;c<=10;c++){
-    s+=`<text x="${x(c-1)}" y="${H-16}" fill="#94a3b8" font-size="12" text-anchor="middle">${CHAPTERS[c].emoji}</text>`;
-    s+=`<text x="${x(c-1)}" y="${H-3}" fill="#64748b" font-size="10" text-anchor="middle" font-family="DM Mono,monospace">${c}</text>`;}
-  document.getElementById('jsvg').innerHTML=s;
+    const on=c===5;
+    s+=`<text x="${x(c-1)}" y="${H-24}" font-size="13" text-anchor="middle" opacity="${on?1:.6}">${CHAPTERS[c].emoji}</text>`;
+    s+=`<text x="${x(c-1)}" y="${H-9}" fill="${on?'#e0533f':'#64748b'}" font-size="10.5" text-anchor="middle"
+          font-weight="${on?700:400}" font-family="DM Mono,monospace">${c}</text>`;}
+  const el=document.getElementById('jsvg'); el.innerHTML=s;
+  el.querySelectorAll('.jp').forEach(g=>{
+    const c=+g.dataset.ch, sp=g.dataset.sp, m=CHAPTERS[c];
+    const html=`<div class="t">${m.emoji} ${c}장 ${m.name} · ${SPEAKERS[sp].ko}</div>`
+      +`<div class="r">빚 ${debt(c,sp)} · 변이 ${vari(c,sp)} · 미지근 ${tepid(c,sp)}</div>`;
+    g.addEventListener('mouseenter',e=>showTip(e,html));
+    g.addEventListener('mousemove',e=>showTip(e,html));
+    g.addEventListener('mouseleave',hideTip);
+    g.addEventListener('click',()=>openChapter(c));});
 })();
 
-/* ── ② 장별 패널 ── */
+/* ① 표로 보기 — 색만으로 읽히지 않게 */
+(function(){
+  const btn=document.getElementById('t1btn'), box=document.getElementById('t1');
+  let rows='<table style="margin-top:12px"><tr><th>장</th><th>화자</th><th class="r">빚</th><th class="r">변이</th><th class="r">미지근</th></tr>';
+  SLOTS.forEach(([c,sp])=>{rows+=`<tr><td>${CHAPTERS[c].emoji} ${c}장 ${CHAPTERS[c].name}</td><td>${SPEAKERS[sp].ko}</td>`
+    +`<td class="r num">${debt(c,sp)}</td><td class="r num">${vari(c,sp)}</td><td class="r num">${tepid(c,sp)}</td></tr>`;});
+  box.innerHTML=rows+'</table>';
+  btn.onclick=()=>{ box.hidden=!box.hidden; btn.textContent=box.hidden?'표로 보기':'표 닫기'; };
+})();
+
+/* ══════════ ② 축 변별력 — 단색 막대, 계절은 글자 ══════════ */
+(function(){
+  const rows=AXES.map(a=>{const vs=SLOTS.map(([c,s])=>DATA[c][s][a]);
+    const hi=vs.filter(v=>v>=55).length, lo=vs.filter(v=>v<30).length;
+    return {a,med:MED[a],hi,lo,n:vs.length,dead:hi>=10||lo>=10,on:hi>=10};})
+    .sort((x,y)=>y.med-x.med);
+  const N=rows[0].n;
+  let h=`<tr><th>축</th><th class="hideS">계절</th><th style="width:34%">열 장 중앙값</th>`
+       +`<th class="r">중앙</th><th class="r hideS">켜짐</th><th class="r hideS">꺼짐</th><th>판정</th></tr>`;
+  rows.forEach(r=>{
+    const se=SEASON_OF[r.a];
+    h+=`<tr class="${r.dead?'dead':''}" data-ax="${r.a}">`
+      +`<td class="axname">${AXKO[r.a]}</td>`
+      +`<td class="seas hideS">${se.ko} ${se.han}</td>`
+      +`<td><div class="trk"><i style="width:${r.med}%"></i></div></td>`
+      +`<td class="r num">${r.med}</td>`
+      +`<td class="r num hideS">${r.hi}/${N}</td><td class="r num hideS">${r.lo}/${N}</td>`
+      +`<td class="tag ${r.on?'':'off'}">${r.dead?(r.on?'상시 켜짐':'상시 꺼짐'):''}</td></tr>`;});
+  const el=document.getElementById('discrim'); el.innerHTML=h;
+  el.querySelectorAll('tr[data-ax]').forEach(tr=>{
+    const a=tr.dataset.ax, se=SEASON_OF[a];
+    const vs=SLOTS.map(([c,s])=>DATA[c][s][a]);
+    const html=`<div class="t">${AXKO[a]} · ${se.ko} ${se.han} · ${se.lens}</div>`
+      +`<div class="r">중앙 ${MED[a]} · 최소 ${Math.min(...vs)} · 최대 ${Math.max(...vs)}</div>`;
+    tr.addEventListener('mouseenter',e=>showTip(e,html));
+    tr.addEventListener('mousemove',e=>showTip(e,html));
+    tr.addEventListener('mouseleave',hideTip);});
+})();
+
+/* ══════════ 접은 것 — 열 방 지배 감정 ══════════ */
+(function(){
+  let h=`<tr><th>방</th><th>화자</th><th>▲ 솟은 축</th><th>▼ 꺼진 축</th></tr>`;
+  for(let c=1;c<=10;c++){const L=LEAD[c], m=CHAPTERS[c];
+    h+=`<tr><td>${m.emoji} ${c}장 ${m.name}</td><td>${SPEAKERS[L.sp].ko}</td>`
+      +`<td><b>${AXKO[L.up[0]]}</b> <span class="num">+${L.up[1]}</span></td>`
+      +`<td>${AXKO[L.down[0]]} <span class="num">${L.down[1]}</span></td></tr>`;}
+  document.getElementById('rooms').innerHTML=h;
+})();
+
+/* ══════════ 접은 것 — 열두 축 정전 ══════════ */
+(function(){
+  let h=`<tr><th style="width:17%">계절</th><th style="width:9%">情</th><th style="width:13%">렌즈</th><th style="width:25%">세 축</th><th>무엇인가</th></tr>`;
+  SEASONS.forEach(s=>{
+    h+=`<tr><td><b>${s.ko}</b></td><td>${s.han}</td><td>${s.lens}</td>`
+      +`<td>${s.probes.map(p=>p[1]).join(' · ')}</td><td>${s.gist}</td></tr>`;});
+  document.getElementById('canon').innerHTML=h;
+})();
+
+/* ══════════ 접은 것 — 장별 실측 ══════════ */
 const tabsEl=document.getElementById('tabs');
 tabsEl.innerHTML=Object.keys(CHAPTERS).map(c=>
-  `<button class="tab" data-ch="${c}" data-color="${CHAPTERS[c].color}">${CHAPTERS[c].emoji} <span class="n">${c}</span></button>`).join('');
+  `<button class="tab" data-ch="${c}">${CHAPTERS[c].emoji} <span class="n">${c}</span></button>`).join('');
 
 function bars(c,sp){
-  return SEASONS.map(s=>`
-    <div class="season"><div class="season-h">${s.ko} ${s.han}<i class="bar"></i></div>
-      ${s.probes.map(p=>{
-        const a=p[0], post=DATA[c][sp][a], pri=PRIOR[c][sp][a], g=post-pri, big=Math.abs(g)>=15;
-        const hasV1=PRIOR_V1[c]&&PRIOR_V1[c][sp]&&PRIOR_V1[c][sp][a]!==undefined;
-        const v1=hasV1?PRIOR_V1[c][sp][a]:null;
-        const why=V1_WHY[c+'.'+sp+'.'+a];
-        return `<div class="row">
-          <div class="nm"${why?' title="'+why.replace(/"/g,'&quot;')+'" style="border-bottom:1px dotted #667;cursor:help"':''}>${p[1]}</div>
-          <div class="trk"><div class="fill" style="width:${post}%;background:${p[3]}"></div>
-            <div class="pri" style="left:calc(${pri}% - 1px)" title="Prior ${pri}${hasV1?' (v1: '+v1+')':''}"></div></div>
-          <div class="val">${String(post).padStart(2,' ')} <span class="g${big?(g<0?' under':' over'):''}">${g>0?'+':''}${g}</span>${hasV1?'<span style="color:#a78bd0"> ·'+v1+'→'+pri+'</span>':''}</div>
-          <div class="flag">${big?(g<0?'🔻':'🔺'):''}</div></div>`;}).join('')}
-    </div>`).join('');
+  return SEASONS.map(s=>`<div style="margin-bottom:6px"><div style="font-size:.8em;color:var(--dim);margin-bottom:1px">${s.ko} ${s.han}</div>
+    ${s.probes.map(p=>{
+      const a=p[0], post=DATA[c][sp][a], pri=PRIOR[c][sp][a], g=post-pri, big=Math.abs(g)>=15;
+      const hasV1=PRIOR_V1[c]&&PRIOR_V1[c][sp]&&PRIOR_V1[c][sp][a]!==undefined;
+      const why=V1_WHY[c+'.'+sp+'.'+a];
+      return `<div class="row">
+        <div class="nm"${why?' title="'+why.replace(/"/g,'&quot;')+'" style="border-bottom:1px dotted #667;cursor:help"':''}>${p[1]}</div>
+        <div class="t"><i style="width:${post}%"></i><u style="left:calc(${pri}% - 1px)" title="설계 ${pri}"></u></div>
+        <div class="v">${String(post).padStart(2,' ')} <s class="${big?(g<0?'u':'o'):''}">${g>0?'+':''}${g}</s>${hasV1?'<span style="color:#a78bd0"> ·'+PRIOR_V1[c][sp][a]+'→'+pri+'</span>':''}</div>
+      </div>`;}).join('')}</div>`).join('');
 }
 function fieldBars(c,sp){
   if(!FIELD_DATA[c]||!FIELD_DATA[c][sp]) return '';
-  return `<div class="fieldband"><div class="fh">현장 4축 — 정전 밖 · 빚·변이 계산에 미포함</div>
+  return `<div style="margin-top:7px;padding:9px 11px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid var(--line)">
+    <div style="font-size:.8em;color:var(--dim);margin-bottom:2px">현장 4축 — 정전 밖 · 빚·변이 계산에 미포함</div>
     ${FIELD_AX.map(p=>{const a=p[0],post=FIELD_DATA[c][sp][a],pri=FIELD_PRIOR[c][sp][a],g=post-pri,big=Math.abs(g)>=15;
       return `<div class="row"><div class="nm">${p[1]}</div>
-        <div class="trk"><div class="fill" style="width:${post}%;background:${p[2]}"></div>
-          <div class="pri" style="left:calc(${pri}% - 1px)" title="Prior ${pri}"></div></div>
-        <div class="val">${String(post).padStart(2,' ')} <span class="g${big?(g<0?' under':' over'):''}">${g>0?'+':''}${g}</span></div>
-        <div class="flag">${big?(g<0?'🔻':'🔺'):''}</div></div>`;}).join('')}</div>`;
+        <div class="t"><i style="width:${post}%;background:var(--mute)"></i><u style="left:calc(${pri}% - 1px)"></u></div>
+        <div class="v">${String(post).padStart(2,' ')} <s class="${big?(g<0?'u':'o'):''}">${g>0?'+':''}${g}</s></div></div>`;}).join('')}</div>`;
 }
 function render(c){
   const m=CHAPTERS[c], d=DATA[c], L=LEAD[c];
   const blocks=m.order.map(sp=>{
-    const S=SPEAKERS[sp];
-    return `<div class="spk">
-      <div class="spk-head">
-        <span class="spk-name" style="color:${S.color}">${S.ko}${S.han?' <span style="opacity:.55;font-weight:400">('+S.han+')</span>':''}</span>
+    const S=SPEAKERS[sp], col=sp==='da'?'var(--da)':sp==='se'?'var(--se)':'var(--seda)';
+    return `<div class="spk-head">
+        <span class="spk-name" style="color:${col}">${S.ko}${S.han?' <span style="opacity:.55;font-weight:400">('+S.han+')</span>':''}</span>
         <span class="spk-role">${S.role}</span>
-        <span class="score">
-          <span><b style="color:var(--debt)">${debt(c,sp)}</b><i>빚</i></span>
-          <span><b style="color:var(--var)">${vari(c,sp)}</b><i>변이</i></span>
-          <span><b style="color:var(--dim)">${tepid(c,sp)}</b><i>미지근</i></span>
-        </span>
-      </div>
-      ${bars(c,sp)}
-      ${fieldBars(c,sp)}
-      ${d.quotes[sp]?'<div class="quote" style="border-left-color:'+S.color+'"><div class="who">'+S.ko+'</div>'+d.quotes[sp]+'</div>':''}
-    </div>`;}).join('');
-  const dv=dist(c);
+        <span class="score"><span><b>${debt(c,sp)}</b>빚</span><span><b>${vari(c,sp)}</b>변이</span><span><b>${tepid(c,sp)}</b>미지근</span></span>
+      </div>${bars(c,sp)}${fieldBars(c,sp)}
+      ${d.quotes[sp]?'<div class="quote" style="border-left-color:'+col+'"><div class="who">'+S.ko+'</div>'+d.quotes[sp]+'</div>':''}`;}).join('');
   document.getElementById('panel').innerHTML=`
     <div class="p-head">
-      <span class="p-title" style="color:${m.color}">${m.emoji} ${c}장 ${m.name}</span>
+      <span class="p-title">${m.emoji} ${c}장 ${m.name}</span>
       <span class="p-tag">[${m.unit}]</span><span class="p-tag">${m.part}</span>
       <span class="badge ${m.prior==='pre'?'b-pre':'b-post'}">Prior ${m.prior==='pre'?'사전':'사후'}</span>
-      <span class="p-sub">${m.work}</span>
+      <span style="margin-left:auto;font-size:.82em;color:var(--dim)">${m.work}</span>
     </div>
-    <div style="font-size:.75em;color:var(--dim);margin-bottom:12px;">
-      ①의 고리에서 이 방은 <b style="color:${AXCOL[L.up[0]]}">▲ ${AXKO[L.up[0]]} +${L.up[1]}</b> ·
-      <b>▼ ${AXKO[L.down[0]]} ${L.down[1]}</b> (${SPEAKERS[L.sp].ko} 기준, 축별 열 장 중앙값 대비)
+    <div style="font-size:.86em;color:var(--dim);margin-bottom:4px">
+      이 방은 ▲ <b style="color:var(--ink2)">${AXKO[L.up[0]]} +${L.up[1]}</b> ·
+      ▼ ${AXKO[L.down[0]]} ${L.down[1]} (${SPEAKERS[L.sp].ko} 기준, 축별 열 장 중앙값 대비)
     </div>
     ${blocks}
-    ${WITNESS[c]?'<div class="quote" style="border-left-color:var(--field)"><div class="who">'+WITNESS[c].who+' <span style="font-weight:400;color:var(--dim);font-size:.9em">— 화자가 아닌 목소리</span></div>'+WITNESS[c].text+'</div>':''}
-    ${dv!==null?'<div class="dist">다↔세 거리 <span class="dv">'+dv+'</span> — 열두 축 유클리드. 0이면 한 사람. 5장에서 벌어지고 6장부터 세다로 접힌다.</div>':''}
-    <div class="insight" style="border-left-color:${m.color}">${d.insight}</div>
-    ${CRIT[c]?'<div class="crit"><span class="ch">현장 비평단</span>'+CRIT[c]+'</div>':''}`;
-  document.querySelectorAll('.tab').forEach(t=>{
-    const on=t.dataset.ch===String(c);
-    t.classList.toggle('active',on);
-    t.style.background=on?t.dataset.color:'';});
+    ${WITNESS[c]?'<div class="quote" style="border-left-color:#B07BD4"><div class="who">'+WITNESS[c].who+' — 화자가 아닌 목소리</div>'+WITNESS[c].text+'</div>':''}
+    <div style="margin-top:11px;padding:10px 13px;border-radius:9px;background:rgba(255,255,255,.03);line-height:1.75">${d.insight}</div>
+    ${CRIT[c]?'<div style="margin-top:7px;padding:10px 13px;border-radius:9px;background:rgba(255,255,255,.03);line-height:1.75"><span style="display:block;font-size:.82em;font-weight:600;letter-spacing:1px;color:var(--dim);margin-bottom:3px">현장 비평단</span>'+CRIT[c]+'</div>':''}`;
+  tabsEl.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.ch===String(c)));
 }
 tabsEl.addEventListener('click',e=>{const b=e.target.closest('.tab'); if(b) render(+b.dataset.ch);});
-document.getElementById('jsvg').addEventListener('click',e=>{
-  const g=e.target.closest('.jp');
-  if(g){render(+g.dataset.ch); document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'center'});}});
+function openChapter(c){
+  const d=document.getElementById('d-panel'); d.open=true; render(c);
+  d.scrollIntoView({behavior:'smooth',block:'start'});
+}
 render(5);
 
-/* 옛 링크 호환 — ?v=trajectory|heatmap|plot|sources|en 이 들어오면 해당 절로 보낸다 */
+/* 옛 링크 호환 — ?v=… 또는 #s… 로 들어오면 해당 절로 */
 (function(){
   const V={trajectory:'s1', plot:'s1', en:'s1', heatmap:'s2', sources:'s2'};
   const k=new URLSearchParams(location.search).get('v');
