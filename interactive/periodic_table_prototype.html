@@ -100,6 +100,8 @@
 <div class="header">
   <h1>창업문학의 주기율표</h1>
   <div class="sub">빌린 것을 안 갚으면, 자기 것을 잃는다 — 빈칸이 다음 책이다</div>
+  <div class="vision">📚 <b>세계창업전집</b> — 세계문학전집이 한 사람의 삶을 한 권으로 세웠듯,
+  <b>한 창업의 결정을 한 권으로 세운다.</b> 결과만 남는 회고 대신 <b>무엇을 빌렸고 무엇을 잃었는지가 적히는 전집</b>.</div>
 </div>
 
 <!-- ═══ 4-Column Summary ═══ -->
@@ -387,6 +389,60 @@ function filterCh(ch){
     else c.classList.add('dimmed');
   });
 }
+</script>
+
+<!-- ═══ 세계창업전집 — 사례 ═══ -->
+<div class="cases-wrap">
+  <h2>세계창업전집 <span id="caseCount"></span></h2>
+  <p class="cases-sub">같은 격자에 <b>작품</b> 대신 <b>회사</b>를 앉힌 면. 열 장 전부를 쓴다 — 1~4장은 새장, 6~9장은 둥지, 5·10장은 이음새.
+  <br>나라를 눌러 걸러 본다. <b>한국만 보면 한국적인 것이 무엇인지 안 보인다</b> — 그래서 세계다.</p>
+  <div class="case-filters" id="caseFilters"></div>
+  <div class="case-grid" id="caseGrid"></div>
+</div>
+
+<style>
+.vision{margin-top:10px;font-size:13px;line-height:1.7;color:#94a3b8;max-width:760px;}
+.vision b{color:#e2e8f0;}
+.cases-wrap{max-width:1100px;margin:36px auto 60px;padding:0 16px;}
+.cases-wrap h2{font-size:17px;color:#e2e8f0;margin:0 0 6px;}
+.cases-sub{font-size:12.5px;color:#94a3b8;line-height:1.7;margin:0 0 14px;}
+.cases-sub b{color:#cbd5e1;}
+.case-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.case-filters span{cursor:pointer;font-size:12px;padding:3px 9px;border-radius:11px;
+  background:#1e2436;color:#94a3b8;border:1px solid #2d3548;user-select:none;}
+.case-filters span.on{background:#334155;color:#f1f5f9;}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:8px;}
+.case{background:#171c2b;border:1px solid #262d40;border-radius:7px;padding:8px 10px;font-size:12px;}
+.case .nm{color:#e2e8f0;font-weight:600;line-height:1.4;}
+.case .mt{color:#7b8699;margin-top:3px;font-size:11px;}
+.case .bd{margin-top:5px;font-size:11px;color:#94a3b8;}
+.ok{color:#4ade80;} .bad{color:#f87171;} .mid{color:#fbbf24;}
+@media(max-width:640px){.case-grid{grid-template-columns:1fr 1fr;}}
+</style>
+<script src="startup_cases.js"></script>
+<script>
+(function(){
+  const CHN={1:'🪞',2:'🔭',3:'💒',4:'⏱️',5:'🐀',6:'🦋',7:'🌷',8:'🌫️',9:'🐦‍⬛',10:'🧫'};
+  const g=document.getElementById('caseGrid'), fl=document.getElementById('caseFilters');
+  document.getElementById('caseCount').textContent='— '+CASES.length+'건 · '+
+    new Set(CASES.map(c=>c.country)).size+'개국';
+  const cls=o=>/실패|붕괴/.test(o)?'bad':/위기/.test(o)?'mid':'ok';
+  function draw(f){
+    const rows=f?CASES.filter(c=>c.country===f):CASES;
+    g.innerHTML=rows.map(c=>`<div class="case">
+      <div class="nm">${c.country} ${c.name}</div>
+      <div class="mt">${CHN[c.ch]||'⬜'} ${c.ch||'–'}장 · ${c.unit||'?'} · ${c.founded||'?'}</div>
+      <div class="bd ${cls(c.outcome)}">${c.outcome||'—'}</div></div>`).join('');
+  }
+  const counts={}; CASES.forEach(c=>counts[c.country]=(counts[c.country]||0)+1);
+  const order=Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+  fl.innerHTML=`<span class="on" data-c="">전체 ${CASES.length}</span>`+
+    order.map(c=>`<span data-c="${c}">${c} ${counts[c]}</span>`).join('');
+  fl.onclick=e=>{ if(e.target.tagName!=='SPAN')return;
+    fl.querySelectorAll('span').forEach(s=>s.classList.remove('on'));
+    e.target.classList.add('on'); draw(e.target.dataset.c); };
+  draw('');
+})();
 </script>
 </body>
 </html>
