@@ -108,18 +108,23 @@
 
 <!-- ═══ 4-Column Summary ═══ -->
 <div class="summary">
-  <h2>네 개의 새장, 네 개의 빚 <span id="cageN" class="cnt"></span></h2>
-  <p class="cage-crit"><b>어느 새장인가는 「그때 이미 가지고 있던 것」이 정한다.</b>
-  아직 아무것도 없으면 <b>욕망</b>, 자리와 평판이 있으면 <b>품위</b>,
-  한 믿음에 자원을 걸었으면 <b>확신</b>, 돌아가는 체제가 있으면 <b>질서</b>.
-  이 순서는 시간순이기도 하다 — 원함 → 자리 → 베팅 → 체제. 한 회사가 네 방을 차례로 지난다.
-  <br>고른 기준은 둘뿐이다. <b>두 갈래가 설명에 있는가</b>, 그리고 <b>그때 가진 것이 읽히는가</b>.
-  둘 중 하나라도 아니면 넣지 않았다.</p>
-  <div class="bfly-wrap">
-    <svg id="bfly" viewBox="0 0 760 420"></svg>
-    <div class="bfly-hint">날개를 누르면 그 새장의 회사가 아래에 펼쳐진다. 점 하나가 회사 하나.</div>
-  </div>
-  <div class="cols4" id="cageCols"></div>
+  <h2>여덟 방 <span id="roomN" class="cnt"></span></h2>
+  <p class="cage-crit">방의 이름은 그 방에서 하는 <b>일</b>이다 — 「투향」 열 장의 동사를 그대로 쓴다.
+  〈비틀릴 방의 기억〉이 그린 두 고리가 그대로 두 줄이 된다.
+  <b>왼쪽 고리</b>는 혼자 도는 네 방 — 욕망 · 상상 · 설득 · 폭파.
+  <b>오른쪽 고리</b>는 남과 도는 네 방 — 고통 · 지식 · 손익 · 기준.
+  두 고리가 만나는 한 점이 <b>기억</b>이다.
+  <br><b>어느 방인가는 「그때 이미 가지고 있던 것」이 정한다.</b>
+  아직 아무것도 없으면 욕망, 정확히 보는 눈이 생겼으면 상상,
+  한 믿음에 남의 자원을 걸었으면 설득, 돌아가는 질서가 있으면 폭파.
+  <br>고른 기준은 둘뿐이다 — <b>두 갈래가 있는가</b>, <b>그때 가진 것이 읽히는가</b>.</p>
+
+  <div class="bfly-wrap"><svg id="bfly" viewBox="0 0 820 300"></svg>
+    <div class="bfly-hint">날개를 누르면 그 방만 아래에 남는다. 점 하나가 회사 하나.</div></div>
+
+  <div class="filters" id="roomFilters"></div>
+  <div class="case-grid" id="roomGrid"></div>
+</div>
 </div>
 
 <!-- ═══ 484 Mosaic ═══ -->
@@ -127,10 +132,10 @@
 
 <div class="legend">
   <div class="legend-item" onclick="filterCh(0)"><div class="legend-dot" style="background:#3a3f5a"></div>전체</div>
-  <div class="legend-item" onclick="filterCh(1)"><div class="legend-dot" style="background:var(--ch1)"></div>🪞 오염</div>
-  <div class="legend-item" onclick="filterCh(2)"><div class="legend-dot" style="background:var(--ch2)"></div>🔭 억압</div>
-  <div class="legend-item" onclick="filterCh(3)"><div class="legend-dot" style="background:var(--ch3)"></div>💒 의심</div>
-  <div class="legend-item" onclick="filterCh(4)"><div class="legend-dot" style="background:var(--ch4)"></div>⏱️ 소진</div>
+  <div class="legend-item" onclick="filterCh(1)"><div class="legend-dot" style="background:var(--ch1)"></div>🪞 욕망</div>
+  <div class="legend-item" onclick="filterCh(2)"><div class="legend-dot" style="background:var(--ch2)"></div>🔭 상상</div>
+  <div class="legend-item" onclick="filterCh(3)"><div class="legend-dot" style="background:var(--ch3)"></div>💒 설득</div>
+  <div class="legend-item" onclick="filterCh(4)"><div class="legend-dot" style="background:var(--ch4)"></div>⏱️ 폭파</div>
 </div>
 
 <!-- ═══ Detail Panel ═══ -->
@@ -195,13 +200,13 @@
 // ch4 소진(fire):          성공이 변이를 굶긴다   — 빌린 질서
 
 const CH = {
-  1:{borrowed:'욕망',lost:'삶',cage:'오염',verb:'장부를 펴라',
+  1:{borrowed:'욕망',lost:'삶',cage:'욕망',verb:'장부를 펴라',
      line:'내가 원하니까 시장도 원할 것'},
-  2:{borrowed:'품위',lost:'시간',cage:'억압',verb:'순서를 타라',
+  2:{borrowed:'상상',lost:'시간',cage:'상상',verb:'순서를 타라',
      line:'다 보이니 움직일 필요 없다'},
-  3:{borrowed:'확신',lost:'목숨',cage:'의심 부재',verb:'확신을 교정하라',
+  3:{borrowed:'설득',lost:'목숨',cage:'설득',verb:'확신을 교정하라',
      line:'확신이 증거를 차단한다'},
-  4:{borrowed:'질서',lost:'자유',cage:'소진',verb:'다음 불을 피워라',
+  4:{borrowed:'폭파',lost:'자유',cage:'폭파',verb:'다음 불을 피워라',
      line:'성공했으니 바꿀 이유가 없다'}
 };
 
@@ -406,67 +411,69 @@ function filterCh(ch){
 <script src="cage_cases.js"></script>
 <script>
 (function(){
-  const META={'🪞':['욕망','내가 원하니까 시장도 원할 것','장부를 펴라','삶','--ch1'],
-              '🔭':['품위','다 보이니 움직일 필요 없다','순서를 타라','시간','--ch2'],
-              '💒':['확신','확신이 증거를 차단한다','확신을 교정하라','목숨','--ch3'],
-              '⏱️':['질서','성공했으니 바꿀 이유가 없다','다음 불을 피워라','자유','--ch4']};
-  const box=document.getElementById('cageCols');
-  document.getElementById('cageN').textContent='· '+CAGE_CASES.length+'곳';
-  // ── 나비 좌표도 ── 네 날개 = 네 새장, 점 하나 = 회사 하나
-  // 좌우 거울대칭 — 윗날개 둘, 아랫날개 둘. 중심 (380,210)에서 같은 거리
-  const W=[['🪞',218,116,'--ch1',-17],['🔭',542,116,'--ch2',17],
-           ['💒',542,304,'--ch3',-17],['⏱️',218,304,'--ch4',17]];
-  const sv=document.getElementById('bfly'); const NS='http://www.w3.org/2000/svg';
+  const ROOM={1:['🪞','욕망','L','--ch1'],2:['🔭','상상','L','--ch2'],3:['💒','설득','L','--ch3'],
+              4:['⏱️','폭파','L','--ch4'],6:['🦋','고통','R','--ch1'],7:['🌷','지식','R','--ch2'],
+              8:['🌫️','손익','R','--ch3'],9:['🐦‍⬛','기준','R','--ch4']};
+  const C=CAGE_CASES, sv=document.getElementById('bfly'), NS='http://www.w3.org/2000/svg';
   const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
-  const RX=142, RY=74;
-  W.forEach(([cage,cx,cy,col,rot])=>{
-    const rows=CAGE_CASES.filter(c=>c.cage===cage), m=META[cage];
-    const g=mk('g',{class:'wing','data-cage':cage,style:'cursor:pointer'});
-    const tr=`rotate(${rot} ${cx} ${cy})`;
-    g.appendChild(mk('ellipse',{cx,cy,rx:RX,ry:RY,fill:`var(${col})`,'fill-opacity':.07,
-      stroke:`var(${col})`,'stroke-width':1.3,transform:tr}));
-    // 점을 해바라기 배치로 고르게 — 글자 자리(가운데)는 비운다
-    const gd=mk('g',{transform:tr});
-    const gold=Math.PI*(3-Math.sqrt(5));
-    rows.forEach((c,i)=>{
-      const t=(i+0.5)/rows.length, rr=Math.sqrt(0.30+0.70*t), a=i*gold;
-      gd.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*(RX-16), cy:cy+Math.sin(a)*rr*(RY-13), r:4.2,
-        fill:`var(${col})`,'fill-opacity': c.src==='bocconi'?.92:.38,
-        stroke:`var(${col})`,'stroke-width':.7}));
-    });
-    g.appendChild(gd);
-    const lab=mk('g',{});
-    lab.appendChild(mk('rect',{x:cx-54,y:cy-20,width:108,height:40,rx:7,fill:'#0b0e16','fill-opacity':.78}));
-    const t1=mk('text',{x:cx,y:cy-2,'text-anchor':'middle','font-size':16,'font-weight':700,fill:`var(${col})`});
-    t1.textContent=cage+' '+m[0];
-    const t2=mk('text',{x:cx,y:cy+15,'text-anchor':'middle','font-size':11.5,fill:'#8b95a7'});
-    t2.textContent=rows.length+'곳';
-    lab.append(t1,t2); g.appendChild(lab); sv.appendChild(g);
-  });
-  // 몸통 — 네 날개를 잇는 한 점
-  sv.appendChild(mk('line',{x1:380,y1:140,x2:380,y2:280,stroke:'#3a4256','stroke-width':1}));
-  sv.appendChild(mk('circle',{cx:380,cy:210,r:7,fill:'#FFD53A'}));
-  const ct=mk('text',{x:380,y:232,'text-anchor':'middle','font-size':11,fill:'#b7a233'});
-  ct.textContent='기억'; sv.appendChild(ct);
-  const lg=mk('text',{x:380,y:408,'text-anchor':'middle','font-size':10.5,fill:'#6b7686'});
-  lg.textContent='진한 점 = 새로 배정한 것 · 옅은 점 = 이미 배정돼 있던 것';
-  sv.appendChild(lg);
-  sv.onclick=e=>{const g=e.target.closest('.wing'); if(!g)return;
-    const k=g.dataset.cage;
-    document.getElementById('cageCols').classList.add('filtered');
-    document.querySelectorAll('.col-card.cg').forEach(d=>d.classList.toggle('on',d.dataset.cage===k));
-    document.querySelector('#cageCols').scrollIntoView({behavior:'smooth',block:'nearest'});};
+  document.getElementById('roomN').textContent='· '+C.length+'곳 · '+
+    new Set(C.map(c=>c.country)).size+'개국';
 
-  box.innerHTML=Object.entries(META).map(([k,m])=>{
-    const rows=CAGE_CASES.filter(c=>c.cage===k);
-    return `<div class="col-card cg" data-cage="${k}" style="--c:var(${m[4]})">
-      <div class="cg-h">${k} ${m[0]} <span>${rows.length}</span></div>
-      <div class="cg-s">${m[1]}</div>
-      <div class="cg-v">→ ${m[2]}</div>
-      <div class="mag"><span class="n">빌린 것 · ${m[0]}</span><i></i><span class="s">잃은 것 · ${m[3]}</span></div>
-      <div class="cg-l">${rows.map(c=>`<div class="cg-i" title="${(c.held||'').replace(/"/g,'')}">
-        <b>${c.name}</b><em>${c.year||''}</em></div>`).join('')}</div>
-    </div>`;}).join('');
+  // 두 고리 — 왼쪽 ∞ 넷, 오른쪽 ∞ 넷, 가운데 기억
+  const POS={1:[150,88],2:[150,212],3:[300,212],4:[300,88],
+             6:[520,88],7:[520,212],8:[670,212],9:[670,88]};
+  const RX=68,RY=50;
+  let cur=0;
+  sv.appendChild(mk('text',{x:225,y:28,'text-anchor':'middle','font-size':11,fill:'#6b7686'})).textContent='왼쪽 고리 — 혼자 돈다';
+  sv.appendChild(mk('text',{x:595,y:28,'text-anchor':'middle','font-size':11,fill:'#6b7686'})).textContent='오른쪽 고리 — 남과 돈다';
+  Object.entries(ROOM).forEach(([ch,[em,nm,lp,col]])=>{
+    const [cx,cy]=POS[ch], rows=C.filter(c=>c.ch==ch);
+    const g=mk('g',{class:'wing','data-ch':ch,style:'cursor:pointer'});
+    g.appendChild(mk('ellipse',{cx,cy,rx:RX,ry:RY,fill:`var(${col})`,'fill-opacity':lp==='L'?.08:.05,
+      stroke:`var(${col})`,'stroke-width':1.2,'stroke-dasharray':lp==='R'?'4 3':''}));
+    const gold=Math.PI*(3-Math.sqrt(5));
+    rows.forEach((c,i)=>{const t=(i+.5)/rows.length, rr=Math.sqrt(.34+.66*t), a=i*gold;
+      g.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*(RX-11), cy:cy+Math.sin(a)*rr*(RY-10), r:3.4,
+        fill:`var(${col})`,'fill-opacity':c.src==='bocconi'?.9:.4}));});
+    g.appendChild(mk('rect',{x:cx-34,y:cy-16,width:68,height:32,rx:6,fill:'#0b0e16','fill-opacity':.8}));
+    const t1=mk('text',{x:cx,y:cy-1,'text-anchor':'middle','font-size':13,'font-weight':700,fill:`var(${col})`});
+    t1.textContent=em+' '+nm;
+    const t2=mk('text',{x:cx,y:cy+13,'text-anchor':'middle','font-size':10,fill:'#8b95a7'});
+    t2.textContent=ch+'장 · '+rows.length;
+    g.append(t1,t2); sv.appendChild(g);
+  });
+  sv.appendChild(mk('circle',{cx:410,cy:150,r:6,fill:'#FFD53A'}));
+  const ct=mk('text',{x:410,y:172,'text-anchor':'middle','font-size':10.5,fill:'#b7a233'});
+  ct.textContent='기억'; sv.appendChild(ct);
+  const lg=mk('text',{x:410,y:292,'text-anchor':'middle','font-size':10,fill:'#6b7686'});
+  lg.textContent='진한 점 = 새로 배정한 것 · 옅은 점 = 이미 배정돼 있던 것'; sv.appendChild(lg);
+
+  // 카드 하나로 — 방·나라 두 필터가 같은 목록에 건다
+  const g2=document.getElementById('roomGrid'), fl=document.getElementById('roomFilters');
+  const cls=o=>/실패|붕괴/.test(o||'')?'bad':/위기/.test(o||'')?'mid':'ok';
+  let ctry='';
+  function draw(){
+    const rows=C.filter(c=>(!cur||c.ch==cur)&&(!ctry||c.country===ctry));
+    g2.innerHTML=rows.map(c=>{const r=ROOM[c.ch]||['','','','--ch1'];
+      return `<div class="case" style="--c:var(${r[3]})"><div class="nm">${c.country} ${c.name}</div>
+      <div class="mt">${r[0]} ${c.ch}장 ${r[1]}${c.unit?' · '+c.unit:''} · ${c.year||'?'}</div>
+      <div class="bd ${cls(c.outcome)}">${c.held||c.outcome||'—'}</div></div>`;}).join('')
+      || '<div class="none">없다</div>';
+  }
+  const cc={}; C.forEach(c=>cc[c.country]=(cc[c.country]||0)+1);
+  fl.innerHTML=`<span class="on" data-k="ch" data-v="">여덟 방 전체 ${C.length}</span>`+
+    Object.keys(ROOM).map(ch=>`<span data-k="ch" data-v="${ch}">${ROOM[ch][0]} ${ROOM[ch][1]}</span>`).join('')+
+    `<b class="sep"></b><span class="on" data-k="ct" data-v="">모든 나라</span>`+
+    Object.entries(cc).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span data-k="ct" data-v="${k}">${k} ${v}</span>`).join('');
+  fl.onclick=e=>{const s=e.target.closest('span'); if(!s)return;
+    fl.querySelectorAll(`span[data-k="${s.dataset.k}"]`).forEach(x=>x.classList.remove('on'));
+    s.classList.add('on');
+    if(s.dataset.k==='ch') cur=+s.dataset.v||0; else ctry=s.dataset.v; draw();};
+  sv.onclick=e=>{const w=e.target.closest('.wing'); if(!w)return;
+    cur=+w.dataset.ch;
+    fl.querySelectorAll('span[data-k="ch"]').forEach(x=>x.classList.toggle('on',x.dataset.v==w.dataset.ch));
+    draw(); g2.scrollIntoView({behavior:'smooth',block:'nearest'});};
+  draw();
 })();
 </script>
 
@@ -550,58 +557,5 @@ function filterCh(ch){
 .poem .pm-x{color:#fbbf24;}
 </style>
 
-<!-- ═══ 세계창업전집 — 사례 ═══ -->
-<div class="cases-wrap">
-  <h2>세계창업전집 <span id="caseCount"></span></h2>
-  <p class="cases-sub">같은 격자에 <b>작품</b> 대신 <b>회사</b>를 앉힌 면. 열 장 전부를 쓴다 — 1~4장은 새장, 6~9장은 둥지, 5·10장은 이음새.
-  <br>나라를 눌러 걸러 본다. <b>한국만 보면 한국적인 것이 무엇인지 안 보인다</b> — 그래서 세계다.</p>
-  <div class="case-filters" id="caseFilters"></div>
-  <div class="case-grid" id="caseGrid"></div>
-</div>
-
-<style>
-.vision{margin:12px auto 0;font-size:13px;line-height:1.8;color:#94a3b8;max-width:680px;text-align:left;}
-.vision b{color:#e2e8f0;}
-.cases-wrap{max-width:1100px;margin:36px auto 60px;padding:0 16px;}
-.cases-wrap h2{font-size:17px;color:#e2e8f0;margin:0 0 6px;}
-.cases-sub{font-size:12.5px;color:#94a3b8;line-height:1.7;margin:0 0 14px;}
-.cases-sub b{color:#cbd5e1;}
-.case-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-.case-filters span{cursor:pointer;font-size:12px;padding:3px 9px;border-radius:11px;
-  background:#1e2436;color:#94a3b8;border:1px solid #2d3548;user-select:none;}
-.case-filters span.on{background:#334155;color:#f1f5f9;}
-.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:8px;}
-.case{background:#171c2b;border:1px solid #262d40;border-radius:7px;padding:8px 10px;font-size:12px;}
-.case .nm{color:#e2e8f0;font-weight:600;line-height:1.4;}
-.case .mt{color:#7b8699;margin-top:3px;font-size:11px;}
-.case .bd{margin-top:5px;font-size:11px;color:#94a3b8;}
-.ok{color:#4ade80;} .bad{color:#f87171;} .mid{color:#fbbf24;}
-@media(max-width:640px){.case-grid{grid-template-columns:1fr 1fr;}}
-</style>
-<script src="startup_cases.js"></script>
-<script>
-(function(){
-  const CHN={1:'🪞',2:'🔭',3:'💒',4:'⏱️',5:'🐀',6:'🦋',7:'🌷',8:'🌫️',9:'🐦‍⬛',10:'🧫'};
-  const g=document.getElementById('caseGrid'), fl=document.getElementById('caseFilters');
-  document.getElementById('caseCount').textContent='— '+CASES.length+'건 · '+
-    new Set(CASES.map(c=>c.country)).size+'개국';
-  const cls=o=>/실패|붕괴/.test(o)?'bad':/위기/.test(o)?'mid':'ok';
-  function draw(f){
-    const rows=f?CASES.filter(c=>c.country===f):CASES;
-    g.innerHTML=rows.map(c=>`<div class="case">
-      <div class="nm">${c.country} ${c.name}</div>
-      <div class="mt">${CHN[c.ch]||'⬜'} ${c.ch||'–'}장 · ${c.unit||'?'} · ${c.founded||'?'}</div>
-      <div class="bd ${cls(c.outcome)}">${c.outcome||'—'}</div></div>`).join('');
-  }
-  const counts={}; CASES.forEach(c=>counts[c.country]=(counts[c.country]||0)+1);
-  const order=Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
-  fl.innerHTML=`<span class="on" data-c="">전체 ${CASES.length}</span>`+
-    order.map(c=>`<span data-c="${c}">${c} ${counts[c]}</span>`).join('');
-  fl.onclick=e=>{ if(e.target.tagName!=='SPAN')return;
-    fl.querySelectorAll('span').forEach(s=>s.classList.remove('on'));
-    e.target.classList.add('on'); draw(e.target.dataset.c); };
-  draw('');
-})();
-</script>
 </body>
 </html>
