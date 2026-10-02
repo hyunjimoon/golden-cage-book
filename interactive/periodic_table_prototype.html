@@ -115,6 +115,10 @@
   이 순서는 시간순이기도 하다 — 원함 → 자리 → 베팅 → 체제. 한 회사가 네 방을 차례로 지난다.
   <br>고른 기준은 둘뿐이다. <b>두 갈래가 설명에 있는가</b>, 그리고 <b>그때 가진 것이 읽히는가</b>.
   둘 중 하나라도 아니면 넣지 않았다.</p>
+  <div class="bfly-wrap">
+    <svg id="bfly" viewBox="0 0 760 420"></svg>
+    <div class="bfly-hint">날개를 누르면 그 새장의 회사가 아래에 펼쳐진다. 점 하나가 회사 하나.</div>
+  </div>
   <div class="cols4" id="cageCols"></div>
 </div>
 
@@ -408,9 +412,42 @@ function filterCh(ch){
               '⏱️':['질서','성공했으니 바꿀 이유가 없다','다음 불을 피워라','자유','--ch4']};
   const box=document.getElementById('cageCols');
   document.getElementById('cageN').textContent='· '+CAGE_CASES.length+'곳';
+  // ── 나비 좌표도 ── 네 날개 = 네 새장, 점 하나 = 회사 하나
+  const W=[['🪞',200,130,'--ch1'],['🔭',560,130,'--ch2'],['💒',560,290,'--ch3'],['⏱️',200,290,'--ch4']];
+  const sv=document.getElementById('bfly'); const NS='http://www.w3.org/2000/svg';
+  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+  W.forEach(([cage,cx,cy,col])=>{
+    const rows=CAGE_CASES.filter(c=>c.cage===cage), m=META[cage];
+    const g=mk('g',{class:'wing','data-cage':cage,style:'cursor:pointer'});
+    g.appendChild(mk('ellipse',{cx,cy,rx:168,ry:92,fill:`var(${col})`,'fill-opacity':.07,
+      stroke:`var(${col})`,'stroke-width':1.3,transform:`rotate(${cx<380?-16:16} ${cx} ${cy})`}));
+    rows.forEach((c,i)=>{
+      const a=(i/rows.length)*Math.PI*2, rr=28+((i*37)%96);
+      g.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*1.45, cy:cy+Math.sin(a)*rr*.82, r:4.6,
+        fill:`var(${col})`,'fill-opacity': c.src==='bocconi'?.95:.42,
+        stroke:`var(${col})`,'stroke-width':.8}));
+    });
+    const t1=mk('text',{x:cx,y:cy-4,'text-anchor':'middle','font-size':17,'font-weight':700,fill:`var(${col})`});
+    t1.textContent=cage+' '+m[0];
+    const t2=mk('text',{x:cx,y:cy+16,'text-anchor':'middle','font-size':12,fill:'#8b95a7'});
+    t2.textContent=rows.length+'곳';
+    g.append(t1,t2); sv.appendChild(g);
+  });
+  sv.appendChild(mk('circle',{cx:380,cy:210,r:6,fill:'#FFD53A'}));
+  const ct=mk('text',{x:380,y:238,'text-anchor':'middle','font-size':11,fill:'#b7a233'});
+  ct.textContent='기억'; sv.appendChild(ct);
+  const lg=mk('text',{x:380,y:404,'text-anchor':'middle','font-size':10.5,fill:'#6b7686'});
+  lg.textContent='진한 점 = 새로 배정한 것 · 옅은 점 = 이미 배정돼 있던 것';
+  sv.appendChild(lg);
+  sv.onclick=e=>{const g=e.target.closest('.wing'); if(!g)return;
+    const k=g.dataset.cage;
+    document.getElementById('cageCols').classList.add('filtered');
+    document.querySelectorAll('.col-card.cg').forEach(d=>d.classList.toggle('on',d.dataset.cage===k));
+    document.querySelector('#cageCols').scrollIntoView({behavior:'smooth',block:'nearest'});};
+
   box.innerHTML=Object.entries(META).map(([k,m])=>{
     const rows=CAGE_CASES.filter(c=>c.cage===k);
-    return `<div class="col-card cg" style="--c:var(${m[4]})">
+    return `<div class="col-card cg" data-cage="${k}" style="--c:var(${m[4]})">
       <div class="cg-h">${k} ${m[0]} <span>${rows.length}</span></div>
       <div class="cg-s">${m[1]}</div>
       <div class="cg-v">→ ${m[2]}</div>
@@ -423,6 +460,13 @@ function filterCh(ch){
 
 <style>
 .cnt{font-size:12px;color:#7b8699;font-weight:400;}
+.bfly-wrap{margin:4px 0 20px;}
+#bfly{width:100%;max-width:760px;height:auto;display:block;margin:0 auto;}
+.wing:hover ellipse{fill-opacity:.16;}
+.bfly-hint{text-align:center;font-size:11px;color:#6b7686;margin-top:-6px;}
+.col-card.cg{transition:opacity .25s;}
+#cageCols.filtered .col-card.cg{opacity:.3;}
+#cageCols.filtered .col-card.cg.on{opacity:1;}
 .cage-crit{font-size:12.5px;color:#94a3b8;line-height:1.85;max-width:900px;margin:0 0 16px;}
 .cage-crit b{color:#cbd5e1;}
 .col-card.cg{background:#141a27;border:1px solid #242c3d;border-radius:10px;padding:13px 14px;}
