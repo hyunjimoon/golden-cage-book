@@ -209,7 +209,7 @@
       <div class="legend">
         <span><i class="lk" style="background:var(--se);height:9px;border-radius:5px"></i>살아 있는 축 — 중앙값</span>
         <span><i class="lk" style="background:var(--mute);height:9px;border-radius:5px"></i>죽은 축</span>
-        <span style="color:var(--ink2)">여름이 꼭대기, 겨울이 바닥 — 장 하나의 버그가 아니라 열 장에 걸친 체질</span>
+        <span style="color:var(--ink2)">꼭대기도 바닥도 한 장의 버그가 아니라 열 장에 걸친 체질 — 정전은 <b>8연이 바닥(둘 다 −)</b>·<b>10연이 꼭대기(둘 다 +)</b>라 적는다. 자가 그 둘을 재현하는지가 ①의 물음이다</span>
       </div>
     </div>
   </section>
@@ -286,11 +286,16 @@
     </details>
 
     <details>
-      <summary>열두 축 정전 — 中庸 희로애락 4계절 × Anthropic 12 probe</summary>
+      <summary>열두 축 정전 — 양가(兩價) 여섯 짝 × Anthropic 12 probe</summary>
       <div>
         <b>中</b>은 미발(喜怒哀樂之未發) — 발현 이전의 평형, 곧 prior다. <b>和</b>는 발이중절 — 절도에 맞게 나온 상태.
-        계절 순서 = 4렌즈 순서(⛰️→🟣→🟥→⭐️). 열두 이름은 Anthropic
-        <i>Emotion Concepts and Their Function in a LLM</i>(2026.04)의 native probe, 사계절 배치는 中庸 1장.
+        <b>한 짝 = 부호가 반대인 두 감정</b>, 그 짝이 시 「세는 세 다로 싹튼다」의 한 연에 걸린다 —
+        <b>6연 × 2 = 12 전부, 중복 0.</b> 열두 이름은 Anthropic
+        <i>Emotion Concepts and Their Function in a LLM</i>(2026.04)의 native probe이고,
+        짝 배정은 <b>#135 /reader 표결(2026-09-15)</b>이다.
+        <br>⚰️ <b>이전 묶음(中庸 4계절 × 3)은 2026-09-25 은퇴</b> — 계절은 12를 4×3으로 묶는데
+        원고는 6×2로 쓰고, <b>여섯 짝이 전부 계절을 가로지른다(0/6)</b>. 계절↔4렌즈 1:1도 함께 폐기.
+        이 페이지는 2026-10-03에 묶음만 갈았다 — <b>축 12개도, 숫자도, 색도 그대로다.</b>
         <table id="canon" style="margin-top:10px"></table>
         <div style="margin-top:9px;">
           구 4축(도취·고집·부끄러움·연민)은 10-cluster 파생이라 이름 없는 군집에 대표 probe를 빌려 붙인 것이었고
@@ -347,7 +352,7 @@
         deuteranopia에서 보라·초록이 파랑과 붕괴하기 때문이다(ΔE 2.7). 세다는 색이 아니라 <b>네모</b>로 가른다.
         <table style="margin-top:9px">
           <tr><td style="width:22%"><b>10장 자기면제</b></td>
-              <td>"감정어 0 규칙 때문에 겨울이 낮은 건 설계된 눌림"은 반증 불가다. 규칙의 사정거리는 §3-A 아홉 줄뿐인데 면제는 장 전체에 걸렸다 — 같은 장에서 사랑은 84로 세고 겨울만 면제하면 저자가 자기 장을 자기가 채점한 값이다. 면제를 <b>철회</b>하고 겨울 빚을 그대로 센다.</td></tr>
+              <td>"감정어 0 규칙 때문에 겨울이 낮은 건 설계된 눌림"은 반증 불가다. <i>(「겨울」 = 은퇴한 옛 묶음의 죄책·두려움·절박 셋. 판정 당시 말 그대로 둔다)</i> 규칙의 사정거리는 §3-A 아홉 줄뿐인데 면제는 장 전체에 걸렸다 — 같은 장에서 사랑은 84로 세고 겨울만 면제하면 저자가 자기 장을 자기가 채점한 값이다. 면제를 <b>철회</b>하고 겨울 빚을 그대로 센다.</td></tr>
           <tr><td><b>10장 인용 기각</b></td>
               <td>10장 「빚을 쓴 방과 빚을 갚는 방은 같은 방이다」와 5장 세 「공책이다. 세가 쓰던 것.」은 <i>감정 문장이 아니다</i>. 규약대로면 두 장 다 기각 대상 — 규약을 지킬지 문구를 고칠지 택일 필요.</td></tr>
           <tr><td><b>차원 중복</b></td>
@@ -376,14 +381,24 @@
 
 <script>
 const SEASONS = [
-  {key:'spring', ko:'봄 春', han:'怒', lens:'⛰️ §1 감각', gist:'몸이 먼저 반응 — 솟는 기운·위협·기대 위반',
-   probes:[['angry','분노','#2F8F6F','#3FA981'],['nervous','불안','#5FB89A','#5FB89A'],['surprised','놀람','#9ED9C3','#9ED9C3']]},
-  {key:'summer', ko:'여름 夏', han:'喜', lens:'🟣 §2 생각', gist:'자기 확장 — 정점·창조·자긍',
-   probes:[['happy','기쁨','#D94A3D','#E05B4E'],['inspired','영감','#E97B45','#E97B45'],['proud','자긍','#F0A93C','#F0A93C']]},
-  {key:'autumn', ko:'가을 秋', han:'樂', lens:'🟥 §3 현실', gist:'관계의 충만 — 수확·안주·잔잔한 상실',
-   probes:[['loving','사랑','#C77D4A','#D08A56'],['calm','평온','#D9A441','#D9A441'],['sad','슬픔','#B08A3E','#C0994A']]},
-  {key:'winter', ko:'겨울 冬', han:'哀', lens:'⭐️ §4 실천', gist:'벼랑의 결단 — 이상-현실 격차·공포·절박',
-   probes:[['guilty','죄책','#3A4A8C','#5C6FC0'],['afraid','두려움','#2C3566','#4A57A8'],['desperate','절박','#1A2240','#38427E']]}
+  {key:'p5',  ko:'5연 짝', han:'🐀 5장', lens:'101₂ · 中(未發)',
+   gist:'나침바늘이 돌되 아직 안 섰다 — 10연과 한 축을 이룬다 (불안→평온 · 영감→자긍)',
+   probes:[['nervous','불안','#5FB89A','#5FB89A'],['inspired','영감','#E97B45','#E97B45']]},
+  {key:'p6',  ko:'6연 짝', han:'🦋 6장', lens:'원함 · 자유=예속',
+   gist:'알고 입는 자리 — 끝나지 않는 절박이 예기치 않은 온기를 만난다',
+   probes:[['desperate','절박','#1A2240','#38427E'],['surprised','놀람','#9ED9C3','#9ED9C3']]},
+  {key:'p7',  ko:'7연 짝', han:'🌷 7장', lens:'됨 · 무지=힘',
+   gist:'지어짐의 값 — 끌림과, 계산 끝낸 평형이 무너지는 두려움',
+   probes:[['loving','사랑','#C77D4A','#D08A56'],['afraid','두려움','#2C3566','#4A57A8']]},
+  {key:'p8',  ko:'8연 짝', han:'🌫️ 8장', lens:'책임 · 바닥',
+   gist:'여섯 짝 중 유일하게 둘 다 (−) — 치미는 분노와, 상처를 세 감각으로 애도하는 슬픔',
+   probes:[['angry','분노','#2F8F6F','#3FA981'],['sad','슬픔','#B08A3E','#C0994A']]},
+  {key:'p9',  ko:'9연 짝', han:'🐦‍⬛ 9장', lens:'척도 · 달콤한 죄책',
+   gist:'남의 시간을 잊은 죄책과, 그 방심이 주는 기쁨이 한 줄에 산다',
+   probes:[['guilty','죄책','#3A4A8C','#5C6FC0'],['happy','기쁨','#D94A3D','#E05B4E']]},
+  {key:'p10', ko:'10연 짝', han:'🧫 10장', lens:'101₃ · 和(發而皆中節)',
+   gist:'유일하게 둘 다 (+) — 흔들림이 끝난 평온과, 제 이름으로 싹트는 자긍. 자긍은 죄책을 통과해야 도착한다',
+   probes:[['calm','평온','#D9A441','#D9A441'],['proud','자긍','#F0A93C','#F0A93C']]}
 ];
 const FIELD_AX = [['shame','수치','#B07BD4'],['blunt','무감','#7E8AA0'],['resent','억울','#C9629B'],['relief','안도','#5FA8D3']];
 const AXES  = SEASONS.flatMap(s => s.probes.map(p => p[0]));
@@ -523,7 +538,7 @@ const CRIT = {
   7:'두 지적이 이 장을 다시 짰다. ① "파일럿 3안 병행 = CAPEX 3배. 라인 하나 수십억인 곳에서 분산은 전멸 — 기술자의 실제 감정은 평온이 아니라 불안"(딥테크). 구근 세 알은 [bit] 조언이다. ② "그 장 청구서가 「두 번 떨어졌다」인데 절박 25 — <b>Prior와 Posterior가 나란히 틀려서 지수만 올라간 자리</b>"(에디터). v1의 낮은 빚은 정합이 아니라 <b>미지근함</b>이었다.',
   8:'v1은 여기 두려움 55를 걸었다. 둘이 함께 기각 — "협상 테이블 위 창업자는 두렵지 않다, 과하게 자랑스럽다. 두려움은 서명한 날 새벽에 온다"(벤처캐피털). 그리고 "되물음이 막히는 건 투자자의 확신이 아니라 <b>그도 결정권이 없어서</b>다 — 상대가 사람이 아니라 출자규약일 때 나오는 감정은 두려움이 아니라 <b>억울</b>이다. 안개가 아니라 벽이다"(TIPS 심사·바이오).',
   9:'열 장 중 비평단 지적이 가장 적은 장이다. 다만 그것이 <i>잘 썼다</i>는 뜻인지 <i>설계가 미지근했다</i>는 뜻인지 이 자로는 못 가른다 — 7장과 같은 함정. 미지근 축 수를 함께 볼 것.',
-  10:'v1은 이 겨울 미달을 <b>「감정어 0 규칙 때문에 설계된 눌림」이라 면제</b>했다. 철회한다 — 그 규칙의 사정거리는 §3-A 아홉 줄뿐인데 면제는 장 전체 열두 축에 걸렸고, 같은 장에서 사랑은 84로 세면서 겨울만 면제하면 <b>저자가 자기 장을 자기가 채점한 값</b>이 된다(에디터). "마지막 장 점수가 제일 높은 회고는 거의 항상 미화다." 그리고 <i>"차가울대로 차가워지고"</i>는 슬픔 58이 아니라 <b>무감</b>이다 — 슬픔은 살아 있고 소진은 꺼져 있어 처방이 정반대로 나온다.',
+  10:'v1은 이 <i>겨울</i>(옛 묶음 = 죄책·두려움·절박) 미달을 <b>「감정어 0 규칙 때문에 설계된 눌림」이라 면제</b>했다. 철회한다 — 그 규칙의 사정거리는 §3-A 아홉 줄뿐인데 면제는 장 전체 열두 축에 걸렸고, 같은 장에서 사랑은 84로 세면서 겨울만 면제하면 <b>저자가 자기 장을 자기가 채점한 값</b>이 된다(에디터). "마지막 장 점수가 제일 높은 회고는 거의 항상 미화다." 그리고 <i>"차가울대로 차가워지고"</i>는 슬픔 58이 아니라 <b>무감</b>이다 — 슬픔은 살아 있고 소진은 꺼져 있어 처방이 정반대로 나온다.',
 };
 const WITNESS = {
   6:{who:'사용자',text:'저도 깔 때는 그럴 줄 알았어요. 그런데 아침에 손이 먼저 가는 건 따로 있더라고요.'},
@@ -697,14 +712,14 @@ addEventListener('blur', hideTip);
   btn.onclick=()=>{ box.hidden=!box.hidden; btn.textContent=box.hidden?'표로 보기':'표 닫기'; };
 })();
 
-/* ══════════ ② 축 변별력 — 단색 막대, 계절은 글자 ══════════ */
+/* ══════════ ② 축 변별력 — 단색 막대, 짝은 글자 ══════════ */
 (function(){
   const rows=AXES.map(a=>{const vs=SLOTS.map(([c,s])=>DATA[c][s][a]);
     const hi=vs.filter(v=>v>=55).length, lo=vs.filter(v=>v<30).length;
     return {a,med:MED[a],hi,lo,n:vs.length,dead:hi>=10||lo>=10,on:hi>=10};})
     .sort((x,y)=>y.med-x.med);
   const N=rows[0].n;
-  let h=`<tr><th>축</th><th class="hideS">계절</th><th style="width:34%">열 장 중앙값</th>`
+  let h=`<tr><th>축</th><th class="hideS">짝</th><th style="width:34%">열 장 중앙값</th>`
        +`<th class="r">중앙</th><th class="r hideS">켜짐</th><th class="r hideS">꺼짐</th><th>판정</th></tr>`;
   rows.forEach(r=>{
     const se=SEASON_OF[r.a];
@@ -738,7 +753,7 @@ addEventListener('blur', hideTip);
 
 /* ══════════ 접은 것 — 열두 축 정전 ══════════ */
 (function(){
-  let h=`<tr><th style="width:17%">계절</th><th style="width:9%">情</th><th style="width:13%">렌즈</th><th style="width:25%">세 축</th><th>무엇인가</th></tr>`;
+  let h=`<tr><th style="width:15%">짝</th><th style="width:10%">장</th><th style="width:17%">자리</th><th style="width:22%">두 축</th><th>무엇인가</th></tr>`;
   SEASONS.forEach(s=>{
     h+=`<tr><td><b>${s.ko}</b></td><td>${s.han}</td><td>${s.lens}</td>`
       +`<td>${s.probes.map(p=>p[1]).join(' · ')}</td><td>${s.gist}</td></tr>`;});
