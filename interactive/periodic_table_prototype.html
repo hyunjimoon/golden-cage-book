@@ -16,7 +16,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);
-       font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+       font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   .mono{font-family:'DM Mono',monospace;}
   .wrap{max-width:900px;margin:0 auto;padding:0 18px;}
   a.back{color:var(--dim);text-decoration:none;font-size:12.5px;display:inline-block;padding:14px 0;}
@@ -73,6 +73,7 @@
   table.grid th.rw{text-align:right;font-size:12px;color:var(--text2);padding-right:8px;white-space:nowrap;}
   table.grid th.rw b{font-weight:700;}
   table.grid th.rw .ch{font-family:'DM Mono',monospace;font-size:10px;color:#5e6a80;margin-right:5px;}
+  table.grid th.rw .bv{font-family:'DM Mono',monospace;font-size:9.5px;color:#49546a;margin-left:6px;}
   td.cl{width:74px;height:46px;border-radius:6px;text-align:center;cursor:pointer;
         border:1px solid transparent;transition:.12s;position:relative;}
   td.cl .v{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;line-height:1;}
@@ -106,22 +107,46 @@
   .none{color:#5e6a80;font-size:12.5px;padding:22px 0;text-align:center;}
   .none b{color:var(--mem);}
 
-  /* ── 네 이름표 ── */
-  .tags{display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:10px;}
-  .tag{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);
-       border-left:3px solid var(--c);border-radius:8px;padding:14px 16px;}
-  .tag img{width:66px;height:auto;align-self:flex-start;border-radius:4px;
-           box-shadow:0 3px 14px rgba(0,0,0,.5);}
-  .tg-b{flex:1;min-width:0;}
-  .tg-h{font-size:12px;margin-bottom:3px;}
-  .tg-h b{color:var(--c);font-weight:700;}
-  .tg-h i{font-style:normal;font-family:'DM Mono',monospace;font-size:10.5px;
-          color:#6f7b92;margin-left:7px;}
-  .tg-t{font-size:15px;font-weight:700;letter-spacing:-.2px;line-height:1.4;}
-  .tg-t span{font-size:11.5px;font-weight:400;color:var(--dim);margin-left:7px;}
-  .tg-g{font-size:12.5px;color:var(--text2);line-height:1.75;margin-top:6px;}
-  .tg-q{font-size:11.5px;font-style:italic;color:var(--dim);line-height:1.75;margin-top:7px;}
-  .tg-m{font-family:'DM Mono',monospace;font-size:10.5px;color:#5e6a80;margin-top:8px;}
+  /* ── 열 장의 책 — 거울짝 넷 + 101호 ── */
+  .mirror{position:relative;display:grid;grid-template-columns:1fr 124px 1fr;gap:0;align-items:stretch;}
+  .chords{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .mcol{display:grid;grid-template-rows:repeat(4,1fr);gap:10px;position:relative;z-index:1;min-width:0;}
+  .mmid{position:relative;display:flex;align-items:center;justify-content:center;}
+  .m101{position:relative;z-index:2;font-family:'DM Mono',monospace;font-size:10.5px;color:var(--mem);
+        background:var(--bg);border:1px solid rgba(231,188,60,.55);border-radius:13px;padding:3px 9px;
+        white-space:nowrap;box-shadow:0 0 0 5px var(--bg);}
+  .bk{display:flex;gap:11px;background:var(--card);border:1px solid var(--line);
+      border-left:3px solid var(--c);border-radius:8px;padding:11px 13px;}
+  .mcol.r .bk{border-left:1px solid var(--line);border-right:3px solid var(--c);
+              flex-direction:row-reverse;text-align:right;}
+  .bk-c{width:48px;flex:none;position:relative;}
+  .bk-c img{width:48px;border-radius:3px;display:block;box-shadow:0 2px 10px rgba(0,0,0,.55);}
+  .bk-c.no img{display:none;}
+  .bk-x{display:none;font-family:'DM Mono',monospace;font-size:9.5px;color:#6f7b92;line-height:1.5;}
+  .bk-c.no .bk-x,.bk-c:not(:has(img)) .bk-x{display:flex;align-items:center;justify-content:center;
+        height:70px;border:1px dashed #333d52;border-radius:3px;padding:4px;text-align:center;}
+  .bk-b{flex:1;min-width:0;}
+  .bk-h{font-size:11.5px;color:#8d98ab;}
+  .bk-h b{color:var(--c);font-weight:700;}
+  .bk-h i{font-style:normal;font-family:'DM Mono',monospace;font-size:10px;color:#64708a;margin:0 7px;}
+  .bk-t{font-size:14.5px;font-weight:700;letter-spacing:-.2px;line-height:1.35;margin-top:2px;}
+  .bk-t .v{font-family:'DM Mono',monospace;font-size:12px;color:var(--c);font-weight:500;}
+  .bk-w{font-size:11.5px;color:var(--dim);margin-top:3px;}
+  .bk-w em{font-style:normal;color:var(--text2);}
+  .bk-l{font-size:12px;color:var(--text2);line-height:1.6;margin-top:5px;}
+  .seam{margin-top:12px;border-top:1px solid rgba(231,188,60,.22);padding-top:13px;}
+  .sm-h{font-size:11.5px;color:#9a8530;text-align:center;margin-bottom:10px;}
+  .sm-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .sm-g .bk{border-left-color:var(--mem);}
+  .sm-g .bk:last-child{border-left:1px solid var(--line);border-right:3px solid var(--mem);
+                       flex-direction:row-reverse;text-align:right;}
+  @media(max-width:700px){
+    .mirror{grid-template-columns:1fr;}
+    .chords,.mmid{display:none;}
+    .mcol{margin-bottom:10px;}
+    .mcol.r .bk{flex-direction:row;text-align:left;border-left:3px solid var(--c);border-right:1px solid var(--line);}
+    .sm-g{grid-template-columns:1fr;}
+  }
 
   /* ── 방과 방 사이 ── */
   .poem{display:grid;grid-template-columns:repeat(auto-fit,minmax(218px,1fr));gap:16px;
@@ -188,11 +213,20 @@
 <h2 class="sec">사례<em id="csN"></em></h2>
 <div class="cases" id="cases"></div>
 
-<!-- ═══ 네 이름표 ═══ -->
-<h2 class="sec">네 새장의 이름표<em>소설이 먼저 쓴 네 방</em></h2>
-<p class="lede">세계문학전집이 한 사람의 삶을 한 권으로 세웠다. 네 새장에는 그 전집이 먼저 써 둔 이름이 하나씩 있다.
-둥지 넷(6~9장)에는 <b>아직 그 한 권이 없다.</b></p>
-<div class="tags" id="tags"></div>
+<!-- ═══ 열 이름표 ═══ -->
+<h2 class="sec">열 장의 책<em>「투향」 열 장에는 책이 한 권씩 서 있다</em></h2>
+<p class="lede">세계문학전집이 한 사람의 삶을 한 권으로 세웠다. 열 장에는 그 전집이 먼저 써 둔 이름이 하나씩 있다.
+<b>줄을 가로지르는 선 넷이 한 점에서 만난다</b> — 1↔6 · 2↔7 · 3↔8 · 4↔9는 좌우로 뒤집은 짝이 아니라
+<b>중심을 지나 뒤집은</b> 짝이고, 네 선의 중점이 겹치는 그 한 점이 <b>101호</b>다.
+거기 5장과 10장이 선다.</p>
+
+<div class="mirror">
+  <svg class="chords" id="chords" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+  <div class="mcol" id="mL"></div>
+  <div class="mmid"><span class="m101">101호</span></div>
+  <div class="mcol r" id="mR"></div>
+</div>
+<div class="seam" id="seam"></div>
 
 <!-- ═══ 방과 방 사이 ═══ -->
 <h2 class="sec">방과 방 사이<em>왜 칸인가</em></h2>
@@ -239,6 +273,21 @@ const ROOM={
  7:{nm:'지식',p:'nest',u:'atom',  b:'지식',l:'',    line:'한 점 아닌 세 자리에 건다',   verb:'세 자리에 걸어라'},
  8:{nm:'손익',p:'nest',u:'cell',  b:'손익',l:'',    line:'되물음은 모욕이 아니라 보호다',verb:'되물어라'},
  9:{nm:'기준',p:'nest',u:'second',b:'기준',l:'',    line:'던지면 해·달·별',            verb:'자를 던져라'}
+};
+/* ═══ 열 장의 책 ═══
+   vol=세계문학전집 번호(없으면 전집 밖) · who=인물 · vb=그 장의 동사 · ln=한 줄 */
+const BOOK={
+ 1:{vol:36, t:'마담 보바리',        who:'엠마',      vb:'욕망해',ln:'모르고 빌려 입는다'},
+ 2:{vol:456,t:'표범',               who:'살리나',    vb:'상상해',ln:'정확히 보되 뛸 이유가 없다'},
+ 3:{vol:267,t:'페스트',             who:'파늘루',    vb:'설득해',ln:'아름다운데 바깥이 안 보인다'},
+ 4:{vol:91, t:'방드르디, 태평양의 끝',who:'로빈슨',   vb:'폭파해',ln:'빌린 질서가 잘 돌수록 못 벗어난다'},
+ 5:{vol:77, t:'1984',               who:'윈스턴 · 다',vb:'멈춤', ln:'차갑게 빚을 쓴다 · 미국씬',u:'bit'},
+ 6:{vol:0,  t:'M. Butterfly',       who:'송 릴링',   vb:'원함',  ln:'알고 입는다',    out:'전집 밖'},
+ 7:{vol:268,t:'검은 튤립',          who:'코르넬리우스',vb:'됨',   ln:'한 점 아닌 세 자리에 건다'},
+ 8:{vol:121,t:'안개',               who:'아우구스토',vb:'버팀',  ln:'되물음은 모욕이 아니라 보호다'},
+ 9:{vol:166,t:'삼국유사',           who:'일연',      vb:'함',    ln:'삼키면 어둠, 던지면 해 · 달 · 별'},
+10:{vol:0,  t:'「세」',             who:'세',        vb:'발현',  ln:'뜨겁게 빚을 갚는다 · 한국씬',u:'cell',
+    out:'아직 안 쓰인 책'}
 };
 const CHS=[1,2,3,4,6,7,8,9];
 const UNITS=['bit','atom','cell','second'];
@@ -295,7 +344,9 @@ document.getElementById('roO').onclick=()=>{F.only=F.only?0:1;render();};
   const SUB={bit:'정보재',atom:'물건',cell:'생명',second:'시간','미정':'안 읽힘'};
   let h='<tr><th></th>'+COLS.map(u=>`<th class="u">${u}<i>${SUB[u]}</i></th>`).join('')+'</tr>';
   CHS.forEach(ch=>{const r=ROOM[ch];
-    h+=`<tr><th class="rw"><span class="ch">${ch}장</span><b style="color:${col(ch)}">${r.nm}</b></th>`;
+    const bv=BOOK[ch]&&BOOK[ch].vol;
+    h+=`<tr><th class="rw"><span class="ch">${ch}장</span><b style="color:${col(ch)}">${r.nm}</b>`+
+       `<span class="bv">${bv?String(bv).padStart(3,'0'):'—'}</span></th>`;
     COLS.forEach(u=>{
       const rows=C.filter(c=>c.ch==ch&&c.un===u);
       const home=u===r.u?' home':'';
@@ -381,31 +432,41 @@ function paintCases(){
     ||`<div class="none">이 자리는 아직 비어 있다. <b>빈칸이 다음 책이다.</b></div>`;
 }
 
-/* ═══ 네 이름표 — 새장 넷에 한 권씩 ═══ */
-const TAG=[
- {ch:1,vol:36, t:'마담 보바리',       au:'플로베르', tg:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',
-  q:'사실 가끔은 계산을 해 보려고 노력하기도 했다. 그러나 결과가 너무나 엄청나서 도무지 믿어지지 않았다.',
-  m:'빌린 욕망의 원형'},
- {ch:2,vol:456,t:'표범',             au:'람페두사', tg:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',
-  q:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.', m:'73년을 살고 2년을 살았다'},
- {ch:3,vol:267,t:'페스트',           au:'카뮈',     tg:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',
-  q:'인간 속에는 경멸할 것보다 찬탄할 것이 더 많다.', m:'리외는 60%에서 시작한다'},
- {ch:4,vol:91, t:'방드르디, 태평양의 끝',au:'투르니에',tg:'빌린 질서가 무너진 뒤 — 파도가 들린다',
-  q:'', m:'시계가 멈추자 자유가 시작된다'}
-];
 (function(){
-  document.getElementById('tags').innerHTML=TAG.map(d=>{
-    const r=ROOM[d.ch],c=col(d.ch);
-    const cv=typeof COVERS!=='undefined'&&COVERS[d.vol];
-    return `<div class="tag" style="--c:${c}">
-      ${cv?`<img src="${cv.url}" alt="" onerror="this.remove()">`:''}
-      <div class="tg-b">
-        <div class="tg-h"><b>${d.ch}장 ${r.nm}</b><i>${r.u}</i></div>
-        <div class="tg-t">${d.vol} ${d.t}<span>${d.au}</span></div>
-        <div class="tg-g">${d.tg}</div>
-        ${d.q?`<div class="tg-q">"${d.q}"</div>`:''}
-        <div class="tg-m">${r.b} → ${r.l} · ${d.m}</div>
-      </div></div>`;}).join('');
+  const cv=v=>(typeof COVERS!=='undefined'&&COVERS[v])||null;
+  const card=(ch,gold)=>{
+    // 5장·10장은 방이 아니라 이음새라 ROOM에 없다 — 없을 때를 먼저 받는다
+    const d=BOOK[ch],r=ROOM[ch]||null,c=gold?'var(--mem)':col(ch),
+          u=d.u||(r?r.u:''), nm=(gold||!r)?'':r.nm, img=cv(d.vol);
+    return `<div class="bk" style="--c:${c}">
+      <div class="bk-c">${img?`<img src="${img.url}" alt="" onerror="this.closest('.bk-c').classList.add('no')">`:''}
+        <span class="bk-x">${d.out||''}</span></div>
+      <div class="bk-b">
+        <div class="bk-h"><b>${ch}장</b>${nm?` ${nm}`:''}<i>${u}</i></div>
+        <div class="bk-t">${d.vol?`<span class="v">${String(d.vol).padStart(3,'0')}</span> `:''}${d.t}</div>
+        <div class="bk-w">${d.who} · <em>${d.vb}</em></div>
+        <div class="bk-l">${d.ln}</div>
+      </div></div>`;
+  };
+  /* 왼쪽은 1→4 아래로, 오른쪽은 9→6 아래로.
+     그래야 1↔6 · 2↔7 · 3↔8 · 4↔9 가 중심을 지나는 대각선이 된다(점 반전). */
+  document.getElementById('mL').innerHTML=[1,2,3,4].map(ch=>card(ch)).join('');
+  document.getElementById('mR').innerHTML=[9,8,7,6].map(ch=>card(ch)).join('');
+  document.getElementById('seam').innerHTML=
+    `<div class="sm-h">101호 — 두 고리가 만나는 한 점. 네 짝의 중점이 모두 여기다.</div>
+     <div class="sm-g">${card(5,1)}${card(10,1)}</div>`;
+  // 네 짝을 잇는 선 — 다 중심을 지난다
+  const dot='<circle cx="50" cy="50" r="1.1" fill="var(--mem)"/>';
+  document.getElementById('chords').innerHTML=dot+[0,1,2,3].map(i=>{
+    const y1=12.5+i*25, y2=87.5-i*25;
+    return `<line x1="0" y1="${y1}" x2="100" y2="${y2}" stroke="url(#gx)" stroke-width="1.1"/>`;
+  }).join('')+
+  `<defs><linearGradient id="gx" x1="0" y1="0" x2="1" y2="0">
+     <stop offset="0" stop-color="var(--cage)" stop-opacity=".2"/>
+     <stop offset=".42" stop-color="var(--cage)" stop-opacity=".95"/>
+     <stop offset=".5" stop-color="var(--mem)" stop-opacity="1"/>
+     <stop offset=".58" stop-color="var(--nest)" stop-opacity=".95"/>
+     <stop offset="1" stop-color="var(--nest)" stop-opacity=".2"/></linearGradient></defs>`;
 })();
 
 /* ═══ 한 번에 다시 칠한다 ═══ */
