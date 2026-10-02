@@ -413,30 +413,42 @@ function filterCh(ch){
   const box=document.getElementById('cageCols');
   document.getElementById('cageN').textContent='· '+CAGE_CASES.length+'곳';
   // ── 나비 좌표도 ── 네 날개 = 네 새장, 점 하나 = 회사 하나
-  const W=[['🪞',200,130,'--ch1'],['🔭',560,130,'--ch2'],['💒',560,290,'--ch3'],['⏱️',200,290,'--ch4']];
+  // 좌우 거울대칭 — 윗날개 둘, 아랫날개 둘. 중심 (380,210)에서 같은 거리
+  const W=[['🪞',218,116,'--ch1',-17],['🔭',542,116,'--ch2',17],
+           ['💒',542,304,'--ch3',-17],['⏱️',218,304,'--ch4',17]];
   const sv=document.getElementById('bfly'); const NS='http://www.w3.org/2000/svg';
   const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
-  W.forEach(([cage,cx,cy,col])=>{
+  const RX=142, RY=74;
+  W.forEach(([cage,cx,cy,col,rot])=>{
     const rows=CAGE_CASES.filter(c=>c.cage===cage), m=META[cage];
     const g=mk('g',{class:'wing','data-cage':cage,style:'cursor:pointer'});
-    g.appendChild(mk('ellipse',{cx,cy,rx:168,ry:92,fill:`var(${col})`,'fill-opacity':.07,
-      stroke:`var(${col})`,'stroke-width':1.3,transform:`rotate(${cx<380?-16:16} ${cx} ${cy})`}));
+    const tr=`rotate(${rot} ${cx} ${cy})`;
+    g.appendChild(mk('ellipse',{cx,cy,rx:RX,ry:RY,fill:`var(${col})`,'fill-opacity':.07,
+      stroke:`var(${col})`,'stroke-width':1.3,transform:tr}));
+    // 점을 해바라기 배치로 고르게 — 글자 자리(가운데)는 비운다
+    const gd=mk('g',{transform:tr});
+    const gold=Math.PI*(3-Math.sqrt(5));
     rows.forEach((c,i)=>{
-      const a=(i/rows.length)*Math.PI*2, rr=28+((i*37)%96);
-      g.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*1.45, cy:cy+Math.sin(a)*rr*.82, r:4.6,
-        fill:`var(${col})`,'fill-opacity': c.src==='bocconi'?.95:.42,
-        stroke:`var(${col})`,'stroke-width':.8}));
+      const t=(i+0.5)/rows.length, rr=Math.sqrt(0.30+0.70*t), a=i*gold;
+      gd.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*(RX-16), cy:cy+Math.sin(a)*rr*(RY-13), r:4.2,
+        fill:`var(${col})`,'fill-opacity': c.src==='bocconi'?.92:.38,
+        stroke:`var(${col})`,'stroke-width':.7}));
     });
-    const t1=mk('text',{x:cx,y:cy-4,'text-anchor':'middle','font-size':17,'font-weight':700,fill:`var(${col})`});
+    g.appendChild(gd);
+    const lab=mk('g',{});
+    lab.appendChild(mk('rect',{x:cx-54,y:cy-20,width:108,height:40,rx:7,fill:'#0b0e16','fill-opacity':.78}));
+    const t1=mk('text',{x:cx,y:cy-2,'text-anchor':'middle','font-size':16,'font-weight':700,fill:`var(${col})`});
     t1.textContent=cage+' '+m[0];
-    const t2=mk('text',{x:cx,y:cy+16,'text-anchor':'middle','font-size':12,fill:'#8b95a7'});
+    const t2=mk('text',{x:cx,y:cy+15,'text-anchor':'middle','font-size':11.5,fill:'#8b95a7'});
     t2.textContent=rows.length+'곳';
-    g.append(t1,t2); sv.appendChild(g);
+    lab.append(t1,t2); g.appendChild(lab); sv.appendChild(g);
   });
-  sv.appendChild(mk('circle',{cx:380,cy:210,r:6,fill:'#FFD53A'}));
-  const ct=mk('text',{x:380,y:238,'text-anchor':'middle','font-size':11,fill:'#b7a233'});
+  // 몸통 — 네 날개를 잇는 한 점
+  sv.appendChild(mk('line',{x1:380,y1:140,x2:380,y2:280,stroke:'#3a4256','stroke-width':1}));
+  sv.appendChild(mk('circle',{cx:380,cy:210,r:7,fill:'#FFD53A'}));
+  const ct=mk('text',{x:380,y:232,'text-anchor':'middle','font-size':11,fill:'#b7a233'});
   ct.textContent='기억'; sv.appendChild(ct);
-  const lg=mk('text',{x:380,y:404,'text-anchor':'middle','font-size':10.5,fill:'#6b7686'});
+  const lg=mk('text',{x:380,y:408,'text-anchor':'middle','font-size':10.5,fill:'#6b7686'});
   lg.textContent='진한 점 = 새로 배정한 것 · 옅은 점 = 이미 배정돼 있던 것';
   sv.appendChild(lg);
   sv.onclick=e=>{const g=e.target.closest('.wing'); if(!g)return;
@@ -467,7 +479,8 @@ function filterCh(ch){
 .col-card.cg{transition:opacity .25s;}
 #cageCols.filtered .col-card.cg{opacity:.3;}
 #cageCols.filtered .col-card.cg.on{opacity:1;}
-.cage-crit{font-size:12.5px;color:#94a3b8;line-height:1.85;max-width:900px;margin:0 0 16px;}
+.cage-crit{font-size:12.5px;color:#94a3b8;line-height:1.85;max-width:680px;margin:0 auto 18px;text-align:left;}
+.summary h2{text-align:center;}
 .cage-crit b{color:#cbd5e1;}
 .col-card.cg{background:#141a27;border:1px solid #242c3d;border-radius:10px;padding:13px 14px;}
 .cg-h{font-size:14px;font-weight:700;color:var(--c);}
@@ -547,7 +560,7 @@ function filterCh(ch){
 </div>
 
 <style>
-.vision{margin-top:10px;font-size:13px;line-height:1.7;color:#94a3b8;max-width:760px;}
+.vision{margin:12px auto 0;font-size:13px;line-height:1.8;color:#94a3b8;max-width:680px;text-align:left;}
 .vision b{color:#e2e8f0;}
 .cases-wrap{max-width:1100px;margin:36px auto 60px;padding:0 16px;}
 .cases-wrap h2{font-size:17px;color:#e2e8f0;margin:0 0 6px;}
