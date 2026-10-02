@@ -100,14 +100,22 @@
 <div class="header">
   <h1>창업문학의 주기율표</h1>
   <div class="sub">빌린 것을 안 갚으면, 자기 것을 잃는다 — 빈칸이 다음 책이다</div>
-  <div class="vision">📚 <b>세계창업전집</b> — 세계문학전집이 한 사람의 삶을 한 권으로 세웠듯,
-  <b>한 창업의 결정을 한 권으로 세운다.</b> 결과만 남는 회고 대신 <b>무엇을 빌렸고 무엇을 잃었는지가 적히는 전집</b>.</div>
+  <div class="vision"><b>세계창업전집</b> — 세계문학전집이 한 사람의 삶을 한 권으로 세웠듯,
+  <b>한 창업의 결정을 한 권으로 세운다.</b>
+  <br>빌린 것과 잃은 것은 <b>자석의 두 극</b>이다. 반으로 쪼개도 N극과 S극이 다시 생기듯,
+  둘은 따로 적을 수 없다. <b>한쪽만 적힌 칸은 반쪽이 아니라 빈칸이다.</b></div>
 </div>
 
 <!-- ═══ 4-Column Summary ═══ -->
 <div class="summary">
-  <h2>네 개의 새장, 네 개의 빚</h2>
-  <div class="cols4" id="cols4"></div>
+  <h2>네 개의 새장, 네 개의 빚 <span id="cageN" class="cnt"></span></h2>
+  <p class="cage-crit"><b>어느 새장인가는 「그때 이미 가지고 있던 것」이 정한다.</b>
+  아직 아무것도 없으면 <b>욕망</b>, 자리와 평판이 있으면 <b>품위</b>,
+  한 믿음에 자원을 걸었으면 <b>확신</b>, 돌아가는 체제가 있으면 <b>질서</b>.
+  이 순서는 시간순이기도 하다 — 원함 → 자리 → 베팅 → 체제. 한 회사가 네 방을 차례로 지난다.
+  <br>고른 기준은 둘뿐이다. <b>두 갈래가 설명에 있는가</b>, 그리고 <b>그때 가진 것이 읽히는가</b>.
+  둘 중 하나라도 아니면 넣지 않았다.</p>
+  <div class="cols4" id="cageCols"></div>
 </div>
 
 <!-- ═══ 484 Mosaic ═══ -->
@@ -390,6 +398,47 @@ function filterCh(ch){
   });
 }
 </script>
+
+<script src="cage_cases.js"></script>
+<script>
+(function(){
+  const META={'🪞':['욕망','내가 원하니까 시장도 원할 것','장부를 펴라','삶','--ch1'],
+              '🔭':['품위','다 보이니 움직일 필요 없다','순서를 타라','시간','--ch2'],
+              '💒':['확신','확신이 증거를 차단한다','확신을 교정하라','목숨','--ch3'],
+              '⏱️':['질서','성공했으니 바꿀 이유가 없다','다음 불을 피워라','자유','--ch4']};
+  const box=document.getElementById('cageCols');
+  document.getElementById('cageN').textContent='· '+CAGE_CASES.length+'곳';
+  box.innerHTML=Object.entries(META).map(([k,m])=>{
+    const rows=CAGE_CASES.filter(c=>c.cage===k);
+    return `<div class="col-card cg" style="--c:var(${m[4]})">
+      <div class="cg-h">${k} ${m[0]} <span>${rows.length}</span></div>
+      <div class="cg-s">${m[1]}</div>
+      <div class="cg-v">→ ${m[2]}</div>
+      <div class="mag"><span class="n">빌린 것 · ${m[0]}</span><i></i><span class="s">잃은 것 · ${m[3]}</span></div>
+      <div class="cg-l">${rows.map(c=>`<div class="cg-i" title="${(c.held||'').replace(/"/g,'')}">
+        <b>${c.name}</b><em>${c.year||''}</em></div>`).join('')}</div>
+    </div>`;}).join('');
+})();
+</script>
+
+<style>
+.cnt{font-size:12px;color:#7b8699;font-weight:400;}
+.cage-crit{font-size:12.5px;color:#94a3b8;line-height:1.85;max-width:900px;margin:0 0 16px;}
+.cage-crit b{color:#cbd5e1;}
+.col-card.cg{background:#141a27;border:1px solid #242c3d;border-radius:10px;padding:13px 14px;}
+.cg-h{font-size:14px;font-weight:700;color:var(--c);}
+.cg-h span{font-size:11px;color:#7b8699;font-weight:400;margin-left:4px;}
+.cg-s{font-size:11.5px;color:#8b95a7;margin:4px 0 2px;}
+.cg-v{font-size:11.5px;color:#cbd5e1;margin-bottom:9px;}
+.mag{display:flex;align-items:center;gap:5px;margin-bottom:10px;font-size:9.5px;}
+.mag .n{color:#f87171;} .mag .s{color:#60a5fa;}
+.mag i{flex:1;height:5px;border-radius:3px;
+  background:linear-gradient(90deg,#f87171 0 50%,#60a5fa 50% 100%);}
+.cg-l{display:flex;flex-direction:column;gap:2px;max-height:330px;overflow-y:auto;}
+.cg-i{font-size:11.5px;color:#9aa5b8;display:flex;justify-content:space-between;gap:6px;
+  padding:2px 0;border-bottom:1px solid #1b2130;}
+.cg-i b{font-weight:500;color:#c8d1e0;} .cg-i em{font-style:normal;color:#5f6a7d;font-size:10px;}
+</style>
 
 <!-- ═══ 방과 방 사이 ═══ -->
 <div class="rooms-wrap">
