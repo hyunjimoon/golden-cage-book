@@ -1,0 +1,79 @@
+name: seat-label
+# 이슈 폼의 「장 · 자리」 답을 라벨로 옮기고, 비어 있으면 한 줄 알린다.
+# 템플릿은 UI로 만든 이슈만 잡는다 — `gh issue create` 로 만든 것도 잡으려면 이 알림이 필요하다.
+# 🚫 막지 않는다. 라벨을 붙이거나, 없다고 말할 뿐이다.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  seat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const CHAP = [
+              ["1장",  "🪞1장-거울"],        ["2장",  "🔭2장-망원경"],
+              ["3장",  "💒3장-스테인굴레스"], ["4장",  "⏱️4장-시계"],
+              ["5장",  "🐀5장-101호"],       ["6장",  "🦋6장-나비"],
+              ["7장",  "🌷7장-튤립구근"],     ["8장",  "🌫️8장-안개"],
+              ["9장",  "🐦‍⬛9장-까마귀"],     ["10장", "⭐️10장-투향"],
+            ];
+            const SEAT = [
+              ["👁️", "👁️눈-관찰"], ["🧠", "🧠뇌-이유"],
+              ["🫀", "🫀심장-방법"], ["🤚", "🤚손-실행"],
+            ];
+
+            const issue = context.payload.issue;
+            const body  = issue.body || "";
+            const have  = new Set((issue.labels || []).map(l => typeof l === "string" ? l : l.name));
+
+            // 이슈 폼은 `### <물음>\n\n<고른 값>` 꼴로 렌더된다. 그 절(section)만 읽는다.
+            const section = (head) => {
+              const m = body.match(new RegExp(`^###\\s*${head}[^\\n]*\\n+([^\\n]+)`, "m"));
+              return m ? m[1].trim() : "";
+            };
+            const chapAns = section("장");
+            const seatAns = section("자리");
+
+            const add = [];
+            const hasChap = CHAP.some(([, l]) => have.has(l));
+            const hasSeat = SEAT.some(([, l]) => have.has(l));
+
+            if (!hasChap && chapAns) {
+              // "10장"이 "1장"에 먼저 걸리지 않도록 긴 것부터 본다.
+              const hit = [...CHAP].sort((a, b) => b[0].length - a[0].length)
+                                   .find(([k]) => chapAns.startsWith(k));
+              if (hit) add.push(hit[1]);
+            }
+            if (!hasSeat && seatAns) {
+              const hit = SEAT.find(([k]) => seatAns.includes(k));
+              if (hit) add.push(hit[1]);
+            }
+            if (add.length) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: issue.number, labels: add });
+              core.info(`붙임: ${add.join(", ")}`);
+            }
+
+            // 알림은 이슈를 열 때 한 번만. 고칠 때마다 쌓지 않는다.
+            if (context.payload.action !== "opened") return;
+            const missing = [];
+            if (!hasChap && !add.some(l => l.includes("장"))) missing.push("**장**");
+            if (!hasSeat && !add.some(l => SEAT.some(([, s]) => s === l))) missing.push("**자리**");
+            if (!missing.length) return;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: issue.number,
+              body: `${missing.join(" · ")}이 비어 있습니다 — 이 이슈는 지도에서 「전반 × 미분류」 칸에 쌓입니다.\n\n`
+                  + `자리 넷: 👁️ **눈**(무엇을 봤나) · 🧠 **뇌**(무엇을 궁리했나) · `
+                  + `🫀 **심장**(무엇이 뛰었나) · 🤚 **손**(무엇이 움직였나)\n\n`
+                  + `<sub>라벨을 붙이면 이 줄은 무시하세요. 막지 않습니다.</sub>` });

@@ -1,17 +1,15 @@
-name: 이슈 — 주소를 먼저 적는다
-description: 장 · 렌즈 · 단위 셋을 고르고 연다. 주소 없는 글은 「전반 × 미분류」 칸에 쌓인다.
+name: 이슈 — 어느 장, 어느 자리
+description: 장과 자리를 고르고 연다. 둘 다 적혀야 지도 위 한 칸이 선다.
 body:
   - type: markdown
     attributes:
       value: |
-        격자는 분류표가 아니라 **자리를 정한 표**다. 셋 다 고르면 이 이슈가 지도 위 한 칸을 받는다.
-        → [전체지도](https://github.com/hyunjimoon/golden-cage-book/issues/135) · [창업문학의 주기율표](https://hyunjimoon.github.io/golden-cage-book/interactive/periodic_table_prototype.html)
+        네 자리는 몸의 순서다 — **눈으로 보고 · 뇌로 궁리하고 · 심장이 뛰고 · 손이 움직인다.**
 
   - type: dropdown
     id: chapter
     attributes:
       label: 장 — 어디 것인가
-      description: 책의 어느 방에 서는가. 어느 방도 아니면 「전반」.
       options:
         - 1장 거울 (마담 보바리)
         - 2장 망원경 (표범)
@@ -23,38 +21,19 @@ body:
         - 8장 안개 (안개)
         - 9장 까마귀 (삼국유사·Raven)
         - 10장 투향 (101₃호)
-        - 전반 (한 장에 안 묶인다)
+        - 전반 — 한 장에 안 묶인다
     validations:
       required: true
 
   - type: dropdown
-    id: lens
+    id: seat
     attributes:
-      label: 렌즈 — 무엇을 묻나
-      description: 4렌즈 ⛰️WHAT → 🟣WHY → 🟥HOW → ⭐️SOWHAT 중 하나, 또는 재료·도움.
+      label: 자리 — 무엇에 관한 글인가
       options:
-        - ⛰️ 무엇 · 빚 (본문 품질·남은 빚)
-        - 🟣 왜 · 방향 (이유·가치·독자 질문)
-        - 🟥 어떻게 · 도구 (프로토콜·비유·작법·실험)
-        - ⭐️ 그래서 · 남음 (독자에게 남는 것·실천 촉발)
-        - 자료 · 재료 (인터뷰·레퍼런스·사례)
-        - 도움 요청 (외부 피드백 환영)
-    validations:
-      required: true
-
-  - type: dropdown
-    id: unit
-    attributes:
-      label: 단위 — 무엇으로 세나
-      description: >
-        이 글이 실제로 다루는 단위. 장마다 **제자리**가 있다 —
-        1·5·6장 bit · 2·7장 atom · 3·8·10장 cell · 4·9장 second.
-        제자리와 달라도 괜찮다. **다른 쪽이 읽을 거리다** — 봇이 한 줄 남긴다.
-      options:
-        - bit (욕망 · 고통)
-        - atom (상상 · 지식)
-        - cell (설득 · 손익)
-        - second (폭파 · 기준)
+        - 👁️ 눈 — 무엇을 봤나 (사실·자료·레퍼런스·실측)
+        - 🧠 뇌 — 무엇을 궁리했나 (왜·방향·가치)
+        - 🫀 심장 — 무엇이 뛰었나 (어떻게·도구·실험)
+        - 🤚 손 — 무엇이 움직였나 (그래서·남는 것·실천)
     validations:
       required: true
 
@@ -65,3 +44,11 @@ body:
       description: 역설로 열고, 숫자나 표 하나로 받치고, 한 줄로 닫는다.
     validations:
       required: true
+
+  - type: checkboxes
+    id: help
+    attributes:
+      label: 도움
+      options:
+        - label: 외부 의견을 환영합니다
+          required: false
