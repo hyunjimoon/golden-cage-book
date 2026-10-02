@@ -391,6 +391,59 @@ function filterCh(ch){
 }
 </script>
 
+<!-- ═══ 방과 방 사이 ═══ -->
+<div class="rooms-wrap">
+  <h2>방과 방 사이 — 왜 칸인가</h2>
+  <p class="rooms-sub">격자는 분류표가 아니다. <b>칸과 칸이 서로 자리를 바꿀 수 있을 때에만</b> 격자가 된다.
+  바꿔도 말이 되는 둘은 이웃이고, 바꾸면 말이 깨지는 둘은 멀다. 그 거리를 재는 것이 이 표가 하는 일이다.</p>
+
+  <div class="poem">
+    <div class="pm-title">〈비틀릴 방의 기억〉에서</div>
+
+    <div class="pm-pair">
+      <div class="pm-lab">이웃 — 자리를 바꾼다</div>
+      <p>욕망 할만한 상상 중<br>욕망에너지 쓸만한 상상</p>
+      <p>상상 할만한 욕망 중<br>상상에너지 쓸만한 욕망</p>
+    </div>
+
+    <div class="pm-pair">
+      <div class="pm-lab">대각선 — 심는다</div>
+      <p>고통이 심은 욕망<br>욕망하며 쓸만해진 고통</p>
+      <p>지식이 심은 상상<br>상상하며 쓸만해진 지식</p>
+    </div>
+
+    <div class="pm-pair">
+      <div class="pm-lab">한 바퀴 — 중심이 생긴다</div>
+      <p>설득과 폭파의 순환<br>손익과 기준의 순환</p>
+      <p class="pm-x">순환하는 기억의 방</p>
+    </div>
+  </div>
+
+  <p class="rooms-note">여덟 방은 <b>상상 · 욕망 · 폭파 · 설득 · 손익 · 기준 · 고통 · 지식</b>이다.
+  첫 장에서 여덟 방의 한가운데는 <b>비어</b> 있다. 한 바퀴가 다 돌고 나서야 그 자리에 <b>기억</b>이 선다.
+  <br><br>마지막 장에서 두 사람이 마주 선다. 한 사람은
+  <i>고통의 욕망 → 욕망의 지식 → 지식의 상상 → 상상의 손익</i>으로 돌고,
+  다른 사람은 <i>욕망의 고통 → 고통의 상상 → 상상의 지식 → 지식의 설득</i>으로 돈다.
+  <b>같은 여덟 방이고, 순서만 다르다.</b> 그 순서가 그 사람이다.
+  <br><br>그래서 이 표는 당신이 어떤 유형인지 말해 주지 않는다.
+  <b>당신이 어느 방에서 어느 방으로 건너갔는지</b>를 적게 할 뿐이다.</p>
+</div>
+
+<style>
+.rooms-wrap{max-width:860px;margin:40px auto 0;padding:0 16px;}
+.rooms-wrap h2{font-size:17px;color:#e2e8f0;margin:0 0 6px;}
+.rooms-sub,.rooms-note{font-size:12.5px;color:#94a3b8;line-height:1.85;margin:0 0 16px;}
+.rooms-sub b,.rooms-note b{color:#cbd5e1;}
+.rooms-note{margin-top:16px;}
+.rooms-note i{color:#a5b4c8;font-style:italic;}
+.poem{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;
+  background:#12161f;border:1px solid #222a3a;border-radius:9px;padding:16px 18px;}
+.pm-title{grid-column:1/-1;font-size:11.5px;color:#6b7686;letter-spacing:.06em;margin-bottom:-4px;}
+.pm-lab{font-size:11px;color:#7c8aa0;margin-bottom:7px;}
+.poem p{font-size:13px;line-height:1.95;color:#d8dee9;margin:0 0 11px;}
+.poem .pm-x{color:#fbbf24;}
+</style>
+
 <!-- ═══ 세계창업전집 — 사례 ═══ -->
 <div class="cases-wrap">
   <h2>세계창업전집 <span id="caseCount"></span></h2>
