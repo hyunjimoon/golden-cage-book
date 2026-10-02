@@ -3,585 +3,414 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>창업문학의 주기율표 — 프로토타입</title>
+<title>창업문학의 주기율표</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
-  :root {
-    --bg:#0a0e1a; --surface:#111827; --card:#1a2234;
-    --text:#f0f2f5; --text2:#94a3b8; --dim:#64748b;
-    --ch1:#C8A2C8; --ch2:#8B8C2A; --ch3:#5B9A8B; --ch4:#3B5998;
-    --ch1bg:rgba(200,162,200,0.25); --ch2bg:rgba(139,140,42,0.25);
-    --ch3bg:rgba(91,154,139,0.25); --ch4bg:rgba(59,89,152,0.25);
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --bg:#0a0d15; --surf:#121724; --card:#161c2b; --line:#232b3d;
+    --text:#e8ecf3; --text2:#aab4c4; --dim:#78839a;
+    /* 두 극 — 새장 파랑 · 둥지 빨강 */
+    --cage:#4A72F0; --nest:#E04B3C; --mem:#E7BC3C;
+    --r1:#8FABFF; --r2:#5C83F5; --r3:#3A5FDC; --r4:#3A5BD0;
+    --r6:#FF9B8F; --r7:#F4705F; --r8:#DD4A3A; --r9:#C9382A;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden;}
-  .header{text-align:center;padding:24px 16px 8px;}
-  .header h1{font-size:1.5em;font-weight:700;letter-spacing:-0.5px;}
-  .header .sub{font-size:0.85em;color:var(--dim);margin-top:4px;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);
+       font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:'DM Mono',monospace;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px;}
+  a.back{color:var(--dim);text-decoration:none;font-size:12.5px;display:inline-block;padding:14px 0;}
+  a.back:hover{color:var(--text2);}
 
-  /* ── 4-Column Summary ── */
-  .summary{max-width:880px;margin:16px auto;padding:0 16px;}
-  .summary h2{font-size:1em;font-weight:600;margin-bottom:10px;color:var(--text2);}
-  .cols4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-  .col-card{border-radius:12px;padding:14px 10px;cursor:default;}
-  .col-card h3{font-size:0.85em;font-weight:700;margin-bottom:2px;}
-  .col-card .keyword{font-size:0.7em;color:var(--dim);margin-bottom:8px;}
-  .col-card .verb{font-size:0.8em;font-weight:600;margin-bottom:8px;opacity:0.9;}
-  .col-card .booklist{font-size:0.72em;line-height:1.8;}
-  .col-card .booklist span{cursor:pointer;display:inline-block;padding:1px 4px;border-radius:3px;margin:1px 0;}
-  .col-card .booklist span:hover{filter:brightness(1.5);}
-  .col-card .booklist .feat{font-weight:700;}
-  .c1{background:var(--ch1bg);border:1px solid rgba(200,162,200,0.3);color:var(--ch1);}
-  .c2{background:var(--ch2bg);border:1px solid rgba(139,140,42,0.3);color:var(--ch2);}
-  .c3{background:var(--ch3bg);border:1px solid rgba(91,154,139,0.3);color:var(--ch3);}
-  .c4{background:var(--ch4bg);border:1px solid rgba(59,89,152,0.3);color:var(--ch4);}
+  /* ── 머리 ── */
+  .hd{padding:6px 0 26px;border-bottom:1px solid var(--line);}
+  .hd h1{font-size:27px;font-weight:700;letter-spacing:-.6px;line-height:1.3;}
+  .hd .sub{font-size:13px;color:var(--dim);margin-top:7px;}
+  .hd .vis{font-size:13px;color:var(--text2);line-height:1.9;margin-top:16px;max-width:690px;}
+  .hd .vis b{color:var(--text);font-weight:500;}
 
-  /* ── Mosaic ── */
-  .mosaic-wrap{padding:8px 16px;}
-  .mosaic{display:grid;grid-template-columns:repeat(22,1fr);gap:2px;max-width:880px;margin:0 auto;}
-  .cell{
-    aspect-ratio:1;border-radius:3px;cursor:pointer;position:relative;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,255,255,0.3);
-    transition:transform 0.15s,box-shadow 0.15s,opacity 0.3s;
-  }
-  .cell:hover{transform:scale(1.8);z-index:10;box-shadow:0 0 12px rgba(255,255,255,0.2);}
-  @media(max-width:500px){.mosaic{grid-template-columns:repeat(11,1fr);} .cell{font-size:6px;min-width:24px;min-height:24px;}}
-  .cell-empty{background:#0f1525;}
-  .cell-ch1{background:var(--ch1bg);border:1px solid rgba(200,162,200,0.4);}
-  .cell-ch2{background:var(--ch2bg);border:1px solid rgba(139,140,42,0.4);}
-  .cell-ch3{background:var(--ch3bg);border:1px solid rgba(91,154,139,0.4);}
-  .cell-ch4{background:var(--ch4bg);border:1px solid rgba(59,89,152,0.4);}
-  .cell-selected{box-shadow:0 0 8px rgba(255,255,255,0.5)!important;transform:scale(1.5);z-index:11;}
-  .cell.dimmed{opacity:0.15;}
+  h2.sec{font-size:17px;font-weight:700;margin:34px 0 5px;letter-spacing:-.3px;}
+  h2.sec em{font-style:normal;font-size:12px;color:var(--dim);font-weight:400;margin-left:8px;}
+  p.lede{font-size:12.5px;color:var(--text2);line-height:1.9;margin-bottom:16px;max-width:700px;}
+  p.lede b{color:var(--text);font-weight:500;}
 
-  .legend{display:flex;justify-content:center;gap:16px;padding:8px 0;flex-wrap:wrap;}
-  .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--dim);cursor:pointer;}
-  .legend-item:hover{color:var(--text);}
-  .legend-dot{width:10px;height:10px;border-radius:2px;}
+  /* ── 세 축 ── */
+  .axes{background:var(--surf);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .ax{display:grid;grid-template-columns:108px 1fr;gap:12px;padding:12px 15px;
+      border-bottom:1px solid var(--line);align-items:start;}
+  .ax:last-child{border-bottom:0;}
+  .ax-h{font-size:12.5px;font-weight:700;color:var(--text);padding-top:2px;}
+  .ax-h i{display:block;font-style:normal;font-size:10.5px;color:var(--dim);font-weight:400;}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;}
+  .chip{font-family:'DM Mono',monospace;font-size:11px;padding:2.5px 9px;border-radius:11px;
+        background:#1b2232;color:#8d98ab;border:1px solid #28314a;cursor:pointer;
+        user-select:none;transition:.12s;white-space:nowrap;}
+  .chip:hover{color:var(--text);border-color:#3b4765;}
+  .chip .n{opacity:.5;margin-left:4px;}
+  .chip.on{background:#2f3a55;color:#f2f6fc;border-color:#51608a;}
+  .chip.zero{opacity:.3;}
+  .chip.cage.on{background:rgba(74,114,240,.22);border-color:var(--cage);color:#b7c9ff;}
+  .chip.nest.on{background:rgba(224,75,60,.2);border-color:var(--nest);color:#ffb9b1;}
+  .readout{display:flex;align-items:baseline;gap:10px;padding:11px 15px;background:#0e1320;
+           border-top:1px solid var(--line);font-size:12px;color:var(--dim);}
+  .readout .q{font-family:'DM Mono',monospace;color:var(--text2);}
+  .readout .big{font-size:17px;font-weight:700;color:var(--mem);font-family:'DM Mono',monospace;}
+  .readout .ro2{font-size:11.5px;color:#6f7b92;margin-left:14px;}
+  .readout .ro2 b{color:var(--text2);font-weight:500;font-family:'DM Mono',monospace;}
+  .readout .rst{cursor:pointer;color:#5e6a80;font-size:11px;border:1px solid #242d42;
+                border-radius:10px;padding:1.5px 9px;}
+  .readout .rst:first-of-type{margin-left:auto;}
+  .readout .rst:hover{color:var(--text2);border-color:#38425c;}
+  .readout .rst.act{color:var(--mem);border-color:rgba(231,188,60,.45);}
+  .case .mt .un{font-style:normal;color:#434d61;}
 
-  /* ── Panel ── */
-  .panel{max-width:880px;margin:16px auto;padding:0 16px;display:none;}
-  .panel.active{display:block;}
-  .panel-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;}
-  .panel-title{font-size:1.2em;font-weight:700;margin-bottom:4px;}
-  .panel-cover{float:right;margin:0 0 12px 16px;width:120px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.4);transition:opacity 0.3s;}
-  .panel-author{font-size:0.85em;color:var(--dim);margin-bottom:16px;}
-  .panel-tragedy{font-size:0.95em;line-height:1.7;color:var(--text2);margin-bottom:16px;padding:12px;background:var(--surface);border-radius:10px;border-left:3px solid var(--ch1);}
-  .panel-quote{font-style:italic;font-size:0.85em;color:var(--dim);margin-bottom:16px;}
-  .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
-  .info-card{padding:14px;background:var(--surface);border-radius:10px;text-align:center;}
-  .info-card h4{font-size:0.7em;color:var(--dim);letter-spacing:1px;margin-bottom:6px;}
-  .info-card .val{font-size:1.05em;font-weight:600;}
-  .verb-box{text-align:center;padding:14px;background:var(--surface);border-radius:10px;margin-bottom:16px;font-size:1.1em;font-weight:700;}
-  .debt-section{margin-bottom:16px;}
-  .debt-bar-wrap{display:flex;align-items:center;gap:8px;margin:6px 0;}
-  .debt-label{font-size:0.8em;min-width:100px;color:var(--dim);}
-  .debt-bar{height:8px;border-radius:4px;transition:width 0.5s;}
-  .debt-score{font-size:0.85em;font-weight:600;min-width:30px;}
+  /* ── 격자 ── */
+  .gridbox{overflow-x:auto;}
+  table.grid{border-collapse:separate;border-spacing:4px;margin:0 auto;}
+  table.grid th{font-size:11px;font-weight:500;color:var(--dim);padding:0 4px 2px;}
+  table.grid th.u{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--text2);width:74px;}
+  table.grid th.u i{display:block;font-style:normal;font-size:9.5px;color:#5e6a80;}
+  table.grid th.rw{text-align:right;font-size:12px;color:var(--text2);padding-right:8px;white-space:nowrap;}
+  table.grid th.rw b{font-weight:700;}
+  table.grid th.rw .ch{font-family:'DM Mono',monospace;font-size:10px;color:#5e6a80;margin-right:5px;}
+  td.cl{width:74px;height:46px;border-radius:6px;text-align:center;cursor:pointer;
+        border:1px solid transparent;transition:.12s;position:relative;}
+  td.cl .v{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;line-height:1;}
+  td.cl .cc{font-family:'DM Mono',monospace;font-size:8.5px;color:#7e8aa0;margin-top:3px;
+            overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 3px;}
+  td.cl.empty{background:#0e1320;border:1px dashed #212838;}
+  td.cl.empty .v{color:#333c50;font-size:12px;}
+  td.cl.home{box-shadow:inset 0 0 0 1px rgba(231,188,60,.45);}
+  td.cl:hover{transform:translateY(-1px);filter:brightness(1.25);}
+  td.cl.off{opacity:.2;}
+  .glegend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:11px;
+           color:var(--dim);margin-top:12px;}
+  .glegend s{text-decoration:none;display:inline-block;width:10px;height:10px;border-radius:2px;
+             margin-right:5px;vertical-align:-1px;}
 
-  .my-table{max-width:880px;margin:16px auto;padding:0 16px;}
-  .my-table h3{font-size:1em;margin-bottom:8px;}
-  .my-count{font-family:'DM Mono',monospace;font-size:0.85em;color:var(--dim);}
-  .my-grid{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-  .my-chip{padding:4px 10px;border-radius:6px;font-size:0.75em;font-weight:600;}
-  .prompt-box{max-width:880px;margin:8px auto 24px;padding:0 16px;}
-  .prompt{background:var(--card);border-radius:12px;padding:16px;font-size:0.85em;color:var(--text2);text-align:center;}
+  /* ── ∞ ── */
+  #bfly{width:100%;max-width:840px;height:auto;display:block;margin:4px auto 0;}
+  .wing{cursor:pointer;}
+  .wing:hover ellipse{fill-opacity:.2;}
+  .hint{text-align:center;font-size:11px;color:#5e6a80;margin-top:2px;}
 
-  @media(max-width:600px){
-    .cols4{grid-template-columns:repeat(2,1fr);}
-    .info-grid{grid-template-columns:1fr;}
-  }
+  /* ── 사례 ── */
+  .cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:8px;}
+  .case{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--c);
+        border-radius:6px;padding:9px 11px;}
+  .case .nm{font-size:12px;font-weight:500;color:#dde4ee;line-height:1.4;}
+  .case .mt{font-family:'DM Mono',monospace;font-size:10px;color:#6f7b92;margin-top:4px;}
+  .case .mt b{color:var(--c);font-weight:500;}
+  .case .bd{font-size:10.5px;line-height:1.6;margin-top:5px;color:#95a0b4;}
+  .ok{color:#56c98f;} .bad{color:#ef8a8a;} .mid{color:#e9bb5f;}
+  .none{color:#5e6a80;font-size:12.5px;padding:22px 0;text-align:center;}
+  .none b{color:var(--mem);}
+
+  /* ── 네 이름표 ── */
+  .tags{display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:10px;}
+  .tag{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);
+       border-left:3px solid var(--c);border-radius:8px;padding:14px 16px;}
+  .tag img{width:66px;height:auto;align-self:flex-start;border-radius:4px;
+           box-shadow:0 3px 14px rgba(0,0,0,.5);}
+  .tg-b{flex:1;min-width:0;}
+  .tg-h{font-size:12px;margin-bottom:3px;}
+  .tg-h b{color:var(--c);font-weight:700;}
+  .tg-h i{font-style:normal;font-family:'DM Mono',monospace;font-size:10.5px;
+          color:#6f7b92;margin-left:7px;}
+  .tg-t{font-size:15px;font-weight:700;letter-spacing:-.2px;line-height:1.4;}
+  .tg-t span{font-size:11.5px;font-weight:400;color:var(--dim);margin-left:7px;}
+  .tg-g{font-size:12.5px;color:var(--text2);line-height:1.75;margin-top:6px;}
+  .tg-q{font-size:11.5px;font-style:italic;color:var(--dim);line-height:1.75;margin-top:7px;}
+  .tg-m{font-family:'DM Mono',monospace;font-size:10.5px;color:#5e6a80;margin-top:8px;}
+
+  /* ── 방과 방 사이 ── */
+  .poem{display:grid;grid-template-columns:repeat(auto-fit,minmax(218px,1fr));gap:16px;
+        background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .pm-t{grid-column:1/-1;font-size:11px;color:#5e6a80;letter-spacing:.07em;}
+  .pm-l{font-size:11px;color:#7c8aa0;margin-bottom:7px;}
+  .poem p{font-size:13px;line-height:2;color:#d6dde9;margin:0 0 11px;}
+  .poem .x{color:var(--mem);}
+  .foot{font-size:12.5px;color:var(--text2);line-height:1.95;margin:16px 0 50px;max-width:700px;}
+  .foot b{color:var(--text);font-weight:500;} .foot i{color:#a3b0c4;}
 </style>
 </head>
 <body>
+<div class="wrap">
+<a class="back" href="../">← 목록</a>
 
-<div style="padding:10px 16px;"><a href="../" style="color:#64748b;text-decoration:none;font-size:13px;">← 목록</a></div>
-<div class="header">
+<div class="hd">
   <h1>창업문학의 주기율표</h1>
   <div class="sub">빌린 것을 안 갚으면, 자기 것을 잃는다 — 빈칸이 다음 책이다</div>
-  <div class="vision"><b>세계창업전집</b> — 세계문학전집이 한 사람의 삶을 한 권으로 세웠듯,
-  <b>한 창업의 결정을 한 권으로 세운다.</b>
-  <br>빌린 것과 잃은 것은 <b>자석의 두 극</b>이다. 반으로 쪼개도 N극과 S극이 다시 생기듯,
-  둘은 따로 적을 수 없다. <b>한쪽만 적힌 칸은 반쪽이 아니라 빈칸이다.</b></div>
+  <div class="vis"><b>세계창업전집</b> — 세계문학전집이 한 사람의 삶을 한 권으로 세웠듯,
+  <b>한 창업의 결정을 한 권으로 세운다.</b> 빌린 것과 잃은 것은 <b>자석의 두 극</b>이다.
+  반으로 쪼개도 N극과 S극이 다시 생기듯, 둘은 따로 적을 수 없다.
+  <b>한쪽만 적힌 칸은 반쪽이 아니라 빈칸이다.</b></div>
 </div>
 
-<!-- ═══ 4-Column Summary ═══ -->
-<div class="summary">
-  <h2>여덟 방 <span id="roomN" class="cnt"></span></h2>
-  <p class="cage-crit">방의 이름은 그 방에서 하는 <b>일</b>이다 — 「투향」 열 장의 동사를 그대로 쓴다.
-  〈비틀릴 방의 기억〉이 그린 두 고리가 그대로 두 줄이 된다.
-  <b>왼쪽 고리</b>는 혼자 도는 네 방 — 욕망 · 상상 · 설득 · 폭파.
-  <b>오른쪽 고리</b>는 남과 도는 네 방 — 고통 · 지식 · 손익 · 기준.
-  두 고리가 만나는 한 점이 <b>기억</b>이다.
-  <br><b>어느 방인가는 「그때 이미 가지고 있던 것」이 정한다.</b>
-  아직 아무것도 없으면 욕망, 정확히 보는 눈이 생겼으면 상상,
-  한 믿음에 남의 자원을 걸었으면 설득, 돌아가는 질서가 있으면 폭파.
-  <br>고른 기준은 둘뿐이다 — <b>두 갈래가 있는가</b>, <b>그때 가진 것이 읽히는가</b>.</p>
+<!-- ═══ 세 축 ═══ -->
+<h2 class="sec">세 축<em>사례는 이 셋이 다 맞을 때만 들어온다</em></h2>
+<p class="lede">주기율표는 원소를 모은 표가 아니라 <b>자리를 정한 표</b>다. 자리를 정하려면 축이 있어야 한다.
+여기엔 셋뿐이다 — <b>어디서 했나(문화) · 무엇을 걸었나(주제) · 무엇으로 지었나(분야)</b>.
+셋 중 하나라도 안 읽히면 그 사례는 넣지 않고 <b>빈칸으로 남긴다.</b></p>
 
-  <div class="bfly-wrap"><svg id="bfly" viewBox="0 0 820 300"></svg>
-    <div class="bfly-hint">날개를 누르면 그 방만 아래에 남는다. 점 하나가 회사 하나.</div></div>
-
-  <div class="filters" id="roomFilters"></div>
-  <div class="case-grid" id="roomGrid"></div>
-</div>
-</div>
-
-<!-- ═══ 484 Mosaic ═══ -->
-<div class="mosaic-wrap"><div class="mosaic" id="mosaic"></div></div>
-
-<div class="legend">
-  <div class="legend-item" onclick="filterCh(0)"><div class="legend-dot" style="background:#3a3f5a"></div>전체</div>
-  <div class="legend-item" onclick="filterCh(1)"><div class="legend-dot" style="background:var(--ch1)"></div>🪞 욕망</div>
-  <div class="legend-item" onclick="filterCh(2)"><div class="legend-dot" style="background:var(--ch2)"></div>🔭 상상</div>
-  <div class="legend-item" onclick="filterCh(3)"><div class="legend-dot" style="background:var(--ch3)"></div>💒 설득</div>
-  <div class="legend-item" onclick="filterCh(4)"><div class="legend-dot" style="background:var(--ch4)"></div>⏱️ 폭파</div>
-</div>
-
-<!-- ═══ Detail Panel ═══ -->
-<div class="panel" id="panel">
-  <div class="panel-card">
-    <img class="panel-cover" id="pCover" src="" alt="" style="display:none">
-    <div class="panel-title" id="pTitle"></div>
-    <div class="panel-author" id="pAuthor"></div>
-    <div class="panel-tragedy" id="pTragedy"></div>
-    <div class="panel-quote" id="pQuote"></div>
-
-    <div class="info-grid">
-      <div class="info-card"><h4>빌린 것</h4><div class="val" id="pBorrowed"></div></div>
-      <div class="info-card"><h4>잃은 것</h4><div class="val" id="pLost"></div></div>
-      <div class="info-card"><h4>새장 유형</h4><div class="val" id="pCage"></div></div>
-    </div>
-
-    <div class="verb-box" id="pVerb"></div>
-
-    <div class="debt-section">
-      <h4 style="font-size:0.85em;color:var(--dim);margin-bottom:8px;">빚 진단</h4>
-      <div class="debt-bar-wrap">
-        <span class="debt-label">🪞 욕망 오염</span>
-        <div class="debt-bar" id="d1" style="background:var(--ch1);width:0%"></div>
-        <span class="debt-score" id="ds1"></span>
-      </div>
-      <div class="debt-bar-wrap">
-        <span class="debt-label">🔭 분석 억압</span>
-        <div class="debt-bar" id="d2" style="background:var(--ch2);width:0%"></div>
-        <span class="debt-score" id="ds2"></span>
-      </div>
-      <div class="debt-bar-wrap">
-        <span class="debt-label">💒 의심 부재</span>
-        <div class="debt-bar" id="d3" style="background:var(--ch3);width:0%"></div>
-        <span class="debt-score" id="ds3"></span>
-      </div>
-      <div class="debt-bar-wrap">
-        <span class="debt-label">⏱️ 성공 소진</span>
-        <div class="debt-bar" id="d4" style="background:var(--ch4);width:0%"></div>
-        <span class="debt-score" id="ds4"></span>
-      </div>
-    </div>
-    <div id="pMemo" style="font-size:0.8em;color:var(--dim);margin-top:8px;"></div>
+<div class="axes">
+  <div class="ax"><div class="ax-h">문화<i>어디서 했나</i></div><div class="chips" id="axCt"></div></div>
+  <div class="ax"><div class="ax-h">주제<i>무엇을 걸었나</i></div><div class="chips" id="axCh"></div></div>
+  <div class="ax"><div class="ax-h">분야<i>무엇으로 지었나</i></div><div class="chips" id="axUn"></div></div>
+  <div class="readout">
+    <span class="q" id="roQ"></span>
+    <span class="big" id="roN"></span><span>곳</span>
+    <span class="ro2" id="roF"></span>
+    <span class="rst" id="roO">완통만</span>
+    <span class="rst" id="roR">축 풀기</span>
   </div>
 </div>
 
-<div class="my-table">
-  <h3>내 주기율표 <span class="my-count" id="myCount">0/484</span></h3>
-  <div class="my-grid" id="myGrid"></div>
+<!-- ═══ 격자 ═══ -->
+<h2 class="sec">격자<em>주제 × 분야. 세 번째 축은 칸 안의 나라 코드</em></h2>
+<p class="lede">가로가 <b>분야</b>, 세로가 <b>주제</b>다. 금테 두른 칸은 그 방의 <b>제자리</b> —
+욕망과 고통은 bit, 상상과 지식은 atom, 설득과 손익은 cell, 폭파와 기준은 second에서 태어난다.
+제자리를 벗어난 칸이 읽을 거리다. <b>칸을 누르면 세 축이 한꺼번에 걸린다.</b></p>
+<div class="gridbox"><table class="grid" id="grid"></table></div>
+<div class="glegend">
+  <span><s style="background:var(--cage)"></s>새장 — 혼자 돈다 · 1~4장</span>
+  <span><s style="background:var(--nest)"></s>둥지 — 남과 돈다 · 6~9장</span>
+  <span><s style="box-shadow:inset 0 0 0 1px var(--mem)"></s>제자리</span>
+  <span><s style="border:1px dashed #333c50"></s>빈칸 = 다음 책</span>
 </div>
 
-<div class="prompt-box">
-  <div class="prompt">창업소설은 무엇을 걸고 무엇을 잃는지의 이야기. 한 권 클릭.</div>
+<!-- ═══ ∞ ═══ -->
+<h2 class="sec">두 고리<em>여덟 방이 ∞ 하나로 놓인다</em></h2>
+<svg id="bfly" viewBox="0 0 820 300"></svg>
+<div class="hint">날개를 누르면 그 방만 남는다 · 점 하나가 회사 하나</div>
+
+<!-- ═══ 사례 ═══ -->
+<h2 class="sec">사례<em id="csN"></em></h2>
+<div class="cases" id="cases"></div>
+
+<!-- ═══ 네 이름표 ═══ -->
+<h2 class="sec">네 새장의 이름표<em>소설이 먼저 쓴 네 방</em></h2>
+<p class="lede">세계문학전집이 한 사람의 삶을 한 권으로 세웠다. 네 새장에는 그 전집이 먼저 써 둔 이름이 하나씩 있다.
+둥지 넷(6~9장)에는 <b>아직 그 한 권이 없다.</b></p>
+<div class="tags" id="tags"></div>
+
+<!-- ═══ 방과 방 사이 ═══ -->
+<h2 class="sec">방과 방 사이<em>왜 칸인가</em></h2>
+<p class="lede">격자는 분류표가 아니다. <b>칸과 칸이 서로 자리를 바꿀 수 있을 때에만</b> 격자가 된다.
+바꿔도 말이 되는 둘은 이웃이고, 바꾸면 말이 깨지는 둘은 멀다. 그 거리를 재는 것이 이 표가 하는 일이다.</p>
+<div class="poem">
+  <div class="pm-t">〈비틀릴 방의 기억〉에서</div>
+  <div>
+    <div class="pm-l">이웃 — 자리를 바꾼다</div>
+    <p>욕망 할만한 상상 중<br>욕망에너지 쓸만한 상상</p>
+    <p>상상 할만한 욕망 중<br>상상에너지 쓸만한 욕망</p>
+  </div>
+  <div>
+    <div class="pm-l">대각선 — 심는다</div>
+    <p>고통이 심은 욕망<br>욕망하며 쓸만해진 고통</p>
+    <p>지식이 심은 상상<br>상상하며 쓸만해진 지식</p>
+  </div>
+  <div>
+    <div class="pm-l">한 바퀴 — 중심이 생긴다</div>
+    <p>설득과 폭파의 순환<br>손익과 기준의 순환</p>
+    <p class="x">순환하는 기억의 방</p>
+  </div>
+</div>
+<p class="foot">첫 장에서 여덟 방의 한가운데는 <b>비어</b> 있다. 한 바퀴가 다 돌고 나서야 그 자리에 <b>기억</b>이 선다.
+<br><br>마지막 장에서 두 사람이 마주 선다. 한 사람은
+<i>고통의 욕망 → 욕망의 지식 → 지식의 상상 → 상상의 손익</i>으로 돌고,
+다른 사람은 <i>욕망의 고통 → 고통의 상상 → 상상의 지식 → 지식의 설득</i>으로 돈다.
+<b>같은 여덟 방이고, 순서만 다르다.</b> 그 순서가 그 사람이다.
+<br><br>그래서 이 표는 당신이 어떤 유형인지 말해 주지 않는다.
+<b>당신이 어느 방에서 어느 방으로 건너갔는지</b>를 적게 할 뿐이다.</p>
 </div>
 
 <script src="covers.js"></script>
-<script>
-// ═══ 4장 핵심 키워드 ═══
-// ch1 오염(contamination): 욕망이 상태를 오염한다 — 빌린 욕망
-// ch2 억압(suppression):   상태가 욕망을 억압한다 — 2장 상상(살리나)
-// ch3 의심(doubt):         의심 부재가 빚이다     — 빌린 확신
-// ch4 소진(fire):          성공이 변이를 굶긴다   — 빌린 질서
-
-const CH = {
-  1:{borrowed:'욕망',lost:'삶',cage:'욕망',verb:'장부를 펴라',
-     line:'내가 원하니까 시장도 원할 것'},
-  2:{borrowed:'상상',lost:'시간',cage:'상상',verb:'순서를 타라',
-     line:'다 보이니 움직일 필요 없다'},
-  3:{borrowed:'설득',lost:'목숨',cage:'설득',verb:'확신을 교정하라',
-     line:'확신이 증거를 차단한다'},
-  4:{borrowed:'폭파',lost:'자유',cage:'폭파',verb:'다음 불을 피워라',
-     line:'성공했으니 바꿀 이유가 없다'}
-};
-
-const DATA = [
-// ★ 대표 소설
-{vol:36,title:'마담 보바리',author:'플로베르',ch:1,feat:1,tragedy:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',quote:'사실 가끔은 계산을 해 보려고 노력하기도 했다. 그러나 결과가 너무나 엄청나서 도무지 믿어지지 않았다.',memo:'빌린 욕망의 원형'},
-{vol:456,title:'표범',author:'람페두사',ch:2,feat:1,tragedy:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',quote:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.',memo:'73년을 살고 2년을 살았다'},
-{vol:267,title:'페스트',author:'카뮈',ch:3,feat:1,tragedy:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',quote:'인간 속에는 경멸할 것보다 찬탄할 것이 더 많다.',memo:'리외는 60%에서 시작한다'},
-{vol:91,title:'방드르디, 태평양의 끝',author:'투르니에',ch:4,feat:1,tragedy:'빌린 질서가 무너진 뒤 — 파도가 들린다',quote:'',memo:'시계가 멈추자 자유가 시작된다'},
-// 🪞 1장 — 오염: 욕망이 상태를 오염한다
-{vol:18,title:'고리오 영감',author:'발자크',ch:1,tragedy:'자식에게 모든 것을 준 아버지가 파리에서 홀로 죽는 비극',quote:'',memo:'무조건적 사랑이 새장이 될 때'},
-{vol:27,title:'다섯째 아이',author:'도리스 레싱',ch:1,tragedy:'',quote:'',memo:''},
-{vol:75,title:'위대한 개츠비',author:'피츠제럴드',ch:1,tragedy:'빌린 꿈 위에 세운 삶이 총 한 방에 무너지는 비극',quote:'',memo:'미국판 엠마. 녹색 불빛 = 빌린 희망'},
-{vol:95,title:'적과 흑',author:'스탕달',ch:1,tragedy:'',quote:'',memo:'야망의 출처를 묻지 않은 청년'},
-{vol:118,title:'폭풍의 언덕',author:'에밀리 브론테',ch:1,tragedy:'',quote:'',memo:''},
-{vol:169,title:'포스트맨은 벨을 두 번 울린다',author:'케인',ch:1,tragedy:'',quote:'',memo:''},
-{vol:205,title:'테스',author:'토머스 하디',ch:1,tragedy:'',quote:'',memo:''},
-{vol:283,title:'엠마',author:'제인 오스틴',ch:1,tragedy:'',quote:'',memo:'오독하는 힘. 보바리와의 거울'},
-{vol:379,title:'모두 다 예쁜 말들',author:'매카시',ch:1,tragedy:'삶의 진실을 모르는 것이 낭만의 활력',quote:'',memo:''},
-{vol:388,title:'남아있는 나날',author:'이시구로',ch:1,tragedy:'품위라는 가면에 commit하여 사랑과 인생을 놓치는 비극',quote:'',memo:'살리나보다 늦게 편 장부'},
-// 🔭 2장 — 억압: 상태가 욕망을 억압한다
-{vol:13,title:'이반 데니소비치',author:'솔제니친',ch:2,tragedy:'',quote:'',memo:''},
-{vol:65,title:'소망 없는 불행',author:'페터 한트케',ch:2,tragedy:'',quote:'',memo:'절제가 가장 깊은 슬픔'},
-{vol:130,title:'자기만의 방',author:'버지니아 울프',ch:2,tragedy:'',quote:'',memo:'500파운드와 방이 없으면 망원경도 없다'},
-{vol:248,title:'인형의 집',author:'입센',ch:2,tragedy:'인형에서 인간으로 깨어나는 비극',quote:'나는 먼저 인간이고, 그다음이 여성입니다.',memo:'문을 닫는 소리가 세계를 바꿨다'},
-{vol:309,title:'보이체크·당통의 죽음',author:'뷔히너',ch:2,tragedy:'',quote:'',memo:''},
-{vol:406,title:'세피아빛 초상',author:'아옌데',ch:2,tragedy:'',quote:'',memo:''},
-// 💒 3장 — 의심 부재: 확신이 증거를 차단한다
-{vol:6,title:'허클베리 핀의 모험',author:'마크 트웨인',ch:3,tragedy:'',quote:'',memo:'사회의 확신에 맞서 자기 도덕을 선택'},
-{vol:21,title:'파우스트',author:'괴테',ch:3,tragedy:'',quote:'',memo:'앎의 대가를 알면서 선택'},
-{vol:29,title:'농담',author:'쿤데라',ch:3,tragedy:'엽서 한 장의 농담이 인생을 파괴한다',quote:'',memo:'시스템이 확신을 강요할 때'},
-{vol:44,title:'데미안',author:'헤세',ch:3,tragedy:'',quote:'새는 알에서 나오려고 투쟁한다.',memo:'알을 깨는 것이 세계를 깨는 것'},
-{vol:104,title:'네루다의 우편배달부',author:'스카르메타',ch:3,tragedy:'',quote:'',memo:''},
-{vol:107,title:'나무 위의 남작',author:'칼비노',ch:3,tragedy:'',quote:'',memo:'자발적 망명의 헌신'},
-{vol:154,title:'카라마조프 가의 형제들',author:'도스토예프스키',ch:3,tragedy:'',quote:'',memo:''},
-{vol:214,title:'면도날',author:'서머싯 몸',ch:3,tragedy:'',quote:'',memo:''},
-{vol:273,title:'유리알 유희',author:'헤세',ch:3,tragedy:'',quote:'',memo:''},
-{vol:278,title:'노인과 바다',author:'헤밍웨이',ch:3,tragedy:'패배를 알면서도 싸움을 선택하는 비극',quote:'인간은 파괴될 수 있지만 패배할 수 없다.',memo:''},
-{vol:297,title:'여인의 초상',author:'헨리 제임스',ch:3,tragedy:'',quote:'',memo:'자유를 알면서 헌신을 선택'},
-{vol:375,title:'대사들',author:'헨리 제임스',ch:3,tragedy:'',quote:'',memo:''},
-{vol:395,title:'월든',author:'소로',ch:3,tragedy:'',quote:'',memo:'의도적 삶의 실험'},
-{vol:436,title:'미들마치',author:'조지 엘리엇',ch:3,tragedy:'',quote:'',memo:'보이지 않는 선의 축적'},
-// ⏱️ 4장 — 소진: 성공이 변이를 굶긴다
-{vol:4,title:'변신',author:'카프카',ch:4,tragedy:'가족의 빌린 관계가 새장이었음을 벌레가 되어서야 아는 비극',quote:'',memo:'빌린 역할'},
-{vol:5,title:'동물농장',author:'오웰',ch:4,tragedy:'평등에 commit하면 commit 자체가 권력이 되어 평등을 잡아먹는 비극',quote:'',memo:'성공이 변이를 죽인다'},
-{vol:121,title:'안개',author:'우나무노',ch:4,tragedy:'소설 주인공이 작가를 찾아가 존재를 묻는 비극',quote:'',memo:''},
-{vol:153,title:'구덩이',author:'플라토노프',ch:4,tragedy:'',quote:'',memo:''},
-{vol:234,title:'참을 수 없는 존재의 가벼움',author:'쿤데라',ch:4,tragedy:'가벼움과 무거움을 모두 알면서 선택의 무게를 짊어지는 비극',quote:'',memo:''},
-{vol:290,title:'구르브 연락 없다',author:'멘도사',ch:4,tragedy:'',quote:'',memo:''},
-{vol:301,title:'레 미제라블',author:'빅토르 위고',ch:4,tragedy:'',quote:'',memo:''},
-{vol:308,title:'에드거 앨런 포 단편선',author:'포',ch:4,tragedy:'',quote:'',memo:''},
-{vol:344,title:'뇌우',author:'차오위',ch:4,tragedy:'',quote:'',memo:''},
-{vol:345,title:'모옌 중단편선',author:'모옌',ch:4,tragedy:'',quote:'',memo:''},
-{vol:399,title:'방랑자들',author:'토카르추크',ch:4,tragedy:'',quote:'',memo:''},
-{vol:465,title:'안과 겉·결혼·여름',author:'카뮈',ch:4,tragedy:'',quote:'',memo:''},
-{vol:484,title:'댈러웨이 부인',author:'버지니아 울프',ch:4,tragedy:'',quote:'',memo:''},
-];
-
-// ═══ 4-Column Summary ═══
-(function buildSummary(){
-  const wrap = document.getElementById('cols4');
-  const icons = {1:'🪞',2:'🔭',3:'💒',4:'⏱️'};
-  for(let ch=1;ch<=4;ch++){
-    const c = CH[ch];
-    const books = DATA.filter(b=>b.ch===ch);
-    const card = document.createElement('div');
-    card.className = `col-card c${ch}`;
-    let html = `<h3>${icons[ch]} ${c.borrowed}</h3>`;
-    html += `<div class="keyword">${c.line}</div>`;
-    html += `<div class="verb">→ ${c.verb}</div>`;
-    html += '<div class="booklist">';
-    books.forEach(b=>{
-      const cls = b.feat ? 'feat' : '';
-      html += `<span class="${cls}" onclick="showPanel(DATA.find(x=>x.vol===${b.vol}))">${b.vol} ${b.title}</span><br>`;
-    });
-    html += '</div>';
-    card.innerHTML = html;
-    wrap.appendChild(card);
-  }
-})();
-
-// ═══ 484 Mosaic ═══
-const mosaic = document.getElementById('mosaic');
-const analyzed = new Set();
-for(let i=1;i<=484;i++){
-  const cell = document.createElement('div');
-  cell.className = 'cell';
-  const d = DATA.find(x=>x.vol===i);
-  if(d){
-    cell.classList.add(`cell-ch${d.ch}`);
-    cell.textContent = i;
-    cell.dataset.vol = i;
-    cell.onclick = ()=> showPanel(d);
-    if(d.feat) cell.style.boxShadow='0 0 6px rgba(255,255,255,0.3)';
-  } else {
-    cell.classList.add('cell-empty');
-    cell.textContent = i;
-    cell.dataset.vol = i;
-    cell.style.cursor = 'pointer';
-    cell.onclick = ()=>{
-      const c = typeof COVERS!=='undefined' && COVERS[i];
-      if(c){
-        const p = document.getElementById('panel');
-        p.classList.add('active');
-        document.getElementById('pTitle').textContent = i+'. '+c.title;
-        document.getElementById('pTitle').style.color = '#64748b';
-        document.getElementById('pAuthor').textContent = '(분석 대기)';
-        document.getElementById('pTragedy').textContent = '';
-        document.getElementById('pQuote').textContent = '';
-        document.getElementById('pBorrowed').textContent = '—';
-        document.getElementById('pLost').textContent = '—';
-        document.getElementById('pCage').textContent = '—';
-        document.getElementById('pVerb').textContent = '빈칸이 다음 책이다';
-        document.getElementById('pVerb').style.color = '#64748b';
-        document.getElementById('pMemo').textContent = '';
-        ['d1','d2','d3','d4'].forEach((id)=>{document.getElementById(id).style.width='0%';document.getElementById('ds'+(parseInt(id[1])).toString()).textContent='';});
-        const coverEl = document.getElementById('pCover');
-        coverEl.src=c.url;coverEl.alt=c.title;coverEl.style.display='block';
-        coverEl.onerror=function(){this.style.display='none';};
-      }
-    };
-  }
-  mosaic.appendChild(cell);
-}
-
-// ═══ Debt Scoring ═══
-function scoreDebt(d) {
-  let s = [15,15,15,15];
-  s[d.ch-1] += 60;
-  const mx = Math.max(...s);
-  return s.map(v=>Math.round(v/mx*100));
-}
-
-// ═══ Panel ═══
-function showPanel(d){
-  document.querySelectorAll('.cell-selected').forEach(c=>c.classList.remove('cell-selected'));
-  const sel = document.querySelector(`.cell[data-vol="${d.vol}"]`);
-  if(sel) sel.classList.add('cell-selected');
-
-  const p = document.getElementById('panel');
-  p.classList.add('active');
-
-  const c = CH[d.ch];
-  const chNames = {1:'🪞 거울새장',2:'🔭 망원경새장',3:'💒 스테인드글라스새장',4:'⏱️ 시계새장'};
-  const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
-
-  const coverEl = document.getElementById('pCover');
-  const coverData = typeof COVERS!=='undefined' && COVERS[d.vol];
-  if(coverData){coverEl.src=coverData.url;coverEl.alt=d.title;coverEl.style.display='block';coverEl.onerror=function(){this.style.display='none';};}
-  else{coverEl.style.display='none';}
-
-  document.getElementById('pTitle').textContent = `${d.vol}. ${d.title}`;
-  document.getElementById('pTitle').style.color = chColors[d.ch];
-  document.getElementById('pAuthor').textContent = `${d.author} — ${chNames[d.ch]}`;
-  document.getElementById('pTragedy').textContent = d.tragedy||'(분석 대기)';
-  document.getElementById('pTragedy').style.borderColor = chColors[d.ch];
-  document.getElementById('pQuote').textContent = d.quote ? `"${d.quote}"` : '';
-  document.getElementById('pBorrowed').textContent = c.borrowed;
-  document.getElementById('pBorrowed').style.color = chColors[d.ch];
-  document.getElementById('pLost').textContent = c.lost;
-  document.getElementById('pCage').textContent = c.cage;
-  document.getElementById('pVerb').textContent = c.verb;
-  document.getElementById('pVerb').style.color = chColors[d.ch];
-  document.getElementById('pMemo').textContent = d.memo ? `💡 ${d.memo}` : '';
-
-  const scores = scoreDebt(d);
-  ['d1','d2','d3','d4'].forEach((id,i)=>{
-    document.getElementById(id).style.width = scores[i]+'%';
-    document.getElementById('ds'+[i+1]).textContent = scores[i]+'%';
-  });
-
-  analyzed.add(d.vol);
-  updateMyTable();
-}
-
-function updateMyTable(){
-  document.getElementById('myCount').textContent = `${analyzed.size}/484`;
-  const grid = document.getElementById('myGrid');
-  grid.innerHTML = '';
-  const chColors = {1:'var(--ch1)',2:'var(--ch2)',3:'var(--ch3)',4:'var(--ch4)'};
-  [...analyzed].sort((a,b)=>a-b).forEach(vol=>{
-    const d = DATA.find(x=>x.vol===vol);
-    if(!d)return;
-    const chip = document.createElement('span');
-    chip.className = 'my-chip';
-    chip.style.cssText = `background:${chColors[d.ch].replace('var(--ch','rgba(').replace(')',',0.2)')};color:${chColors[d.ch]}`;
-    chip.textContent = `${vol} ${d.title}`;
-    grid.appendChild(chip);
-  });
-}
-
-function filterCh(ch){
-  document.querySelectorAll('.cell').forEach(c=>{
-    if(ch===0){ c.classList.remove('dimmed'); return; }
-    const d = DATA.find(x=>x.vol===parseInt(c.dataset.vol));
-    if(d && d.ch===ch) c.classList.remove('dimmed');
-    else c.classList.add('dimmed');
-  });
-}
-</script>
-
 <script src="cage_cases.js"></script>
 <script>
-(function(){
-  const ROOM={1:['🪞','욕망','L','--ch1'],2:['🔭','상상','L','--ch2'],3:['💒','설득','L','--ch3'],
-              4:['⏱️','폭파','L','--ch4'],6:['🦋','고통','R','--ch1'],7:['🌷','지식','R','--ch2'],
-              8:['🌫️','손익','R','--ch3'],9:['🐦‍⬛','기준','R','--ch4']};
-  const C=CAGE_CASES, sv=document.getElementById('bfly'), NS='http://www.w3.org/2000/svg';
-  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
-  document.getElementById('roomN').textContent='· '+C.length+'곳 · '+
-    new Set(C.map(c=>c.country)).size+'개국';
+/* ═══ 방 메타 — 주제 축 ═══
+   ch · 이름 · 극(새장/둥지) · 제자리 분야 · 빌린 것 · 잃은 것 · 한 줄 · 동사 */
+const ROOM={
+ 1:{nm:'욕망',p:'cage',u:'bit',   b:'욕망',l:'삶',  line:'내가 원하니까 시장도 원할 것',verb:'장부를 펴라'},
+ 2:{nm:'상상',p:'cage',u:'atom',  b:'상상',l:'시간',line:'다 보이니 움직일 필요 없다',  verb:'순서를 타라'},
+ 3:{nm:'설득',p:'cage',u:'cell',  b:'설득',l:'목숨',line:'확신이 증거를 차단한다',     verb:'확신을 교정하라'},
+ 4:{nm:'폭파',p:'cage',u:'second',b:'폭파',l:'자유',line:'성공했으니 바꿀 이유가 없다', verb:'다음 불을 피워라'},
+ 6:{nm:'고통',p:'nest',u:'bit',   b:'고통',l:'',    line:'알고 빌려 입는다',           verb:'아픔에서 출발하라'},
+ 7:{nm:'지식',p:'nest',u:'atom',  b:'지식',l:'',    line:'한 점 아닌 세 자리에 건다',   verb:'세 자리에 걸어라'},
+ 8:{nm:'손익',p:'nest',u:'cell',  b:'손익',l:'',    line:'되물음은 모욕이 아니라 보호다',verb:'되물어라'},
+ 9:{nm:'기준',p:'nest',u:'second',b:'기준',l:'',    line:'던지면 해·달·별',            verb:'자를 던져라'}
+};
+const CHS=[1,2,3,4,6,7,8,9];
+const UNITS=['bit','atom','cell','second'];
+const COLS=UNITS.concat(['미정']);   // 다섯째 열 = 아직 안 읽힌 칸
+const col=ch=>`var(--r${ch})`;
+/* 깃발 → 두 글자 코드. 축은 글자로 읽힌다 — 깃발은 눈에만 남는다. */
+const code=f=>{const a=[...(f||'')];return a.length===2
+  ?a.map(c=>String.fromCharCode(c.codePointAt(0)-127397)).join(''):'미정';};
+const C=CAGE_CASES.map(c=>({...c,ct:code(c.country),un:c.unit||'미정'}));
 
-  // 두 고리 — 왼쪽 ∞ 넷, 오른쪽 ∞ 넷, 가운데 기억
+/* ═══ 필터 — 세 축이 동시에 걸린다 ═══ */
+const F={ct:'',ch:0,un:'',only:0};
+const full=c=>c.ct!=='미정'&&c.un!=='미정';   // 세 축이 다 읽힌 것 = 완통
+const hit=c=>(!F.ct||c.ct===F.ct)&&(!F.ch||c.ch==F.ch)&&(!F.un||c.un===F.un)&&(!F.only||full(c));
+/* 한 축을 뺀 나머지로 센다 — 그래야 칩 숫자가 "지금 고르면 몇 곳"이 된다 */
+const AX=['ct','ch','un'];
+const cnt=(k,v)=>C.filter(c=>AX.every(x=>x===k||!F[x]||
+  (x==='ch'?c.ch==F.ch:c[x]===F[x]))&&(k==='ch'?c.ch==v:c[k]===v)
+  &&(!F.only||full(c))).length;
+
+/* ═══ 세 축 칩 ═══ */
+const ctList=[...new Set(C.map(c=>c.ct))].sort((a,b)=>
+  a==='미정'?1:b==='미정'?-1:C.filter(x=>x.ct===b).length-C.filter(x=>x.ct===a).length);
+function chips(){
+  document.getElementById('axCt').innerHTML=
+    `<span class="chip${F.ct?'':' on'}" data-k="ct" data-v="">전체<i class="n"></i></span>`+
+    ctList.map(v=>`<span class="chip${F.ct===v?' on':''}${cnt('ct',v)?'':' zero'}" data-k="ct" data-v="${v}">${v}<i class="n">${cnt('ct',v)}</i></span>`).join('');
+  document.getElementById('axCh').innerHTML=
+    `<span class="chip${F.ch?'':' on'}" data-k="ch" data-v="0">전체</span>`+
+    CHS.map(ch=>{const r=ROOM[ch];return `<span class="chip ${r.p}${F.ch==ch?' on':''}${cnt('ch',ch)?'':' zero'}" data-k="ch" data-v="${ch}" title="${r.line}"><b style="color:${F.ch==ch?'inherit':col(ch)}">${r.nm}</b><i class="n">${cnt('ch',ch)}</i></span>`;}).join('');
+  document.getElementById('axUn').innerHTML=
+    `<span class="chip${F.un?'':' on'}" data-k="un" data-v="">전체</span>`+
+    COLS.map(v=>`<span class="chip${F.un===v?' on':''}${cnt('un',v)?'':' zero'}" data-k="un" data-v="${v}">${v}<i class="n">${cnt('un',v)}</i></span>`).join('');
+  const sel=C.filter(hit), n=sel.length, f=sel.filter(full).length;
+  document.getElementById('roF').innerHTML=
+    `완통 <b>${f}</b> · 반쪽 <b>${n-f}</b>`;
+  document.getElementById('roO').classList.toggle('act',!!F.only);
+  document.getElementById('roQ').textContent=
+    `${F.ct||'모든 문화'} · ${F.ch?ROOM[F.ch].nm:'모든 주제'} · ${F.un||'모든 분야'}`;
+  document.getElementById('roN').textContent=n;
+}
+document.querySelector('.axes').onclick=e=>{
+  const s=e.target.closest('.chip'); if(!s)return;
+  const k=s.dataset.k, v=s.dataset.v;
+  if(k==='ch') F.ch=(F.ch===+v?0:+v); else F[k]=(F[k]===v)?'':v;
+  render();
+};
+document.getElementById('roR').onclick=()=>{F.ct='';F.ch=0;F.un='';F.only=0;render();};
+document.getElementById('roO').onclick=()=>{F.only=F.only?0:1;render();};
+
+/* ═══ 격자 — 주제 × 분야, 칸 안에 문화 ═══ */
+(function(){
+  const t=document.getElementById('grid');
+  const SUB={bit:'정보재',atom:'물건',cell:'생명',second:'시간','미정':'안 읽힘'};
+  let h='<tr><th></th>'+COLS.map(u=>`<th class="u">${u}<i>${SUB[u]}</i></th>`).join('')+'</tr>';
+  CHS.forEach(ch=>{const r=ROOM[ch];
+    h+=`<tr><th class="rw"><span class="ch">${ch}장</span><b style="color:${col(ch)}">${r.nm}</b></th>`;
+    COLS.forEach(u=>{
+      const rows=C.filter(c=>c.ch==ch&&c.un===u);
+      const home=u===r.u?' home':'';
+      if(!rows.length){h+=`<td class="cl empty${home}" data-ch="${ch}" data-un="${u}"><div class="v">·</div></td>`;return;}
+      const cts=[...new Set(rows.map(x=>x.ct))].filter(x=>x!=='미정');
+      h+=`<td class="cl${home}" data-ch="${ch}" data-un="${u}"
+           style="background:color-mix(in srgb, ${col(ch)} ${Math.min(10+rows.length*5,42)}%, #101624);
+                  border-color:color-mix(in srgb, ${col(ch)} 45%, transparent)">
+           <div class="v" style="color:${col(ch)}">${rows.length}</div>
+           <div class="cc">${cts.slice(0,4).join(' ')||'—'}</div></td>`;
+    });
+    h+='</tr>';});
+  t.innerHTML=h;
+  t.onclick=e=>{const c=e.target.closest('.cl'); if(!c)return;
+    const ch=+c.dataset.ch,u=c.dataset.un;
+    if(F.ch===ch&&F.un===u){F.ch=0;F.un='';}
+    else{F.ch=ch;F.un=u;F.ct='';}
+    render(); document.getElementById('cases').scrollIntoView({behavior:'smooth',block:'center'});};
+})();
+function paintGrid(){
+  document.querySelectorAll('td.cl').forEach(c=>{
+    const ch=+c.dataset.ch,u=c.dataset.un;
+    const on=(!F.ch||F.ch===ch)&&(!F.un||F.un===u)&&!(F.only&&u==='미정');
+    c.classList.toggle('off',!on);
+  });
+}
+
+/* ═══ ∞ 두 고리 ═══ */
+(function(){
+  const sv=document.getElementById('bfly'),NS='http://www.w3.org/2000/svg';
+  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
   const POS={1:[150,88],2:[150,212],3:[300,212],4:[300,88],
              6:[520,88],7:[520,212],8:[670,212],9:[670,88]};
   const RX=68,RY=50;
-  let cur=0;
-  sv.appendChild(mk('text',{x:225,y:28,'text-anchor':'middle','font-size':11,fill:'#6b7686'})).textContent='왼쪽 고리 — 혼자 돈다';
-  sv.appendChild(mk('text',{x:595,y:28,'text-anchor':'middle','font-size':11,fill:'#6b7686'})).textContent='오른쪽 고리 — 남과 돈다';
-  Object.entries(ROOM).forEach(([ch,[em,nm,lp,col]])=>{
-    const [cx,cy]=POS[ch], rows=C.filter(c=>c.ch==ch);
-    const g=mk('g',{class:'wing','data-ch':ch,style:'cursor:pointer'});
-    g.appendChild(mk('ellipse',{cx,cy,rx:RX,ry:RY,fill:`var(${col})`,'fill-opacity':lp==='L'?.08:.05,
-      stroke:`var(${col})`,'stroke-width':1.2,'stroke-dasharray':lp==='R'?'4 3':''}));
+  sv.appendChild(mk('text',{x:225,y:26,'text-anchor':'middle','font-size':11,fill:'#5e6a80'}))
+    .textContent='새장 — 혼자 돈다';
+  sv.appendChild(mk('text',{x:595,y:26,'text-anchor':'middle','font-size':11,fill:'#5e6a80'}))
+    .textContent='둥지 — 남과 돈다';
+  CHS.forEach(ch=>{
+    const r=ROOM[ch],[cx,cy]=POS[ch],rows=C.filter(c=>c.ch==ch),cl=col(ch);
+    const g=mk('g',{class:'wing','data-ch':ch});
+    g.appendChild(mk('ellipse',{cx,cy,rx:RX,ry:RY,fill:cl,'fill-opacity':r.p==='cage'?.09:.07,
+      stroke:cl,'stroke-width':1.2,'stroke-dasharray':r.p==='nest'?'4 3':''}));
     const gold=Math.PI*(3-Math.sqrt(5));
-    rows.forEach((c,i)=>{const t=(i+.5)/rows.length, rr=Math.sqrt(.34+.66*t), a=i*gold;
-      g.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*(RX-11), cy:cy+Math.sin(a)*rr*(RY-10), r:3.4,
-        fill:`var(${col})`,'fill-opacity':c.src==='bocconi'?.9:.4}));});
-    g.appendChild(mk('rect',{x:cx-34,y:cy-16,width:68,height:32,rx:6,fill:'#0b0e16','fill-opacity':.8}));
-    const t1=mk('text',{x:cx,y:cy-1,'text-anchor':'middle','font-size':13,'font-weight':700,fill:`var(${col})`});
-    t1.textContent=em+' '+nm;
-    const t2=mk('text',{x:cx,y:cy+13,'text-anchor':'middle','font-size':10,fill:'#8b95a7'});
-    t2.textContent=ch+'장 · '+rows.length;
+    rows.forEach((c,i)=>{const t=(i+.5)/rows.length,rr=Math.sqrt(.34+.66*t),a=i*gold;
+      g.appendChild(mk('circle',{cx:cx+Math.cos(a)*rr*(RX-11),cy:cy+Math.sin(a)*rr*(RY-10),
+        r:3.4,fill:cl,'fill-opacity':c.src==='bocconi'?.85:.38}));});
+    g.appendChild(mk('rect',{x:cx-40,y:cy-18,width:80,height:37,rx:7,fill:'#0a0d15','fill-opacity':.88}));
+    const t1=mk('text',{x:cx,y:cy-1,'text-anchor':'middle','font-size':14,'font-weight':700,fill:cl});
+    t1.textContent=r.nm;
+    const t2=mk('text',{x:cx,y:cy+13,'text-anchor':'middle','font-size':9.5,
+      'font-family':'DM Mono, monospace',fill:'#7a8699'});
+    t2.textContent=ch+'장 · '+r.u+' · '+rows.length;
     g.append(t1,t2); sv.appendChild(g);
   });
-  sv.appendChild(mk('circle',{cx:410,cy:150,r:6,fill:'#FFD53A'}));
-  const ct=mk('text',{x:410,y:172,'text-anchor':'middle','font-size':10.5,fill:'#b7a233'});
+  sv.appendChild(mk('circle',{cx:410,cy:150,r:6,fill:'var(--mem)'}));
+  const ct=mk('text',{x:410,y:173,'text-anchor':'middle','font-size':11,fill:'#b79b36'});
   ct.textContent='기억'; sv.appendChild(ct);
-  const lg=mk('text',{x:410,y:292,'text-anchor':'middle','font-size':10,fill:'#6b7686'});
+  const lg=mk('text',{x:410,y:292,'text-anchor':'middle','font-size':10,fill:'#5e6a80'});
   lg.textContent='진한 점 = 새로 배정한 것 · 옅은 점 = 이미 배정돼 있던 것'; sv.appendChild(lg);
-
-  // 카드 하나로 — 방·나라 두 필터가 같은 목록에 건다
-  const g2=document.getElementById('roomGrid'), fl=document.getElementById('roomFilters');
-  const cls=o=>/실패|붕괴/.test(o||'')?'bad':/위기/.test(o||'')?'mid':'ok';
-  let ctry='';
-  function draw(){
-    const rows=C.filter(c=>(!cur||c.ch==cur)&&(!ctry||c.country===ctry));
-    g2.innerHTML=rows.map(c=>{const r=ROOM[c.ch]||['','','','--ch1'];
-      return `<div class="case" style="--c:var(${r[3]})"><div class="nm">${c.country} ${c.name}</div>
-      <div class="mt">${r[0]} ${c.ch}장 ${r[1]}${c.unit?' · '+c.unit:''} · ${c.year||'?'}</div>
-      <div class="bd ${cls(c.outcome)}">${c.held||c.outcome||'—'}</div></div>`;}).join('')
-      || '<div class="none">없다</div>';
-  }
-  const cc={}; C.forEach(c=>cc[c.country]=(cc[c.country]||0)+1);
-  fl.innerHTML=`<span class="on" data-k="ch" data-v="">여덟 방 전체 ${C.length}</span>`+
-    Object.keys(ROOM).map(ch=>`<span data-k="ch" data-v="${ch}">${ROOM[ch][0]} ${ROOM[ch][1]}</span>`).join('')+
-    `<b class="sep"></b><span class="on" data-k="ct" data-v="">모든 나라</span>`+
-    Object.entries(cc).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span data-k="ct" data-v="${k}">${k} ${v}</span>`).join('');
-  fl.onclick=e=>{const s=e.target.closest('span'); if(!s)return;
-    fl.querySelectorAll(`span[data-k="${s.dataset.k}"]`).forEach(x=>x.classList.remove('on'));
-    s.classList.add('on');
-    if(s.dataset.k==='ch') cur=+s.dataset.v||0; else ctry=s.dataset.v; draw();};
   sv.onclick=e=>{const w=e.target.closest('.wing'); if(!w)return;
-    cur=+w.dataset.ch;
-    fl.querySelectorAll('span[data-k="ch"]').forEach(x=>x.classList.toggle('on',x.dataset.v==w.dataset.ch));
-    draw(); g2.scrollIntoView({behavior:'smooth',block:'nearest'});};
-  draw();
+    const ch=+w.dataset.ch; F.ch=(F.ch===ch?0:ch); render();
+    document.getElementById('cases').scrollIntoView({behavior:'smooth',block:'center'});};
 })();
+function paintWings(){
+  document.querySelectorAll('.wing').forEach(w=>
+    w.style.opacity=(!F.ch||F.ch==w.dataset.ch)?1:.25);
+}
+
+/* ═══ 사례 목록 ═══ */
+const v=x=>x==='미정'?`<i class="un">미정</i>`:x;   // 안 읽힌 축은 흐리게
+const cls=o=>/실패|붕괴|파산|경색/.test(o||'')?'bad':/위기|피봇/.test(o||'')?'mid':'ok';
+function paintCases(){
+  const rows=C.filter(hit).sort((a,b)=>full(b)-full(a)||a.name.localeCompare(b.name)),
+        g=document.getElementById('cases');
+  document.getElementById('csN').textContent=`${rows.length}곳 · ${
+    new Set(rows.map(r=>r.ct)).size}개 문화`;
+  g.innerHTML=rows.map(c=>{const r=ROOM[c.ch]||{nm:'',u:''};
+    return `<div class="case" style="--c:${col(c.ch)}">
+      <div class="nm">${c.name}</div>
+      <div class="mt">${v(c.ct)} · <b>${r.nm}</b> · ${v(c.un)} · ${c.year||'?'}</div>
+      <div class="bd ${c.held?'':cls(c.outcome)}">${c.held||c.outcome||'—'}</div></div>`;}).join('')
+    ||`<div class="none">이 자리는 아직 비어 있다. <b>빈칸이 다음 책이다.</b></div>`;
+}
+
+/* ═══ 네 이름표 — 새장 넷에 한 권씩 ═══ */
+const TAG=[
+ {ch:1,vol:36, t:'마담 보바리',       au:'플로베르', tg:'낭만소설이 심어준 삶을 살려다 실제 삶을 소진하는 비극',
+  q:'사실 가끔은 계산을 해 보려고 노력하기도 했다. 그러나 결과가 너무나 엄청나서 도무지 믿어지지 않았다.',
+  m:'빌린 욕망의 원형'},
+ {ch:2,vol:456,t:'표범',             au:'람페두사', tg:'모든 것이 사라지고 있음을 가장 선명하게 보는 자가 가장 먼저 사라지는 비극',
+  q:'모든 것이 변하지 않으려면 모든 것이 변해야 한다.', m:'73년을 살고 2년을 살았다'},
+ {ch:3,vol:267,t:'페스트',           au:'카뮈',     tg:'이길 수 없는 싸움에 함께하겠다고 commit하는 비극',
+  q:'인간 속에는 경멸할 것보다 찬탄할 것이 더 많다.', m:'리외는 60%에서 시작한다'},
+ {ch:4,vol:91, t:'방드르디, 태평양의 끝',au:'투르니에',tg:'빌린 질서가 무너진 뒤 — 파도가 들린다',
+  q:'', m:'시계가 멈추자 자유가 시작된다'}
+];
+(function(){
+  document.getElementById('tags').innerHTML=TAG.map(d=>{
+    const r=ROOM[d.ch],c=col(d.ch);
+    const cv=typeof COVERS!=='undefined'&&COVERS[d.vol];
+    return `<div class="tag" style="--c:${c}">
+      ${cv?`<img src="${cv.url}" alt="" onerror="this.remove()">`:''}
+      <div class="tg-b">
+        <div class="tg-h"><b>${d.ch}장 ${r.nm}</b><i>${r.u}</i></div>
+        <div class="tg-t">${d.vol} ${d.t}<span>${d.au}</span></div>
+        <div class="tg-g">${d.tg}</div>
+        ${d.q?`<div class="tg-q">"${d.q}"</div>`:''}
+        <div class="tg-m">${r.b} → ${r.l} · ${d.m}</div>
+      </div></div>`;}).join('');
+})();
+
+/* ═══ 한 번에 다시 칠한다 ═══ */
+function render(){chips();paintGrid();paintWings();paintCases();}
+render();
 </script>
-
-<style>
-.cnt{font-size:12px;color:#7b8699;font-weight:400;}
-.bfly-wrap{margin:4px 0 20px;}
-#bfly{width:100%;max-width:760px;height:auto;display:block;margin:0 auto;}
-.wing:hover ellipse{fill-opacity:.16;}
-.bfly-hint{text-align:center;font-size:11px;color:#6b7686;margin-top:-6px;}
-.col-card.cg{transition:opacity .25s;}
-#cageCols.filtered .col-card.cg{opacity:.3;}
-#cageCols.filtered .col-card.cg.on{opacity:1;}
-.cage-crit{font-size:12.5px;color:#94a3b8;line-height:1.85;max-width:680px;margin:0 auto 18px;text-align:left;}
-.summary h2{text-align:center;}
-.cage-crit b{color:#cbd5e1;}
-.col-card.cg{background:#141a27;border:1px solid #242c3d;border-radius:10px;padding:13px 14px;}
-.cg-h{font-size:14px;font-weight:700;color:var(--c);}
-.cg-h span{font-size:11px;color:#7b8699;font-weight:400;margin-left:4px;}
-.cg-s{font-size:11.5px;color:#8b95a7;margin:4px 0 2px;}
-.cg-v{font-size:11.5px;color:#cbd5e1;margin-bottom:9px;}
-.mag{display:flex;align-items:center;gap:5px;margin-bottom:10px;font-size:9.5px;}
-.mag .n{color:#f87171;} .mag .s{color:#60a5fa;}
-.mag i{flex:1;height:5px;border-radius:3px;
-  background:linear-gradient(90deg,#f87171 0 50%,#60a5fa 50% 100%);}
-.cg-l{display:flex;flex-direction:column;gap:2px;max-height:330px;overflow-y:auto;}
-.cg-i{font-size:11.5px;color:#9aa5b8;display:flex;justify-content:space-between;gap:6px;
-  padding:2px 0;border-bottom:1px solid #1b2130;}
-.cg-i b{font-weight:500;color:#c8d1e0;} .cg-i em{font-style:normal;color:#5f6a7d;font-size:10px;}
-</style>
-
-<!-- ═══ 방과 방 사이 ═══ -->
-<div class="rooms-wrap">
-  <h2>방과 방 사이 — 왜 칸인가</h2>
-  <p class="rooms-sub">격자는 분류표가 아니다. <b>칸과 칸이 서로 자리를 바꿀 수 있을 때에만</b> 격자가 된다.
-  바꿔도 말이 되는 둘은 이웃이고, 바꾸면 말이 깨지는 둘은 멀다. 그 거리를 재는 것이 이 표가 하는 일이다.</p>
-
-  <div class="poem">
-    <div class="pm-title">〈비틀릴 방의 기억〉에서</div>
-
-    <div class="pm-pair">
-      <div class="pm-lab">이웃 — 자리를 바꾼다</div>
-      <p>욕망 할만한 상상 중<br>욕망에너지 쓸만한 상상</p>
-      <p>상상 할만한 욕망 중<br>상상에너지 쓸만한 욕망</p>
-    </div>
-
-    <div class="pm-pair">
-      <div class="pm-lab">대각선 — 심는다</div>
-      <p>고통이 심은 욕망<br>욕망하며 쓸만해진 고통</p>
-      <p>지식이 심은 상상<br>상상하며 쓸만해진 지식</p>
-    </div>
-
-    <div class="pm-pair">
-      <div class="pm-lab">한 바퀴 — 중심이 생긴다</div>
-      <p>설득과 폭파의 순환<br>손익과 기준의 순환</p>
-      <p class="pm-x">순환하는 기억의 방</p>
-    </div>
-  </div>
-
-  <p class="rooms-note">여덟 방은 <b>상상 · 욕망 · 폭파 · 설득 · 손익 · 기준 · 고통 · 지식</b>이다.
-  첫 장에서 여덟 방의 한가운데는 <b>비어</b> 있다. 한 바퀴가 다 돌고 나서야 그 자리에 <b>기억</b>이 선다.
-  <br><br>마지막 장에서 두 사람이 마주 선다. 한 사람은
-  <i>고통의 욕망 → 욕망의 지식 → 지식의 상상 → 상상의 손익</i>으로 돌고,
-  다른 사람은 <i>욕망의 고통 → 고통의 상상 → 상상의 지식 → 지식의 설득</i>으로 돈다.
-  <b>같은 여덟 방이고, 순서만 다르다.</b> 그 순서가 그 사람이다.
-  <br><br>그래서 이 표는 당신이 어떤 유형인지 말해 주지 않는다.
-  <b>당신이 어느 방에서 어느 방으로 건너갔는지</b>를 적게 할 뿐이다.</p>
-</div>
-
-<style>
-.rooms-wrap{max-width:860px;margin:40px auto 0;padding:0 16px;}
-.rooms-wrap h2{font-size:17px;color:#e2e8f0;margin:0 0 6px;}
-.rooms-sub,.rooms-note{font-size:12.5px;color:#94a3b8;line-height:1.85;margin:0 0 16px;}
-.rooms-sub b,.rooms-note b{color:#cbd5e1;}
-.rooms-note{margin-top:16px;}
-.rooms-note i{color:#a5b4c8;font-style:italic;}
-.poem{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;
-  background:#12161f;border:1px solid #222a3a;border-radius:9px;padding:16px 18px;}
-.pm-title{grid-column:1/-1;font-size:11.5px;color:#6b7686;letter-spacing:.06em;margin-bottom:-4px;}
-.pm-lab{font-size:11px;color:#7c8aa0;margin-bottom:7px;}
-.poem p{font-size:13px;line-height:1.95;color:#d8dee9;margin:0 0 11px;}
-.poem .pm-x{color:#fbbf24;}
-</style>
-
-<style>
-.summary{max-width:1040px;margin:0 auto;padding:0 16px;}
-.summary h2{text-align:center;font-size:17px;color:#e2e8f0;margin:26px 0 8px;}
-.cnt{font-size:12px;color:#7b8699;font-weight:400;}
-.cage-crit{font-size:12.5px;color:#94a3b8;line-height:1.85;max-width:720px;margin:0 auto 18px;text-align:left;}
-.cage-crit b{color:#cbd5e1;}
-.bfly-wrap{margin:6px 0 10px;}
-#bfly{width:100%;max-width:820px;height:auto;display:block;margin:0 auto;}
-.wing:hover ellipse{fill-opacity:.22;}
-.bfly-hint{text-align:center;font-size:11px;color:#6b7686;margin-top:2px;}
-.filters{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 14px;align-items:center;justify-content:center;}
-.filters span{cursor:pointer;font-size:11.5px;padding:3px 10px;border-radius:12px;
-  background:#1a1f2e;color:#8b95a7;border:1px solid #272f42;user-select:none;}
-.filters span:hover{color:#dbe2ec;}
-.filters span.on{background:#333d52;color:#f1f5f9;border-color:#44506b;}
-.filters .sep{width:1px;height:16px;background:#2a3245;margin:0 6px;display:inline-block;}
-.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:8px;
-  margin-bottom:30px;}
-.case{background:#141a27;border:1px solid #232b3c;border-left:3px solid var(--c);
-  border-radius:6px;padding:9px 11px;font-size:11.5px;}
-.case .nm{color:#dbe2ec;font-weight:600;line-height:1.35;}
-.case .mt{color:#78839a;margin-top:3px;font-size:10.5px;}
-.case .bd{margin-top:5px;font-size:10.5px;line-height:1.55;}
-.ok{color:#5fd49a;} .bad{color:#f08b8b;} .mid{color:#f2c25c;}
-.none{color:#6b7686;font-size:12px;padding:14px 0;}
-</style>
 </body>
 </html>
