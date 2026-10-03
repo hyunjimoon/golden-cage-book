@@ -1259,7 +1259,7 @@
       <div class="density-control">
         <div class="density-info">
           <span class="density-label">지식 형식 (Isomorphic View Mode)</span>
-          <span id="densityText" class="density-text">⬡ 점섬상향 (두 부 평면 지도)</span>
+          <span id="densityText" class="density-text">⬡ 본문 (도해 없음)</span>
         </div>
         <div class="density-slider-wrap">
           <span class="emoji">▤</span>
@@ -1283,16 +1283,10 @@
                  + (MARKS[i] ? `<i>${MARKS[i]}</i>` : '') + '</span>';
             if (i === 5) rail += '<span class="gap"></span>';
           }
-          const partLabel = st.part === 1
-            ? '1부 · 새장 <b>시지프스</b> — 안에서 짓는다, 빚이 쌓인다'
-            : '2부 · 둥지 <b>헤르메스</b> — 밖에서 잰다, 빚이 갚아진다';
-          const svg =
-            `<div class="stage-pos">
-               <div class="stage-part p${st.part}">${partLabel}</div>
-               <div class="stage-axes">${chips}${st.mark ? `<span class="mark" style="color:${accent};border-color:${accent}">${st.mark}</span>` : ''}${st.hinge ? `<span class="hinge">${st.hinge}</span>` : ''}</div>
-               <div class="stage-rail">${rail}</div>
-               <a class="stage-more" href="diagrams/00_geo_점섬상향_DBA_SDV.svg" target="_blank" rel="noopener">두 부 평면 지도 전체 →</a>
-             </div>`;
+          // 🗑️ 점섬상향 띠 철거 (2026-10-04 자장 지시) — 장 상단 위치 지시자는 더 이상 찍지 않는다.
+          //    정본 지도는 diagrams/00_geo_점섬상향_DBA_SDV.svg 에 그대로 있다.
+          //    chips/rail 계산은 남겨 둔다 — 그래프 모드가 같은 st 를 쓴다.
+          const svg = '';
 
           // 2. Chapter Graph Canvas (Graph View)
           const canvas = `<canvas id="chapterGraphCanvas" style="background:rgba(9,12,22,0.4); border-radius:8px; display:none; width:340px; height:140px; margin:0 auto 24px;"></canvas>`;
@@ -1313,7 +1307,7 @@
           const texts = {
             1: '▤ 행렬 (Matrix - 순차 언어)',
             2: '🕸️ 그래프 (Graph - 병렬 네트워크)',
-            3: '⬡ 점섬상향 (두 부 평면 지도)'
+            3: '⬡ 본문 (도해 없음)'
           };
 
           function updateDensity(val) {
