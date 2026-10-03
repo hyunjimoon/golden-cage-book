@@ -190,25 +190,32 @@
   <!-- ══════════ ② 과정 ══════════ -->
   <section id="s2">
     <h2><span class="n">02</span> 과정</h2>
-    <div class="ask">그 자는 애초에 쓸 만한가. 축마다 열 장에 걸쳐 얼마나 움직였는지를 센다.</div>
+    <div class="ask">그 자는 애초에 쓸 만한가. <b>정전이 적어 둔 짝을, 자가 제 연에서 재현하는가.</b></div>
     <div class="fig">
-      <div class="find">열두 축 중 <em>다섯</em>이 장을 못 가른다.</div>
+      <div class="find">열두 축 중 <em id="discrim-count">–</em>만 제 연에서 선다.</div>
       <div class="sub">
-        어느 장에서나 켜져 있거나(영감) 어느 장에서나 꺼져 있으면(분노) 열두 칸 중 한 칸을 먹으면서 정보는 0이다.
-        열여섯 화자칸 중 <b>55 이상</b>이 켜짐, <b>30 미만</b>이 꺼짐. 한쪽이 열 칸을 넘으면 죽은 축으로 센다.
-        <br><b style="color:var(--ink)">아직 빼지 않았다.</b> 빼면 분모가 열둘에서 일곱으로 바뀌어 위 ①의 빚이 전부 다시 계산된다 —
-        그 재계산을 할지 말지가 룰링 대기다. 지금은 <i>죽은 채로 세고, 죽었다고 표시한다.</i>
-        <br><b style="color:var(--ink)">다만 처분은 갈라야 한다</b>(2026-10-02, 회고 칸 신설 후). 영감은 화자 레지스터라
-        상시 켜짐 = <i>자를 내릴</i> 축이다. 분노는 다르다 — 상황 한복판에서 무뎌졌을 가능성을 보려고
-        <b>회고 칸</b>을 열었는데 거기서도 안 켜졌다(최대 22, 2장). 그리고 5장은 현장 28 → 회고 <b>10</b>으로
-        <i>더 내려간다</i> — 회고가 분노를 식힌다. 켜지는 것은 분노가 아니라 <b>억울</b>이다(7장 현장 62 ·
-        3장 회고 45). 분노는 죽은 축이 아니라 <b>억울의 그림자</b>다: 이 원고의 화자는 사람을 밀어내지 않고
-        구조를 밀어낸다. 처분 = 빼지 말고 <i>분노·억울을 한 쌍으로 읽는다.</i>
+        정전은 각 연에 <b>부호가 반대인 두 감정</b>을 걸어 둔다(6연 × 2 = 12 전부, 중복 0).
+        그렇다면 자가 쓸 만한지는 한 줄로 시험된다 — <b>그 축이 제 연의 장에서 다른 아홉 장보다 높은가.</b>
+        제 연 중앙값에서 딴 데 중앙값을 빼고, <b>차가 15 이상</b>이면 선 것으로 센다
+        (15 = 이 페이지가 이미 쓰는 「큰 차이」. 새 문턱을 만들지 않았다).
+        <br><b style="color:var(--ink)">판정이 셋인 이유 — 처분이 서로 다르다.</b>
+        <b>자가 낮다</b>: 어디서나 켜져 변별을 못 한다 → 설계 Prior 를 올린다(영감).
+        <b>대상이 다르다</b>: 어디서도 안 켜진다 → 그 감정을 <i>다른 이름</i>이 가져갔는지 본다(분노 ↔ 억울).
+        <b>못 가름</b>: 둘 다 아니다. 전엔 앞의 둘을 「죽은 축」 한 칸에 넣었는데, <b>하나는 자를 고치고
+        하나는 짝을 고치는 일</b>이라 같은 칸에 둘 수 없다.
+        <br><b style="color:var(--ink)">이 질문은 2026-10-03에야 물을 수 있게 됐다.</b>
+        그 전엔 묶음이 中庸 4계절이었고 <b>계절은 장과 대응이 없어</b> 「제 연」이라는 말 자체가 성립하지 않았다.
+        묶음을 정전 6짝으로 간 것 — 축도 숫자도 색도 그대로 두고 <i>묶는 방식만</i> — 이 시험을 열었다.
+        <br>🌗 <b style="color:var(--ink)">그래서 이 표는 원고가 아니라 자를 기각한다.</b>
+        정전은 「8연이 바닥(분노·슬픔)」이라 적는데 <b>8장 분노는 다른 아홉 장과 값이 같다(12 ↔ 12)</b>.
+        원고가 정전을 안 따른 것인지, 자가 그 감정을 못 잡는 것인지는 <b>이 표로는 못 가른다</b> —
+        가르려면 화자 층과 독자 층을 나눠야 한다(T96·T97 ⚓ 룰링 대기).
       </div>
-      <table id="discrim"></table>
+      <div style="overflow-x:auto"><table id="discrim" style="min-width:560px"></table></div>
       <div class="legend">
-        <span><i class="lk" style="background:var(--se);height:9px;border-radius:5px"></i>살아 있는 축 — 중앙값</span>
-        <span><i class="lk" style="background:var(--mute);height:9px;border-radius:5px"></i>죽은 축</span>
+        <span><i class="lk" style="background:var(--se);height:9px;border-radius:5px"></i>막대 = 제 연 중앙값</span>
+        <span><i class="lk" style="background:rgba(255,255,255,.5);width:2px;height:11px;border-radius:1px"></i>흰 세로선 = 딴 데 중앙값</span>
+        <span><i class="lk" style="background:var(--mute);height:9px;border-radius:5px"></i>제 연에서 못 선 축</span>
         <span style="color:var(--ink2)">꼭대기도 바닥도 한 장의 버그가 아니라 열 장에 걸친 체질 — 정전은 <b>8연이 바닥(둘 다 −)</b>·<b>10연이 꼭대기(둘 다 +)</b>라 적는다. 자가 그 둘을 재현하는지가 ①의 물음이다</span>
       </div>
     </div>
@@ -712,30 +719,49 @@ addEventListener('blur', hideTip);
   btn.onclick=()=>{ box.hidden=!box.hidden; btn.textContent=box.hidden?'표로 보기':'표 닫기'; };
 })();
 
-/* ══════════ ② 축 변별력 — 단색 막대, 짝은 글자 ══════════ */
+/* ══════════ ② 축 변별력 — 제 연에서 서는가 ══════════
+   묶음이 짝이 된 뒤에야 물을 수 있는 질문이다(2026-10-03). 전엔 계절이 장과 대응이
+   없어 「제 연」이라는 말 자체가 성립하지 않았다.
+   문턱 15 = 이 페이지가 이미 쓰는 「큰 차이」(bars 의 big). 새 상수를 만들지 않는다. */
 (function(){
-  const rows=AXES.map(a=>{const vs=SLOTS.map(([c,s])=>DATA[c][s][a]);
-    const hi=vs.filter(v=>v>=55).length, lo=vs.filter(v=>v<30).length;
-    return {a,med:MED[a],hi,lo,n:vs.length,dead:hi>=10||lo>=10,on:hi>=10};})
-    .sort((x,y)=>y.med-x.med);
-  const N=rows[0].n;
-  let h=`<tr><th>축</th><th class="hideS">짝</th><th style="width:34%">열 장 중앙값</th>`
-       +`<th class="r">중앙</th><th class="r hideS">켜짐</th><th class="r hideS">꺼짐</th><th>판정</th></tr>`;
+  const PAIRCH = a => +SEASON_OF[a].key.slice(1);          // 'p8' → 8
+  const med = v => { const x=[...v].sort((p,q)=>p-q), m=x.length>>1;
+                     return x.length%2 ? x[m] : Math.round((x[m-1]+x[m])/2); };
+  const rows = AXES.map(a=>{
+    const ch = PAIRCH(a);
+    const own = SLOTS.filter(([c])=>c===ch).map(([c,sp])=>DATA[c][sp][a]);
+    const oth = SLOTS.filter(([c])=>c!==ch).map(([c,sp])=>DATA[c][sp][a]);
+    const vs  = SLOTS.map(([c,sp])=>DATA[c][sp][a]);
+    const o = med(own), d = med(oth), gap = o - d;
+    const hi = vs.filter(v=>v>=55).length, lo = vs.filter(v=>v<30).length;
+    // 판정 셋 — 처분이 서로 다르다
+    let tag='', cls='';
+    if (gap >= 15)      { tag='제 연에서 선다'; cls='ok'; }
+    else if (hi >= 10)  { tag='자가 낮다';      cls='up'; }   // 어디서나 켜짐 → 설계 Prior 를 올려라
+    else if (lo >= 10)  { tag='대상이 다르다';  cls='off'; }  // 어디서도 안 켜짐 → 그 감정을 다른 이름이 가져갔나
+    else                { tag='못 가름';        cls='off'; }
+    return {a,ch,o,d,gap,hi,lo,n:vs.length,tag,cls,ok:gap>=15};
+  }).sort((x,y)=>y.gap-x.gap);
+  const N = rows[0].n, OKN = rows.filter(r=>r.ok).length;
+  let h=`<tr><th>축</th><th class="hideS">짝</th><th style="width:30%">제 연 ↔ 딴 데</th>`
+       +`<th class="r">제 연</th><th class="r">딴 데</th><th class="r hideS">차</th><th>판정</th></tr>`;
   rows.forEach(r=>{
     const se=SEASON_OF[r.a];
-    h+=`<tr class="${r.dead?'dead':''}" data-ax="${r.a}">`
+    h+=`<tr class="${r.ok?'':'dead'}" data-ax="${r.a}">`
       +`<td class="axname">${AXKO[r.a]}</td>`
       +`<td class="seas hideS">${se.ko} ${se.han}</td>`
-      +`<td><div class="trk"><i style="width:${r.med}%"></i></div></td>`
-      +`<td class="r num">${r.med}</td>`
-      +`<td class="r num hideS">${r.hi}/${N}</td><td class="r num hideS">${r.lo}/${N}</td>`
-      +`<td class="tag ${r.on?'':'off'}">${r.dead?(r.on?'상시 켜짐':'상시 꺼짐'):''}</td></tr>`;});
+      +`<td><div class="trk"><i style="width:${r.o}%"></i><u style="left:calc(${r.d}% - 1px)" title="딴 데 ${r.d}"></u></div></td>`
+      +`<td class="r num">${r.o}</td><td class="r num">${r.d}</td>`
+      +`<td class="r num hideS">${r.gap>0?'+':''}${r.gap}</td>`
+      +`<td class="tag ${r.cls==='ok'?'':'off'}">${r.tag}</td></tr>`;});
   const el=document.getElementById('discrim'); el.innerHTML=h;
+  const cnt=document.getElementById('discrim-count'); if(cnt) cnt.textContent=OKN;
   el.querySelectorAll('tr[data-ax]').forEach(tr=>{
-    const a=tr.dataset.ax, se=SEASON_OF[a];
+    const a=tr.dataset.ax, se=SEASON_OF[a], r=rows.find(x=>x.a===a);
     const vs=SLOTS.map(([c,s])=>DATA[c][s][a]);
     const html=`<div class="t">${AXKO[a]} · ${se.ko} ${se.han} · ${se.lens}</div>`
-      +`<div class="r">중앙 ${MED[a]} · 최소 ${Math.min(...vs)} · 최대 ${Math.max(...vs)}</div>`;
+      +`<div class="r">제 연(${r.ch}장) ${r.o} · 딴 데 ${r.d} · 차 ${r.gap>0?'+':''}${r.gap} (문턱 15)</div>`
+      +`<div class="r">열 장 — 중앙 ${MED[a]} · 최소 ${Math.min(...vs)} · 최대 ${Math.max(...vs)} · 켜짐 ${r.hi}/${N} · 꺼짐 ${r.lo}/${N}</div>`;
     tr.addEventListener('mouseenter',e=>showTip(e,html));
     tr.addEventListener('mousemove',e=>showTip(e,html));
     tr.addEventListener('mouseleave',hideTip);});
