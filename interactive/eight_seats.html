@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뱀 비틀 나비 — 열 장이 한 몸이다</title>
+<meta name="description" content="투향 열 장을 목차로 읽지 않고 한 몸으로 본다. ∞ 하나에 여덟 자리가 앉고, 가운데 교차점을 두 번 지난다 — 그 두 번이 5장과 10장이다.">
+<meta property="og:title" content="뱀 비틀 나비 — 열 장이 한 몸이다">
+<meta property="og:description" content="네 자리는 빚을 쓰고, 네 자리는 갚고, 가운데 한 방에서 둘이 만난다. 점 반전은 무엇을 재는지는 그대로 두고 쓰나 갚나만 뒤집는다.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@300;400;600&display=swap">
+<style>
+:root{--bg:#0a0d14;--panel:#101521;--panel2:#141a29;--ink:#c8d0dd;--dim:#5a6a7a;
+ --faint:#39435a;--line:rgba(255,255,255,.08);--gold:#c5a55a;--y:#FFD53A;
+ --serif:"Noto Serif KR",'Apple SD Gothic Neo',Georgia,serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);
+ font-weight:300;line-height:1.7;padding:28px 16px 60px}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:inherit}
+.home{font-family:var(--mono);font-size:11.5px;color:var(--dim);text-decoration:none;
+ display:inline-block;margin-bottom:18px}
+.home:hover{color:var(--gold)}
+h1{font-size:clamp(25px,5vw,37px);font-weight:600;margin:0 0 6px;letter-spacing:-.02em}
+.sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);
+ text-transform:uppercase;margin-bottom:16px}
+.hook{font-size:clamp(16px,2.4vw,20px);max-width:40ch;line-height:1.65;margin:0 0 22px}
+.hook b{font-weight:600;color:#eef1f6}
+.quick{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--gold);
+ border-radius:4px;padding:14px 18px;margin:0 0 30px;font-size:14px}
+.quick ol{margin:0;padding-left:20px}
+.quick li{margin:5px 0;color:#aab4c4}
+.quick li b{color:#eef1f6;font-weight:600}
+h2{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;
+ color:var(--gold);font-weight:500;margin:40px 0 10px;padding-top:14px;
+ border-top:1px dashed rgba(197,165,90,.26)}
+h2 small{font-family:var(--serif);letter-spacing:0;text-transform:none;color:var(--dim);
+ font-size:12.5px;margin-left:10px}
+p.note{font-size:13.5px;color:#93a0b2;max-width:62ch;margin:0 0 14px}
+p.note b{color:#dce2ec;font-weight:600}
+
+/* 모드 단추 */
+.modes{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 12px}
+.modes button{font-family:var(--serif);font-size:13.5px;font-weight:400;cursor:pointer;
+ background:var(--panel);color:#9aa6b8;border:1px solid var(--line);border-radius:999px;
+ padding:7px 16px;transition:.16s}
+.modes button b{font-weight:600}
+.modes button:hover{background:var(--panel2);color:var(--ink)}
+.modes button[aria-pressed=true]{background:#1b2436;color:#f0f3f8;border-color:rgba(197,165,90,.5)}
+.modehint{font-size:13px;color:var(--dim);margin:0 0 10px;min-height:1.7em}
+.modehint b{color:#c8d0dd;font-weight:600}
+
+/* 그림 */
+.figbox{display:none}
+@media(min-width:780px){.figbox{display:block}}
+#fig{width:100%;height:auto;overflow:visible}
+.lobe{fill:none;stroke-width:1.4;stroke-linecap:round}
+.lobe-da{stroke:rgba(91,140,255,.30)}
+.lobe-se{stroke:rgba(255,98,82,.30)}
+#walk{fill:none;stroke:rgba(255,213,58,.0);stroke-width:2.2;stroke-linecap:round}
+body.m-snake #walk{stroke:rgba(255,213,58,.55)}
+body.m-snake .lobe{stroke-opacity:.14}
+.wing{fill:none;stroke-width:13;stroke-linecap:round;stroke-linejoin:round;
+ opacity:0;transition:opacity .5s,stroke .5s}
+body.m-fly .wing{opacity:1}
+.wing-n{stroke:rgba(126,140,168,.46)}
+.wing-j{stroke:rgba(197,165,90,.14)}
+body.m-fly.beat .wing-n{stroke:rgba(126,140,168,.13)}
+body.m-fly.beat .wing-j{stroke:rgba(197,165,90,.52)}
+body.m-fly .seat{transition:opacity .5s}
+body.m-fly .seat.sj{opacity:.38}
+body.m-fly.beat .seat.sj{opacity:1}
+body.m-fly.beat .seat.sn{opacity:.38}
+.pairline{stroke-width:1.9;stroke-dasharray:5 5;opacity:0;transition:opacity .4s}
+.mid{opacity:0;transition:opacity .4s}
+body.m-twist .pairline,body.m-twist .mid{opacity:.85}
+.hubring{fill:#0d1220;stroke:var(--y);stroke-width:1.6}
+.hubno{fill:var(--y);font-family:var(--mono);font-size:15px;text-anchor:middle;letter-spacing:.06em}
+.hubbadge rect{fill:rgba(255,213,58,.1);stroke:rgba(255,213,58,.4)}
+.hubbadge text{fill:#e8d9a0;font-size:12px;text-anchor:middle}
+.hubbadge:hover rect{fill:rgba(255,213,58,.22)}
+.node{fill:#0d1220;stroke-width:1.7;transition:.2s}
+.chno{fill:#e8edf5;font-family:var(--mono);font-size:22px;text-anchor:middle}
+.seatname{font-size:19px;font-weight:600;paint-order:stroke;stroke:#0a0d14;stroke-width:4px}
+.seatsub{fill:var(--dim);font-size:11.5px;paint-order:stroke;stroke:#0a0d14;stroke-width:3px}
+.chno{paint-order:stroke;stroke:#0d1220;stroke-width:3px}
+.arc{fill:none;stroke-width:4;stroke-linecap:round}
+.arc.rest{stroke:rgba(255,255,255,.08)}
+.arc.empty{stroke:rgba(255,255,255,.1);stroke-width:2.5;stroke-dasharray:2 4}
+.seat{cursor:pointer}
+.seat:hover .node,.seat:focus .node{fill:#192134;r:33}
+.seat:focus{outline:none}
+.seat:focus .seatname{text-decoration:underline}
+.seat.on .node{fill:#1d2740;stroke-width:3}
+.lobename{font-family:var(--mono);font-size:11.5px;text-anchor:middle;letter-spacing:.1em}
+.lobename.da{fill:#5B8CFF}.lobename.se{fill:#FF6252}
+#crawler{opacity:0}
+body.m-snake #crawler{opacity:1}
+
+/* 사다리 */
+.ladder{margin:6px 0 0}
+.lhead{display:grid;grid-template-columns:1fr 128px 1fr;gap:8px;font-family:var(--mono);
+ font-size:10px;letter-spacing:.12em;color:var(--dim);text-align:center;margin-bottom:8px}
+.lhead span:first-child{color:#5B8CFF;text-align:right}
+.lhead span:last-child{color:#FF6252;text-align:left}
+.lrow{display:grid;grid-template-columns:1fr 128px 1fr;gap:8px;align-items:stretch;margin-bottom:8px}
+.lcell{font-family:var(--serif);text-align:left;cursor:pointer;background:var(--panel);
+ border:1px solid var(--line);border-left:3px solid var(--c);border-radius:4px;
+ padding:10px 12px;color:var(--ink);display:grid;
+ grid-template-columns:auto auto 1fr;grid-template-rows:auto auto auto;
+ column-gap:7px;row-gap:2px;transition:.16s;min-width:0}
+.lcell:hover{background:var(--panel2)}
+.lcell.on{background:#1b2436;border-color:rgba(197,165,90,.45)}
+.lgori{display:none;grid-column:1/-1;font-family:var(--mono);font-size:9.5px;
+ letter-spacing:.1em;color:var(--c);opacity:.85;margin-bottom:1px}
+.lno{font-family:var(--mono);font-size:16px;color:#e8edf5}
+.lsym{font-size:14px}
+.lseat{font-size:17px;font-weight:600;color:var(--c);grid-column:3;grid-row:1}
+.lroom{grid-column:1/-1;font-size:11.5px;color:var(--dim)}
+.bars{grid-column:1/-1;display:flex;gap:3px;height:4px;margin-top:4px}
+.bars .b{background:var(--c);border-radius:2px;min-width:2px;display:block;height:4px}
+.bars .b.zero{background:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 2px,transparent 2px 5px);
+ width:33%!important;min-width:0}
+.lline{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+ text-align:center;padding:0 2px}
+.lline i{display:block;width:100%;height:2px;background:var(--c);opacity:.55;margin-bottom:4px}
+.lline em{font-style:normal;font-size:11px;color:#a9b4c5}
+.lline small{font-size:9.5px;color:var(--faint);line-height:1.3}
+.lhub{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:12px 0 16px;
+ padding-top:10px;border-top:1px dashed rgba(255,213,58,.3)}
+.lhub .lhubdot{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--y)}
+.lhubgos{display:flex;gap:6px;flex-wrap:wrap}
+.lhubgo{font-family:var(--serif);font-size:12.5px;cursor:pointer;color:#e8d9a0;
+ background:rgba(255,213,58,.08);border:1px solid rgba(255,213,58,.32);border-radius:999px;
+ padding:4px 12px;white-space:nowrap}
+.lhubgo:hover{background:rgba(255,213,58,.2)}
+.lhubgo.on{background:rgba(255,213,58,.26)}
+.lhub em{font-style:normal;color:var(--faint);font-size:11px}
+@media(max-width:620px){
+ .lhead,.lrow{grid-template-columns:1fr;gap:6px}
+ .lhead{display:none}
+ .lgori{display:block}
+ .lline{flex-direction:row;gap:8px;justify-content:flex-start;padding:2px 0 6px}
+ .lline i{width:16px;margin:0;flex:none}
+ .lhub .lhubdot,.lhub span:nth-child(2),.lhub em{text-align:left;border-top:0;padding-top:0}
+}
+
+/* 장 패널 */
+.panel{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--pc,var(--gold));
+ border-radius:5px;padding:18px 20px;margin:16px 0 0}
+.panel .ptop{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:4px}
+.panel .pno{font-family:var(--mono);font-size:13px;color:var(--dim)}
+.panel .pname{font-size:21px;font-weight:600}
+.panel .pseat{font-size:15px;color:var(--pc,var(--gold));font-weight:600}
+.panel .ptags{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--faint);
+ margin-bottom:12px}
+.panel .pline{font-size:16px;line-height:1.75;color:#e4e9f1;margin:0 0 10px;max-width:56ch}
+.panel .popen{font-size:13.5px;color:#8e9bad;line-height:1.75;margin:0 0 12px;max-width:62ch;
+ border-left:1px solid var(--line);padding-left:12px}
+.panel .pparts{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin-bottom:12px}
+.panel .pparts b{font-family:var(--mono);color:#cdd5e2;font-weight:400}
+.panel .pparts .z{color:#6b4f52}
+.panel .pgo{display:inline-block;font-size:13px;text-decoration:none;padding:7px 15px;
+ border:1px solid rgba(197,165,90,.45);border-radius:999px;color:#e8d9a0}
+.panel .pgo:hover{background:rgba(197,165,90,.12)}
+
+/* 짝 표 · 실측 표 */
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+.pairs td{padding:8px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+.pairs .tw{white-space:normal}
+.pairs .pc{width:4px;background:var(--c);padding:0}
+.pairs .ar{color:var(--faint);text-align:center;width:28px}
+.pairs .tw{color:#96a2b4;font-size:12.5px}
+.pairs .tw b{color:#e4e9f1;font-weight:600}
+.led{font-family:var(--mono);font-size:12.5px;max-width:560px}
+.led th{text-align:right;font-weight:400;color:var(--dim);font-size:10px;letter-spacing:.1em;
+ padding:0 8px 7px;border-bottom:1px solid var(--line)}
+.led th:first-child,.led th:nth-child(2){text-align:left}
+.led td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.04)}
+.led td.c{color:#cdd5e2}
+.led td.s{font-family:var(--serif);color:var(--dim)}
+.led td.n,.led td.n0{text-align:right}
+.led td.n0{color:#6b4f52;background:rgba(255,98,82,.06)}
+.led tr.sum td{border-bottom:0;border-top:1px solid var(--line);color:var(--gold)}
+.punch{background:rgba(255,98,82,.07);border:1px solid rgba(255,98,82,.22);border-radius:5px;
+ padding:14px 18px;margin:16px 0 0;font-size:14px;color:#dbc5c2;max-width:66ch}
+.punch b{color:#ffd9d2;font-weight:600}
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;
+ color:var(--faint);line-height:1.85}
+footer code{font-family:var(--mono);font-size:11px;color:var(--dim)}
+footer a{color:var(--dim)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head><body>
+<div class="wrap">
+<a class="home" href="../">← 투향</a>
+<div class="sub">뱀 · 비틀 · 나비</div>
+<h1>열 장이 한 몸이다</h1>
+<p class="hook">목차는 열 줄이지만 몸은 하나다. <b>네 자리가 빚을 쓰고, 네 자리가 갚고,
+가운데 한 방에서 둘이 만난다.</b> 그 방을 두 번 지난다 — 5장과 10장이다.</p>
+
+<div class="quick">
+<ol>
+<li><b>여덟 자리</b> — 욕망·상상·설득·폭파가 빚을 쓰고(1~4장), 고통·지식·손익·기준이 갚는다(6~9장).</li>
+<li><b>가운데는 한 점이고 두 번 밟는다</b> — 5장에서 돌아서고 10장에서 닫는다.
+    10장 첫 줄이 그 말을 한다 — <i>「빚을 쓴 방과 빚을 갚는 방은 같은 방이다.」</i></li>
+<li><b>지금 18칸이 차고 6칸이 비었다</b> — 아래 실측. 빈칸은 비워 둔다.</li>
+</ol>
+</div>
+
+<h2>한 몸 보기 <small>단추 셋이 같은 여덟을 세 가지로 가른다</small></h2>
+<div class="modes">
+<button data-mode="snake" aria-pressed="true"><b>뱀</b> 한 몸</button>
+<button data-mode="twist" aria-pressed="false"><b>비틀</b> 점 반전</button>
+<button data-mode="fly" aria-pressed="false"><b>나비</b> 두 날개</button>
+</div>
+<p class="modehint" id="modehint"></p>
+
+<div class="figbox"><svg id="fig" viewBox="0 0 1000 720" role="img" aria-label="여덟 자리가 앉은 ∞ 하나. 가운데 교차점이 101호이고 두 번 지난다.">
+<g id="wings">
+<polyline class="wing wing-n" points="226.6,148.4 383.0,207.0 500.0,360.0 617.0,513.0 773.4,571.6" />
+<polyline class="wing wing-j" points="226.6,571.6 383.0,513.0 500.0,360.0 617.0,207.0 773.4,148.4" />
+</g>
+<path class="lobe lobe-da" d="M 500.00 360.00 L 494.76 352.04 L 489.52 344.09 L 484.26 336.15 L 478.98 328.22 L 473.67 320.32 L 468.33 312.45 L 462.94 304.61 L 457.50 296.81 L 452.00 289.06 L 446.44 281.37 L 440.81 273.74 L 435.10 266.18 L 429.30 258.70 L 423.41 251.31 L 417.42 244.03 L 411.32 236.86 L 405.10 229.81 L 398.77 222.90 L 392.31 216.15 L 385.71 209.56 L 378.98 203.16 L 372.10 196.96 L 365.08 190.98 L 357.89 185.25 L 350.56 179.79 L 343.06 174.61 L 335.40 169.75 L 327.57 165.23 L 319.59 161.08 L 311.44 157.33 L 303.13 154.02 L 294.67 151.17 L 286.07 148.82 L 277.33 147.00 L 268.46 145.76 L 259.49 145.12 L 250.42 145.13 L 241.28 145.82 L 232.09 147.22 L 222.87 149.38 L 213.67 152.33 L 204.50 156.09 L 195.42 160.69 L 186.45 166.15 L 177.65 172.50 L 169.07 179.74 L 160.75 187.87 L 152.74 196.89 L 145.10 206.79 L 137.89 217.54 L 131.15 229.12 L 124.95 241.48 L 119.34 254.56 L 114.36 268.30 L 110.07 282.64 L 106.49 297.48 L 103.67 312.73 L 101.64 328.31 L 100.41 344.10 L 100.00 360.00 L 100.41 375.90 L 101.64 391.69 L 103.67 407.27 L 106.49 422.52 L 110.07 437.36 L 114.36 451.70 L 119.34 465.44 L 124.95 478.52 L 131.15 490.88 L 137.89 502.46 L 145.10 513.21 L 152.74 523.11 L 160.75 532.13 L 169.07 540.26 L 177.65 547.50 L 186.45 553.85 L 195.42 559.31 L 204.50 563.91 L 213.67 567.67 L 222.87 570.62 L 232.09 572.78 L 241.28 574.18 L 250.42 574.87 L 259.49 574.88 L 268.46 574.24 L 277.33 573.00 L 286.07 571.18 L 294.67 568.83 L 303.13 565.98 L 311.44 562.67 L 319.59 558.92 L 327.57 554.77 L 335.40 550.25 L 343.06 545.39 L 350.56 540.21 L 357.89 534.75 L 365.08 529.02 L 372.10 523.04 L 378.98 516.84 L 385.71 510.44 L 392.31 503.85 L 398.77 497.10 L 405.10 490.19 L 411.32 483.14 L 417.42 475.97 L 423.41 468.69 L 429.30 461.30 L 435.10 453.82 L 440.81 446.26 L 446.44 438.63 L 452.00 430.94 L 457.50 423.19 L 462.94 415.39 L 468.33 407.55 L 473.67 399.68 L 478.98 391.78 L 484.26 383.85 L 489.52 375.91 L 494.76 367.96 L 500.00 360.00" />
+<path class="lobe lobe-se" d="M 500.00 360.00 L 505.24 352.04 L 510.48 344.09 L 515.74 336.15 L 521.02 328.22 L 526.33 320.32 L 531.67 312.45 L 537.06 304.61 L 542.50 296.81 L 548.00 289.06 L 553.56 281.37 L 559.19 273.74 L 564.90 266.18 L 570.70 258.70 L 576.59 251.31 L 582.58 244.03 L 588.68 236.86 L 594.90 229.81 L 601.23 222.90 L 607.69 216.15 L 614.29 209.56 L 621.02 203.16 L 627.90 196.96 L 634.92 190.98 L 642.11 185.25 L 649.44 179.79 L 656.94 174.61 L 664.60 169.75 L 672.43 165.23 L 680.41 161.08 L 688.56 157.33 L 696.87 154.02 L 705.33 151.17 L 713.93 148.82 L 722.67 147.00 L 731.54 145.76 L 740.51 145.12 L 749.58 145.13 L 758.72 145.82 L 767.91 147.22 L 777.13 149.38 L 786.33 152.33 L 795.50 156.09 L 804.58 160.69 L 813.55 166.15 L 822.35 172.50 L 830.93 179.74 L 839.25 187.87 L 847.26 196.89 L 854.90 206.79 L 862.11 217.54 L 868.85 229.12 L 875.05 241.48 L 880.66 254.56 L 885.64 268.30 L 889.93 282.64 L 893.51 297.48 L 896.33 312.73 L 898.36 328.31 L 899.59 344.10 L 900.00 360.00 L 899.59 375.90 L 898.36 391.69 L 896.33 407.27 L 893.51 422.52 L 889.93 437.36 L 885.64 451.70 L 880.66 465.44 L 875.05 478.52 L 868.85 490.88 L 862.11 502.46 L 854.90 513.21 L 847.26 523.11 L 839.25 532.13 L 830.93 540.26 L 822.35 547.50 L 813.55 553.85 L 804.58 559.31 L 795.50 563.91 L 786.33 567.67 L 777.13 570.62 L 767.91 572.78 L 758.72 574.18 L 749.58 574.87 L 740.51 574.88 L 731.54 574.24 L 722.67 573.00 L 713.93 571.18 L 705.33 568.83 L 696.87 565.98 L 688.56 562.67 L 680.41 558.92 L 672.43 554.77 L 664.60 550.25 L 656.94 545.39 L 649.44 540.21 L 642.11 534.75 L 634.92 529.02 L 627.90 523.04 L 621.02 516.84 L 614.29 510.44 L 607.69 503.85 L 601.23 497.10 L 594.90 490.19 L 588.68 483.14 L 582.58 475.97 L 576.59 468.69 L 570.70 461.30 L 564.90 453.82 L 559.19 446.26 L 553.56 438.63 L 548.00 430.94 L 542.50 423.19 L 537.06 415.39 L 531.67 407.55 L 526.33 399.68 L 521.02 391.78 L 515.74 383.85 L 510.48 375.91 L 505.24 367.96 L 500.00 360.00" />
+<path id="walk" d="M 500.00 360.00 L 489.52 344.09 L 478.98 328.22 L 468.33 312.45 L 457.50 296.81 L 446.44 281.37 L 435.10 266.18 L 423.41 251.31 L 411.32 236.86 L 398.77 222.90 L 385.71 209.56 L 372.10 196.96 L 357.89 185.25 L 343.06 174.61 L 327.57 165.23 L 311.44 157.33 L 294.67 151.17 L 277.33 147.00 L 259.49 145.12 L 241.28 145.82 L 222.87 149.38 L 204.50 156.09 L 186.45 166.15 L 169.07 179.74 L 152.74 196.89 L 137.89 217.54 L 124.95 241.48 L 114.36 268.30 L 106.49 297.48 L 101.64 328.31 L 100.00 360.00 L 101.64 391.69 L 106.49 422.52 L 114.36 451.70 L 124.95 478.52 L 137.89 502.46 L 152.74 523.11 L 169.07 540.26 L 186.45 553.85 L 204.50 563.91 L 222.87 570.62 L 241.28 574.18 L 259.49 574.88 L 277.33 573.00 L 294.67 568.83 L 311.44 562.67 L 327.57 554.77 L 343.06 545.39 L 357.89 534.75 L 372.10 523.04 L 385.71 510.44 L 398.77 497.10 L 411.32 483.14 L 423.41 468.69 L 435.10 453.82 L 446.44 438.63 L 457.50 423.19 L 468.33 407.55 L 478.98 391.78 L 489.52 375.91 L 500.00 360.00 L 510.48 344.09 L 521.02 328.22 L 531.67 312.45 L 542.50 296.81 L 553.56 281.37 L 564.90 266.18 L 576.59 251.31 L 588.68 236.86 L 601.23 222.90 L 614.29 209.56 L 627.90 196.96 L 642.11 185.25 L 656.94 174.61 L 672.43 165.23 L 688.56 157.33 L 705.33 151.17 L 722.67 147.00 L 740.51 145.12 L 758.72 145.82 L 777.13 149.38 L 795.50 156.09 L 813.55 166.15 L 830.93 179.74 L 847.26 196.89 L 862.11 217.54 L 875.05 241.48 L 885.64 268.30 L 893.51 297.48 L 898.36 328.31 L 900.00 360.00 L 898.36 391.69 L 893.51 422.52 L 885.64 451.70 L 875.05 478.52 L 862.11 502.46 L 847.26 523.11 L 830.93 540.26 L 813.55 553.85 L 795.50 563.91 L 777.13 570.62 L 758.72 574.18 L 740.51 574.88 L 722.67 573.00 L 705.33 568.83 L 688.56 562.67 L 672.43 554.77 L 656.94 545.39 L 642.11 534.75 L 627.90 523.04 L 614.29 510.44 L 601.23 497.10 L 588.68 483.14 L 576.59 468.69 L 564.90 453.82 L 553.56 438.63 L 542.50 423.19 L 531.67 407.55 L 521.02 391.78 L 510.48 375.91 L 500.00 360.00" />
+<g id="pairs">
+<line class="pairline p1" x1="383.0" y1="207.0" x2="617.0" y2="513.0" stroke="#5B8CFF" />
+<circle class="mid" cx="500.0" cy="360.0" r="4" fill="#5B8CFF" />
+<line class="pairline p2" x1="226.6" y1="148.4" x2="773.4" y2="571.6" stroke="#A277E8" />
+<circle class="mid" cx="500.0" cy="360.0" r="4" fill="#A277E8" />
+<line class="pairline p3" x1="226.6" y1="571.6" x2="773.4" y2="148.4" stroke="#FF6252" />
+<circle class="mid" cx="500.0" cy="360.0" r="4" fill="#FF6252" />
+<line class="pairline p4" x1="383.0" y1="513.0" x2="617.0" y2="207.0" stroke="#35C46A" />
+<circle class="mid" cx="500.0" cy="360.0" r="4" fill="#35C46A" />
+</g>
+<g id="hub">
+<circle class="hubring" cx="500" cy="360" r="40" />
+<text class="hubno" x="500" y="366">101</text>
+<g class="seat hubbadge" data-ch="5" tabindex="0" role="button" aria-label="5장 101₂호"><rect x="426" y="455" width="148" height="26" rx="13" /><text x="500" y="472">5장 101₂호 · 여기서 돌아선다</text></g>
+<g class="seat hubbadge" data-ch="10" tabindex="0" role="button" aria-label="10장 101₃호"><rect x="426" y="245" width="148" height="26" rx="13" /><text x="500" y="262">10장 101₃호 · 여기서 닫는다</text></g>
+</g>
+<g class="seat sn" data-ch="1" tabindex="0" role="button" aria-label="1장 거울새장 — 욕망">
+<path class="arc" stroke="#5B8CFF" d="M 387.01 169.18 A 38 38 0 0 1 413.47 184.21" />
+<path class="arc rest" d="M 413.47 184.21 A 38 38 0 0 1 417.75 222.43" />
+<path class="arc" stroke="#5B8CFF" d="M 413.78 229.31 A 38 38 0 0 1 404.71 238.19" />
+<path class="arc rest" d="M 404.71 238.19 A 38 38 0 0 1 352.30 229.31" />
+<path class="arc" stroke="#5B8CFF" d="M 348.32 222.43 A 38 38 0 0 1 346.35 197.07" />
+<path class="arc rest" d="M 346.35 197.07 A 38 38 0 0 1 379.07 169.18" />
+<circle class="node" cx="383.0" cy="207.0" r="30" stroke="#5B8CFF" />
+<text class="chno" x="383.0" y="215.0">1</text>
+<text class="seatname" x="383.0" y="135.0" text-anchor="middle" fill="#5B8CFF">🪞 욕망</text>
+<text class="seatsub" x="383.0" y="152.0" text-anchor="middle">거울새장 · 욕망해</text>
+</g>
+<g class="seat sn" data-ch="2" tabindex="0" role="button" aria-label="2장 망원경새장 — 상상">
+<path class="arc" stroke="#A277E8" d="M 230.53 110.63 A 38 38 0 0 1 262.69 160.19" />
+<path class="arc empty" d="M 257.30 170.76 A 38 38 0 0 1 195.82 170.76" />
+<path class="arc empty" d="M 191.84 163.88 A 38 38 0 0 1 222.59 110.63" />
+<circle class="node" cx="226.6" cy="148.4" r="30" stroke="#A277E8" />
+<text class="chno" x="226.6" y="156.4">2</text>
+<text class="seatname" x="178.6" y="145.4" text-anchor="end" fill="#A277E8">🔭 상상</text>
+<text class="seatsub" x="178.6" y="164.4" text-anchor="end">망원경새장 · 상상해</text>
+</g>
+<g class="seat sj" data-ch="3" tabindex="0" role="button" aria-label="3장 스테인굴레스새장 — 설득">
+<path class="arc" stroke="#FF6252" d="M 230.53 533.78 A 38 38 0 0 1 263.55 580.26" />
+<path class="arc rest" d="M 263.55 580.26 A 38 38 0 0 1 261.27 587.03" />
+<path class="arc empty" d="M 257.30 593.91 A 38 38 0 0 1 195.82 593.91" />
+<path class="arc empty" d="M 191.84 587.03 A 38 38 0 0 1 222.59 533.78" />
+<circle class="node" cx="226.6" cy="571.6" r="30" stroke="#FF6252" />
+<text class="chno" x="226.6" y="579.6">3</text>
+<text class="seatname" x="178.6" y="568.6" text-anchor="end" fill="#FF6252">💒 설득</text>
+<text class="seatsub" x="178.6" y="587.6" text-anchor="end">스테인굴레스새장 · 설득해</text>
+</g>
+<g class="seat sj" data-ch="4" tabindex="0" role="button" aria-label="4장 시계새장 — 폭파">
+<path class="arc" stroke="#35C46A" d="M 387.01 475.23 A 38 38 0 0 1 417.75 528.48" />
+<path class="arc empty" d="M 413.78 535.36 A 38 38 0 0 1 352.30 535.36" />
+<path class="arc empty" d="M 348.32 528.48 A 38 38 0 0 1 379.07 475.23" />
+<circle class="node" cx="383.0" cy="513.0" r="30" stroke="#35C46A" />
+<text class="chno" x="383.0" y="521.0">4</text>
+<text class="seatname" x="383.0" y="581.0" text-anchor="middle" fill="#35C46A">⏱️ 폭파</text>
+<text class="seatsub" x="383.0" y="598.0" text-anchor="middle">시계새장 · 폭파해</text>
+</g>
+<g class="seat sn" data-ch="6" tabindex="0" role="button" aria-label="6장 나비 — 고통">
+<path class="arc" stroke="#5B8CFF" d="M 620.93 475.23 A 38 38 0 0 1 653.83 503.82" />
+<path class="arc rest" d="M 653.83 503.82 A 38 38 0 0 1 651.68 528.48" />
+<path class="arc" stroke="#5B8CFF" d="M 647.70 535.36 A 38 38 0 0 1 586.22 535.36" />
+<path class="arc" stroke="#5B8CFF" d="M 582.25 528.48 A 38 38 0 0 1 612.99 475.23" />
+<circle class="node" cx="617.0" cy="513.0" r="30" stroke="#5B8CFF" />
+<text class="chno" x="617.0" y="521.0">6</text>
+<text class="seatname" x="617.0" y="581.0" text-anchor="middle" fill="#5B8CFF">🦋 고통</text>
+<text class="seatsub" x="617.0" y="598.0" text-anchor="middle">나비 · 원함</text>
+</g>
+<g class="seat sn" data-ch="7" tabindex="0" role="button" aria-label="7장 튤립 — 지식">
+<path class="arc" stroke="#A277E8" d="M 777.41 533.78 A 38 38 0 0 1 809.00 558.17" />
+<path class="arc rest" d="M 809.00 558.17 A 38 38 0 0 1 808.16 587.03" />
+<path class="arc" stroke="#A277E8" d="M 804.18 593.91 A 38 38 0 0 1 783.08 608.33" />
+<path class="arc rest" d="M 783.08 608.33 A 38 38 0 0 1 742.70 593.91" />
+<path class="arc" stroke="#A277E8" d="M 738.73 587.03 A 38 38 0 0 1 759.05 536.40" />
+<path class="arc rest" d="M 759.05 536.40 A 38 38 0 0 1 769.47 533.78" />
+<circle class="node" cx="773.4" cy="571.6" r="30" stroke="#A277E8" />
+<text class="chno" x="773.4" y="579.6">7</text>
+<text class="seatname" x="821.4" y="568.6" text-anchor="start" fill="#A277E8">🌷 지식</text>
+<text class="seatsub" x="821.4" y="587.6" text-anchor="start">튤립 · 됨</text>
+</g>
+<g class="seat sj" data-ch="8" tabindex="0" role="button" aria-label="8장 안개 — 손익">
+<path class="arc" stroke="#FF6252" d="M 777.41 110.63 A 38 38 0 0 1 806.70 130.05" />
+<path class="arc rest" d="M 806.70 130.05 A 38 38 0 0 1 808.16 163.88" />
+<path class="arc" stroke="#FF6252" d="M 804.18 170.76 A 38 38 0 0 1 761.69 184.56" />
+<path class="arc rest" d="M 761.69 184.56 A 38 38 0 0 1 742.70 170.76" />
+<path class="arc" stroke="#FF6252" d="M 738.73 163.88 A 38 38 0 0 1 759.45 113.10" />
+<path class="arc rest" d="M 759.45 113.10 A 38 38 0 0 1 769.47 110.63" />
+<circle class="node" cx="773.4" cy="148.4" r="30" stroke="#FF6252" />
+<text class="chno" x="773.4" y="156.4">8</text>
+<text class="seatname" x="821.4" y="145.4" text-anchor="start" fill="#FF6252">🌫️ 손익</text>
+<text class="seatsub" x="821.4" y="164.4" text-anchor="start">안개 · 버팀</text>
+</g>
+<g class="seat sj" data-ch="9" tabindex="0" role="button" aria-label="9장 까마귀 — 기준">
+<path class="arc" stroke="#35C46A" d="M 620.93 169.18 A 38 38 0 0 1 651.37 190.85" />
+<path class="arc rest" d="M 651.37 190.85 A 38 38 0 0 1 651.68 222.43" />
+<path class="arc" stroke="#35C46A" d="M 647.70 229.31 A 38 38 0 0 1 627.32 243.54" />
+<path class="arc rest" d="M 627.32 243.54 A 38 38 0 0 1 586.22 229.31" />
+<path class="arc" stroke="#35C46A" d="M 582.25 222.43 A 38 38 0 0 1 607.60 170.15" />
+<path class="arc rest" d="M 607.60 170.15 A 38 38 0 0 1 612.99 169.18" />
+<circle class="node" cx="617.0" cy="207.0" r="30" stroke="#35C46A" />
+<text class="chno" x="617.0" y="215.0">9</text>
+<text class="seatname" x="617.0" y="135.0" text-anchor="middle" fill="#35C46A">🐦‍⬛ 기준</text>
+<text class="seatsub" x="617.0" y="152.0" text-anchor="middle">까마귀 · 함</text>
+</g>
+<circle id="crawler" r="7" fill="#FFD53A" />
+<text class="lobename da" x="190" y="694">다 · 빚을 쓴다 · 1~4장</text>
+<text class="lobename se" x="810" y="694">세 · 빚을 갚는다 · 6~9장</text>
+</svg></div>
+
+<div class="ladder">
+<div class="lhead"><span>다 · 빚을 쓴다</span><span class="lmid">짝</span><span>세 · 빚을 갚는다</span></div>
+<div class="lrow" style="--c:#5B8CFF">
+<button class="lcell" data-ch="1"><span class="lgori">다 · 빚을 쓴다</span><span class="lno">1</span><span class="lsym">🪞</span><span class="lseat">욕망</span><span class="lroom">거울새장 · 욕망해</span><span class="bars"><i class="b" style="width:44%" title="경험 1834자"></i><i class="b" style="width:9%" title="지식 359자"></i><i class="b" style="width:13%" title="사례 544자"></i></span></button>
+<span class="lline"><i></i><em>못 잰다</em><small>합의할 단위가 없다</small></span>
+<button class="lcell" data-ch="6"><span class="lgori">세 · 빚을 갚는다</span><span class="lno">6</span><span class="lsym">🦋</span><span class="lseat">고통</span><span class="lroom">나비 · 원함</span><span class="bars"><i class="b" style="width:65%" title="경험 2719자"></i><i class="b" style="width:48%" title="지식 2017자"></i><i class="b" style="width:36%" title="사례 1502자"></i></span></button>
+</div>
+<div class="lrow" style="--c:#A277E8">
+<button class="lcell" data-ch="2"><span class="lgori">다 · 빚을 쓴다</span><span class="lno">2</span><span class="lsym">🔭</span><span class="lseat">상상</span><span class="lroom">망원경새장 · 상상해</span><span class="bars"><i class="b" style="width:94%" title="경험 3964자"></i><i class="b zero" style="width:0%" title="지식 0자"></i><i class="b zero" style="width:0%" title="사례 0자"></i></span></button>
+<span class="lline"><i></i><em>못 잰다</em><small>합의할 단위가 없다</small></span>
+<button class="lcell" data-ch="7"><span class="lgori">세 · 빚을 갚는다</span><span class="lno">7</span><span class="lsym">🌷</span><span class="lseat">지식</span><span class="lroom">튤립 · 됨</span><span class="bars"><i class="b" style="width:59%" title="경험 2461자"></i><i class="b" style="width:17%" title="지식 734자"></i><i class="b" style="width:30%" title="사례 1276자"></i></span></button>
+</div>
+<div class="lhub"><span class="lhubdot">101 · 가운데 한 방</span><span class="lhubgos"><button class="lhubgo" data-ch="5">5장 🐀 101₂호</button><button class="lhubgo" data-ch="10">10장 🧫 101₃호</button></span><em>같은 점을 두 번 지난다 — 5장에서 돌아서고 10장에서 닫는다</em></div>
+<div class="lrow" style="--c:#FF6252">
+<button class="lcell" data-ch="3"><span class="lgori">다 · 빚을 쓴다</span><span class="lno">3</span><span class="lsym">💒</span><span class="lseat">설득</span><span class="lroom">스테인굴레스새장 · 설득해</span><span class="bars"><i class="b" style="width:90%" title="경험 3777자"></i><i class="b zero" style="width:0%" title="지식 0자"></i><i class="b zero" style="width:0%" title="사례 0자"></i></span></button>
+<span class="lline"><i></i><em>잰다</em><small>$ · 시간 · 확률</small></span>
+<button class="lcell" data-ch="8"><span class="lgori">세 · 빚을 갚는다</span><span class="lno">8</span><span class="lsym">🌫️</span><span class="lseat">손익</span><span class="lroom">안개 · 버팀</span><span class="bars"><i class="b" style="width:51%" title="경험 2140자"></i><i class="b" style="width:32%" title="지식 1345자"></i><i class="b" style="width:31%" title="사례 1285자"></i></span></button>
+</div>
+<div class="lrow" style="--c:#35C46A">
+<button class="lcell" data-ch="4"><span class="lgori">다 · 빚을 쓴다</span><span class="lno">4</span><span class="lsym">⏱️</span><span class="lseat">폭파</span><span class="lroom">시계새장 · 폭파해</span><span class="bars"><i class="b" style="width:100%" title="경험 4196자"></i><i class="b zero" style="width:0%" title="지식 0자"></i><i class="b zero" style="width:0%" title="사례 0자"></i></span></button>
+<span class="lline"><i></i><em>잰다</em><small>$ · 시간 · 확률</small></span>
+<button class="lcell" data-ch="9"><span class="lgori">세 · 빚을 갚는다</span><span class="lno">9</span><span class="lsym">🐦‍⬛</span><span class="lseat">기준</span><span class="lroom">까마귀 · 함</span><span class="bars"><i class="b" style="width:55%" title="경험 2288자"></i><i class="b" style="width:17%" title="지식 713자"></i><i class="b" style="width:33%" title="사례 1387자"></i></span></button>
+</div>
+</div>
+
+<div class="panel" id="panel"></div>
+<p class="note" style="margin-top:12px">자리를 누르면 그 장이 열린다. ← → 로도 넘어간다.
+막대 셋은 <b>§1 경험 · §2 지식 · §3 사례</b>의 실제 분량이고, 점선은 <b>빈칸</b>이다.</p>
+
+<h2>비틀 — 네 짝이 한 점을 지난다 <small>중점 어긋남 0.00px</small></h2>
+<p class="note">짝은 <b>중심을 지나 뒤집은 것</b>이지 돌린 것이 아니다. 네 짝의 중점을 재면
+모두 가운데 한 점이고, 어긋남이 <b>0.00px</b>다 — 작도로 그렇게 두었으므로 0이다.
+여기서 한 줄이 나온다: <b>뒤집으면 무엇을 재는지(대각)는 그대로고, 쓰는지 갚는지(좌우)만 바뀐다.</b></p>
+<table class="pairs"><tbody><tr style="--c:#5B8CFF"><td class="pc"></td><td>1 🪞 욕망</td><td class="ar">↔</td><td>6 🦋 고통</td><td class="tw">모르고 입기 → <b>알면서</b> 입기</td></tr><tr style="--c:#A277E8"><td class="pc"></td><td>2 🔭 상상</td><td class="ar">↔</td><td>7 🌷 지식</td><td class="tw">정확히 보되 안 뛴다 → <b>한 알을 손바닥에</b></td></tr><tr style="--c:#FF6252"><td class="pc"></td><td>3 💒 설득</td><td class="ar">↔</td><td>8 🌫️ 손익</td><td class="tw">아름다운데 바깥이 안 보인다 → <b>되물음이 보호다</b></td></tr><tr style="--c:#35C46A"><td class="pc"></td><td>4 ⏱️ 폭파</td><td class="ar">↔</td><td>9 🐦‍⬛ 기준</td><td class="tw">빌린 질서가 잘 돌수록 → <b>던지면</b> 해·달·별</td></tr></tbody></table>
+
+<h2>나비 — 왜 넷만 잴 수 있나</h2>
+<p class="note">욕망·상상·고통·지식은 <b>남과 합의할 단위가 없다.</b> 설득·폭파·손익·기준은 있다 —
+손익은 <b>$</b>, 기준은 <b>시간과 확률</b>. 단위가 있으면 둘이 같은 자 위에 서고, 그때 순환이 생긴다.
+못 재는 넷이 수축해야 재는 넷이 박동하고, 박동한 것의 잔재가 다시 못 재는 넷의 먹이가 된다.
+<b>수축이 다음 박동을 가능케 한다</b> — 심장이 그렇다.</p>
+
+<h2>지금 어디가 비었나 <small>원고 실측 · 2026-10-11</small></h2>
+<p class="note">여덟 장 × 세 파트 = <b>24칸</b>. 찬 칸 <b>18</b>, 빈 칸 <b>6</b>.
+글자수는 본문만 센 것이다(인용줄·표·머리 제외).</p>
+<table class="led"><thead><tr><th>장</th><th>자리</th><th>§1 경험</th><th>§2 지식</th><th>§3 사례</th></tr></thead><tbody>
+<tr><td class="c">1 🪞</td><td class="s">욕망</td><td class="n">1,834</td><td class="n">359</td><td class="n">544</td></tr>
+<tr><td class="c">2 🔭</td><td class="s">상상</td><td class="n">3,964</td><td class="n0">—</td><td class="n0">—</td></tr>
+<tr><td class="c">3 💒</td><td class="s">설득</td><td class="n">3,777</td><td class="n0">—</td><td class="n0">—</td></tr>
+<tr><td class="c">4 ⏱️</td><td class="s">폭파</td><td class="n">4,196</td><td class="n0">—</td><td class="n0">—</td></tr>
+<tr><td class="c">6 🦋</td><td class="s">고통</td><td class="n">2,719</td><td class="n">2,017</td><td class="n">1,502</td></tr>
+<tr><td class="c">7 🌷</td><td class="s">지식</td><td class="n">2,461</td><td class="n">734</td><td class="n">1,276</td></tr>
+<tr><td class="c">8 🌫️</td><td class="s">손익</td><td class="n">2,140</td><td class="n">1,345</td><td class="n">1,285</td></tr>
+<tr><td class="c">9 🐦‍⬛</td><td class="s">기준</td><td class="n">2,288</td><td class="n">713</td><td class="n">1,387</td></tr>
+<tr class="sum"><td class="c">합</td><td class="s"></td><td class="n">23,379</td><td class="n">5,168</td><td class="n">5,994</td></tr>
+</tbody></table>
+<div class="punch">
+빈 여섯 칸은 전부 <b>2·3·4장의 §2 지식과 §3 사례</b>다 — <b>새장 쪽 셋은 겪은 것만 있다.</b>
+둥지 넷은 셋이 다 있다. 채워 넣지 않고 비워 둔 이유는 원고에 적혀 있다 —
+<b>기대를 실제인 척 적지 않는다.</b> 5·10장은 세 파트를 아예 안 쓴다(이음새, 장면 하나) —
+구멍이 아니라 설계다.
+</div>
+
+<h2>들어가는 문</h2>
+<p class="note"><a href="reader.html?file=ch0_prologue">원고 읽기</a> ·
+<a href="reference_graph.html">원고 지도</a> ·
+<a href="index.html">인터랙티브 전부</a></p>
+
+<footer>
+<b>생성기</b> <code>.claude/gen_eight_seats.py</code> — 이 판은 손으로 고치면 다음 sync 에 덮인다.<br>
+여덟 자리의 이름과 두 고리는 <code>.claude/tuhyang_snake_butterfly.py</code> 의 2026-10-01 이치,
+짝 넷은 「뱀 비틀 나비」 연습장 p11·p13, 못 잼/잼 가름은 같은 글 p18 에서 왔다.
+숫자는 원고 파일을 그때그때 다시 세므로 <b>원고가 바뀌면 이 판도 바뀐다.</b>
+</footer>
+</div>
+<script>
+const D = {"1": {"no": 1, "sym": "🪞", "room": "거울새장", "seat": "욕망", "unit": "bit", "verb": "욕망해", "gori": "다 · 빚을 쓴다", "gorisub": "체순환 · 앞서 달린다", "jam": "못 잰다", "jamsub": "합의할 단위가 없다", "pair": 6, "line": "<b>모방</b> 남이 꿈꾼 파리를 꿈꾼다 → <b>위안</b> 이건 진짜 내가 원한 거야 → <b>붕괴</b> 청구서가 쌓인다", "triad": "<b>모방</b> 남이 꿈꾼 파리를 꿈꾼다 → <b>위안</b> 이건 진짜 내가 원한 거야 → <b>붕괴</b> 청구서가 쌓인다", "opener": "가장 나다운 욕망일수록, 가장 남의 것이다.", "parts": {"경험": 1834, "지식": 359, "사례": 544}, "web": "ch1_mirror_cage"}, "2": {"no": 2, "sym": "🔭", "room": "망원경새장", "seat": "상상", "unit": "atom", "verb": "상상해", "gori": "다 · 빚을 쓴다", "gorisub": "체순환 · 앞서 달린다", "jam": "못 잰다", "jamsub": "합의할 단위가 없다", "pair": 7, "line": "<b>모방</b> 아버지들의 시선을 물려받는다 → <b>위안</b> 다 보이니 움직일 필요 없다 → <b>붕괴</b> 가리발디가 상륙한다", "triad": "<b>모방</b> 아버지들의 시선을 물려받는다 → <b>위안</b> 다 보이니 움직일 필요 없다 → <b>붕괴</b> 가리발디가 상륙한다", "opener": "", "parts": {"경험": 3964, "지식": 0, "사례": 0}, "web": "ch2_telescope_cage"}, "3": {"no": 3, "sym": "💒", "room": "스테인굴레스새장", "seat": "설득", "unit": "cell", "verb": "설득해", "gori": "다 · 빚을 쓴다", "gorisub": "체순환 · 앞서 달린다", "jam": "잰다", "jamsub": "$ · 시간 · 확률", "pair": 8, "line": "<b>모방</b> 배운 교리로 역병을 읽는다 → <b>위안</b> 역병은 신의 벌이다 → <b>붕괴</b> 아이가 죽는다", "triad": "<b>모방</b> 배운 교리로 역병을 읽는다 → <b>위안</b> 역병은 신의 벌이다 → <b>붕괴</b> 아이가 죽는다", "opener": "---", "parts": {"경험": 3777, "지식": 0, "사례": 0}, "web": "ch3_glass_cage"}, "4": {"no": 4, "sym": "⏱️", "room": "시계새장", "seat": "폭파", "unit": "second", "verb": "폭파해", "gori": "다 · 빚을 쓴다", "gorisub": "체순환 · 앞서 달린다", "jam": "잰다", "jamsub": "$ · 시간 · 확률", "pair": 9, "line": "<b>모방</b> 빌린 문명을 섬에 세운다 → <b>위안</b> 문명이 나를 지킨다 → <b>붕괴</b> 화약 동굴이 터진다", "triad": "<b>모방</b> 빌린 문명을 섬에 세운다 → <b>위안</b> 문명이 나를 지킨다 → <b>붕괴</b> 화약 동굴이 터진다", "opener": "---", "parts": {"경험": 4196, "지식": 0, "사례": 0}, "web": "ch4_clock_cage"}, "6": {"no": 6, "sym": "🦋", "room": "나비", "seat": "고통", "unit": "bit", "verb": "원함", "gori": "세 · 빚을 갚는다", "gorisub": "폐순환 · 지켜보며 갚는다", "jam": "못 잰다", "jamsub": "합의할 단위가 없다", "pair": 1, "line": "빌린 옷은, 옷인 줄 알고 입을 때부터 몸에 맞기 시작한다.", "triad": "", "opener": "송 릴링은 20년간 상대를 속인 게 아니다. 자기가 입은 게 진짜 <i>살</i>이 아니라 <i>옷</i>임을 처음부터 알았다. 엠마(1장)는 빌린 욕망을 살인 줄 알고 삼켜졌고, 송은 옷인 줄 알고 입었다 — <b>단어 하나 차이.</b>", "parts": {"경험": 2719, "지식": 2017, "사례": 1502}, "web": "ch6_butterfly_nest"}, "7": {"no": 7, "sym": "🌷", "room": "튤립", "seat": "지식", "unit": "atom", "verb": "됨", "gori": "세 · 빚을 갚는다", "gorisub": "폐순환 · 지켜보며 갚는다", "jam": "못 잰다", "jamsub": "합의할 단위가 없다", "pair": 2, "line": "정확히 보는 눈은 아무것도 피우지 못한다 — 한 알을 손바닥에 올리는 손이 있기 전까지는.", "triad": "", "opener": "2장이 넘겨준 문장이 이 장의 자물쇠다 — <i>&quot;망원경은 별을 당겨 보여주지만, 별까지 데려다주진 않아요.&quot;</i> 살리나는 그 렌즈를 품위라 불렀고, 복스텔은 같은 렌즈를 시기에 썼다. <b>고귀한 관조와 비열한 감시는 한 도구의 두 얼굴이다.</b> 둘 다 <i>한 점</i>을 겨눈다 — 살리나는 별 하나, 복스텔은 이웃 하나. 정확한 눈은 어느 쪽으로도 삶을 열어주지 않는다.", "parts": {"경험": 2461, "지식": 734, "사례": 1276}, "web": "ch7_tulip_nest"}, "8": {"no": 8, "sym": "🌫️", "room": "안개", "seat": "손익", "unit": "cell", "verb": "버팀", "gori": "세 · 빚을 갚는다", "gorisub": "폐순환 · 지켜보며 갚는다", "jam": "잰다", "jamsub": "$ · 시간 · 확률", "pair": 3, "line": "확신은 스테인굴레스고 협상은 안개다 — 바깥이 보이는 쪽은, 뿌연 쪽이다.", "triad": "", "opener": "✍️ 유리는 한 번에 안개가 되지 않는다. 나는 그 네 단계를 종이 두 장으로 지났다.", "parts": {"경험": 2140, "지식": 1345, "사례": 1285}, "web": "ch8_mist_nest"}, "9": {"no": 9, "sym": "🐦‍⬛", "room": "까마귀", "seat": "기준", "unit": "second", "verb": "함", "gori": "세 · 빚을 갚는다", "gorisub": "폐순환 · 지켜보며 갚는다", "jam": "잰다", "jamsub": "$ · 시간 · 확률", "pair": 4, "line": "입에 문 빛은 삼키면 어둠이고, 나눠 던지면 해와 달과 별이 된다.", "triad": "", "opener": "4장은 합력이다 — 1·2·3장의 빚이 합쳐져 폭발한다(Σ cage). 9장도 합력이다 — 6·7·8장의 원함·됨·버팀이 모여 <i>함</i>이 된다(Σ nest). <b>두 합력이 서로의 거울이다.</b> 다만 4장의 합은 밖으로 터지고, 9장의 합은 안으로 모인다. 곱셈이라 6·7·8 중 하나라도 0이면 9는 공허하다.", "parts": {"경험": 2288, "지식": 713, "사례": 1387}, "web": "ch9_raven_nest"}, "5": {"no": 5, "sym": "🐀", "room": "101₂호", "unit": "bit", "seat": "기억", "verb": "이음새", "gori": "101 · 한 점", "gorisub": "두 번 지난다", "jam": "세 파트를 안 쓴다", "jamsub": "장면 하나다 — 구멍이 아니라 설계", "pair": 10, "line": "부순 사람이 제일 먼저 하는 일은 다시 짓는 게 아니다. 앉는 것이다.", "triad": "", "opener": "", "parts": {}, "web": "ch5_mirror_nest"}, "10": {"no": 10, "sym": "🧫", "room": "101₃호", "unit": "cell", "seat": "기억", "verb": "이음새", "gori": "101 · 한 점", "gorisub": "두 번 지난다", "jam": "세 파트를 안 쓴다", "jamsub": "장면 하나다 — 구멍이 아니라 설계", "pair": 5, "line": "<b>한눈에 — 장마다 어느 쪽이 두꺼운가</b>", "triad": "", "opener": "", "parts": {}, "web": "ch10_mirror_close"}};
+const ORDER = [1,2,3,4,5,6,7,8,9,10];
+const HINT = {
+ snake:'<b>뱀</b> — 한 획이다. 1·2·3·4 로 왼 고리를 돌고 가운데(<b>5장</b>)에서 <b>돌아서</b> 9·8·7·6 을 되짚은 뒤 같은 점(<b>10장</b>)에서 닫는다. 책 순서는 6→9 인데 몸의 순서는 9→6 이다 — <b>뒤집으면 방향도 뒤집히기</b> 때문이고, 5장 이름이 「회전축」인 자리가 거기다.',
+ twist:'<b>비틀</b> — 짝 넷이 모두 <b>가운데 한 점</b>을 지난다. 점 반전이지 회전이 아니다. 그래서 <b>대각(무엇을 재나)은 그대로고 좌우(쓰나 갚나)만 뒤집힌다.</b>',
+ fly:'<b>나비</b> — 두 날개는 좌우가 아니라 <b>대각</b>이고 둘 다 101 을 지난다. 못 재는 넷(욕망·상상·고통·지식)이 수축하면 재는 넷(설득·폭파·손익·기준)이 박동한다. 폭파의 잔재가 다시 상상의 먹이가 된다.'
+};
+let mode='snake', cur=1, timer=null, beat=null;
+
+function setMode(m){
+ mode=m;
+ document.body.classList.remove('m-snake','m-twist','m-fly');
+ document.body.classList.add('m-'+m);
+ document.querySelectorAll('.modes button').forEach(b=>
+   b.setAttribute('aria-pressed', b.dataset.mode===m));
+ document.getElementById('modehint').innerHTML = HINT[m];
+ stop();
+ if (reduced()) return;
+ if (m==='snake') crawl();
+ if (m==='fly')   pulse();
+}
+function reduced(){ return matchMedia('(prefers-reduced-motion: reduce)').matches; }
+function stop(){ if(timer){cancelAnimationFrame(timer);timer=null;}
+ if(beat){clearInterval(beat);beat=null;} document.body.classList.remove('beat'); }
+
+function crawl(){
+ const p = document.getElementById('walk'), c = document.getElementById('crawler');
+ if(!p||!c) return;
+ const L = p.getTotalLength(); let s = 0;
+ const step = () => { s = (s + L/420) % L;
+   const q = p.getPointAtLength(s); c.setAttribute('cx', q.x); c.setAttribute('cy', q.y);
+   timer = requestAnimationFrame(step); };
+ step();
+}
+function pulse(){ let on=false;
+ beat = setInterval(()=>{ on=!on; document.body.classList.toggle('beat', on); }, 900); }
+
+function pick(ch){
+ cur = ch; const d = D[String(ch)]; if(!d) return;
+ const col = {1:'#5B8CFF',6:'#5B8CFF',2:'#A277E8',7:'#A277E8',
+              3:'#FF6252',8:'#FF6252',4:'#35C46A',9:'#35C46A',5:'#FFD53A',10:'#FFD53A'}[ch];
+ const el = document.getElementById('panel');
+ el.style.setProperty('--pc', col);
+ const parts = Object.keys(d.parts||{}).length
+   ? '<div class="pparts">' + Object.entries(d.parts).map(([k,v])=>
+       `<span class="${v?'':'z'}">${k} <b>${v? v.toLocaleString()+'자' : '빈칸'}</b></span>`).join('')
+     + '</div>' : '';
+ el.innerHTML =
+  `<div class="ptop"><span class="pno">${d.no}장</span>`
+  + `<span class="pname">${d.sym} ${d.room}</span>`
+  + `<span class="pseat">${d.seat}</span></div>`
+  + `<div class="ptags">${d.gori} · ${d.gorisub} &nbsp;|&nbsp; ${d.jam} — ${d.jamsub}`
+  + ` &nbsp;|&nbsp; ${d.unit} &nbsp;|&nbsp; 짝 ${d.pair}장</div>`
+  + (d.line? `<p class="pline">${d.line}</p>`:'')
+  + (d.triad && d.line!==d.triad ? `<p class="popen">${d.triad}</p>`:'')
+  + (d.opener? `<p class="popen">${d.opener}</p>`:'')
+  + parts
+  + `<a class="pgo" href="reader.html?file=${d.web}">${d.no}장 원고 읽기 →</a>`;
+ document.querySelectorAll('.seat').forEach(s=>
+   s.classList.toggle('on', +s.dataset.ch===ch));
+ document.querySelectorAll('.lcell,.lhubgo').forEach(s=>
+   s.classList.toggle('on', +s.dataset.ch===ch));
+}
+
+document.querySelectorAll('.modes button').forEach(b=>
+  b.addEventListener('click', ()=>setMode(b.dataset.mode)));
+document.querySelectorAll('.seat,.lcell,.lhubgo').forEach(el=>{
+ const ch = +el.dataset.ch; if(!ch) return;
+ el.addEventListener('click', e=>{ e.preventDefault(); pick(ch); });
+ el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(ch);} });
+});
+document.addEventListener('keydown', e=>{
+ if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+ const i = ORDER.indexOf(cur);
+ pick(ORDER[(i + (e.key==='ArrowRight'?1:ORDER.length-1)) % ORDER.length]);
+});
+setMode('snake'); pick(1);
+</script>
+</body></html>
