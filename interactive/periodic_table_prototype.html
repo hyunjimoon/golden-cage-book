@@ -542,14 +542,15 @@ function paintCases(){
     return `<div class="case" data-i="${i}" style="--c:${col(c.ch)};--kc:${kc}">
       <div class="nm">${c.name}</div>
       <div class="mt">${v(c.ct)} · <b>${r.nm}</b> · ${v(c.un)} · ${c.year||'?'}</div>
-      <div class="bd ${c.held?'':cls(c.outcome)}">${c.held||c.outcome||'—'}</div>
+      <div class="bd ${c.held?'':cls(c.outcome)}">${c.held||c.outcome||(c.sector?c.sector.toLowerCase():'결과 안 적힘')}</div>
       ${badge}
       <div class="dt"><dl>
         <dt>장</dt><dd>${c.ch}장 ${r.nm} · ${c.cage||''} · ${c.loop==='L'?'새장':'둥지'}</dd>
         <dt>문화</dt><dd>${v(c.ct)}</dd>
         <dt>분야</dt><dd>${v(c.un)}</dd>
         <dt>해</dt><dd>${c.year||'?'}</dd>
-        <dt>결과</dt><dd class="${cls(c.outcome)}">${c.outcome||'—'}</dd>
+        ${c.sector?`<dt>업종</dt><dd>${c.sector.toLowerCase()}</dd>`:''}
+        <dt>결과</dt><dd class="${cls(c.outcome)}">${c.outcome||'안 적힘'}</dd>
         ${c.held?`<dt>그때</dt><dd>${c.held}</dd>`:''}
         <dt>갈등</dt><dd>${d?`<b>${c.cf} ${d.nm}</b>`:(c.vd==='음화'?'<b>음화</b> — 선 갈등 없음':'미정')}</dd>
         ${d?`<dt>방향</dt><dd>${c.dir==='함'?'내가 그 말을 <b>했다</b>':'내가 그 말을 <b>들었다</b>'}</dd>
