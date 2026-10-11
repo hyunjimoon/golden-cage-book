@@ -230,90 +230,6 @@
       margin-bottom: 24px;
     }
 
-    /* ── 점섬상향 위치 지시자 (사면체 은퇴 후속, 2026-08-07) ── */
-    .stage-pos {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 22px;
-      text-align: center;
-    }
-
-    .stage-part {
-      font-size: 10.5px;
-      letter-spacing: .3px;
-      color: #5a6a7a;
-    }
-
-    .stage-part b { font-weight: 600; }
-    .stage-part.p1 b { color: #8aa0b8; }
-    .stage-part.p2 b { color: #c5a55a; }
-
-    .stage-axes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .stage-axes .ax,
-    .stage-axes .mark,
-    .stage-axes .hinge {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      line-height: 1;
-      padding: 4px 7px;
-      border: 1px solid;
-      border-radius: 4px;
-    }
-
-    .stage-axes .mark { font-weight: 700; }
-
-    .stage-axes .hinge {
-      color: #5a6a7a;
-      border-color: rgba(255, 255, 255, .08);
-    }
-
-    .stage-rail {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .stage-rail .tick {
-      position: relative;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .13);
-    }
-
-    .stage-rail .tick.p2 { background: rgba(197, 165, 90, .22); }
-    .stage-rail .gap { width: 9px; }
-
-    .stage-rail .tick i {
-      position: absolute;
-      top: 11px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-style: normal;
-      font-size: 9px;
-      color: #5a6a7a;
-    }
-
-    .stage-rail .tick.cur i { color: inherit; font-weight: 700; }
-
-    .stage-more {
-      margin-top: 11px;
-      font-size: 10px;
-      color: #5a6a7a;
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(255, 255, 255, .12);
-    }
-
-    .stage-more:hover { color: var(--accent); }
-
     .content h1 {
       font-size: 1.8em;
       font-weight: 700;
@@ -623,26 +539,13 @@
       display: none;
     }
 
-    .stage-pos {
-      margin-bottom: 0 !important;
-      display: none;
-    }
-
     /* Toggle diagrams visibility based on active isomorphic mode */
     .layout.show-level-1 .chapter-diagram-container {
       display: none;
     }
 
-    .layout.show-level-2 .stage-pos {
-      display: none !important;
-    }
-
     .layout.show-level-2 #chapterGraphCanvas {
       display: block;
-    }
-
-    .layout.show-level-3 .stage-pos {
-      display: flex;
     }
 
     .layout.show-level-3 #chapterGraphCanvas {
@@ -937,13 +840,6 @@
       <span class="iso-desc">원소 유기적 흐름 연결망</span>
     </div>
   </a>
-  <a href="bookmap_3d.html" class="iso-link">
-    <span class="iso-icon">⬡</span>
-    <div class="iso-meta">
-      <span class="iso-title">점섬상향 (두 부 평면 지도)</span>
-      <span class="iso-desc">새장·둥지 대칭 입체 지도</span>
-    </div>
-  </a>
 `;
     sidebarNav.appendChild(isoSection);
 
@@ -1232,28 +1128,9 @@
         // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
         const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png' };
         const banner = banners[file] ? `<img class="ch-banner" src="${banners[file]}" alt="">` : '';
-        /* ── 점섬상향 위치 지시자 (2026-08-07) ────────────────────────────────
-           사면체(3D 4꼭짓점) 좌표계 은퇴 → 두 부 평면 지도로 교체.
-           정본 = diagrams/00_geo_점섬상향_DBA_SDV.svg. 라벨·축은 그 파일과 1:1.
-             1부 새장(시지프스·고독) : 1장 D → 2장 +B → 3장 +A → 4장 섬 → 5장 점(101₂)
-             2부 둥지(헤르메스·공명) : 6장 S → 7장 De → 8장 Vbl → 9장 상 → 10장 향(101₃)
-           축 색 = 오방색(CLAUDE.md 2026-07-28). 어두운 배경용으로 명도만 올렸고 색상(hue)은 정본과 같다.
-             D·S=靑 사용자 · B·De=金 기술자 · A·Vbl=赤 투자자 · P=黃 경첩(헤르메스) */
-        const AXIS_C = { D: '#5B8FD9', S: '#5B8FD9', B: '#D4A63C', De: '#D4A63C', A: '#E2566B', Vbl: '#E2566B', Act: '#E2566B', V: '#E2566B', 'P₁': '#E0A526', 'P₂': '#E0A526', 'P₃': '#E0A526' };
-        const STAGES = {
-          ch1_mirror_cage:   { n: 1,  part: 1, ax: ['D'] },
-          ch2_telescope_cage:{ n: 2,  part: 1, ax: ['D', 'B'] },
-          ch3_glass_cage:    { n: 3,  part: 1, ax: ['D', 'B', 'A'] },
-          ch4_clock_cage:    { n: 4,  part: 1, ax: ['D', 'B', 'A'], mark: '섬' },
-          ch5_mirror_nest:   { n: 5,  part: 1, ax: ['D', 'B', 'A'], mark: '점', hinge: '101₂' },
-          ch6_butterfly_nest:{ n: 6,  part: 2, ax: ['D', 'P₁', 'S'] },
-          ch7_tulip_nest:    { n: 7,  part: 2, ax: ['B', 'P₂', 'De'] },
-          ch8_mist_nest:     { n: 8,  part: 2, ax: ['A', 'P₃', 'Vbl'] },
-          ch9_raven_nest:    { n: 9,  part: 2, ax: ['D', 'B', 'A', 'De', 'V', 'S'], mark: '상' },
-          ch10_mirror_close: { n: 10, part: 2, ax: ['Act', 'Vbl'], mark: '향', hinge: '101₃' }
-        };
-        const MARKS = { 4: '섬', 5: '점', 9: '상', 10: '향' };
-        const st = STAGES[file] || null;
+        // 그래프 모드 캔버스를 띄울 열 장 (점섬상향 좌표계 철거 2026-10-12 — 축·마크 기계는 함께 내렸다)
+        const GRAPH_CHAPTERS = ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage', 'ch5_mirror_nest',
+                                'ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest', 'ch10_mirror_close'];
         const isChapter = file.startsWith('ch') && !file.includes('prologue') && !file.includes('intro') && !file.includes('roadmap') && !file.includes('epilogue');
         const sliderHtml = isChapter ? `
       <div class="density-control">
@@ -1270,28 +1147,9 @@
     ` : '';
 
         let diagramsHtml = '';
-        if (st) {
-          // 1. 점섬상향 위치 지시자 — 이 장이 두 부 평면 지도의 어디에 서 있는가
-          const accent = CH_COLORS[file] || 'var(--accent)';
-          const chips = st.ax.map(a =>
-            `<span class="ax" style="color:${AXIS_C[a] || '#8fa0b4'};border-color:${AXIS_C[a] || '#8fa0b4'}44">${a}</span>`).join('');
-          let rail = '';
-          for (let i = 1; i <= 10; i++) {
-            const cur = i === st.n;
-            const cls = 'tick' + (cur ? ' cur' : '') + (i <= 5 ? ' p1' : ' p2');
-            rail += `<span class="${cls}"${cur ? ` style="background:${accent};box-shadow:0 0 7px ${accent}"` : ''}>`
-                 + (MARKS[i] ? `<i>${MARKS[i]}</i>` : '') + '</span>';
-            if (i === 5) rail += '<span class="gap"></span>';
-          }
-          // 🗑️ 점섬상향 띠 철거 (2026-10-04 자장 지시) — 장 상단 위치 지시자는 더 이상 찍지 않는다.
-          //    정본 지도는 diagrams/00_geo_점섬상향_DBA_SDV.svg 에 그대로 있다.
-          //    chips/rail 계산은 남겨 둔다 — 그래프 모드가 같은 st 를 쓴다.
-          const svg = '';
-
-          // 2. Chapter Graph Canvas (Graph View)
+        if (GRAPH_CHAPTERS.includes(file)) {
           const canvas = `<canvas id="chapterGraphCanvas" style="background:rgba(9,12,22,0.4); border-radius:8px; display:none; width:340px; height:140px; margin:0 auto 24px;"></canvas>`;
-
-          diagramsHtml = `<div class="chapter-diagram-container">${svg}${canvas}</div>`;
+          diagramsHtml = `<div class="chapter-diagram-container">${canvas}</div>`;
         }
 
         document.getElementById('content').innerHTML = banner + diagramsHtml + sliderHtml + md2html(md);
