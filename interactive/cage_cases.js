@@ -11,7 +11,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "LS일렉트릭 (LS Electric)",
@@ -24,7 +30,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "SK바이오팜 (SK Biopharmaceuticals)",
@@ -37,7 +49,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Aduhelm (Biogen)",
@@ -50,7 +68,13 @@ const CAGE_CASES = [
   "room": "지식",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "함",
+  "stage": "성장기",
+  "ev": "2020-11 FDA 자문위 10:0 반대 — 아밀로이드라는 대리 눈금으로 승인",
+  "vd": "실측"
  },
  {
   "name": "Airbnb",
@@ -63,7 +87,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "💒↔🌫️",
+  "cfn": "좋은데, 지금은 아니고",
+  "dir": "받음",
+  "stage": "창업기",
+  "ev": "2008 — 시리얼 박스로 버틴 거절의 해",
+  "vd": "실측"
  },
  {
   "name": "ASML",
@@ -76,7 +106,13 @@ const CAGE_CASES = [
   "room": "지식",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "💒↔🌫️",
+  "cfn": "좋은데, 지금은 아니고",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "EUV 20년 — 2012 고객 공동출자 전까지 돈이 안 붙었다",
+  "vd": "실측"
  },
  {
   "name": "Better Place",
@@ -89,7 +125,13 @@ const CAGE_CASES = [
   "room": "지식",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🐦‍⬛",
+  "cfn": "내 꿈이 네 KPI",
+  "dir": "함",
+  "stage": "창업기",
+  "ev": "르노만 규격을 맞췄고 다른 제조사는 교환식을 거부했다 → 2013 파산",
+  "vd": "실측"
  },
  {
   "name": "Beyond Meat",
@@ -102,7 +144,13 @@ const CAGE_CASES = [
   "room": "손익",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🦋",
+  "cfn": "내가 1호 고객입니다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2019 상장 뒤 반복구매가 따라오지 않았다",
+  "vd": "실측"
  },
  {
   "name": "Ferrari",
@@ -115,7 +163,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Flagship Pioneering",
@@ -128,7 +182,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Gowex",
@@ -141,7 +201,13 @@ const CAGE_CASES = [
   "room": "손익",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "함",
+  "stage": "성장기",
+  "ev": "2014-07 고담시티 리포트 — 매출 90%가 허위였다",
+  "vd": "실측"
  },
  {
   "name": "Groq",
@@ -154,7 +220,13 @@ const CAGE_CASES = [
   "room": "기준",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Honda",
@@ -167,7 +239,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🦋",
+  "cfn": "내가 1호 고객입니다",
+  "dir": "받음",
+  "stage": "창업기",
+  "ev": "1959 미국 — 팔려던 대형 바이크는 고장나고 직원용 50cc가 팔렸다",
+  "vd": "실측"
  },
  {
   "name": "Impossible Foods",
@@ -180,7 +258,13 @@ const CAGE_CASES = [
   "room": "손익",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "헴 분자로 타당성을 먼저 검증하고 나서 신뢰를 쌓았다",
+  "vd": "음화"
  },
  {
   "name": "Intel",
@@ -193,7 +277,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "💒↔🌫️",
+  "cfn": "좋은데, 지금은 아니고",
+  "dir": "함",
+  "stage": "성장기",
+  "ev": "2006 아이폰 칩 거절 — 원가 모델이 \"지금은 아니고\"라고 했다",
+  "vd": "실측"
  },
  {
   "name": "Juicero",
@@ -206,7 +296,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🦋",
+  "cfn": "내가 1호 고객입니다",
+  "dir": "받음",
+  "stage": "창업기",
+  "ev": "2017-04 블룸버그 영상 — 손으로 짜도 같은 양이 나왔다",
+  "vd": "실측"
  },
  {
   "name": "LeEco",
@@ -219,7 +315,13 @@ const CAGE_CASES = [
   "room": "고통",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "💒↔🌫️",
+  "cfn": "좋은데, 지금은 아니고",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2017 자금경색 — 생태계 확장을 돈이 멈췄다",
+  "vd": "실측"
  },
  {
   "name": "Lytro",
@@ -232,7 +334,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🦋",
+  "cfn": "내가 1호 고객입니다",
+  "dir": "받음",
+  "stage": "창업기",
+  "ev": "광학은 돌았고 재초점은 안 쓰였다 → 2018 특허 매각",
+  "vd": "실측"
  },
  {
   "name": "Magic Leap",
@@ -245,7 +353,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🌷",
+  "cfn": "원하니까 됩니다",
+  "dir": "함",
+  "stage": "창업기",
+  "ev": "2015 고래 영상은 기기를 통과한 화면이 아니라 렌더였다",
+  "vd": "실측"
  },
  {
   "name": "MercadoLibre",
@@ -258,7 +372,13 @@ const CAGE_CASES = [
   "room": "손익",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Novo Nordisk",
@@ -271,7 +391,13 @@ const CAGE_CASES = [
   "room": "지식",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Nubank",
@@ -284,7 +410,13 @@ const CAGE_CASES = [
   "room": "손익",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Pivot Bio",
@@ -297,7 +429,13 @@ const CAGE_CASES = [
   "room": "손익",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Quibi",
@@ -310,7 +448,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🦋",
+  "cfn": "내가 1호 고객입니다",
+  "dir": "받음",
+  "stage": "창업기",
+  "ev": "2020-04 출시 → 10월 폐업. 짧은 영화를 원한 쪽은 만든 쪽이었다",
+  "vd": "실측"
  },
  {
   "name": "Theranos",
@@ -323,7 +467,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🌷",
+  "cfn": "원하니까 됩니다",
+  "dir": "함",
+  "stage": "창업기",
+  "ev": "에디슨 대신 지멘스 기기로 돌렸다. 막은 쪽은 내부 기술자였다",
+  "vd": "실측"
  },
  {
   "name": "달바 (d'Alba)",
@@ -336,7 +486,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "두산",
@@ -349,7 +505,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "뤼튼 (Wrtn)",
@@ -362,7 +524,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "리피드 (Lipid)",
@@ -375,7 +543,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "무신사 (Musinsa)",
@@ -388,7 +562,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "배달의민족",
@@ -401,7 +581,13 @@ const CAGE_CASES = [
   "room": "기준",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🪞↔🦋",
+  "cfn": "내가 1호 고객입니다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2020-04 수수료 개편 → 열흘 만에 철회",
+  "vd": "실측"
  },
  {
   "name": "삼성바이오로직스 (Samsung Biologics)",
@@ -414,7 +600,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2018 분식 논란 — 지배력 판단의 눈금",
+  "vd": "실측"
  },
  {
   "name": "셀트리온 (Celltrion)",
@@ -427,7 +619,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2018–2021 금감원 감리 — 재고 회계의 눈금",
+  "vd": "실측"
  },
  {
   "name": "알테오젠 (Alteogen)",
@@ -440,7 +638,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "야놀자 (Yanolja)",
@@ -453,7 +657,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "에이비엘바이오 (ABL Bio)",
@@ -466,7 +676,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "카카오 (Kakao)",
@@ -479,7 +695,13 @@ const CAGE_CASES = [
   "room": "기준",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2023 SM 시세조종 — 성장 눈금과 감독 눈금이 갈렸다",
+  "vd": "실측"
  },
  {
   "name": "컬리 (Kurly)",
@@ -492,7 +714,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "💒↔🌫️",
+  "cfn": "좋은데, 지금은 아니고",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2023-01 상장 철회",
+  "vd": "실측"
  },
  {
   "name": "쿠팡 (Coupang)",
@@ -505,7 +733,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "로켓배송의 시간 눈금 ↔ 분류·배송 노동의 눈금",
+  "vd": "실측"
  },
  {
   "name": "크래프톤 (Krafton)",
@@ -518,7 +752,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "토스 (Toss/Viva Republica)",
@@ -531,7 +771,13 @@ const CAGE_CASES = [
   "room": "기준",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "한화에어로스페이스 (Hanwha Aerospace)",
@@ -544,7 +790,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "한화오션 (Hanwha Ocean)",
@@ -557,7 +809,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "닌텐도 (Nintendo)",
@@ -570,7 +828,13 @@ const CAGE_CASES = [
   "room": "고통",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "텐센트 (Tencent)",
@@ -583,7 +847,13 @@ const CAGE_CASES = [
   "room": "고통",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Moderna",
@@ -596,7 +866,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "10년간 아무것도 약속하지 않고 매년 모델만 고쳤다",
+  "vd": "음화"
  },
  {
   "name": "Netafim",
@@ -609,7 +885,13 @@ const CAGE_CASES = [
   "room": "지식",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "라인 (LINE)",
@@ -622,7 +904,13 @@ const CAGE_CASES = [
   "room": "고통",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Kodak",
@@ -635,7 +923,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🔭↔🌷",
+  "cfn": "데모는 돌았다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "1975 사손의 0.01MP·23초가 실제로 돌았다 → 2012 파산",
+  "vd": "실측"
  },
  {
   "name": "Tesla",
@@ -648,7 +942,13 @@ const CAGE_CASES = [
   "room": "지식",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "🔭↔🌷",
+  "cfn": "데모는 돌았다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2006 로드스터 시제는 달렸고 2단 변속기가 양산을 밀었다",
+  "vd": "실측"
  },
  {
   "name": "Faraday Future",
@@ -661,7 +961,13 @@ const CAGE_CASES = [
   "room": "고통",
   "loop": "R",
   "held": "",
-  "src": "tolzul"
+  "src": "tolzul",
+  "cf": "💒↔🌫️",
+  "cfn": "좋은데, 지금은 아니고",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2017 모회사 자산 동결로 자금이 끊겼다",
+  "vd": "실측"
  },
  {
   "name": "Vestiaire Collective",
@@ -674,7 +980,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "아동복이냐 중고명품이냐 — 둘 다 아직 없는 것",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Uber",
@@ -687,7 +999,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "UberCab이냐 Pad Pass냐 — 두 아이디어뿐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Red Bull",
@@ -700,7 +1018,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "창업이냐 회사에 남느냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Geox",
@@ -713,7 +1037,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "가업 와인이냐 통기성 신발이냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "ByteDance",
@@ -726,7 +1056,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "99Fang을 키우냐 추천엔진을 새로 하냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Bumble",
@@ -739,7 +1075,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "떠난 자리에서 무엇을 세우냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Pinduoduo",
@@ -752,7 +1094,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "소셜 커머스라는 새 형태를 거느냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Grammarly",
@@ -765,7 +1113,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "잘 되는 표절검사냐 AI 글쓰기냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Canva",
@@ -778,7 +1132,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "남이 어려워하는 것을 보고 무엇을 지을까",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Cirque du Soleil",
@@ -791,7 +1151,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "거리 공연자가 새 서커스를 세울까",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Eataly",
@@ -804,7 +1170,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "새 개념이냐 표준 소매냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Booking.com",
@@ -817,7 +1189,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "마케팅 공간이냐 다른 자리냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Revolut",
@@ -830,7 +1208,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "핀테크를 어디서 시작하냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Farfetch",
@@ -843,7 +1227,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "이커머스로 가냐 오프라인에 남냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Spotify",
@@ -856,7 +1246,13 @@ const CAGE_CASES = [
   "room": "욕망",
   "loop": "L",
   "held": "음악 산업의 교착을 어느 쪽에서 푸냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Nokia",
@@ -869,7 +1265,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "세계 1위의 자리와 자기 운영체제",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "🔭↔🌷",
+  "cfn": "데모는 돌았다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2011 MeeGo는 돌았고 N9 한 대로 끝났다",
+  "vd": "실측"
  },
  {
   "name": "Eastman Kodak",
@@ -882,7 +1284,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "필름의 지배력과 디지털 특허를 동시에",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "🔭↔🌷",
+  "cfn": "데모는 돌았다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "1975 사손의 0.01MP·23초가 실제로 돌았다 → 2012 파산",
+  "vd": "실측"
  },
  {
   "name": "IBM",
@@ -895,7 +1303,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "메인프레임의 권위",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Sony",
@@ -908,7 +1322,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "가전의 평판, 그리고 결별한 협력자",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Porsche",
@@ -921,7 +1341,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "장인의 이름과 깊어진 적자",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Royal Dutch Shell",
@@ -934,7 +1360,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "매장량 스캔들 뒤의 신뢰",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "BP",
@@ -947,7 +1379,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "석유 거인의 자리",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Boeing",
@@ -960,7 +1398,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "안전의 평판",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "⏱️↔🐦‍⬛",
+  "cfn": "눈금이 다르다",
+  "dir": "함",
+  "stage": "성장기",
+  "ev": "2019 MAX — 시뮬레이터 훈련이 필요없다는 눈금",
+  "vd": "실측"
  },
  {
   "name": "HP",
@@ -973,7 +1417,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "한 회사라는 형태",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Toyota",
@@ -986,7 +1436,13 @@ const CAGE_CASES = [
   "room": "상상",
   "loop": "L",
   "held": "생산방식의 모범이라는 지위",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Tesla",
@@ -999,7 +1455,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "업계 관행을 거스르는 하나의 믿음",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "🔭↔🌷",
+  "cfn": "데모는 돌았다",
+  "dir": "받음",
+  "stage": "성장기",
+  "ev": "2006 로드스터 시제는 달렸고 2단 변속기가 양산을 밀었다",
+  "vd": "실측"
  },
  {
   "name": "OpenAI",
@@ -1012,7 +1474,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "한 방향의 확장에 거는 자원",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "NVIDIA",
@@ -1025,7 +1493,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "게임용 칩을 다른 용도에 거는 판단",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Pfizer",
@@ -1038,7 +1512,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "백신 한 경로에 거는 속도",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Novo Nordisk",
@@ -1051,7 +1531,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "한 적응증에 거는 집중",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "UBS",
@@ -1064,7 +1550,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "크레디트스위스 인수라는 큰 베팅",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Google and YouTube",
@@ -1077,7 +1569,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "내부 개발이냐 인수냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Disney-Pixar",
@@ -1090,7 +1588,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "인수에 거는 애니메이션의 미래",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "EssilorLuxottica",
@@ -1103,7 +1607,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "합병이냐 각자 전문가로 남느냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Carlyle",
@@ -1116,7 +1626,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "IPO냐 매각이냐",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "eBay & PayPal",
@@ -1129,7 +1645,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "분리하라는 압박 앞에서",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Epic Games",
@@ -1142,7 +1664,13 @@ const CAGE_CASES = [
   "room": "설득",
   "loop": "L",
   "held": "방향 하나에 거는 전환",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Nintendo",
@@ -1155,7 +1683,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "화투에서 쌓은 체제",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Microsoft",
@@ -1168,7 +1702,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "윈도라는 돌아가는 질서",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Marvel",
@@ -1181,7 +1721,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "출판으로 굳은 형식",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Lego",
@@ -1194,7 +1740,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "브릭이라는 지배적 설계",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Netflix",
@@ -1207,7 +1759,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "DVD 우편이라는 성공한 공정",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Intel Centrino",
@@ -1220,7 +1778,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "속도 경쟁이라는 굳은 규칙",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "IKEA India",
@@ -1233,7 +1797,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "전 세계에서 통한 한 매장 공식",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "WeChat (Tencent)",
@@ -1246,7 +1816,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "QQ라는 이미 도는 체제",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Klarna",
@@ -1259,7 +1835,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "결제라는 굳은 순서",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Pagani Automobili",
@@ -1272,7 +1854,13 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "수작업이라는 질서",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  },
  {
   "name": "Calm",
@@ -1285,6 +1873,12 @@ const CAGE_CASES = [
   "room": "폭파",
   "loop": "L",
   "held": "성장하던 방식",
-  "src": "bocconi"
+  "src": "bocconi",
+  "cf": "",
+  "cfn": "",
+  "dir": "",
+  "stage": "",
+  "ev": "",
+  "vd": "미정"
  }
 ];

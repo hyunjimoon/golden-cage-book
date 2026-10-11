@@ -107,6 +107,43 @@
   .none{color:#5e6a80;font-size:12.5px;padding:22px 0;text-align:center;}
   .none b{color:var(--mem);}
 
+  /* ── 갈등 — 칸이 아니라 선이라 격자에 올리지 않는다 ── */
+  .cfbox{background:var(--surf);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .cfrow{display:grid;grid-template-columns:108px 1fr;gap:12px;padding:12px 15px;
+         border-bottom:1px solid var(--line);align-items:start;}
+  .cfrow:last-of-type{border-bottom:0;}
+  .cfrow .cfh{font-size:12.5px;font-weight:700;color:var(--text);padding-top:2px;}
+  .cfrow .cfh i{display:block;font-style:normal;font-size:10.5px;color:var(--dim);font-weight:400;}
+  .cf{font-size:11.5px;padding:3px 10px;border-radius:12px;cursor:pointer;user-select:none;
+      background:#1b2232;border:1px solid #28314a;color:#95a0b4;transition:.12s;white-space:nowrap;}
+  .cf .px{font-family:'DM Mono',monospace;font-size:10px;opacity:.85;margin-right:5px;}
+  .cf .n{font-family:'DM Mono',monospace;opacity:.5;margin-left:5px;}
+  .cf:hover{color:var(--text);}
+  .cf.on{background:color-mix(in srgb, var(--k) 24%, #141a28);border-color:var(--k);
+         color:color-mix(in srgb, var(--k) 55%, #ffffff);}
+  .cf.zero{opacity:.32;}
+  .cf.x{border-style:dashed;}
+  .cfnote{padding:10px 15px;background:#0e1320;border-top:1px solid var(--line);
+          font-size:11.5px;color:#6f7b92;line-height:1.7;}
+  .cfnote b{color:var(--text2);font-weight:500;}
+
+  /* ── 사례 — 누르면 열린다 ── */
+  .case{cursor:pointer;}
+  .case:hover{border-color:#36415c;}
+  .case.open{grid-column:1/-1;border-color:var(--c);}
+  .case .cfb{font-size:10px;margin-top:5px;color:#8591a8;line-height:1.55;}
+  .case .cfb s{text-decoration:none;color:var(--kc,#8591a8);font-weight:500;}
+  .case .cfb em{font-style:normal;color:#5b6679;}
+  .dt{display:none;margin-top:9px;padding-top:9px;border-top:1px solid var(--line);}
+  .case.open .dt{display:block;}
+  .dt dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:11px;margin:0;}
+  .dt dt{color:#5e6a80;font-family:'DM Mono',monospace;font-size:10px;padding-top:2px;}
+  .dt dd{margin:0;color:#c3ccdb;line-height:1.65;}
+  .dt dd b{color:var(--kc,#dde4ee);font-weight:500;}
+  .dt .q{margin-top:9px;font-size:12px;color:#d6dde9;line-height:1.7;
+         border-left:2px solid var(--kc,#36415c);padding-left:10px;}
+  .dt .q i{font-style:normal;color:#78839a;font-size:10.5px;display:block;margin-top:3px;}
+
   /* ── 열 장의 책 — 거울짝 넷 + 101호 ── */
   .mirror{position:relative;display:grid;grid-template-columns:1fr 124px 1fr;gap:0;align-items:stretch;}
   .chords{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
@@ -209,8 +246,28 @@
 <svg id="bfly" viewBox="0 0 820 300"></svg>
 <div class="hint">날개를 누르면 그 방만 남는다 · 점 하나가 회사 하나</div>
 
+<!-- ═══ 갈등 ═══ -->
+<h2 class="sec">갈등<em>둘이 부딪힌 자리. 날짜 붙은 사건으로만 센다</em></h2>
+<p class="lede">극은 한 곳에 하나씩 붙지만 <b>갈등은 둘이다.</b> 그래서 갈등은 격자의 칸이 아니라
+<b>칸과 칸을 잇는 선</b>으로 둔다 — 좌표로 올리면 열 칸이 마흔다섯 칸이 된다.
+상대 쪽 극이 <b>날짜·문서로 특정되는 것만</b> 실측으로 세고, 못 하면 미정으로 남긴다.
+거울짝으로 기계 배정하면 2장 기업 전부가 「데모는 돌았다」가 되어, 세는 일이 아니라 칠하는 일이 된다.</p>
+
+<div class="cfbox">
+  <div class="cfrow"><div class="cfh">내 안<i>한 사람의 두 쪽</i></div><div class="chips" id="cfIn"></div></div>
+  <div class="cfrow"><div class="cfh">거울짝<i>내 것 ↔ 남의 것</i></div><div class="chips" id="cfMi"></div></div>
+  <div class="cfrow"><div class="cfh">교차<i>축을 건너뛴다</i></div><div class="chips" id="cfCr"></div></div>
+  <div class="readout">
+    <span class="q">실측</span><span class="big" id="cfN"></span><span>곳</span>
+    <span class="ro2" id="cfF"></span>
+    <span class="rst" id="cfX">갈등 풀기</span>
+  </div>
+  <div class="cfnote" id="cfNote"></div>
+</div>
+
 <!-- ═══ 사례 ═══ -->
 <h2 class="sec">사례<em id="csN"></em></h2>
+<p class="lede">칸을 누르면 그 회사가 열린다 — 세 축과 결과, 그리고 <b>어느 갈등의 어느 쪽에 섰는지.</b></p>
 <div class="cases" id="cases"></div>
 
 <!-- ═══ 열 이름표 ═══ -->
@@ -289,6 +346,24 @@ const BOOK={
 10:{vol:0,  t:'「세」',             who:'세',        vb:'발현',  ln:'뜨겁게 빚을 갚는다 · 한국씬',u:'cell',
     out:'아직 안 쓰인 책'}
 };
+/* ═══ 갈등 여덟 — 칸이 아니라 선 ═══
+   kind: in 내 안 · mi 거울짝 · cr 교차 (교차는 좌표로 올리지 않는다)
+   k = 짝색. 1↔6 파랑 · 2↔7 보라 · 3↔8 빨강 · 4↔9 초록 · 5↔10 노랑 */
+const CONF={
+ '🐀↔🧫'  :{nm:'지른 나, 막는 나',     kind:'in',k:'#FFD53A',say:'제가 그렇게 말해버렸으니 어떻게든 해야죠'},
+ '🪞↔🦋'  :{nm:'내가 1호 고객입니다',   kind:'mi',k:'#5C83F5',say:'저도 이게 필요해서 만들었어요'},
+ '🔭↔🌷'  :{nm:'데모는 돌았다',        kind:'mi',k:'#9B7BE0',say:'데모에선 돌았는데요'},
+ '💒↔🌫️' :{nm:'좋은데, 지금은 아니고', kind:'mi',k:'#F4705F',say:'다음 라운드에서 다시 보죠'},
+ '⏱️↔🐦‍⬛':{nm:'눈금이 다르다',        kind:'mi',k:'#4FBF72',say:'제 대시보드는 초록인데요'},
+ '🪞↔🌷'  :{nm:'원하니까 됩니다',       kind:'cr',k:'#8FA6FF',say:'안 되는 게 아니라 아직 안 해본 거죠'},
+ '🪞↔🐦‍⬛':{nm:'내 꿈이 네 KPI',       kind:'cr',k:'#7EC9A0',say:'이건 우리 모두의 목표잖아요'},
+ '🪞↔🌫️' :{nm:'알아보면 투자합니다',   kind:'cr',k:'#FF9B8F',say:'못 알아보는 분들이더라고요'}
+};
+const CFK=Object.keys(CONF);
+const ck=c=>(CONF[c.cf]||{}).k||'#36415c';
+/* 장(결정 시점에 가진 것)과 갈등(부딪힌 두 극)은 다른 자다.
+   그 회사의 극이 갈등의 두 극에 없으면 둘이 어긋난 것이고, 그 어긋남이 읽을 거리다. */
+const off=c=>c.vd==='실측'&&!c.cf.split('↔').includes(c.cage);
 const CHS=[1,2,3,4,6,7,8,9];
 const UNITS=['bit','atom','cell','second'];
 const COLS=UNITS.concat(['미정']);   // 다섯째 열 = 아직 안 읽힌 칸
@@ -299,9 +374,11 @@ const code=f=>{const a=[...(f||'')];return a.length===2
 const C=CAGE_CASES.map(c=>({...c,ct:code(c.country),un:c.unit||'미정'}));
 
 /* ═══ 필터 — 세 축이 동시에 걸린다 ═══ */
-const F={ct:'',ch:0,un:'',only:0};
+const F={ct:'',ch:0,un:'',only:0,cf:''};
 const full=c=>c.ct!=='미정'&&c.un!=='미정';   // 세 축이 다 읽힌 것 = 완통
-const hit=c=>(!F.ct||c.ct===F.ct)&&(!F.ch||c.ch==F.ch)&&(!F.un||c.un===F.un)&&(!F.only||full(c));
+/* 갈등은 네 번째 축이 아니라 사례 목록에만 걸리는 선이다 — 격자·날개는 안 건드린다 */
+const hit3=c=>(!F.ct||c.ct===F.ct)&&(!F.ch||c.ch==F.ch)&&(!F.un||c.un===F.un)&&(!F.only||full(c));
+const hit=c=>hit3(c)&&(!F.cf||c.cf===F.cf);
 /* 한 축을 뺀 나머지로 센다 — 그래야 칩 숫자가 "지금 고르면 몇 곳"이 된다 */
 const AX=['ct','ch','un'];
 const cnt=(k,v)=>C.filter(c=>AX.every(x=>x===k||!F[x]||
@@ -321,7 +398,7 @@ function chips(){
   document.getElementById('axUn').innerHTML=
     `<span class="chip${F.un?'':' on'}" data-k="un" data-v="">전체</span>`+
     COLS.map(v=>`<span class="chip${F.un===v?' on':''}${cnt('un',v)?'':' zero'}" data-k="un" data-v="${v}">${v}<i class="n">${cnt('un',v)}</i></span>`).join('');
-  const sel=C.filter(hit), n=sel.length, f=sel.filter(full).length;
+  const sel=C.filter(hit3), n=sel.length, f=sel.filter(full).length;
   document.getElementById('roF').innerHTML=
     `완통 <b>${f}</b> · 반쪽 <b>${n-f}</b>`;
   document.getElementById('roO').classList.toggle('act',!!F.only);
@@ -335,7 +412,7 @@ document.querySelector('.axes').onclick=e=>{
   if(k==='ch') F.ch=(F.ch===+v?0:+v); else F[k]=(F[k]===v)?'':v;
   render();
 };
-document.getElementById('roR').onclick=()=>{F.ct='';F.ch=0;F.un='';F.only=0;render();};
+document.getElementById('roR').onclick=()=>{F.ct='';F.ch=0;F.un='';F.only=0;F.cf='';render();};
 document.getElementById('roO').onclick=()=>{F.only=F.only?0:1;render();};
 
 /* ═══ 격자 — 주제 × 분야, 칸 안에 문화 ═══ */
@@ -416,6 +493,38 @@ function paintWings(){
     w.style.opacity=(!F.ch||F.ch==w.dataset.ch)?1:.25);
 }
 
+/* ═══ 갈등 칩 — 세 띠(내 안 · 거울짝 · 교차) ═══ */
+const cfCnt=cf=>C.filter(c=>hit3(c)&&c.cf===cf).length;
+function paintConf(){
+  const put=(id,kind)=>document.getElementById(id).innerHTML=
+    CFK.filter(k=>CONF[k].kind===kind).map(k=>{const d=CONF[k],n=cfCnt(k);
+      return `<span class="cf${d.kind==='cr'?' x':''}${F.cf===k?' on':''}${n?'':' zero'}"
+        style="--k:${d.k}" data-cf="${k}" title="${d.say}"><span class="px">${k}</span>${d.nm}<i class="n">${n}</i></span>`;
+    }).join('');
+  put('cfIn','in'); put('cfMi','mi'); put('cfCr','cr');
+  const sel=C.filter(hit3);
+  const msr=sel.filter(c=>c.vd==='실측'), neg=sel.filter(c=>c.vd==='음화');
+  document.getElementById('cfN').textContent=msr.length;
+  document.getElementById('cfF').innerHTML=
+    `음화 <b>${neg.length}</b> · 미정 <b>${sel.length-msr.length-neg.length}</b>` +
+    ` · 장과 어긋남 <b>${msr.filter(off).length}</b>`;
+  document.getElementById('cfX').classList.toggle('act',!!F.cf);
+  const st=k=>msr.filter(c=>c.stage===k).length;
+  const d=F.cf?CONF[F.cf]:null;
+  document.getElementById('cfNote').innerHTML=d
+    ? `<b>${d.nm}</b> — 그 자리에서 들리는 말: “${d.say}”` +
+      (d.kind==='cr'?' · <b>교차</b>라 좌표가 아니라 선이다. 사후 서사에서 가장 먼저 깎이는 자리.':'')
+    : `창업기 <b>${st('창업기')}</b> · 성장기 <b>${st('성장기')}</b> — ` +
+      `욕망이 먼저 부딪히고 눈금이 나중에 부딪힌다. ` +
+      `<b>음화</b>는 갈등이 안 선 곳이다 — 삭제가 아니라 반례 자리.`;
+}
+document.querySelector('.cfbox').onclick=e=>{
+  const s=e.target.closest('.cf'); if(!s)return;
+  F.cf=(F.cf===s.dataset.cf)?'':s.dataset.cf; render();
+  document.getElementById('cases').scrollIntoView({behavior:'smooth',block:'start'});
+};
+document.getElementById('cfX').onclick=()=>{F.cf='';render();};
+
 /* ═══ 사례 목록 ═══ */
 const v=x=>x==='미정'?`<i class="un">미정</i>`:x;   // 안 읽힌 축은 흐리게
 const cls=o=>/실패|붕괴|파산|경색/.test(o||'')?'bad':/위기|피봇/.test(o||'')?'mid':'ok';
@@ -424,13 +533,41 @@ function paintCases(){
         g=document.getElementById('cases');
   document.getElementById('csN').textContent=`${rows.length}곳 · ${
     new Set(rows.map(r=>r.ct)).size}개 문화`;
-  g.innerHTML=rows.map(c=>{const r=ROOM[c.ch]||{nm:'',u:''};
-    return `<div class="case" style="--c:${col(c.ch)}">
+  g.innerHTML=rows.map((c,i)=>{const r=ROOM[c.ch]||{nm:'',u:''},d=CONF[c.cf],kc=ck(c);
+    const badge=d
+      ? `<div class="cfb"><s>${c.cf} ${d.nm}</s> <em>· ${c.dir==='함'?'내가 했다':'내가 들었다'} · ${c.stage}${off(c)?' · 장과 어긋남':''}</em></div>`
+      : c.vd==='음화'
+      ? `<div class="cfb"><em>음화 — 갈등이 안 섰다</em></div>`
+      : `<div class="cfb"><em>갈등 미정 — 상대가 특정되지 않는다</em></div>`;
+    return `<div class="case" data-i="${i}" style="--c:${col(c.ch)};--kc:${kc}">
       <div class="nm">${c.name}</div>
       <div class="mt">${v(c.ct)} · <b>${r.nm}</b> · ${v(c.un)} · ${c.year||'?'}</div>
-      <div class="bd ${c.held?'':cls(c.outcome)}">${c.held||c.outcome||'—'}</div></div>`;}).join('')
+      <div class="bd ${c.held?'':cls(c.outcome)}">${c.held||c.outcome||'—'}</div>
+      ${badge}
+      <div class="dt"><dl>
+        <dt>장</dt><dd>${c.ch}장 ${r.nm} · ${c.cage||''} · ${c.loop==='L'?'새장':'둥지'}</dd>
+        <dt>문화</dt><dd>${v(c.ct)}</dd>
+        <dt>분야</dt><dd>${v(c.un)}</dd>
+        <dt>해</dt><dd>${c.year||'?'}</dd>
+        <dt>결과</dt><dd class="${cls(c.outcome)}">${c.outcome||'—'}</dd>
+        ${c.held?`<dt>그때</dt><dd>${c.held}</dd>`:''}
+        <dt>갈등</dt><dd>${d?`<b>${c.cf} ${d.nm}</b>`:(c.vd==='음화'?'<b>음화</b> — 선 갈등 없음':'미정')}</dd>
+        ${d?`<dt>방향</dt><dd>${c.dir==='함'?'내가 그 말을 <b>했다</b>':'내가 그 말을 <b>들었다</b>'}</dd>
+            <dt>자리</dt><dd>${c.stage}</dd>`:''}
+        <dt>판정</dt><dd>${c.vd}${off(c)?' · <b>장과 어긋남</b> — 가진 것은 '+c.cage+', 부딪힌 것은 '+c.cf:''}</dd>
+        <dt>출처</dt><dd>${c.src==='bocconi'?'Bocconi ION 사례':'tolzul 전집'}</dd>
+      </dl>
+      ${c.ev?`<div class="q">${d?`“${d.say}”`:''}<i>${c.ev}</i></div>`:''}
+      </div></div>`;}).join('')
     ||`<div class="none">이 자리는 아직 비어 있다. <b>빈칸이 다음 책이다.</b></div>`;
 }
+
+document.getElementById('cases').onclick=e=>{
+  const c=e.target.closest('.case'); if(!c)return;
+  const was=c.classList.contains('open');
+  document.querySelectorAll('.case.open').forEach(x=>x.classList.remove('open'));
+  if(!was)c.classList.add('open');
+};
 
 (function(){
   const cv=v=>(typeof COVERS!=='undefined'&&COVERS[v])||null;
@@ -470,7 +607,7 @@ function paintCases(){
 })();
 
 /* ═══ 한 번에 다시 칠한다 ═══ */
-function render(){chips();paintGrid();paintWings();paintCases();}
+function render(){chips();paintGrid();paintWings();paintConf();paintCases();}
 render();
 </script>
 </body>
