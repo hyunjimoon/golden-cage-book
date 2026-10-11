@@ -54,7 +54,8 @@ SPEAKER_KO = {"da": "다", "se": "세", "seda": "세다"}
 
 # ── 회고 출처 ─────────────────────────────────────────────────────────────
 # 장 N의 회고 = N보다 뒤에 오는 글에서 "N장"을 호출하는 줄. 에필로그까지 센다.
-# ⚠️ ch6_play_nest.md 는 ch6_butterfly_nest.md 의 중복본이다 — 목록에 넣으면 6장 회고가 두 번 세어진다.
+# ⚠️ ch6_play_nest.md 는 ch6_butterfly_nest.md 의 바이트 동일 중복본이라 2026-10-12 삭제했다.
+#    되살리지 마라 — 목록에 넣으면 6장 회고가 두 번 세어진다. reader.html 이 별칭으로 옛 링크를 받는다.
 RETRO_SOURCES = [(n, stem) for n, stem, _, _ in CHAPTERS] + [(11, "ch10_epilogue")]
 RETRO_SRC_KO = {11: "에필로그"}
 MIN_RETRO_LINES = 3  # 그 아래는 기각 — 두 줄로 16축을 재면 자가 아니라 점괘다
