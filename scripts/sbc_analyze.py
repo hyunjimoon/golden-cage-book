@@ -33,7 +33,7 @@ try:
 except ImportError:
     anthropic = None  # --dump-retro 는 API 없이 돈다 (자의 재료를 눈으로 검산하는 길)
 
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-5-5"   # 2026-10-11: 4-5 는 11-30 EOL 예고 — 돌 때마다 경고가 찍혔다
 
 # ── 장 정의 ───────────────────────────────────────────────────────────────
 # (번호, 파일 stem, 표시명, 화자 목록)  — 화자 순서 = HTML 패널 표시 순서
@@ -494,8 +494,11 @@ def main():
         retro = None
 
     if not results:
-        print("측정된 장이 없다 — HTML 미변경")
-        return
+        # 2026-10-11: 열 장이 전부 깨졌는데 Action 은 **success** 로 끝났다(API 잔액 0).
+        #   "No changes to emotion.html" 한 줄만 남아 자가 죽은 걸 아무도 못 봤다 —
+        #   build_docx 의 「조용히 도는 것이 가장 비싸다」와 같은 병. 전멸은 소리를 내고 죽는다.
+        print("🚨 측정된 장이 0개 — 자가 죽었다. HTML 미변경, 빌드 실패로 끝낸다.")
+        sys.exit(1)
 
     # 기각된 장은 HTML의 기존 값을 덮지 않도록, 전량 성공일 때만 통째 교체
     if len(results) != len(CHAPTERS):
