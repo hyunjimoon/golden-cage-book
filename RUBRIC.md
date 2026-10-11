@@ -3,7 +3,7 @@
 > 이 원고가 [투향 4 이해관계자](README.md)(독자🙋·저자🛠️·출판사💰·편집자🤝)를 얼마나 *계산끝내* 만족시키는지 재는 자(尺).
 > pivot-game [`RUBRIC.md`](https://github.com/hyunjimoon/pivot-game/blob/master/RUBRIC.md)의 강연판 → **소설판**. 과정 문법은 [pivot-game `METHOD.md`](https://github.com/hyunjimoon/pivot-game/blob/master/METHOD.md).
 >
-> 채점은 `/reader` 패널을 role-play하는 `scripts/reader_score.py`가 push마다 자동 수행 → [`docs/ascent.html`](docs/ascent.html).
+> 채점은 손으로 한다. 자동 채점(`scripts/reader_score.py` → `docs/ascent.html`)은 2026-09-24 고아 정리에서 함께 내려갔다 — 돌아오기 전까지 이 자는 사람이 든다.
 
 ## 척도 (렌즈당 0–3)
 
@@ -46,4 +46,4 @@
 
 강연판의 ⑨⑩(자기적용도 축·라이브 정직 슬롯)에 대응. 이 자도 축을 벼릴 수 있다 — de Finetti: 같은 점수를 주는 장들의 교환가능성이 새 잠재 축(옵션)을 낳는다. τ*=max{0,√(V/4i)−1}로 언제 축을 확정할지 정한다.
 
-> 📈 상승 추이: [`docs/ascent.html`](docs/ascent.html) · 커버리지 격자: [`docs/coverage.md`](docs/coverage.md)
+> 📈 커버리지 격자: [`docs/coverage.md`](docs/coverage.md)
