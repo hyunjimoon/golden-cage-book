@@ -11,7 +11,8 @@
     --line:rgba(255,255,255,.08); --grid:rgba(255,255,255,.05);
     --user:#5B92F5; --tech:#A17BF0; --investor:#F26D6D; --collab:#34C88A;
     --gold:#c5a55a; --baseline:#5a6a7a; --sync:#6b7788;
-    --scene:#c5a55a; --summary:#4d7f92; --fail:#F26D6D;
+    --scene:#c5a55a; --summary:#4d7f92; --fail:#F26D6D; --verse:#9aa4c4;
+    --p16:#5B8CFF; --p27:#A277E8; --p38:#FF6252; --p49:#35C46A; --p510:#FFD53A;
     --serif:'Noto Serif KR',Georgia,serif; --sans:'Noto Sans KR',system-ui,sans-serif;
     --mono:'DM Mono',monospace;
   }
@@ -93,6 +94,8 @@
   .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap}
   .tag.scene{color:var(--scene);background:rgba(197,165,90,.13)}
   .tag.summary{color:var(--summary);background:rgba(77,127,146,.15)}
+  .tag.verse{color:var(--verse);background:rgba(154,164,196,.14)}
+  td.id small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.06em;color:var(--scene);font-weight:700;margin-top:2px}
   .marks{white-space:nowrap;font-family:var(--mono);font-size:13px;letter-spacing:2px}
   .m-o{color:var(--collab)}.m-h{color:var(--gold);opacity:.8}.m-x{color:var(--fail);opacity:.75}
 
@@ -100,6 +103,9 @@
   .ratio{display:flex;flex-direction:column;gap:7px;margin-top:4px}
   .rrow{display:grid;grid-template-columns:88px 1fr 40px;align-items:center;gap:12px}
   .rrow .rlab{font-size:12px;color:var(--ink-soft);white-space:nowrap}
+  .rrow .rlab i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
+  .rrow .rval em{font-style:normal;font-size:9.5px;letter-spacing:.04em;opacity:.6;display:block;font-family:var(--sans)}
+  .rrow.fresh .rval{color:var(--scene)}
   .rrow .rlab b{color:var(--ink);font-weight:600}
   .rtrack{position:relative;height:14px;border-radius:7px;background:var(--grid);overflow:hidden}
   .rfill{position:absolute;left:0;top:0;bottom:0;border-radius:7px}
@@ -124,17 +130,37 @@
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">투향 · 작법 계기 · How I Write 5편 대조</p>
+  <p class="eyebrow">투향 · 작법 계기 · How I Write 5편 대조 · 2026-10-14 재측정</p>
   <h1>장면인가 요약인가 —<br><em>네 문</em>을 다 지난 것만 장면이 된다</h1>
-  <p class="lede">David Perell의 <b>How I Write</b> 127편에서 "언제 장면이고 언제 요약인가"에 결정규칙으로 답하는 다섯 편을 골라, 그 잣대를 『투향』 <b>10장 101₍₃₎호</b>에 실제로 대봤다. 문은 순서가 있다 — 앞 문에서 걸리면 뒤는 볼 필요가 없다.</p>
+  <p class="lede">David Perell의 <b>How I Write</b> 127편에서 "언제 장면이고 언제 요약인가"에 결정규칙으로 답하는 다섯 편을 골라, 그 잣대를 『투향』 <b>10장 101₃호</b>에 실제로 대봤다. 문은 순서가 있다 — 앞 문에서 걸리면 뒤는 볼 필요가 없다.</p>
+  <p class="lede" style="margin-bottom:18px">이 자를 처음 댄 날은 <b>2026-07-27</b>이었다. 그날 이 화면이 적은 것은 둘이다 — <q>사람 없는 카드가 다섯 장 연속</q>, 그리고 <q>5장에서 무너진다</q>. 열한 주 뒤 다시 재니 <b>둘 다 바뀌었다.</b> 다만 <b>처방대로 바뀌지 않았다</b> — 그래서 고친 수보다 <em style="font-style:normal;color:var(--ink)">어디를 고쳤는지</em>를 먼저 적는다.</p>
   <p class="rule">
-    <b>①</b> 사람이 있고 <span>(Connelly · Storr — 누구·원함·방해)</span> · <b>②</b> 물려 있고 <span>(Andrew Stanton)</span> · <b>③</b> 독자 머리가 비어 있고 <span>(Keefe)</span> · <b>④</b> 내가 비켜설 때 <span>(Brandon Stanton)</span> — 그때만 장면.<br>그리고 장면은 <b>3초 단위</b>로 짓는다 <span>(Max)</span>.
+    <b>①</b> 사람이 있고 <span>(Connelly · Storr — 누구·원함·방해)</span> · <b>②</b> 물려 있고 <span>(Andrew Stanton)</span> · <b>③</b> 독자 머리가 비어 있고 <span>(Keefe)</span> · <b>④</b> 내가 비켜설 때 <span>(Brandon Stanton)</span> — 그때만 장면.<br>그리고 장면은 <b>3초 단위</b>로 짓는다 <span>(Max)</span>.<br><span style="color:var(--verse)">셋째 형식이 하나 늘었다 — <b style="color:var(--verse)">운문</b>. 네 문을 통과하는 것이 아니라 <em style="font-style:normal">비켜 간다</em>(장 배당 확정 2026-10-10).</span>
   </p>
+
+  <!-- ─────────── 바뀐 것 ─────────── -->
+  <section class="panel">
+    <h2>열한 주 사이 — 요약이 어디로 갔나</h2>
+    <p class="sub">7월 판정은 <q>5장과 둥지 넷이 요약으로 꺼져 있다</q>였다. 그 사이 두 번의 룰링이 <b>장을 고친 게 아니라 짐을 옮겼다</b> — 5장이 지고 있던 원리 넷을 제 자리가 있는 장으로 흩고, 5장에는 장면 하나만 남겼다.</p>
+    <div class="tablebox">
+      <table style="min-width:600px">
+        <thead><tr><th>옮긴 것</th><th>5장 →</th><th>왜 그 자리인가</th></tr></thead>
+        <tbody>
+          <tr><td class="sec">§3 첫째 방 — 자유=예속(원함)</td><td class="sec" style="color:var(--p16)">6장 🦋 고통</td><td class="sec" style="color:var(--ink-soft)">pain↔desire 한 축</td></tr>
+          <tr><td class="sec">§4 둘째 방 — 무지=힘(됨, τ*)</td><td class="sec" style="color:var(--p27)">7장 🌷 지식</td><td class="sec" style="color:var(--ink-soft)">feasibility = 됨·지음</td></tr>
+          <tr><td class="sec">§1 다운라운드 이사회 · §5 셋째 방(책임)</td><td class="sec" style="color:var(--p38)">8장 🌫️ 손익</td><td class="sec" style="color:var(--ink-soft)">그 장이 이미 Scope 부등식을 부르고 있었다</td></tr>
+          <tr><td class="sec">§6 넷째 방 — 척도 그 자체</td><td class="sec" style="color:var(--p49)">9장 🐦‍⬛ 기준</td><td class="sec" style="color:var(--ink-soft)">metric ≠ evaluation metric</td></tr>
+          <tr class="sel"><td class="sec"><b>§1.1 어느 밤의 101호 · §2 왜 비명이었나</b></td><td class="sec" style="color:var(--p510)"><b>10장 §3-A′</b></td><td class="sec" style="color:var(--ink-soft)">자장 일화는 10장 정본 — 청구서 표 <b>다섯째 줄</b>의 펼친 형태</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">출처 = 5장 하단 <b>📦 이관 대장</b>(2026-09-02) · <b>v4 개정</b>(2026-09-21). 그 결과 <b>5장은 장면 하나만 남는 장</b>이 됐다 — 7월에 25%로 찍힌 자리는 구멍이 아니라 <b>설계</b>였던 것으로 바뀌었다. <span style="opacity:.75">(이관 대장 제목은 아직 「장면 둘로 제한」이라 적혀 있다. 9-21 v4가 하나로 좁혔으니 <b>이름이 뜻보다 한 칸 뒤처져 있다</b>.)</span></p>
+  </section>
 
   <!-- ─────────── 엔필라드 ─────────── -->
   <section class="panel">
     <h2>네 문 — 엔필라드</h2>
-    <p class="sub">문을 누르면 그 문의 규칙이 열린다. 아래 10장 표의 행을 누르면, 그 대목이 <em style="color:var(--fail);font-style:normal">어느 문에서 막히는지</em>가 여기 닫힌다. 가장 바깥에서 막힌 문 하나만 그린다 — 첫 문에서 걸리면 안쪽 방은 보이지도 않으므로.</p>
+    <p class="sub">문을 누르면 그 문의 규칙이 열린다. 아래 10장 표의 행을 누르면, 그 대목이 <em style="color:var(--fail);font-style:normal">어느 문에서 막히는지</em>가 여기 닫힌다. 가장 바깥에서 막힌 문 하나만 그린다 — 첫 문에서 걸리면 안쪽 방은 보이지도 않으므로. <b style="color:var(--verse)">운문 행은 문을 재지 않는다.</b></p>
     <div class="chartbox"><svg id="enfilade" viewBox="0 0 800 340" role="img" aria-label="네 개의 문이 겹친 엔필라드 도해"></svg></div>
     <div class="gatedetail" id="gatedetail"></div>
   </section>
@@ -142,7 +168,7 @@
   <!-- ─────────── 슬라이더 ─────────── -->
   <section class="panel">
     <h2>넷째 문의 손잡이 — 자기표현 ↔ 자기삭제 슬라이더</h2>
-    <p class="sub">Perell이 Brandon Stanton에게 붙인 좌표. 양 끝이 사람 이름으로 박혀 있다 — <b>Hunter S. Thompson</b>(『Fear and Loathing』, 곤조) ↔ <b>HONY</b>(<q>I didn't even know your name for so many years</q>). 같은 대목(10장 §2, 오브라이언의 손가락 넷)을 다섯 위치에서 다시 썼다.</p>
+    <p class="sub">Perell이 Brandon Stanton에게 붙인 좌표. 양 끝이 사람 이름으로 박혀 있다 — <b>Hunter S. Thompson</b>(『Fear and Loathing』, 곤조) ↔ <b>HONY</b>(<q>I didn't even know your name for so many years</q>). 같은 대목(10장 §2, 오브라이언의 손가락 넷)을 다섯 위치에서 다시 썼다. <b>50·75는 현 원고에서 글자 그대로 확인됐다</b>(2026-10-14 대조).</p>
     <div class="slidebox">
       <div class="poles"><span><b>0</b> 자기삭제 · 대상만</span><span>자기표현 · 나의 고백 <b>100</b></span></div>
       <input type="range" id="slider" min="0" max="100" step="25" value="50" aria-label="자기표현 정도">
@@ -159,15 +185,15 @@
       <p class="pnote" id="p-note"></p>
     </div>
 
-    <p class="sub" style="margin:26px 0 10px">이 자로 『투향』 열 장을 재면 — 9장까지 평평하다가 10장에서 튄다.</p>
+    <p class="sub" style="margin:26px 0 10px">이 자로 『투향』 열 장을 재면 — 9장까지 평평하다가 10장에서 튄다. <b>5장만 7월보다 왼쪽으로 내려왔다</b>(75→45): 자장 일화가 10장으로 떠났기 때문이다.</p>
     <div class="chartbox"><svg id="axis" viewBox="0 0 800 136" role="img" aria-label="장별 자기표현 위치"></svg></div>
-    <p class="foot"><b>비어 있는 자리는 슬라이더의 25다.</b> 인물의 눈으로 쓴 대목(자유간접화법)이 『투향』 어느 장에도 거의 없다 — 장 평균은 중간이지만, 그 중간은 서술자(50)와 해석(75)을 오간 결과지 25를 지난 결과가 아니다. 10장의 곤조(95)로 가려면 25를 먼저 벌어야 한다 — 넷째 문은 "나를 지워라"가 아니라 <b>"내가 설 자리를 고르라"</b>는 문이다.</p>
+    <p class="foot"><b>25는 반만 찼다.</b> 7월에 이 자리는 통째로 비어 있었다. 지금은 <b>§3-A′</b>가 들어와 있다 — <q>지금 이 순간 나는 옳다. 나는 <em>양심</em>을 보내고 있다.</q> 1인칭 현재, 해석을 작가가 아니라 <em style="font-style:normal;color:var(--ink)">그때의 몸</em>에서 일어나게 한 문장이다. 다만 그 인물이 <b>자장 자신</b>이다. 엠마·살리나·윈스턴의 눈으로 쓴 대목은 여전히 거의 없다 — <b>25는 자장에게만 열렸고 인물에게는 아직 닫혀 있다.</b> 넷째 문은 "나를 지워라"가 아니라 <b>"내가 설 자리를 고르라"</b>는 문이다.</p>
   </section>
 
   <!-- ─────────── 투향 표 ─────────── -->
   <section class="panel">
-    <h2>10장 101₍₃₎호 — 열세 단위, 네 문 통과 여부</h2>
-    <p class="sub">행을 누르면 위 엔필라드가 반응한다. <b>want</b>는 문단 단위 표면 욕구(Connelly·Vonnegut — <q>물 한 잔이라도</q>), <b>need</b>는 장 단위 통제이론(Storr — <q>I am only safe if I ___</q>). 둘은 경쟁하지 않고 층이 다르다.</p>
+    <h2>10장 101₃호 — 스물여섯 단위, 네 문 통과 여부</h2>
+    <p class="sub">행을 누르면 위 엔필라드가 반응한다. <b>want</b>는 문단 단위 표면 욕구(Connelly·Vonnegut — <q>물 한 잔이라도</q>), <b>need</b>는 장 단위 통제이론(Storr — <q>I am only safe if I ___</q>). 둘은 경쟁하지 않고 층이 다르다. 7월의 열세 단위가 <b>스물여섯</b>이 됐다 — §4·§5가 사라지고 <b>§3이 넷으로 쪼개졌다</b>(A · A′ · B · C). <span style="color:var(--scene)">★</span> 표시가 7월 이후 새로 선 장면이다.</p>
     <div class="tablebox">
       <table>
         <thead><tr>
@@ -177,21 +203,23 @@
       </table>
     </div>
     <div class="legend">
-      <span><i class="sw" style="background:var(--scene)"></i>장면 3 / 13</span>
-      <span><i class="sw" style="background:var(--summary)"></i>요약 10 / 13</span>
+      <span><i class="sw" style="background:var(--scene)"></i>장면 9 / 26</span>
+      <span><i class="sw" style="background:var(--summary)"></i>요약 15 / 26</span>
+      <span><i class="sw" style="background:var(--verse)"></i>운문 2 / 26 · 문을 안 지난다</span>
       <span><span class="marks m-o">✓</span> 통과</span>
       <span><span class="marks m-h">△</span> 아슬</span>
       <span><span class="marks m-x">✕</span> 막힘</span>
     </div>
-    <p class="foot"><b>사람 없는 카드가 다섯 장 연속이다</b> — S3·S5·S6·S9·S10. 10장의 물림은 §3 중반에서 끊긴다. 가장 급한 한 수는 <b>S7의 장면화</b>: 재료는 이미 본문에 있다 — <q>3월 13일, 제목이 바뀌었다.</q> 그날 밤 파일명을 고치는 손 한 컷이면 다섯 연속이 깨진다.</p>
+    <p class="foot"><b>다섯 연속이 둘로 끊겼다.</b> 사람 없는 카드(①✕)의 최장 연속은 이제 S6–S7 둘뿐이다. 그런데 <b>7월 처방은 따르지 않았다</b> — 커밋 연대기(S16)는 그대로 요약이고, <q>3월 13일 제목이 바뀐 밤</q>은 끝내 장면이 되지 않았다. 대신 그 <em style="font-style:normal;color:var(--ink)">앞에</em> 장면 둘이 새로 섰다 — <b>§3-A′</b>(그 밤의 101₂호)와 <b>§3-B</b>(척도가 0을 지나는 이틀). 마른 구간을 뚫은 게 아니라 <b>마른 구간이 오기 전에 물을 댔다.</b> 처방보다 한 방 앞선 자리다.<br><br>
+      <b>아직 젖지 않은 데가 셋 있다.</b> ① <b>S12</b>는 네 문을 다 막는 유일한 칸이다 — 🙋‍♀️ 두 개와 정리 안 된 구술 블록(<q>mit가 내게 황금새장일수 있단…</q>)이 그대로 서 있다. ② <b>§3-C</b>는 제목이 둘이고 하나는 아직 지시문이다(<q>…찾아서 요약부탁</q>). ③ <b>S19</b>(elephant in the room)는 재료가 장면인데 형식이 메모다 — 10장에서 장면화 효과가 가장 큰 한 칸은 이제 여기다.</p>
   </section>
 
   <!-- ─────────── 장면 비율 ─────────── -->
   <section class="panel">
-    <h2>새장은 장면으로, 둥지는 요약으로 지어졌다</h2>
-    <p class="sub">장별 장면 비율(§ 단위 분해 기준이 장마다 달라 대략치). 새장 넷(1–4)은 절반 이상이 장면인데, 회전축 5장과 둥지 넷(6–9)에서 무너진다. <b>물림이 가장 필요한 자리가 가장 비어 있다.</b></p>
+    <h2>두 101호는 올라섰고, 둥지 넷은 7월 그대로다</h2>
+    <p class="sub">장별 장면 비율(§ 단위 분해 기준이 장마다 달라 대략치). <b>이번에 다시 잰 것은 5장과 10장 둘뿐이다</b> — 나머지 여덟은 7월 이후 내용 커밋이 없어 그날 값을 그대로 둔다(6장만 편집 1건, 미재측정). 재측정한 칸에는 날짜를 박았다. <b>안 잰 값을 잰 값처럼 쓰지 않으려고 날짜를 남긴다.</b></p>
     <div class="ratio" id="ratio"></div>
-    <p class="foot">5장 §3의 <q>1년 뒤 박사과정으로 가는 알과, 1년 뒤 전업 작가가 되는 알</q> — 5장에서 유일하게 살아 있는 원함인데 기댓값 수식 뒤에 묻혀 있다. 이걸 §3 첫 문장으로 올리는 것이 원고 전체에서 물림 회복 효과가 가장 큰 단일 작업.</p>
+    <p class="foot">7월에 가장 낮았던 칸(5장 25%)이 가장 높은 칸(95%)이 됐다. <b>장면을 보태서가 아니라 요약을 내보내서다</b> — 원리 넷이 6·7·8·9장의 「되짚기」로 떠나고 자장의 밤이 10장으로 떠나자, 남은 것이 방 하나·장면 하나였다. <b>그런데 받은 쪽은 아직 안 쟀다.</b> 6–9장은 7월 값(27·18·11·18%)을 그대로 달고 있고, 그 사이 5장에서 원리 블록을 하나씩 받았다. 받은 짐이 요약이면 <b>네 칸은 지금 7월보다 더 낮아져 있을 수 있다</b> — 이 화면이 다음에 재야 할 자리가 거기다.</p>
   </section>
 
   <!-- ─────────── 출처 ─────────── -->
@@ -237,7 +265,7 @@ const STOPS = [
     note:"기록만 남고 해석이 없다. <b>강하지만 이 책엔 못 쓴다</b> — 『투향』은 이 장면으로 '척도가 녹는다'를 말해야 한다." },
   { v:25, name:"인물의 눈", who:"자유간접화법",
     text:"넷이다. 넷인데 다섯째가 자꾸 어른거린다. 다섯이라 <em>말하면</em> 끝나나 — 아니, 다섯으로 <em>보여야</em> 한다.",
-    note:"<b>『투향』에 비어 있는 자리.</b> 해석을 작가가 아니라 윈스턴의 머릿속에서 일어나게 한다. 넷째 문을 통과하면서도 뜻이 전달되는 유일한 위치." },
+    note:"<b>7월엔 비어 있었고, 지금은 반만 찼다.</b> §3-A′가 이 자리에 들어왔다 — 다만 그 머릿속이 <em>자장의</em> 것이다. 윈스턴·엠마·살리나의 머리로 쓴 대목은 아직 없다. 넷째 문을 통과하면서도 뜻이 전달되는 유일한 위치." },
   { v:50, name:"화자 있음, 나 없음", who:"현 원고 §2",
     text:"오브라이언이 요구한 것은 다섯이라 <em>말하는</em> 것이 아니라 다섯으로 <em>보고 싶어지는</em> 것이었다.",
     note:"현재 10장 §2가 선 자리. 안전하지만 <b>서술자가 이미 앞서 있다</b> — 독자가 스스로 알아챌 자리를 뺏는다." },
@@ -246,50 +274,85 @@ const STOPS = [
     note:"논지는 여기서 가장 선명하다. 대신 <b>장면이 예시로 강등</b>된다. 요약임을 인정하고 짧게 쓰는 것이 정직하다." },
   { v:100,name:"나의 고백", who:"곤조 쪽 끝",
     text:"나는 지난 3월, 내 원고에 대해 다섯을 보고 싶었다. 커밋 303개가 그 증거다. 넷이었는데.",
-    note:"10장 §3–§5가 실제로 선 자리(95). <b>이 책에서만 정당한 위치</b> — 10장은 책 자신이 대상이므로. 단 1–9장에서 25를 벌지 못하면 급발진으로 읽힌다." }
+    note:"10장 §3-A′·§3-C가 실제로 선 자리(95). <b>이 책에서만 정당한 위치</b> — 10장은 책 자신이 대상이므로. 7월엔 §3–§5라 적었으나 <b>§4·§5는 개고로 사라졌다</b>. 단 1–9장에서 25를 벌지 못하면 급발진으로 읽힌다." }
 ];
+
+// 방 이름·자리·짝색은 2026-10 canon. m = 이 비율을 잰 날.
+const PC = { 1:"var(--p16)", 6:"var(--p16)", 2:"var(--p27)", 7:"var(--p27)",
+             3:"var(--p38)", 8:"var(--p38)", 4:"var(--p49)", 9:"var(--p49)",
+             5:"var(--p510)", 10:"var(--p510)" };
 
 const CHAPTERS = [
-  { n:1,  sym:"🪞", name:"거울새장",  x:35, ratio:50 },
-  { n:2,  sym:"🔭", name:"망원경",    x:32, ratio:50 },
-  { n:3,  sym:"💒", name:"스테인굴레스",x:60, ratio:63 },
-  { n:4,  sym:"⏱️", name:"시계",      x:45, ratio:56 },
-  { n:5,  sym:"🐀", name:"101 회전축", x:75, ratio:25, pivot:true },
-  { n:6,  sym:"🦋", name:"나비",      x:50, ratio:27 },
-  { n:7,  sym:"🌷", name:"튤립",      x:42, ratio:18 },
-  { n:8,  sym:"🌫️", name:"안개",      x:40, ratio:11 },
-  { n:9,  sym:"🐦‍⬛", name:"까마귀",    x:55, ratio:18 },
-  { n:10, sym:"🧫", name:"101₃",     x:95, ratio:23, pivot:true }
+  { n:1,  sym:"🪞", name:"거울새장",     seat:"욕망", pair:6,  x:35, ratio:50, m:"07-27" },
+  { n:2,  sym:"🔭", name:"망원경새장",   seat:"상상", pair:7,  x:32, ratio:50, m:"07-27" },
+  { n:3,  sym:"💒", name:"스테인굴레스새장", seat:"설득", pair:8, x:60, ratio:63, m:"07-27" },
+  { n:4,  sym:"⏱️", name:"시계새장",     seat:"폭파", pair:9,  x:45, ratio:56, m:"07-27" },
+  { n:5,  sym:"🐀", name:"101₂호",      seat:"이음새", pair:10, x:45, ratio:95, m:"10-14", pivot:true,
+    note:"점으로 축약 — 장면 하나만 남았다" },
+  { n:6,  sym:"🦋", name:"나비",        seat:"고통", pair:1,  x:50, ratio:27, m:"07-27", warn:true },
+  { n:7,  sym:"🌷", name:"튤립",        seat:"지식", pair:2,  x:42, ratio:18, m:"07-27" },
+  { n:8,  sym:"🌫️", name:"안개",        seat:"손익", pair:3,  x:40, ratio:11, m:"07-27" },
+  { n:9,  sym:"🐦‍⬛", name:"까마귀",      seat:"기준", pair:4,  x:55, ratio:18, m:"07-27" },
+  { n:10, sym:"🧫", name:"101₃호",      seat:"이음새", pair:5,  x:95, ratio:35, m:"10-14", pivot:true,
+    note:"장면 9 · 요약 15 · 운문 2" }
 ];
 
-// g: 4 문 통과 — 'o' 통과 / 'h' 아슬 / 'x' 막힘
+// g: 4 문 통과 — 'o' 통과 / 'h' 아슬 / 'x' 막힘 / null = 운문(문을 안 지난다)
+// 2026-10-14 재측정 · 출처 = 4차소통/원고/10🧫_101.md (§1·§2·§3-A·A'·B·C·§6)
+// new:true = 2026-07-27 이후 새로 선 장면
 const SCENES = [
-  { id:"S1", sec:"도입 ⛰️ 네 빚", form:"요약", who:"당신",
+  { id:"S1", sec:"머리 운문 「달을 따르 세」", form:"운문", who:"세 · 다",
+    want:"—", need:"—", g:null, new:true },
+  { id:"S2", sec:"§1 ⛰️ 네 빚", form:"요약", who:"당신",
     want:"궤도를 닫고 끝내고 싶다", need:"덮어 가린 고통을 그대로 마주해야 한다", g:["h","o","o","o"] },
-  { id:"S2", sec:"§1 101호 · 쥐 철망", form:"장면", who:"윈스턴",
+  { id:"S3", sec:"§1 101호 · 쥐 철망", form:"장면", who:"윈스턴",
     want:"이 얼굴에서 철망을 치우고 싶다", need:"사랑을 지킨 자기로 남는 것", g:["o","o","o","o"] },
-  { id:"S3", sec:"§1 문패 10101 · 건축 벡터", form:"요약", who:"—",
-    want:"—", need:"—", g:["x","h","h","o"] },
-  { id:"S4", sec:"§2 오브라이언의 손가락 넷", form:"장면", who:"오브라이언 / 윈스턴",
-    want:"넷을 다섯이라 말하게 하고 싶다 / 고통을 멈추고 싶다", need:"권력이 현실을 만든다는 증명 / 잴 자를 잃지 않는 것", g:["o","o","o","o"] },
-  { id:"S5", sec:"§2 “넷은 넷이다” 해설", form:"요약", who:"—",
-    want:"—", need:"—", g:["x","o","o","h"] },
-  { id:"S6", sec:"§3 아홉 장 되짚기", form:"요약", who:"—",
+  { id:"S4", sec:"§1 어긋난 문패 · 향 세 겹(方向·香氣·意義)", form:"요약", who:"—",
     want:"—", need:"—", g:["x","h","x","o"] },
-  { id:"S7", sec:"§3 커밋 연대기 Dec–Jul", form:"요약", who:"자장 (무대 밖)",
+  { id:"S5", sec:"§2 오브라이언의 손가락 넷", form:"장면", who:"오브라이언 / 윈스턴",
+    want:"넷을 다섯이라 말하게 하고 싶다 / 고통을 멈추고 싶다", need:"권력이 현실을 만든다는 증명 / 잴 자를 잃지 않는 것", g:["o","o","o","o"] },
+  { id:"S6", sec:"§2 “넷은 넷이다” 해설", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","o","o","h"] },
+  { id:"S7", sec:"§3 두 연대기 · 아홉 장 되짚기", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","h","x","o"] },
+  { id:"S8", sec:"§3-A 청구서 — 일곱 줄 목록", form:"요약", who:"자장 (무대 밖)",
+    want:"설명하지 않고 지나가고 싶다", need:"목록이 설명보다 정직할 때가 있다", g:["h","o","o","o"] },
+  { id:"S9", sec:"§3-A 4년과 넉 달 · 🎞️ 공대 백 명 앞", form:"장면", who:"자장 / 학생 백 명",
+    want:"솔직하게 답하고 싶다", need:"닫힌 문이 열리는 데 드는 배수를 세어야 한다", g:["o","o","o","h"], new:true },
+  { id:"S10", sec:"§3-A 청구서 표 + 스테인굴레스 함정", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","h","h","o"] },
+  { id:"S11", sec:"§3-A 두 날짜 영수증 (8/2 · 11/1)", form:"장면", who:"자장 / 독서모임",
+    want:"밑줄 한 줄을 새기고 싶다", need:"원리를 고통보다 먼저 적어 둬야 지어낸 이야기가 아니다", g:["o","o","h","h"], new:true },
+  { id:"S12", sec:"§3-A 에르고딕 · 최적이 아니라 계속", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","h","x","x"] },
+  { id:"S13", sec:"§3-A′ 그 밤의 101₂호 — 읽다 · 보내다 · 사흘 뒤", form:"장면", who:"자장 / 스승 셋",
+    want:"양심을 보내고 싶다", need:"내가 보낸 것과 상대가 읽은 것이 다를 수 있음을 알아야 한다", g:["o","o","o","h"], new:true },
+  { id:"S14", sec:"§3-A′ 지렛대 — 자기가 당기면 상환, 남이 당기면 고문", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","o","o","o"] },
+  { id:"S15", sec:"§3-B 마디 — 척도가 0을 지나는 이틀 (12.12–13)", form:"장면", who:"자장 / 편집자",
+    want:"사십 분 안에 답장을 쓰고 싶다", need:"부호가 뒤집히려면 0을 지나야 한다", g:["o","o","o","o"], new:true },
+  { id:"S16", sec:"§3-C 커밋 연대기 Dec–Jul", form:"요약", who:"자장 (무대 밖)",
     want:"책을 끝내고 싶다", need:"은유가 도착해야 문장이 정렬된다", g:["h","o","h","x"] },
-  { id:"S8", sec:"§4 줄탁동시 — Charlie 이메일", form:"장면", who:"자장 / Charlie",
-    want:"스승의 척도를 듣고 싶다 / 강요 없이 씨앗을 놓고 싶다", need:"밖의 부리가 같은 자리를 쪼아야 껍질이 깨진다", g:["o","o","o","h"] },
-  { id:"S9", sec:"§4 여섯 연장 표", form:"요약", who:"—",
-    want:"—", need:"—", g:["x","x","x","o"] },
-  { id:"S10", sec:"§5 호러 / 판타지 두 믿음", form:"요약", who:"자장 (무대 밖)",
-    want:"전쟁을 막고 싶다", need:"최악과 최선 사이에만 잴 자가 있다", g:["h","h","x","x"] },
-  { id:"S11", sec:"§6 세다 탄생 — 다가 세를 쏘다", form:"요약", who:"다 / 세",
+  { id:"S17", sec:"§3-C 세 번의 개명 — 황금새장을열다 · 금새 · 투향", form:"요약", who:"책 자신",
+    want:"제 이름을 갖고 싶다", need:"갇힘을 지운 자리에 동작을 놓아야 한다", g:["h","o","o","h"] },
+  { id:"S18", sec:"§3-C 8월 다섯 자리 공정", form:"요약", who:"—",
+    want:"—", need:"—", g:["x","h","h","o"] },
+  { id:"S19", sec:"§3-C elephant — MIT가 내게 황금새장인가", form:"장면", who:"자장 / 찰리",
+    want:"떠나는 마음과 남는 마음을 같이 재고 싶다", need:"욕망면과 인식면이 직교해야 한다", g:["h","o","h","x"], raw:true },
+  { id:"S20", sec:"§6 세다 탄생 — 다가 세를 쏘다", form:"요약", who:"다 / 세",
     want:"앞서 달리고 싶다 / 지켜보고 싶다", need:"세를 이해해야 한다 / 다를 사랑해야 한다", g:["h","o","h","o"] },
-  { id:"S12", sec:"⭐️ 네 자리 — 세 지시", form:"요약", who:"당신",
+  { id:"S21", sec:"§6 부리는 둘이 아니었다 — 첫 고객은 부모", form:"장면", who:"자장 / 어머니 / 아버지",
+    want:"설명 말고 그냥 써 보시게 하고 싶다", need:"넷이 서로를 통해 설득된다 — 공명은 은유가 아니라 배선이다", g:["o","o","o","h"], new:true },
+  { id:"S22", sec:"§6 디버깅 가능한 사랑 · 낙관의 독", form:"요약", who:"자장 (무대 밖)",
+    want:"배신당해도 납득하고 싶다", need:"혼자만 아는 끝은 신중이 아니라 부채다", g:["h","o","o","h"] },
+  { id:"S23", sec:"§6 유연한 못 · 세 물음", form:"요약", who:"당신",
+    want:"세 물음에 답하고 싶다", need:"셋째 물음엔 돌아갈 방이 없다", g:["h","o","o","o"] },
+  { id:"S24", sec:"⭐️ 네 자리 — 네 지시 (각주)", form:"요약", who:"당신",
     want:"이 방을 닫고 싶다", need:"다섯으로 보고 싶은 넷을 짚어야 한다", g:["h","o","o","o"] },
-  { id:"S13", sec:"엔필라드 — 꺼진 무도회장, 빈 손", form:"장면", who:"당신",
-    want:"문을 열고 나가고 싶다", need:"손이 비어 있음을 견디는 것", g:["o","o","o","o"] }
+  { id:"S25", sec:"엔필라드 — 꺼진 무도회장, 빈 손", form:"장면", who:"당신",
+    want:"문을 열고 나가고 싶다", need:"손이 비어 있음을 견디는 것", g:["o","o","o","o"] },
+  { id:"S26", sec:"닫는 운문 「낭만은 활력이자 독이다」", form:"운문", who:"세 · 다",
+    want:"—", need:"—", g:null, new:true }
 ];
 
 const SRC = [
@@ -334,7 +397,7 @@ function drawEnfilade(){
   // 문 넷
   GATES.forEach((g,i)=>{
     const d = doorGeo(i), on = selGate === i;
-    const ajar = selScene && selScene.g[i] === "h";
+    const ajar = selScene && selScene.g && selScene.g[i] === "h";
     s += `<rect class="gframe${on?" on":""}" ${ajar?'stroke="var(--gold)" stroke-dasharray="4 4" stroke-width="1.8"':""} data-frame="${i}" x="${d.x}" y="${d.y}" width="${d.w}" height="${d.h}" rx="3"/>`;
     // 좌·우 번갈아 걸어 겹침을 피한다 (문틀 인방 자리)
     const left = i % 2 === 0;
@@ -345,7 +408,10 @@ function drawEnfilade(){
   });
 
   // 막힘 셔터 — 가장 바깥에서 막힌 문 하나만
-  if (selScene){
+  if (selScene && !selScene.g){
+    const yBase = doorGeo(0).y + doorGeo(0).h + 22;
+    s += `<text class="shutter-t" x="${CX}" y="${yBase}" style="fill:var(--verse)">${selScene.id} — 운문 · 네 문을 지나지 않고 비켜 간다</text>`;
+  } else if (selScene){
     const idx = selScene.g.findIndex(v => v === "x");
     if (idx >= 0){
       const d = doorGeo(idx);
@@ -384,7 +450,7 @@ function showGate(){
     return;
   }
   const g = GATES[selGate];
-  const blocked = SCENES.filter(s => s.g[selGate] === "x").map(s => s.id);
+  const blocked = SCENES.filter(s => s.g && s.g[selGate] === "x").map(s => s.id);
   box.innerHTML = `<div class="gd-h"><i>${g.n}</i>${g.name} <span style="font-size:12px;color:var(--ink-soft);font-weight:400">· ${g.who}</span></div>
     <p class="gd-rule">${g.rule}</p>
     <blockquote>${g.quote}<cite>${g.cite}</cite></blockquote>
@@ -407,7 +473,7 @@ function renderStop(v){
   document.getElementById("p-note").innerHTML = s.note;
   const flag = document.getElementById("p-flag");
   flag.innerHTML = (s.v === 50 || s.v === 75) ? `<span class="flag">현 원고</span>`
-                 : (s.v === 25) ? `<span class="flag">비어 있음</span>` : "";
+                 : (s.v === 25) ? `<span class="flag" style="border-color:var(--summary);color:var(--summary)">§3-A′가 반만 채웠다</span>` : "";
   drawTicks(v);
   drawAxis(v);
 }
@@ -432,11 +498,11 @@ function drawAxis(cur){
     const up = i % 2 === 0, lane = up ? 0 : 1;
     const lx = Math.max(px(c.x), lastX[lane] + GAP);
     lastX[lane] = lx;
-    const col = c.n === 10 ? "var(--gold)" : "var(--ink-soft)";
-    const r = c.n === 10 ? 5.5 : 4;
+    const col = PC[c.n];
+    const r = c.pivot ? 5.5 : 4;
     s += `<line x1="${px(c.x)}" y1="${up ? Y-8 : Y+8}" x2="${lx}" y2="${up ? 36 : 84}" stroke="${col}" stroke-width="1" opacity=".3"/>`;
     s += `<circle cx="${px(c.x)}" cy="${Y}" r="${r}" fill="${col}"/>`;
-    s += `<text x="${lx}" y="${up ? 30 : 96}" text-anchor="middle" fill="${col}" font-size="11.5" font-weight="${c.n===10?700:400}">${c.n}${c.sym} ${c.name}</text>`;
+    s += `<text x="${lx}" y="${up ? 30 : 96}" text-anchor="middle" fill="${col}" font-size="11.5" font-weight="${c.pivot?700:400}">${c.n}${c.sym} ${c.name}</text>`;
   });
   s += `<text x="2" y="${Y+4}" fill="var(--ink-soft)" font-size="10.5">←삭제</text>`;
   s += `<text x="798" y="${Y+4}" text-anchor="end" fill="var(--ink-soft)" font-size="10.5">표현→</text>`;
@@ -448,15 +514,16 @@ function drawAxis(cur){
 const MARK = { o:'<span class="m-o">✓</span>', h:'<span class="m-h">△</span>', x:'<span class="m-x">✕</span>' };
 
 function drawTable(){
+  const cls = f => f === "장면" ? "scene" : f === "운문" ? "verse" : "summary";
   document.getElementById("tbody").innerHTML = SCENES.map((s,i)=>`
     <tr data-i="${i}">
-      <td class="id">${s.id}</td>
+      <td class="id">${s.id}${s.new ? "<small>★ 신설</small>" : ""}${s.raw ? '<small style="color:var(--fail)">미정리</small>' : ""}</td>
       <td class="sec">${s.sec}</td>
-      <td><span class="tag ${s.form === "장면" ? "scene" : "summary"}">${s.form}</span></td>
+      <td><span class="tag ${cls(s.form)}">${s.form}</span></td>
       <td class="sec" style="color:var(--ink-soft)">${s.who}</td>
       <td class="want">${s.want}</td>
       <td class="need">${s.need}</td>
-      <td class="marks">${s.g.map(v => MARK[v]).join("")}</td>
+      <td class="marks">${s.g ? s.g.map(v => MARK[v]).join("") : '<span style="color:var(--verse);letter-spacing:1px">— — — —</span>'}</td>
     </tr>`).join("");
 
   document.querySelectorAll("#tbody tr").forEach(tr=>{
@@ -475,10 +542,11 @@ function drawTable(){
 function drawRatio(){
   document.getElementById("ratio").innerHTML = CHAPTERS.map(c=>{
     const col = c.ratio >= 50 ? "var(--scene)" : c.ratio >= 25 ? "var(--summary)" : "var(--fail)";
-    return `<div class="rrow${c.pivot ? " pivot" : ""}">
-      <div class="rlab">${c.n}${c.sym} <b>${c.name}</b></div>
-      <div class="rtrack"><div class="rfill" style="width:${c.ratio}%;background:${col};opacity:.85"></div></div>
-      <div class="rval">${c.ratio}%</div>
+    const fresh = c.m === "10-14";
+    return `<div class="rrow${c.pivot ? " pivot" : ""}${fresh ? " fresh" : ""}" title="${c.note || ""}">
+      <div class="rlab"><i style="background:${PC[c.n]}"></i>${c.n}${c.sym} <b>${c.name}</b></div>
+      <div class="rtrack"><div class="rfill" style="width:${c.ratio}%;background:${col};opacity:${fresh ? ".9" : ".45"}"></div></div>
+      <div class="rval">${c.ratio}%<em>${fresh ? "10-14" : c.warn ? "07-27 ⚠" : "07-27"}</em></div>
     </div>`;
   }).join("");
 }
