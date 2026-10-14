@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>여덟 갈등 퀼트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090f;--panel:#0f1420;--panel2:#141a29;--ink:#c8d0dd;--dim:#5a6a7a;
+ --line:rgba(255,255,255,.08);--gold:#c5a55a;--y:#FFD53A;
+ --serif:"Noto Serif KR",'Apple SD Gothic Neo',Georgia,serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:300;
+ line-height:1.7;padding:28px 16px 70px}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:inherit}
+.home{font-family:var(--mono);font-size:11.5px;color:var(--dim);text-decoration:none;
+ display:inline-block;margin-bottom:18px}
+.home:hover{color:var(--gold)}
+h1{font-size:clamp(25px,5vw,37px);font-weight:600;margin:0 0 6px;letter-spacing:-.02em}
+.sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);
+ text-transform:uppercase;margin-bottom:16px}
+.hook{font-size:clamp(16px,2.4vw,20px);max-width:42ch;line-height:1.65;margin:0 0 22px}
+.hook b{font-weight:600;color:#eef1f6}
+.quick{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--gold);
+ border-radius:4px;padding:14px 18px;margin:0 0 30px;font-size:14px}
+.quick ol{margin:0;padding-left:20px}.quick li{margin:5px 0;color:#aab4c4}
+.quick li b{color:#eef1f6;font-weight:600}
+h2{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;
+ color:var(--gold);font-weight:500;margin:42px 0 10px;padding-top:14px;
+ border-top:1px dashed rgba(197,165,90,.26)}
+h2 small{font-family:var(--serif);letter-spacing:0;text-transform:none;color:var(--dim);
+ font-size:12.5px;margin-left:10px}
+p.note{font-size:13.5px;color:#93a0b2;max-width:64ch;margin:0 0 14px}
+p.note b{color:#dce2ec;font-weight:600}
+
+.modes{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 10px}
+.modes button{font-family:var(--serif);font-size:13.5px;cursor:pointer;background:var(--panel);
+ color:#9aa6b8;border:1px solid var(--line);border-radius:999px;padding:7px 16px;transition:.16s}
+.modes button:hover{background:var(--panel2);color:var(--ink)}
+.modes button[aria-pressed=true]{background:#1b2436;color:#f0f3f8;border-color:rgba(197,165,90,.5)}
+.modehint{font-size:13px;color:var(--dim);margin:0 0 8px;min-height:1.7em}
+.modehint b{color:#c8d0dd;font-weight:600}
+
+.figbox{display:none}
+@media(min-width:800px){.figbox{display:block}}
+#fig{width:100%;height:auto;overflow:visible;touch-action:manipulation}
+.lobe{fill:none;stroke-width:1.3;stroke-linecap:round}
+.lobe-da{stroke:rgba(91,140,255,.26)}
+.lobe-se{stroke:rgba(255,98,82,.26)}
+.face{fill-opacity:.13;stroke-width:1.1;stroke-opacity:.5;cursor:pointer;transition:.2s}
+.face:hover,.face:focus,.face.on{fill-opacity:.30;stroke-opacity:1;outline:none}
+.seam{fill:none;stroke:#5B8CFF;stroke-dasharray:10 8;stroke-linecap:round;stroke-opacity:.62;
+ pointer-events:none;transition:.2s}
+.seamhit{fill:none;stroke:transparent;stroke-width:26;cursor:pointer}
+.seamhit:hover+.seam,.seamhit:focus+.seam,.seam.on{stroke-opacity:1;stroke-dasharray:10 5}
+.seamhit:focus{outline:none}
+.hubroom{fill:rgba(255,213,58,.12);stroke:var(--y);stroke-width:1.5;transition:.2s}
+.hubg{cursor:pointer}
+.hubg:hover .hubroom,.hubg:focus .hubroom,.hubg.on .hubroom{fill:rgba(255,213,58,.28)}
+.hubg:focus{outline:none}
+.hubno{fill:var(--y);font-family:var(--mono);font-size:16px;text-anchor:middle;letter-spacing:.06em}
+.hublbl{fill:#e8d9a0;font-size:12px;text-anchor:middle;opacity:.8}
+.roomsq{fill:#0b1018;stroke-width:1.5}
+.rsym{font-size:19px;text-anchor:middle}
+.rno{fill:#8b97a8;font-family:var(--mono);font-size:11px;text-anchor:middle}
+.rname{font-size:15px;font-weight:600}
+.lobename{font-family:var(--mono);font-size:11px;opacity:.55;letter-spacing:.08em}
+body.m-pair .seam,body.m-pair .seamhit{opacity:.1}
+body.m-cross .face{fill-opacity:.03;stroke-opacity:.12}
+body.m-cross .hubroom{fill:rgba(255,213,58,.05);stroke-opacity:.25}
+
+/* 고른 갈등 */
+.pick{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--pc,#444);
+ border-radius:4px;padding:16px 20px;margin:12px 0 0;min-height:132px}
+.pick .ph{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.pick .pn{font-size:19px;font-weight:600;color:#f0f3f8}
+.pick .pk{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);
+ border:1px solid var(--line);border-radius:3px;padding:2px 7px}
+.pick .ps{font-size:16px;color:#cdd6e4;margin:8px 0 2px;font-style:italic}
+.pick .pw{font-size:12.5px;color:var(--dim);font-family:var(--mono)}
+.pick ul{margin:12px 0 0;padding:0;list-style:none}
+.pick li{font-size:13.5px;padding:7px 0;border-top:1px dotted rgba(255,255,255,.07);color:#a9b4c4}
+.pick li b{color:#e6ebf3;font-weight:600}
+.pick li .mk{font-family:var(--mono);font-size:11.5px;margin-left:6px;color:var(--dim)}
+.pick li.ok .mk{color:#7fd6a0}.pick li.no .mk{color:#ff8e82}.pick li.mid .mk{color:#d9b55f}
+.pick .empty{color:var(--dim);font-size:14px}
+
+table{border-collapse:collapse;width:100%;font-size:13.3px;margin:6px 0 4px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+ color:var(--dim);font-weight:500;text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
+td{padding:9px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+th.r,td.r{text-align:right;font-family:var(--mono)}
+.t8 tr{cursor:pointer}
+.t8 tr:hover td{background:rgba(255,255,255,.03)}
+.t8 .pc{border-left:3px solid var(--c);padding-left:11px}
+.t8 .pc small{color:var(--dim);font-size:11px}
+.t8 .nm{color:#eef1f6;font-weight:600}
+.t8 .say{color:#93a0b2;font-style:italic}
+.t8 .z{color:var(--dim)}
+.t8 .kd{font-family:var(--mono);font-size:10.5px;color:var(--dim);white-space:nowrap}
+.t8 .k면{color:#9fb4d8}.t8 .k선{color:#6f86a8}.t8 .k점{color:#d9b55f}
+.t8 .sum td{border-top:1px solid var(--line);border-bottom:none;color:var(--dim)}
+.ask .co{color:#e6ebf3;font-weight:600;white-space:nowrap}
+.ask .cf{color:#8b97a8;white-space:nowrap}
+.ask .am{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+.ask .ev{color:#93a0b2;max-width:46ch}
+.ask .ev em{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;
+ color:var(--dim);margin-top:3px}
+.ask .a-안 .am{color:#7fd6a0}.ask .a-밖 .am{color:#d9b55f}.ask .a-없앰 .am{color:#ff8e82}
+.held .nm{color:#aab4c4}.held .wy{color:var(--dim)}
+.punch{background:rgba(197,165,90,.07);border-left:2px solid var(--gold);border-radius:3px;
+ padding:14px 18px;margin:16px 0 0;font-size:14.5px;color:#cdd6e4}
+.punch b{color:#f3f6fa;font-weight:600}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);
+ font-size:11.5px;color:var(--dim);line-height:1.8}
+footer code{font-family:var(--mono);font-size:11px;color:#8b97a8}
+
+/* 인물·사건·배경 */
+h3.sc{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#dce2ec;
+ font-weight:500;margin:26px 0 8px}
+h3.sc small{font-family:var(--serif);letter-spacing:0;color:var(--dim);font-size:12.5px;margin-left:9px}
+table.nar{width:100%;border-collapse:collapse;font-size:13.5px}
+table.nar th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--dim);
+ text-transform:uppercase;font-weight:500;text-align:left;padding:7px 10px;
+ border-bottom:1px solid var(--line)}
+table.nar td{padding:9px 10px;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.05)}
+table.nar tr.top td{border-top:1px solid rgba(255,255,255,.07)}
+td.who{border-left:3px solid var(--c);background:rgba(255,255,255,.015);width:30%;line-height:1.55}
+td.who b{color:#f0f3f8;font-weight:600}
+td.who .pl{font-size:12px;color:#93a0b2}
+td.who .cf{font-size:12.5px;color:var(--c);font-weight:600}
+td.ev{color:#b6c0cf}
+td.ev b{color:#eef1f6;font-weight:600;margin-right:4px}
+td.w,th.w{font-family:var(--mono);font-size:11px;color:var(--dim);white-space:nowrap;width:12%}
+td.empty{color:var(--dim);font-style:italic}
+ul.neg{font-size:13.5px;color:#b6c0cf;margin:0;padding-left:20px}
+ul.neg b{color:#eef1f6;font-weight:600}
+</style></head>
+<body class="m-all"><div class="wrap">
+<a class="home" href="index.html">← 인터랙티브</a>
+<h1>여덟 갈등 퀼트</h1>
+<div class="sub">creative conflicts · eight seats · one cloth</div>
+<p class="hook">창업자가 부딪히는 자리는 여덟이다. 자리는 이미 ∞ 한 몸 위에 앉아 있고,
+갈등은 그 자리와 자리를 잇는 <b>천</b>이다. 그런데 여덟이 같은 꼴이 아니다 —
+<b>다섯은 가운데를 지나고, 셋은 가운데를 건너뛴다.</b></p>
+
+<div class="quick"><ol>
+<li><b>면 다섯</b> — 마주 보는 짝. 선이 101을 지난다. 폭은 <b>내가 몇 번 적었나</b>다.</li>
+<li><b>실밥 셋</b> — 욕망에서 바깥으로 바로 뻗는다. 칸이 아니라 선이라 꿰맨 자국으로 그렸다.</li>
+<li>가른 것 한 가지 — 버틴 쪽은 전부 <b>되물을 사람을 남겨 뒀다.</b></li>
+</ol></div>
+
+<h2>천 한 장 <small>아무 데나 눌러 보면 그 자리 사례가 아래에 선다</small></h2>
+<div class="modes">
+<button data-m="all" aria-pressed="true">전부</button>
+<button data-m="pair">마주 보는 다섯</button>
+<button data-m="cross">건너뛰는 셋</button>
+</div>
+<p class="modehint" id="hint">여덟 다 보인다. <b>다섯은 면이고 셋은 실밥이다</b> — 꼴이 다른 것이 뜻이 다른 것이다.</p>
+<div class="figbox"><svg id="fig" viewBox="0 0 1000 720" role="img" aria-label="∞ 한 장 위에 갈등 여덟. 다섯은 가운데를 지나는 면이고 셋은 가운데를 건너뛰는 실밥이다.">
+<defs><pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#5B8CFF" stroke-width="1.1" stroke-opacity=".30"/></pattern></defs>
+<path class="lobe lobe-da" d="M 500.00 360.00 L 496.07 354.03 L 492.14 348.07 L 488.21 342.10 L 484.26 336.15 L 480.30 330.20 L 476.33 324.27 L 472.34 318.35 L 468.33 312.45 L 464.29 306.56 L 460.23 300.70 L 456.13 294.87 L 452.00 289.06 L 447.84 283.28 L 443.64 277.54 L 439.39 271.84 L 435.10 266.18 L 430.76 260.56 L 426.37 254.99 L 421.92 249.48 L 417.42 244.03 L 412.85 238.64 L 408.23 233.32 L 403.53 228.07 L 398.77 222.90 L 393.94 217.82 L 389.03 212.83 L 384.04 207.94 L 378.98 203.16 L 373.84 198.49 L 368.61 193.94 L 363.30 189.53 L 357.89 185.25 L 352.41 181.13 L 346.83 177.16 L 341.16 173.36 L 335.40 169.75 L 329.54 166.33 L 323.60 163.11 L 317.56 160.11 L 311.44 157.33 L 305.22 154.80 L 298.92 152.53 L 292.54 150.53 L 286.07 148.82 L 279.53 147.40 L 272.91 146.30 L 266.23 145.54 L 259.49 145.12 L 252.69 145.06 L 245.86 145.38 L 238.98 146.10 L 232.09 147.22 L 225.18 148.77 L 218.27 150.75 L 211.37 153.19 L 204.50 156.09 L 197.68 159.46 L 190.92 163.31 L 184.24 167.66 L 177.65 172.50 L 171.19 177.84 L 164.87 183.69 L 158.71 190.04 L 152.74 196.89 L 146.97 204.23 L 141.44 212.06 L 136.16 220.36 L 131.15 229.12 L 126.45 238.32 L 122.07 247.93 L 118.03 257.93 L 114.36 268.30 L 111.07 279.00 L 108.19 290.00 L 105.71 301.26 L 103.67 312.73 L 102.07 324.39 L 100.92 336.19 L 100.23 348.07 L 100.00 360.00 L 100.23 371.93 L 100.92 383.81 L 102.07 395.61 L 103.67 407.27 L 105.71 418.74 L 108.19 430.00 L 111.07 441.00 L 114.36 451.70 L 118.03 462.07 L 122.07 472.07 L 126.45 481.68 L 131.15 490.88 L 136.16 499.64 L 141.44 507.94 L 146.97 515.77 L 152.74 523.11 L 158.71 529.96 L 164.87 536.31 L 171.19 542.16 L 177.65 547.50 L 184.24 552.34 L 190.92 556.69 L 197.68 560.54 L 204.50 563.91 L 211.37 566.81 L 218.27 569.25 L 225.18 571.23 L 232.09 572.78 L 238.98 573.90 L 245.86 574.62 L 252.69 574.94 L 259.49 574.88 L 266.23 574.46 L 272.91 573.70 L 279.53 572.60 L 286.07 571.18 L 292.54 569.47 L 298.92 567.47 L 305.22 565.20 L 311.44 562.67 L 317.56 559.89 L 323.60 556.89 L 329.54 553.67 L 335.40 550.25 L 341.16 546.64 L 346.83 542.84 L 352.41 538.87 L 357.89 534.75 L 363.30 530.47 L 368.61 526.06 L 373.84 521.51 L 378.98 516.84 L 384.04 512.06 L 389.03 507.17 L 393.94 502.18 L 398.77 497.10 L 403.53 491.93 L 408.23 486.68 L 412.85 481.36 L 417.42 475.97 L 421.92 470.52 L 426.37 465.01 L 430.76 459.44 L 435.10 453.82 L 439.39 448.16 L 443.64 442.46 L 447.84 436.72 L 452.00 430.94 L 456.13 425.13 L 460.23 419.30 L 464.29 413.44 L 468.33 407.55 L 472.34 401.65 L 476.33 395.73 L 480.30 389.80 L 484.26 383.85 L 488.21 377.90 L 492.14 371.93 L 496.07 365.97 L 500.00 360.00" />
+<path class="lobe lobe-se" d="M 500.00 360.00 L 503.93 354.03 L 507.86 348.07 L 511.79 342.10 L 515.74 336.15 L 519.70 330.20 L 523.67 324.27 L 527.66 318.35 L 531.67 312.45 L 535.71 306.56 L 539.77 300.70 L 543.87 294.87 L 548.00 289.06 L 552.16 283.28 L 556.36 277.54 L 560.61 271.84 L 564.90 266.18 L 569.24 260.56 L 573.63 254.99 L 578.08 249.48 L 582.58 244.03 L 587.15 238.64 L 591.77 233.32 L 596.47 228.07 L 601.23 222.90 L 606.06 217.82 L 610.97 212.83 L 615.96 207.94 L 621.02 203.16 L 626.16 198.49 L 631.39 193.94 L 636.70 189.53 L 642.11 185.25 L 647.59 181.13 L 653.17 177.16 L 658.84 173.36 L 664.60 169.75 L 670.46 166.33 L 676.40 163.11 L 682.44 160.11 L 688.56 157.33 L 694.78 154.80 L 701.08 152.53 L 707.46 150.53 L 713.93 148.82 L 720.47 147.40 L 727.09 146.30 L 733.77 145.54 L 740.51 145.12 L 747.31 145.06 L 754.14 145.38 L 761.02 146.10 L 767.91 147.22 L 774.82 148.77 L 781.73 150.75 L 788.63 153.19 L 795.50 156.09 L 802.32 159.46 L 809.08 163.31 L 815.76 167.66 L 822.35 172.50 L 828.81 177.84 L 835.13 183.69 L 841.29 190.04 L 847.26 196.89 L 853.03 204.23 L 858.56 212.06 L 863.84 220.36 L 868.85 229.12 L 873.55 238.32 L 877.93 247.93 L 881.97 257.93 L 885.64 268.30 L 888.93 279.00 L 891.81 290.00 L 894.29 301.26 L 896.33 312.73 L 897.93 324.39 L 899.08 336.19 L 899.77 348.07 L 900.00 360.00 L 899.77 371.93 L 899.08 383.81 L 897.93 395.61 L 896.33 407.27 L 894.29 418.74 L 891.81 430.00 L 888.93 441.00 L 885.64 451.70 L 881.97 462.07 L 877.93 472.07 L 873.55 481.68 L 868.85 490.88 L 863.84 499.64 L 858.56 507.94 L 853.03 515.77 L 847.26 523.11 L 841.29 529.96 L 835.13 536.31 L 828.81 542.16 L 822.35 547.50 L 815.76 552.34 L 809.08 556.69 L 802.32 560.54 L 795.50 563.91 L 788.63 566.81 L 781.73 569.25 L 774.82 571.23 L 767.91 572.78 L 761.02 573.90 L 754.14 574.62 L 747.31 574.94 L 740.51 574.88 L 733.77 574.46 L 727.09 573.70 L 720.47 572.60 L 713.93 571.18 L 707.46 569.47 L 701.08 567.47 L 694.78 565.20 L 688.56 562.67 L 682.44 559.89 L 676.40 556.89 L 670.46 553.67 L 664.60 550.25 L 658.84 546.64 L 653.17 542.84 L 647.59 538.87 L 642.11 534.75 L 636.70 530.47 L 631.39 526.06 L 626.16 521.51 L 621.02 516.84 L 615.96 512.06 L 610.97 507.17 L 606.06 502.18 L 601.23 497.10 L 596.47 491.93 L 591.77 486.68 L 587.15 481.36 L 582.58 475.97 L 578.08 470.52 L 573.63 465.01 L 569.24 459.44 L 564.90 453.82 L 560.61 448.16 L 556.36 442.46 L 552.16 436.72 L 548.00 430.94 L 543.87 425.13 L 539.77 419.30 L 535.71 413.44 L 531.67 407.55 L 527.66 401.65 L 523.67 395.73 L 519.70 389.80 L 515.74 383.85 L 511.79 377.90 L 507.86 371.93 L 503.93 365.97 L 500.00 360.00" />
+<g id="faces">
+<path class="face" data-id="c1" tabindex="0" role="button" aria-label="내가 1호 고객입니다" d="M 383.0 207.0 Q 438.2 407.2 617.0 513.0 Q 561.8 312.8 383.0 207.0 Z" fill="#5B8CFF" stroke="#5B8CFF" />
+<path class="face" data-id="c2" tabindex="0" role="button" aria-label="데모는 돌았다" d="M 226.6 148.4 Q 476.3 390.6 773.4 571.6 Q 523.7 329.4 226.6 148.4 Z" fill="#A277E8" stroke="#A277E8" />
+<path class="face" data-id="c3" tabindex="0" role="button" aria-label="좋은데, 지금은 아니고" d="M 226.6 571.6 Q 530.7 399.7 773.4 148.4 Q 469.3 320.3 226.6 571.6 Z" fill="#FF6252" stroke="#FF6252" />
+<path class="face" data-id="c4" tabindex="0" role="button" aria-label="눈금이 다르다" d="M 383.0 513.0 Q 539.9 390.5 617.0 207.0 Q 460.1 329.5 383.0 513.0 Z" fill="#35C46A" stroke="#35C46A" />
+</g>
+<g id="seams">
+<path class="seamhit" data-id="x7" tabindex="0" role="button" aria-label="원하니까 됩니다" d="M 383.0 207.0 Q 743.7 350.4 773.4 571.6" />
+<path class="seam" data-id="x7" d="M 383.0 207.0 Q 743.7 350.4 773.4 571.6" stroke-width="5.3" />
+<path class="seamhit" data-id="x9" tabindex="0" role="button" aria-label="내 꿈이 네 KPI" d="M 383.0 207.0 Q 500.0 147.0 617.0 207.0" />
+<path class="seam" data-id="x9" d="M 383.0 207.0 Q 500.0 147.0 617.0 207.0" stroke-width="3.6" />
+<path class="seamhit" data-id="x8" tabindex="0" role="button" aria-label="알아보면 투자합니다" d="M 383.0 207.0 Q 585.9 118.2 773.4 148.4" />
+<path class="seam" data-id="x8" d="M 383.0 207.0 Q 585.9 118.2 773.4 148.4" stroke-width="3.3" />
+</g>
+<g id="hub" class="hubg" data-id="c5" tabindex="0" role="button" aria-label="지른 나, 막는 나">
+<path class="hubroom" d="M 500.0 314.0 L 546.0 360.0 L 500.0 406.0 L 454.0 360.0 Z" />
+<text class="hubno" x="500" y="366">101</text>
+<text class="hublbl" x="500" y="434">5장 ↔ 10장 · 지른 나, 막는 나</text>
+</g>
+<g class="seat" data-ch="1">
+<path class="roomsq" d="M 383.0 173.0 L 417.0 207.0 L 383.0 241.0 L 349.0 207.0 Z" stroke="#5B8CFF" />
+<text class="rsym" x="383" y="205">🪞</text>
+<text class="rno" x="383" y="224">1</text>
+<text class="rname" x="383" y="121" text-anchor="middle" fill="#5B8CFF">욕망</text>
+</g>
+<g class="seat" data-ch="2">
+<path class="roomsq" d="M 226.6 114.4 L 260.6 148.4 L 226.6 182.4 L 192.6 148.4 Z" stroke="#A277E8" />
+<text class="rsym" x="227" y="146">🔭</text>
+<text class="rno" x="227" y="165">2</text>
+<text class="rname" x="177" y="154" text-anchor="end" fill="#A277E8">상상</text>
+</g>
+<g class="seat" data-ch="3">
+<path class="roomsq" d="M 226.6 537.6 L 260.6 571.6 L 226.6 605.6 L 192.6 571.6 Z" stroke="#FF6252" />
+<text class="rsym" x="227" y="570">💒</text>
+<text class="rno" x="227" y="589">3</text>
+<text class="rname" x="177" y="578" text-anchor="end" fill="#FF6252">설득</text>
+</g>
+<g class="seat" data-ch="4">
+<path class="roomsq" d="M 383.0 479.0 L 417.0 513.0 L 383.0 547.0 L 349.0 513.0 Z" stroke="#35C46A" />
+<text class="rsym" x="383" y="511">⏱️</text>
+<text class="rno" x="383" y="530">4</text>
+<text class="rname" x="383" y="581" text-anchor="middle" fill="#35C46A">폭파</text>
+</g>
+<g class="seat" data-ch="6">
+<path class="roomsq" d="M 617.0 479.0 L 651.0 513.0 L 617.0 547.0 L 583.0 513.0 Z" stroke="#5B8CFF" />
+<text class="rsym" x="617" y="511">🦋</text>
+<text class="rno" x="617" y="530">6</text>
+<text class="rname" x="617" y="581" text-anchor="middle" fill="#5B8CFF">고통</text>
+</g>
+<g class="seat" data-ch="7">
+<path class="roomsq" d="M 773.4 537.6 L 807.4 571.6 L 773.4 605.6 L 739.4 571.6 Z" stroke="#A277E8" />
+<text class="rsym" x="773" y="570">🌷</text>
+<text class="rno" x="773" y="589">7</text>
+<text class="rname" x="823" y="578" text-anchor="start" fill="#A277E8">지식</text>
+</g>
+<g class="seat" data-ch="8">
+<path class="roomsq" d="M 773.4 114.4 L 807.4 148.4 L 773.4 182.4 L 739.4 148.4 Z" stroke="#FF6252" />
+<text class="rsym" x="773" y="146">🌫️</text>
+<text class="rno" x="773" y="165">8</text>
+<text class="rname" x="823" y="154" text-anchor="start" fill="#FF6252">손익</text>
+</g>
+<g class="seat" data-ch="9">
+<path class="roomsq" d="M 617.0 173.0 L 651.0 207.0 L 617.0 241.0 L 583.0 207.0 Z" stroke="#35C46A" />
+<text class="rsym" x="617" y="205">🐦‍⬛</text>
+<text class="rno" x="617" y="224">9</text>
+<text class="rname" x="617" y="121" text-anchor="middle" fill="#35C46A">기준</text>
+</g>
+<text class="lobename" x="150" y="700" fill="#5B8CFF">다 · 빚을 쓴다 · 1~4장</text>
+<text class="lobename" x="850" y="700" fill="#FF6252" text-anchor="end">세 · 빚을 갚는다 · 6~9장</text>
+</svg></div>
+<div class="pick" id="pick"></div>
+
+<h2>여덟 자리 <small>좁은 화면에서는 이 표가 그림을 대신한다</small></h2>
+<table class="t8"><thead><tr><th>부딪히는 두 쪽</th><th>이름</th><th>그 자리에서 들리는 말</th><th class="r">내 기록</th><th class="r">99곳</th><th>꼴</th></tr></thead><tbody>
+<tr data-id="c5" style="--c:#FFD53A"><td class="pc"><b>지른 나</b> ↔ 떠안는 나<br><small>🐀↔🧫</small></td><td class="nm">지른 나, 막는 나</td><td class="say">"제가 그렇게 말해버렸으니 어떻게든 해야죠"</td><td class="r">30</td><td class="r z">—</td><td class="kd k점">점 · 가운데 그 방</td></tr>
+<tr data-id="c1" style="--c:#5B8CFF"><td class="pc"><b>내 바람</b> ↔ 손님<br><small>🪞↔🦋</small></td><td class="nm">내가 1호 고객입니다</td><td class="say">"저도 이게 필요해서 만들었어요"</td><td class="r">26</td><td class="r ">6</td><td class="kd k면">면 · 가운데를 지난다</td></tr>
+<tr data-id="c2" style="--c:#A277E8"><td class="pc"><b>내 그림</b> ↔ 만드는 사람<br><small>🔭↔🌷</small></td><td class="nm">데모는 돌았다</td><td class="say">"데모에선 돌았는데요"</td><td class="r">9</td><td class="r ">3</td><td class="kd k면">면 · 가운데를 지난다</td></tr>
+<tr data-id="c3" style="--c:#FF6252"><td class="pc"><b>내 설득</b> ↔ 돈 내는 사람<br><small>💒↔🌫️</small></td><td class="nm">좋은데, 지금은 아니고</td><td class="say">"다음 라운드에서 다시 보죠"</td><td class="r">14</td><td class="r ">6</td><td class="kd k면">면 · 가운데를 지난다</td></tr>
+<tr data-id="c4" style="--c:#35C46A"><td class="pc"><b>내 자</b> ↔ 같이 일하는 사람<br><small>⏱️↔🐦‍⬛</small></td><td class="nm">눈금이 다르다</td><td class="say">"제 대시보드는 초록인데요"</td><td class="r">14</td><td class="r ">7</td><td class="kd k면">면 · 가운데를 지난다</td></tr>
+<tr data-id="x7" style="--c:#5B8CFF"><td class="pc"><b>내 바람</b> ↔ 만드는 사람<br><small>🪞↔🌷</small></td><td class="nm">원하니까 됩니다</td><td class="say">"안 되는 게 아니라 아직 안 해본 거죠"</td><td class="r">22</td><td class="r ">2</td><td class="kd k선">선 · 가운데를 건너뛴다</td></tr>
+<tr data-id="x9" style="--c:#5B8CFF"><td class="pc"><b>내 바람</b> ↔ 같이 일하는 사람<br><small>🪞↔🐦‍⬛</small></td><td class="nm">내 꿈이 네 KPI</td><td class="say">"이건 우리 모두의 목표잖아요"</td><td class="r">10</td><td class="r ">1</td><td class="kd k선">선 · 가운데를 건너뛴다</td></tr>
+<tr data-id="x8" style="--c:#5B8CFF"><td class="pc"><b>내 바람</b> ↔ 돈 내는 사람<br><small>🪞↔🌫️</small></td><td class="nm">알아보면 투자합니다</td><td class="say">"못 알아보는 분들이더라고요"</td><td class="r">8</td><td class="r z">—</td><td class="kd k선">선 · 가운데를 건너뛴다</td></tr>
+<tr class="sum"><td></td><td></td><td></td><td class="r">133</td><td class="r">25</td><td></td></tr>
+</tbody></table>
+<p class="note">두 숫자는 <b>다른 것을 센다.</b> <b>내 기록</b>은 내 글에서 그 자리가 몇 번 적혔나고,
+<b>99곳</b>은 남의 창업에서 날짜 붙은 사건으로 상대 쪽이 특정된 건수다. 왼쪽이 크다고 흔한 게 아니고,
+오른쪽이 0이라고 없는 게 아니다 — 가운데 둘(지른 나·알아보면)이 99곳에서 0인 이유는
+한 회사에 새장을 하나만 적던 칸 모양 때문이다.</p>
+
+<h2>인물 · 사건 · 배경 <small>같은 여덟을 소설의 표준어로 읽으면</small></h2>
+<p class="note">위 표는 <b>극 기호(🪞↔🦋)</b>로 적혀 있다. 그 기호는 이 책의 좌표라 바깥에서는 안 읽힌다.
+옮기면 이렇게 선다 — <b>인물</b>은 부딪히는 두 쪽(나 + 네 사람, 또는 나 ↔ 나),
+<b>사건</b>은 날짜 붙은 그 날, <b>배경</b>은 창업기냐 성장기냐.
+옮긴 것이지 더한 것이 아니다 — <b>칸은 여덟 그대로</b>다.</p>
+<h3 class="sc">배경 · 창업기 <small>첫 제품·첫 자금 전 — 사건 8</small></h3>
+<table class="nar"><thead><tr><th>인물 — 부딪히는 두 쪽</th><th>사건 — 날짜 붙은 그 날</th><th class="w">말한 쪽</th></tr></thead><tbody>
+<tr style="--c:#5B8CFF" class="top">
+<td class="who" rowspan="4"><b>내 바람</b> ↔ 손님<br><span class="pl">🦋 사용자</span><br><span class="cf">내가 1호 고객입니다</span></td>
+<td class="ev"><b>Juicero</b> 2017-04 블룸버그 영상 — 손으로 짜도 같은 양이 나왔다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#5B8CFF" class="cont">
+<td class="ev"><b>Quibi</b> 2020-04 출시 → 10월 폐업. 짧은 영화를 원한 쪽은 만든 쪽이었다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#5B8CFF" class="cont">
+<td class="ev"><b>lytro</b> 광학은 돌았고 재초점은 안 쓰였다 → 2018 특허 매각</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#5B8CFF" class="cont">
+<td class="ev"><b>honda</b> 1959 미국 — 팔려던 대형 바이크는 고장나고 직원용 50cc가 팔렸다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#FF6252" class="top">
+<td class="who" rowspan="1"><b>내 설득</b> ↔ 돈 내는 사람<br><span class="pl">🌫️ 투자자</span><br><span class="cf">좋은데, 지금은 아니고</span></td>
+<td class="ev"><b>Airbnb</b> 2008 — 시리얼 박스로 버틴 거절의 해</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#5B8CFF" class="top">
+<td class="who" rowspan="2"><b>내 바람</b> ↔ 만드는 사람<br><span class="pl">🌷 기술자</span><br><span class="cf">원하니까 됩니다</span></td>
+<td class="ev"><b>magic_leap</b> 2015 고래 영상은 기기를 통과한 화면이 아니라 렌더였다</td><td class="w">내가 한 말</td></tr>
+<tr style="--c:#5B8CFF" class="cont">
+<td class="ev"><b>theranos</b> 에디슨 대신 지멘스 기기로 돌렸다. 막은 쪽은 내부 기술자였다</td><td class="w">내가 한 말</td></tr>
+<tr style="--c:#5B8CFF" class="top">
+<td class="who" rowspan="1"><b>내 바람</b> ↔ 같이 일하는 사람<br><span class="pl">🐦‍⬛ 협력자</span><br><span class="cf">내 꿈이 네 KPI</span></td>
+<td class="ev"><b>betterplace</b> 르노만 규격을 맞췄고 다른 제조사는 교환식을 거부했다 → 2013 파산</td><td class="w">내가 한 말</td></tr>
+</tbody></table>
+<h3 class="sc">배경 · 성장기 <small>그 뒤 — 사건 17</small></h3>
+<table class="nar"><thead><tr><th>인물 — 부딪히는 두 쪽</th><th>사건 — 날짜 붙은 그 날</th><th class="w">말한 쪽</th></tr></thead><tbody>
+<tr style="--c:#5B8CFF" class="top">
+<td class="who" rowspan="2"><b>내 바람</b> ↔ 손님<br><span class="pl">🦋 사용자</span><br><span class="cf">내가 1호 고객입니다</span></td>
+<td class="ev"><b>beyond_meat</b> 2019 상장 뒤 반복구매가 따라오지 않았다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#5B8CFF" class="cont">
+<td class="ev"><b>배달의민족</b> 2020-04 수수료 개편 → 열흘 만에 철회</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#A277E8" class="top">
+<td class="who" rowspan="3"><b>내 그림</b> ↔ 만드는 사람<br><span class="pl">🌷 기술자</span><br><span class="cf">데모는 돌았다</span></td>
+<td class="ev"><b>📷kodak</b> 1975 사손의 0.01MP·23초가 실제로 돌았다 → 2012 파산</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#A277E8" class="cont">
+<td class="ev"><b>🔋tesla</b> 2006 로드스터 시제는 달렸고 2단 변속기가 양산을 밀었다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#A277E8" class="cont">
+<td class="ev"><b>Nokia</b> 2011 MeeGo는 돌았고 N9 한 대로 끝났다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#FF6252" class="top">
+<td class="who" rowspan="5"><b>내 설득</b> ↔ 돈 내는 사람<br><span class="pl">🌫️ 투자자</span><br><span class="cf">좋은데, 지금은 아니고</span></td>
+<td class="ev"><b>leeco</b> 2017 자금경색 — 생태계 확장을 돈이 멈췄다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#FF6252" class="cont">
+<td class="ev"><b>🚗faraday_future</b> 2017 모회사 자산 동결로 자금이 끊겼다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#FF6252" class="cont">
+<td class="ev"><b>컬리</b> 2023-01 상장 철회</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#FF6252" class="cont">
+<td class="ev"><b>asml</b> EUV 20년 — 2012 고객 공동출자 전까지 돈이 안 붙었다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#FF6252" class="cont">
+<td class="ev"><b>intel</b> 2006 아이폰 칩 거절 — 원가 모델이 &quot;지금은 아니고&quot;라고 했다</td><td class="w">내가 한 말</td></tr>
+<tr style="--c:#35C46A" class="top">
+<td class="who" rowspan="7"><b>내 자</b> ↔ 같이 일하는 사람<br><span class="pl">🐦‍⬛ 협력자</span><br><span class="cf">눈금이 다르다</span></td>
+<td class="ev"><b>gowex</b> 2014-07 고담시티 리포트 — 매출 90%가 허위였다</td><td class="w">내가 한 말</td></tr>
+<tr style="--c:#35C46A" class="cont">
+<td class="ev"><b>aduhelm</b> 2020-11 FDA 자문위 10:0 반대 — 아밀로이드라는 대리 눈금으로 승인</td><td class="w">내가 한 말</td></tr>
+<tr style="--c:#35C46A" class="cont">
+<td class="ev"><b>Boeing</b> 2019 MAX — 시뮬레이터 훈련이 필요없다는 눈금</td><td class="w">내가 한 말</td></tr>
+<tr style="--c:#35C46A" class="cont">
+<td class="ev"><b>쿠팡</b> 로켓배송의 시간 눈금 ↔ 분류·배송 노동의 눈금</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#35C46A" class="cont">
+<td class="ev"><b>카카오</b> 2023 SM 시세조종 — 성장 눈금과 감독 눈금이 갈렸다</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#35C46A" class="cont">
+<td class="ev"><b>셀트리온</b> 2018–2021 금감원 감리 — 재고 회계의 눈금</td><td class="w">내가 들은 말</td></tr>
+<tr style="--c:#35C46A" class="cont">
+<td class="ev"><b>삼성바이오로직스</b> 2018 분식 논란 — 지배력 판단의 눈금</td><td class="w">내가 들은 말</td></tr>
+</tbody></table>
+<h3 class="sc">음화 <small>갈등이 안 선 곳 — 반례 자리</small></h3><ul class="neg">
+<li><b>💉moderna</b> 10년간 아무것도 약속하지 않고 매년 모델만 고쳤다</li>
+<li><b>impossible_foods</b> 헴 분자로 타당성을 먼저 검증하고 나서 신뢰를 쌓았다</li>
+</ul>
+<p class="note">배경이 인물을 고른다. <b>창업기에 눈금 다툼은 한 건도 없고</b>, 성장기에
+「내가 1호 고객입니다」는 둘뿐인데 둘 다 <b>창업기의 그 욕망이 나중에 청구된</b> 꼴이다.</p>
+
+<h2>가른 것 한 가지 <small>되물을 사람</small></h2>
+<p class="note">같은 자리에서 버틴 쪽과 무너진 쪽이 같이 있다. 가른 것은 아이디어도 자금도 아니었다 —
+<b>되물을 사람을 남겨 뒀나</b>다. 테라노스는 해고했고, Gowex는 실사가 없었고, 매직리프는 데모만 보여줬다.
+알테오젠은 15년을 의심과 같이 보냈다.</p>
+<table class="ask"><thead><tr><th>어디</th><th>갈등</th><th>되물을 사람</th><th>그래서</th></tr></thead><tbody>
+<tr class="a-안 f-버팀"><td class="co">서정진</td><td class="cf">지른 나, 막는 나</td><td class="am"><b>○</b> 안에 남겼다</td><td class="ev">2002년 「한국에서 바이오시밀러를」 — 아무도 안 빌려준 약속을 20년간 데이터로 갚았다<em>버텼다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">자웨팅 · LeEco</td><td class="cf">지른 나, 막는 나</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">생태계를 지르고 자산 동결·개인파산, 그리고 또 다른 새장(Faraday Future)으로 옮겨 앉았다<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Juicero</td><td class="cf">내가 1호 고객입니다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">「우리 기계는 4톤으로 누릅니다」 vs 기자가 손으로 90초에 짰다<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Quibi</td><td class="cf">내가 1호 고객입니다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">「사람들은 출퇴근길에 10분짜리를 볼 것이다」, $1.75B<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Lytro</td><td class="cf">내가 1호 고객입니다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">「기술의 잠재력을 너무 믿어, 수요가 있는지 시험하지 않았다」(Scott Stern)<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Magic Leap</td><td class="cf">데모는 돌았다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">2016년 체육관을 헤엄치는 고래, 그 데모는 CGI였고 2018년 제품은 시야각 50도<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Better Place</td><td class="cf">데모는 돌았다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">「5분 교체, 2010년까지 100개소」, 교체 로봇 실패율 15%(목표 0.1%)<em>무너졌다</em></td></tr>
+<tr class="a-안 f-버팀"><td class="co">알테오젠</td><td class="cf">좋은데, 지금은 아니고</td><td class="am"><b>○</b> 안에 남겼다</td><td class="ev">「이게 진짜 되나」를 15년 안고 머크·로슈 기술이전으로 갚았다<em>버텼다</em></td></tr>
+<tr class="a-안 f-버팀"><td class="co">Moderna</td><td class="cf">좋은데, 지금은 아니고</td><td class="am"><b>○</b> 안에 남겼다</td><td class="ev">10년간 아무것도 약속하지 않고 모델만 고쳐 63일에 백신을 만들었다<em>버텼다</em></td></tr>
+<tr class="a-밖 f-진행"><td class="co">쿠팡</td><td class="cf">눈금이 다르다</td><td class="am"><b>△</b> 바깥이 되물었다</td><td class="ev">로켓배송 지표는 초록인데 배달원 과로는 다른 자에 찍혔다<em>아직 선 채다</em></td></tr>
+<tr class="a-밖 f-진행"><td class="co">카카오</td><td class="cf">눈금이 다르다</td><td class="am"><b>△</b> 바깥이 되물었다</td><td class="ev">질서가 완벽해질수록 「문어발」이 섬의 벽이 됐다<em>아직 선 채다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Theranos</td><td class="cf">원하니까 됩니다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">장비 정확도 문제를 보고한 연구원을 해고했다. 직원 간 정보 공유 금지·NDA로 되물을 사람을 없앴다. 15년, $9B → 0<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">LeEco</td><td class="cf">내 꿈이 네 KPI</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">콘텐츠·폰·TV·전기차·클라우드로 수직 확장, 창업자의 서사가 사용자를 지웠다<em>무너졌다</em></td></tr>
+<tr class="a-밖 f-진행"><td class="co">크래프톤</td><td class="cf">내 꿈이 네 KPI</td><td class="am"><b>△</b> 바깥이 되물었다</td><td class="ev">한 게임이 만든 수익·IP·기대가 다음 게임의 목표를 가둔다<em>아직 선 채다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Gowex</td><td class="cf">알아보면 투자합니다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">되물을 실사가 없으면 확신은 증폭기가 된다, 시총 €1.9B → 분식회계<em>무너졌다</em></td></tr>
+<tr class="a-없앰 f-무너짐"><td class="co">Theranos 이사회</td><td class="cf">알아보면 투자합니다</td><td class="am"><b>✕</b> 없앴다</td><td class="ev">키신저·슐츠·매티스, 의료 전문가 0명<em>무너졌다</em></td></tr>
+</tbody></table>
+
+<h2>이름만 지어 두고 안 쓰는 다섯 <small>보류 — 정전 아님</small></h2>
+<table class="held"><thead><tr><th>부딪히는 두 쪽</th><th>이름</th><th>왜 안 쓰나</th></tr></thead>
+<tbody><tr><td>내 바람 ↔ 내 자</td><td class="nm">내가 고른 내 눈금</td><td class="wy">「눈금이 다르다」 안에서 이미 설명된다</td></tr><tr><td>돈 내는 사람 ↔ 같이 일하는 사람</td><td class="nm">보드 자와 팀 자</td><td class="wy">부딪히는 두 쪽에 내가 없다</td></tr><tr><td>내 그림 ↔ 돈 내는 사람</td><td class="nm">로드맵과 런웨이</td><td class="wy">〃</td></tr><tr><td>내 설득 ↔ 만드는 사람</td><td class="nm">영업이 팔아버린 기능</td><td class="wy">〃</td></tr><tr><td>만드는 사람 ↔ 떠안는 나</td><td class="nm">기술부채 상환일</td><td class="wy">〃</td></tr></tbody></table>
+
+<div class="punch">
+다섯 짝의 중점이 <b>한 점</b>이다 — 어긋남 0.00px. 그 점이 101호이고,
+여덟 중 하나(<b>지른 나, 막는 나</b>)는 선이 아니라 <b>그 점 자체</b>다.
+혼자 있는 방에서 부딪히는 갈등이라 잇는 선이 없다.
+</div>
+
+<footer>
+<b>생성기</b> <code>.claude/gen_conflict_quilt.py</code> — 이 판은 손으로 고치면 다음 sync 에 덮인다.<br>
+자리·좌표는 <code>.claude/gen_eight_seats.py</code> 와 같은 수식이라 두 판이 겹친다.
+갈등 여덟의 이름·들리는 말·남의 사례는 <b>gcb #155</b> 코멘트(2026-10-11),
+99곳 건수는 <code>🧬갈등장부_99곳.md</code> 의 표를 그때그때 다시 센 것이다 —
+<b>장부가 바뀌면 이 판도 바뀐다.</b> 실측 2026-10-14 · 장부 27행.
+</footer>
+</div><script>
+const D={"c5": {"name": "지른 나, 막는 나", "pole": "🐀↔🧫", "two": ["지른 나", "떠안는 나"], "say": "제가 그렇게 말해버렸으니 어떻게든 해야죠", "kind": "점", "seats": ["5장 101호", "10장 101호"], "vault": 30, "n99": 0, "color": "#FFD53A", "cases": [{"co": "서정진", "fate": "버텼다", "ask": "○", "asklbl": "안에 남겼다", "ev": "2002년 「한국에서 바이오시밀러를」 — 아무도 안 빌려준 약속을 20년간 데이터로 갚았다"}, {"co": "자웨팅 · LeEco", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "생태계를 지르고 자산 동결·개인파산, 그리고 또 다른 새장(Faraday Future)으로 옮겨 앉았다"}]}, "c1": {"name": "내가 1호 고객입니다", "pole": "🪞↔🦋", "two": ["내 바람", "손님"], "say": "저도 이게 필요해서 만들었어요", "kind": "면", "seats": ["1장 🪞 욕망", "6장 🦋 고통"], "vault": 26, "n99": 6, "color": "#5B8CFF", "cases": [{"co": "Juicero", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "「우리 기계는 4톤으로 누릅니다」 vs 기자가 손으로 90초에 짰다"}, {"co": "Quibi", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "「사람들은 출퇴근길에 10분짜리를 볼 것이다」, $1.75B"}, {"co": "Lytro", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "「기술의 잠재력을 너무 믿어, 수요가 있는지 시험하지 않았다」(Scott Stern)"}]}, "c2": {"name": "데모는 돌았다", "pole": "🔭↔🌷", "two": ["내 그림", "만드는 사람"], "say": "데모에선 돌았는데요", "kind": "면", "seats": ["2장 🔭 상상", "7장 🌷 지식"], "vault": 9, "n99": 3, "color": "#A277E8", "cases": [{"co": "Magic Leap", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "2016년 체육관을 헤엄치는 고래, 그 데모는 CGI였고 2018년 제품은 시야각 50도"}, {"co": "Better Place", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "「5분 교체, 2010년까지 100개소」, 교체 로봇 실패율 15%(목표 0.1%)"}]}, "c3": {"name": "좋은데, 지금은 아니고", "pole": "💒↔🌫️", "two": ["내 설득", "돈 내는 사람"], "say": "다음 라운드에서 다시 보죠", "kind": "면", "seats": ["3장 💒 설득", "8장 🌫️ 손익"], "vault": 14, "n99": 6, "color": "#FF6252", "cases": [{"co": "알테오젠", "fate": "버텼다", "ask": "○", "asklbl": "안에 남겼다", "ev": "「이게 진짜 되나」를 15년 안고 머크·로슈 기술이전으로 갚았다"}, {"co": "Moderna", "fate": "버텼다", "ask": "○", "asklbl": "안에 남겼다", "ev": "10년간 아무것도 약속하지 않고 모델만 고쳐 63일에 백신을 만들었다"}]}, "c4": {"name": "눈금이 다르다", "pole": "⏱️↔🐦‍⬛", "two": ["내 자", "같이 일하는 사람"], "say": "제 대시보드는 초록인데요", "kind": "면", "seats": ["4장 ⏱️ 폭파", "9장 🐦‍⬛ 기준"], "vault": 14, "n99": 7, "color": "#35C46A", "cases": [{"co": "쿠팡", "fate": "아직 선 채다", "ask": "△", "asklbl": "바깥이 되물었다", "ev": "로켓배송 지표는 초록인데 배달원 과로는 다른 자에 찍혔다"}, {"co": "카카오", "fate": "아직 선 채다", "ask": "△", "asklbl": "바깥이 되물었다", "ev": "질서가 완벽해질수록 「문어발」이 섬의 벽이 됐다"}]}, "x7": {"name": "원하니까 됩니다", "pole": "🪞↔🌷", "two": ["내 바람", "만드는 사람"], "say": "안 되는 게 아니라 아직 안 해본 거죠", "kind": "선", "seats": ["1장 🪞 욕망", "7장 🌷 지식"], "vault": 22, "n99": 2, "color": "#5B8CFF", "cases": [{"co": "Theranos", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "장비 정확도 문제를 보고한 연구원을 해고했다. 직원 간 정보 공유 금지·NDA로 되물을 사람을 없앴다. 15년, $9B → 0"}]}, "x9": {"name": "내 꿈이 네 KPI", "pole": "🪞↔🐦‍⬛", "two": ["내 바람", "같이 일하는 사람"], "say": "이건 우리 모두의 목표잖아요", "kind": "선", "seats": ["1장 🪞 욕망", "9장 🐦‍⬛ 기준"], "vault": 10, "n99": 1, "color": "#5B8CFF", "cases": [{"co": "LeEco", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "콘텐츠·폰·TV·전기차·클라우드로 수직 확장, 창업자의 서사가 사용자를 지웠다"}, {"co": "크래프톤", "fate": "아직 선 채다", "ask": "△", "asklbl": "바깥이 되물었다", "ev": "한 게임이 만든 수익·IP·기대가 다음 게임의 목표를 가둔다"}]}, "x8": {"name": "알아보면 투자합니다", "pole": "🪞↔🌫️", "two": ["내 바람", "돈 내는 사람"], "say": "못 알아보는 분들이더라고요", "kind": "선", "seats": ["1장 🪞 욕망", "8장 🌫️ 손익"], "vault": 8, "n99": 0, "color": "#5B8CFF", "cases": [{"co": "Gowex", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "되물을 실사가 없으면 확신은 증폭기가 된다, 시총 €1.9B → 분식회계"}, {"co": "Theranos 이사회", "fate": "무너졌다", "ask": "✕", "asklbl": "없앴다", "ev": "키신저·슐츠·매티스, 의료 전문가 0명"}]}};
+const body=document.body,pick=document.getElementById('pick');
+function show(id){
+ const d=D[id];if(!d)return;
+ document.querySelectorAll('.on').forEach(e=>e.classList.remove('on'));
+ document.querySelectorAll('[data-id="'+id+'"]').forEach(e=>e.classList.add('on'));
+ const k={'면':'면 · 가운데를 지난다','선':'선 · 가운데를 건너뛴다','점':'점 · 가운데 그 방'}[d.kind];
+ pick.style.setProperty('--pc',d.color);
+ pick.innerHTML='<div class="ph"><span class="pn">'+d.name+'</span>'
+  +'<span class="pk">'+k+'</span><span class="pk">'+d.pole+'</span></div>'
+  +'<div class="ps">"'+d.say+'"</div>'
+  +'<div class="pw">'+d.two[0]+' ↔ '+d.two[1]+' &nbsp;·&nbsp; '+d.seats.join(' ↔ ')
+  +' &nbsp;·&nbsp; 내 기록 '+d.vault+'곳 · 99곳 실측 '+(d.n99||'—')+'</div>'
+  +'<ul>'+d.cases.map(c=>'<li class="'+(c.ask==='○'?'ok':c.ask==='△'?'mid':'no')+'">'
+   +'<b>'+c.co+'</b> — '+c.ev+'<span class="mk">되물을 사람 '+c.ask+' '+c.asklbl
+   +' · '+c.fate+'</span></li>').join('')+'</ul>';
+}
+document.querySelectorAll('[data-id]').forEach(e=>{
+ const id=e.dataset.id;
+ e.addEventListener('click',()=>show(id));
+ e.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();show(id)}});
+ if(e.tagName!=='TR')e.addEventListener('mouseenter',()=>show(id));
+});
+const HINT={all:'여덟 다 보인다. <b>다섯은 면이고 셋은 실밥이다</b> — 꼴이 다른 것이 뜻이 다른 것이다.',
+ pair:'<b>마주 보는 다섯.</b> 부딪히는 두 쪽이 같은 종류라서 선이 가운데를 지난다 — 다섯 중점이 101 한 점이다.',
+ cross:'<b>건너뛰는 셋.</b> 전부 욕망에서 바깥으로 바로 뻗는다. 칸을 안 만들고 선으로 둔 이유 — 칸으로 세면 10칸이 45칸이 된다.'};
+document.querySelectorAll('.modes button').forEach(b=>{
+ b.addEventListener('click',()=>{
+  document.querySelectorAll('.modes button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  body.className=body.className.replace(/m-\S+/g,'').trim()+' m-'+b.dataset.m;
+  document.getElementById('hint').innerHTML=HINT[b.dataset.m];
+ });
+});
+show('c5');
+</script></body></html>
