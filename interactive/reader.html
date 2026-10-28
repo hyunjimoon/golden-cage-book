@@ -848,7 +848,9 @@
       { group: '읽을거리', items: [{ id: 'app1_romantic_trilogy', label: '에세이' }, { id: 'app3_craft_of_startup_novel', label: '작법론' }] },
       { group: '도구', items: [{ id: 'app5_prompting', label: '프롬프팅 예시' }, { id: 'app6_industry_debt', label: '산업별 빚' }] },
       // 생각 빚 장부는 references.html(자동생성 SSOT)이 정본 — app4_references.md는 stale 사본이라 2026-07-27 삭제
-      { group: '참고', items: [{ id: 'app2_glossary', label: '용어 해설' }, { id: 'app8_84_structure', label: '84구조 (책 SSOT)' }] }
+      // 2026-10-28: app2는 이름이 거짓이었다 — 내용은 오웰 세 슬로건 에세이 3편이고 「용어 해설」이 아니다.
+      //   파일명·라벨을 내용에 맞췄고, 비워진 용어 자리는 glossary.html(부록3 §용어의 사영)이 맡는다.
+      { group: '참고', items: [{ href: 'glossary.html', label: '이 책의 말 (용어)' }, { id: 'app2_doubt_trilogy', label: '의심 3부작 (에세이)' }, { id: 'app8_84_structure', label: '84구조 (책 SSOT)' }] }
     ];
     APPENDICES.forEach(g => {
       const label = document.createElement('div');
@@ -857,7 +859,7 @@
       sidebarNav.appendChild(label);
       g.items.forEach(item => {
         const a = document.createElement('a');
-        a.href = '?file=' + item.id;
+        a.href = item.href || ('?file=' + item.id);   // href = 바깥 페이지(용어처럼 md가 아닌 자리)
         a.textContent = item.label;
         if (item.id === file) a.classList.add('active');
         a.onclick = () => document.querySelector('.sidebar').classList.remove('open');
