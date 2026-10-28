@@ -76,7 +76,7 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 chapters/       ch0 도입 · ch1–4 새장 · ch5 회전축 · ch6–9 둥지 · ch10 에필로그
 appendices/     부록 (프롬프팅 예시, 산업별 빚 청산)
 interactive/    인터랙티브 (주기율표, 감정궤적, 본문 뷰어)
-docs/           LEXICON · CHANGELOG · INTENT
+docs/           CHANGELOG · INTENT
 img/            다이어그램
 ```
 ---
