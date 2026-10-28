@@ -1,6 +1,4 @@
 
-📜DOW10_parallel_prototyping
-🎥싱스트리트
 
 # 8 🌫️ 안개 — 투자자
 
