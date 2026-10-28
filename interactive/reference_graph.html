@@ -12,6 +12,9 @@
  --serif:"Gowun Batang",'Apple SD Gothic Neo',serif;
  --sans:"IBM Plex Sans KR",'Apple SD Gothic Neo',system-ui,sans-serif;
  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+ /* 🌫️(U+1F32B) 는 IBM Plex 에 없다. sans-serif 같은 제네릭이 뒤를 다 삼키므로
+    이모지 폰트는 반드시 제네릭 **앞에** 선다 — 뒤에 두면 영원히 닿지 않는다. */
+ --emoji:"IBM Plex Sans KR","Apple SD Gothic Neo","Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300}
@@ -77,25 +80,32 @@ canvas.drag{cursor:grabbing}
 @media (max-width:820px){#panel{width:190px}#card{display:none}#dock{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 /* ── 🐍 탈피 재생 ── */
-#molt{border-top:1px solid var(--line,#E3DCCB);background:rgba(255,255,255,.72);
-backdrop-filter:blur(7px);padding:11px clamp(12px,2.4vw,26px) 13px;display:grid;gap:9px}
+#molt{border-top:1px solid var(--line);background:var(--bg2);
+padding:12px clamp(12px,2.4vw,26px) 14px;display:grid;gap:9px}
 #molt .mrow{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
-#molt button{font:inherit;font-size:12.5px;border:1px solid var(--ink3,#8C8575);background:#fff;
-color:var(--ink,#221F1B);border-radius:3px;padding:5px 13px;cursor:pointer;white-space:nowrap}
-#molt button:hover{background:var(--ink,#221F1B);color:#fff}
-#moltStep{font-family:var(--mono,ui-monospace),monospace;font-size:12px;color:var(--ink2,#655C50);
-min-width:16ch}
-#moltStep b{color:var(--ink,#221F1B)}
-.scrubber{flex:1;min-width:150px;height:4px;background:#E3DCCB;border-radius:2px;position:relative;cursor:pointer}
-.scrubber-fill{height:100%;background:#C8102E;border-radius:2px;width:0;transition:width .22s ease}
-.scrubber-knob{position:absolute;top:-5px;width:14px;height:14px;background:var(--ink,#221F1B);
+#molt button{font:inherit;font-size:12.5px;border:1px solid var(--ink3);background:transparent;
+color:var(--ink);border-radius:3px;padding:5px 13px;cursor:pointer;white-space:nowrap}
+#molt button:hover{background:var(--ink);color:var(--bg)}
+#moltStep{font-family:var(--mono);font-size:12px;color:var(--ink2);min-width:16ch}
+#moltStep b{color:var(--ink)}
+.scrubber{flex:1;min-width:150px;height:4px;background:var(--line);border-radius:2px;
+position:relative;cursor:pointer}
+.scrubber-fill{height:100%;background:var(--epi);border-radius:2px;width:0;transition:width .22s ease}
+.scrubber-knob{position:absolute;top:-5px;width:14px;height:14px;background:var(--ink);
 border-radius:50%;transform:translateX(-50%);transition:left .22s ease}
-#moltRead{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink2,#655C50);
-font-family:var(--mono,ui-monospace),monospace}
-#moltRead i{font-style:normal;color:var(--ink,#221F1B);font-weight:600}
-#moltRead .hi{color:#C8102E}
-#moltNote{font-size:12px;color:var(--ink2,#655C50);max-width:74ch;line-height:1.55}
-#moltNote b{color:var(--ink,#221F1B)}
+/* 🌫️ 는 IBM Plex Mono 에 없어 두부(□)로 떨어진다 — 글자는 sans, 숫자만 mono */
+#moltRead{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink3);
+font-family:var(--emoji)}
+#moltRead i{font-style:normal;color:var(--ink);font-weight:600;font-family:var(--mono)}
+#moltRead .hi i,#moltRead .hi{color:var(--epi)}
+#moltNote{font-size:12px;color:var(--ink2);max-width:74ch;line-height:1.55}
+#moltNote b{color:var(--ink)}
+#moltStrip{overflow-x:auto}
+#moltStrip svg{display:block;max-width:760px;width:100%;height:auto}
+#moltLeg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--ink2);
+font-family:var(--emoji);margin-top:2px}
+#moltLeg span{display:inline-flex;align-items:center;gap:5px}
+#moltLeg i{width:9px;height:9px;border-radius:2px;display:inline-block}
 </style></head><body>
 <div id="app">
 <header>
@@ -126,6 +136,7 @@ font-family:var(--mono,ui-monospace),monospace}
   <div id="moltStep"></div>
   <button id="moltAll">전체 보기</button>
  </div>
+ <div id="moltStrip"></div>
  <div id="moltRead"></div>
  <div id="moltNote"></div>
 </section>
@@ -155,8 +166,14 @@ const BAND=[
  {k:"episode",nm:"L3 🎞️ 직접경험", sub:"겪은 것",    y:.83, c:"--epi"}];
 const BY={}; BAND.forEach((b,i)=>BY[b.k]={...b,i});
 // 4극 — 좌표는 층×장이 이미 쓰므로 극은 **테두리** 한 채널로 얹는다.
-const POLE={"🦋":{c:"#5B9BF5",n:"사용자"},"🌷":{c:"#E8B84B",n:"기술자"},
-            "🌫️":{c:"#F2607A",n:"투자자"},"🐦‍⬛":{c:"#CFC8BC",n:"협력자"}};
+/* 다이아몬드 4축 색 — 🦋BLUE · 🌷PURPLE · 🌫️RED · 🐦‍⬛GREEN.
+   어두운 바탕(#121623)용 step 은 validate_palette 로 통과시킨 값이다:
+   밝기밴드 PASS · 채도 PASS · 보통시야 ΔE 15.3 PASS · 대비 PASS ·
+   CVD ΔE 7.2(protan) = WARN 밴드 → 2px 틈 + 직접 라벨이 **의무**다.
+   옛 값(🌷금색·🐦‍⬛회색)은 축 색과 어긋났고 회색은 채도 0.018 로 바닥 미달이었다. */
+const POLE={"🦋":{c:"#3D6FD8",n:"사용자"},"🌷":{c:"#A87BE0",n:"기술자"},
+            "🌫️":{c:"#D94436",n:"투자자"},"🐦‍⬛":{c:"#2FA866",n:"협력자"}};
+const STACK=["🐦‍⬛","🦋","🌷","🌫️"];   // 빨강과 초록이 맞닿지 않는 순서
 const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
 let W=0,H=0,DPR=1, view={x:0,y:0,k:1}, N=[], E=[], byId={}, hot=null, sel=null, on={}, q="";
 BAND.forEach(b=>on[b.k]=true); on.root=true;
@@ -183,7 +200,9 @@ function layout(){
   document.getElementById('stat').textContent=
     `노드 ${N.length} · 선 ${E.length} · ` + BAND.map(b=>`${b.nm.split(" ").pop()} ${N.filter(n=>n.layer===b.k).length}`).join(" · ");
 }
-const vis=n=>on[n.layer]&&moltOK(n)&&(!q||n.label.toLowerCase().includes(q)||n.id.toLowerCase().includes(q));
+/* moltOK 는 아래 두 번째 <script> 블록에 산다 — 이 블록이 먼저 그릴 때는 아직 없다.
+   없으면 전부 보이는 것이 맞다(탈피 재생은 얹는 층이지 거르는 층이 아니다). */
+const vis=n=>on[n.layer]&&(typeof moltOK!=="function"||moltOK(n))&&(!q||n.label.toLowerCase().includes(q)||n.id.toLowerCase().includes(q));
 const T=n=>({x:(n.x+view.x)*view.k, y:(n.y+view.y)*view.k});
 
 function draw(){
@@ -358,4 +377,154 @@ dbtn.addEventListener("click", ()=>{
   dbtn.textContent = off ? "장별 두 자(尺) 펴기" : "장별 두 자(尺) 접기";
   window.dispatchEvent(new Event("resize"));
 });
+
+/* ══ 🐍 탈피 재생 ══════════════════════════════════════════════
+   살찌는뱀 — 앞선 탈피의 고통을 다음 탈피 연료로 쓴다.
+   코일을 하나씩 열며 그래프가 살찌는 것을 본다.
+   단위는 개월이 아니다(1.5·3·4·4는 안 살찐다). 단위는 **극**이다.
+   coil 값은 .claude/molt_map.py 가 날짜에서 계산해 DATA 에 박는다. */
+const COIL=[
+ {k:"",   nm:"처음",   who:"일화 없이",            note:"상징(L1)과 생각(L2)만 서 있다. <b>경험이 들어오기 전</b>의 지도."},
+ {k:"c0", nm:"꼬리",   who:"뱀이 먹고 자란 것", done:1,     note:"~2026.01. <b>🌫️투자자의 자가 거의 없다</b> — 재는 눈이 안·기술 쪽에 몰려 있다."},
+ {k:"c1", nm:"1 다리", who:"내가 잰다", done:1,            note:"2026.02–03 두 세계 다리 놓기. X.3 = <b>보폭이 너무 넓었나</b>. 표본이 작아 극 수는 못 믿는다."},
+ {k:"c2", nm:"2 지도", who:"모형이 잰다", done:1,          note:"2026.04–05 박사논문 지도제작 — <b>0편. 공백이 아니라 청안기(靑眼期)다.</b> 뱀은 벗기 직전 눈꺼풀이 뿌예진다. 혼자 full-size를 지으면 부딪칠 상대가 없고, 마찰이 없으면 일화도 없다. 2.3(「언어가 달라 안 닿았다」)이 도착했으니 이 탈피는 끝났다."},
+ {k:"c3", nm:"3 보고", who:"사람이 잰다", done:1, note:"2026.06–09 3일마다 25번 보고. <b>🌫️가 여기서 터진다.</b> 자를 바깥에 내밀자 안 보이던 극이 떴다. X.3 = 그 자를 버리고 최적무지로 점프."},
+ {k:"c4", nm:"4 피벗", who:"미리 선언한 내가 잰다", done:0, note:"2026.10– planned pivot. <b>0편이지만 코일 2의 0과 다른 0이다</b> — 아직 안 벗었다. 탈피는 끝난 뒤에만 세어진다."},
+ {k:"*",  nm:"전체",   who:"좌표 없는 편까지",      note:"연도만 있거나 「상시」인 편을 마저 켠다. 월을 지어내지 않아 코일에 못 앉힌 것들 — 도면에서 빠진 것이지 장부에서 빠진 것이 아니다."}
+];
+const ORDER=["c0","c1","c2","c3","c4"];
+let mstep=COIL.length-1, mplay=false, mtimer=null, MOLT_NEW=new Set();
+
+function moltOK(n){
+  if(n.layer!=="episode") return true;
+  if(mstep>=COIL.length-1) return true;          // 전체
+  const i=ORDER.indexOf(n.coil||"");
+  return i>=0 && i<mstep;                        // 0단계면 하나도 안 보인다
+}
+
+/* 이번 코일에 새로 온 편에 테를 두른다 — draw 본문은 건드리지 않는다 */
+const _draw0=draw;
+draw=function(){
+  _draw0();
+  if(!MOLT_NEW.size) return;
+  ctx.save(); ctx.strokeStyle=CSS('--epi')||"#E8776B"; ctx.lineWidth=1.6;
+  N.forEach(n=>{ if(!MOLT_NEW.has(n.id)||!vis(n)) return;
+    const p=T(n), rr=6.4*Math.min(1.7,view.k);
+    ctx.globalAlpha=.9; ctx.beginPath(); ctx.arc(p.x,p.y,rr+4.5,0,6.2832); ctx.stroke(); });
+  ctx.restore();
+};
+
+const mEps=()=>N.filter(n=>n.layer==="episode");
+
+/* ── 탈피 띠 ──────────────────────────────────────────────────
+   형태 = 코일별 100% 누적막대, **너비 ∝ 편수**(마리메코).
+     높이 비율 = 네 극의 구성비 (바뀌는 것)
+     너비      = 그 코일이 몇 편인가 (c1 이 왜 못 믿을 표본인지 눈으로)
+   틀은 처음부터 다 서 있고 **칸만 채워진다** — 공백은 그려야 보인다.
+   2px 틈과 직접 라벨은 장식이 아니라 CVD WARN 의 보완 의무다. */
+const SH=70, SPAD=15, SGAP=2, SEMPTY=34, SUNIT=5.6;
+function moltStrip(){
+  let x=0; const cols=[];
+  ORDER.forEach((k,i)=>{
+    const eps=mEps().filter(n=>n.coil===k), n=eps.length;
+    const w=n?Math.max(36,n*SUNIT):SEMPTY;
+    cols.push({k,i,n,eps,w,x,nm:COIL[i+1].nm,open:!COIL[i+1].done}); x+=w+SPAD;
+  });
+  const W=Math.max(1,x-SPAD), H=SH+46;
+  const g=['<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMinYMin meet" '+
+           'role="img" aria-label="코일별 네 극 구성비">',
+           '<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" '+
+           'patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" '+
+           'stroke="'+CSS('--ink3')+'" stroke-opacity=".5"/></pattern></defs>'];
+  cols.forEach(c=>{
+    const live = c.i < mstep;                       // 이 코일이 이미 열렸나
+    const fresh = c.i === mstep-1;                  // 이번에 막 열린 코일
+    if(!c.n){                                       // 빈 코일 — 칸을 비워 보여준다
+      g.push(`<rect x="${c.x}" y="0" width="${c.w}" height="${SH}" fill="${live?'url(#hatch)':'none'}" `+
+             `stroke="${CSS('--line')}" stroke-dasharray="3 3"/>`);
+      g.push(`<text x="${c.x+c.w/2}" y="${SH/2}" transform="rotate(-90 ${c.x+c.w/2} ${SH/2})" `+
+             `text-anchor="middle" font-size="10" fill="${CSS('--ink3')}" font-family="${CSS('--sans')}">`+
+             `${c.open?'아직':'청안기'}</text>`);
+    } else if(!live){                               // 아직 안 열린 코일 — 틀만
+      g.push(`<rect x="${c.x}" y="0" width="${c.w}" height="${SH}" fill="none" `+
+             `stroke="${CSS('--line')}" stroke-dasharray="2 4"/>`);
+    } else {
+      let y=0;
+      STACK.forEach(p=>{
+        const k=c.eps.filter(e=>e.pole===p).length; if(!k) return;
+        const h=k/c.n*SH, pct=Math.round(k/c.n*100);
+        g.push(`<g><title>${c.nm} · ${POLE[p].n} ${k}편 (${pct}%)</title>`+
+               `<rect x="${c.x}" y="${y.toFixed(1)}" width="${c.w}" `+
+               `height="${Math.max(1,h-SGAP).toFixed(1)}" fill="${POLE[p].c}" rx="2"/></g>`);
+        if(h>=15&&c.w>=34)                          // 직접 라벨 (CVD 보완 의무)
+          g.push(`<text x="${c.x+c.w/2}" y="${(y+h/2+3.5).toFixed(1)}" text-anchor="middle" `+
+                 `font-size="10.5" font-weight="600" fill="#fff" fill-opacity=".92" `+
+                 `font-family="${CSS('--mono')}">${pct}%</text>`);
+        y+=h;
+      });
+      if(fresh) g.push(`<rect x="${c.x-2.5}" y="-2.5" width="${c.w+5}" height="${SH+5}" `+
+                       `fill="none" stroke="${CSS('--ink')}" stroke-width="1.6" rx="3"/>`);
+    }
+    g.push(`<text x="${c.x+c.w/2}" y="${SH+14}" text-anchor="middle" font-size="10.5" `+
+           `fill="${live?CSS('--ink'):CSS('--ink3')}" font-family="${CSS('--sans')}">${c.nm}</text>`);
+    g.push(`<text x="${c.x+c.w/2}" y="${SH+26}" text-anchor="middle" font-size="9.5" `+
+           `fill="${CSS('--ink3')}" font-family="${CSS('--mono')}">${c.n}편</text>`);
+    /* 머리기사는 짧아도 반드시 적는다 — 꼬리의 🌫️ 는 6% 라 막대 안에 글자가 안 들어간다.
+       칸 아래 전용 줄에 두면 코일끼리 가로로 바로 비교된다(6 · 25 · — · 35 · —). */
+    if(live&&c.n){
+      const k=c.eps.filter(e=>e.pole==="🌫️").length;
+      g.push(`<text x="${c.x+c.w/2}" y="${SH+40}" text-anchor="middle" font-size="10.5" `+
+             `font-weight="600" fill="${k?POLE['🌫️'].c:CSS('--ink3')}" `+
+             `font-family="${CSS('--mono')}">${k?Math.round(k/c.n*100)+'%':'0'}</text>`);
+    }
+  });
+  g.push("</svg>");
+  document.getElementById("moltStrip").innerHTML=g.join("")+
+    '<div id="moltLeg">'+STACK.map(p=>
+      `<span><i style="background:${POLE[p].c}"></i>${p} ${POLE[p].n}</span>`).join("")+
+    '<span style="color:var(--ink3)">너비 = 편수 · 높이 = 구성비</span></div>';
+}
+
+function moltRender(){
+  const c=COIL[mstep];
+  const shown=mEps().filter(moltOK);
+  const fog=shown.filter(n=>n.pole==="🌫️").length;
+  const lit=new Set(shown.map(n=>n.pole).filter(Boolean)).size;
+  const wires=E.filter(e=>(e.a.layer==="episode"||e.b.layer==="episode")&&vis(e.a)&&vis(e.b)).length;
+  const pct=shown.length?Math.round(fog/shown.length*100):0;
+
+  MOLT_NEW=new Set(mstep>0&&mstep<COIL.length-1
+    ? mEps().filter(n=>n.coil===ORDER[mstep-1]).map(n=>n.id)
+    : (mstep===COIL.length-1?[]:[]));
+
+  moltStrip();
+  document.getElementById("moltStep").innerHTML=`<b>${c.nm}</b> · ${c.who}`;
+  document.getElementById("moltRead").innerHTML=
+    `<span>일화 <i>${shown.length}</i>/${mEps().length}</span>`+
+    `<span class="${pct>=25?"hi":""}">🌫️투자자 <i>${fog}</i> (${pct}%)</span>`+
+    `<span>선 극 <i>${lit}</i>/4</span>`+
+    `<span>다이나모선 <i>${wires}</i></span>`;
+  document.getElementById("moltNote").innerHTML=c.note;
+  const p=mstep/(COIL.length-1)*100;
+  document.getElementById("moltFill").style.width=p+"%";
+  document.getElementById("moltKnob").style.left=p+"%";
+  draw();
+}
+function moltGo(i){ mstep=Math.max(0,Math.min(COIL.length-1,i)); moltRender(); }
+function moltStop(){ mplay=false; clearInterval(mtimer); mtimer=null;
+  document.getElementById("moltPlay").textContent="▶ 탈피 재생"; }
+function moltPlay(){
+  if(mstep>=COIL.length-1) mstep=-1;
+  mplay=true; document.getElementById("moltPlay").textContent="⏸ 정지";
+  mtimer=setInterval(()=>{ if(mstep>=COIL.length-1){ moltStop(); return; } moltGo(mstep+1); }, 2600);
+  moltGo(mstep+1);
+}
+document.getElementById("moltPlay").onclick=()=> mplay?moltStop():moltPlay();
+document.getElementById("moltAll").onclick=()=>{ moltStop(); moltGo(COIL.length-1); };
+document.getElementById("moltScrub").onclick=e=>{ moltStop();
+  const r=e.currentTarget.getBoundingClientRect();
+  moltGo(Math.round((e.clientX-r.left)/r.width*(COIL.length-1))); };
+
+moltGo(COIL.length-1);
+setTimeout(()=>{ if(mstep===COIL.length-1&&!mplay){ moltGo(0); moltPlay(); } }, 1200);
 </script></body></html>
