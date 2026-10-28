@@ -513,7 +513,7 @@ function moltRender(){
 }
 function moltGo(i){ mstep=Math.max(0,Math.min(COIL.length-1,i)); moltRender(); }
 function moltStop(){ mplay=false; clearInterval(mtimer); mtimer=null;
-  document.getElementById("moltPlay").textContent="▶ 탈피 재생"; }
+  document.getElementById("moltPlay").textContent="▶ 재생"; }
 function moltPlay(){
   if(mstep>=COIL.length-1) mstep=-1;
   mplay=true; document.getElementById("moltPlay").textContent="⏸ 정지";
