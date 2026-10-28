@@ -82,6 +82,9 @@ canvas.drag{cursor:grabbing}
 /* ── 🐍 탈피 재생 ── */
 #molt{border-top:1px solid var(--line);background:var(--bg2);
 padding:12px clamp(12px,2.4vw,26px) 14px;display:grid;gap:9px}
+#molt h2{font-family:var(--serif);font-size:14px;font-weight:700;margin:0;color:var(--ink)}
+#moltLede{font-size:12px;color:var(--ink2);margin:0;max-width:74ch;line-height:1.55}
+#moltLede b{color:var(--ink)}
 #molt .mrow{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
 #molt button{font:inherit;font-size:12.5px;border:1px solid var(--ink3);background:transparent;
 color:var(--ink);border-radius:3px;padding:5px 13px;cursor:pointer;white-space:nowrap}
@@ -127,8 +130,10 @@ font-family:var(--emoji);margin-top:2px}
  <div id="tip"></div>
 </div>
 <section id="molt">
+ <h2>시간순으로 보기 — 어느 쪽 이야기가 늘어나나</h2>
+ <p id="moltLede">겪은 일 62편을 일어난 <b>달</b> 순서로 켠다. 막대의 <b>너비</b>는 그 시기에 몇 편인가, <b>높이</b>는 네 쪽이 각각 몇 %인가.</p>
  <div class="mrow">
-  <button id="moltPlay">▶ 탈피 재생</button>
+  <button id="moltPlay">▶ 재생</button>
   <div class="scrubber" id="moltScrub">
    <div class="scrubber-fill" id="moltFill"></div>
    <div class="scrubber-knob" id="moltKnob" style="left:0%"></div>
@@ -384,13 +389,13 @@ dbtn.addEventListener("click", ()=>{
    단위는 개월이 아니다(1.5·3·4·4는 안 살찐다). 단위는 **극**이다.
    coil 값은 .claude/molt_map.py 가 날짜에서 계산해 DATA 에 박는다. */
 const COIL=[
- {k:"",   nm:"처음",   who:"일화 없이",            note:"상징(L1)과 생각(L2)만 서 있다. <b>경험이 들어오기 전</b>의 지도."},
- {k:"c0", nm:"꼬리",   who:"뱀이 먹고 자란 것", done:1,     note:"~2026.01. <b>🌫️투자자의 자가 거의 없다</b> — 재는 눈이 안·기술 쪽에 몰려 있다."},
- {k:"c1", nm:"1 다리", who:"내가 잰다", done:1,            note:"2026.02–03 두 세계 다리 놓기. X.3 = <b>보폭이 너무 넓었나</b>. 표본이 작아 극 수는 못 믿는다."},
- {k:"c2", nm:"2 지도", who:"모형이 잰다", done:1,          note:"2026.04–05 박사논문 지도제작 — <b>0편. 공백이 아니라 청안기(靑眼期)다.</b> 뱀은 벗기 직전 눈꺼풀이 뿌예진다. 혼자 full-size를 지으면 부딪칠 상대가 없고, 마찰이 없으면 일화도 없다. 2.3(「언어가 달라 안 닿았다」)이 도착했으니 이 탈피는 끝났다."},
- {k:"c3", nm:"3 보고", who:"사람이 잰다", done:1, note:"2026.06–09 3일마다 25번 보고. <b>🌫️가 여기서 터진다.</b> 자를 바깥에 내밀자 안 보이던 극이 떴다. X.3 = 그 자를 버리고 최적무지로 점프."},
- {k:"c4", nm:"4 피벗", who:"미리 선언한 내가 잰다", done:0, note:"2026.10– planned pivot. <b>0편이지만 코일 2의 0과 다른 0이다</b> — 아직 안 벗었다. 탈피는 끝난 뒤에만 세어진다."},
- {k:"*",  nm:"전체",   who:"좌표 없는 편까지",      note:"연도만 있거나 「상시」인 편을 마저 켠다. 월을 지어내지 않아 코일에 못 앉힌 것들 — 도면에서 빠진 것이지 장부에서 빠진 것이 아니다."}
+ {k:"",   nm:"시작 전",   note:"겪은 일이 아직 하나도 안 들어왔다. 상징과 생각만 서 있는 지도."},
+ {k:"c0", nm:"~2026.1",   done:1, note:"처음 쌓인 31편. <b>🌫️투자자 쪽이 6%</b>뿐이다 — 겪은 일이 거의 다 🦋사용자·🌷기술자 쪽에 몰려 있다."},
+ {k:"c1", nm:"2026.2–3",  done:1, note:"4편뿐. 막대가 좁은 것이 그 뜻이다 — 이 시기 비율은 믿을 게 못 된다."},
+ {k:"c2", nm:"2026.4–5",  done:1, note:"<b>0편.</b> 혼자 크게 짓던 때라 부딪칠 상대가 없었다. 부딪침이 없으면 남는 이야기도 없다."},
+ {k:"c3", nm:"2026.6–9",  done:1, note:"20편. <b>🌫️투자자가 35%로 뛴다</b> — 바깥에 내보이기 시작하자 안 보이던 쪽이 떴다. 6%에서 <b>5.4배</b>."},
+ {k:"c4", nm:"2026.10~",  done:0, note:"<b>0편.</b> 위의 0과 뜻이 다르다 — 비어서가 아니라 <b>아직 안 끝나서</b>다."},
+ {k:"*",  nm:"전체",      note:"달까지 안 적힌 7편을 마저 켠다. 없는 달을 지어내지 않아 시간축에 못 앉힌 것들이다."}
 ];
 const ORDER=["c0","c1","c2","c3","c4"];
 let mstep=COIL.length-1, mplay=false, mtimer=null, MOLT_NEW=new Set();
@@ -430,9 +435,10 @@ function moltStrip(){
     const w=n?Math.max(36,n*SUNIT):SEMPTY;
     cols.push({k,i,n,eps,w,x,nm:COIL[i+1].nm,open:!COIL[i+1].done}); x+=w+SPAD;
   });
+  const PAD=16;                                   // 가장자리 칸의 라벨이 글자폭만큼 밖으로 나간다
   const W=Math.max(1,x-SPAD), H=SH+46;
-  const g=['<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMinYMin meet" '+
-           'role="img" aria-label="코일별 네 극 구성비">',
+  const g=['<svg viewBox="'+(-PAD)+' 0 '+(W+PAD*2)+' '+H+'" preserveAspectRatio="xMinYMin meet" '+
+           'role="img" aria-label="시기별 네 쪽 구성비">',
            '<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" '+
            'patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" '+
            'stroke="'+CSS('--ink3')+'" stroke-opacity=".5"/></pattern></defs>'];
@@ -440,11 +446,8 @@ function moltStrip(){
     const live = c.i < mstep;                       // 이 코일이 이미 열렸나
     const fresh = c.i === mstep-1;                  // 이번에 막 열린 코일
     if(!c.n){                                       // 빈 코일 — 칸을 비워 보여준다
-      g.push(`<rect x="${c.x}" y="0" width="${c.w}" height="${SH}" fill="${live?'url(#hatch)':'none'}" `+
+      g.push(`<rect x="${c.x}" y="0" width="${c.w}" height="${SH}" fill="${live&&!c.open?'url(#hatch)':'none'}" `+   /* 빗금 = 끝났는데 0편 · 맨 점선 = 아직 안 끝남 */
              `stroke="${CSS('--line')}" stroke-dasharray="3 3"/>`);
-      g.push(`<text x="${c.x+c.w/2}" y="${SH/2}" transform="rotate(-90 ${c.x+c.w/2} ${SH/2})" `+
-             `text-anchor="middle" font-size="10" fill="${CSS('--ink3')}" font-family="${CSS('--sans')}">`+
-             `${c.open?'아직':'청안기'}</text>`);
     } else if(!live){                               // 아직 안 열린 코일 — 틀만
       g.push(`<rect x="${c.x}" y="0" width="${c.w}" height="${SH}" fill="none" `+
              `stroke="${CSS('--line')}" stroke-dasharray="2 4"/>`);
@@ -482,7 +485,7 @@ function moltStrip(){
   document.getElementById("moltStrip").innerHTML=g.join("")+
     '<div id="moltLeg">'+STACK.map(p=>
       `<span><i style="background:${POLE[p].c}"></i>${p} ${POLE[p].n}</span>`).join("")+
-    '<span style="color:var(--ink3)">너비 = 편수 · 높이 = 구성비</span></div>';
+    '<span style="color:var(--ink3)">아래 줄 = 🌫️투자자 비율</span></div>';
 }
 
 function moltRender(){
@@ -498,12 +501,10 @@ function moltRender(){
     : (mstep===COIL.length-1?[]:[]));
 
   moltStrip();
-  document.getElementById("moltStep").innerHTML=`<b>${c.nm}</b> · ${c.who}`;
+  document.getElementById("moltStep").innerHTML=`<b>${c.nm}</b>`;
   document.getElementById("moltRead").innerHTML=
-    `<span>일화 <i>${shown.length}</i>/${mEps().length}</span>`+
-    `<span class="${pct>=25?"hi":""}">🌫️투자자 <i>${fog}</i> (${pct}%)</span>`+
-    `<span>선 극 <i>${lit}</i>/4</span>`+
-    `<span>다이나모선 <i>${wires}</i></span>`;
+    `<span>켜진 이야기 <i>${shown.length}</i>/${mEps().length}편</span>`+
+    `<span class="${pct>=25?"hi":""}">그중 🌫️투자자 <i>${fog}</i>편 (${pct}%)</span>`;
   document.getElementById("moltNote").innerHTML=c.note;
   const p=mstep/(COIL.length-1)*100;
   document.getElementById("moltFill").style.width=p+"%";
