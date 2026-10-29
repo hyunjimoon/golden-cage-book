@@ -488,49 +488,73 @@ const V1_WHY = {
 };
 
 /* ══ DATA — Posterior 실측 (2026-08-22, 3차소통 원고 정독) ══ */
+// ⚠️ 2026-10-29 측정분은 API가 아니라 **이 저장소 밖 세션의 Opus 5**가 쟀다 — sbc_analyze.py 의
+//    MODEL(claude-sonnet-5-5)로 돈 값이 아니다. 크레딧 0으로 워크플로가 열 장 전부 400을 받았고
+//    (run 40840247794), 프롬프트 조립·검증·기록은 원본 스크립트를 그대로 쓰되 채점자만 바꿨다.
+//    🚨 다음 자동 실행은 Sonnet 값으로 덮는다 — 그때 생기는 차이는 원고가 아니라 **자가 바뀐** 몫이다.
 const DATA = {
-  1: {da:{angry:8,nervous:15,surprised:30,happy:30,inspired:78,proud:52,loving:28,calm:45,sad:22,guilty:12,afraid:15,desperate:8},
-      se:{angry:6,nervous:10,surprised:25,happy:18,inspired:60,proud:38,loving:22,calm:78,sad:20,guilty:8,afraid:10,desperate:5},
-      quotes:{da:'볼 사람이 없으면 꺼지는 욕망은, 처음부터 내 것이 아니었어요.',
-              se:'안 입겠죠. 볼 사람이 없으니까.'},
-      insight:'다의 <b>불안 −35 · 놀람 −25</b>. 도취를 <i>설명</i>하지만 <i>앓지는</i> 않는다 — 엠마의 열은 인물에게 있고 화자에겐 이미 답이 있다.'},
-  2: {da:{angry:10,nervous:28,surprised:45,happy:30,inspired:80,proud:40,loving:40,calm:32,sad:62,guilty:42,afraid:28,desperate:18},
-      se:{angry:14,nervous:12,surprised:20,happy:22,inspired:72,proud:52,loving:28,calm:74,sad:40,guilty:12,afraid:10,desperate:8},
-      quotes:{da:'정확한 진단 뒤에 숨는 거였네요.',
-              se:'완벽한 진단이 완벽한 거절의 근거가 되는 순간.'},
-      insight:'다·세 둘 다 설계에 붙는다. 살리나의 금성 임종이 슬픔을 <b>+7</b>, 자석 비유가 영감을 <b>+7</b> 벌었다 — 둘 다 <b style="color:var(--var)">변이</b>지 빚이 아니다.'},
-  3: {da:{angry:18,nervous:48,surprised:32,happy:10,inspired:42,proud:14,loving:68,calm:14,sad:78,guilty:86,afraid:58,desperate:38},
-      se:{angry:12,nervous:28,surprised:22,happy:14,inspired:65,proud:32,loving:60,calm:50,sad:55,guilty:44,afraid:26,desperate:16},
-      quotes:{da:'진심이라서 더 무서운 거예요.',
-              se:'확신이 검증을 앞지르면, 그 간극이 빚이 돼요.'},
-      insight:'다는 착지했다 — 2018년 고백이 죄책을 실었고 「모든 파늘루가 가여워지는 것」이 사랑을 벌었다. 문제는 세다: 죄책 <b>−28</b>. 「…저도 할 말이 없네요」가 세 줄 만에 처방으로 복귀한다.'},
-  4: {da:{angry:14,nervous:28,surprised:48,happy:38,inspired:62,proud:24,loving:82,calm:42,sad:72,guilty:50,afraid:32,desperate:22},
-      se:{angry:10,nervous:26,surprised:24,happy:18,inspired:64,proud:30,loving:88,calm:48,sad:66,guilty:38,afraid:24,desperate:14},
-      quotes:{da:'비용을 알고, 그 비용에 눈 감지 않으면서, 그래도 부수는 것',
-              se:'충실한 것은, 새장이 열릴 때 가장 먼저 비용을 치러요.'},
-      insight:'설계를 올렸더니 <b>새장 넷 중 장 합계 빚이 최대</b>가 됐다(12). 자긍 −34 · 죄책 −25 · 두려움 −23인데 기쁨 +20. 텐을 묻는 장면은 있는데 <i>묻는 손의 감정</i>이 없다.'},
-  5: {da:{angry:28,nervous:55,surprised:38,happy:8,inspired:62,proud:25,loving:32,calm:45,sad:48,guilty:55,afraid:62,desperate:58},
-      se:{angry:5,nervous:12,surprised:20,happy:3,inspired:12,proud:6,loving:45,calm:55,sad:50,guilty:10,afraid:12,desperate:8},
-      quotes:{da:'배신할 수 없는 것만이 배신된다.',
-              se:'공책이다. 세가 쓰던 것.'},
-      insight:'<b>열 장 중 빚 최대.</b> 죄책 −30 · 불안 −25 · 절박 −20 인데 <b>영감 +37</b>. §1의 철망과 비명이 §2~§6의 청사진에 흡수됐다 — 공포로 연 방이 설계도로 닫힌다. 세는 전 축이 눌렸다: 쏘인 자가 <i>부재</i>로만 존재한다.'},
-  6: {seda:{angry:8,nervous:28,surprised:62,happy:30,inspired:72,proud:26,loving:52,calm:58,sad:32,guilty:46,afraid:18,desperate:12},
-      da:  {angry:10,nervous:38,surprised:28,happy:10,inspired:52,proud:12,loving:42,calm:25,sad:52,guilty:70,afraid:32,desperate:40},
-      quotes:{seda:'혼자 쓰는 옷과, 친구가 있어 입는 옷. 제가 지은 건 앞엣것이었네요.',
-              da:'세를 쏘고 나서, 나는 자꾸 1장으로 되돌아가요.'},
-      insight:'세다에서 <b>평온 +20 · 절박 −28</b>. 노스스타가 무너진 날인데 화자가 수첩을 덮고 규칙을 적는다. 다는 <b>영감 +24 · 죄책 +32</b> — 쏜 자가 두 대사 만에 일어선다.'},
-  7: {seda:{angry:32,nervous:44,surprised:48,happy:22,inspired:74,proud:22,loving:42,calm:58,sad:44,guilty:36,afraid:48,desperate:28},
-      quotes:{seda:'수치가 사람을 못 지킨 거잖아요.'},
-      insight:'설계를 올리자 <b>평온 +22 · 절박 −27</b>이 드러났다. 1672년 헤이그에서 데 비트가 찢기는 장면 옆에서 화자는 평온 58이다.'},
-  8: {seda:{angry:12,nervous:34,surprised:46,happy:18,inspired:66,proud:20,loving:44,calm:56,sad:38,guilty:30,afraid:40,desperate:24},
-      quotes:{seda:'문은 다 열어도 다 닫아도 지나갈 자리가 없어요. 반쯤 열렸을 때가 가장 넓어요.'},
-      insight:'<b>분노 −30 · 자긍 −28.</b> 피조물이 작가의 서재로 걸어 들어와 멱살을 쥐는 장면인데 세다의 대사가 넷뿐이다 — 열 장 중 가장 짧은 장에서 대면이 <i>요약으로</i> 처리된다.'},
-  9: {seda:{angry:14,nervous:28,surprised:42,happy:30,inspired:72,proud:22,loving:68,calm:64,sad:46,guilty:28,afraid:30,desperate:18},
-      quotes:{seda:'재는 자와 재어지는 자가 같은 자를 쓰는가.'},
-      insight:'슬픔 +11 · 두려움 +10 · 평온 −6. 몽골 7차 침입 28년과 황룡사가 타는 장면이 협력의 온기를 살짝 밀어낸다. 「나는 혼자 쓴 게 아니오」가 사랑을 68로 올려 상쇄한다.'},
-  10:{seda:{angry:12,nervous:26,surprised:30,happy:36,inspired:80,proud:30,loving:84,calm:70,sad:58,guilty:40,afraid:26,desperate:20},
-      quotes:{seda:'빚을 쓴 방과 빚을 갚는 방은 같은 방이다.'},
-      insight:'사랑 84 · 영감 80으로 회복하고 겨울은 설계 아래로 내려앉는다. 5장의 🌊가 여기서 🔥로 부호를 바꾼다.'}
+  1: {
+    da:{angry:15,nervous:20,surprised:20,happy:30,inspired:78,proud:55,loving:65,calm:55,sad:50,guilty:25,afraid:22,desperate:30},
+    se:{angry:12,nervous:45,surprised:30,happy:25,inspired:45,proud:30,loving:45,calm:70,sad:40,guilty:18,afraid:25,desperate:20},
+    quotes:{da:'비어 있는 사람이에요. 그게 훨씬 무섭고, 훨씬 많은 사람이 해당돼요.',
+            se:'그런데 하나 걸려요. 엠마를 허영이라고 부르면 독자가 빠져나가요.'},
+    insight:'여름(영감)이 설계보다 과열 — 다가 장치를 세우는 재미에 올라 있다. 겨울(죄책·두려움)은 눌려 있어 엠마의 파산이 남 일로 읽힌다.'
+  },
+  2: {
+    da:{angry:15,nervous:55,surprised:45,happy:25,inspired:60,proud:25,loving:45,calm:35,sad:62,guilty:55,afraid:42,desperate:48},
+    se:{angry:30,nervous:25,surprised:20,happy:20,inspired:55,proud:40,loving:40,calm:78,sad:50,guilty:20,afraid:25,desperate:30},
+    quotes:{da:'저는 이 장면에 매혹됐어요. 다 보이잖아요.',
+            se:'그래서 더 나빠요. 안개가 걷히길 기다린 게 아니라, 다 걷힌 하늘 아래 서서도 안 움직였어요.'},
+    insight:'가을(평온)이 세 쪽에서 설계보다 높다 — 진단자의 차분함이 장 자체의 병(정확함이 알리바이가 되는 것)을 그대로 앓는다. 다의 수치 48이 이 장의 체온.'
+  },
+  3: {
+    da:{angry:18,nervous:50,surprised:40,happy:12,inspired:45,proud:15,loving:70,calm:25,sad:75,guilty:85,afraid:55,desperate:50},
+    se:{angry:20,nervous:42,surprised:50,happy:15,inspired:50,proud:20,loving:68,calm:48,sad:70,guilty:62,afraid:38,desperate:35},
+    quotes:{da:'저는 파늘루를 욕하면서 읽고 있었는데, 읽다 보니 제가 파늘루였어요.',
+            se:'파늘루가 신앙을 100%로 믿었듯이, 저는 calibration을 100%로 믿고 있었어요.'},
+    insight:'겨울(죄책) 85로 열 장 최고 — 둘 다 보균자임을 자백한다. 다만 수치 72가 죄책 옆에 나란히 서 있어, 자백이 잠적으로 꺾일 위험이 이 장에 가장 크다.'
+  },
+  4: {
+    da:{angry:15,nervous:35,surprised:45,happy:48,inspired:70,proud:35,loving:65,calm:40,sad:68,guilty:45,afraid:30,desperate:32},
+    se:{angry:18,nervous:28,surprised:30,happy:30,inspired:58,proud:38,loving:60,calm:72,sad:58,guilty:30,afraid:25,desperate:28},
+    quotes:{da:'그렇게 가벼울 수가 없었어요.',
+            se:'충실한 것은, 새장이 열릴 때 가장 먼저 비용을 치러요.'},
+    insight:'안도 55와 슬픔 68이 동시에 켜진 유일한 장 — 해방과 애도가 한 문장에 있다. 텐의 죽음이 그 겹침을 떠받친다.'
+  },
+  5: {
+    da:{angry:45,nervous:58,surprised:35,happy:5,inspired:25,proud:22,loving:55,calm:52,sad:72,guilty:58,afraid:55,desperate:78},
+    se:{angry:20,nervous:55,surprised:68,happy:5,inspired:20,proud:10,loving:42,calm:30,sad:70,guilty:25,afraid:62,desperate:58},
+    quotes:{da:'사랑하는 것과 사랑하라고 배운 것을 나는 아직 못 가른다.',
+            se:'공중에서 내 몸과 세의 몸을 조준한 다가 보인다.'},
+    insight:'무감이 양쪽에서 가장 높다(세 72·다 55) — 평온이 아니라 꺼짐이다. 분노는 낮고 절박 78이 그 자리를 대신한다. 이 장의 빚은 감정의 부재가 아니라 잴 자의 소실이다.'
+  },
+  6: {
+    seda:{angry:10,nervous:45,surprised:72,happy:25,inspired:68,proud:20,loving:58,calm:45,sad:45,guilty:58,afraid:25,desperate:30},
+    da:{angry:12,nervous:48,surprised:35,happy:20,inspired:55,proud:18,loving:60,calm:38,sad:55,guilty:62,afraid:35,desperate:40},
+    quotes:{seda:'혼자 쓰는 옷과, 친구가 있어 입는 옷. 제가 지은 건 앞엣것이었네요.',
+            da:'세를 쏘고 나서, 나는 자꾸 1장으로 되돌아가요.'},
+    insight:'봄(놀람) 72가 설계보다 과열 — 역추론이 두 번 반쯤 틀리는 장이라 놀람이 엔진이다. 여름(자긍)은 20으로 눌려 있고, 그 눌림이 이 장에선 건강하다.'
+  },
+  7: {
+    seda:{angry:12,nervous:32,surprised:58,happy:28,inspired:72,proud:25,loving:55,calm:62,sad:42,guilty:45,afraid:22,desperate:25},
+    quotes:{seda:'그 간격이 빚이에요. 거기서 제 차례가 보여요.'},
+    insight:'영감 72·평온 62로 가장 고르게 더운 장 — 분포 사고를 말하는 입이 실제로 분포로 서 있다. 겨울이 전반적으로 낮아 뒤마의 생존 조건(자본도 신분도 없음)이 온도로는 덜 전달된다.'
+  },
+  8: {
+    seda:{angry:38,nervous:68,surprised:45,happy:12,inspired:55,proud:28,loving:40,calm:42,sad:48,guilty:30,afraid:65,desperate:72},
+    quotes:{seda:'이번 달에 급여를 못 주면 다음 달에 제가 받는 건 안개가 아니라 폐업 통지서예요.'},
+    insight:'억울 70·절박 72 — 열 장 중 현장 4축이 정전 12축을 가장 크게 앞지르는 장. 대상이 사람이 아니라 비대칭 구조라 분노가 아니라 억울로 켜진다.'
+  },
+  9: {
+    seda:{angry:10,nervous:25,surprised:50,happy:30,inspired:70,proud:32,loving:62,calm:72,sad:38,guilty:40,afraid:18,desperate:20},
+    quotes:{seda:'누군가의 확신을 부쉈으면 그 옆에 다음 이름을 같이 짓는 것.'},
+    insight:'평온 72가 가장 높고 겨울이 가장 낮다 — 합력의 장인데 온도는 가장 잔잔하다. 일연의 28년 전란이 서술로만 들어와 불안이 안 켜졌다.'
+  },
+  10: {
+    seda:{angry:20,nervous:35,surprised:30,happy:35,inspired:72,proud:68,loving:75,calm:62,sad:58,guilty:62,afraid:30,desperate:35},
+    quotes:{seda:'아픔은 형용사로 증명하는 게 아니라 날짜로 증명한다.'},
+    insight:'사랑 75·자긍 68·죄책 62가 한자리에 선 유일한 장 — 갚는 방의 온도다. 무감 48은 결함이 아니라 설계(감정은 2023년 이전에 다 썼다)의 자국이다.'
+  },
 };
 
 
@@ -565,16 +589,16 @@ const FIELD_PRIOR = {
   10:{seda:{shame:65,blunt:55,resent:30,relief:50}}
 };
 const FIELD_DATA = {
-  1:{da:{shame:12,blunt:8,resent:10,relief:22},  se:{shame:6,blunt:30,resent:8,relief:30}},
-  2:{da:{shame:40,blunt:25,resent:18,relief:18}, se:{shame:10,blunt:50,resent:32,relief:40}},
-  3:{da:{shame:45,blunt:12,resent:20,relief:15}, se:{shame:30,blunt:35,resent:15,relief:45}},
-  4:{da:{shame:28,blunt:30,resent:15,relief:60}, se:{shame:25,blunt:35,resent:12,relief:32}},
-  5:{da:{shame:35,blunt:55,resent:22,relief:40}, se:{shame:10,blunt:60,resent:12,relief:25}},
-  6:{seda:{shame:30,blunt:30,resent:12,relief:40}, da:{shame:32,blunt:22,resent:18,relief:38}},
-  7:{seda:{shame:52,blunt:45,resent:62,relief:22}},
-  8:{seda:{shame:18,blunt:48,resent:28,relief:42}},
-  9:{seda:{shame:20,blunt:30,resent:35,relief:48}},
-  10:{seda:{shame:30,blunt:62,resent:25,relief:58}}
+  1:{da:{shame:12,blunt:10,resent:18,relief:15}, se:{shame:10,blunt:22,resent:12,relief:20}},
+  2:{da:{shame:48,blunt:20,resent:20,relief:12}, se:{shame:10,blunt:28,resent:25,relief:12}},
+  3:{da:{shame:72,blunt:12,resent:15,relief:10}, se:{shame:55,blunt:15,resent:18,relief:12}},
+  4:{da:{shame:25,blunt:18,resent:12,relief:55}, se:{shame:12,blunt:25,resent:12,relief:40}},
+  5:{da:{shame:45,blunt:55,resent:30,relief:8}, se:{shame:25,blunt:72,resent:35,relief:10}},
+  6:{seda:{shame:42,blunt:15,resent:12,relief:22}, da:{shame:45,blunt:18,resent:10,relief:15}},
+  7:{seda:{shame:30,blunt:12,resent:15,relief:25}},
+  8:{seda:{shame:25,blunt:18,resent:70,relief:15}},
+  9:{seda:{shame:22,blunt:12,resent:15,relief:30}},
+  10:{seda:{shame:35,blunt:48,resent:28,relief:45}},
 };
 
 /* ══ 명명 시점 ② 회고 — 그 장을 *지나온 뒤* 뒤쪽 장이 되돌아보며 하는 말 ══
@@ -582,34 +606,31 @@ const FIELD_DATA = {
    ⚠️ 지금은 분노·억울·무감 **세 축만** 손으로 쟀다(2026-10-02). 나머지 13축은 CI 대기 —
    생성기가 돌면 이 블록은 16축 전부로 덮이고 by 가 'sbc'로 바뀐다. */
 const RETRO = {
-  1:{angry:10,resent:18,blunt:15,
-     quote:'비용을 모르고 부수면 무모고 — 그건 1장이었죠.', by:'손측정'},
-  2:{angry:22,resent:20,blunt:20,
-     quote:'73년을 별처럼 정확히 읽고도 한 발도 떼지 않은 공작이 있어요.', by:'손측정'},
-  3:{angry:20,resent:45,blunt:15,
-     quote:'유리는 아무리 투명해도 이쪽과 저쪽을 가르고, 한쪽의 목소리만 통과시키지요.', by:'손측정'},
-  4:{angry:12,resent:28,blunt:20,
-     quote:'시계가 잘 돌수록 그는 시계 없는 삶을 상상하지 못했어요.', by:'손측정'},
-  5:{angry:10,resent:15,blunt:45,
-     quote:'5장에서 다는 세를 차갑게 쏘았다. 세만 사랑할 수 없어서.', by:'손측정'},
-  8:{angry:14,resent:20,blunt:25,
-     quote:'8장의 과잉약속이 투자자 앞의 일이라면 이것은 밥상 앞의 일이다. 방이 다를 뿐 같은 병이다.', by:'손측정'},
-  9:{angry:10,resent:15,blunt:20,
-     quote:'재발견이 아니라 재명명이 거울을 연다. 다만 그 재명명을 남이 해 줬다.', by:'손측정'}
+  1:{angry:12,nervous:22,surprised:25,happy:18,inspired:58,proud:30,loving:72,calm:68,sad:62,guilty:38,afraid:18,desperate:25,shame:30,blunt:35,resent:20,relief:28,
+     quote:'엠마가 무도회의 옷을 입은 것은 그가 허영심이 많아서가 아니라, 그 옷 말고 걸칠 것이 없어서였다.', insight:'현장의 영감 78이 회고에선 58로 식고 사랑이 65→72로 오른다 — 장치를 세우던 재미가 빠지고 연민만 남았다.', by:'opus5'},
+  2:{angry:15,nervous:20,surprised:22,happy:15,inspired:55,proud:25,loving:45,calm:72,sad:65,guilty:32,afraid:20,desperate:22,shame:22,blunt:45,resent:25,relief:15,
+     quote:'2장의 살리나는 73년을 정확히 읽었고, 아무것도 바꾸지 않았다.', insight:'현장 수치 48이 회고에선 22로 내려가고 무감이 45로 오른다 — 부끄러움이 풀린 게 아니라 분석으로 덮였다.', by:'opus5'},
+  3:{angry:18,nervous:28,surprised:25,happy:12,inspired:52,proud:22,loving:58,calm:60,sad:58,guilty:48,afraid:25,desperate:25,shame:38,blunt:32,resent:22,relief:18,
+     quote:'틀렸음을 보일 수 없는 문장은 정보가 없다.', insight:'현장 죄책 85가 회고 48 — 자백이 명제로 굳었다. 뜨거움이 빠진 자리에 평온 60이 들어왔고, 그 평온이 새 스테인굴레스일 수 있다.', by:'opus5'},
+  4:{angry:12,nervous:32,surprised:18,happy:20,inspired:60,proud:30,loving:35,calm:70,sad:35,guilty:25,afraid:22,desperate:20,shame:15,blunt:52,resent:18,relief:22,
+     quote:'떨림은 손이 잘못돼서가 아니라 아직 걸지 않은 것이 남아 있어서 온다.', insight:'일곱 칸 중 가장 차갑다(무감 52·사랑 35). 되돌아보는 줄 다섯이 전부 설계문이라 4장의 애도가 회고에 한 줄도 안 남았다 — 텐이 지워진 칸.', by:'opus5'},
+  5:{angry:20,nervous:35,surprised:25,happy:15,inspired:62,proud:35,loving:70,calm:55,sad:68,guilty:52,afraid:35,desperate:32,shame:35,blunt:58,resent:30,relief:25,
+     quote:'5장에서 다는 세를 차갑게 쏘았다. 세만 사랑할 수 없어서.', insight:'현장 분노 45가 회고 20으로 더 식는다 — 켜지는 건 분노가 아니라 무감 58이다. 쏜 자리를 되돌아보는 입은 뜨거워지지 않고 더 조용해진다.', by:'opus5'},
+  8:{angry:22,nervous:38,surprised:20,happy:18,inspired:55,proud:25,loving:62,calm:58,sad:45,guilty:58,afraid:30,desperate:32,shame:35,blunt:25,resent:48,relief:20,
+     quote:'8장의 과잉약속이 투자자 앞의 일이라면 이것은 밥상 앞의 일이다.', insight:'현장 억울 70이 회고 48로 내려가고 죄책 30→58로 오른다 — 구조를 겨누던 손이 회고에선 자기를 겨눈다. 열 칸 중 부호가 가장 크게 뒤집힌 자리.', by:'opus5'},
+  9:{angry:8,nervous:18,surprised:30,happy:42,inspired:75,proud:45,loving:72,calm:65,sad:32,guilty:30,afraid:15,desperate:18,shame:18,blunt:20,resent:15,relief:52,
+     quote:'이 책의 이름은 내가 지은 게 아니라 받은 것이다.', insight:'안도 52·기쁨 42로 일곱 칸 중 유일하게 따뜻하다 — 이름을 받은 사건이라 회고가 감사로 켜진다. 현장의 평온 72가 회고에선 65로 거의 그대로다.', by:'opus5'},
 };
 
 /* 표본을 숨기면 자가 아니다 — 6·7·10장은 문턱(3줄) 미달로 기각 */
 const RETRO_SRC = {
   1:{n:23, src:'2장 · 4장 · 6장 · 9장 · 10장 · 에필로그'},
-  2:{n:14, src:'3장 · 4장 · 6장 · 7장 · 8장 · 10장'},
-  3:{n:9,  src:'4장 · 8장 · 9장 · 10장'},
-  4:{n:5,  src:'6장 · 9장 · 10장'},
-  5:{n:21, src:'6장 · 7장 · 8장 · 9장 · 10장 · 에필로그'},
-  6:{n:1,  src:'10장', reject:'문턱 미달'},
-  7:{n:2,  src:'10장', reject:'문턱 미달'},
-  8:{n:8,  src:'9장 · 10장 · 에필로그'},
-  9:{n:6,  src:'10장'},
-  10:{n:0, src:'없음', reject:'뒤가 없다 — 마지막 방은 자기 회고가 없다'}
+  2:{n:15, src:'3장 · 4장 · 6장 · 7장 · 8장 · 10장'},
+  3:{n:10, src:'4장 · 8장 · 9장 · 10장'},
+  4:{n:5, src:'6장 · 9장 · 10장'},
+  5:{n:22, src:'6장 · 7장 · 8장 · 9장 · 10장 · 에필로그'},
+  8:{n:7, src:'9장 · 10장 · 에필로그'},
+  9:{n:5, src:'10장'},
 };
 
 /* ══════════════════════════════════════════════════════════════
