@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>투향 감정 — 열 명이 내 자를 기각했다</title>
+<title>투향 감정 — 새장에선 식고 둥지에선 더워진다</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
   :root{
@@ -147,34 +147,88 @@
   <!-- ══════════ HERO ══════════ -->
   <div class="hero">
     <div class="eyebrow">투향 · 감정 측정</div>
-    <h1>열 명이 내 자를 기각했다.</h1>
+    <h1>새장에선 식고, 둥지에선 다시 더워진다.</h1>
     <div class="kpi">
-      <div><div class="v">10</div><div class="k" id="k10">현장 전문가 — 독립으로 답했다</div></div>
-      <div><div class="v">1</div><div class="k">그들이 내리게 한 지수 — 和</div></div>
-      <div><div class="v">4</div><div class="k">그들이 세우게 한 축 — 수치·무감·억울·안도</div></div>
-      <div><div class="v">23</div><div class="k">그들이 옮기게 한 Prior 칸 — 일곱 장</div></div>
+      <div><div class="v" id="kda">–</div><div class="k"><b style="color:var(--da)">다</b> — 영감으로 열고 절박으로 닫는다. 1장→5장 온도</div></div>
+      <div><div class="v" id="kse">–</div><div class="k"><b style="color:var(--se)">세</b> — 평온 하나로 버틴다. 그 평온이 5장에 깨진다</div></div>
+      <div><div class="v" id="ksd">–</div><div class="k"><b style="color:var(--seda)">세다</b> — 8장에 한 번 더 꺼지고 10장에 가장 높다</div></div>
     </div>
     <div class="say">
-      나는 원고의 감정을 열두 축으로 재고, 설계와 원고의 거리를 <b>和 지수</b>로 점수 매겼다.
-      한국 창업 현장 전문가 열 명이 이 눈금을 함께 기각했다. 반례가 이 책 3장 안에 있었다 —
-      <b>결과가 와도 안 고치는 파늘루는 설계 = 발현이라 和가 100이고, 60%에서 시작해
-      아침 하늘을 보고 매일 고치는 리외는 和가 낮다.</b> 그 지수는 파늘루에게 1등을 준다.
+      가장 단순히 말하면 이렇다. <b>다는 떨어지고, 세는 평평하다가 같이 떨어지고, 세다는 한 번 더 떨어진 뒤 올라온다.</b>
+      바닥은 두 번이다 — <b>5장</b>에서 다와 세가 함께, <b>8장</b>에서 세다가 혼자.
       <br><br>
-      그래서 점수판을 내렸다. 아래는 <b>잰 값</b>이 아니라 <b>자가 바뀐 기록</b>이다.
+      그리고 세다는 둘을 반씩 물려받지 않았다. <b>다에게서 죄책을(55→47), 세에게서 평온을(60→57)</b> 가져오고
+      <b>다의 절박은 내려놓는다(46→36).</b> 둘을 다 넘는 것은 영감 하나뿐이다(67).
+      <br><br>
+      아래 셋은 그 결론을 두 번 재고(①②) 그 결론이 저자를 어떻게 바꿨는지 적는다(③).
     </div>
   </div>
 
-  <!-- ══════════ ① 결과 ══════════ -->
+  <!-- ══════════ ⓿ 결론 ══════════ -->
+  <section id="s0">
+    <h2><span class="n">00</span> 결론</h2>
+    <div class="ask">세 화자의 감정은 열 장에서 어떻게 변하나.</div>
+    <div class="fig">
+      <div class="find">1→5장 내려가고 6→10장 올라온다. 바닥은 <em>두 번</em> — 5장과 8장.</div>
+      <div class="sub">
+        <b>온도</b> = 양(+) 여섯 축 평균 − 음(−) 여섯 축 평균. 부호는 정전이 이미 적어 둔 것을 그대로 쓴다 —
+        여섯 짝 중 10연만 둘 다 (+), 8연만 둘 다 (−)라 양·음이 정확히 6:6으로 갈린다. 새 자를 만들지 않았다.
+        점에 손을 올리면 그 방에서 가장 높은 세 축이 나온다.
+      </div>
+      <svg id="tsvg" viewBox="0 0 780 260" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend">
+        <span><i class="lk" style="background:var(--da)"></i>다 (多) · 1~6장</span>
+        <span><i class="lk" style="background:var(--se)"></i>세 (世) · 1~5장</span>
+        <span><i class="lk" style="background:var(--seda)"></i>세다 · 6~10장</span>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
+        <div class="find" style="font-size:.96em">세다는 반씩 섞인 것이 아니다 — <em>죄책은 다에게서, 평온은 세에게서</em>.</div>
+        <div class="sub">숫자는 각 화자가 <b>선 장들의 평균</b>(다 1~6장 · 세 1~5장 · 세다 6~10장). 열두 축을 다·세가 갈리는 폭 순으로 싣는다.
+</div>
+        <table id="inherit"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ① 수렴 ══════════ -->
+  <section id="s4">
+    <h2><span class="n">01</span> 수렴</h2>
+    <div class="ask">#9이 물은 것 — <b>다와 세가 정말 가까워지는가.</b></div>
+    <div class="fig">
+      <div class="find">설계는 좁히는데 원고는 안 좁힌다. 그리고 <em>7장부터는 잴 수가 없다</em>.</div>
+      <div class="sub">
+        위 ⓿ 는 각 화자의 온도를 재고, 여기는 <b>다와 세 사이의 거리</b>를 잰다 —
+        <a href="https://github.com/hyunjimoon/golden-cage-book/issues/9" style="color:#c5a55a">#9</a>이 물은 것이다.
+        열두 축을 좌표로 놓고 유클리드 거리. #9이 쓰던 여섯 축 중 넷은 현행 자에 없어 <b>옛 숫자 89→13은 여기 못 올린다</b>.
+        <br>🌗 설계(점선)는 1→4장을 단조로 좁히는데 원고(실선)는 <b>2·4·5장에서 되레 벌어진다</b>.
+        #9은 H3을 ✅로 닫았지만 <b>닫힌 것은 가설이 아니라 그때의 자다.</b>
+        <br><b style="color:var(--alert)">7~10장은 빈칸이 아니라 측정 불가다.</b>
+        세다 하나만 서니 거리라는 양이 정의되지 않는다. <b>거리 0과 측정 불가는 처분이 반대다</b> —
+        0은 「만났다」는 값이라 수렴의 증거고, 측정 불가는 확인할 길이 닫혔다는 뜻이다. 지금 데이터는 뒤쪽이다.
+      </div>
+      <svg id="csvg" viewBox="0 0 780 240" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend">
+        <span><i class="lk" style="background:var(--seda);height:3px"></i>원고 — 좁아진 구간</span>
+        <span><i class="lk" style="background:var(--alert);height:3px"></i>원고 — <b>벌어진 구간</b>(단조가 깨진 자리)</span>
+        <span><i class="lk" style="background:var(--mute);height:3px"></i>설계(Prior)</span>
+        <span><i class="lk sq" style="background:var(--mute);opacity:.35"></i>측정 불가 — 세다 혼자</span>
+        <button class="tableview" id="t4btn">표로 보기</button>
+      </div>
+      <div id="t4" hidden></div>
+    </div>
+  </section>
+
+  <!-- ══════════ ② 빚 ══════════ -->
   <section id="s1">
-    <h2><span class="n">01</span> 결과</h2>
+    <h2><span class="n">02</span> 빚</h2>
     <div class="ask">열 방 중 어디가 설계를 가장 못 따라갔나.</div>
     <div class="fig">
       <div class="find">빚이 가장 큰 방은 <em>5장</em> — 공포로 열고, 설계도로 닫았다.</div>
       <div class="sub">
         위로 솟을수록 <b>빚</b>(설계한 감정이 원고에 안 나온 양)이 크다. 점에 손을 올리면 그 방의 세 숫자가 나온다.
-        <b>이 장을 고쳐 빚을 줄이지 마라</b> — 공포를 못 견디고 설계도로 도망친 흔적이 이 책에서 가장 정직한 자국이다.
-        <br><b style="color:var(--ink)">고칠 곳은 4장과 8장이다</b> — 장 합계로 4장 12(새장 넷 중 최대)·8장 10(둥지 최대).
-        4장엔 텐을 묻는 장면은 있는데 <i>묻는 손의 감정</i>이 없고, 8장은 멱살을 쥐는 대면이 대사 넷으로 요약된다.
+        <b>5장은 고치지 마라</b> — 공포를 못 견디고 설계도로 도망친 흔적이 이 책에서 가장 정직한 자국이다.
+        <br><b style="color:var(--ink)">고칠 곳은 4장과 8장이다</b> — 4장엔 텐을 묻는 장면은 있는데 <i>묻는 손의 감정</i>이 없고,
+        8장은 멱살을 쥐는 대면이 대사 넷으로 요약된다.
       </div>
       <svg id="jsvg" viewBox="0 0 780 250" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="legend">
@@ -187,54 +241,20 @@
     </div>
   </section>
 
-  <!-- ══════════ ② 과정 ══════════ -->
-  <section id="s2">
-    <h2><span class="n">02</span> 과정</h2>
-    <div class="ask">그 자는 애초에 쓸 만한가. <b>정전이 적어 둔 짝을, 자가 제 연에서 재현하는가.</b></div>
-    <div class="fig">
-      <div class="find">열두 축 중 <em id="discrim-count">–</em>만 제 연에서 선다.</div>
-      <div class="sub">
-        정전은 각 연에 <b>부호가 반대인 두 감정</b>을 걸어 둔다(6연 × 2 = 12 전부, 중복 0).
-        그렇다면 자가 쓸 만한지는 한 줄로 시험된다 — <b>그 축이 제 연의 장에서 다른 아홉 장보다 높은가.</b>
-        제 연 중앙값에서 딴 데 중앙값을 빼고, <b>차가 15 이상</b>이면 선 것으로 센다
-        (15 = 이 페이지가 이미 쓰는 「큰 차이」. 새 문턱을 만들지 않았다).
-        <br><b style="color:var(--ink)">판정이 셋인 이유 — 처분이 서로 다르다.</b>
-        <b>자가 낮다</b>: 어디서나 켜져 변별을 못 한다 → 설계 Prior 를 올린다(영감).
-        <b>대상이 다르다</b>: 어디서도 안 켜진다 → 그 감정을 <i>다른 이름</i>이 가져갔는지 본다(분노 ↔ 억울).
-        <b>못 가름</b>: 둘 다 아니다. 전엔 앞의 둘을 「죽은 축」 한 칸에 넣었는데, <b>하나는 자를 고치고
-        하나는 짝을 고치는 일</b>이라 같은 칸에 둘 수 없다.
-        <br><b style="color:var(--ink)">이 질문은 2026-10-03에야 물을 수 있게 됐다.</b>
-        그 전엔 묶음이 中庸 4계절이었고 <b>계절은 장과 대응이 없어</b> 「제 연」이라는 말 자체가 성립하지 않았다.
-        묶음을 정전 6짝으로 간 것 — 축도 숫자도 색도 그대로 두고 <i>묶는 방식만</i> — 이 시험을 열었다.
-        <br>🌗 <b style="color:var(--ink)">그래서 이 표는 원고가 아니라 자를 기각한다.</b>
-        정전은 「8연이 바닥(분노·슬픔)」이라 적는데 <b>8장 분노는 다른 아홉 장과 값이 같다(12 ↔ 12)</b>.
-        원고가 정전을 안 따른 것인지, 자가 그 감정을 못 잡는 것인지는 <b>이 표로는 못 가른다</b> —
-        가르려면 화자 층과 독자 층을 나눠야 한다(T96·T97 ⚓ 룰링 대기).
-      </div>
-      <div style="overflow-x:auto"><table id="discrim" style="min-width:560px"></table></div>
-      <div class="legend">
-        <span><i class="lk" style="background:var(--se);height:9px;border-radius:5px"></i>막대 = 제 연 중앙값</span>
-        <span><i class="lk" style="background:rgba(255,255,255,.5);width:2px;height:11px;border-radius:1px"></i>흰 세로선 = 딴 데 중앙값</span>
-        <span><i class="lk" style="background:var(--mute);height:9px;border-radius:5px"></i>제 연에서 못 선 축</span>
-        <span style="color:var(--ink2)">꼭대기도 바닥도 한 장의 버그가 아니라 열 장에 걸친 체질 — 정전은 <b>8연이 바닥(둘 다 −)</b>·<b>10연이 꼭대기(둘 다 +)</b>라 적는다. 자가 그 둘을 재현하는지가 ①의 물음이다</span>
-      </div>
-    </div>
-  </section>
-
   <!-- ══════════ ③ 생산자 ══════════ -->
   <section id="s3">
     <h2><span class="n">03</span> 생산자</h2>
     <div class="ask">그래서 무엇을 바꿨나. 원고가 아니라 저자가 바뀐 자리.</div>
     <div class="fig">
       <div class="find">열 명이 독립으로 답했고, <em>과반이 같은 말을 한 것</em>만 옮겼다.</div>
-      <div class="sub">머리의 <b>10</b>에 손을 올리면 누구인지 나온다.</div>
+      <div class="sub"><b id="k10">열 명</b>에 손을 올리면 누구인지 나온다 — 한국 창업 현장 전문가다.</div>
       <table class="chg">
         <tr><td>和가 파늘루를 이긴다</td><td>9/10</td>
             <td><b>和를 점수에서 내렸다.</b> 절대값 평균이라 2장 슬픔 +7(좋은 초과)과 5장 영감 +37(도피)이
                 같은 벌점을 받고 있었다. 세 숫자를 따로 센다 — <b>빚</b>(미달) · <b>변이</b>(초과) ·
                 <b>미지근</b>(설계·원고가 나란히 낮아 애초에 잴 것이 없던 축 수).</td></tr>
         <tr><td>영감은 상수다</td><td>10/10</td>
-            <td>열 장 전부 42~80. "결정 뒤에 붙는 자막", "우상향만 하는 허영축". → <b>②의 축 변별력</b>을 신설해
+            <td>열 장 전부 42~80. "결정 뒤에 붙는 자막", "우상향만 하는 허영축". → 아래 「자세히」의 <b>축 변별력</b>을 신설해
                 못 가르는 축을 데이터로 드러냈다.</td></tr>
         <tr><td>수치가 없다</td><td>8/10</td>
             <td>죄책은 자백·보상을 부르고 수치는 은폐·잠적을 부른다 — <b>행동 부호가 반대</b>라 접붙일 수 없다.
@@ -266,47 +286,29 @@
   </section>
 
 
-  <!-- ══════════ ④ 수렴 ══════════ -->
-  <section id="s4">
-    <h2><span class="n">04</span> 수렴</h2>
-    <div class="ask">#9이 물은 것 — <b>다와 세가 정말 가까워지는가.</b></div>
-    <div class="fig">
-      <div class="find">설계는 좁히는데 원고는 안 좁힌다. 그리고 <em>7장부터는 잴 수가 없다</em>.</div>
-      <div class="sub">
-        이 페이지의 나머지 셋은 <b>설계↔원고</b> 거리(빚)를 잰다. 여기만 <b>다↔세</b> 거리를 잰다 —
-        <a href="https://github.com/hyunjimoon/golden-cage-book/issues/9" style="color:#c5a55a">#9</a>의 H3이 물은 것이고,
-        열두 축으로 자를 갈아 끼우는 동안 페이지에서 통째로 빠져 있던 물음이다.
-        <br><b style="color:var(--ink)">자를 먼저 적는다.</b> 두 화자의 열두 축을 좌표로 놓고 유클리드 거리를 잰다.
-        #9이 쓰던 여섯 축 중 넷(self-deception · detached · calm-uncertain · playful)은 현행 자에 없어서
-        <b>옛 숫자 89→13은 여기 못 올린다</b> — 갈아 끼운 자로 처음부터 다시 잰 값이다.
-        옛 값과 새 값을 한 선에 이으면 자가 바뀐 자리가 수렴으로 보인다.
-        <br>🌗 <b style="color:var(--ink)">그래서 이 그림은 원고가 아니라 가설을 기각한다.</b>
-        설계(점선)는 1→4장을 단조로 좁힌다. 원고(실선)는 <b>2장에서 되레 벌어지고 4장에서 또 벌어진다</b>.
-        #9은 H3을 ✅로 닫았는데, 그때 자와 지금 자가 다르다 — <b>닫힌 것은 가설이 아니라 그때의 자다.</b>
-        <br><b style="color:var(--alert)">7~10장은 빈칸이 아니라 측정 불가다.</b>
-        그 네 장에는 세다 하나만 선다. 둘이 없으니 거리라는 양이 정의되지 않는다.
-        <b>거리 0과 측정 불가는 처분이 반대다</b> — 0은 「만났다」는 값이라 수렴의 증거고,
-        측정 불가는 「합쳐져서 더 잴 것이 없다」는 뜻이라 수렴을 확인할 길이 닫혔다는 뜻이다.
-        지금 데이터는 뒤쪽이다.
-        <br><b style="color:var(--ink)">이 축이 왜 필요한가</b> — #9의 문장 그대로다.
-        <i>「안 뛴 사람의 피해자는 존재하지 않은 미래다. 혼자서는 안 뛴 빚이 안 보인다 — 그래서 두 사람이 필요하다.」</i>
-        화자를 하나로 합치면 그 빚을 볼 눈도 같이 사라진다.
-      </div>
-      <svg id="csvg" viewBox="0 0 780 240" preserveAspectRatio="xMidYMid meet"></svg>
-      <div class="legend">
-        <span><i class="lk" style="background:var(--seda);height:3px"></i>원고 — 좁아진 구간</span>
-        <span><i class="lk" style="background:var(--alert);height:3px"></i>원고 — <b>벌어진 구간</b>(단조가 깨진 자리)</span>
-        <span><i class="lk" style="background:var(--mute);height:3px"></i>설계(Prior)</span>
-        <span><i class="lk sq" style="background:var(--mute);opacity:.35"></i>측정 불가 — 세다 혼자</span>
-        <button class="tableview" id="t4btn">표로 보기</button>
-      </div>
-      <div id="t4" hidden></div>
-    </div>
-  </section>
-
   <!-- ══════════ 접은 것 ══════════ -->
   <div class="more">
     <div class="h">자세히</div>
+
+    <details>
+      <summary>이 자는 쓸 만한가 — 열두 축이 제 연에서 서는지</summary>
+      <div>
+        정전은 각 연에 <b>부호가 반대인 두 감정</b>을 걸어 둔다(6연 × 2 = 12 전부, 중복 0).
+        그러면 시험은 한 줄이다 — <b>그 축이 제 연의 장에서 다른 아홉 장보다 높은가.</b>
+        제 연 중앙값 − 딴 데 중앙값이 <b>15 이상</b>이면 선 것으로 센다.
+        <b>자가 낮다</b>(어디서나 켜짐) → 설계 Prior 를 올린다 · <b>대상이 다르다</b>(어디서도 안 켜짐)
+        → 다른 이름이 가져갔는지 본다(분노 ↔ 억울) · <b>못 가름</b> → 둘 다 아니다.
+        열두 축 중 <b id="discrim-count">–</b>만 제 연에서 선다.
+        <br>🌗 정전은 「8연이 바닥」이라 적는데 <b>8장 분노는 다른 아홉 장과 값이 같다(12 ↔ 12)</b>.
+        원고가 안 따른 것인지 자가 못 잡는 것인지는 이 표로 못 가른다 — 화자 층과 독자 층을 나눠야 한다(T96·T97 ⚓).
+        <div style="overflow-x:auto"><table id="discrim" style="min-width:560px;margin-top:10px"></table></div>
+        <div class="legend">
+          <span><i class="lk" style="background:var(--se);height:9px;border-radius:5px"></i>막대 = 제 연 중앙값</span>
+          <span><i class="lk" style="background:rgba(255,255,255,.5);width:2px;height:11px;border-radius:1px"></i>흰 세로선 = 딴 데 중앙값</span>
+          <span><i class="lk" style="background:var(--mute);height:9px;border-radius:5px"></i>제 연에서 못 선 축</span>
+        </div>
+      </div>
+    </details>
 
     <details id="d-panel">
       <summary>장별 실측 — 열 장 × 열두 축, 설계 대 원고</summary>
@@ -1004,11 +1006,121 @@ const worstAx = c => { if(!PAIR[c]) return null;
   btn.onclick=()=>{ box.hidden=!box.hidden; btn.textContent=box.hidden?'표로 보기':'표 닫기'; };
 })();
 
+/* ══════════ ⓿ 결론 — 온도 궤적 ══════════
+   🚫 하드코딩 금지 — DATA 에서 매번 계산한다. sbc_analyze.py 가 DATA 를 덮어써도 따라온다.
+   온도 = 양(+) 여섯 평균 − 음(−) 여섯 평균. 부호를 여기서 새로 정하지 않았다 —
+   SEASONS 여섯 짝 중 10연만 둘 다 (+), 8연만 둘 다 (−) 라 양·음이 정확히 6:6 으로 갈린다.
+   ⚠️ 화자가 선 장만 잇는다. 다 1~6 · 세 1~5 · 세다 6~10 — 안 선 장을 0 으로 잇지 마라. */
+const POS  = ['inspired','surprised','loving','happy','calm','proud'];
+const NEG  = ['nervous','desperate','afraid','angry','sad','guilty'];
+const mean = (v,ks) => ks.reduce((t,k)=>t+v[k],0)/ks.length;
+const temp = (c,s) => Math.round((mean(DATA[c][s],POS)-mean(DATA[c][s],NEG))*10)/10;
+const top3 = (c,s) => AXES.map(a=>[a,DATA[c][s][a]]).sort((p,q)=>q[1]-p[1]).slice(0,3);
+const WHERE = {da:[], se:[], seda:[]};
+SLOTS.forEach(([c,s]) => WHERE[s].push(c));
+const sgn = t => (t>0?'+':'−') + Math.abs(Math.round(t));
+
+(function(){
+  const W=780,H=260,L=44,R=62,T=22,BM=46, M=35;          // M = 눈금 반폭. 실측 최대 |28.7|
+  const x = c => L + (W-L-R)*(c-1)/9;
+  const y = t => T + (H-BM-T)*(1-(t+M)/(2*M));
+  let g = '';
+  // 1부 새장(1~5) / 2부 둥지(6~10) — 둥지 쪽에 아주 얕은 면을 깐다
+  g += `<rect x="${x(5.5).toFixed(1)}" y="${T}" width="${(W-R+6-x(5.5)).toFixed(1)}" height="${H-BM-T}" fill="rgba(255,255,255,.025)"/>`;
+  g += `<text x="${x(3).toFixed(1)}" y="${T+13}" fill="var(--dim)" font-size="11" text-anchor="middle">1부 새장</text>`;
+  g += `<text x="${x(8).toFixed(1)}" y="${T+13}" fill="var(--dim)" font-size="11" text-anchor="middle">2부 둥지</text>`;
+  // 눈금 — 0 은 진하게 (뜨거움과 차가움이 갈리는 선)
+  [-20,20].forEach(t=>{
+    g += `<line x1="${L-6}" x2="${W-R+6}" y1="${y(t).toFixed(1)}" y2="${y(t).toFixed(1)}" stroke="rgba(255,255,255,.055)"/>`;
+    g += `<text x="${L-11}" y="${(y(t)+4).toFixed(1)}" fill="var(--dim)" font-size="10.5" text-anchor="end" font-family="DM Mono,monospace">${sgn(t)}</text>`;
+  });
+  g += `<line x1="${L-6}" x2="${W-R+6}" y1="${y(0).toFixed(1)}" y2="${y(0).toFixed(1)}" stroke="rgba(255,255,255,.2)"/>`;
+  g += `<text x="${L-11}" y="${(y(0)+4).toFixed(1)}" fill="var(--ink2)" font-size="10.5" text-anchor="end" font-family="DM Mono,monospace">0</text>`;
+
+  const COL = {da:'var(--da)', se:'var(--se)', seda:'var(--seda)'};
+  ['se','da','seda'].forEach(s=>{
+    const cs = WHERE[s];
+    g += `<polyline fill="none" stroke="${COL[s]}" stroke-width="2.4" stroke-linejoin="round" points="`
+       + cs.map(c=>`${x(c).toFixed(1)},${y(temp(c,s)).toFixed(1)}`).join(' ') + `"/>`;
+  });
+  // 바닥 — 화자마다 제 바닥을 데이터가 고르게 한다(손으로 지목하지 않는다).
+  // 🚫 「전체 최저 둘」로 세지 마라 — 그러면 3장 다(−21)가 뽑혀 세다의 바닥이 그림에서 사라진다.
+  const lows = ['da','se','seda'].map(s=>{
+    const c = WHERE[s].reduce((m,c)=>temp(c,s)<temp(m,s)?c:m, WHERE[s][0]);
+    return {c, s, t:temp(c,s)};
+  });
+  const lowRooms = [...new Set(lows.map(l=>l.c))];
+  lowRooms.forEach(c=>{
+    const here = lows.filter(l=>l.c===c);
+    const low  = Math.min(...here.map(l=>l.t));
+    const who  = here.map(l=>SPEAKERS[l.s].ko).join('·');
+    g += `<text x="${x(c).toFixed(1)}" y="${(y(low)+22).toFixed(1)}" fill="var(--alert)" font-size="11" font-weight="600" text-anchor="middle">바닥 — ${who}${here.length>1?' 함께':' 혼자'}</text>`;
+  });
+  // 점 — 손올림이면 그 방의 가장 높은 세 축
+  ['se','da','seda'].forEach(s=>{
+    WHERE[s].forEach(c=>{
+      const t = temp(c,s), isLow = lows.some(l=>l.c===c&&l.s===s);
+      const rows = top3(c,s).map(([a,v])=>`${AXKO[a]} ${v}`).join(' · ');
+      g += `<g class="tp" data-c="${c}" data-t="${CHAPTERS[c].emoji} ${c}장 · ${SPEAKERS[s].ko}"
+              data-r="온도 ${sgn(t)} — ${rows}" style="cursor:pointer">
+              <circle cx="${x(c).toFixed(1)}" cy="${y(t).toFixed(1)}" r="11" fill="transparent"/>
+              <circle cx="${x(c).toFixed(1)}" cy="${y(t).toFixed(1)}" r="${isLow?5:3.6}"
+                fill="${isLow?'var(--alert)':COL[s]}" stroke="var(--bg)" stroke-width="1.5"/></g>`;
+    });
+  });
+  // 직접 라벨 — 선이 가장 높은 자리에 건다(바닥 글자와 안 부딪히게)
+  g += `<text x="${(x(1)+8).toFixed(1)}" y="${(y(temp(1,'da'))-9).toFixed(1)}" fill="var(--da)" font-size="12" font-weight="700">다</text>`;
+  g += `<text x="${(x(2)+8).toFixed(1)}" y="${(y(temp(2,'se'))-9).toFixed(1)}" fill="var(--se)" font-size="12" font-weight="700">세</text>`;
+  g += `<text x="${(x(10)+9).toFixed(1)}" y="${(y(temp(10,'seda'))+4).toFixed(1)}" fill="var(--seda)" font-size="12" font-weight="700">세다</text>`;
+  // 가로축
+  for(let c=1;c<=10;c++){
+    g += `<text x="${x(c).toFixed(1)}" y="${H-BM+20}" font-size="12.5" text-anchor="middle">${CHAPTERS[c].emoji}</text>`;
+    g += `<text x="${x(c).toFixed(1)}" y="${H-BM+35}" fill="var(--dim)" font-size="10" text-anchor="middle" font-family="DM Mono,monospace">${c}</text>`;
+  }
+  document.getElementById('tsvg').innerHTML = g;
+  document.querySelectorAll('#tsvg .tp').forEach(el=>{
+    el.addEventListener('mouseenter', e=>showTip(e, `<div class="t">${el.dataset.t}</div><div class="r">${el.dataset.r}</div>`));
+    el.addEventListener('mousemove',  e=>showTip(e, `<div class="t">${el.dataset.t}</div><div class="r">${el.dataset.r}</div>`));
+    el.addEventListener('mouseleave', hideTip);
+    el.addEventListener('click', ()=>openChapter(+el.dataset.c));
+  });
+  // 머리 숫자 셋 — 본문과 같은 자리에서 찍는다
+  document.getElementById('kda').textContent = sgn(temp(5,'da'));
+  document.getElementById('kse').textContent = DATA[5].se.calm;
+  document.getElementById('ksd').textContent = sgn(temp(10,'seda'));
+})();
+
+/* ⓿-b 물려받음 — 세다가 다·세 중 누구 쪽에 섰나.
+   다·세가 10 미만으로 갈리는 축은 싣지 않는다 — 「누구를 닮았다」가 성립하지 않는 자리다. */
+(function(){
+  const avgS = (s,a) => WHERE[s].reduce((t,c)=>t+DATA[c][s][a],0)/WHERE[s].length;
+  const rows = AXES.map(a=>{
+    const d=avgS('da',a), e=avgS('se',a), m=avgS('seda',a);
+    let v, col;
+    if (m > Math.max(d,e))      { v='둘 다 넘는다';  col='var(--seda)'; }
+    else if (m < Math.min(d,e)) { v='둘 다 아래 — 내려놓았다'; col='var(--alert)'; }
+    else if (Math.abs(m-d) < Math.abs(m-e)) { v='다 쪽';  col='var(--da)'; }
+    else                                    { v='세 쪽';  col='var(--se)'; }
+    return {a,d,e,m,v,col,spread:Math.abs(d-e)};
+  }).sort((p,q)=>q.spread-p.spread);
+  const n = v => Math.round(v);
+  document.getElementById('inherit').innerHTML =
+    `<tr><th style="width:17%">축</th><th class="r">다</th><th class="r">세</th><th class="r">세다</th><th style="padding-left:16px">세다가 선 자리</th></tr>`
+    + rows.map(r=>`<tr class="${r.spread<15?'dead':''}"><td class="axname">${AXKO[r.a]}</td>
+        <td class="r num" style="color:var(--da)">${n(r.d)}</td>
+        <td class="r num" style="color:var(--se)">${n(r.e)}</td>
+        <td class="r num" style="color:var(--seda)">${n(r.m)}</td>
+        <td style="padding-left:16px;color:${r.spread<15?'var(--dim)':r.col};font-weight:600">${r.v}</td></tr>`).join('')
+    + `<tr><td colspan="5" style="color:var(--dim);border:0;padding-top:10px;line-height:1.6">
+        흐린 열 줄은 다·세가 <b>15 미만</b>으로 갈리는 축이다 — 이 페이지가 이미 쓰는 「큰 차이」 문턱이고,
+        그 아래에서는 「누구를 닮았다」가 성립하지 않는다. <b style="color:var(--ink2)">결론을 지는 것은 위 두 줄뿐이다.</b></td></tr>`;
+})();
+
 render(5);
 
 /* 옛 링크 호환 — ?v=… 또는 #s… 로 들어오면 해당 절로 */
 (function(){
-  const V={trajectory:'s4', convergence:'s4', plot:'s1', en:'s1', heatmap:'s2', sources:'s2'};
+  const V={trajectory:'s4', convergence:'s4', plot:'s1', en:'s1', heatmap:'s0', sources:'s0'};
   const k=new URLSearchParams(location.search).get('v');
   if(k&&V[k]){const el=document.getElementById(V[k]); if(el) el.scrollIntoView({block:'start'});}
 })();
