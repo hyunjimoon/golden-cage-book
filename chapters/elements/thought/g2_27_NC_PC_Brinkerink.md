@@ -1,6 +1,6 @@
 ---
 created: 2026-06-26
-moc: 🟥
+moc: 🫀
 type: element
 족: 2. 프레임워크·구조
 족번호: 2

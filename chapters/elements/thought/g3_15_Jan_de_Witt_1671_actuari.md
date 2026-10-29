@@ -1,5 +1,5 @@
 ---
-moc: 🟥
+moc: 🫀
 type: element
 족: "3. 이론·학자 anchor"
 족번호: 3
