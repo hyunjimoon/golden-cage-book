@@ -709,12 +709,12 @@
   <script>
     const CHAPTERS = [
       { id: 'ch0_prologue', label: '질문과 답' },
-      { id: 'ch0_intro', label: '머리말' },
+      { id: 'ch0_intro', label: '머릿말' },
       { id: 'ch0_characters', label: '인물소개' },
       { id: 'ch0_roadmap', label: '이 책의 길' },
       { id: 'ch1_mirror_cage', label: '🪞 1장 거울새장' },
       { id: 'ch2_telescope_cage', label: '🔭 2장 망원경새장' },
-      { id: 'ch3_glass_cage', label: '💒 3장 유리새장' },
+      { id: 'ch3_glass_cage', label: '💒 3장 스테인굴레스새장' },
       { id: 'ch4_clock_cage', label: '⏱️ 4장 시계새장' },
       { id: 'ch5_mirror_nest', label: '🪞🪺 5장 101₂호' },
       { id: 'ch6_butterfly_nest', label: '🦋 6장 나비둥지' },
@@ -789,7 +789,7 @@
     // sidebar nav — chapters
     const sidebarNav = document.getElementById('sidebarNav');
     const CHAPTER_GROUPS = [
-      { group: '서문', items: ['ch0_prologue', 'ch0_intro', 'ch0_roadmap'] },
+      { group: '서문', items: ['ch0_prologue', 'ch0_intro', 'ch0_characters', 'ch0_roadmap'] },
       { group: '1부. 새장 (Cages)', items: ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage'] },
       { group: '회전축 (The Pivot)', items: ['ch5_mirror_nest'] },
       { group: '2부. 둥지 (Nests)', items: ['ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest'] },
@@ -1230,19 +1230,29 @@
       if (!canvas || !graphData) return;
 
       const fileToNodeMap = {
-        "ch1_mirror_cage": "1🪞_거울새장",
-        "ch2_telescope_cage": "2🔭_망원경새장",
-        "ch3_glass_cage": "3💒_스테인굴레스새장",
-        "ch4_clock_cage": "4⏱️_시계새장",
-        "ch5_mirror_nest": "10🧫_101",
-        "ch6_butterfly_nest": "6🦋_나비사용자",
-        "ch7_tulip_nest": "7🌷_튤립기술자",
-        "ch8_mist_nest": "8🌫️_안개투자자",
-        "ch9_raven_nest": "9🐦‍⬛_까마귀협력자",
-        "ch0_prologue": "🤨_질문과답",
-        "ch10_epilogue": "🤨_답과질문",
-        "ch0_intro": "⚕️머릿말_ouroboros",
-        "ch0_roadmap": "00_roadmap"
+        // 🐛 2026-10-31 — 여기 열셋이 **전부 죽어 있었다 (0/13 적중).** 이 표는 vault
+        //   파일명(`1🪞_거울새장`)을 찾는데, reference_graph.html 의 생성기가
+        //   `20394f1 세 층 지도를 가차없이 깎다 (296 → 53 노드)` 에서 마디 이름을
+        //   `ch1`…`ch10`·`ch0` 로 바꿨다. 이름이 한쪽에서만 바뀌어, 어느 장을 열어도
+        //   `if (!nodeId) return;` 에 걸려 **장 옆 작은 지도가 한 번도 안 그려졌다.**
+        //   덤으로 묻혀 있던 것 둘 — ch5 가 `10🧫_101`(10장!)을 가리켰고,
+        //   ch10_mirror_close 는 표에 **아예 없었다.** 5↔10 은 파일명이 둘 다 `_101`
+        //   로 끝나는 거울짝이라 바꿔 적어도 눈에 안 띈다.
+        // 🚫 vault 파일명을 다시 적지 마라. 마디 이름은 reference_graph.html 이 정한다:
+        //   grep -o '"id":"[^"]*"' interactive/reference_graph.html | sort -u
+        "ch0_prologue": "ch0", "ch0_intro": "ch0", "ch0_characters": "ch0", "ch0_roadmap": "ch0",
+        "ch1_mirror_cage": "ch1",
+        "ch2_telescope_cage": "ch2",
+        "ch3_glass_cage": "ch3",
+        "ch4_clock_cage": "ch4",
+        "ch5_mirror_nest": "ch5",
+        "ch6_butterfly_nest": "ch6",
+        "ch6_play_nest": "ch6",
+        "ch7_tulip_nest": "ch7",
+        "ch8_mist_nest": "ch8",
+        "ch9_raven_nest": "ch9",
+        "ch10_mirror_close": "ch10",
+        "ch10_epilogue": "ch10"
       };
 
       const nodeId = fileToNodeMap[file];
