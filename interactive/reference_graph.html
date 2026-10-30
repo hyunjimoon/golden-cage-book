@@ -229,6 +229,7 @@ const BY={}; BAND.forEach((b,i)=>BY[b.k]={...b,i});
    2026-10-31: 상시 표시에서 **끌 수 있는 겹**으로 내렸다 — 층 색과 hue 가 싸웠다. */
 const POLE={"🦋":{c:"#3D6FD8",n:"사용자"},"🌷":{c:"#A87BE0",n:"기술자"},
             "🌫️":{c:"#D94436",n:"투자자"},"🐦‍⬛":{c:"#2FA866",n:"협력자"}};
+const STACK=["🐦‍⬛","🦋","🌷","🌫️"];   // 빨강과 초록이 맞닿지 않는 순서 — 탈피 띠가 쓴다
 /* 자리 출처 — gen_graph_data.py 가 노드마다 박는 `pos`.
    self 파일이 제 장을 적었다 · obs 원고가 문다 · vote 이웃이 투표 · none 자리 없음 */
 const WRITTEN=n=>n.pos==="self"||n.pos==="obs";
