@@ -19,112 +19,86 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300}
 #app{position:fixed;inset:0;display:flex;flex-direction:column}
-header{padding:14px 20px 12px;border-bottom:1px solid var(--line);display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
-h1{font-family:var(--serif);font-weight:700;font-size:20px;margin:0;letter-spacing:.01em}
-header .sub{font-size:12.5px;color:var(--ink2);max-width:62ch;line-height:1.55}
-header .stat{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--ink3);white-space:nowrap}
-#stage{flex:1;position:relative;overflow:hidden}
-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
-canvas.drag{cursor:grabbing}
-#panel{position:absolute;top:14px;left:14px;width:236px;background:rgba(11,14,23,.86);
- backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:10px;padding:13px 13px 11px;
- display:flex;flex-direction:column;gap:10px;max-height:calc(100% - 28px);overflow:auto}
-#search{width:100%;background:rgba(6,8,14,.8);border:1px solid var(--line);border-radius:7px;
- color:var(--ink);padding:7px 9px;font:400 12.5px var(--sans);outline:none}
-#search:focus{border-color:var(--l2)}
-.lab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
-.rows{display:flex;flex-direction:column;gap:3px}
-.rw{display:flex;align-items:center;gap:8px;background:none;border:0;padding:5px 6px;border-radius:6px;
- cursor:pointer;font:400 12px var(--sans);color:var(--ink2);text-align:left;width:100%}
-.rw:hover{background:rgba(255,255,255,.05)}
-.rw[aria-pressed="false"]{opacity:.34}
-.rw .dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 8px currentColor}
-.rw em{font-style:normal;font-size:10px;color:var(--ink3);margin-left:4px}
-.rw .n{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink3);padding-left:6px}
-#reset{background:none;border:1px solid var(--line);border-radius:7px;color:var(--ink2);
- padding:6px 0;font:400 11.5px var(--sans);cursor:pointer}
-#reset:hover{background:rgba(255,255,255,.05)}
-#tip{position:absolute;pointer-events:none;background:rgba(11,14,23,.95);border:1px solid var(--line);
- border-radius:8px;padding:8px 11px;font-size:12px;max-width:300px;opacity:0;transition:opacity .12s;line-height:1.5}
-#tip b{font-weight:500;color:var(--ink)}
-#tip .m{font-family:var(--mono);font-size:10.5px;color:var(--ink3);display:block;margin-top:3px}
-#card{position:absolute;right:14px;top:14px;width:290px;background:rgba(11,14,23,.9);
- backdrop-filter:blur(10px);border:1px solid var(--line);border-left:3px solid var(--l2);border-radius:10px;
- padding:14px 15px;font-size:12.5px;line-height:1.6;color:var(--ink2);max-height:64vh;overflow:auto}
-#card h3{font-family:var(--serif);font-size:16px;margin:0 0 5px;color:var(--ink);font-weight:700;line-height:1.35}
-#card .m{font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
-#card ul{margin:8px 0 0;padding-left:16px}#card li{margin:2px 0}
 
-/* ── 장별 두 자(尺) — 2026-10-14 scene_or_summary 에서 이관 ── */
-#dock{border-top:1px solid var(--line);background:var(--bg2);padding:12px 20px 14px;
- display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start;flex:none}
-#dock.off{display:none}
-#dock h2{font-family:var(--serif);font-size:14px;font-weight:700;margin:0 0 2px;color:var(--ink)}
-#dock .sub{font-size:11.5px;color:var(--ink3);line-height:1.5;margin:0 0 8px;max-width:70ch}
-#dock .sub b{color:var(--ink2);font-weight:500}
-#dock svg{display:block;width:100%;height:auto;font-family:var(--sans)}
-#dockbtn{background:none;border:1px solid var(--line);border-radius:7px;color:var(--ink2);
+/* ══ 2026-10-31 다시 지음 — 채널 여덟을 셋으로 ════════════════════════════
+   남긴 채널 ① 색 = 층  ② 크기 = 무게(몇 편을 무나)  ③ 선 = 잇는 것.
+   거둔 것 — 다이나모 발광(일화 20편 전부에 켜져 정보 0) ·
+            상단 누적막대 눈금 띠(11칸 0~7, 「없음」 총 3 → 거의 평평한데 100px) ·
+            떠 있는 패널 둘(가로 636px 를 상시 가렸다) ·
+            4극 테두리색·금색 감정궤적(남았으나 **끌 수 있는 겹**으로 내렸다).
+   바뀐 축 — 생각원소 반지름 = 4·√(무는 일화 수).  8편이 1편의 2.8배로 보인다.
+   ⚠️ 라벨은 자리에 직접 단다. 53 개는 전부 이름을 달 수 있는 수다 —
+      그게 865→111 로 깎은 이유였고, 범례로 미루면 깎은 값을 버리는 것이다. */
+
+header{padding:11px 22px 10px;border-bottom:1px solid var(--line);
+ display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+h1{font-family:var(--serif);font-weight:700;font-size:19px;margin:0;letter-spacing:.01em;white-space:nowrap}
+header .sub{font-size:12.5px;color:var(--ink2);line-height:1.5}
+header .sub b{color:var(--ink);font-weight:500}
+header .stat{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--ink3);white-space:nowrap;padding-left:6px}
+
+/* ── 한 줄짜리 조종대 — 전에는 유리 패널 둘이 그림 위에 떠 있었다 ── */
+#bar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+ padding:8px 18px;border-bottom:1px solid var(--line);background:var(--bg2)}
+#search{width:150px;background:rgba(6,8,14,.75);border:1px solid var(--line);border-radius:7px;
+ color:var(--ink);padding:6px 9px;font:400 12px var(--sans);outline:none}
+#search:focus{border-color:var(--l2)}
+.chip{display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid var(--line);
+ border-radius:999px;padding:5px 11px 5px 9px;cursor:pointer;
+ font:400 12px var(--emoji);color:var(--ink2);white-space:nowrap}
+.chip:hover{background:rgba(255,255,255,.05)}
+.chip[aria-pressed="false"]{opacity:.35}
+.chip i{width:9px;height:9px;border-radius:50%;flex:none;font-style:normal}
+.chip b{font-family:var(--mono);font-weight:500;font-size:11px;color:var(--ink3)}
+.chip.sq i{border-radius:2px}
+#bar .gap{flex:1}
+#bar .plain{background:none;border:1px solid var(--line);border-radius:7px;color:var(--ink2);
  padding:5px 11px;font:400 11.5px var(--sans);cursor:pointer;white-space:nowrap}
-#dockbtn:hover{background:rgba(255,255,255,.05)}
-.ratio{display:flex;flex-direction:column;gap:4px}
-.rrow{display:grid;grid-template-columns:104px 1fr 46px;align-items:center;gap:9px}
-.rrow .rlab{font-size:11px;color:var(--ink2);white-space:nowrap}
-.rrow .rlab i{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;vertical-align:1px}
-.rrow .rlab b{color:var(--ink);font-weight:500}
-.rtrack{position:relative;height:11px;border-radius:6px;background:rgba(255,255,255,.055);overflow:hidden}
-.rfill{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
-.rrow .rval{font-size:11px;font-family:var(--mono);text-align:right;color:var(--ink3);line-height:1.15}
-.rrow .rval em{font-style:normal;font-size:8.5px;letter-spacing:.03em;opacity:.65;display:block}
-.rrow.fresh .rval{color:var(--l1)}
-.rrow.pivot .rlab b{color:var(--l1)}
-@media (max-width:980px){#dock{grid-template-columns:1fr;gap:14px}}
-@media (max-width:820px){#panel{width:190px}#card{display:none}#dock{display:none}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* ── 👁️ 자리 기재 — 이 지도가 재는 한 가지 ── */
-header .eye{margin-left:auto;display:flex;align-items:center;gap:13px}
-.eyeNum{font-family:var(--sans);font-size:29px;font-weight:600;line-height:.95;color:var(--ink)}
-.eyeNum span{font-size:14px;font-weight:300;color:var(--ink3);margin-left:1px}
-.eyeSide{display:flex;flex-direction:column;gap:5px;width:226px}
-.eyeLab{font-size:11.5px;color:var(--ink2);line-height:1.3}
-.eyeLab b{color:var(--ink);font-weight:600}
-.meter{display:flex;gap:2px;height:9px}
+#bar .plain:hover{background:rgba(255,255,255,.05)}
+
+/* ── 👁️ 한 줄 판독 — 전에는 290px 카드가 상시 떠서 그림을 덮었다 ── */
+#read{padding:7px 18px;border-bottom:1px solid var(--line);font-size:12px;color:var(--ink2);
+ display:flex;align-items:center;gap:11px;flex-wrap:wrap;line-height:1.5}
+#read b{color:var(--ink);font-weight:500}
+.meter{display:flex;gap:2px;height:8px;width:132px;flex:none}
 .meter i{display:block;border-radius:2px;min-width:3px}
 .meter .m1{background:var(--ink)}
 .meter .m2{box-shadow:inset 0 0 0 1px var(--ink3)}
 .meter .m3{box-shadow:inset 0 0 0 1px var(--line);
  background:repeating-linear-gradient(135deg,var(--line) 0 2px,transparent 2px 5px)}
-.eyeKey{display:flex;gap:11px;flex-wrap:wrap;font-size:10.5px;color:var(--ink3)}
-.eyeKey span{display:inline-flex;align-items:center;gap:4px}
-.eyeKey .sw{width:8px;height:8px;border-radius:2px;display:inline-block}
-.eyeKey b{font-family:var(--mono);font-weight:500;color:var(--ink2)}
-header .inv{order:9;flex-basis:100%;font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:-2px}
-/* 층 범례 주석 — 2026-10-29. 전에는 `.lab`(10px · letter-spacing .16em · uppercase)을 입고 있어
-   한글 한 줄이 글자마다 벌어져 읽히지 않았다. 주소표 라벨과 산문은 다른 옷이다. */
-.note{font-size:11px;line-height:1.55;color:#7C8496}
-.note b{color:var(--ink2);font-weight:500}
-.key{display:flex;flex-direction:column;gap:5px}
-.key .kr{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink2)}
-.key .kr b{color:var(--ink);font-weight:500}
-.key .ks{width:11px;height:11px;border-radius:50%;flex:none}
-.key .k1{background:var(--ink2)}
-.key .k2{background:var(--ink2);
- -webkit-mask:radial-gradient(circle,transparent 42%,#000 43%);mask:radial-gradient(circle,transparent 42%,#000 43%)}
-.key .k3{box-shadow:inset 0 0 0 1.4px var(--ink3)}
-#card .ptab{width:100%;border-collapse:collapse;margin-top:9px;font-size:11.5px}
-#card .ptab th{font-weight:400;color:var(--ink3);font-size:9.5px;letter-spacing:.06em;
- text-align:right;padding:0 0 4px}
-#card .ptab th:first-child{text-align:left}
-#card .ptab td{padding:4px 0;border-top:1px solid rgba(255,255,255,.055);
- text-align:right;font-family:var(--mono);color:var(--ink2)}
-#card .ptab td:first-child{text-align:left;font-family:var(--sans)}
-#card .ptab td.o{color:var(--ink3);opacity:.45}
-#card .ptab td.hi{color:var(--ink)}
-#card .back{background:none;border:1px solid var(--line);border-radius:6px;color:var(--ink2);
- padding:4px 9px;font:400 11px var(--sans);cursor:pointer;margin-top:11px}
-#card .back:hover{background:rgba(255,255,255,.05)}
-/* ── 🐍 탈피 재생 ── */
-#molt{border-top:1px solid var(--line);background:var(--bg2);
-padding:12px clamp(12px,2.4vw,26px) 14px;display:grid;gap:9px}
+
+#stage{flex:1;position:relative;overflow:hidden;min-height:300px}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+canvas.drag{cursor:grabbing}
+#tip{position:absolute;pointer-events:none;background:rgba(11,14,23,.96);border:1px solid var(--line);
+ border-radius:8px;padding:8px 11px;font-size:12px;max-width:290px;opacity:0;transition:opacity .12s;
+ line-height:1.5;font-family:var(--emoji)}
+#tip b{font-weight:500;color:var(--ink)}
+#tip .m{font-family:var(--sans);font-size:10.5px;color:var(--ink3);display:block;margin-top:3px}
+/* 카드는 **고를 때만** 들어온다 */
+#card{position:absolute;right:0;top:0;bottom:0;width:300px;background:rgba(11,14,23,.96);
+ backdrop-filter:blur(10px);border-left:1px solid var(--line);
+ padding:15px 16px;font-size:12.5px;line-height:1.6;color:var(--ink2);overflow:auto;
+ transform:translateX(102%);transition:transform .18s ease;font-family:var(--emoji)}
+#card.on{transform:none}
+#card h3{font-family:var(--serif);font-size:16px;margin:0 0 5px;color:var(--ink);font-weight:700;line-height:1.35}
+#card .m{font-family:var(--sans);font-size:10.5px;color:var(--ink3)}
+#card ul{margin:6px 0 0;padding-left:16px}#card li{margin:2px 0}
+#card .x{position:absolute;right:11px;top:11px;background:none;border:1px solid var(--line);
+ border-radius:6px;color:var(--ink2);width:25px;height:25px;cursor:pointer;font-size:13px;line-height:1}
+#card .x:hover{background:rgba(255,255,255,.06)}
+
+/* ── 접어 둔 두 자(尺) — 같은 화면에 네 질문이 쌓여 있었다 ── */
+#more{border-top:1px solid var(--line);background:var(--bg2);flex:none}
+#more>summary{list-style:none;cursor:pointer;padding:9px 18px;font-size:12.5px;color:var(--ink2)}
+#more>summary::-webkit-details-marker{display:none}
+#more>summary:hover{color:var(--ink)}
+#more>summary b{color:var(--ink);font-weight:500}
+#more>summary::before{content:"▸ ";color:var(--ink3)}
+#more[open]>summary::before{content:"▾ "}
+#more .body{max-height:66vh;overflow:auto}
+
+#molt{padding:4px clamp(12px,2.4vw,26px) 14px;display:grid;gap:9px}
 #molt h2{font-family:var(--serif);font-size:14px;font-weight:700;margin:0;color:var(--ink)}
 #moltLede{font-size:12px;color:var(--ink2);margin:0;max-width:74ch;line-height:1.55}
 #moltLede b{color:var(--ink)}
@@ -145,345 +119,362 @@ font-family:var(--emoji)}
 #moltRead i{font-style:normal;color:var(--ink);font-weight:600;font-family:var(--mono)}
 #moltRead .hi i,#moltRead .hi{color:var(--epi)}
 #moltNote{font-size:12px;color:var(--ink2);max-width:74ch;line-height:1.55}
-#moltNote b{color:var(--ink)}
 #moltStrip{overflow-x:auto}
 #moltStrip svg{display:block;max-width:760px;width:100%;height:auto}
 #moltLeg{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--ink2);
 font-family:var(--emoji);margin-top:2px}
 #moltLeg span{display:inline-flex;align-items:center;gap:5px}
 #moltLeg i{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+#dock{border-top:1px solid var(--line);padding:12px 18px 16px;
+ display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
+#dock.off{display:none}
+#dock h2{font-family:var(--serif);font-size:14px;font-weight:700;margin:0 0 2px;color:var(--ink)}
+#dock .sub{font-size:11.5px;color:var(--ink3);line-height:1.5;margin:0 0 8px;max-width:70ch}
+#dock .sub b{color:var(--ink2);font-weight:500}
+#dock svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+#dockbtn{background:none;border:1px solid var(--line);border-radius:7px;color:var(--ink2);
+ padding:5px 11px;font:400 11.5px var(--sans);cursor:pointer;white-space:nowrap}
+#dockbtn:hover{background:rgba(255,255,255,.05)}
+.ratio{display:flex;flex-direction:column;gap:4px}
+.rrow{display:grid;grid-template-columns:104px 1fr 46px;align-items:center;gap:9px}
+.rrow .rlab{font-size:11px;color:var(--ink2);white-space:nowrap;font-family:var(--emoji)}
+.rrow .rlab i{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;vertical-align:1px}
+.rrow .rlab b{color:var(--ink);font-weight:500}
+.rtrack{position:relative;height:11px;border-radius:6px;background:rgba(255,255,255,.055);overflow:hidden}
+.rfill{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
+.rrow .rval{font-size:11px;font-family:var(--mono);text-align:right;color:var(--ink3);line-height:1.15}
+.rrow .rval em{font-style:normal;font-size:8.5px;letter-spacing:.03em;opacity:.65;display:block}
+.rrow.fresh .rval{color:var(--l1)}
+.rrow.pivot .rlab b{color:var(--l1)}
+@media (max-width:980px){#dock{grid-template-columns:1fr;gap:14px}}
+@media (max-width:760px){#card{width:100%}#read .meter{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <div id="app">
 <header>
  <h1>투향 — 세 층 지도</h1>
- <div class="sub"><b>세로가 Marr 층이다</b> — 위에서 아래로 상징(무엇·왜) · 생각(어떻게) · 경험(무엇 위에서). <b>가로는 장</b>. 맨 위 눈금은 <b>장마다 자리가 몇 개 적혔나</b>이고, 네 층은 그 아래 스파인에 붙는다.</div>
- <div class="eye" id="eye"></div>
- <div class="inv" id="stat"></div>
- <button id="dockbtn" aria-expanded="true">장별 두 자(尺) 접기</button>
+ <div class="sub"><b>세로가 층</b> — 상징 · 장 · 생각 · 읽은 것 · 겪은 것. <b>가로가 장</b>. <b>점 크기는 무게</b> — 생각 하나가 겪은 일 몇 편을 무나.</div>
+ <div class="stat" id="stat"></div>
 </header>
+
+<div id="bar">
+ <input id="search" placeholder="이름으로 찾기" autocomplete="off">
+ <span id="chips"></span>
+ <span class="gap"></span>
+ <button class="plain" id="tPole" aria-pressed="false">4극 테두리</button>
+ <button class="plain" id="tEmo" aria-pressed="false">감정 궤적</button>
+ <button class="plain" id="reset">시점 초기화</button>
+</div>
+
+<div id="read"></div>
+
 <div id="stage">
  <canvas id="cv"></canvas>
- <div id="panel">
-  <input id="search" placeholder="이름으로 찾기" autocomplete="off">
-  <div><div class="lab">층 — 적힌 / 전체</div><div class="rows" id="rows"></div></div>
-  <div><div class="lab">점 모양 = 자리 출처</div>
-   <div class="key">
-    <div class="kr"><span class="ks k1"></span>채움 — 파일이 제 장을 <b>적었다</b></div>
-    <div class="kr"><span class="ks k2"></span>도넛 — <b>이웃이 투표</b>해 준 자리</div>
-    <div class="kr"><span class="ks k3"></span>테두리만 — <b>자리 없음</b></div>
-   </div></div>
-  <div><div class="lab">테두리 색 = 4극</div><div class="rows" id="poles"></div></div>
-  <div class="note">금색 감정 궤적도 같은 문법 — <b style="color:#E8B84B">채운 점 3개</b>(5·8·10)만 문서가 못 박은 값이고 빈 점 3개(6·7·9)는 <b>이어 그린 것</b>이다.</div>
-  <button id="reset">시점 초기화</button>
- </div>
  <div id="card"></div>
  <div id="tip"></div>
 </div>
-<section id="molt">
- <h2>시간순으로 보기 — 어느 쪽 이야기가 늘어나나</h2>
- <p id="moltLede">겪은 일 <b id="moltN">—</b>편을 일어난 <b>달</b> 순서로 켠다. 막대의 <b>너비</b>는 그 시기에 몇 편인가, <b>높이</b>는 네 쪽이 각각 몇 %인가.</p>
- <div class="mrow">
-  <button id="moltPlay">▶ 재생</button>
-  <div class="scrubber" id="moltScrub">
-   <div class="scrubber-fill" id="moltFill"></div>
-   <div class="scrubber-knob" id="moltKnob" style="left:0%"></div>
-  </div>
-  <div id="moltStep"></div>
-  <button id="moltAll">전체 보기</button>
+
+<details id="more">
+ <summary>더 잰 것 둘 — <b>시간순 탈피</b>(어느 쪽 이야기가 늘어나나) · <b>장별 두 자</b>(자기표현 · 장면 비율)</summary>
+ <div class="body">
+  <section id="molt">
+   <h2>시간순으로 보기 — 어느 쪽 이야기가 늘어나나</h2>
+   <p id="moltLede">겪은 일 <b id="moltN">—</b>편을 일어난 <b>달</b> 순서로 켠다. 막대의 <b>너비</b>는 그 시기에 몇 편인가, <b>높이</b>는 네 쪽이 각각 몇 %인가.</p>
+   <div class="mrow">
+    <button id="moltPlay">▶ 재생</button>
+    <div class="scrubber" id="moltScrub">
+     <div class="scrubber-fill" id="moltFill"></div>
+     <div class="scrubber-knob" id="moltKnob" style="left:0%"></div>
+    </div>
+    <div id="moltStep"></div>
+    <button id="moltAll">전체 보기</button>
+   </div>
+   <div id="moltStrip"></div>
+   <div id="moltRead"></div>
+   <div id="moltNote"></div>
+  </section>
+  <section id="dock">
+   <div>
+    <h2>장별 자기표현 — 자기삭제 0 ↔ 자기표현 100</h2>
+    <p class="sub">Brandon Stanton의 sliding scale(<b>HONY ↔ 곤조</b>)로 잰 장의 위치. 9장까지 평평하다가 10장에서 튄다. <b>5장만 7월보다 왼쪽으로 내려왔다</b>(75→45) — 자장 일화가 10장으로 떠났기 때문이다. 자(尺)와 다섯 정거장은 <a href="scene_or_summary.html" style="color:var(--l1)">🧠 장면인가 요약인가</a>에 있다.</p>
+    <svg id="axis" viewBox="0 0 800 136" role="img" aria-label="장별 자기표현 위치"></svg>
+   </div>
+   <div>
+    <h2>장면 비율 <button id="dockbtn" aria-expanded="true" style="margin-left:6px">접기</button></h2>
+    <p class="sub"><b>다시 잰 것은 5·10장 둘뿐이다</b>(10-14). 나머지 여덟은 7월 이후 내용 커밋이 없어 그날 값을 그대로 둔다 — 흐린 막대가 그것이다. 안 잰 값을 잰 값처럼 쓰지 않으려고 날짜를 남긴다.</p>
+    <div class="ratio" id="ratio"></div>
+    <p class="sub" style="margin:9px 0 0">7월에 가장 낮았던 칸(5장 25%)이 가장 높은 칸이 됐다 — <b>장면을 보태서가 아니라 요약을 내보내서다</b>. 원리 넷이 6·7·8·9장의 「되짚기」로 떠나고 자장의 밤이 10장으로 떠나자 남은 것이 방 하나·장면 하나였다. <b>그런데 받은 쪽은 아직 안 쟀다</b> — 6–9장은 7월 값을 단 채 5장에서 원리 블록을 하나씩 받았다. 받은 짐이 요약이면 <b>네 칸은 지금 더 낮아져 있을 수 있다.</b> 다음에 잴 자리가 거기다.</p>
+   </div>
+  </section>
  </div>
- <div id="moltStrip"></div>
- <div id="moltRead"></div>
- <div id="moltNote"></div>
-</section>
-<section id="dock">
- <div>
-  <h2>장별 자기표현 — 자기삭제 0 ↔ 자기표현 100</h2>
-  <p class="sub">Brandon Stanton의 sliding scale(<b>HONY ↔ 곤조</b>)로 잰 장의 위치. 9장까지 평평하다가 10장에서 튄다. <b>5장만 7월보다 왼쪽으로 내려왔다</b>(75→45) — 자장 일화가 10장으로 떠났기 때문이다. 자(尺)와 다섯 정거장은 <a href="scene_or_summary.html" style="color:var(--l1)">🧠 장면인가 요약인가</a>에 있다.</p>
-  <svg id="axis" viewBox="0 0 800 136" role="img" aria-label="장별 자기표현 위치"></svg>
- </div>
- <div>
-  <h2>장면 비율</h2>
-  <p class="sub"><b>다시 잰 것은 5·10장 둘뿐이다</b>(10-14). 나머지 여덟은 7월 이후 내용 커밋이 없어 그날 값을 그대로 둔다 — 흐린 막대가 그것이다. 안 잰 값을 잰 값처럼 쓰지 않으려고 날짜를 남긴다.</p>
-  <div class="ratio" id="ratio"></div>
-  <p class="sub" style="margin:9px 0 0">7월에 가장 낮았던 칸(5장 25%)이 가장 높은 칸이 됐다 — <b>장면을 보태서가 아니라 요약을 내보내서다</b>. 원리 넷이 6·7·8·9장의 「되짚기」로 떠나고 자장의 밤이 10장으로 떠나자 남은 것이 방 하나·장면 하나였다. <b>그런데 받은 쪽은 아직 안 쟀다</b> — 6–9장은 7월 값을 단 채 5장에서 원리 블록을 하나씩 받았다. 받은 짐이 요약이면 <b>네 칸은 지금 더 낮아져 있을 수 있다.</b> 다음에 잴 자리가 거기다.</p>
- </div>
-</section>
+</details>
 </div>
 <script>
-const DATA = {"nodes": [{"id": "ch1", "label": "🪞1 거울", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 1, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch2", "label": "🔭2 망원경", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 2, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch3", "label": "💒3 스테인굴레스", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 3, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch4", "label": "⏱️4 시계", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 4, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch5", "label": "🐀5 101₂호", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 5, "emo": "불안·영감", "emov": 0, "pole": "", "pos": "spine"}, {"id": "ch6", "label": "🦋6 나비", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 6, "emo": "절박·놀람", "emov": null, "pole": "🦋", "pos": "spine"}, {"id": "ch7", "label": "🌷7 튤립", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 7, "emo": "사랑·두려움", "emov": null, "pole": "🌷", "pos": "spine"}, {"id": "ch8", "label": "🌫️8 안개", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 8, "emo": "분노·슬픔", "emov": -2, "pole": "🌫️", "pos": "spine"}, {"id": "ch9", "label": "🐦‍⬛9 까마귀", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 9, "emo": "죄책·기쁨", "emov": null, "pole": "🐦‍⬛", "pos": "spine"}, {"id": "ch10", "label": "🧫10 투향", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 10, "emo": "평온·자긍", "emov": 2, "pole": "", "pos": "spine"}, {"id": "ch0", "label": "전반·부록", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 11, "chap": 0, "pos": "spine", "pole": ""}, {"id": "황금새장을열다", "label": "🪞 투향", "depth": 0, "marr_layer": 0, "layer": "root", "r": 18, "chap": 0, "pole": "", "pos": ""}, {"id": "🪞", "label": "🪞", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 1, "pos": "self", "pole": ""}, {"id": "⏱️", "label": "⏱️", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 4, "pos": "self", "pole": ""}, {"id": "🌫️", "label": "🌫️", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 8, "pos": "self", "pole": "🌫️"}, {"id": "🌷", "label": "🌷", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 7, "pos": "self", "pole": "🌷"}, {"id": "🔭", "label": "🔭", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 2, "pos": "self", "pole": ""}, {"id": "💒", "label": "💒", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 3, "pos": "self", "pole": ""}, {"id": "🦋", "label": "🦋", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 6, "pos": "self", "pole": "🦋"}, {"id": "🚪", "label": "🚪", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜orwell_1984", "label": "📜 Nineteen Eighty-Four", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 1, "pos": "self", "pole": ""}, {"id": "📜caillois_les_jeux_et_les_hommes", "label": "📜 Les Jeux et les Hommes", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 3, "pos": "self", "pole": ""}, {"id": "📜hyde_trickster_makes_this_world", "label": "📜 Trickster Makes This World", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜lampedusa_표범", "label": "📜 Il Gattopardo", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 2, "pos": "self", "pole": ""}, {"id": "g1_02_Debt_U_desire_φ_belief", "label": "g1_02_Debt_U_desire_φ_belief", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_13_evaluate_재는_손", "label": "g5_13_evaluate_재는_손", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 7, "pos": "self", "pole": ""}, {"id": "g1_13_Selection_Variation", "label": "g1_13_Selection_Variation", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 4, "pos": "self", "pole": ""}, {"id": "g1_06_Fubini_E_s_E_U_E_U_E_s", "label": "g1_06_Fubini_E_s_E_U_E_U_E_s", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g3_25_일연_三國遺事_正_遺", "label": "g3_25_일연_三國遺事_正_遺", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 9, "pos": "self", "pole": ""}, {"id": "g5_02_멈춤_NC", "label": "g5_02_멈춤_NC", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g2_05_NOCS_Diamond", "label": "g2_05_NOCS_Diamond", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_05_과거_고통을_미래_연료로", "label": "g5_05_과거_고통을_미래_연료로", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g1_08_posterior_likelihood_pri", "label": "g1_08_posterior_likelihood_pri", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "ep18_한기를_막은_온기", "label": "🎞️ 한기를 막은 온기", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "내 병 ↔ 그것을 병으로 안 세는 진단 체계", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep20_첫_발자국", "label": "🎞️ 첫 발자국", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "선례 없는 길 ↔ 선례를 요구하는 제도", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 9, "pos": "vote"}, {"id": "ep21_이익을_보면_의를_생각하라", "label": "🎞️ 이익을 보면 의를 생각하라", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "눈앞의 이익 ↔ 나중에야 계산되는 의", "dynamo": true, "pole": "🦋", "coil": "", "chap": 0, "pos": "none"}, {"id": "ep27_학위_하나를_더_받는_일", "label": "🎞️ 학위 하나를 더 받는 일", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "학위가 필요하다는 앎 ↔ 학위 체계를 한 겹 더 두껍게 만든다는 앎 (2026-09-26 얹힘: 벌어서 얻은 정밀도인가 ↔ 부여된 위치인가)", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 8, "pos": "vote"}, {"id": "ep31_서른_통", "label": "🎞️ 서른 통", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "병렬 탐색의 속도 ↔ 남의 이름이 걸린 평판", "dynamo": true, "pole": "🌷", "coil": "", "chap": 5, "pos": "vote"}, {"id": "ep33_네_싸움을_골라라", "label": "🎞️ 네 싸움을 골라라", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "바꾸고 싶은 것 전부 ↔ 바꿀 수 있는 것 하나 (2026-09-26 얹힘: 충돌하는 감정을 꺼내는 것이 고르는 것보다 앞선다)", "dynamo": true, "pole": "🌷", "coil": "", "chap": 0, "pos": "none"}, {"id": "ep34_촛불로_묶다", "label": "🎞️ 촛불로 묶다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "낙관은 나를 살리지 못한다 ↔ 그런데 무엇이 나를 살렸나", "dynamo": true, "pole": "🌷", "coil": "c3", "chap": 3, "pos": "vote"}, {"id": "ep35_스무_해_만의_눈물", "label": "🎞️ 스무 해 만의 눈물", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "말로 설명되지 않는 삶 ↔ 설명을 요구하는 부모", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 2, "pos": "vote"}, {"id": "ep42_피드백에_대한_피드백", "label": "🎞️ 피드백에 대한 피드백", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "평가자가 준 척도 ↔ 그 척도 자체가 옳은가", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 7, "pos": "vote"}, {"id": "ep47_진단을_들고_가서_증상을_받아왔다", "label": "🎞️ 진단을 들고 가서 증상을 받아왔다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "니즈가 맞아야 팔린다 ↔ 팔 생각으로 니즈를 먼저 규정했다", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep49_떨어진_무지가_귀에_박혔다", "label": "🎞️ 떨어진 무지가 귀에 박혔다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "끝점의 최대값을 묻는다 ↔ 매일의 기울기를 묻는다", "dynamo": true, "pole": "🌫️", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep50_인턴을_또_하겠다는_거잖아", "label": "🎞️ 인턴을 또 하겠다는 거잖아", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "되돌릴 수 없음을 재는 자 ↔ 버티는 값을 재는 자", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 8, "pos": "vote"}, {"id": "ep52_밥상이_시나리오를_바꿨다", "label": "🎞️ 밥상이 시나리오를 바꿨다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "설득했는가 ↔ 적응시켰는가", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 2, "pos": "vote"}, {"id": "ep55_두_낱말_물음에_다섯_역할", "label": "🎞️ 두 낱말 물음에 다섯 역할", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "i를 낮춘다고 적은 답이 읽는 데 i를 물린다 ↔ 같은 답이 그 한 사람에겐 i를 낮춘다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c3", "chap": 4, "pos": "vote"}, {"id": "ep56_약속은_지킴으로서_완성됨", "label": "🎞️ 약속은 지킴으로서 완성됨", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "믿게 하려면 어떤 감정을 꺼야 한다(자기기만) ↔ 증명하고 나면 그들 기억이 「난 그럴 줄 알았어」로 고쳐 써져 의심했다는 사실이 사라진다", "dynamo": true, "pole": "🌷", "coil": "c3", "chap": 3, "pos": "vote"}, {"id": "ep57_그거_왜_만들지", "label": "🎞️ 그거 왜 만들지", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "왜 만드느냐고 묻는 자 ↔ 만들어 봐야 이유가 자라는 자", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 9, "pos": "vote"}, {"id": "ep58_바깥이라_불렀지만_나였다", "label": "🎞️ 바깥이라 불렀지만 나였다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "자는 바깥에서 와야 한다 ↔ 내가 고른 바깥은 내 다음 일자리였다", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 8, "pos": "vote"}, {"id": "ep59_이_질문들을_모르겠습니다", "label": "🎞️ 이 질문들을 모르겠습니다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "답을 고르기 쉽게 만든 형식 ↔ 그 형식을 읽지 못하는 수신자", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 9, "pos": "vote"}, {"id": "ep60_부호를_뒤집는_각주", "label": "🎞️ 부호를 뒤집는 각주", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "내 중심 주장을 세우는 코딩 ↔ 그것을 뒤집는 코딩을 내가 먼저 말한다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 1, "pos": "vote"}, {"id": "ep61_수직으로_오는_말", "label": "🎞️ 수직으로 오는 말", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "몰입할수록 귀가 닫힌다 ↔ 욕망을 내려놓아야 수직 방향의 말이 들린다", "dynamo": true, "pole": "🦋", "coil": "c3", "chap": 7, "pos": "vote"}], "edges": [{"s": "황금새장을열다", "t": "ch1", "w": 1}, {"s": "황금새장을열다", "t": "ch2", "w": 1}, {"s": "황금새장을열다", "t": "ch3", "w": 1}, {"s": "황금새장을열다", "t": "ch4", "w": 1}, {"s": "황금새장을열다", "t": "ch5", "w": 1}, {"s": "황금새장을열다", "t": "ch6", "w": 1}, {"s": "황금새장을열다", "t": "ch7", "w": 1}, {"s": "황금새장을열다", "t": "ch8", "w": 1}, {"s": "황금새장을열다", "t": "ch9", "w": 1}, {"s": "황금새장을열다", "t": "ch10", "w": 1}, {"s": "황금새장을열다", "t": "ch0", "w": 1}, {"s": "🪞", "t": "ch1", "w": 1}, {"s": "🪞", "t": "ch5", "w": 1}, {"s": "🪞", "t": "ch9", "w": 1}, {"s": "⏱️", "t": "ch4", "w": 1}, {"s": "🌫️", "t": "ch8", "w": 1}, {"s": "🌷", "t": "ch7", "w": 1}, {"s": "🔭", "t": "ch2", "w": 1}, {"s": "💒", "t": "ch3", "w": 1}, {"s": "🦋", "t": "ch6", "w": 1}, {"s": "🚪", "t": "ch10", "w": 1}, {"s": "🚪", "t": "ch5", "w": 1}, {"s": "📜orwell_1984", "t": "ch1", "w": 1}, {"s": "📜orwell_1984", "t": "ch10", "w": 1}, {"s": "📜orwell_1984", "t": "ch5", "w": 1}, {"s": "📜orwell_1984", "t": "ch7", "w": 1}, {"s": "📜caillois_les_jeux_et_les_hommes", "t": "ch3", "w": 1}, {"s": "📜caillois_les_jeux_et_les_hommes", "t": "ch5", "w": 1}, {"s": "📜caillois_les_jeux_et_les_hommes", "t": "ch7", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch5", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch6", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch7", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch8", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch9", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch8", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch2", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch4", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch5", "w": 1}, {"s": "g1_02_Debt_U_desire_φ_belief", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_13_evaluate_재는_손", "t": "ch7", "obs": 0, "w": 1}, {"s": "g1_13_Selection_Variation", "t": "ch4", "obs": 0, "w": 1}, {"s": "g1_06_Fubini_E_s_E_U_E_U_E_s", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_06_Fubini_E_s_E_U_E_U_E_s", "t": "ch10", "obs": 1, "w": 1}, {"s": "g3_25_일연_三國遺事_正_遺", "t": "ch9", "obs": 0, "w": 1}, {"s": "g5_02_멈춤_NC", "t": "ch0", "obs": 0, "w": 1}, {"s": "g2_05_NOCS_Diamond", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_05_과거_고통을_미래_연료로", "t": "ch5", "obs": 0, "w": 1}, {"s": "g5_05_과거_고통을_미래_연료로", "t": "ch6", "obs": 1, "w": 1}, {"s": "g5_05_과거_고통을_미래_연료로", "t": "ch10", "obs": 1, "w": 1}, {"s": "g1_08_posterior_likelihood_pri", "t": "ch3", "obs": 0, "w": 1}, {"s": "g1_08_posterior_likelihood_pri", "t": "ch7", "obs": 0, "w": 1}, {"s": "ep18_한기를_막은_온기", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": true, "w": 1}, {"s": "ep20_첫_발자국", "t": "🚪", "dynamo": true, "w": 1}, {"s": "ep20_첫_발자국", "t": "g3_25_일연_三國遺事_正_遺", "dynamo": true, "w": 1}, {"s": "ep21_이익을_보면_의를_생각하라", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep21_이익을_보면_의를_생각하라", "t": "ep27_학위_하나를_더_받는_일", "dynamo": true, "w": 3}, {"s": "ep27_학위_하나를_더_받는_일", "t": "🪞", "dynamo": true, "w": 1}, {"s": "ep27_학위_하나를_더_받는_일", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep31_서른_통", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 4}, {"s": "ep31_서른_통", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep33_네_싸움을_골라라", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g1_08_posterior_likelihood_pri", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep35_스무_해_만의_눈물", "t": "g2_05_NOCS_Diamond", "dynamo": true, "w": 1}, {"s": "ep42_피드백에_대한_피드백", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep42_피드백에_대한_피드백", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 2}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 2}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "🔭", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "🌫️", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "ep49_떨어진_무지가_귀에_박혔다", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 2}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "g1_08_posterior_likelihood_pri", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep52_밥상이_시나리오를_바꿨다", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "🪞", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 2}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "ep42_피드백에_대한_피드백", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "ep57_그거_왜_만들지", "dynamo": true, "w": 2}, {"s": "ep61_수직으로_오는_말", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 2}, {"s": "ep61_수직으로_오는_말", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "🪞", "t": "🚪", "w": 3}, {"s": "🪞", "t": "🦋", "w": 2}, {"s": "🌫️", "t": "💒", "w": 4}, {"s": "🌷", "t": "🔭", "w": 4}, {"s": "🔭", "t": "💒", "w": 1}, {"s": "🦋", "t": "🚪", "w": 2}], "center": "황금새장을열다"};
+const DATA = {"nodes": [{"id": "ch1", "label": "🪞1 거울", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 1, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch2", "label": "🔭2 망원경", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 2, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch3", "label": "💒3 스테인굴레스", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 3, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch4", "label": "⏱️4 시계", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 4, "emo": "", "emov": null, "pole": "", "pos": "spine"}, {"id": "ch5", "label": "🐀5 101₂호", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 5, "emo": "불안·영감", "emov": 0, "pole": "", "pos": "spine"}, {"id": "ch6", "label": "🦋6 나비", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 6, "emo": "절박·놀람", "emov": null, "pole": "🦋", "pos": "spine"}, {"id": "ch7", "label": "🌷7 튤립", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 7, "emo": "사랑·두려움", "emov": null, "pole": "🌷", "pos": "spine"}, {"id": "ch8", "label": "🌫️8 안개", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 8, "emo": "분노·슬픔", "emov": -2, "pole": "🌫️", "pos": "spine"}, {"id": "ch9", "label": "🐦‍⬛9 까마귀", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 9, "emo": "죄책·기쁨", "emov": null, "pole": "🐦‍⬛", "pos": "spine"}, {"id": "ch10", "label": "🧫10 투향", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 13, "chap": 10, "emo": "평온·자긍", "emov": 2, "pole": "", "pos": "spine"}, {"id": "ch0", "label": "전반·부록", "depth": 1, "marr_layer": 9, "layer": "chapter", "r": 11, "chap": 0, "pos": "spine", "pole": ""}, {"id": "황금새장을열다", "label": "🪞 투향", "depth": 0, "marr_layer": 0, "layer": "root", "r": 18, "chap": 0, "pole": "", "pos": ""}, {"id": "🐦‍⬛", "label": "🐦‍⬛", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 9, "pos": "self", "pole": "🐦‍⬛"}, {"id": "🪞", "label": "🪞", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 1, "pos": "self", "pole": ""}, {"id": "⏱️", "label": "⏱️", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 4, "pos": "self", "pole": ""}, {"id": "🐀", "label": "🐀", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 5, "pos": "self", "pole": ""}, {"id": "🌫️", "label": "🌫️", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 8, "pos": "self", "pole": "🌫️"}, {"id": "🔫", "label": "🔫", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "🕶️", "label": "🕶️", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "🌷", "label": "🌷", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 7, "pos": "self", "pole": "🌷"}, {"id": "🔭", "label": "🔭", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 2, "pos": "self", "pole": ""}, {"id": "👾", "label": "👾", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "📝", "label": "📝", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "🧫", "label": "🧫", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "💒", "label": "💒", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 3, "pos": "self", "pole": ""}, {"id": "🫀", "label": "🫀", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "🦋", "label": "🦋", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 6, "pos": "self", "pole": "🦋"}, {"id": "🍑", "label": "🍑", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 0, "pos": "none", "pole": ""}, {"id": "🚪", "label": "🚪", "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜camus_페스트", "label": "📜 La Peste", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 3, "pos": "self", "pole": ""}, {"id": "📜quine_elementary_logic", "label": "📜 Elementary Logic", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜huizinga_homo_ludens", "label": "📜 Homo Ludens", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "none", "pole": ""}, {"id": "📜orwell_위건부두로가는길", "label": "📜 The Road to Wigan Pier", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "none", "pole": ""}, {"id": "📜rovelli_시간의질서", "label": "📜 L'ordine del tempo", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜orwell_why_i_write", "label": "📜 Why I Write", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜austin_how_to_do_things", "label": "📜 How to Do Things with Words", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜ricoeur_soi_meme_comme_un_autre", "label": "📜 Soi-même comme un autre", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 2, "pos": "self", "pole": ""}, {"id": "📜poe_philosophy_of_composition", "label": "📜 The Philosophy of Composition", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 9, "pos": "self", "pole": ""}, {"id": "📜노자_도덕경", "label": "📜 道德經 11장", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 7, "pos": "self", "pole": ""}, {"id": "📜clausewitz_vom_kriege", "label": "📜 Vom Kriege", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 2, "pos": "self", "pole": ""}, {"id": "📜girard_낭만적거짓과소설적진실", "label": "📜 Mensonge romantique et vérité romanesque", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 1, "pos": "self", "pole": ""}, {"id": "📜dumas_검은튤립", "label": "📜 La Tulipe noire", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜kratzer_modality", "label": "📜 The Notional Category of Modality", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜unamuno_안개", "label": "📜 Niebla", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 2, "pos": "self", "pole": ""}, {"id": "📜polanyi_tacit_dimension", "label": "📜 The Tacit Dimension", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 9, "pos": "self", "pole": ""}, {"id": "📜gould_lewontin_spandrels", "label": "📜 The Spandrels of San Marco and the Panglossian Paradigm", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 9, "pos": "self", "pole": ""}, {"id": "📜stevenson_지킬앤하이드", "label": "📜 Strange Case of Dr Jekyll and Mr Hyde", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "none", "pole": ""}, {"id": "📜douglass_narrative", "label": "📜 Narrative of the Life of Frederick Douglass, an American Slave", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 3, "pos": "self", "pole": ""}, {"id": "📜keats_negative_capability", "label": "📜 Letter to George and Tom Keats (Dec. 21, 1817)", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 9, "pos": "self", "pole": ""}, {"id": "📜homeric_hymn_hermes", "label": "📜 Ὁμηρικοὶ Ὕμνοι · 헤르메스에게", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜greenwald_totalitarian_ego", "label": "📜 The Totalitarian Ego — Fabrication and Revision of Personal History", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜bourdieu_la_distinction", "label": "📜 La Distinction · Le Sens pratique", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 2, "pos": "self", "pole": ""}, {"id": "📜orwell_1984", "label": "📜 Nineteen Eighty-Four", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 1, "pos": "self", "pole": ""}, {"id": "📜duckworth_grit", "label": "📜 Grit: The Power of Passion and Perseverance", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜flaubert_마담보바리", "label": "📜 Madame Bovary", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 1, "pos": "self", "pole": ""}, {"id": "🎞️구술_0902청사진", "label": "📜 🎞️구술_0902청사진", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "none", "pole": ""}, {"id": "📜carlson_reference_to_kinds", "label": "📜 Reference to Kinds in English (PhD dissertation)", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜sapir_status_of_linguistics", "label": "📜 The Status of Linguistics as a Science", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜klein_뇌는어떻게변화를거부하는가", "label": "📜 Wie wir die Welt verändern", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜goffman_presentation_of_self", "label": "📜 The Presentation of Self in Everyday Life", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜thiel_zero_to_one", "label": "📜 Zero to One", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 1, "pos": "self", "pole": ""}, {"id": "📜caillois_les_jeux_et_les_hommes", "label": "📜 Les Jeux et les Hommes", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 3, "pos": "self", "pole": ""}, {"id": "📜defoe_robinson_crusoe", "label": "📜 Robinson Crusoe", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 4, "pos": "self", "pole": ""}, {"id": "📜kahneman_tversky_prospect_theory", "label": "📜 Prospect Theory: An Analysis of Decision under Risk", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 7, "pos": "self", "pole": ""}, {"id": "📜한강_소년이온다", "label": "📜 소년이 온다", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "none", "pole": ""}, {"id": "📜bzcf_1더하기1은3", "label": "📜 「1+1=3」", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 6, "pos": "self", "pole": ""}, {"id": "📜maples_pattern_breakers", "label": "📜 Pattern Breakers", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 1, "pos": "self", "pole": ""}, {"id": "📜tournier_외면일기", "label": "📜 Journal extime", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "none", "pole": ""}, {"id": "📜hwang_m_butterfly", "label": "📜 M. Butterfly", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜bzcf_업보", "label": "📜 「돈이 되지 않는 일 (업보)」", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 9, "pos": "self", "pole": ""}, {"id": "📜ovid_변신이야기", "label": "📜 Metamorphoses", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜tournier_vendredi", "label": "📜 Vendredi ou les limbes du Pacifique", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 4, "pos": "self", "pole": ""}, {"id": "📜weber_직업으로서의정치", "label": "📜 Politik als Beruf · Wissenschaft als Beruf", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 3, "pos": "self", "pole": ""}, {"id": "📜mokyr_lever_of_riches", "label": "📜 The Lever of Riches · A Culture of Growth", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 4, "pos": "self", "pole": ""}, {"id": "📜hyde_trickster_makes_this_world", "label": "📜 Trickster Makes This World", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 5, "pos": "self", "pole": ""}, {"id": "📜gibbons_coase_to_culture", "label": "📜 From Coase to Culture? Visible Hands Build Equilibria", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 3, "pos": "self", "pole": ""}, {"id": "📜orwell_animal_farm", "label": "📜 Animal Farm", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 7, "pos": "self", "pole": ""}, {"id": "📜brinkerink_nc_pc", "label": "📜 Negative and Positive Capability in Founder Behaviour", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 4, "pos": "self", "pole": ""}, {"id": "📜일연_삼국유사", "label": "📜 三國遺事", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 4, "pos": "self", "pole": ""}, {"id": "📜aurelius_명상록", "label": "📜 τὰ εἰς ἑαυτόν (Meditations)", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 8, "pos": "self", "pole": ""}, {"id": "📜grice_logic_and_conversation", "label": "📜 Logic and Conversation (in Syntax and Semantics 3)", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜lampedusa_표범", "label": "📜 Il Gattopardo", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 2, "pos": "self", "pole": ""}, {"id": "📜whorf_language_thought_reality", "label": "📜 Language, Thought, and Reality", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "📜harari_nexus", "label": "📜 Nexus", "depth": 3, "marr_layer": 3, "layer": "god", "r": 10, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_21_narrative_prior_4동사_공유_극", "label": "g5_21_narrative_prior_4동사_공유_극", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g3_08_Kennedy_O_Hagan_model_di", "label": "g3_08_Kennedy_O_Hagan_model_di", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "g3_24_Appiah_Honor_Code", "label": "g3_24_Appiah_Honor_Code", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g6_20_action_prior_vs_full_pri", "label": "g6_20_action_prior_vs_full_pri", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g4_18_장부", "label": "g4_18_장부", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 1, "pos": "self", "pole": ""}, {"id": "g6_06_op_st_ambiguity", "label": "g6_06_op_st_ambiguity", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g3_06_Camus_부조리_반항", "label": "g3_06_Camus_부조리_반항", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "g3_20_Wasserman_rich_vs_king", "label": "g3_20_Wasserman_rich_vs_king", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 8, "pos": "self", "pole": ""}, {"id": "g5_11_재명명_rename", "label": "g5_11_재명명_rename", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 9, "pos": "self", "pole": ""}, {"id": "g3_19_Ricœur_idem_ipse", "label": "g3_19_Ricœur_idem_ipse", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 8, "pos": "self", "pole": ""}, {"id": "g1_02_Debt_U_desire_φ_belief", "label": "g1_02_Debt_U_desire_φ_belief", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g6_21_calibration_식민화", "label": "g6_21_calibration_식민화", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g3_01_Girard_모방욕망", "label": "g3_01_Girard_모방욕망", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 1, "pos": "self", "pole": ""}, {"id": "g3_33_de_Finetti_coherence_Ram", "label": "g3_33_de_Finetti_coherence_Ram", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g5_13_evaluate_재는_손", "label": "g5_13_evaluate_재는_손", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 7, "pos": "self", "pole": ""}, {"id": "g1_13_Selection_Variation", "label": "g1_13_Selection_Variation", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 4, "pos": "self", "pole": ""}, {"id": "g3_05_Weber_신념_책임윤리", "label": "g3_05_Weber_신념_책임윤리", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "g2_26_Nail_V_4i_Scale_V_4i", "label": "g2_26_Nail_V_4i_Scale_V_4i", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_07_순서를_타다", "label": "g5_07_순서를_타다", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 2, "pos": "self", "pole": ""}, {"id": "g6_10_제3의_길", "label": "g6_10_제3의_길", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 8, "pos": "self", "pole": ""}, {"id": "g6_19_cache_warm_up", "label": "g6_19_cache_warm_up", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g3_36_Benjamin_아우라", "label": "g3_36_Benjamin_아우라", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g2_22_Crucial_Third_Position", "label": "g2_22_Crucial_Third_Position", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 8, "pos": "self", "pole": ""}, {"id": "g5_06_장부를_펴다", "label": "g5_06_장부를_펴다", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 1, "pos": "self", "pole": ""}, {"id": "g5_09_분포로_적기_확률적_사고", "label": "g5_09_분포로_적기_확률적_사고", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 7, "pos": "self", "pole": ""}, {"id": "g5_22_simulation_belief", "label": "g5_22_simulation_belief", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g6_02_새장_황금새장_둥지", "label": "g6_02_새장_황금새장_둥지", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g1_06_Fubini_E_s_E_U_E_U_E_s", "label": "g1_06_Fubini_E_s_E_U_E_U_E_s", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_02_멈춤_NC", "label": "g5_02_멈춤_NC", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g1_01_dG_dF_dG_dR_dR_dF", "label": "g1_01_dG_dF_dG_dR_dR_dF", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 1, "pos": "self", "pole": ""}, {"id": "g5_25_오해_선차단_수신자_사전예측", "label": "g5_25_오해_선차단_수신자_사전예측", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_20_frame_공개", "label": "g5_20_frame_공개", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g5_03_계산끝낸물_calibrate", "label": "g5_03_계산끝낸물_calibrate", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g2_20_분포_vs_한_점", "label": "g2_20_분포_vs_한_점", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 7, "pos": "self", "pole": ""}, {"id": "g5_14_제도화_institutionalize", "label": "g5_14_제도화_institutionalize", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 7, "pos": "self", "pole": ""}, {"id": "g6_14_기세", "label": "g6_14_기세", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g5_12_segment_replicate_platfo", "label": "g5_12_segment_replicate_platfo", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 6, "pos": "self", "pole": ""}, {"id": "g4_19_주사기", "label": "g4_19_주사기", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "g6_09_義味", "label": "g6_09_義味", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g6_01_빚_틀린_모델", "label": "g6_01_빚_틀린_모델", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g1_03_τ_max_0_V_4i_1", "label": "g1_03_τ_max_0_V_4i_1", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g2_04_3S_Scope_Sequence_Sync", "label": "g2_04_3S_Scope_Sequence_Sync", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g6_07_다_多_세_世", "label": "g6_07_다_多_세_世", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g5_01_한_글자_비틂", "label": "g5_01_한_글자_비틂", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g6_23_사랑_꿈꾸고자_이해시도", "label": "g6_23_사랑_꿈꾸고자_이해시도", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g5_05_과거_고통을_미래_연료로", "label": "g5_05_과거_고통을_미래_연료로", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g6_16_보균자", "label": "g6_16_보균자", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "g2_24_환상_윤리_3조건", "label": "g2_24_환상_윤리_3조건", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g5_24_트림_clarity_deletion", "label": "g5_24_트림_clarity_deletion", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g1_04_V_4i", "label": "g1_04_V_4i", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "g2_27_NC_PC_Brinkerink", "label": "g2_27_NC_PC_Brinkerink", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 5, "pos": "self", "pole": ""}, {"id": "g5_18_함께_명명하기", "label": "g5_18_함께_명명하기", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 9, "pos": "self", "pole": ""}, {"id": "g5_17_옆에_두기_juxtaposition", "label": "g5_17_옆에_두기_juxtaposition", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 9, "pos": "self", "pole": ""}, {"id": "g6_05_소통밀도", "label": "g6_05_소통밀도", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "none", "pole": ""}, {"id": "g1_08_posterior_likelihood_pri", "label": "g1_08_posterior_likelihood_pri", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 3, "pos": "self", "pole": ""}, {"id": "g6_15_함께_마심", "label": "g6_15_함께_마심", "depth": 2, "marr_layer": 2, "layer": "element", "r": 6, "chap": 0, "pos": "self", "pole": ""}, {"id": "ep01_거절이_발주서다", "label": "🎞️ 거절이 발주서다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌫️", "coil": "c1", "chap": 0, "pos": "none"}, {"id": "ep02_읽지마라_쓰는건괜찮다", "label": "🎞️ 읽지마라 쓰는건괜찮다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep03_문지기가_뒷문으로", "label": "🎞️ 문지기가 뒷문으로", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep04_공포의_부재", "label": "🎞️ 공포의 부재", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 3, "pos": "vote"}, {"id": "ep05_행간을_읽자면", "label": "🎞️ 행간을 읽자면", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c3", "chap": 1, "pos": "vote"}, {"id": "ep06_책부터_쓰시죠", "label": "🎞️ 책부터 쓰시죠", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c1", "chap": 2, "pos": "vote"}, {"id": "ep07_더_이상_젊지_않다", "label": "🎞️ 더 이상 젊지 않다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🦋", "coil": "c3", "chap": 5, "pos": "vote"}, {"id": "ep08_너무_깁니다", "label": "🎞️ 너무 깁니다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c3", "chap": 3, "pos": "vote"}, {"id": "ep09_사랑하는_사람과_일한다", "label": "🎞️ 사랑하는 사람과 일한다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 3, "pos": "vote"}, {"id": "ep10_순전한_이기심", "label": "🎞️ 순전한 이기심", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🐦‍⬛", "coil": "c3", "chap": 1, "pos": "vote"}, {"id": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "label": "🎞️ 다음에 만났을 때 소설을 쓰고 있다면", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🦋", "coil": "c3", "chap": 7, "pos": "vote"}, {"id": "ep12_왜_나만_불안해하지", "label": "🎞️ 왜 나만 불안해하지", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🦋", "coil": "c3", "chap": 7, "pos": "vote"}, {"id": "ep13_이성이_얼어붙을_걸_알았으므로", "label": "🎞️ 이성이 얼어붙을 걸 알았으므로", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c3", "chap": 5, "pos": "vote"}, {"id": "ep15_계속하게_해주세요", "label": "🎞️ 계속하게 해주세요", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 1, "pos": "vote"}, {"id": "ep16_의심하지_않기로_한_것", "label": "🎞️ 의심하지 않기로 한 것", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep17_이슬_주셔서_감사합니다", "label": "🎞️ 이슬 주셔서 감사합니다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "", "dynamo": false, "pole": "🌷", "coil": "c0", "chap": 8, "pos": "vote"}, {"id": "ep18_한기를_막은_온기", "label": "🎞️ 한기를 막은 온기", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "내 병 ↔ 그것을 병으로 안 세는 진단 체계", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep19_화폭을_뚫고_나간_기린", "label": "🎞️ 화폭을 뚫고 나간 기린", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "화폭 안에서 완성되는 연구 ↔ 화폭을 뚫고 나가는 연구", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 4, "pos": "vote"}, {"id": "ep20_첫_발자국", "label": "🎞️ 첫 발자국", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "선례 없는 길 ↔ 선례를 요구하는 제도", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 0, "pos": "none"}, {"id": "ep21_이익을_보면_의를_생각하라", "label": "🎞️ 이익을 보면 의를 생각하라", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "눈앞의 이익 ↔ 나중에야 계산되는 의", "dynamo": true, "pole": "🦋", "coil": "", "chap": 0, "pos": "none"}, {"id": "ep22_창을_멈추는_것", "label": "🎞️ 창을 멈추는 것", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "이겨서 끝내는 것 ↔ 멈추게 해서 끝내는 것", "dynamo": true, "pole": "🦋", "coil": "", "chap": 8, "pos": "vote"}, {"id": "ep23_거슬러_오르는_이유", "label": "🎞️ 거슬러 오르는 이유", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "이유를 알 수 없는 거스름 ↔ 이유를 요구하는 세계", "dynamo": true, "pole": "🦋", "coil": "", "chap": 3, "pos": "vote"}, {"id": "ep24_눈에_들지_않은_논문", "label": "🎞️ 눈에 들지 않은 논문", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "여름 내내 쓴 것 ↔ 그것을 재는 눈", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 7, "pos": "vote"}, {"id": "ep25_분노로_쓴_넉_달", "label": "🎞️ 분노로 쓴 넉 달", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "석사논문이라는 형식 ↔ 박사논문만큼 쓰겠다는 일념", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 0, "pos": "none"}, {"id": "ep26_달의_다른_면", "label": "🎞️ 달의 다른 면", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "말할 수 없는 어려움 ↔ 상대가 쓰는 언어", "dynamo": true, "pole": "🐦‍⬛", "coil": "c3", "chap": 5, "pos": "vote"}, {"id": "ep27_학위_하나를_더_받는_일", "label": "🎞️ 학위 하나를 더 받는 일", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "학위가 필요하다는 앎 ↔ 학위 체계를 한 겹 더 두껍게 만든다는 앎 (2026-09-26 얹힘: 벌어서 얻은 정밀도인가 ↔ 부여된 위치인가)", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 8, "pos": "vote"}, {"id": "ep28_학위_바깥에_두시죠", "label": "🎞️ 학위 바깥에 두시죠", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "창업을 필수과목으로 넣으려는 시도 ↔ 필수화 자체가 자유를 깎는다는 반론", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 8, "pos": "vote"}, {"id": "ep29_기니피그_사이언티스트", "label": "🎞️ 기니피그 사이언티스트", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "개인 생존의 값 ↔ 자기 이론의 값", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 4, "pos": "vote"}, {"id": "ep30_한_학기_한_다이어그램", "label": "🎞️ 한 학기 한 다이어그램", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "학과의 정규 경로 ↔ 내가 하려는 연구의 모양", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 6, "pos": "vote"}, {"id": "ep31_서른_통", "label": "🎞️ 서른 통", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "병렬 탐색의 속도 ↔ 남의 이름이 걸린 평판", "dynamo": true, "pole": "🌷", "coil": "", "chap": 5, "pos": "vote"}, {"id": "ep32_녹음은_불법인가", "label": "🎞️ 녹음은 불법인가", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "도구의 유용함 ↔ 도구의 왜곡률", "dynamo": true, "pole": "🌷", "coil": "", "chap": 5, "pos": "vote"}, {"id": "ep33_네_싸움을_골라라", "label": "🎞️ 네 싸움을 골라라", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "바꾸고 싶은 것 전부 ↔ 바꿀 수 있는 것 하나 (2026-09-26 얹힘: 충돌하는 감정을 꺼내는 것이 고르는 것보다 앞선다)", "dynamo": true, "pole": "🌷", "coil": "", "chap": 0, "pos": "none"}, {"id": "ep34_촛불로_묶다", "label": "🎞️ 촛불로 묶다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "낙관은 나를 살리지 못한다 ↔ 그런데 무엇이 나를 살렸나", "dynamo": true, "pole": "🌷", "coil": "c3", "chap": 3, "pos": "vote"}, {"id": "ep35_스무_해_만의_눈물", "label": "🎞️ 스무 해 만의 눈물", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "말로 설명되지 않는 삶 ↔ 설명을 요구하는 부모", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 2, "pos": "vote"}, {"id": "ep36_아홉_날의_시차", "label": "🎞️ 아홉 날의 시차", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "내가 선언한 전이 ↔ 남이 인증한 전이", "dynamo": true, "pole": "🌷", "coil": "c1", "chap": 3, "pos": "vote"}, {"id": "ep37_암탉과_병아리", "label": "🎞️ 암탉과 병아리", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "큰 망치를 쓰는 손 ↔ 가는 메스를 요구하는 눈", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 1, "pos": "vote"}, {"id": "ep38_정의_없이_시작한다", "label": "🎞️ 정의 없이 시작한다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "정밀한 정의를 요구하는 학계 ↔ 정의 없이 시작해야 하는 큰 일", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 9, "pos": "vote"}, {"id": "ep39_노란_스프레이", "label": "🎞️ 노란 스프레이", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "내일 5시라는 마감 ↔ 아직 빼지 못한 것", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 7, "pos": "vote"}, {"id": "ep40_문_밑에서_발견된_편지", "label": "🎞️ 문 밑에서 발견된 편지", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "알아차림이 죄책을 갚는다는 믿음 ↔ 알아차릴수록 늘어난다는 관측", "dynamo": true, "pole": "🌷", "coil": "c3", "chap": 5, "pos": "vote"}, {"id": "ep41_두_학파가_한_입에서", "label": "🎞️ 두 학파가 한 입에서", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "행동 먼저 하라는 조언 ↔ 정밀하게 계획하라는 조언, 같은 사람에게서", "dynamo": true, "pole": "🌷", "coil": "", "chap": 1, "pos": "vote"}, {"id": "ep42_피드백에_대한_피드백", "label": "🎞️ 피드백에 대한 피드백", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "평가자가 준 척도 ↔ 그 척도 자체가 옳은가", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 7, "pos": "vote"}, {"id": "ep43_붙잡아_두게", "label": "🎞️ 붙잡아 두게", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "사람을 재는 자 ↔ 말을 재는 자", "dynamo": true, "pole": "🌫️", "coil": "c0", "chap": 3, "pos": "vote"}, {"id": "ep44_사랑에_빠져야_유연해진다", "label": "🎞️ 사랑에 빠져야 유연해진다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "유연함을 기술로 배우려는 나 ↔ 유연함은 감정에서 온다는 답", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep45_이름이_도착한_하루", "label": "🎞️ 이름이 도착한 하루", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "이름이 없는 것 ↔ 이미 삼백 개 쓰인 것", "dynamo": true, "pole": "🌷", "coil": "c1", "chap": 0, "pos": "none"}, {"id": "ep46_다섯을_골랐는데_분야가_다섯", "label": "🎞️ 다섯을 골랐는데 분야가 다섯", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "다섯을 고르라는 요구 ↔ 다섯이 다섯 분야에서 나온 사정", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 7, "pos": "vote"}, {"id": "ep47_진단을_들고_가서_증상을_받아왔다", "label": "🎞️ 진단을 들고 가서 증상을 받아왔다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "니즈가 맞아야 팔린다 ↔ 팔 생각으로 니즈를 먼저 규정했다", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep48_조언을_체화하기_전에", "label": "🎞️ 조언을 체화하기 전에", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "프레임을 앞세우지 말라는 지적 ↔ 프레임을 갖춰 답한 반론", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep49_떨어진_무지가_귀에_박혔다", "label": "🎞️ 떨어진 무지가 귀에 박혔다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "끝점의 최대값을 묻는다 ↔ 매일의 기울기를 묻는다", "dynamo": true, "pole": "🌫️", "coil": "c0", "chap": 5, "pos": "vote"}, {"id": "ep50_인턴을_또_하겠다는_거잖아", "label": "🎞️ 인턴을 또 하겠다는 거잖아", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "되돌릴 수 없음을 재는 자 ↔ 버티는 값을 재는 자", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 8, "pos": "vote"}, {"id": "ep51_네껀_안_바꿨는데", "label": "🎞️ 네껀 안 바꿨는데", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "공감을 배우는 일 ↔ 정직을 파는 일", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 5, "pos": "vote"}, {"id": "ep52_밥상이_시나리오를_바꿨다", "label": "🎞️ 밥상이 시나리오를 바꿨다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "설득했는가 ↔ 적응시켰는가", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 1, "pos": "vote"}, {"id": "ep53_왜_참견이세요_라_안_해서", "label": "🎞️ 왜 참견이세요 라 안 해서", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "매몰비용을 재던 자 ↔ 같은 자가 옵션가치를 재기 시작함", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 1, "pos": "vote"}, {"id": "ep54_썼던_걸_잴_수_있다는_것", "label": "🎞️ 썼던 걸 잴 수 있다는 것", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "재어 주는 것이 갚는 것인가 ↔ 재는 순간 심판이 되는가", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 3, "pos": "vote"}, {"id": "ep55_두_낱말_물음에_다섯_역할", "label": "🎞️ 두 낱말 물음에 다섯 역할", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "i를 낮춘다고 적은 답이 읽는 데 i를 물린다 ↔ 같은 답이 그 한 사람에겐 i를 낮춘다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c3", "chap": 4, "pos": "vote"}, {"id": "ep56_약속은_지킴으로서_완성됨", "label": "🎞️ 약속은 지킴으로서 완성됨", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "믿게 하려면 어떤 감정을 꺼야 한다(자기기만) ↔ 증명하고 나면 그들 기억이 「난 그럴 줄 알았어」로 고쳐 써져 의심했다는 사실이 사라진다", "dynamo": true, "pole": "🌷", "coil": "c3", "chap": 3, "pos": "vote"}, {"id": "ep57_그거_왜_만들지", "label": "🎞️ 그거 왜 만들지", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "왜 만드느냐고 묻는 자 ↔ 만들어 봐야 이유가 자라는 자", "dynamo": true, "pole": "🌫️", "coil": "c3", "chap": 9, "pos": "vote"}, {"id": "ep58_바깥이라_불렀지만_나였다", "label": "🎞️ 바깥이라 불렀지만 나였다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "자는 바깥에서 와야 한다 ↔ 내가 고른 바깥은 내 다음 일자리였다", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 8, "pos": "vote"}, {"id": "ep59_이_질문들을_모르겠습니다", "label": "🎞️ 이 질문들을 모르겠습니다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "답을 고르기 쉽게 만든 형식 ↔ 그 형식을 읽지 못하는 수신자", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 9, "pos": "vote"}, {"id": "ep60_부호를_뒤집는_각주", "label": "🎞️ 부호를 뒤집는 각주", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "내 중심 주장을 세우는 코딩 ↔ 그것을 뒤집는 코딩을 내가 먼저 말한다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 1, "pos": "vote"}, {"id": "ep61_수직으로_오는_말", "label": "🎞️ 수직으로 오는 말", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "몰입할수록 귀가 닫힌다 ↔ 욕망을 내려놓아야 수직 방향의 말이 들린다", "dynamo": true, "pole": "🦋", "coil": "c3", "chap": 7, "pos": "vote"}, {"id": "ep62_아닌_것부터_말했다", "label": "🎞️ 아닌 것부터 말했다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "주류가 놓은 문제(agency problem·moral hazard)를 풀어야 학자다 ↔ 그것이 내가 아니라고 먼저 말해야 내 의제에 이름이 붙는다", "dynamo": true, "pole": "🌷", "coil": "c0", "chap": 0, "pos": "none"}, {"id": "ep63_현실의_실_Aether", "label": "🎞️ 현실의 실 Aether", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "수단이 목적이 되었다 ↔ 그 목적을 준 사람이 내 눈을 피했다", "dynamo": true, "pole": "🦋", "coil": "c0", "chap": 1, "pos": "vote"}, {"id": "ep64_낱말_하나가_올려버린_눈금", "label": "🎞️ 낱말 하나가 올려버린 눈금", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "모르고 크게 부른 낱말이 남의 자(尺)를 올린다 ↔ 「몰랐다」는 올라간 자가 빌려준 신뢰를 되갚지 못한다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 0, "pos": "none"}, {"id": "ep65_여름_하나에_늙었다", "label": "🎞️ 여름 하나에 늙었다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "나는 쓴 시간으로 나를 셌다 ↔ 그들은 남은 시간으로 나를 셌다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 3, "pos": "vote"}, {"id": "ep66_알맹이는_있는데_장르가_아니다", "label": "🎞️ 알맹이는 있는데 장르가 아니다", "depth": 3, "marr_layer": 3, "layer": "episode", "r": 11, "friction": "자기 이론을 자기 논문에 먼저 적용한 문장을 나는 지능의 표시로 쓴다 ↔ 그 장르는 그것을 미숙의 표시로 읽는다", "dynamo": true, "pole": "🐦‍⬛", "coil": "c0", "chap": 3, "pos": "vote"}], "edges": [{"s": "황금새장을열다", "t": "ch1", "w": 1}, {"s": "황금새장을열다", "t": "ch2", "w": 1}, {"s": "황금새장을열다", "t": "ch3", "w": 1}, {"s": "황금새장을열다", "t": "ch4", "w": 1}, {"s": "황금새장을열다", "t": "ch5", "w": 1}, {"s": "황금새장을열다", "t": "ch6", "w": 1}, {"s": "황금새장을열다", "t": "ch7", "w": 1}, {"s": "황금새장을열다", "t": "ch8", "w": 1}, {"s": "황금새장을열다", "t": "ch9", "w": 1}, {"s": "황금새장을열다", "t": "ch10", "w": 1}, {"s": "황금새장을열다", "t": "ch0", "w": 1}, {"s": "🐦‍⬛", "t": "ch9", "w": 1}, {"s": "🪞", "t": "ch1", "w": 1}, {"s": "🪞", "t": "ch5", "w": 1}, {"s": "🪞", "t": "ch9", "w": 1}, {"s": "⏱️", "t": "ch4", "w": 1}, {"s": "🐀", "t": "ch5", "w": 1}, {"s": "🌫️", "t": "ch8", "w": 1}, {"s": "🔫", "t": "ch0", "w": 1}, {"s": "🕶️", "t": "ch0", "w": 1}, {"s": "🌷", "t": "ch7", "w": 1}, {"s": "🔭", "t": "ch2", "w": 1}, {"s": "👾", "t": "ch0", "w": 1}, {"s": "📝", "t": "ch0", "w": 1}, {"s": "🧫", "t": "ch0", "w": 1}, {"s": "💒", "t": "ch3", "w": 1}, {"s": "🫀", "t": "ch0", "w": 1}, {"s": "🦋", "t": "ch6", "w": 1}, {"s": "🍑", "t": "ch0", "w": 1}, {"s": "🚪", "t": "ch10", "w": 1}, {"s": "🚪", "t": "ch5", "w": 1}, {"s": "📜camus_페스트", "t": "ch3", "w": 1}, {"s": "📜quine_elementary_logic", "t": "ch0", "w": 1}, {"s": "📜huizinga_homo_ludens", "t": "ch0", "w": 1}, {"s": "📜orwell_위건부두로가는길", "t": "ch0", "w": 1}, {"s": "📜rovelli_시간의질서", "t": "ch0", "w": 1}, {"s": "📜orwell_why_i_write", "t": "ch0", "w": 1}, {"s": "📜austin_how_to_do_things", "t": "ch0", "w": 1}, {"s": "📜ricoeur_soi_meme_comme_un_autre", "t": "ch8", "w": 1}, {"s": "📜ricoeur_soi_meme_comme_un_autre", "t": "ch2", "w": 1}, {"s": "📜poe_philosophy_of_composition", "t": "ch9", "w": 1}, {"s": "📜노자_도덕경", "t": "ch9", "w": 1}, {"s": "📜노자_도덕경", "t": "ch7", "w": 1}, {"s": "📜clausewitz_vom_kriege", "t": "ch2", "w": 1}, {"s": "📜girard_낭만적거짓과소설적진실", "t": "ch1", "w": 1}, {"s": "📜dumas_검은튤립", "t": "ch9", "w": 1}, {"s": "📜dumas_검은튤립", "t": "ch5", "w": 1}, {"s": "📜dumas_검은튤립", "t": "ch6", "w": 1}, {"s": "📜dumas_검은튤립", "t": "ch7", "w": 1}, {"s": "📜kratzer_modality", "t": "ch0", "w": 1}, {"s": "📜unamuno_안개", "t": "ch8", "w": 1}, {"s": "📜unamuno_안개", "t": "ch9", "w": 1}, {"s": "📜unamuno_안개", "t": "ch2", "w": 1}, {"s": "📜unamuno_안개", "t": "ch7", "w": 1}, {"s": "📜polanyi_tacit_dimension", "t": "ch9", "w": 1}, {"s": "📜gould_lewontin_spandrels", "t": "ch9", "w": 1}, {"s": "📜stevenson_지킬앤하이드", "t": "ch0", "w": 1}, {"s": "📜douglass_narrative", "t": "ch9", "w": 1}, {"s": "📜douglass_narrative", "t": "ch3", "w": 1}, {"s": "📜keats_negative_capability", "t": "ch9", "w": 1}, {"s": "📜homeric_hymn_hermes", "t": "ch9", "w": 1}, {"s": "📜homeric_hymn_hermes", "t": "ch5", "w": 1}, {"s": "📜greenwald_totalitarian_ego", "t": "ch10", "w": 1}, {"s": "📜greenwald_totalitarian_ego", "t": "ch5", "w": 1}, {"s": "📜bourdieu_la_distinction", "t": "ch8", "w": 1}, {"s": "📜bourdieu_la_distinction", "t": "ch2", "w": 1}, {"s": "📜orwell_1984", "t": "ch1", "w": 1}, {"s": "📜orwell_1984", "t": "ch10", "w": 1}, {"s": "📜orwell_1984", "t": "ch5", "w": 1}, {"s": "📜orwell_1984", "t": "ch7", "w": 1}, {"s": "📜duckworth_grit", "t": "ch0", "w": 1}, {"s": "📜flaubert_마담보바리", "t": "ch1", "w": 1}, {"s": "🎞️구술_0902청사진", "t": "ch0", "w": 1}, {"s": "📜carlson_reference_to_kinds", "t": "ch0", "w": 1}, {"s": "📜sapir_status_of_linguistics", "t": "ch0", "w": 1}, {"s": "📜klein_뇌는어떻게변화를거부하는가", "t": "ch5", "w": 1}, {"s": "📜goffman_presentation_of_self", "t": "ch9", "w": 1}, {"s": "📜goffman_presentation_of_self", "t": "ch5", "w": 1}, {"s": "📜goffman_presentation_of_self", "t": "ch6", "w": 1}, {"s": "📜thiel_zero_to_one", "t": "ch1", "w": 1}, {"s": "📜caillois_les_jeux_et_les_hommes", "t": "ch3", "w": 1}, {"s": "📜caillois_les_jeux_et_les_hommes", "t": "ch5", "w": 1}, {"s": "📜caillois_les_jeux_et_les_hommes", "t": "ch7", "w": 1}, {"s": "📜defoe_robinson_crusoe", "t": "ch4", "w": 1}, {"s": "📜kahneman_tversky_prospect_theory", "t": "ch7", "w": 1}, {"s": "📜한강_소년이온다", "t": "ch0", "w": 1}, {"s": "📜bzcf_1더하기1은3", "t": "ch6", "w": 1}, {"s": "📜bzcf_1더하기1은3", "t": "ch7", "w": 1}, {"s": "📜maples_pattern_breakers", "t": "ch1", "w": 1}, {"s": "📜tournier_외면일기", "t": "ch0", "w": 1}, {"s": "📜hwang_m_butterfly", "t": "ch5", "w": 1}, {"s": "📜hwang_m_butterfly", "t": "ch6", "w": 1}, {"s": "📜hwang_m_butterfly", "t": "ch7", "w": 1}, {"s": "📜bzcf_업보", "t": "ch9", "w": 1}, {"s": "📜bzcf_업보", "t": "ch10", "w": 1}, {"s": "📜ovid_변신이야기", "t": "ch0", "w": 1}, {"s": "📜tournier_vendredi", "t": "ch4", "w": 1}, {"s": "📜weber_직업으로서의정치", "t": "ch3", "w": 1}, {"s": "📜mokyr_lever_of_riches", "t": "ch9", "w": 1}, {"s": "📜mokyr_lever_of_riches", "t": "ch4", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch5", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch6", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch7", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch8", "w": 1}, {"s": "📜hyde_trickster_makes_this_world", "t": "ch9", "w": 1}, {"s": "📜gibbons_coase_to_culture", "t": "ch9", "w": 1}, {"s": "📜gibbons_coase_to_culture", "t": "ch3", "w": 1}, {"s": "📜orwell_animal_farm", "t": "ch7", "w": 1}, {"s": "📜brinkerink_nc_pc", "t": "ch4", "w": 1}, {"s": "📜일연_삼국유사", "t": "ch8", "w": 1}, {"s": "📜일연_삼국유사", "t": "ch9", "w": 1}, {"s": "📜일연_삼국유사", "t": "ch4", "w": 1}, {"s": "📜일연_삼국유사", "t": "ch6", "w": 1}, {"s": "📜aurelius_명상록", "t": "ch8", "w": 1}, {"s": "📜grice_logic_and_conversation", "t": "ch0", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch8", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch2", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch4", "w": 1}, {"s": "📜lampedusa_표범", "t": "ch5", "w": 1}, {"s": "📜whorf_language_thought_reality", "t": "ch0", "w": 1}, {"s": "📜harari_nexus", "t": "ch0", "w": 1}, {"s": "g5_21_narrative_prior_4동사_공유_극", "t": "ch0", "obs": 0, "w": 1}, {"s": "g3_08_Kennedy_O_Hagan_model_di", "t": "ch3", "obs": 0, "w": 1}, {"s": "g3_08_Kennedy_O_Hagan_model_di", "t": "ch7", "obs": 0, "w": 1}, {"s": "g3_24_Appiah_Honor_Code", "t": "ch5", "obs": 0, "w": 1}, {"s": "g6_20_action_prior_vs_full_pri", "t": "ch0", "obs": 0, "w": 1}, {"s": "g4_18_장부", "t": "ch1", "obs": 0, "w": 1}, {"s": "g6_06_op_st_ambiguity", "t": "ch0", "obs": 0, "w": 1}, {"s": "g3_06_Camus_부조리_반항", "t": "ch3", "obs": 0, "w": 1}, {"s": "g3_20_Wasserman_rich_vs_king", "t": "ch8", "obs": 0, "w": 1}, {"s": "g5_11_재명명_rename", "t": "ch9", "obs": 0, "w": 1}, {"s": "g3_19_Ricœur_idem_ipse", "t": "ch8", "obs": 0, "w": 1}, {"s": "g1_02_Debt_U_desire_φ_belief", "t": "ch0", "obs": 0, "w": 1}, {"s": "g6_21_calibration_식민화", "t": "ch0", "obs": 0, "w": 1}, {"s": "g3_01_Girard_모방욕망", "t": "ch1", "obs": 0, "w": 1}, {"s": "g3_33_de_Finetti_coherence_Ram", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_13_evaluate_재는_손", "t": "ch7", "obs": 0, "w": 1}, {"s": "g1_13_Selection_Variation", "t": "ch4", "obs": 0, "w": 1}, {"s": "g3_05_Weber_신념_책임윤리", "t": "ch3", "obs": 0, "w": 1}, {"s": "g2_26_Nail_V_4i_Scale_V_4i", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_07_순서를_타다", "t": "ch2", "obs": 0, "w": 1}, {"s": "g6_10_제3의_길", "t": "ch8", "obs": 0, "w": 1}, {"s": "g6_19_cache_warm_up", "t": "ch0", "obs": 0, "w": 1}, {"s": "g3_36_Benjamin_아우라", "t": "ch0", "obs": 0, "w": 1}, {"s": "g2_22_Crucial_Third_Position", "t": "ch8", "obs": 0, "w": 1}, {"s": "g5_06_장부를_펴다", "t": "ch1", "obs": 0, "w": 1}, {"s": "g5_09_분포로_적기_확률적_사고", "t": "ch7", "obs": 0, "w": 1}, {"s": "g5_22_simulation_belief", "t": "ch5", "obs": 0, "w": 1}, {"s": "g6_02_새장_황금새장_둥지", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_06_Fubini_E_s_E_U_E_U_E_s", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_06_Fubini_E_s_E_U_E_U_E_s", "t": "ch10", "obs": 1, "w": 1}, {"s": "g5_02_멈춤_NC", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_01_dG_dF_dG_dR_dR_dF", "t": "ch8", "obs": 0, "w": 1}, {"s": "g1_01_dG_dF_dG_dR_dR_dF", "t": "ch1", "obs": 0, "w": 1}, {"s": "g5_25_오해_선차단_수신자_사전예측", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_25_오해_선차단_수신자_사전예측", "t": "g5_21_narrative_prior_4동사_공유_극", "w": 1}, {"s": "g5_20_frame_공개", "t": "ch5", "obs": 0, "w": 1}, {"s": "g5_03_계산끝낸물_calibrate", "t": "ch0", "obs": 0, "w": 1}, {"s": "g2_20_분포_vs_한_점", "t": "ch7", "obs": 0, "w": 1}, {"s": "g5_14_제도화_institutionalize", "t": "ch7", "obs": 0, "w": 1}, {"s": "g6_14_기세", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_12_segment_replicate_platfo", "t": "ch6", "obs": 0, "w": 1}, {"s": "g4_19_주사기", "t": "ch3", "obs": 0, "w": 1}, {"s": "g6_09_義味", "t": "ch0", "obs": 0, "w": 1}, {"s": "g6_01_빚_틀린_모델", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_03_τ_max_0_V_4i_1", "t": "ch0", "obs": 0, "w": 1}, {"s": "g2_04_3S_Scope_Sequence_Sync", "t": "ch0", "obs": 0, "w": 1}, {"s": "g6_07_다_多_세_世", "t": "ch5", "obs": 0, "w": 1}, {"s": "g5_01_한_글자_비틂", "t": "ch0", "obs": 0, "w": 1}, {"s": "g6_23_사랑_꿈꾸고자_이해시도", "t": "ch0", "obs": 0, "w": 1}, {"s": "g5_05_과거_고통을_미래_연료로", "t": "ch5", "obs": 0, "w": 1}, {"s": "g5_05_과거_고통을_미래_연료로", "t": "ch6", "obs": 1, "w": 1}, {"s": "g5_05_과거_고통을_미래_연료로", "t": "ch10", "obs": 1, "w": 1}, {"s": "g6_16_보균자", "t": "ch3", "obs": 0, "w": 1}, {"s": "g2_24_환상_윤리_3조건", "t": "ch5", "obs": 0, "w": 1}, {"s": "g5_24_트림_clarity_deletion", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_04_V_4i", "t": "ch0", "obs": 0, "w": 1}, {"s": "g2_27_NC_PC_Brinkerink", "t": "ch5", "obs": 0, "w": 1}, {"s": "g5_18_함께_명명하기", "t": "ch9", "obs": 0, "w": 1}, {"s": "g5_17_옆에_두기_juxtaposition", "t": "ch9", "obs": 0, "w": 1}, {"s": "g6_05_소통밀도", "t": "ch0", "obs": 0, "w": 1}, {"s": "g1_08_posterior_likelihood_pri", "t": "ch3", "obs": 0, "w": 1}, {"s": "g1_08_posterior_likelihood_pri", "t": "ch7", "obs": 0, "w": 1}, {"s": "g6_15_함께_마심", "t": "ch0", "obs": 0, "w": 1}, {"s": "g6_15_함께_마심", "t": "ch9", "obs": 0, "w": 1}, {"s": "ep01_거절이_발주서다", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": false, "w": 1}, {"s": "ep01_거절이_발주서다", "t": "g1_04_V_4i", "dynamo": false, "w": 1}, {"s": "ep01_거절이_발주서다", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": false, "w": 1}, {"s": "ep01_거절이_발주서다", "t": "g6_06_op_st_ambiguity", "dynamo": false, "w": 1}, {"s": "ep01_거절이_발주서다", "t": "ep28_학위_바깥에_두시죠", "dynamo": true, "w": 2}, {"s": "ep01_거절이_발주서다", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep02_읽지마라_쓰는건괜찮다", "t": "g6_06_op_st_ambiguity", "dynamo": false, "w": 1}, {"s": "ep02_읽지마라_쓰는건괜찮다", "t": "g5_22_simulation_belief", "dynamo": false, "w": 1}, {"s": "ep02_읽지마라_쓰는건괜찮다", "t": "g5_20_frame_공개", "dynamo": false, "w": 1}, {"s": "ep02_읽지마라_쓰는건괜찮다", "t": "g2_27_NC_PC_Brinkerink", "dynamo": false, "w": 1}, {"s": "ep02_읽지마라_쓰는건괜찮다", "t": "ep32_녹음은_불법인가", "dynamo": true, "w": 3}, {"s": "ep02_읽지마라_쓰는건괜찮다", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 4}, {"s": "ep03_문지기가_뒷문으로", "t": "g6_01_빚_틀린_모델", "dynamo": false, "w": 1}, {"s": "ep03_문지기가_뒷문으로", "t": "g3_24_Appiah_Honor_Code", "dynamo": false, "w": 1}, {"s": "ep03_문지기가_뒷문으로", "t": "g5_20_frame_공개", "dynamo": false, "w": 1}, {"s": "ep03_문지기가_뒷문으로", "t": "g6_21_calibration_식민화", "dynamo": false, "w": 1}, {"s": "ep03_문지기가_뒷문으로", "t": "ep27_학위_하나를_더_받는_일", "dynamo": true, "w": 2}, {"s": "ep03_문지기가_뒷문으로", "t": "ep32_녹음은_불법인가", "dynamo": true, "w": 3}, {"s": "ep03_문지기가_뒷문으로", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 2}, {"s": "ep03_문지기가_뒷문으로", "t": "ep37_암탉과_병아리", "dynamo": true, "w": 2}, {"s": "ep03_문지기가_뒷문으로", "t": "ep66_알맹이는_있는데_장르가_아니다", "dynamo": true, "w": 2}, {"s": "ep04_공포의_부재", "t": "g3_06_Camus_부조리_반항", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "g3_05_Weber_신념_책임윤리", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "g3_24_Appiah_Honor_Code", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "g2_22_Crucial_Third_Position", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "g5_17_옆에_두기_juxtaposition", "dynamo": false, "w": 1}, {"s": "ep04_공포의_부재", "t": "ep12_왜_나만_불안해하지", "dynamo": false, "w": 2}, {"s": "ep04_공포의_부재", "t": "ep13_이성이_얼어붙을_걸_알았으므로", "dynamo": false, "w": 3}, {"s": "ep04_공포의_부재", "t": "ep18_한기를_막은_온기", "dynamo": true, "w": 3}, {"s": "ep04_공포의_부재", "t": "ep22_창을_멈추는_것", "dynamo": true, "w": 4}, {"s": "ep04_공포의_부재", "t": "ep23_거슬러_오르는_이유", "dynamo": true, "w": 5}, {"s": "ep04_공포의_부재", "t": "ep27_학위_하나를_더_받는_일", "dynamo": true, "w": 4}, {"s": "ep04_공포의_부재", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 2}, {"s": "ep04_공포의_부재", "t": "ep30_한_학기_한_다이어그램", "dynamo": true, "w": 3}, {"s": "ep04_공포의_부재", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 2}, {"s": "ep04_공포의_부재", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 3}, {"s": "ep05_행간을_읽자면", "t": "g1_01_dG_dF_dG_dR_dR_dF", "dynamo": false, "w": 1}, {"s": "ep05_행간을_읽자면", "t": "g6_02_새장_황금새장_둥지", "dynamo": false, "w": 1}, {"s": "ep05_행간을_읽자면", "t": "g6_06_op_st_ambiguity", "dynamo": false, "w": 1}, {"s": "ep05_행간을_읽자면", "t": "g5_07_순서를_타다", "dynamo": false, "w": 1}, {"s": "ep05_행간을_읽자면", "t": "g1_13_Selection_Variation", "dynamo": false, "w": 1}, {"s": "ep05_행간을_읽자면", "t": "ep15_계속하게_해주세요", "dynamo": false, "w": 2}, {"s": "ep05_행간을_읽자면", "t": "ep27_학위_하나를_더_받는_일", "dynamo": true, "w": 2}, {"s": "ep06_책부터_쓰시죠", "t": "ep08_너무_깁니다", "dynamo": false, "w": 1}, {"s": "ep06_책부터_쓰시죠", "t": "g2_27_NC_PC_Brinkerink", "dynamo": false, "w": 1}, {"s": "ep06_책부터_쓰시죠", "t": "g5_02_멈춤_NC", "dynamo": false, "w": 1}, {"s": "ep06_책부터_쓰시죠", "t": "g5_07_순서를_타다", "dynamo": false, "w": 1}, {"s": "ep06_책부터_쓰시죠", "t": "ep31_서른_통", "dynamo": true, "w": 2}, {"s": "ep07_더_이상_젊지_않다", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": false, "w": 1}, {"s": "ep07_더_이상_젊지_않다", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": false, "w": 1}, {"s": "ep07_더_이상_젊지_않다", "t": "g6_01_빚_틀린_모델", "dynamo": false, "w": 1}, {"s": "ep07_더_이상_젊지_않다", "t": "g6_07_다_多_세_世", "dynamo": false, "w": 1}, {"s": "ep07_더_이상_젊지_않다", "t": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "dynamo": false, "w": 2}, {"s": "ep07_더_이상_젊지_않다", "t": "ep25_분노로_쓴_넉_달", "dynamo": true, "w": 2}, {"s": "ep07_더_이상_젊지_않다", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 2}, {"s": "ep07_더_이상_젊지_않다", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep07_더_이상_젊지_않다", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 2}, {"s": "ep07_더_이상_젊지_않다", "t": "ep65_여름_하나에_늙었다", "dynamo": true, "w": 3}, {"s": "ep08_너무_깁니다", "t": "g6_05_소통밀도", "dynamo": false, "w": 1}, {"s": "ep08_너무_깁니다", "t": "g5_24_트림_clarity_deletion", "dynamo": false, "w": 1}, {"s": "ep08_너무_깁니다", "t": "g4_19_주사기", "dynamo": false, "w": 1}, {"s": "ep08_너무_깁니다", "t": "g6_19_cache_warm_up", "dynamo": false, "w": 1}, {"s": "ep08_너무_깁니다", "t": "ep38_정의_없이_시작한다", "dynamo": true, "w": 2}, {"s": "ep08_너무_깁니다", "t": "ep39_노란_스프레이", "dynamo": true, "w": 2}, {"s": "ep09_사랑하는_사람과_일한다", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": false, "w": 1}, {"s": "ep09_사랑하는_사람과_일한다", "t": "g6_15_함께_마심", "dynamo": false, "w": 1}, {"s": "ep09_사랑하는_사람과_일한다", "t": "g6_16_보균자", "dynamo": false, "w": 1}, {"s": "ep09_사랑하는_사람과_일한다", "t": "ep13_이성이_얼어붙을_걸_알았으므로", "dynamo": false, "w": 2}, {"s": "ep09_사랑하는_사람과_일한다", "t": "ep17_이슬_주셔서_감사합니다", "dynamo": false, "w": 2}, {"s": "ep09_사랑하는_사람과_일한다", "t": "ep26_달의_다른_면", "dynamo": true, "w": 2}, {"s": "ep09_사랑하는_사람과_일한다", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 2}, {"s": "ep09_사랑하는_사람과_일한다", "t": "ep44_사랑에_빠져야_유연해진다", "dynamo": true, "w": 5}, {"s": "ep10_순전한_이기심", "t": "g5_13_evaluate_재는_손", "dynamo": false, "w": 1}, {"s": "ep10_순전한_이기심", "t": "g5_06_장부를_펴다", "dynamo": false, "w": 1}, {"s": "ep10_순전한_이기심", "t": "g3_36_Benjamin_아우라", "dynamo": false, "w": 1}, {"s": "ep10_순전한_이기심", "t": "g5_03_계산끝낸물_calibrate", "dynamo": false, "w": 1}, {"s": "ep10_순전한_이기심", "t": "ep26_달의_다른_면", "dynamo": true, "w": 3}, {"s": "ep10_순전한_이기심", "t": "ep36_아홉_날의_시차", "dynamo": true, "w": 3}, {"s": "ep10_순전한_이기심", "t": "ep42_피드백에_대한_피드백", "dynamo": true, "w": 2}, {"s": "ep10_순전한_이기심", "t": "ep43_붙잡아_두게", "dynamo": true, "w": 3}, {"s": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "t": "g5_09_분포로_적기_확률적_사고", "dynamo": false, "w": 1}, {"s": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "t": "g1_08_posterior_likelihood_pri", "dynamo": false, "w": 1}, {"s": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "t": "g5_13_evaluate_재는_손", "dynamo": false, "w": 1}, {"s": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "t": "g6_09_義味", "dynamo": false, "w": 1}, {"s": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "t": "g5_21_narrative_prior_4동사_공유_극", "dynamo": false, "w": 1}, {"s": "ep11_다음에_만났을_때_소설을_쓰고_있다면", "t": "ep44_사랑에_빠져야_유연해진다", "dynamo": true, "w": 2}, {"s": "ep12_왜_나만_불안해하지", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": false, "w": 1}, {"s": "ep12_왜_나만_불안해하지", "t": "g5_09_분포로_적기_확률적_사고", "dynamo": false, "w": 1}, {"s": "ep12_왜_나만_불안해하지", "t": "g2_20_분포_vs_한_점", "dynamo": false, "w": 1}, {"s": "ep12_왜_나만_불안해하지", "t": "ep13_이성이_얼어붙을_걸_알았으므로", "dynamo": false, "w": 2}, {"s": "ep12_왜_나만_불안해하지", "t": "ep23_거슬러_오르는_이유", "dynamo": true, "w": 2}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": false, "w": 1}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "g5_02_멈춤_NC", "dynamo": false, "w": 1}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "g6_07_다_多_세_世", "dynamo": false, "w": 1}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep15_계속하게_해주세요", "dynamo": false, "w": 3}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep20_첫_발자국", "dynamo": true, "w": 3}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep21_이익을_보면_의를_생각하라", "dynamo": true, "w": 4}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep22_창을_멈추는_것", "dynamo": true, "w": 3}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 3}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 3}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 3}, {"s": "ep13_이성이_얼어붙을_걸_알았으므로", "t": "ep40_문_밑에서_발견된_편지", "dynamo": true, "w": 5}, {"s": "ep15_계속하게_해주세요", "t": "g1_01_dG_dF_dG_dR_dR_dF", "dynamo": false, "w": 1}, {"s": "ep15_계속하게_해주세요", "t": "g2_20_분포_vs_한_점", "dynamo": false, "w": 1}, {"s": "ep15_계속하게_해주세요", "t": "g6_01_빚_틀린_모델", "dynamo": false, "w": 1}, {"s": "ep15_계속하게_해주세요", "t": "ep16_의심하지_않기로_한_것", "dynamo": false, "w": 3}, {"s": "ep15_계속하게_해주세요", "t": "ep19_화폭을_뚫고_나간_기린", "dynamo": true, "w": 3}, {"s": "ep15_계속하게_해주세요", "t": "ep21_이익을_보면_의를_생각하라", "dynamo": true, "w": 3}, {"s": "ep15_계속하게_해주세요", "t": "ep24_눈에_들지_않은_논문", "dynamo": true, "w": 3}, {"s": "ep15_계속하게_해주세요", "t": "ep27_학위_하나를_더_받는_일", "dynamo": true, "w": 2}, {"s": "ep15_계속하게_해주세요", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 3}, {"s": "ep15_계속하게_해주세요", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 3}, {"s": "ep15_계속하게_해주세요", "t": "ep40_문_밑에서_발견된_편지", "dynamo": true, "w": 2}, {"s": "ep16_의심하지_않기로_한_것", "t": "ep17_이슬_주셔서_감사합니다", "dynamo": false, "w": 4}, {"s": "ep16_의심하지_않기로_한_것", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 3}, {"s": "ep16_의심하지_않기로_한_것", "t": "g2_24_환상_윤리_3조건", "dynamo": false, "w": 1}, {"s": "ep16_의심하지_않기로_한_것", "t": "g3_33_de_Finetti_coherence_Ram", "dynamo": false, "w": 1}, {"s": "ep16_의심하지_않기로_한_것", "t": "g5_22_simulation_belief", "dynamo": false, "w": 1}, {"s": "ep17_이슬_주셔서_감사합니다", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": false, "w": 1}, {"s": "ep17_이슬_주셔서_감사합니다", "t": "g3_19_Ricœur_idem_ipse", "dynamo": false, "w": 1}, {"s": "ep17_이슬_주셔서_감사합니다", "t": "ep18_한기를_막은_온기", "dynamo": true, "w": 3}, {"s": "ep17_이슬_주셔서_감사합니다", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 2}, {"s": "ep17_이슬_주셔서_감사합니다", "t": "ep42_피드백에_대한_피드백", "dynamo": true, "w": 4}, {"s": "ep18_한기를_막은_온기", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": true, "w": 1}, {"s": "ep18_한기를_막은_온기", "t": "g6_21_calibration_식민화", "dynamo": true, "w": 1}, {"s": "ep18_한기를_막은_온기", "t": "g6_09_義味", "dynamo": true, "w": 1}, {"s": "ep19_화폭을_뚫고_나간_기린", "t": "ep24_눈에_들지_않은_논문", "dynamo": true, "w": 3}, {"s": "ep19_화폭을_뚫고_나간_기린", "t": "🦋", "dynamo": true, "w": 1}, {"s": "ep19_화폭을_뚫고_나간_기린", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep19_화폭을_뚫고_나간_기린", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep19_화폭을_뚫고_나간_기린", "t": "ep28_학위_바깥에_두시죠", "dynamo": true, "w": 2}, {"s": "ep19_화폭을_뚫고_나간_기린", "t": "ep30_한_학기_한_다이어그램", "dynamo": true, "w": 2}, {"s": "ep20_첫_발자국", "t": "🚪", "dynamo": true, "w": 1}, {"s": "ep20_첫_발자국", "t": "g6_09_義味", "dynamo": true, "w": 1}, {"s": "ep20_첫_발자국", "t": "g5_01_한_글자_비틂", "dynamo": true, "w": 1}, {"s": "ep21_이익을_보면_의를_생각하라", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep21_이익을_보면_의를_생각하라", "t": "g6_09_義味", "dynamo": true, "w": 1}, {"s": "ep21_이익을_보면_의를_생각하라", "t": "ep27_학위_하나를_더_받는_일", "dynamo": true, "w": 3}, {"s": "ep22_창을_멈추는_것", "t": "⏱️", "dynamo": true, "w": 1}, {"s": "ep22_창을_멈추는_것", "t": "ep25_분노로_쓴_넉_달", "dynamo": true, "w": 4}, {"s": "ep22_창을_멈추는_것", "t": "g2_22_Crucial_Third_Position", "dynamo": true, "w": 1}, {"s": "ep22_창을_멈추는_것", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 3}, {"s": "ep23_거슬러_오르는_이유", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": true, "w": 1}, {"s": "ep23_거슬러_오르는_이유", "t": "g3_06_Camus_부조리_반항", "dynamo": true, "w": 1}, {"s": "ep23_거슬러_오르는_이유", "t": "g6_14_기세", "dynamo": true, "w": 1}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep65_여름_하나에_늙었다", "dynamo": true, "w": 3}, {"s": "ep24_눈에_들지_않은_논문", "t": "🔭", "dynamo": true, "w": 1}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep02_읽지마라_쓰는건괜찮다", "dynamo": true, "w": 1}, {"s": "ep24_눈에_들지_않은_논문", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep24_눈에_들지_않은_논문", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep25_분노로_쓴_넉_달", "dynamo": true, "w": 2}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep26_달의_다른_면", "dynamo": true, "w": 2}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep36_아홉_날의_시차", "dynamo": true, "w": 2}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep46_다섯을_골랐는데_분야가_다섯", "dynamo": true, "w": 2}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep48_조언을_체화하기_전에", "dynamo": true, "w": 2}, {"s": "ep24_눈에_들지_않은_논문", "t": "ep66_알맹이는_있는데_장르가_아니다", "dynamo": true, "w": 2}, {"s": "ep25_분노로_쓴_넉_달", "t": "g6_14_기세", "dynamo": true, "w": 1}, {"s": "ep25_분노로_쓴_넉_달", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep25_분노로_쓴_넉_달", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 3}, {"s": "ep25_분노로_쓴_넉_달", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 3}, {"s": "ep25_분노로_쓴_넉_달", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 2}, {"s": "ep26_달의_다른_면", "t": "ep13_이성이_얼어붙을_걸_알았으므로", "dynamo": true, "w": 1}, {"s": "ep26_달의_다른_면", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep26_달의_다른_면", "t": "g5_21_narrative_prior_4동사_공유_극", "dynamo": true, "w": 1}, {"s": "ep26_달의_다른_면", "t": "g2_24_환상_윤리_3조건", "dynamo": true, "w": 1}, {"s": "ep26_달의_다른_면", "t": "g5_12_segment_replicate_platfo", "dynamo": true, "w": 1}, {"s": "ep27_학위_하나를_더_받는_일", "t": "🪞", "dynamo": true, "w": 1}, {"s": "ep27_학위_하나를_더_받는_일", "t": "g6_21_calibration_식민화", "dynamo": true, "w": 1}, {"s": "ep27_학위_하나를_더_받는_일", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep27_학위_하나를_더_받는_일", "t": "g6_10_제3의_길", "dynamo": true, "w": 1}, {"s": "ep27_학위_하나를_더_받는_일", "t": "ep28_학위_바깥에_두시죠", "dynamo": true, "w": 4}, {"s": "ep27_학위_하나를_더_받는_일", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 2}, {"s": "ep27_학위_하나를_더_받는_일", "t": "ep64_낱말_하나가_올려버린_눈금", "dynamo": true, "w": 2}, {"s": "ep27_학위_하나를_더_받는_일", "t": "ep65_여름_하나에_늙었다", "dynamo": true, "w": 2}, {"s": "ep28_학위_바깥에_두시죠", "t": "💒", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 3}, {"s": "ep28_학위_바깥에_두시죠", "t": "g6_10_제3의_길", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "g2_04_3S_Scope_Sequence_Sync", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "g5_14_제도화_institutionalize", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": true, "w": 1}, {"s": "ep28_학위_바깥에_두시죠", "t": "ep30_한_학기_한_다이어그램", "dynamo": true, "w": 2}, {"s": "ep28_학위_바깥에_두시죠", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 3}, {"s": "ep28_학위_바깥에_두시죠", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 3}, {"s": "ep29_기니피그_사이언티스트", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep29_기니피그_사이언티스트", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep29_기니피그_사이언티스트", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep29_기니피그_사이언티스트", "t": "g5_22_simulation_belief", "dynamo": true, "w": 1}, {"s": "ep29_기니피그_사이언티스트", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": true, "w": 1}, {"s": "ep29_기니피그_사이언티스트", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 3}, {"s": "ep29_기니피그_사이언티스트", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 2}, {"s": "ep29_기니피그_사이언티스트", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 2}, {"s": "ep30_한_학기_한_다이어그램", "t": "🚪", "dynamo": true, "w": 1}, {"s": "ep30_한_학기_한_다이어그램", "t": "g2_04_3S_Scope_Sequence_Sync", "dynamo": true, "w": 1}, {"s": "ep30_한_학기_한_다이어그램", "t": "g5_12_segment_replicate_platfo", "dynamo": true, "w": 1}, {"s": "ep30_한_학기_한_다이어그램", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep30_한_학기_한_다이어그램", "t": "g5_09_분포로_적기_확률적_사고", "dynamo": true, "w": 1}, {"s": "ep30_한_학기_한_다이어그램", "t": "ep38_정의_없이_시작한다", "dynamo": true, "w": 2}, {"s": "ep31_서른_통", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 4}, {"s": "ep31_서른_통", "t": "g6_07_다_多_세_世", "dynamo": true, "w": 1}, {"s": "ep31_서른_통", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep31_서른_통", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep31_서른_통", "t": "ep32_녹음은_불법인가", "dynamo": true, "w": 3}, {"s": "ep31_서른_통", "t": "ep40_문_밑에서_발견된_편지", "dynamo": true, "w": 3}, {"s": "ep31_서른_통", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 3}, {"s": "ep31_서른_통", "t": "ep48_조언을_체화하기_전에", "dynamo": true, "w": 2}, {"s": "ep32_녹음은_불법인가", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 4}, {"s": "ep32_녹음은_불법인가", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep32_녹음은_불법인가", "t": "g5_20_frame_공개", "dynamo": true, "w": 1}, {"s": "ep32_녹음은_불법인가", "t": "ep37_암탉과_병아리", "dynamo": true, "w": 3}, {"s": "ep32_녹음은_불법인가", "t": "ep40_문_밑에서_발견된_편지", "dynamo": true, "w": 3}, {"s": "ep33_네_싸움을_골라라", "t": "ep06_책부터_쓰시죠", "dynamo": true, "w": 1}, {"s": "ep33_네_싸움을_골라라", "t": "ep16_의심하지_않기로_한_것", "dynamo": true, "w": 2}, {"s": "ep33_네_싸움을_골라라", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep33_네_싸움을_골라라", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep33_네_싸움을_골라라", "t": "g6_15_함께_마심", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "ep26_달의_다른_면", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g5_25_오해_선차단_수신자_사전예측", "dynamo": true, "w": 2}, {"s": "ep34_촛불로_묶다", "t": "g2_24_환상_윤리_3조건", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g1_08_posterior_likelihood_pri", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep34_촛불로_묶다", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep34_촛불로_묶다", "t": "ep44_사랑에_빠져야_유연해진다", "dynamo": true, "w": 3}, {"s": "ep35_스무_해_만의_눈물", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": true, "w": 1}, {"s": "ep35_스무_해_만의_눈물", "t": "g5_12_segment_replicate_platfo", "dynamo": true, "w": 1}, {"s": "ep35_스무_해_만의_눈물", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep35_스무_해_만의_눈물", "t": "g5_07_순서를_타다", "dynamo": true, "w": 1}, {"s": "ep35_스무_해_만의_눈물", "t": "ep39_노란_스프레이", "dynamo": true, "w": 3}, {"s": "ep35_스무_해_만의_눈물", "t": "ep43_붙잡아_두게", "dynamo": true, "w": 2}, {"s": "ep36_아홉_날의_시차", "t": "ep38_정의_없이_시작한다", "dynamo": true, "w": 3}, {"s": "ep36_아홉_날의_시차", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 5}, {"s": "ep36_아홉_날의_시차", "t": "ep37_암탉과_병아리", "dynamo": true, "w": 3}, {"s": "ep36_아홉_날의_시차", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep36_아홉_날의_시차", "t": "g3_08_Kennedy_O_Hagan_model_di", "dynamo": true, "w": 1}, {"s": "ep36_아홉_날의_시차", "t": "g1_08_posterior_likelihood_pri", "dynamo": true, "w": 1}, {"s": "ep36_아홉_날의_시차", "t": "g5_14_제도화_institutionalize", "dynamo": true, "w": 1}, {"s": "ep36_아홉_날의_시차", "t": "ep43_붙잡아_두게", "dynamo": true, "w": 3}, {"s": "ep36_아홉_날의_시차", "t": "ep59_이_질문들을_모르겠습니다", "dynamo": true, "w": 2}, {"s": "ep36_아홉_날의_시차", "t": "ep60_부호를_뒤집는_각주", "dynamo": true, "w": 2}, {"s": "ep37_암탉과_병아리", "t": "g5_01_한_글자_비틂", "dynamo": true, "w": 1}, {"s": "ep37_암탉과_병아리", "t": "g1_01_dG_dF_dG_dR_dR_dF", "dynamo": true, "w": 1}, {"s": "ep37_암탉과_병아리", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep37_암탉과_병아리", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 3}, {"s": "ep38_정의_없이_시작한다", "t": "🌫️", "dynamo": true, "w": 1}, {"s": "ep38_정의_없이_시작한다", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep38_정의_없이_시작한다", "t": "g1_04_V_4i", "dynamo": true, "w": 1}, {"s": "ep38_정의_없이_시작한다", "t": "g5_11_재명명_rename", "dynamo": true, "w": 1}, {"s": "ep38_정의_없이_시작한다", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": true, "w": 1}, {"s": "ep38_정의_없이_시작한다", "t": "g5_20_frame_공개", "dynamo": true, "w": 1}, {"s": "ep38_정의_없이_시작한다", "t": "ep46_다섯을_골랐는데_분야가_다섯", "dynamo": true, "w": 2}, {"s": "ep38_정의_없이_시작한다", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 2}, {"s": "ep39_노란_스프레이", "t": "g5_24_트림_clarity_deletion", "dynamo": true, "w": 1}, {"s": "ep39_노란_스프레이", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep39_노란_스프레이", "t": "g6_15_함께_마심", "dynamo": true, "w": 1}, {"s": "ep39_노란_스프레이", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep40_문_밑에서_발견된_편지", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep40_문_밑에서_발견된_편지", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep40_문_밑에서_발견된_편지", "t": "g2_24_환상_윤리_3조건", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "ep56_약속은_지킴으로서_완성됨", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "g1_04_V_4i", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "g3_01_Girard_모방욕망", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep41_두_학파가_한_입에서", "t": "ep42_피드백에_대한_피드백", "dynamo": true, "w": 2}, {"s": "ep42_피드백에_대한_피드백", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep42_피드백에_대한_피드백", "t": "g6_09_義味", "dynamo": true, "w": 1}, {"s": "ep42_피드백에_대한_피드백", "t": "g3_33_de_Finetti_coherence_Ram", "dynamo": true, "w": 1}, {"s": "ep42_피드백에_대한_피드백", "t": "g6_15_함께_마심", "dynamo": true, "w": 1}, {"s": "ep42_피드백에_대한_피드백", "t": "ep46_다섯을_골랐는데_분야가_다섯", "dynamo": true, "w": 2}, {"s": "ep42_피드백에_대한_피드백", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 2}, {"s": "ep42_피드백에_대한_피드백", "t": "ep48_조언을_체화하기_전에", "dynamo": true, "w": 2}, {"s": "ep43_붙잡아_두게", "t": "🫀", "dynamo": true, "w": 1}, {"s": "ep43_붙잡아_두게", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep43_붙잡아_두게", "t": "g6_16_보균자", "dynamo": true, "w": 1}, {"s": "ep44_사랑에_빠져야_유연해진다", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": true, "w": 1}, {"s": "ep44_사랑에_빠져야_유연해진다", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep44_사랑에_빠져야_유연해진다", "t": "g2_24_환상_윤리_3조건", "dynamo": true, "w": 1}, {"s": "ep45_이름이_도착한_하루", "t": "ep13_이성이_얼어붙을_걸_알았으므로", "dynamo": true, "w": 1}, {"s": "ep45_이름이_도착한_하루", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 1}, {"s": "ep46_다섯을_골랐는데_분야가_다섯", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 3}, {"s": "ep46_다섯을_골랐는데_분야가_다섯", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep46_다섯을_골랐는데_분야가_다섯", "t": "g5_24_트림_clarity_deletion", "dynamo": true, "w": 1}, {"s": "ep46_다섯을_골랐는데_분야가_다섯", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep46_다섯을_골랐는데_분야가_다섯", "t": "ep48_조언을_체화하기_전에", "dynamo": true, "w": 2}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 2}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g5_22_simulation_belief", "dynamo": true, "w": 2}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 1}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g1_01_dG_dF_dG_dR_dR_dF", "dynamo": true, "w": 1}, {"s": "ep47_진단을_들고_가서_증상을_받아왔다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g2_27_NC_PC_Brinkerink", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g6_19_cache_warm_up", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g5_17_옆에_두기_juxtaposition", "dynamo": true, "w": 1}, {"s": "ep48_조언을_체화하기_전에", "t": "g5_22_simulation_belief", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "🔭", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "g5_05_과거_고통을_미래_연료로", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "ep24_눈에_들지_않은_논문", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "ep16_의심하지_않기로_한_것", "dynamo": true, "w": 1}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "ep66_알맹이는_있는데_장르가_아니다", "dynamo": true, "w": 5}, {"s": "ep49_떨어진_무지가_귀에_박혔다", "t": "ep65_여름_하나에_늙었다", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "🌫️", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g3_20_Wasserman_rich_vs_king", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g2_27_NC_PC_Brinkerink", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g4_18_장부", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "ep01_거절이_발주서다", "dynamo": true, "w": 1}, {"s": "ep50_인턴을_또_하겠다는_거잖아", "t": "ep43_붙잡아_두게", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "g2_24_환상_윤리_3조건", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "ep16_의심하지_않기로_한_것", "dynamo": true, "w": 1}, {"s": "ep51_네껀_안_바꿨는데", "t": "ep10_순전한_이기심", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g1_01_dG_dF_dG_dR_dR_dF", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "g5_07_순서를_타다", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "ep51_네껀_안_바꿨는데", "dynamo": true, "w": 1}, {"s": "ep52_밥상이_시나리오를_바꿨다", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "⏱️", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 2}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "ep52_밥상이_시나리오를_바꿨다", "dynamo": true, "w": 2}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 2}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "g3_20_Wasserman_rich_vs_king", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "g5_07_순서를_타다", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "g4_18_장부", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "ep51_네껀_안_바꿨는데", "dynamo": true, "w": 1}, {"s": "ep53_왜_참견이세요_라_안_해서", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 2}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "ep53_왜_참견이세요_라_안_해서", "dynamo": true, "w": 2}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g5_12_segment_replicate_platfo", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g4_19_주사기", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g3_08_Kennedy_O_Hagan_model_di", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g4_18_장부", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "ep35_스무_해_만의_눈물", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 1}, {"s": "ep54_썼던_걸_잴_수_있다는_것", "t": "ep01_거절이_발주서다", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 2}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g1_04_V_4i", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "g5_03_계산끝낸물_calibrate", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "ep49_떨어진_무지가_귀에_박혔다", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "ep48_조언을_체화하기_전에", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 1}, {"s": "ep55_두_낱말_물음에_다섯_역할", "t": "ep54_썼던_걸_잴_수_있다는_것", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep16_의심하지_않기로_한_것", "dynamo": true, "w": 3}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 2}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep34_촛불로_묶다", "dynamo": true, "w": 2}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "g3_19_Ricœur_idem_ipse", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "g1_08_posterior_likelihood_pri", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "g5_09_분포로_적기_확률적_사고", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "g2_24_환상_윤리_3조건", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "g3_05_Weber_신념_책임윤리", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep17_이슬_주셔서_감사합니다", "dynamo": true, "w": 1}, {"s": "ep56_약속은_지킴으로서_완성됨", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep54_썼던_걸_잴_수_있다는_것", "dynamo": true, "w": 2}, {"s": "ep57_그거_왜_만들지", "t": "g2_26_Nail_V_4i_Scale_V_4i", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g5_18_함께_명명하기", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep53_왜_참견이세요_라_안_해서", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep50_인턴을_또_하겠다는_거잖아", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep52_밥상이_시나리오를_바꿨다", "dynamo": true, "w": 1}, {"s": "ep57_그거_왜_만들지", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "🪞", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "ep38_정의_없이_시작한다", "dynamo": true, "w": 2}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g6_21_calibration_식민화", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "g3_20_Wasserman_rich_vs_king", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "ep10_순전한_이기심", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "ep37_암탉과_병아리", "dynamo": true, "w": 1}, {"s": "ep58_바깥이라_불렀지만_나였다", "t": "ep64_낱말_하나가_올려버린_눈금", "dynamo": true, "w": 3}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 2}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g5_25_오해_선차단_수신자_사전예측", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g5_24_트림_clarity_deletion", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g5_11_재명명_rename", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "ep37_암탉과_병아리", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "ep08_너무_깁니다", "dynamo": true, "w": 1}, {"s": "ep59_이_질문들을_모르겠습니다", "t": "ep42_피드백에_대한_피드백", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "ep29_기니피그_사이언티스트", "dynamo": true, "w": 3}, {"s": "ep60_부호를_뒤집는_각주", "t": "g1_13_Selection_Variation", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "g1_01_dG_dF_dG_dR_dR_dF", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "g5_06_장부를_펴다", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "g3_33_de_Finetti_coherence_Ram", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "g3_20_Wasserman_rich_vs_king", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "ep39_노란_스프레이", "dynamo": true, "w": 1}, {"s": "ep60_부호를_뒤집는_각주", "t": "ep54_썼던_걸_잴_수_있다는_것", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "ep57_그거_왜_만들지", "dynamo": true, "w": 2}, {"s": "ep61_수직으로_오는_말", "t": "ep47_진단을_들고_가서_증상을_받아왔다", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 2}, {"s": "ep61_수직으로_오는_말", "t": "ep36_아홉_날의_시차", "dynamo": true, "w": 2}, {"s": "ep61_수직으로_오는_말", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "g5_02_멈춤_NC", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "g5_25_오해_선차단_수신자_사전예측", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "g6_20_action_prior_vs_full_pri", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "ep53_왜_참견이세요_라_안_해서", "dynamo": true, "w": 1}, {"s": "ep61_수직으로_오는_말", "t": "ep22_창을_멈추는_것", "dynamo": true, "w": 1}, {"s": "ep62_아닌_것부터_말했다", "t": "ep04_공포의_부재", "dynamo": true, "w": 3}, {"s": "ep62_아닌_것부터_말했다", "t": "📝", "dynamo": true, "w": 1}, {"s": "ep62_아닌_것부터_말했다", "t": "ep58_바깥이라_불렀지만_나였다", "dynamo": true, "w": 2}, {"s": "ep62_아닌_것부터_말했다", "t": "ep09_사랑하는_사람과_일한다", "dynamo": true, "w": 1}, {"s": "ep62_아닌_것부터_말했다", "t": "ep21_이익을_보면_의를_생각하라", "dynamo": true, "w": 1}, {"s": "ep62_아닌_것부터_말했다", "t": "ep33_네_싸움을_골라라", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "g3_01_Girard_모방욕망", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "g5_18_함께_명명하기", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "g3_36_Benjamin_아우라", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "g1_02_Debt_U_desire_φ_belief", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "g6_23_사랑_꿈꾸고자_이해시도", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "ep16_의심하지_않기로_한_것", "dynamo": true, "w": 1}, {"s": "ep63_현실의_실_Aether", "t": "ep41_두_학파가_한_입에서", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "🪞", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "g6_21_calibration_식민화", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "g5_25_오해_선차단_수신자_사전예측", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "g6_06_op_st_ambiguity", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "g5_01_한_글자_비틂", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "ep15_계속하게_해주세요", "dynamo": true, "w": 1}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "ep49_떨어진_무지가_귀에_박혔다", "dynamo": true, "w": 2}, {"s": "ep64_낱말_하나가_올려버린_눈금", "t": "ep65_여름_하나에_늙었다", "dynamo": true, "w": 2}, {"s": "ep65_여름_하나에_늙었다", "t": "ep66_알맹이는_있는데_장르가_아니다", "dynamo": true, "w": 4}, {"s": "ep65_여름_하나에_늙었다", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep65_여름_하나에_늙었다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep65_여름_하나에_늙었다", "t": "g6_21_calibration_식민화", "dynamo": true, "w": 1}, {"s": "ep65_여름_하나에_늙었다", "t": "g3_05_Weber_신념_책임윤리", "dynamo": true, "w": 1}, {"s": "ep65_여름_하나에_늙었다", "t": "g6_02_새장_황금새장_둥지", "dynamo": true, "w": 1}, {"s": "ep65_여름_하나에_늙었다", "t": "g1_06_Fubini_E_s_E_U_E_U_E_s", "dynamo": true, "w": 1}, {"s": "ep66_알맹이는_있는데_장르가_아니다", "t": "g6_05_소통밀도", "dynamo": true, "w": 1}, {"s": "ep66_알맹이는_있는데_장르가_아니다", "t": "g5_01_한_글자_비틂", "dynamo": true, "w": 1}, {"s": "ep66_알맹이는_있는데_장르가_아니다", "t": "g1_03_τ_max_0_V_4i_1", "dynamo": true, "w": 1}, {"s": "ep66_알맹이는_있는데_장르가_아니다", "t": "g5_13_evaluate_재는_손", "dynamo": true, "w": 1}, {"s": "ep66_알맹이는_있는데_장르가_아니다", "t": "g6_01_빚_틀린_모델", "dynamo": true, "w": 1}, {"s": "ep66_알맹이는_있는데_장르가_아니다", "t": "g3_05_Weber_신념_책임윤리", "dynamo": true, "w": 1}, {"s": "🐦‍⬛", "t": "👾", "w": 2}, {"s": "🐦‍⬛", "t": "⏱️", "w": 4}, {"s": "🐦‍⬛", "t": "🪞", "w": 1}, {"s": "🪞", "t": "🚪", "w": 3}, {"s": "🪞", "t": "🧫", "w": 2}, {"s": "🪞", "t": "🔫", "w": 2}, {"s": "🪞", "t": "🦋", "w": 2}, {"s": "🐀", "t": "🧫", "w": 2}, {"s": "🐀", "t": "🚪", "w": 1}, {"s": "🐀", "t": "🪞", "w": 1}, {"s": "🌫️", "t": "👾", "w": 2}, {"s": "🌫️", "t": "💒", "w": 4}, {"s": "🔫", "t": "🧫", "w": 7}, {"s": "🔫", "t": "💒", "w": 1}, {"s": "🔫", "t": "⏱️", "w": 1}, {"s": "🕶️", "t": "🦋", "w": 2}, {"s": "🕶️", "t": "🪞", "w": 1}, {"s": "🕶️", "t": "🔭", "w": 1}, {"s": "🕶️", "t": "💒", "w": 1}, {"s": "🕶️", "t": "⏱️", "w": 1}, {"s": "🕶️", "t": "🔫", "w": 1}, {"s": "🕶️", "t": "🌷", "w": 1}, {"s": "🕶️", "t": "🌫️", "w": 1}, {"s": "🕶️", "t": "🐦‍⬛", "w": 1}, {"s": "🕶️", "t": "🧫", "w": 1}, {"s": "🌷", "t": "👾", "w": 2}, {"s": "🌷", "t": "🔭", "w": 4}, {"s": "🔭", "t": "💒", "w": 1}, {"s": "👾", "t": "🦋", "w": 2}, {"s": "🧫", "t": "🔭", "w": 1}, {"s": "🧫", "t": "⏱️", "w": 1}, {"s": "🫀", "t": "📜한강_소년이온다", "w": 1}, {"s": "🫀", "t": "📜tournier_외면일기", "w": 2}, {"s": "🫀", "t": "📜huizinga_homo_ludens", "w": 2}, {"s": "🫀", "t": "📜orwell_위건부두로가는길", "w": 2}, {"s": "🫀", "t": "ep29_기니피그_사이언티스트", "w": 1}, {"s": "🦋", "t": "🚪", "w": 2}, {"s": "🍑", "t": "🚪", "w": 1}, {"s": "🍑", "t": "🐦‍⬛", "w": 1}, {"s": "🍑", "t": "🦋", "w": 1}, {"s": "🍑", "t": "🧫", "w": 1}, {"s": "🚪", "t": "🔫", "w": 1}, {"s": "🚪", "t": "🧫", "w": 1}], "center": "황금새장을열다"};
 const ROLE = {0:"#efe3c0", 1:"#b5a3f8", 2:"#7cb0db", 3:"#c5a55a"};
 const CSS=k=>getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+/* ══ 층 다섯 ══════════════════════════════════════════════════════════════
+   y 는 화면 높이의 비율. 각 층은 **세로로 쌓는다**(한 칸 최대 4줄) —
+   가로로 포개면 라벨이 서로를 덮어서 결국 범례로 밀려난다. */
 const BAND=[
- {k:"symbol", nm:"L1 상징",        sub:"무엇을·왜",   y:.12, c:"--l1"},
- {k:"chapter",nm:"장 스파인",      sub:"열 방",      y:.30, c:"--spine"},
- {k:"element",nm:"L2 생각원소",    sub:"어떻게",     y:.52, c:"--l2"},
- {k:"god",    nm:"L3 📜 간접경험",  sub:"읽은 것",    y:.66, c:"--god"},
- {k:"episode",nm:"L3 🎞️ 직접경험", sub:"겪은 것",    y:.83, c:"--epi"}];
+ {k:"symbol", nm:"상징",    sub:"무엇을·왜",  y:.06, c:"--l1",    rowh:0},
+ {k:"chapter",nm:"장",      sub:"열 방",     y:.22, c:"--spine", rowh:0},
+ {k:"element",nm:"생각",    sub:"어떻게",    y:.46, c:"--l2",    rowh:20},
+ {k:"god",    nm:"읽은 것", sub:"📜 간접경험", y:.72, c:"--god",   rowh:20},
+ {k:"episode",nm:"겪은 것", sub:"🎞️ 직접경험", y:.84, c:"--epi",   rowh:19}];
 const BY={}; BAND.forEach((b,i)=>BY[b.k]={...b,i});
-// 4극 — 좌표는 층×장이 이미 쓰므로 극은 **테두리** 한 채널로 얹는다.
 /* 다이아몬드 4축 색 — 🦋BLUE · 🌷PURPLE · 🌫️RED · 🐦‍⬛GREEN.
-   어두운 바탕(#121623)용 step 은 validate_palette 로 통과시킨 값이다:
-   밝기밴드 PASS · 채도 PASS · 보통시야 ΔE 15.3 PASS · 대비 PASS ·
-   CVD ΔE 7.2(protan) = WARN 밴드 → 2px 틈 + 직접 라벨이 **의무**다.
-   옛 값(🌷금색·🐦‍⬛회색)은 축 색과 어긋났고 회색은 채도 0.018 로 바닥 미달이었다. */
+   validate_palette 통과값. CVD ΔE 7.2(protan)=WARN → 직접 라벨이 의무다.
+   2026-10-31: 상시 표시에서 **끌 수 있는 겹**으로 내렸다 — 층 색과 hue 가 싸웠다. */
 const POLE={"🦋":{c:"#3D6FD8",n:"사용자"},"🌷":{c:"#A87BE0",n:"기술자"},
             "🌫️":{c:"#D94436",n:"투자자"},"🐦‍⬛":{c:"#2FA866",n:"협력자"}};
-const STACK=["🐦‍⬛","🦋","🌷","🌫️"];   // 빨강과 초록이 맞닿지 않는 순서
-/* ── 👁️ 자리 출처 — 2026-10-29 ──────────────────────────────────────────
-   gen_graph_data.py 가 노드마다 박는 `pos`.  이 지도가 재는 한 가지다.
-     self 파일이 제 장을 적었다 · obs 원고가 문다 · vote 이웃이 투표해 줬다 · none 자리 없음
-   hue = 층, **채움 = 자리 출처**. 두 채널을 섞지 않는다 —
-   채움을 색으로 바꾸면 Marr 층 색과 싸우고, 둘 다 못 읽힌다. */
+/* 자리 출처 — gen_graph_data.py 가 노드마다 박는 `pos`.
+   self 파일이 제 장을 적었다 · obs 원고가 문다 · vote 이웃이 투표 · none 자리 없음 */
 const WRITTEN=n=>n.pos==="self"||n.pos==="obs";
 const POSOF=n=>WRITTEN(n)?"w":(n.pos==="vote"?"v":"z");
-const TOP=100, GUT=90;        // 눈금 띠가 쓰는 위 100px · 그 안 기준선 90
+const POSNM={self:"파일이 제 장을 적었다",obs:"원고가 문다",vote:"이웃이 투표해 준 자리",
+             none:"적힌 데 없음",spine:"장 스파인"};
+/* 보이는 이름 — `g5_13_evaluate_재는_손` 은 주소지 이름이 아니다.
+   앞머리 번호만 떼고 밑줄을 푼다. 뜻을 지어내지 않는다(파일 이름 그대로다). */
+const SHORT=n=>{
+  if(n.layer==="element") return n.id.replace(/^g\d+_\d+_/,"").replace(/_/g," ");
+  if(n.layer==="god")     return n.label.replace(/^📜\s*/,"");
+  if(n.layer==="episode") return n.id.replace(/^ep\d+_/,"").replace(/_/g," ");
+  return n.label;
+};
+const TOP=16;
 const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
 let W=0,H=0,DPR=1, view={x:0,y:0,k:1}, N=[], E=[], byId={}, hot=null, sel=null, on={}, q="";
-let COLX={}, CW=40;
-const bandY=b=>TOP+(H-TOP-16)*b.y;   // 층은 눈금 띠 **아래**에서 시작한다
+let COLX={}, CW=40, DEG={}, MAXDEG=1, showPole=false, showEmo=false, LINK={};
+const bandY=b=>TOP+(H-TOP-20)*b.y;
 BAND.forEach(b=>on[b.k]=true); on.root=true;
+
+/* 무게 — 생각원소 하나가 겪은 일 몇 편을 무나. 반지름 = 4·√n 이라 **넓이가 곧 편수**다.
+   전에는 전부 3.4px 였다. 8편과 1편이 같은 크기면 그림이 답을 숨긴다. */
+function degrees(){
+  DEG={};
+  DATA.edges.forEach(e=>{
+    const a=DATA.nodes.find(n=>n.id===e.s), b=DATA.nodes.find(n=>n.id===e.t);
+    if(!a||!b) return;
+    if(a.layer==="episode"&&b.layer==="element") DEG[b.id]=(DEG[b.id]||0)+1;
+    if(b.layer==="episode"&&a.layer==="element") DEG[a.id]=(DEG[a.id]||0)+1;
+  });
+  MAXDEG=Math.max(1,...Object.values(DEG));
+}
+const RAD=n=> n.layer==="chapter"?7
+            : n.layer==="symbol"?9
+            : n.layer==="god"?5
+            : n.layer==="element"?4*Math.sqrt(Math.max(1,DEG[n.id]||1))
+            : 4.5;
 
 function layout(){
   const nodes=DATA.nodes.filter(n=>n.layer!=="root");
-  const cols=[1,2,3,4,5,6,7,8,9,10,0];   // 전반·부록은 맨 오른쪽 — 왼쪽은 패널이 가린다
-  const pad=306, padR=330, cw=(W-pad-padR)/(cols.length-1);   // 좌 패널 236 · 우 카드 290 을 피한다
-  //  ⚠️ pad 는 **칸 이름의 반폭까지** 비켜야 한다. 252 면 점은 패널 밖인데 1장 이름이
-  //     패널에 물려 앞 글자(이모지)가 잘렸다(2026-10-29 실측).
+  const cols=[1,2,3,4,5,6,7,8,9,10,0];
+  const pad=58, padR=58;                 // 떠 있는 패널이 없어졌다 — 폭을 전부 쓴다
+  const cw=(W-pad-padR)/(cols.length-1);
   const cx=c=>pad+cols.indexOf(c)*cw;
   CW=cw; COLX={}; cols.forEach(c=>COLX[c]=cx(c));
   const grp={};
-  nodes.forEach(n=>{const b=BY[n.layer]; if(!b)return; const key=n.layer+"|"+(n.chap??0); (grp[key]=grp[key]||[]).push(n);});
+  nodes.forEach(n=>{const b=BY[n.layer]; if(!b)return;
+    const key=n.layer+"|"+(n.chap??0); (grp[key]=grp[key]||[]).push(n);});
   N=[];
   Object.entries(grp).forEach(([key,arr])=>{
     const [lay,ch]=key.split("|"); const b=BY[lay]; const base=cx(+ch);
-    const per=Math.max(1,Math.ceil(Math.sqrt(arr.length*1.9)));
-    arr.forEach((n,i)=>{
-      const col=i%per, row=Math.floor(i/per);
-      const sx=(col-(per-1)/2)*Math.min(15, cw/(per+1));
-      N.push({...n, x:base+sx, y:bandY(b)+row*(lay==="episode"?12:14), band:b});
-    });
+    arr.sort((p,r)=>(DEG[r.id]||0)-(DEG[p.id]||0));   // 무거운 것이 위
+    arr.forEach((n,i)=>N.push({...n, x:base, y:bandY(b)+i*b.rowh, band:b, row:i}));
   });
   byId={}; N.forEach(n=>byId[n.id]=n);
   E=DATA.edges.filter(e=>byId[e.s]&&byId[e.t]).map(e=>({a:byId[e.s],b:byId[e.t],d:e.dynamo,o:e.obs}));
-  document.getElementById('stat').textContent=
-    `노드 ${N.length} · 선 ${E.length} · ` + BAND.map(b=>`${b.nm.split(" ").pop()} ${N.filter(n=>n.layer===b.k).length}`).join(" · ");
+  LINK={}; E.forEach(e=>{(LINK[e.a.id]=LINK[e.a.id]||new Set()).add(e.b.id);
+                         (LINK[e.b.id]=LINK[e.b.id]||new Set()).add(e.a.id);});
+  document.getElementById('stat').textContent=`${N.length} 점 · ${E.length} 선`;
 }
-/* moltOK 는 아래 두 번째 <script> 블록에 산다 — 이 블록이 먼저 그릴 때는 아직 없다.
-   없으면 전부 보이는 것이 맞다(탈피 재생은 얹는 층이지 거르는 층이 아니다). */
-const vis=n=>on[n.layer]&&(typeof moltOK!=="function"||moltOK(n))&&(!q||n.label.toLowerCase().includes(q)||n.id.toLowerCase().includes(q));
+/* moltOK 는 두 번째 <script> 블록에 산다 — 이 블록이 먼저 그릴 때는 아직 없다. */
+const vis=n=>on[n.layer]&&(typeof moltOK!=="function"||moltOK(n))
+            &&(!q||n.label.toLowerCase().includes(q)||n.id.toLowerCase().includes(q));
 const T=n=>({x:(n.x+view.x)*view.k, y:(n.y+view.y)*view.k});
+const focus=()=>sel||hot;
+const near=id=>{const f=focus(); return f&&(f.id===id||(LINK[f.id]&&LINK[f.id].has(id)));};
 
 function draw(){
   ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H);
   ctx.fillStyle=CSS('--bg'); ctx.fillRect(0,0,W,H);
-  // 밴드 띠 + 라벨
+  const f=focus();
+
+  // 층 가로선 + 왼쪽 이름. 전에는 240px 에 적어 패널(250px)이 통째로 가렸다.
   BAND.forEach(b=>{
     const y=(bandY(b)+view.y)*view.k;
-    ctx.strokeStyle=b.k==="chapter"?"rgba(237,231,218,.20)":"rgba(255,255,255,.055)";
-    ctx.lineWidth=b.k==="chapter"?1.2:1; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
-    // 띠 이름은 왼쪽 패널 「층」 목록이 단다 — 여기 240px 에 적던 다섯 줄은
-    // 패널(14+236=250)에 통째로 가려 단 한 줄도 읽힌 적이 없다(2026-10-29 실측).
+    ctx.strokeStyle=b.k==="chapter"?"rgba(237,231,218,.17)":"rgba(255,255,255,.05)";
+    ctx.lineWidth=b.k==="chapter"?1.2:1;
+    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    ctx.textAlign='left'; ctx.fillStyle=CSS('--ink3');
+    ctx.font='500 10px '+CSS('--sans'); ctx.fillText(b.nm, 8, y-6);
   });
-  // 선
-  E.forEach(e=>{
-    const A=vis(e.a),B=vis(e.b); if(!A&&!B) return;
-    const near=hot&&(e.a.id===hot.id||e.b.id===hot.id);
-    const p=T(e.a),r=T(e.b);
-    // 실선 = 원고가 실제로 무는 것(관측) · 점선 = 원소가 주장만 하는 배치(미실현)
-    const claim = (e.a.layer==="element"||e.b.layer==="element") && !e.o;
-    ctx.setLineDash(claim?[3,5]:[]);
-    ctx.strokeStyle= near? "rgba(255,178,89,.75)"
-                   : e.o? "rgba(120,230,170,.55)"
-                   : (e.d? "rgba(255,178,89,.13)":"rgba(150,160,190,.085)");
-    ctx.lineWidth= near?1.6:(e.o?1.6:.8); ctx.beginPath(); ctx.moveTo(p.x,p.y);
-    ctx.bezierCurveTo(p.x,(p.y+r.y)/2, r.x,(p.y+r.y)/2, r.x,r.y); ctx.stroke();
-    ctx.setLineDash([]);
-  });
-  // 감정 궤적 — 5~10장. 「세는세다로싹튼다」 /reader 채택안. 5 혼재 → 8 바닥 → 10 꼭대기.
-  // 문서가 못 박은 세 점만 실선으로 잇는다 — 5 혼재 · 8 바닥 · 10 꼭대기.
-  // 6·7·9 는 값이 없다. 그 사이는 점선 + 빈 점 = 「이어 그린 것」이라고 그림이 스스로 말한다.
-  const sp=N.filter(n=>n.layer==="chapter"&&n.emov!=null).sort((a,b)=>a.chap-b.chap);
-  const gap=N.filter(n=>n.layer==="chapter"&&n.emo&&n.emov==null).sort((a,b)=>a.chap-b.chap);
-  if(sp.length>1){
-    const EY=v=>((bandY(BY.chapter)-46-v*13)+view.y)*view.k;
-    const ey=n=>EY(n.emov);
-    const lerp=c=>{let a=sp[0],b=sp[sp.length-1];
-      for(let i=0;i<sp.length-1;i++) if(c>sp[i].chap&&c<sp[i+1].chap){a=sp[i];b=sp[i+1];}
-      return a.emov+(b.emov-a.emov)*(c-a.chap)/(b.chap-a.chap);};
-    ctx.setLineDash([4,4]); ctx.strokeStyle="rgba(232,184,75,.30)"; ctx.lineWidth=1;
-    ctx.beginPath(); sp.forEach((n,i)=>{const p=T(n); i?ctx.lineTo(p.x,ey(n)):ctx.moveTo(p.x,ey(n));});
-    ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle="rgba(232,184,75,.92)";
-    sp.forEach(n=>{const p=T(n);ctx.beginPath();ctx.arc(p.x,ey(n),3.4,0,6.2832);ctx.fill();});
-    ctx.strokeStyle="rgba(232,184,75,.45)"; ctx.lineWidth=1;
-    gap.forEach(n=>{const p=T(n);ctx.beginPath();ctx.arc(p.x,EY(lerp(n.chap)),2.6,0,6.2832);ctx.stroke();});
-  }
-  // 노드
-  N.forEach(n=>{
-    const p=T(n), v=vis(n), col=CSS(n.band.c);
-    const rr=(n.layer==="chapter"?7:n.layer==="episode"?5:n.layer==="god"?4:n.layer==="symbol"?6:3.4)*Math.min(1.7,view.k);
-    ctx.globalAlpha= v?1:.12;
-    if(n.dynamo){ctx.shadowColor=CSS('--dyn');ctx.shadowBlur=9*view.k;}
-    // 자리 없음 = 테두리만.  채우면 「여기 있다」는 말이 되는데 그 자리는 안 적혀 있다.
-    ctx.beginPath(); ctx.arc(p.x,p.y,rr,0,6.2832);
-    if(n.pos==="none"){ctx.strokeStyle=col;ctx.lineWidth=1.3;ctx.stroke();}
-    else {ctx.fillStyle=col; ctx.fill();}
-    ctx.shadowBlur=0;
-    if(n.pole&&POLE[n.pole]){ctx.strokeStyle=POLE[n.pole].c;ctx.lineWidth=Math.max(1.2,rr*.42);ctx.stroke();}
-    if(hot&&hot.id===n.id){ctx.strokeStyle="#fff";ctx.lineWidth=1.4;ctx.stroke();}
-    // 이웃이 투표해 준 자리 = 도넛.  가운데를 뚫어 「속이 비었다」고 말한다.
-    if(n.pos==="vote"){ctx.fillStyle=CSS('--bg');ctx.beginPath();
-      ctx.arc(p.x,p.y,Math.max(1.3,rr*.46),0,6.2832);ctx.fill();}
-    // 장 이름은 위 눈금 띠가 단다 — 여기서 또 달면 열한 칸이 서로를 덮는다(실측).
-    if(v&&(n.layer==="symbol"||view.k>1.7||(hot&&hot.id===n.id))){
-      ctx.font='400 10px '+CSS('--sans');
-      ctx.fillStyle=CSS('--ink2'); ctx.textAlign='center';
-      ctx.fillText(n.label.slice(0,22), p.x, p.y-rr-5);
-    }
-    if(v&&n.layer==="chapter"&&n.emo){
-      // 5~10장은 칸이 붙어 있어 한 줄로 달면 「불안·영감절박·놀람…」이 된다(실측).
-      ctx.font='400 9.5px '+CSS('--sans');ctx.fillStyle=CSS('--ink3');ctx.textAlign='center';
-      ctx.fillText(n.emo, p.x, p.y+rr+(n.chap%2?13:25));}
-    ctx.globalAlpha=1;
-  });
-  ruler();
-}
 
-/* ══ 자(尺) 눈금 띠 — 가로축이 곧 측정이다 ═══════════════════════════════
-   장마다 **몇 개가 적혔고 몇 개가 이어 그린 것인가**를 열 칸 + 전반 칸으로 쌓는다.
-   형태 = 누적막대(크기 + 구성). 높이 = 그 칸의 점 수, 같은 눈금으로 열한 칸 전부.
-   색을 쓰지 않는다 — hue 는 이미 Marr 층이 쓰고 있고, 여기서 또 쓰면 둘 다 죽는다.
-   채움 = 적힌 것 · 테두리 = 이어 그린 것 · 빗금 = 자리 없음.
-   거르개(층 토글 · 탈피 재생 · 검색)를 그대로 따른다. 화면에 없는 것을 세면 눈금이 거짓말이 된다. */
-function ruler(){
-  const cols=[1,2,3,4,5,6,7,8,9,10,0], cnt={};
-  cols.forEach(c=>cnt[c]={w:0,v:0,z:0});
-  N.forEach(n=>{ if(n.layer==="chapter"||!vis(n)) return;
-    const c=(n.chap??0); if(cnt[c]) cnt[c][POSOF(n)]++; });
-  const tot=c=>cnt[c].w+cnt[c].v+cnt[c].z;
-  const mx=Math.max(1,...cols.map(tot));
-  // 위쪽 홈통 — 끌어올린 노드와 선이 눈금 위로 올라오지 않게 가린다
-  ctx.fillStyle=CSS('--bg'); ctx.fillRect(0,0,W,GUT+1);
-  ctx.strokeStyle="rgba(255,255,255,.12)"; ctx.lineWidth=1;
-  ctx.beginPath(); ctx.moveTo(0,GUT+.5); ctx.lineTo(W,GUT+.5); ctx.stroke();
-  const HMAX=38, bw=Math.min(26,Math.max(9,CW-9))*Math.min(1.7,view.k);
-  cols.forEach((c,i)=>{
-    const x=(COLX[c]+view.x)*view.k; if(x<250||x>W-14) return;
-    const t=tot(c), lab=(byId["ch"+c]||{}).label||"전반·부록";
-    const ly=(i%2?36:21);
-    // 칸 이름 — 두 줄로 엇갈려 단다. 그래도 넘치면 앞머리(이모지+번호)만.
-    ctx.textAlign='center'; ctx.fillStyle=c?CSS('--ink2'):CSS('--ink3');
-    ctx.font=(c?'500 ':'400 ')+'11px '+CSS('--sans');
-    const short=lab.split(" ")[0];
-    ctx.fillText(ctx.measureText(lab).width>CW*2-8?short:lab, x, ly);
-    if(!t){ // 빈 칸은 틀로 그린다 — 탈피 띠의 「빈 코일」과 같은 문법이다
-            ctx.save(); ctx.strokeStyle=CSS('--line'); ctx.lineWidth=1; ctx.setLineDash([3,3]);
-            ctx.strokeRect(x-bw/2+.5,GUT-10.5,bw-1,10); ctx.restore();
-            ctx.font='500 10px '+CSS('--mono'); ctx.fillStyle=CSS('--ink3');
-            ctx.fillText("0", x, GUT-14); return; }
-    let y=GUT;
-    const seg=(k,how)=>{ const h=cnt[c][k]/mx*HMAX; if(h<=0) return;
-      const yt=y-h; 
-      if(how==="w"){ ctx.fillStyle=CSS('--ink'); ctx.globalAlpha=.88;
-                     ctx.fillRect(x-bw/2,yt,bw,h); ctx.globalAlpha=1; }
-      else if(how==="v"){ ctx.strokeStyle=CSS('--ink2'); ctx.lineWidth=1;
-                          ctx.strokeRect(x-bw/2+.5,yt+.5,bw-1,Math.max(1,h-1)); }
-      else { ctx.save(); ctx.beginPath(); ctx.rect(x-bw/2,yt,bw,h); ctx.clip();
-             ctx.strokeStyle=CSS('--ink3'); ctx.lineWidth=1;
-             for(let d=-h;d<bw+h;d+=4){ ctx.beginPath();
-               ctx.moveTo(x-bw/2+d,yt+h); ctx.lineTo(x-bw/2+d+h,yt); ctx.stroke(); }
-             ctx.restore();
-             ctx.strokeStyle=CSS('--ink3'); ctx.strokeRect(x-bw/2+.5,yt+.5,bw-1,Math.max(1,h-1)); }
-      y=yt-2;   // 2px 틈 — 칸끼리 테두리로 가르지 않는다
-    };
-    seg("w","w"); seg("v","v"); seg("z","z");
-    ctx.font='500 10px '+CSS('--mono'); ctx.fillStyle=CSS('--ink2'); ctx.textAlign='center';
-    ctx.fillText(String(t), x, y-3);
+  // 선 — 기본은 아주 조용하게. 고른 점에 닿는 선만 밝힌다.
+  // 111 개를 전부 같은 세기로 그리면 털뭉치가 되고, 털뭉치는 답을 안 준다.
+  E.forEach(e=>{
+    if(!vis(e.a)&&!vis(e.b)) return;
+    const lit=f&&(e.a.id===f.id||e.b.id===f.id);
+    const p=T(e.a),r=T(e.b);
+    const cover=(e.a.layer==="episode"&&e.b.layer==="element")||(e.b.layer==="episode"&&e.a.layer==="element");
+    ctx.strokeStyle= lit ? "rgba(255,206,130,.85)"
+                   : f  ? "rgba(150,160,190,.05)"
+                   : cover? "rgba(255,178,89,.20)" : "rgba(150,160,190,.07)";
+    ctx.lineWidth= lit?1.9:.9;
+    ctx.beginPath(); ctx.moveTo(p.x,p.y);
+    ctx.bezierCurveTo(p.x,(p.y+r.y)/2, r.x,(p.y+r.y)/2, r.x,r.y); ctx.stroke();
+  });
+
+  // 감정 궤적 — 끌 수 있는 겹(기본 꺼짐). 5 혼재 · 8 바닥 · 10 꼭대기 세 점만 문서값이고
+  // 6·7·9 는 빈 점 = 「이어 그린 것」이라고 그림이 스스로 말한다.
+  if(showEmo){
+    const sp=N.filter(n=>n.layer==="chapter"&&n.emov!=null).sort((a,b)=>a.chap-b.chap);
+    const gap=N.filter(n=>n.layer==="chapter"&&n.emo&&n.emov==null).sort((a,b)=>a.chap-b.chap);
+    if(sp.length>1){
+      const EY=v=>((bandY(BY.chapter)-44-v*13)+view.y)*view.k;
+      const lerp=c=>{let a=sp[0],b=sp[sp.length-1];
+        for(let i=0;i<sp.length-1;i++) if(c>sp[i].chap&&c<sp[i+1].chap){a=sp[i];b=sp[i+1];}
+        return a.emov+(b.emov-a.emov)*(c-a.chap)/(b.chap-a.chap);};
+      ctx.setLineDash([4,4]); ctx.strokeStyle="rgba(232,184,75,.34)"; ctx.lineWidth=1;
+      ctx.beginPath(); sp.forEach((n,i)=>{const p=T(n); i?ctx.lineTo(p.x,EY(n.emov)):ctx.moveTo(p.x,EY(n.emov));});
+      ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle="rgba(232,184,75,.92)";
+      sp.forEach(n=>{const p=T(n);ctx.beginPath();ctx.arc(p.x,EY(n.emov),3.4,0,6.2832);ctx.fill();});
+      ctx.strokeStyle="rgba(232,184,75,.45)";
+      gap.forEach(n=>{const p=T(n);ctx.beginPath();ctx.arc(p.x,EY(lerp(n.chap)),2.6,0,6.2832);ctx.stroke();});
+      N.filter(n=>n.layer==="chapter"&&n.emo).forEach(n=>{const p=T(n);
+        ctx.font='400 9.5px '+CSS('--emoji'); ctx.fillStyle=CSS('--ink3'); ctx.textAlign='center';
+        ctx.fillText(n.emo,p.x,EY(n.emov!=null?n.emov:lerp(n.chap))-9);});
+    }
+  }
+
+  // 점 + **자리에 직접 단 이름**. 53 개는 전부 이름을 달 수 있는 수다.
+  N.forEach(n=>{
+    const p=T(n), v=vis(n); if(!v&&!q) {}
+    const col=CSS(n.band.c), rr=RAD(n)*Math.min(1.7,view.k);
+    ctx.globalAlpha= !v?.10 : (f&&!near(n.id)? .22 : 1);
+
+    if(n.layer==="symbol"){                       // 상징은 글리프 자체가 점이다
+      ctx.font=(rr*2)+'px '+CSS('--emoji'); ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(n.label,p.x,p.y); ctx.textBaseline='alphabetic';
+    } else {
+      ctx.beginPath(); ctx.arc(p.x,p.y,rr,0,6.2832);
+      // 자리 없음 = 테두리만. 채우면 「여기 있다」는 말이 되는데 그 자리는 안 적혀 있다.
+      if(n.pos==="none"){ctx.strokeStyle=col;ctx.lineWidth=1.3;ctx.stroke();}
+      else {ctx.fillStyle=col; ctx.fill();}
+      if(showPole&&n.pole&&POLE[n.pole]){ctx.strokeStyle=POLE[n.pole].c;ctx.lineWidth=Math.max(1.3,rr*.38);ctx.stroke();}
+      if(f&&f.id===n.id){ctx.strokeStyle="#fff";ctx.lineWidth=1.6;ctx.stroke();}
+      // 이웃이 투표해 준 자리 = 도넛. 가운데를 뚫어 「속이 비었다」고 말한다.
+      if(n.pos==="vote"){ctx.fillStyle=CSS('--bg');ctx.beginPath();
+        ctx.arc(p.x,p.y,Math.max(1.3,rr*.44),0,6.2832);ctx.fill();}
+    }
+
+    if(v||q){
+      if(n.layer==="chapter"){
+        ctx.font='600 13px '+CSS('--emoji'); ctx.fillStyle=CSS('--ink'); ctx.textAlign='center';
+        ctx.fillText(n.label, p.x, p.y-rr-9);
+      } else if(n.layer!=="symbol"){
+        // 오른쪽에 단다. 맨 오른쪽 칸(전반·부록)은 화면을 넘으므로 왼쪽으로 접는다.
+        const right=p.x < W-158;
+        const big=n.layer==="element";
+        ctx.font=(big?'500 11px ':'400 9.5px ')+CSS('--emoji');
+        ctx.fillStyle= big?CSS('--ink'):CSS('--ink2');
+        ctx.textAlign=right?'left':'right';
+        let t=SHORT(n); const lim=big?22:19; if(t.length>lim) t=t.slice(0,lim)+'…';
+        ctx.fillText(t, p.x+(right?rr+6:-rr-6), p.y+3.5);
+        if(big){ ctx.font='500 9.5px '+CSS('--mono'); ctx.fillStyle=CSS('--dyn');
+          ctx.textAlign='center'; ctx.fillText(String(DEG[n.id]||0), p.x, p.y-rr-4); }
+      }
+    }
+    ctx.globalAlpha=1;
   });
 }
 function resize(){DPR=Math.min(2,devicePixelRatio||1);const s=document.getElementById('stage');
   W=s.clientWidth;H=s.clientHeight;cv.width=W*DPR;cv.height=H*DPR;layout();draw();}
-// 상호작용
+
+// ── 상호작용 ──────────────────────────────────────────────────────────────
 let drag=null;
-cv.addEventListener('mousedown',e=>{drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y};cv.classList.add('drag')});
+cv.addEventListener('mousedown',e=>{drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y,moved:false};cv.classList.add('drag')});
 addEventListener('mouseup',()=>{drag=null;cv.classList.remove('drag')});
 cv.addEventListener('mousemove',e=>{
-  if(drag){view.x=drag.vx+(e.clientX-drag.x)/view.k;view.y=drag.vy+(e.clientY-drag.y)/view.k;draw();return;}
+  if(drag){drag.moved=true;view.x=drag.vx+(e.clientX-drag.x)/view.k;view.y=drag.vy+(e.clientY-drag.y)/view.k;draw();return;}
   const r=cv.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
-  let best=null,bd=15;
+  let best=null,bd=16;
   N.forEach(n=>{if(!vis(n))return;const p=T(n);const d=Math.hypot(p.x-mx,p.y-my);if(d<bd){bd=d;best=n;}});
   const tip=document.getElementById('tip');
   if(best!==hot){hot=best;draw();}
-  if(best){tip.style.opacity=1;tip.style.left=(mx+14)+'px';tip.style.top=(my+14)+'px';
-    tip.innerHTML=`<b>${best.label}</b><span class="m">${best.band.nm} · ${best.chap? best.chap+"장":"전반·부록"}${best.pole&&POLE[best.pole]?" · "+best.pole+POLE[best.pole].n:""}${best.emo?" · "+best.emo:""}<br>자리 ${ {self:"파일이 적었다",obs:"원고가 문다",vote:"이웃 투표",none:"적힌 데 없음",spine:"스파인"}[best.pos]||"—" }${best.friction?'<br>마찰 '+best.friction:''}</span>`;
+  if(best){tip.style.opacity=1;
+    tip.style.left=Math.min(mx+14,W-300)+'px'; tip.style.top=(my+14)+'px';
+    tip.innerHTML=`<b>${best.label}</b><span class="m">${best.band.nm} · ${best.chap?best.chap+"장":"전반·부록"}`
+      +(best.layer==="element"?` · 겪은 일 <b style="color:var(--dyn)">${DEG[best.id]||0}편</b>을 문다`:"")
+      +(best.pole&&POLE[best.pole]?" · "+best.pole+POLE[best.pole].n:"")
+      +`<br>자리 ${POSNM[best.pos]||"—"}`+(best.friction?'<br>마찰 '+best.friction:'')+`</span>`;
   } else tip.style.opacity=0;
 });
+cv.addEventListener('mouseleave',()=>{hot=null;document.getElementById('tip').style.opacity=0;draw();});
 cv.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.12:1/1.12;
   view.k=Math.max(.45,Math.min(5,view.k*f));draw();},{passive:false});
-cv.addEventListener('click',()=>{ if(!hot) return; sel=hot;
-  const ins=DATA.edges.filter(e=>e.s===sel.id||e.t===sel.id).map(e=>e.s===sel.id?e.t:e.s);
-  const g=(k)=>ins.filter(id=>byId[id]&&byId[id].layer===k);
-  document.getElementById('card').innerHTML=
-    `<h3>${sel.label}</h3><div class="m">${sel.band.nm} · ${sel.chap?sel.chap+'장':'전반·부록'} · 잇는 선 ${ins.length}</div>`
-    +(sel.friction?`<p style="margin:9px 0 0">마찰 — ${sel.friction}</p>`:'')
-    +`<div class="m" style="margin-top:7px">자리 — ${ {self:"파일이 적었다",obs:"원고가 문다",vote:"이웃이 투표해 준 자리",none:"적힌 데 없음",spine:"장 스파인"}[sel.pos]||"—" }</div>`
-    + BAND.map(b=>{const a=g(b.k); return a.length?`<div class="m" style="margin-top:9px">${b.nm} ${a.length}</div><ul>${a.slice(0,9).map(x=>`<li>${byId[x].label.slice(0,30)}</li>`).join('')}</ul>`:''}).join('')
-    +'<button class="back">← 눈 판독으로</button>';
-});
-document.getElementById('search').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();draw()});
-document.getElementById('rows').innerHTML=BAND.map(b=>
- `<button class="rw" data-k="${b.k}" aria-pressed="true"><span class="dot" style="background:var(${b.c});color:var(${b.c})"></span>${b.nm}<em>${b.sub}</em><span class="n" id="n_${b.k}"></span></button>`).join('');
-document.getElementById('rows').addEventListener('click',e=>{const b=e.target.closest('.rw');if(!b)return;
+cv.addEventListener('click',()=>{ if(!hot){closeCard();return;} sel=hot; openCard(); draw(); });
+
+const card=document.getElementById('card');
+function closeCard(){ sel=null; card.classList.remove('on'); draw(); }
+function openCard(){
+  const ins=[...(LINK[sel.id]||[])].map(id=>byId[id]).filter(Boolean);
+  const g=k=>ins.filter(n=>n.layer===k);
+  card.innerHTML=`<button class="x" aria-label="닫기">×</button>
+    <h3>${sel.label}</h3>
+    <div class="m">${sel.band.nm} · ${sel.chap?sel.chap+'장':'전반·부록'} · 잇는 선 ${ins.length}</div>`
+   +(sel.layer==="element"?`<p style="margin:9px 0 0">겪은 일 <b style="color:var(--dyn)">${DEG[sel.id]||0}편</b>을 문다 — 자리 받은 20편 중.</p>`:'')
+   +(sel.friction?`<p style="margin:9px 0 0">마찰 — ${sel.friction}</p>`:'')
+   +`<div class="m" style="margin-top:7px">자리 — ${POSNM[sel.pos]||"—"}</div>`
+   + BAND.map(b=>{const a=g(b.k); return a.length
+       ?`<div class="m" style="margin-top:9px">${b.nm} ${a.length}</div><ul>${a.map(x=>`<li>${SHORT(x).slice(0,28)}</li>`).join('')}</ul>`:''}).join('');
+  card.classList.add('on');
+}
+card.addEventListener('click',e=>{ if(e.target.closest('.x')) closeCard(); });
+addEventListener('keydown',e=>{ if(e.key==="Escape") closeCard(); });
+
+// ── 조종대 한 줄 ──────────────────────────────────────────────────────────
+document.getElementById('chips').innerHTML=BAND.filter(b=>b.k!=="chapter").map(b=>
+ `<button class="chip" data-k="${b.k}" aria-pressed="true" title="${b.sub}"
+   ><i style="background:var(${b.c})"></i>${b.nm}<b>${DATA.nodes.filter(n=>n.layer===b.k).length}</b></button>`).join('');
+document.getElementById('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
   on[b.dataset.k]=!on[b.dataset.k];b.setAttribute('aria-pressed',on[b.dataset.k]);draw();});
-document.getElementById('poles').innerHTML=Object.entries(POLE).map(([e,v])=>
- `<div class="rw" style="cursor:default"><span class="dot" style="background:transparent;border:2.5px solid ${v.c};box-shadow:none"></span>${e} ${v.n}<span class="n">${DATA.nodes.filter(n=>n.pole===e).length}</span></div>`).join('');
-/* ══ 👁️ 눈 판독 — 이 화면이 먼저 말하는 한 문장 ═══════════════════════════
+document.getElementById('search').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();draw()});
+const tog=(id,get,set)=>{const el=document.getElementById(id);
+  el.onclick=()=>{set(!get());el.setAttribute('aria-pressed',get());
+    el.style.color=get()?CSS('--ink'):""; el.style.borderColor=get()?CSS('--ink3'):""; draw();};};
+tog('tPole',()=>showPole,v=>showPole=v);
+tog('tEmo', ()=>showEmo, v=>showEmo=v);
+document.getElementById('reset').onclick=()=>{view={x:0,y:0,k:1};draw()};
+
+/* ══ 👁️ 한 줄 판독 ═══════════════════════════════════════════════════════
    2026-10-31 — ⛺️덮개와 💣배선으로 깎았다. 296 → 53 노드 · 865 → 111 선.
    재현 = `PRUNE=1 python3 .claude/gen_graph_data.py` (PRUNE=0 이면 전부 그린다).
-   남긴 것 = 자리 받은 일화 20 · 그 20 을 덮는 생각원소 9 · 장을 덮는 신의전언 4 · 상징 8.
-   「노드 수」는 재고지 측정이 아니다. 눈이 묻는 것은 하나 —
-   **이 점들의 자리를 누가 박았나.**  수치는 전부 DATA 에서 센다(손으로 안 적는다). */
-const CORPUS=DATA.nodes.filter(n=>n.layer!=="root"&&n.layer!=="chapter");
-const tally=a=>({w:a.filter(WRITTEN).length,
-                 v:a.filter(n=>n.pos==="vote").length,
-                 z:a.filter(n=>n.pos==="none").length, t:a.length});
-function eyeHead(){
-  const c=tally(CORPUS), pct=Math.round(c.w/c.t*100);
-  document.getElementById('eye').innerHTML=
-    `<div class="eyeNum">${c.w}<span>/${c.t}</span></div>
-     <div class="eyeSide">
-      <div class="eyeLab"><b>자리가 적힌</b> 점 — 전체의 ${pct}%</div>
-      <div class="meter" role="img" aria-label="적힌 ${c.w} · 이어 그린 ${c.v} · 빈칸 ${c.z}">
-       ${c.w?`<i class="m1" style="flex:${c.w}"></i>`:""}
-       ${c.v?`<i class="m2" style="flex:${c.v}"></i>`:""}
-       ${c.z?`<i class="m3" style="flex:${c.z}"></i>`:""}
-      </div>
-      <div class="eyeKey"><span><i class="sw m1"></i>적힘 <b>${c.w}</b></span><span><i class="sw m2"></i>이어 그림 <b>${c.v}</b></span><span><i class="sw m3"></i>빈칸 <b>${c.z}</b></span></div>
-     </div>`;
+   같은 날 다시 지음 — 290px 카드가 상시 떠서 그림을 덮던 자리를 한 줄로 내렸다.
+   「노드 수」는 재고지 측정이 아니다. 눈이 묻는 것은 둘 —
+   **이 점들의 자리를 누가 박았나**, 그리고 **한 생각이 몇 편을 무나.**
+   수치는 전부 DATA 에서 센다(손으로 안 적는다). */
+function readLine(){
+  const corp=DATA.nodes.filter(n=>n.layer!=="root"&&n.layer!=="chapter");
+  const w=corp.filter(WRITTEN).length, v=corp.filter(n=>n.pos==="vote").length,
+        z=corp.filter(n=>n.pos==="none").length, t=corp.length;
+  const top=Object.entries(DEG).sort((a,b)=>b[1]-a[1])[0]||["",0];
+  const eps=DATA.nodes.filter(n=>n.layer==="episode").length;
+  const nm=(byId[top[0]]&&SHORT(byId[top[0]]))||top[0];
+  document.getElementById('read').innerHTML=
+    `<span><b>${w}/${t}</b> 점만 제 자리를 스스로 적었다 — 이웃이 투표해 준 것 ${v} · 빈칸 ${z}.</span>
+     <span class="meter" role="img" aria-label="적힘 ${w} · 이어 그린 ${v} · 빈칸 ${z}">
+      ${w?`<i class="m1" style="flex:${w}"></i>`:""}${v?`<i class="m2" style="flex:${v}"></i>`:""}${z?`<i class="m3" style="flex:${z}"></i>`:""}
+     </span>
+     <span>가장 무거운 생각 <b>${nm}</b> 하나가 겪은 일 <b>${top[1]}/${eps}</b>편을 문다.</span>`;
 }
-function eyeCard(){
-  const rows=BAND.filter(b=>b.k!=="chapter").map(b=>{
-    const c=tally(CORPUS.filter(n=>n.layer===b.k));
-    const td=(v)=>`<td class="${v?'hi':'o'}">${v||"–"}</td>`;
-    return `<tr><td>${b.nm.replace(/^L[123] /,"")}</td>${td(c.w)}${td(c.v)}${td(c.z)}</tr>`;
-  }).join("");
-  const ep=tally(CORPUS.filter(n=>n.layer==="episode"));
-  document.getElementById('card').innerHTML=
-   `<h3>👁️ 이 지도가 재는 것</h3>
-    <div class="m">자리를 누가 박았나 — 적힘 · 이어 그림 · 빈칸</div>
-    <table class="ptab"><tr><th>층</th><th>적힘</th><th>이어</th><th>빈칸</th></tr>${rows}</table>
-    <p style="margin:10px 0 0">겪은 것 <b style="color:var(--ink)">${ep.v}편</b>은 제 장을 <b style="color:var(--ink)">한 번도 적지 않았다</b>. 지도 위 그 자리는 전부 이웃이 투표해 준 것이라 <b>도넛</b>으로 그린다 — 읽은 것은 제 자리를 스스로 신고한다(${tally(CORPUS.filter(n=>n.layer==="god")).w}/${tally(CORPUS.filter(n=>n.layer==="god")).t}).</p>
-    <p style="margin:8px 0 0">점을 누르면 그 점이 무는 선이 열린다.</p>`;
-}
-document.getElementById('card').addEventListener('click',e=>{
-  if(e.target.closest('.back')){ sel=null; eyeCard(); }});
-document.getElementById('reset').onclick=()=>{view={x:0,y:0,k:1};draw()};
+degrees();
 addEventListener('resize',resize);
 resize(); requestAnimationFrame(resize); setTimeout(resize,120);
-BAND.forEach(b=>{const el=document.getElementById('n_'+b.k); if(!el) return;
-  const a=N.filter(n=>n.layer===b.k);
-  el.textContent=b.k==="chapter"?a.length:`${a.filter(WRITTEN).length}/${a.length}`;});
-eyeHead(); eyeCard();
+readLine();
 </script>
 <script>
 /* ══ 장별 두 자(尺) — 2026-10-14 scene_or_summary.html 에서 이관 ══
