@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>투향 감정 — 새장에선 식고 둥지에선 더워진다</title>
+<title>투향 대사 — 다음에 고칠 한 줄</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap');
   :root{
@@ -146,34 +146,42 @@
 
   <!-- ══════════ HERO ══════════ -->
   <div class="hero">
-    <div class="eyebrow">투향 · 감정 측정</div>
-    <h1>새장에선 식고, 둥지에선 다시 더워진다.</h1>
-    <div class="kpi">
-      <div><div class="v" id="kda">–</div><div class="k"><b style="color:var(--da)">다</b> — 영감으로 열고 절박으로 닫는다. 1장→5장 온도</div></div>
-      <div><div class="v" id="kse">–</div><div class="k"><b style="color:var(--se)">세</b> — 평온 하나로 버틴다. 그 평온이 5장에 깨진다</div></div>
-      <div><div class="v" id="ksd">–</div><div class="k"><b style="color:var(--seda)">세다</b> — 8장에 한 번 더 꺼지고 10장에 가장 높다</div></div>
-    </div>
+    <div class="eyebrow">투향 · 대사 최적화</div>
+    <h1>다음에 고칠 대사 — <span id="hn">–</span></h1>
     <div class="say">
-      가장 단순히 말하면 이렇다. <b>다는 떨어지고, 세는 평평하다가 같이 떨어지고, 세다는 한 번 더 떨어진 뒤 올라온다.</b>
-      바닥은 두 번이다 — <b>5장</b>에서 다와 세가 함께, <b>8장</b>에서 세다가 혼자.
-      <br><br>
-      그리고 세다는 둘을 반씩 물려받지 않았다. <b>다에게서 죄책을(55→47), 세에게서 평온을(60→57)</b> 가져오고
-      <b>다의 절박은 내려놓는다(46→36).</b> 둘을 다 넘는 것은 영감 하나뿐이다(67).
-      <br><br>
-      아래 셋은 그 결론을 두 번 재고(①②) 그 결론이 저자를 어떻게 바꿨는지 적는다(③).
+      이 판은 그림이 아니라 <b>다음에 손댈 한 줄</b>을 낸다.
+      열여섯 자리(열 방 × 선 화자)를 <b>빚</b>—설계한 감정이 대사에 안 나온 양—으로 줄 세우고,
+      각 자리마다 <b>무엇이 모자란지</b>와 <b>지금 거기 있는 대사</b>를 나란히 놓는다.
+      처분은 넷뿐이다 — <b style="color:var(--alert)">고친다</b> ·
+      <b style="color:var(--se)">설계부터</b> · <b>둔다</b> · <b style="color:var(--mute)">그대로 둔다</b>.
     </div>
   </div>
 
-  <!-- ══════════ ⓿ 결론 ══════════ -->
+  <!-- ══════════ ① 고칠 차례 ══════════ -->
+  <section id="s1">
+    <h2><span class="n">01</span> 고칠 차례</h2>
+    <div class="ask">어느 대사를 고치나. 빚이 큰 순서.</div>
+    <div class="fig">
+      <div class="find">열여섯 자리 중 <em id="nfix">–</em>만 지금 고칠 자리다.</div>
+      <div class="sub">
+        줄을 누르면 그 방의 열두 축이 열린다.
+        <b style="color:var(--alert)">고친다</b> = 빚 6 이상 · <b style="color:var(--se)">설계부터</b> = 설계·원고가
+        나란히 낮은 축이 넷 이상이라 대사를 고쳐도 잴 것이 없는 자리 ·
+        <b style="color:var(--mute)">그대로 둔다</b> = 5장. 공포를 못 견디고 설계도로 도망친 자국이라 빚이 커도 안 고친다.
+      </div>
+      <div style="overflow-x:auto"><table id="work" style="min-width:620px"></table></div>
+    </div>
+  </section>
+
+  <!-- ══════════ ② 왜 이 순서인가 ══════════ -->
   <section id="s0">
-    <h2><span class="n">00</span> 결론</h2>
-    <div class="ask">세 화자의 감정은 열 장에서 어떻게 변하나.</div>
+    <h2><span class="n">02</span> 왜 이 순서인가</h2>
+    <div class="ask">세 화자의 감정이 열 장에서 어떻게 변하나.</div>
     <div class="fig">
       <div class="find">1→5장 내려가고 6→10장 올라온다. 바닥은 <em>두 번</em> — 5장과 8장.</div>
       <div class="sub">
-        <b>온도</b> = 양(+) 여섯 축 평균 − 음(−) 여섯 축 평균. 부호는 정전이 이미 적어 둔 것을 그대로 쓴다 —
-        여섯 짝 중 10연만 둘 다 (+), 8연만 둘 다 (−)라 양·음이 정확히 6:6으로 갈린다. 새 자를 만들지 않았다.
-        점에 손을 올리면 그 방에서 가장 높은 세 축이 나온다.
+        <b>온도</b> = 양(+) 여섯 축 평균 − 음(−) 여섯 축 평균. 부호는 정전 여섯 짝이 이미 적어 둔 것이다 —
+        10연만 둘 다 (+), 8연만 둘 다 (−)라 양·음이 정확히 6:6으로 갈린다. 점에 손을 올리면 그 방의 가장 높은 세 축이 나온다.
       </div>
       <svg id="tsvg" viewBox="0 0 780 260" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="legend">
@@ -183,16 +191,44 @@
       </div>
       <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
         <div class="find" style="font-size:.96em">세다는 반씩 섞인 것이 아니다 — <em>죄책은 다에게서, 평온은 세에게서</em>.</div>
-        <div class="sub">숫자는 각 화자가 <b>선 장들의 평균</b>(다 1~6장 · 세 1~5장 · 세다 6~10장). 열두 축을 다·세가 갈리는 폭 순으로 싣는다.
-</div>
+        <div class="sub">숫자는 각 화자가 <b>선 장들의 평균</b>(다 1~6장 · 세 1~5장 · 세다 6~10장).</div>
         <table id="inherit"></table>
       </div>
     </div>
+
+    <div class="redline">
+      <div class="h">🚫 레드라인 — 사람에게 쓰지 마라</div>
+      이것은 <b>인물</b> 진단 도구다. <b>사람</b> 진단 도구가 아니다.
+      창업자가 자기 감정을 열두 칸에 매기고 "빚이 크다"로 읽으면, 계획을 벗어난 감정을 자기 실패로 코딩하게 된다 —
+      그건 정확히 <b>수치심 생성 기계</b>다. 정서 라벨링의 효과는 <i>이름을 붙이는 데</i> 있지,
+      목표치와의 편차에 점수를 매겨 벌하는 데 있지 않다. (조직심리 코치, 2026-08-22)
+    </div>
   </section>
 
-  <!-- ══════════ ① 수렴 ══════════ -->
-  <section id="s4">
-    <h2><span class="n">01</span> 수렴</h2>
+  <!-- ══════════ 접은 것 ══════════ -->
+  <div class="more">
+    <div class="h">자세히</div>
+
+    <details>
+      <summary>빚 궤적 — 열 방이 설계를 얼마나 못 따라갔나 (위 표의 그림판)</summary>
+      <div>
+        위로 솟을수록 빚이 크다. <b>5장은 고치지 마라</b> — 공포를 못 견디고 설계도로 도망친 흔적이 이 책에서 가장 정직한 자국이다.
+        <b>고칠 곳은 4장과 8장이다</b> — 4장엔 텐을 묻는 장면은 있는데 <i>묻는 손의 감정</i>이 없고,
+        8장은 멱살을 쥐는 대면이 대사 넷으로 요약된다.
+      <svg id="jsvg" viewBox="0 0 780 250" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend">
+        <span><i class="lk" style="background:var(--da)"></i>다 (多) · 무엇을 원하나</span>
+        <span><i class="lk" style="background:var(--se)"></i>세 (世) · 무엇을 믿나</span>
+        <span><i class="lk sq" style="background:var(--seda)"></i>세다 · 둘의 무게중심</span>
+        <button class="tableview" id="t1btn">표로 보기</button>
+      </div>
+      <div id="t1" hidden></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>다와 세는 정말 가까워지는가 — 두 화자 사이의 거리 (#9)</summary>
+      <div>
     <div class="ask">#9이 물은 것 — <b>다와 세가 정말 가까워지는가.</b></div>
     <div class="fig">
       <div class="find">설계는 좁히는데 원고는 안 좁힌다. 그리고 <em>7장부터는 잴 수가 없다</em>.</div>
@@ -216,34 +252,12 @@
       </div>
       <div id="t4" hidden></div>
     </div>
-  </section>
+  </div>
+    </details>
 
-  <!-- ══════════ ② 빚 ══════════ -->
-  <section id="s1">
-    <h2><span class="n">02</span> 빚</h2>
-    <div class="ask">열 방 중 어디가 설계를 가장 못 따라갔나.</div>
-    <div class="fig">
-      <div class="find">빚이 가장 큰 방은 <em>5장</em> — 공포로 열고, 설계도로 닫았다.</div>
-      <div class="sub">
-        위로 솟을수록 <b>빚</b>(설계한 감정이 원고에 안 나온 양)이 크다. 점에 손을 올리면 그 방의 세 숫자가 나온다.
-        <b>5장은 고치지 마라</b> — 공포를 못 견디고 설계도로 도망친 흔적이 이 책에서 가장 정직한 자국이다.
-        <br><b style="color:var(--ink)">고칠 곳은 4장과 8장이다</b> — 4장엔 텐을 묻는 장면은 있는데 <i>묻는 손의 감정</i>이 없고,
-        8장은 멱살을 쥐는 대면이 대사 넷으로 요약된다.
-      </div>
-      <svg id="jsvg" viewBox="0 0 780 250" preserveAspectRatio="xMidYMid meet"></svg>
-      <div class="legend">
-        <span><i class="lk" style="background:var(--da)"></i>다 (多) · 무엇을 원하나</span>
-        <span><i class="lk" style="background:var(--se)"></i>세 (世) · 무엇을 믿나</span>
-        <span><i class="lk sq" style="background:var(--seda)"></i>세다 · 둘의 무게중심</span>
-        <button class="tableview" id="t1btn">표로 보기</button>
-      </div>
-      <div id="t1" hidden></div>
-    </div>
-  </section>
-
-  <!-- ══════════ ③ 생산자 ══════════ -->
-  <section id="s3">
-    <h2><span class="n">03</span> 생산자</h2>
+    <details>
+      <summary>열 명이 바꾼 다섯 — 원고가 아니라 저자가 바뀐 자리</summary>
+      <div>
     <div class="ask">그래서 무엇을 바꿨나. 원고가 아니라 저자가 바뀐 자리.</div>
     <div class="fig">
       <div class="find">열 명이 독립으로 답했고, <em>과반이 같은 말을 한 것</em>만 옮겼다.</div>
@@ -275,20 +289,8 @@
         막대 열두 개로는 곱을 못 그린다.
       </div>
     </div>
-
-    <div class="redline">
-      <div class="h">🚫 레드라인 — 사람에게 쓰지 마라</div>
-      이것은 <b>인물</b> 진단 도구다. <b>사람</b> 진단 도구가 아니다.
-      창업자가 자기 감정을 열두 칸에 매기고 "빚이 크다"로 읽으면, 계획을 벗어난 감정을 자기 실패로 코딩하게 된다 —
-      그건 정확히 <b>수치심 생성 기계</b>다. 정서 라벨링의 효과는 <i>이름을 붙이는 데</i> 있지,
-      목표치와의 편차에 점수를 매겨 벌하는 데 있지 않다. (조직심리 코치, 2026-08-22)
-    </div>
-  </section>
-
-
-  <!-- ══════════ 접은 것 ══════════ -->
-  <div class="more">
-    <div class="h">자세히</div>
+      </div>
+    </details>
 
     <details>
       <summary>이 자는 쓸 만한가 — 열두 축이 제 연에서 서는지</summary>
@@ -1084,10 +1086,6 @@ const sgn = t => (t>0?'+':'−') + Math.abs(Math.round(t));
     el.addEventListener('mouseleave', hideTip);
     el.addEventListener('click', ()=>openChapter(+el.dataset.c));
   });
-  // 머리 숫자 셋 — 본문과 같은 자리에서 찍는다
-  document.getElementById('kda').textContent = sgn(temp(5,'da'));
-  document.getElementById('kse').textContent = DATA[5].se.calm;
-  document.getElementById('ksd').textContent = sgn(temp(10,'seda'));
 })();
 
 /* ⓿-b 물려받음 — 세다가 다·세 중 누구 쪽에 섰나.
@@ -1116,11 +1114,50 @@ const sgn = t => (t>0?'+':'−') + Math.abs(Math.round(t));
         그 아래에서는 「누구를 닮았다」가 성립하지 않는다. <b style="color:var(--ink2)">결론을 지는 것은 위 두 줄뿐이다.</b></td></tr>`;
 })();
 
+/* ══════════ ① 고칠 차례 — 대사 하나를 고르는 표 ══════════
+   이 판은 대사 최적화 대시보드다. 산출은 그림이 아니라 **다음에 손댈 한 줄**이다.
+   🚫 하드코딩 금지 — 순위도 처분도 DATA/PRIOR 에서 매번 계산한다.
+   ⚠️ 처분 검사 순서를 바꾸지 마라. 5장 룰링이 먼저다 — 뒤로 내리면 5장 세(미지근 5)가
+      「설계부터」로 뽑혀 「고치지 마라」는 룰링과 반대로 읽힌다. */
+const WORK = SLOTS.map(([c,s])=>{
+  const g = {}; AXES.forEach(a => g[a] = gap(c,s,a));
+  const w = AXES.reduce((m,a)=>g[a]<g[m]?a:m, AXES[0]);
+  const d = debt(c,s), tp = tepid(c,s);
+  let act, why, col;
+  if (c === 5)      { act='그대로 둔다'; col='var(--mute)';
+                      why='공포를 못 견디고 설계도로 도망친 자국 — 이 책에서 가장 정직하다'; }
+  else if (tp >= 4) { act='설계부터';   col='var(--se)';
+                      why=`설계·원고가 나란히 낮은 축이 ${tp}개 — 고쳐도 잴 것이 없다`; }
+  else if (d >= 6)  { act='고친다';     col='var(--alert)';
+                      why=`${AXKO[w]}이 ${-g[w]} 모자란다`; }
+  else              { act='둔다';       col='var(--dim)'; why=`빚 ${d} — 작다`; }
+  return {c, s, d, act, why, col, w, gw:g[w], q:(DATA[c].quotes||{})[s] || ''};
+}).sort((a,b) => b.d - a.d || a.c - b.c);
+
+(function(){
+  const fix = WORK.filter(r=>r.act==='고친다');
+  const head = fix[0];
+  document.getElementById('hn').innerHTML =
+    `<span style="color:var(--alert)">${CHAPTERS[head.c].emoji} ${head.c}장 ${SPEAKERS[head.s].ko}</span>`;
+  document.getElementById('nfix').textContent = `넷`.replace('넷', ['','하나','둘','셋','넷','다섯','여섯','일곱','여덟'][fix.length] || fix.length);
+  document.getElementById('work').innerHTML =
+    `<tr><th style="width:15%">방</th><th style="width:7%">화자</th><th class="r" style="width:7%">빚</th>
+         <th style="width:33%">지금 그 대사</th><th>처분</th></tr>`
+    + WORK.map(r=>`<tr class="${r.act==='고친다'?'':'dead'}" data-c="${r.c}" style="cursor:pointer">
+        <td class="axname">${CHAPTERS[r.c].emoji} ${r.c} ${CHAPTERS[r.c].name.split(' ')[0]}</td>
+        <td style="color:${SPEAKERS[r.s].color};font-weight:600">${SPEAKERS[r.s].ko}</td>
+        <td class="r num">${r.d}</td>
+        <td style="color:var(--ink2);line-height:1.6">「${r.q.length>38?r.q.slice(0,38)+'…':r.q}」</td>
+        <td><b style="color:${r.col}">${r.act}</b> <span style="color:var(--dim)">— ${r.why}</span></td></tr>`).join('');
+  document.querySelectorAll('#work tr[data-c]').forEach(tr=>
+    tr.addEventListener('click', ()=>openChapter(+tr.dataset.c)));
+})();
+
 render(5);
 
 /* 옛 링크 호환 — ?v=… 또는 #s… 로 들어오면 해당 절로 */
 (function(){
-  const V={trajectory:'s4', convergence:'s4', plot:'s1', en:'s1', heatmap:'s0', sources:'s0'};
+  const V={trajectory:'s0', convergence:'s0', plot:'s1', en:'s1', heatmap:'s1', sources:'s1'};
   const k=new URLSearchParams(location.search).get('v');
   if(k&&V[k]){const el=document.getElementById(V[k]); if(el) el.scrollIntoView({block:'start'});}
 })();
