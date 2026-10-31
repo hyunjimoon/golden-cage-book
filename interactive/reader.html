@@ -1239,7 +1239,10 @@
         //   ch10_mirror_close 는 표에 **아예 없었다.** 5↔10 은 파일명이 둘 다 `_101`
         //   로 끝나는 거울짝이라 바꿔 적어도 눈에 안 띈다.
         // 🚫 vault 파일명을 다시 적지 마라. 마디 이름은 reference_graph.html 이 정한다:
-        //   grep -o '"id":"[^"]*"' interactive/reference_graph.html | sort -u
+        //   grep -oE '"id": ?"[^"]*"' interactive/reference_graph.html | sort -u
+        // ⚠️ 가운데 **공백**이 있어야 한다. 생성기가 json.dumps 로 찍어 `"id": "ch1"` 이다.
+        //   공백 없는 자(`"id":"`)는 **모든 판에서 0개**를 돌려준다 — 이름이 없어진 게
+        //   아니라 자가 안 닿는 것인데, 그대로 믿으면 또 「0/13 적중」이 나온다.
         "ch0_prologue": "ch0", "ch0_intro": "ch0", "ch0_characters": "ch0", "ch0_roadmap": "ch0",
         "ch1_mirror_cage": "ch1",
         "ch2_telescope_cage": "ch2",
