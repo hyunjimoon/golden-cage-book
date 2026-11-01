@@ -176,7 +176,7 @@ summary:hover{color:var(--gold)}
 <h2>세 꼴 <small>같은 원고, 못만 다르게 박았을 때</small></h2>
 <p class="note">에세이의 주장을 판 위에서 돌려 본 것이다 — <b>장편 통짜</b>는 못이 둘뿐이라 가운데가 가장 크게 흔들리고, <b>단편집</b>은 흔들림은 작지만 매 장 제자리로 돌아와 끝에 닿지 못한다. <b>모듈화 장편</b>만 둘을 함께 얻는다.</p>
 <div class="panel"><table id="modes"><thead><tr>
-<th>꼴</th><th>못</th><th>완독률</th><th>도달률</th><th>최대 흔들림</th><th>한 줄</th>
+<th>꼴</th><th>못</th><th>완독률 <small style="font-weight:400;text-transform:none;letter-spacing:0">통짜 대비</small></th><th>도달률 <small style="font-weight:400;text-transform:none;letter-spacing:0">통짜 대비</small></th><th>최대 흔들림</th><th>한 줄</th>
 </tr></thead><tbody></tbody></table></div>
 
 <h2>독자 넷 <small>다이아몬드 4축. ⚠️ 출발·인내·민감도는 어림이다</small></h2>
@@ -466,9 +466,16 @@ function modesTable(){
   const line={whole:'가운데가 가장 크게 흔들린다 — 중간에 길을 잃는 꼴',
               shorts:'흔들림은 작은데 매 장 제자리 — 끝에 닿지 않는다',
               mod:'흔들림도 작고 끝에도 닿는다 — 둘을 함께 얻는 유일한 꼴'};
+  /* 기준선 = 장편 통짜. 높이가 아니라 차이를 앞에 둔다 (박순영 수정안, tolzul #85).
+     완독률의 절대값은 모형이 뱉은 수이고 바깥에서 온 값이 0건이라, %를 크게 두면
+     그 숫자가 혼자 걸어 나간다. Δ%p 는 같은 모형 안의 비교라 모수 어림에 둔감하다. */
+  S.mode='whole';const base=simulate(S.reader);
+  const d=(v,b)=>{const x=(v-b)*100;return x===0?'<span style="color:var(--dim)">기준</span>'
+    :`<b style="color:${x>0?'#7fcf9b':'#e86767'}">${x>0?'+':''}${x.toFixed(0)}%p</b>`};
   one.forEach(m=>{S.mode=m;const s=simulate(S.reader);
     rows.push(`<tr><td>${label[m]}</td><td>${s.nails.length}</td>
-      <td>${(s.survival*100).toFixed(0)}%</td><td>${(s.reach*100).toFixed(0)}%</td>
+      <td>${d(s.survival,base.survival)}<br><span style="color:var(--dim);font-size:11px">${(s.survival*100).toFixed(0)}%</span></td>
+      <td>${d(s.reach,base.reach)}<br><span style="color:var(--dim);font-size:11px">${(s.reach*100).toFixed(0)}%</span></td>
       <td>${s.maxVar.toFixed(2)}</td><td style="text-align:left;color:#8c98a9">${line[m]}</td></tr>`)});
   S.mode=save;
   $('#modes tbody').innerHTML=rows.join('');
