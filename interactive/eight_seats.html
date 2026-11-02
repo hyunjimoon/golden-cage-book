@@ -74,6 +74,23 @@ body.m-fly.beat .seat.sn{opacity:.38}
 .pairline{stroke-width:1.9;stroke-dasharray:5 5;opacity:0;transition:opacity .4s}
 .mid{opacity:0;transition:opacity .4s}
 body.m-twist .pairline,body.m-twist .mid{opacity:.85}
+body.m-quilt .pairline{opacity:.9;stroke-dasharray:none;stroke-width:3.4}
+body.m-quilt .mid{opacity:.9}
+.stitch{stroke-width:2.2;stroke-dasharray:2 7;stroke-linecap:round;opacity:0;transition:opacity .4s}
+body.m-quilt .stitch{opacity:.85}
+table.conf{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+table.conf th{text-align:left;font-weight:600;color:#8b97ab;font-size:11px;letter-spacing:.5px;
+  border-bottom:1px solid rgba(255,255,255,.1);padding:6px 8px}
+table.conf td{padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+table.conf .cn{font-weight:600;color:#e6eaf2;white-space:nowrap}
+table.conf .cw{color:#9aa7bb;white-space:nowrap}
+table.conf .cw .x{color:#5f6b7e}
+table.conf .cs{color:#8793a6;font-style:italic}
+table.conf .cv{text-align:right;font-variant-numeric:tabular-nums;color:#c8d0dd}
+table.conf .ck{color:#7e8ba0;white-space:nowrap}
+table.conf tr.k면 .cn{border-left:3px solid #5B8CFF;padding-left:9px}
+table.conf tr.k실밥 .cn{border-left:3px dotted #5B8CFF;padding-left:9px}
+table.conf tr.k점 .cn{border-left:3px solid #FFD53A;padding-left:9px}
 .hubring{fill:#0d1220;stroke:var(--y);stroke-width:1.6}
 .hubno{fill:var(--y);font-family:var(--mono);font-size:15px;text-anchor:middle;letter-spacing:.06em}
 .hubbadge rect{fill:rgba(255,213,58,.1);stroke:rgba(255,213,58,.4)}
@@ -213,6 +230,7 @@ footer a{color:var(--dim)}
 <button data-mode="snake" aria-pressed="true"><b>뱀</b> 한 몸</button>
 <button data-mode="twist" aria-pressed="false"><b>비틀</b> 점 반전</button>
 <button data-mode="fly" aria-pressed="false"><b>나비</b> 두 날개</button>
+<button data-mode="quilt" aria-pressed="false"><b>퀼트</b> 면5·실밥3</button>
 </div>
 <p class="modehint" id="modehint"></p>
 
@@ -233,6 +251,11 @@ footer a{color:var(--dim)}
 <circle class="mid" cx="500.0" cy="360.0" r="4" fill="#FF6252" />
 <line class="pairline p4" x1="383.0" y1="513.0" x2="617.0" y2="207.0" stroke="#35C46A" />
 <circle class="mid" cx="500.0" cy="360.0" r="4" fill="#35C46A" />
+</g>
+<g id="stitches">
+<path class="stitch" d="M383.0,207.0 Q621.3,405.4 773.4,571.6" stroke="#5B8CFF" fill="none" />
+<path class="stitch" d="M383.0,207.0 Q500.0,122.8 617.0,207.0" stroke="#5B8CFF" fill="none" />
+<path class="stitch" d="M383.0,207.0 Q621.3,77.4 773.4,148.4" stroke="#5B8CFF" fill="none" />
 </g>
 <g id="hub">
 <circle class="hubring" cx="500" cy="360" r="40" />
@@ -367,6 +390,17 @@ footer a{color:var(--dim)}
 여기서 한 줄이 나온다: <b>뒤집으면 무엇을 재는지(대각)는 그대로고, 쓰는지 갚는지(좌우)만 바뀐다.</b></p>
 <table class="pairs"><tbody><tr style="--c:#5B8CFF"><td class="pc"></td><td>1 🪞 욕망</td><td class="ar">↔</td><td>6 🦋 고통</td><td class="tw">모르고 입기 → <b>알면서</b> 입기</td></tr><tr style="--c:#A277E8"><td class="pc"></td><td>2 🔭 상상</td><td class="ar">↔</td><td>7 🌷 지식</td><td class="tw">정확히 보되 안 뛴다 → <b>한 알을 손바닥에</b></td></tr><tr style="--c:#FF6252"><td class="pc"></td><td>3 💒 설득</td><td class="ar">↔</td><td>8 🌫️ 손익</td><td class="tw">아름다운데 바깥이 안 보인다 → <b>되물음이 보호다</b></td></tr><tr style="--c:#35C46A"><td class="pc"></td><td>4 ⏱️ 폭파</td><td class="ar">↔</td><td>9 🐦‍⬛ 기준</td><td class="tw">빌린 질서가 잘 돌수록 → <b>던지면</b> 해·달·별</td></tr></tbody></table>
 
+<h2>퀼트 — 여덟이 같은 꼴이 아니다 <small>면 다섯 · 실밥 셋</small></h2>
+<p class="note">자리는 이미 ∞ 한 몸 위에 앉아 있고, <b>갈등은 그 자리와 자리를 잇는 천</b>이다.
+그런데 여덟이 같은 꼴이 아니다 — <b>다섯은 가운데를 지나고, 셋은 가운데를 건너뛴다.</b>
+실밥 셋은 욕망에서 바깥으로 바로 뻗는다. <b>칸이 아니라 선</b>이라 꿰맨 자국으로 그렸다.</p>
+<p class="note"><b>두 숫자가 다른 것을 센다 — 섞으면 빚이다.</b>
+「내 기록」은 <b>내가 몇 번 적었나</b>로 합 <b>133곳</b>이고, 남의 창업은 <b>99곳</b>을 훑어 <b>25곳</b>에서 읽혔다(<b>27행</b> — 한 회사가 두 출처에 있으면 두 줄). 나머지 <b>74곳</b>은 <b>미정</b>이다 — 상대 쪽을 날짜로 특정 못 하면 거울짝으로 기계 배정하지 않고 빈칸으로 둔다. <b>빈칸이 다음 책이다.</b>
+천의 폭은 앞엣것을 쓴다 — 그래서 이 표는 한쪽으로 기울어 있다.
+<b>세상이 기운 게 아니라 내가 기울게 적었다.</b></p>
+<table class="conf"><thead><tr><th>이름</th><th>부딪히는 두 쪽</th><th>그 자리에서 들리는 말</th>
+<th>내 기록</th><th>꼴</th></tr></thead><tbody><tr class="k점"><td class="cn">지른 나, 막는 나</td><td class="cw">지른 나 <span class="x">↔</span> 떠안는 나</td><td class="cs">&ldquo;제가 그렇게 말해버렸으니 어떻게든 해야죠&rdquo;</td><td class="cv">30</td><td class="ck">점 · 가운데</td></tr><tr class="k면"><td class="cn">내가 1호 고객입니다</td><td class="cw">내 바람 <span class="x">↔</span> 손님</td><td class="cs">&ldquo;저도 이게 필요해서 만들었어요&rdquo;</td><td class="cv">26</td><td class="ck">면</td></tr><tr class="k면"><td class="cn">데모는 돌았다</td><td class="cw">내 그림 <span class="x">↔</span> 만드는 사람</td><td class="cs">&ldquo;데모에선 돌았는데요&rdquo;</td><td class="cv">9</td><td class="ck">면</td></tr><tr class="k면"><td class="cn">좋은데, 지금은 아니고</td><td class="cw">내 설득 <span class="x">↔</span> 돈 내는 사람</td><td class="cs">&ldquo;다음 라운드에서 다시 보죠&rdquo;</td><td class="cv">14</td><td class="ck">면</td></tr><tr class="k면"><td class="cn">눈금이 다르다</td><td class="cw">내 자 <span class="x">↔</span> 같이 일하는 사람</td><td class="cs">&ldquo;제 대시보드는 초록인데요&rdquo;</td><td class="cv">14</td><td class="ck">면</td></tr><tr class="k실밥"><td class="cn">원하니까 됩니다</td><td class="cw">내 바람 <span class="x">↔</span> 만드는 사람</td><td class="cs">&ldquo;안 되는 게 아니라 아직 안 해본 거죠&rdquo;</td><td class="cv">22</td><td class="ck">실밥</td></tr><tr class="k실밥"><td class="cn">내 꿈이 네 KPI</td><td class="cw">내 바람 <span class="x">↔</span> 같이 일하는 사람</td><td class="cs">&ldquo;이건 우리 모두의 목표잖아요&rdquo;</td><td class="cv">10</td><td class="ck">실밥</td></tr><tr class="k실밥"><td class="cn">알아보면 투자합니다</td><td class="cw">내 바람 <span class="x">↔</span> 돈 내는 사람</td><td class="cs">&ldquo;못 알아보는 분들이더라고요&rdquo;</td><td class="cv">8</td><td class="ck">실밥</td></tr></tbody></table>
+
 <h2>나비 — 왜 넷만 잴 수 있나</h2>
 <p class="note">욕망·상상·고통·지식은 <b>남과 합의할 단위가 없다.</b> 설득·폭파·손익·기준은 있다 —
 손익은 <b>$</b>, 기준은 <b>시간과 확률</b>. 단위가 있으면 둘이 같은 자 위에 서고, 그때 순환이 생긴다.
@@ -412,13 +446,14 @@ const ORDER = [1,2,3,4,5,6,7,8,9,10];
 const HINT = {
  snake:'<b>뱀</b> — 한 획이다. 1·2·3·4 로 왼 고리를 돌고 가운데(<b>5장</b>)에서 <b>돌아서</b> 9·8·7·6 을 되짚은 뒤 같은 점(<b>10장</b>)에서 닫는다. 책 순서는 6→9 인데 몸의 순서는 9→6 이다 — <b>뒤집으면 방향도 뒤집히기</b> 때문이고, 5장 이름이 「회전축」인 자리가 거기다. 순서가 뒤집혀도 같은 몸이면 <b>시간 순서가 뜻을 못 바꾼다</b> — <b>부분적 교환가능성</b>이 작도로 선 자리다(#158).',
  twist:'<b>비틀</b> — 짝 넷이 모두 <b>가운데 한 점</b>을 지난다. 점 반전이지 회전이 아니다. 그래서 <b>대각(무엇을 재나)은 그대로고 좌우(쓰나 갚나)만 뒤집힌다.</b>',
- fly:'<b>나비</b> — 두 날개는 좌우가 아니라 <b>대각</b>이고 둘 다 101 을 지난다. 못 재는 넷(욕망·상상·고통·지식)이 수축하면 재는 넷(설득·폭파·손익·기준)이 박동한다. 폭파의 잔재가 다시 상상의 먹이가 된다.'
+ fly:'<b>나비</b> — 두 날개는 좌우가 아니라 <b>대각</b>이고 둘 다 101 을 지난다. 못 재는 넷(욕망·상상·고통·지식)이 수축하면 재는 넷(설득·폭파·손익·기준)이 박동한다. 폭파의 잔재가 다시 상상의 먹이가 된다.',
+ quilt:'<b>퀼트</b> — 자리가 아니라 <b>자리를 잇는 선</b>을 본다. 여덟이 같은 꼴이 아니다 — <b>면 다섯</b>은 마주 보는 짝이라 선이 101 을 지나고(실선), <b>실밥 셋</b>은 욕망에서 바깥으로 바로 뻗어 가운데를 건너뛴다(시침질). <b>칸이 아니라 선이라</b> 꿰맨 자국으로 그렸다 — 좌표로 쓰면 격자가 10칸에서 45칸이 된다.'
 };
 let mode='snake', cur=1, timer=null, beat=null;
 
 function setMode(m){
  mode=m;
- document.body.classList.remove('m-snake','m-twist','m-fly');
+ document.body.classList.remove('m-snake','m-twist','m-fly','m-quilt');
  document.body.classList.add('m-'+m);
  document.querySelectorAll('.modes button').forEach(b=>
    b.setAttribute('aria-pressed', b.dataset.mode===m));
