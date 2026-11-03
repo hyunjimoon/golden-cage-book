@@ -1,140 +1,120 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1000" viewBox="0 0 1560 1000" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">
 <rect width="1560" height="1000" fill="#FBFAF8"/>
 <text x="96" y="62" font-size="30" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="-0.5" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">열린 이슈는 사이트의 어디에 닿아 있나</text>
-<text x="96" y="96" font-size="16" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">열린 108건 가운데 사이트의 어느 자리를 가리키는 건 9건. 그 9건 중 4건은 없는 자리를 가리킨다.</text>
-<text x="96" y="120" font-size="16" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">반대쪽에서 보면 읽을 수 있는 자리 33장 중 26장은 아무 이슈도 부르지 않는다.</text>
+<text x="96" y="96" font-size="16" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">열린 90건 가운데 사이트의 어느 자리를 가리키는 건 8건. 그 8건 중 3건은 없는 자리를 가리킨다.</text>
+<text x="96" y="120" font-size="16" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">반대쪽에서 보면 읽을 수 있는 자리 32장 중 24장은 아무 이슈도 부르지 않는다.</text>
 <line x1="96" y1="146" x2="1464" y2="146" stroke="#1A1D21" stroke-width="1.5"/>
-<text x="96" y="182" font-size="12" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="1.6" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">열린 이슈  108건</text>
-<text x="905" y="182" font-size="12" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="1.6" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">읽을 수 있는 자리  33장</text>
-<text x="96" y="216" font-size="13" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">선이 있다 — 9건</text>
+<text x="96" y="182" font-size="12" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="1.6" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">열린 이슈  90건</text>
+<text x="905" y="182" font-size="12" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="1.6" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">읽을 수 있는 자리  32장</text>
+<text x="96" y="216" font-size="13" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">선이 있다 — 8건</text>
 <rect x="96" y="238" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="253" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#9</text>
-<text x="182" y="253" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">감정 궤적 — 대사 최적화</text>
+<text x="128" y="253" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#42</text>
+<text x="182" y="253" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">세부 수정</text>
 <rect x="96" y="280" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="295" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#42</text>
-<text x="182" y="295" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">세부 수정</text>
+<text x="128" y="295" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#135</text>
+<text x="182" y="295" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">제품지도 — 소설</text>
 <rect x="96" y="322" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="337" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#48</text>
-<text x="182" y="337" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">모두의 창업 vs 창업 일반</text>
+<text x="128" y="337" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#9</text>
+<text x="182" y="337" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">다/세 대조 — 감정 궤적에서 구조까지</text>
 <rect x="96" y="364" width="20" height="20" rx="2.5" fill="#1A1D21"/>
 <text x="128" y="379" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#118</text>
-<text x="182" y="379" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">교정 위젯 — 강연 loop</text>
+<text x="182" y="379" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">캘리브레이션 위젯 — 강연 loop를 온라인…</text>
 <rect x="96" y="406" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="421" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#135</text>
-<text x="182" y="421" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">제품지도</text>
+<text x="128" y="421" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#99</text>
+<text x="182" y="421" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">웹페이지 유지보수</text>
 <rect x="96" y="448" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="463" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#99</text>
-<text x="182" y="463" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">웹페이지 유지보수</text>
+<text x="128" y="463" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#142</text>
+<text x="182" y="463" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">mbti x 혁신/창업 style</text>
 <rect x="96" y="490" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="505" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#142</text>
-<text x="182" y="505" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">mbti × 창업 — 제 문체 찾기</text>
+<text x="128" y="505" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#158</text>
+<text x="182" y="505" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">삶의 소설화 과정 = 자기 생산 세 단계</text>
 <rect x="96" y="532" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="547" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#158</text>
-<text x="182" y="547" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">삶의 소설화 — 자기 생산 세 단계</text>
-<rect x="96" y="574" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="128" y="589" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#159</text>
-<text x="182" y="589" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">한글같은 삶소설</text>
-<text x="96" y="646" font-size="13" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">선이 없다 — 99건</text>
-<rect x="96" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="662" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="687" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="712" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="737" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="762" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="787" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="121" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="146" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="171" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="196" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="221" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="246" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="271" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="296" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="321" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="346" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="371" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="396" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="421" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="96" y="837" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<text x="905" y="216" font-size="13" fill="#C0362C" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">✕ 가리키는데 없는 자리 — 4</text>
+<text x="128" y="547" font-size="15" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">#159</text>
+<text x="182" y="547" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">한글같은삶소설 — 조각내자 · 쉽게쓰자 · …</text>
+<text x="96" y="604" font-size="13" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">선이 없다 — 82건</text>
+<rect x="96" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="121" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="146" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="171" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="196" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="221" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="246" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="271" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="296" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="321" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="346" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="371" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="396" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="421" y="620" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="96" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="121" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="146" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="171" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="196" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="221" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="246" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="271" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="296" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="321" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="346" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="371" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="396" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="421" y="645" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="96" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="121" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="146" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="171" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="196" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="221" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="246" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="271" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="296" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="321" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="346" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="371" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="396" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="421" y="670" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="96" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="121" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="146" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="171" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="196" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="221" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="246" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="271" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="296" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="321" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="346" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="371" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="396" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="421" y="695" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="96" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="121" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="146" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="171" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="196" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="221" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="246" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="271" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="296" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="321" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="346" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="371" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="396" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="421" y="720" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="96" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="121" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="146" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="171" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="196" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="221" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="246" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="271" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="296" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="321" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="346" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<rect x="371" y="745" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
+<text x="905" y="216" font-size="13" fill="#C0362C" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">✕ 가리키는데 없는 자리 — 3</text>
 <rect x="905" y="238" width="20" height="20" rx="2.5" fill="none" stroke="#C0362C" stroke-width="1.6"/>
 <path d="M 910 243 L 920 253 M 920 243 L 910 253" stroke="#C0362C" stroke-width="1.6" stroke-linecap="round"/>
 <text x="937" y="249" font-size="14" fill="#C0362C" text-anchor="start" font-weight="600" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">tetrahedron.html</text>
@@ -145,19 +125,17 @@
 <text x="937" y="307" font-size="12" fill="#8A8782" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">생각 빚 장부를 한 곳으로 모았다 → 지금 그 일을 하는 곳: references.html</text>
 <rect x="905" y="322" width="20" height="20" rx="2.5" fill="none" stroke="#C0362C" stroke-width="1.6"/>
 <path d="M 910 327 L 920 337 M 920 327 L 910 337" stroke="#C0362C" stroke-width="1.6" stroke-linecap="round"/>
-<text x="937" y="333" font-size="14" fill="#C0362C" text-anchor="start" font-weight="600" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">readers.html</text>
-<text x="937" y="349" font-size="12" fill="#8A8782" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">reader_grid.html 로 갈았다가 21→13 정리에서 내렸다 → 지금 그 일을 하는 곳: 후임 없음 — 자리가 비어 있다</text>
-<rect x="905" y="364" width="20" height="20" rx="2.5" fill="none" stroke="#C0362C" stroke-width="1.6"/>
-<path d="M 910 369 L 920 379 M 920 369 L 910 379" stroke="#C0362C" stroke-width="1.6" stroke-linecap="round"/>
-<text x="937" y="375" font-size="14" fill="#C0362C" text-anchor="start" font-weight="600" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">quality_ascent.html</text>
-<text x="937" y="391" font-size="12" fill="#8A8782" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">지우고 잣대만 남겼다 → 지금 그 일을 하는 곳: RUBRIC.md — 웹 자리 아님</text>
-<text x="905" y="450" font-size="13" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">불린다 — 7장</text>
+<text x="937" y="333" font-size="14" fill="#C0362C" text-anchor="start" font-weight="600" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">quality_ascent.html</text>
+<text x="937" y="349" font-size="12" fill="#8A8782" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">지우고 잣대만 남겼다 → 지금 그 일을 하는 곳: RUBRIC.md — 웹 자리 아님</text>
+<text x="905" y="408" font-size="13" fill="#1A1D21" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">불린다 — 8장</text>
+<rect x="905" y="430" width="20" height="20" rx="2.5" fill="#1A1D21"/>
+<text x="937" y="445" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">eight_seats</text>
 <rect x="905" y="472" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="937" y="487" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">emotion_trajectory</text>
+<text x="937" y="487" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">emotion</text>
 <rect x="905" y="514" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="937" y="529" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">index</text>
+<text x="937" y="529" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">emotion_trajectory</text>
 <rect x="905" y="556" width="20" height="20" rx="2.5" fill="#1A1D21"/>
-<text x="937" y="571" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">eight_seats</text>
+<text x="937" y="571" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">index</text>
 <rect x="905" y="598" width="20" height="20" rx="2.5" fill="#1A1D21"/>
 <text x="937" y="613" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'SF Mono','JetBrains Mono',ui-monospace,monospace">probability_evolution</text>
 <rect x="905" y="640" width="20" height="20" rx="2.5" fill="#1A1D21"/>
@@ -166,7 +144,7 @@
 <text x="937" y="697" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">부록 3 · 한글같은 삶소설</text>
 <rect x="905" y="724" width="20" height="20" rx="2.5" fill="#1A1D21"/>
 <text x="937" y="739" font-size="15" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">부록 8 · 8×4 구조</text>
-<text x="905" y="796" font-size="13" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">아무도 안 부른다 — 26장</text>
+<text x="905" y="796" font-size="13" fill="#8A8782" text-anchor="start" font-weight="700" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">아무도 안 부른다 — 24장</text>
 <rect x="905" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
 <rect x="930" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
 <rect x="955" y="812" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
@@ -191,36 +169,34 @@
 <rect x="1080" y="837" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
 <rect x="1105" y="837" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
 <rect x="1130" y="837" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="1155" y="837" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<rect x="1180" y="837" width="20" height="20" rx="2.5" fill="#E4E1DA"/>
-<path d="M 499.8 248.0 C 680.34 248.0, 720.46 482.0, 901 482.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
-<line x1="443.8" y1="248.0" x2="499.8" y2="248.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 248.0 C 680.34 248.0, 720.46 248.0, 901 248.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="248.0" x2="499.8" y2="248.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 290.0 C 680.34 290.0, 720.46 290.0, 901 290.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="290.0" x2="499.8" y2="290.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 332.0 C 680.34 332.0, 720.46 332.0, 901 332.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="332.0" x2="499.8" y2="332.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 458.0 C 680.34 458.0, 720.46 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
-<line x1="443.8" y1="458.0" x2="499.8" y2="458.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 458.0 C 680.34 458.0, 720.46 734.0, 901 734.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
-<line x1="443.8" y1="458.0" x2="499.8" y2="458.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 458.0 C 680.34 458.0, 720.46 608.0, 901 608.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
-<line x1="443.8" y1="458.0" x2="499.8" y2="458.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 458.0 C 680.34 458.0, 720.46 650.0, 901 650.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
-<line x1="443.8" y1="458.0" x2="499.8" y2="458.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 374.0 C 680.34 374.0, 720.46 524.0, 901 524.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
-<line x1="443.8" y1="374.0" x2="499.8" y2="374.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 374.0 C 680.34 374.0, 720.46 374.0, 901 374.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="374.0" x2="499.8" y2="374.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 416.0 C 680.34 416.0, 720.46 566.0, 901 566.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="416.0" x2="499.8" y2="416.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 500.0 C 680.34 500.0, 720.46 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="500.0" x2="499.8" y2="500.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 542.0 C 680.34 542.0, 720.46 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="542.0" x2="499.8" y2="542.0" stroke="#D5D2CA" stroke-width="1"/>
-<path d="M 499.8 584.0 C 680.34 584.0, 720.46 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
-<line x1="443.8" y1="584.0" x2="499.8" y2="584.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 332.0 C 721.92 332.0, 754.48 482.0, 901 482.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="332.0" x2="575.4" y2="332.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 332.0 C 721.92 332.0, 754.48 524.0, 901 524.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="332.0" x2="575.4" y2="332.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 332.0 C 721.92 332.0, 754.48 248.0, 901 248.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="332.0" x2="575.4" y2="332.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 248.0 C 721.92 248.0, 754.48 290.0, 901 290.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="248.0" x2="575.4" y2="248.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 416.0 C 721.92 416.0, 754.48 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="416.0" x2="575.4" y2="416.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 416.0 C 721.92 416.0, 754.48 734.0, 901 734.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="416.0" x2="575.4" y2="416.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 416.0 C 721.92 416.0, 754.48 608.0, 901 608.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="416.0" x2="575.4" y2="416.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 416.0 C 721.92 416.0, 754.48 650.0, 901 650.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="416.0" x2="575.4" y2="416.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 374.0 C 721.92 374.0, 754.48 566.0, 901 566.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<line x1="519.4" y1="374.0" x2="575.4" y2="374.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 374.0 C 721.92 374.0, 754.48 332.0, 901 332.0" fill="none" stroke="#C0362C" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="374.0" x2="575.4" y2="374.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 290.0 C 721.92 290.0, 754.48 440.0, 901 440.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="290.0" x2="575.4" y2="290.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 458.0 C 721.92 458.0, 754.48 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="458.0" x2="575.4" y2="458.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 500.0 C 721.92 500.0, 754.48 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="500.0" x2="575.4" y2="500.0" stroke="#D5D2CA" stroke-width="1"/>
+<path d="M 575.4 542.0 C 721.92 542.0, 754.48 692.0, 901 692.0" fill="none" stroke="#1A1D21" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="519.4" y1="542.0" x2="575.4" y2="542.0" stroke="#D5D2CA" stroke-width="1"/>
 <line x1="96" y1="876" x2="1464" y2="876" stroke="#D5D2CA" stroke-width="1"/>
 <line x1="96" y1="900" x2="130" y2="900" stroke="#1A1D21" stroke-width="1.6"/>
 <text x="142" y="904" font-size="13" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">실선 — 이슈 본문에 그 주소가 적혀 있다 (열린 전건 본문 기계 판독)</text>
@@ -229,6 +205,6 @@
 <line x1="96" y1="944" x2="130" y2="944" stroke="#C0362C" stroke-width="1.6" stroke-dasharray="5 4"/>
 <text x="142" y="948" font-size="13" fill="#44474B" text-anchor="start" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">빨강 ✕ — 가리키는데 그 자리가 없다 (파일 확인 + 응답 코드)</text>
 <text x="1464" y="904" font-size="13" fill="#8A8782" text-anchor="end" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">한 칸 = 이슈 한 건 · 자리 한 장. 양쪽 칸 크기가 같아 길이를 그대로 견줄 수 있다.</text>
-<text x="1464" y="926" font-size="13" fill="#8A8782" text-anchor="end" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">자리 33 = 독립 화면 12 + reader.html 이 나르는 글 21. 껍데기 reader.html 은 통로라 세지 않았다.</text>
+<text x="1464" y="926" font-size="13" fill="#8A8782" text-anchor="end" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">자리 32 = 독립 화면 12 + reader.html 이 나르는 글 20. 껍데기 reader.html 은 통로라 세지 않았다.</text>
 <text x="1464" y="948" font-size="12" fill="#8A8782" text-anchor="end" font-weight="400" letter-spacing="0" font-family="'Apple SD Gothic Neo','Noto Sans KR',-apple-system,'Helvetica Neue',sans-serif">잰 날 2026-11-03 · 생성기 .claude/gen_issue_site_map.py · 손으로 고치지 말 것</text>
 </svg>
