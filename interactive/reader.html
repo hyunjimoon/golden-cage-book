@@ -758,6 +758,11 @@
       md = md.replace(/<!--[\s\S]*?-->/g, ''); // Strip all HTML comments (development notes/decisions)
       md = md.replace(/^---[\s\S]*?---\s*/m, '');
       md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
+      // 🐛 2026-11-04 — 원고의 도판 경로는 **vault 루트 기준**이라(Obsidian 이 그렇게 읽는다)
+      //    게시면에서 /interactive/시공간멜로디/… 로 풀려 404 가 난다. 실측: ch0_roadmap 두 장 다 깨져 있었다.
+      //    원고를 고치지 않고 여기서 바꾼다 — 원고는 Obsidian 이 읽는 면이기도 하다.
+      //    sync 가 도판을 interactive/diagrams/ 한 곳에 모으므로 파일 이름만 남기면 맞는다.
+      md = md.replace(/(!\[[^\]]*\]\()[^)]*\/diagrams\/([^)]+\))/g, '$1diagrams/$2');
       md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (match, target, label) {
         return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${label.replace(/'/g, "\\'")}')">${label}</span>`;
       });
