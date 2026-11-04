@@ -417,141 +417,6 @@
       }
     }
 
-    /* Density control slider */
-    .density-control {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: 'Noto Sans KR', sans-serif;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .density-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .density-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--dim);
-      font-weight: 700;
-    }
-
-    .density-text {
-      font-size: 14px;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .density-slider-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .density-slider-wrap .emoji {
-      font-size: 18px;
-      user-select: none;
-    }
-
-    .density-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 130px;
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(255, 255, 255, 0.08);
-      outline: none;
-      transition: background 0.2s;
-    }
-
-    .density-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      box-shadow: 0 0 8px var(--accent);
-      transition: transform 0.1s, background-color 0.2s;
-    }
-
-    .density-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.25);
-    }
-
-    /* Density level display toggles */
-    .layout.show-level-1 [data-level="2"],
-    .layout.show-level-1 [data-level="3"] {
-      display: none !important;
-    }
-
-    .layout.show-level-2 [data-level="3"] {
-      display: none !important;
-    }
-
-    /* Smooth transitions for block elements in content */
-    .flesh-item {
-      transition: opacity 0.2s ease;
-    }
-
-    /* Isomorphic Mode WikiLink adjustments */
-    .layout.show-level-1 .wiki-link {
-      border-bottom: none;
-      cursor: default;
-      font-weight: inherit;
-      color: inherit;
-      background: none !important;
-    }
-
-    .layout.show-level-2 .wiki-link {
-      border-bottom: 1.5px dashed var(--accent);
-      box-shadow: 0 1px 3px rgba(91, 154, 139, 0.1);
-    }
-
-    .layout.show-level-3 .wiki-link {
-      border-bottom: 1px dashed var(--accent);
-    }
-
-    .chapter-diagram-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 24px;
-      height: 140px;
-      position: relative;
-    }
-
-    #chapterGraphCanvas {
-      background: rgba(14, 18, 32, 0.4);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      width: 340px;
-      height: 140px;
-      display: none;
-    }
-
-    /* Toggle diagrams visibility based on active isomorphic mode */
-    .layout.show-level-1 .chapter-diagram-container {
-      display: none;
-    }
-
-    .layout.show-level-2 #chapterGraphCanvas {
-      display: block;
-    }
-
-    .layout.show-level-3 #chapterGraphCanvas {
-      display: none !important;
-    }
-
     /* WikiLink and Drawer Styles */
     .wiki-link {
       color: var(--accent);
@@ -1136,74 +1001,11 @@
         // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
         const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png' };
         const banner = banners[file] ? `<img class="ch-banner" src="${banners[file]}" alt="">` : '';
-        // 그래프 모드 캔버스를 띄울 열 장 (점섬상향 좌표계 철거 2026-10-12 — 축·마크 기계는 함께 내렸다)
-        const GRAPH_CHAPTERS = ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage', 'ch5_mirror_nest',
-                                'ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest', 'ch10_mirror_close'];
-        const isChapter = file.startsWith('ch') && !file.includes('prologue') && !file.includes('intro') && !file.includes('roadmap') && !file.includes('epilogue');
-        const sliderHtml = isChapter ? `
-      <div class="density-control">
-        <div class="density-info">
-          <span class="density-label">지식 형식 (Isomorphic View Mode)</span>
-          <span id="densityText" class="density-text">⬡ 본문 (도해 없음)</span>
-        </div>
-        <div class="density-slider-wrap">
-          <span class="emoji">▤</span>
-          <input type="range" id="densitySlider" class="density-slider" min="1" max="3" value="3" step="1">
-          <span class="emoji">⬡</span>
-        </div>
-      </div>
-    ` : '';
-
-        let diagramsHtml = '';
-        if (GRAPH_CHAPTERS.includes(file)) {
-          const canvas = `<canvas id="chapterGraphCanvas" style="background:rgba(9,12,22,0.4); border-radius:8px; display:none; width:340px; height:140px; margin:0 auto 24px;"></canvas>`;
-          diagramsHtml = `<div class="chapter-diagram-container">${canvas}</div>`;
-        }
-
-        document.getElementById('content').innerHTML = banner + diagramsHtml + sliderHtml + md2html(md);
+        document.getElementById('content').innerHTML = banner + md2html(md);
         window.scrollTo(0, 0);
         renderKaTeXMath();
         buildToc();
         jumpToQuery();
-
-        if (isChapter) {
-          const slider = document.getElementById('densitySlider');
-          const layout = document.querySelector('.layout');
-          const densityText = document.getElementById('densityText');
-          const texts = {
-            1: '▤ 행렬 (Matrix - 순차 언어)',
-            2: '🕸️ 그래프 (Graph - 병렬 네트워크)',
-            3: '⬡ 본문 (도해 없음)'
-          };
-
-          function updateDensity(val) {
-            layout.classList.remove('show-level-1', 'show-level-2', 'show-level-3');
-            layout.classList.add('show-level-' + val);
-            if (densityText) densityText.textContent = texts[val];
-
-            // Handle local graph canvas drawing for Graph Mode
-            if (parseInt(val) === 2) {
-              if (graphData) {
-                startChapterGraph();
-              } else {
-                shouldDrawChapterGraph = true;
-              }
-            } else {
-              shouldDrawChapterGraph = false;
-              if (activeChapterGraphCancel) {
-                activeChapterGraphCancel();
-                activeChapterGraphCancel = null;
-              }
-            }
-          }
-
-          if (slider) {
-            slider.addEventListener('input', (e) => {
-              updateDensity(e.target.value);
-            });
-            updateDensity(3); // initialize
-          }
-        }
       })
       .catch((e) => {
         console.error('[reader] 본문 로드/렌더 실패:', file, e);
@@ -1223,70 +1025,6 @@
 
     let graphData = null;
     let activeCanvasCancel = null;
-    let activeChapterGraphCancel = null;
-    let shouldDrawChapterGraph = false;
-
-    function startChapterGraph() {
-      if (activeChapterGraphCancel) {
-        activeChapterGraphCancel();
-        activeChapterGraphCancel = null;
-      }
-
-      const canvas = document.getElementById('chapterGraphCanvas');
-      if (!canvas || !graphData) return;
-
-      const fileToNodeMap = {
-        // 🐛 2026-10-31 — 여기 열셋이 **전부 죽어 있었다 (0/13 적중).** 이 표는 vault
-        //   파일명(`1🪞_거울새장`)을 찾는데, reference_graph.html 의 생성기가
-        //   `20394f1 세 층 지도를 가차없이 깎다 (296 → 53 노드)` 에서 마디 이름을
-        //   `ch1`…`ch10`·`ch0` 로 바꿨다. 이름이 한쪽에서만 바뀌어, 어느 장을 열어도
-        //   `if (!nodeId) return;` 에 걸려 **장 옆 작은 지도가 한 번도 안 그려졌다.**
-        //   덤으로 묻혀 있던 것 둘 — ch5 가 `10🧫_101`(10장!)을 가리켰고,
-        //   ch10_mirror_close 는 표에 **아예 없었다.** 5↔10 은 파일명이 둘 다 `_101`
-        //   로 끝나는 거울짝이라 바꿔 적어도 눈에 안 띈다.
-        // 🚫 vault 파일명을 다시 적지 마라. 마디 이름은 reference_graph.html 이 정한다:
-        //   grep -oE '"id": ?"[^"]*"' interactive/reference_graph.html | sort -u
-        // ⚠️ 가운데 **공백**이 있어야 한다. 생성기가 json.dumps 로 찍어 `"id": "ch1"` 이다.
-        //   공백 없는 자(`"id":"`)는 **모든 판에서 0개**를 돌려준다 — 이름이 없어진 게
-        //   아니라 자가 안 닿는 것인데, 그대로 믿으면 또 「0/13 적중」이 나온다.
-        "ch0_prologue": "ch0", "ch0_intro": "ch0", "ch0_characters": "ch0", "ch0_roadmap": "ch0",
-        "ch1_mirror_cage": "ch1",
-        "ch2_telescope_cage": "ch2",
-        "ch3_glass_cage": "ch3",
-        "ch4_clock_cage": "ch4",
-        "ch5_mirror_nest": "ch5",
-        "ch6_butterfly_nest": "ch6",
-        "ch6_play_nest": "ch6",
-        "ch7_tulip_nest": "ch7",
-        "ch8_mist_nest": "ch8",
-        "ch9_raven_nest": "ch9",
-        "ch10_mirror_close": "ch10",
-        "ch10_epilogue": "ch10"
-      };
-
-      const nodeId = fileToNodeMap[file];
-      if (!nodeId) return;
-
-      const localNodesMap = {};
-      const localEdges = [];
-
-      graphData.edges.forEach(e => {
-        if (e.s === nodeId || e.t === nodeId) {
-          localEdges.push(e);
-          localNodesMap[e.s] = true;
-          localNodesMap[e.t] = true;
-        }
-      });
-
-      localNodesMap[nodeId] = true;
-      const localNodes = graphData.nodes.filter(n => localNodesMap[n.id]);
-
-      if (localNodes.length === 0) {
-        localNodes.push({ id: nodeId, label: nodeId });
-      }
-
-      activeChapterGraphCancel = drawLocalGraph(canvas, nodeId, localNodes, localEdges);
-    }
 
     // Fetch graph data from reference_graph.html dynamically to ensure SSOT
     fetch('reference_graph.html')
@@ -1296,9 +1034,6 @@
         if (match) {
           try {
             graphData = JSON.parse(match[1]);
-            if (shouldDrawChapterGraph || (document.getElementById('densitySlider') && document.getElementById('densitySlider').value == 2)) {
-              startChapterGraph();
-            }
           } catch (e) {
             console.error("Failed to parse reference graph data in reader:", e);
           }
