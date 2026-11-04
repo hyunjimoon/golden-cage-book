@@ -339,6 +339,15 @@
       margin: 14px 0;
     }
 
+    /* 인라인 도해 — <img> 안의 <a> 는 죽는다. 누를 수 있는 도해는 문서에 **심어야** 산다. */
+    .content svg.inline-diagram {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin: 14px 0;
+    }
+
     .pager {
       display: flex;
       justify-content: space-between;
@@ -750,6 +759,24 @@
     if (curIdx >= 0) document.title = CHAPTERS[curIdx].label + ' — 투향';
 
     // md → html
+    // 도판을 문서에 심는다. <img> 로 두면 svg 안의 <a>(방 → 장) 가 눌리지 않는다.
+    // 실패하면 아무것도 안 한다 — <img> 가 그대로 남아 그림은 어쨌든 보인다.
+    function inlineDiagrams() {
+      document.querySelectorAll('#content img[src$=".svg"]').forEach(img => {
+        const src = img.getAttribute('src');
+        fetch(src).then(r => r.ok ? r.text() : Promise.reject(r.status)).then(txt => {
+          const doc = new DOMParser().parseFromString(txt, 'image/svg+xml');
+          const svg = doc.querySelector('svg');
+          if (!svg || doc.querySelector('parsererror')) return;
+          svg.removeAttribute('width');
+          svg.removeAttribute('height');
+          svg.setAttribute('class', 'inline-diagram');
+          if (img.alt) svg.setAttribute('aria-label', img.alt);
+          img.replaceWith(svg);
+        }).catch(() => {});
+      });
+    }
+
     function md2html(md) {
       const hasLevelComments = md.includes('<!-- level');
       // ⚠️ 정규식 플래그는 슬래시에 붙여 쓴다. `/…/ g` 로 띄면 `/…/`(리터럴) + `g`(식별자)로 파싱돼
@@ -1009,6 +1036,7 @@
         document.getElementById('content').innerHTML = banner + md2html(md);
         window.scrollTo(0, 0);
         renderKaTeXMath();
+        inlineDiagrams();
         buildToc();
         jumpToQuery();
       })
