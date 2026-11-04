@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 800" width="1060" height="800" role="img" aria-label="다섯 방 평면도. 짝 넷이 네 모서리에 한 방씩 들고, 가운데 기억 방을 두 번 지난다." font-family="Noto Sans KR, Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
 <rect width="1060" height="800" fill="#FFFFFF"/>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#14130F"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#9A938A"/></marker></defs>
-<style> a.room{cursor:pointer} a.room .hit{fill:#14130F;fill-opacity:0} a.room:hover .hit,a.room:focus .hit{fill-opacity:0.045} a.room:hover .seatname,a.room:focus .seatname{text-decoration:underline} a.room:focus{outline:none}</style>
+<style> a.room{cursor:pointer} a.room .hit{fill:#14130F;fill-opacity:0;pointer-events:all} a.room:hover .hit,a.room:focus .hit{fill-opacity:0.045} a.room:hover .seatname,a.room:focus .seatname{text-decoration:underline} a.room:focus{outline:none}</style>
 <text x="56" y="56" font-size="20" font-weight="700" fill="#14130F">다섯 방 — 열 장이 사는 집</text>
 <text x="56" y="82" font-size="12.5" fill="#5E584E">자리는 여덟인데 방은 다섯이다. 짝이 둘씩 한 방에 산다 — <tspan font-weight="700">짝을 떼면 사슬이 끊긴다.</tspan> 안쪽에 사는 넷(1~4)이 빚을 쓰고, 바깥에서 돌아온 넷(6~9)이 갚는다.</text>
 <text x="56" y="104" font-size="12.5" fill="#5E584E">문은 고리 차례다 — 위 두 방이 <tspan font-weight="700">수축</tspan>하면 아래 두 방이 <tspan font-weight="700">박동</tspan>한다. 심장 한 바퀴다.</text>
