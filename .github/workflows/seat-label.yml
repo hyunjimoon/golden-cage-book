@@ -5,7 +5,7 @@ name: seat-label
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, labeled]
 
 permissions:
   issues: write
@@ -65,25 +65,32 @@ jobs:
               core.info(`붙임: ${add.join(", ")}`);
             }
 
-            // 알림은 이슈를 열 때 한 번만. 고칠 때마다 쌓지 않는다.
-            if (context.payload.action !== "opened") return;
-            const missing = [];
-            if (!hasChap && !add.some(l => l.includes("장"))) missing.push("**장**");
-            if (!hasSeat && !add.some(l => SEAT.some(([, s]) => s === l))) missing.push("**자리**");
-            if (!missing.length) return;
+            // 알림은 두 줄만. 라벨이 차면 봇이 제 댓글을 지운다 — 기록에도 안 쌓이게.
+            const MARK = "<!-- seat-label -->";
+            const nowChap = hasChap || add.some(l => CHAP.some(([, c]) => c === l));
+            const nowSeat = hasSeat || add.some(l => SEAT.some(([, s]) => s === l));
 
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: issue.number, per_page: 100 });
+            // 표식이 없던 옛 알림도 같이 잡아 치운다.
+            const mine = comments.data.find(c => c.user.type === "Bot"
+              && ((c.body || "").startsWith(MARK) || (c.body || "").includes("「전반 × 미분류」")));
+
+            if (nowChap && nowSeat) {
+              if (mine) await github.rest.issues.deleteComment({
+                owner: context.repo.owner, repo: context.repo.repo, comment_id: mine.id });
+              return;
+            }
+            if (mine) return;   // 이미 적어 뒀다. 고칠 때마다 쌓지 않는다.
+
+            // ⚠️ 🤚(내가 겪은 것)와 🖐(남이 겪은 것)는 **의도된 구별**이다 — 통일하지 마라(룰링 2026-11-01).
+            //    경험과 사례는 같은 짝(🫀+손)에 일부러 함께 앉고, 안↔밖을 나르는 건 손의 글자다.
+            //    손을 라벨로 쓸 날에는 위 SEAT 매처가 두 글자를 다 받아야 한다 (지금은 🤚 하나만 본다).
+            const miss = !nowChap && !nowSeat ? "장·자리가" : (!nowChap ? "장이" : "자리가");
             await github.rest.issues.createComment({
               owner: context.repo.owner, repo: context.repo.repo,
               issue_number: issue.number,
-              body: `${missing.join(" · ")}이 비어 있습니다 — 이 이슈는 지도에서 「전반 × 미분류」 칸에 쌓입니다.\n\n`
-                  + `자리 넷: 👁️ **눈**(무엇을 봤나) · 🧠 **뇌**(무엇을 궁리했나) · `
-                  + `🫀 **심장**(무엇이 뛰었나) · 🤚 **손**(무엇이 움직였나)\n\n`
-                  // 기관 둘을 짝지은 세 묶음. 네 자리를 쪼개는 게 아니라 네 자리에 얹는 물음이다.
-                  // ⚠️ 🤚(내가 겪은 것)와 🖐(남이 겪은 것)는 **의도된 구별**이다 — 통일하지 마라(룰링 2026-11-01).
-                  //    경험과 사례는 같은 짝(🫀+손)에 일부러 함께 앉고, 안↔밖을 나르는 건 손의 글자다.
-                  //    손을 라벨로 쓸 날에는 위 SEAT 매처가 두 글자를 다 받아야 한다 (지금은 🤚 하나만 본다).
-                  + `기술 = knowledge with useful applications. 셋 중 어느 것인가:\n`
-                  + `- 🫀 🤚경험\n`
-                  + `- 👁️ 🧠지식\n`
-                  + `- 🫀 🖐 사례\n\n`
-                  + `<sub>라벨을 붙이면 이 줄은 무시하세요. 막지 않습니다.</sub>` });
+              body: `${MARK}\n`
+                  + `🏷️ **${miss} 비었습니다** — 지도의 「전반 × 미분류」 칸에 쌓입니다.\n`
+                  + `👁️ 눈·봤나 · 🧠 뇌·궁리했나 · 🫀 심장·뛰었나 · 🤚 손·움직였나 ｜ 🫀🤚경험 · 👁️🧠지식 · 🫀🖐사례` });
