@@ -44,7 +44,7 @@ CHAPTERS = [
     (4,  "ch4_clock_cage",      "4장 ⏱️ 시계새장",        ["da", "se"]),
     (5,  "ch5_mirror_nest",     "5장 🐀 101₂호 (★멈춤)",  ["da", "se"]),
     (6,  "ch6_butterfly_nest",  "6장 🦋 나비둥지",        ["seda", "da"]),
-    (7,  "ch7_tulip_nest",      "7장 🌷 튤립둥지",        ["seda"]),
+    (7,  "ch7_tulip_nest",      "7장 🧅 튤립둥지",        ["seda"]),
     (8,  "ch8_mist_nest",       "8장 🌫️ 안개둥지",        ["seda"]),
     (9,  "ch9_raven_nest",      "9장 🐦‍⬛ 까마귀둥지",      ["seda"]),
     (10, "ch10_mirror_close",   "10장 🧫 101₃호 (투향)",  ["seda"]),
