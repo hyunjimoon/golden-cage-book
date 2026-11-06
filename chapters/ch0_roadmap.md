@@ -114,7 +114,7 @@
 
 이 평면도는 §1의 골격을 **다시 말하지 않는다.** 골격은 *순서*를 묻고(무엇 다음에 무엇), 평면도는 *거처*를 묻는다(무엇이 무엇과 같이 산다). 한 장 안에 두 질문이 들어 있으면 목차가 두 개가 되므로, 순서는 §1에 두고 거처만 여기 둔다.
 
-> 🖱️ 여덟 자리가 ∞ 한 몸 위에 어떻게 앉는지, 시 「뱀 비틀 나비」 열 단을 차례로 쌓아 보려면 → [뱀 비틀 나비 · 열 장이 한 몸이다](https://hyunjimoon.github.io/golden-cage-book/interactive/eight_seats.html)
+> 🖱️ 여덟 자리가 ∞ 한 몸 위에 어떻게 앉는지, 한 획으로 걷고 짝으로 뒤집어 보려면 → [열 장이 한 몸이다](https://hyunjimoon.github.io/golden-cage-book/interactive/eight_seats.html)
 
 ---
 
