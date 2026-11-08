@@ -238,7 +238,10 @@ def simulate(n, dvals, seed=SEED, p0=0.05):
 
 def draw(book, rail, mid_at, n, first):
     X = lambda i: PADL + (W - PADL - PADR) * (i / n)
-    sil = next(c for c in book if c["d"] > 0)["a"]
+    # ⚠️ 2026-11-09 — 여기는 **장 단위**였다(첫 d>0 장의 시작). 1장에 못 하나만 박아도
+    #    163 → 0 으로 떨어졌다. 개선이 아니라 **집약이 자를 죽인** 것이다(#161 §②와 같은 칼).
+    #    칸을 단락으로 쪼갠다 — 침묵 = 글이 끝을 말한 **첫 단락**까지.
+    sil = next((i for i, v in enumerate(rail) if v), n)
     BINS = 94
     hist = [0] * BINS
     for h in first:
