@@ -893,7 +893,8 @@
       //    원고를 고치지 않고 여기서 바꾼다 — 원고는 Obsidian 이 읽는 면이기도 하다.
       //    sync 가 도판을 interactive/diagrams/ 한 곳에 모으므로 파일 이름만 남기면 맞는다.
       md = md.replace(/(!\[[^\]]*\]\()[^)]*\/diagrams\/([^)]+\))/g, '$1diagrams/$2');
-      md = md.replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (match, target, label) {
+      // `\|` — 표 칸 안의 위키링크는 Obsidian 이 파이프를 escape 하길 요구한다. 둘 다 읽는다.
+      md = md.replace(/\[\[([^\]|]+?)\\?\|([^\]]+)\]\]/g, function (match, target, label) {
         return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${label.replace(/'/g, "\\'")}')">${label}</span>`;
       });
       md = md.replace(/\[\[([^\]]+)\]\]/g, function (match, target) {
@@ -1137,7 +1138,13 @@
     }
 
     // fetch (with cache-busting timestamp to prevent cache issues)
-    fetch(`../chapters/${file}.md?_=${Date.now()}`)
+    // 2026-11-09 — chapters/ 밖에 사는 문서(app*=부록, docs/*=소통문·용어집)는 **첫 fetch 부터**
+    //   제 경로로 간다. 전에는 chapters/ 를 먼저 때려 콘솔에 404 를 찍고 폴백으로 갔는데,
+    //   그 폴백에 `inlineDiagrams()` 가 없어서 **부록은 도판이 영영 안 떴다**(실측: app1 그림 0).
+    const srcPath = file.startsWith('app')     ? `../appendices/${file}.md`
+                  : file.startsWith('docs/')   ? `../${file}.md`
+                  :                              `../chapters/${file}.md`;
+    fetch(`${srcPath}?_=${Date.now()}`)
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(md => {
         // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
@@ -1157,13 +1164,11 @@
       .catch((e) => {
         console.error('[reader] 본문 로드/렌더 실패:', file, e);
         // chapters/ 밖에 사는 문서들의 폴백. app*=부록, docs/*=소통문·용어집(랜딩 "2차 소통문" 링크가 여기로 온다, 2026-08-07)
-        const alt = file.startsWith('app') ? `../appendices/${file}.md`
-                  : file.startsWith('docs/') ? `../${file}.md`
-                  : null;
+        const alt = srcPath.includes('/chapters/') ? null : `../chapters/${file}.md`;
         if (alt) {
           fetch(`${alt}?_=${Date.now()}`)
             .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-            .then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); renderKaTeXMath(); buildToc(); jumpToQuery(); })
+            .then(md => { document.getElementById('content').innerHTML = md2html(md); window.scrollTo(0, 0); renderKaTeXMath(); inlineDiagrams(); buildToc(); jumpToQuery(); })
             .catch(() => { document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>'; });
         } else {
           document.getElementById('content').innerHTML = '<div class="loading">파일을 찾을 수 없습니다.</div>';
@@ -1200,7 +1205,7 @@
         "3💒_유리새장": "ch3_glass_cage",
         "4⏱️_시계새장": "ch4_clock_cage",
         "5장_빅시스터_씬초안": "ch5_mirror_nest",
-        "10🧫_101": "ch5_mirror_nest",
+        "10🧫_101": "ch10_mirror_close",
         "6🦋_나비사용자": "ch6_butterfly_nest",
         "6🦋_나비둥지": "ch6_butterfly_nest",
         "7🌷_튤립기술자": "ch7_tulip_nest",
@@ -1252,11 +1257,14 @@
       // Replace special characters if needed, or encodeURIComponent
       const cleanId = encodeURIComponent(nodeId);
 
-      fetch(`../chapters/elements/${cleanId}.md`)
-        .then(r => {
-          if (!r.ok) throw new Error("File not found");
-          return r.text();
-        })
+      const elemDirs = ['thought/', 'episode/', ''];
+      (async () => {
+        for (const d of elemDirs) {
+          const r = await fetch(`../chapters/elements/${d}${cleanId}.md`).catch(() => null);
+          if (r && r.ok) return r.text();
+        }
+        throw new Error("File not found");
+      })()
         .then(mdText => {
           // Extract YAML frontmatter metadata
           const defMatch = mdText.match(/정의:\s*"([^"]+)"/) || mdText.match(/정의:\s*([^\n]+)/);
