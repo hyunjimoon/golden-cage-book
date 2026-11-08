@@ -848,7 +848,9 @@
     function inlineDiagrams() {
       document.querySelectorAll('#content img[src$=".svg"]').forEach(img => {
         const src = img.getAttribute('src');
-        fetch(src).then(r => r.ok ? r.text() : Promise.reject(r.status)).then(txt => {
+        // 2026-11-09 — 본문(.md)만 캐시를 깨고 도판은 안 깼다. 고친 svg 가 독자 쪽에서
+        //   옛 판으로 남는다(실측: 라벨을 옮긴 판이 서버엔 올라갔는데 화면은 옛 판이었다).
+        fetch(src + (src.includes('?') ? '&' : '?') + '_=' + Date.now()).then(r => r.ok ? r.text() : Promise.reject(r.status)).then(txt => {
           const doc = new DOMParser().parseFromString(txt, 'image/svg+xml');
           const svg = doc.querySelector('svg');
           if (!svg || doc.querySelector('parsererror')) return;
