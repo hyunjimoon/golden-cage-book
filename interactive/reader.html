@@ -245,6 +245,13 @@
       border-radius: 8px;
       margin-bottom: 24px;
     }
+    /* 2026-11-08 (#174) — 장 패널(SVG)은 잘리면 안 된다. 아래쪽에 분기·반례·이월이 들어 있어
+       cover 로 자르면 그 장의 결론이 통째로 사라진다. 1~4장 슬라이드 PNG 는 장식이라 그대로 둔다. */
+    .ch-banner.panel {
+      object-fit: contain;
+      max-height: none;
+      background: #F3EEE3;
+    }
 
     .content h1 {
       font-size: 1.8em;
@@ -1134,8 +1141,12 @@
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(md => {
         // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
-        const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png' };
-        const banner = banners[file] ? `<img class="ch-banner" src="${banners[file]}" alt="">` : '';
+        // 2026-11-08 (#174) — 5~10장 배너 추가. _원판/ 에 열 장이 다 있었는데 1~4만 올라가 있었다.
+        // ch6_play_nest 는 butterfly 의 구 주소 별칭, ch10_epilogue 는 10장 뒷자락이라 같은 판을 쓴다.
+        const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png',
+                          ch5_mirror_nest: '../img/ch5.svg', ch6_butterfly_nest: '../img/ch6.svg', ch6_play_nest: '../img/ch6.svg', ch7_tulip_nest: '../img/ch7.svg',
+                          ch8_mist_nest: '../img/ch8.svg', ch9_raven_nest: '../img/ch9.svg', ch10_mirror_close: '../img/ch10.svg', ch10_epilogue: '../img/ch10.svg' };
+        const banner = banners[file] ? `<img class="ch-banner${banners[file].endsWith('.svg') ? ' panel' : ''}" src="${banners[file]}" alt="">` : '';
         document.getElementById('content').innerHTML = banner + md2html(md);
         window.scrollTo(0, 0);
         renderKaTeXMath();
