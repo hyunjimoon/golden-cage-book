@@ -24,23 +24,23 @@
 <text x="134" y="457" font-size="13" font-weight="700" fill="#14130F" text-anchor="end">2026 봄</text>
 <text x="134" y="476" font-size="11.5" fill="#9A938A" text-anchor="end">전쟁 = 평화</text>
 
-<path d="M565 200 L589 200 L589 222" fill="none" stroke="#9A938A" stroke-width="1.5"/>
-<text x="598" y="206" font-size="11.5" fill="#9A938A">직각이라야 천이 된다</text>
+<path d="M541 222 L541 198 L565 198" fill="none" stroke="#9A938A" stroke-width="1.5"/>
+<text x="533" y="190" font-size="11.5" fill="#9A938A" text-anchor="end">직각이라야 천이 된다</text>
 
 <a class="knot" href="reader.html?file=ch6_butterfly_nest" aria-label="6장 나비사용자로 간다">
-  <rect class="hit" x="505" y="186" width="124" height="72" rx="8"/>
+  <rect class="hit" x="543" y="196" width="152" height="52" rx="8"/>
   <circle cx="565" cy="222" r="15" fill="#0026FB"/>
-  <text class="chname" x="565" y="252" font-size="13.5" font-weight="700" fill="#0026FB" text-anchor="middle">6 🦋</text>
+  <text class="chname" x="590" y="227" font-size="14" font-weight="700" fill="#0026FB">6 🦋</text>
 </a>
 <a class="knot" href="reader.html?file=ch7_tulip_nest" aria-label="7장 튤립기술자로 간다">
-  <rect class="hit" x="505" y="306" width="124" height="72" rx="8"/>
+  <rect class="hit" x="543" y="316" width="152" height="52" rx="8"/>
   <circle cx="565" cy="342" r="15" fill="#491786"/>
-  <text class="chname" x="565" y="372" font-size="13.5" font-weight="700" fill="#491786" text-anchor="middle">7 🧅</text>
+  <text class="chname" x="590" y="347" font-size="14" font-weight="700" fill="#491786">7 🧅</text>
 </a>
 <a class="knot" href="reader.html?file=ch10_mirror_close" aria-label="10장 101호로 간다">
-  <rect class="hit" x="505" y="426" width="124" height="72" rx="8"/>
+  <rect class="hit" x="543" y="436" width="152" height="52" rx="8"/>
   <circle cx="565" cy="462" r="15" fill="#C9A200"/>
-  <text class="chname" x="565" y="492" font-size="13.5" font-weight="700" fill="#C9A200" text-anchor="middle">10 🧫</text>
+  <text class="chname" x="590" y="467" font-size="14" font-weight="700" fill="#C9A200">10 🧫</text>
 </a>
 
 <line x1="56" y1="612" x2="1004" y2="612" stroke="#E6E1D8" stroke-width="1"/>
