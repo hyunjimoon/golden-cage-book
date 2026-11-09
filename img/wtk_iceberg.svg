@@ -1,54 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500">
-  <style>
-    text{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif}
-    .t{fill:#2b2620} .gy{fill:#6a6355} .pl{fill:#a9a296} .gd{fill:#8a6a12}
-  </style>
-  <rect width="960" height="500" fill="#F3EEE3"/>
-  <text x="480" y="34" text-anchor="middle" font-size="19" font-weight="700" class="t">목적함수는 오른쪽에 있는데, 잰 것은 전부 왼쪽에 있다</text>
-  <text x="480" y="55" text-anchor="middle" font-size="11.5" class="gy">(R*, F*) = argmax over W,T,K of F(R)   ·   제약 W/K ≤ 1/8,  W+T+K ≤ B</text>
-  <rect x="46" y="236" width="560" height="214" fill="#dfe6ea" opacity="0.55"/>
-  <line x1="46" y1="236" x2="606" y2="236" stroke="#2b2620" stroke-width="1.6"/>
-  <text x="52" y="228" font-size="10" class="gy">수면</text>
-  <polygon points="176,150 126,236 226,236" fill="#ffffff" stroke="#2b2620" stroke-width="1.8"/>
-  <text x="176" y="212" text-anchor="middle" font-size="17" font-weight="700" class="t">T</text>
-  <text x="176" y="140" text-anchor="middle" font-size="11" class="gy">배열하는 시간</text>
-  <polygon points="86,236 266,236 176,416" fill="#ffffff" stroke="#2b2620" stroke-width="1.8"/>
-  <text x="176" y="298" text-anchor="middle" font-size="19" font-weight="700" class="t">K</text>
-  <text x="176" y="320" text-anchor="middle" font-size="11" class="gy">쌓은 재고</text>
-  <line x1="70" y1="236" x2="70" y2="416" stroke="#6a6355" stroke-width="1"/>
-  <line x1="64" y1="236" x2="76" y2="236" stroke="#6a6355" stroke-width="1"/>
-  <line x1="64" y1="416" x2="76" y2="416" stroke="#6a6355" stroke-width="1"/>
-  <text x="58" y="330" text-anchor="end" font-size="10" class="gy">8</text>
-  <rect x="266" y="213.5" width="300" height="22.5" fill="#FFD53A" stroke="#C08A17" stroke-width="1.4"/>
-  <path d="M 566 213.5 l 34 11.2 l -34 22.5 z" fill="#C08A17"/>
-  <text x="400" y="204" text-anchor="middle" font-size="15" font-weight="700" class="gd">W <tspan font-size="11" class="gy">내보내는 분량</tspan></text>
-  <line x1="282" y1="213.5" x2="282" y2="236" stroke="#C08A17" stroke-width="1"/>
-  <text x="290" y="230" font-size="10" class="gd">1 — 깊이의 8분의 1</text>
-  <rect x="628" y="150" width="176" height="186" rx="10" fill="#ffffff" stroke="#a9a296" stroke-width="1.8" stroke-dasharray="6 5"/>
-  <text x="716" y="176" text-anchor="middle" font-size="12.5" class="pl">읽는 사람</text>
-  <text x="716" y="216" text-anchor="middle" font-size="17" font-weight="700" class="pl">R*</text>
-  <text x="716" y="233" text-anchor="middle" font-size="10.5" class="pl">누가 읽는가</text>
-  <text x="716" y="274" text-anchor="middle" font-size="17" font-weight="700" class="pl">F*</text>
-  <text x="716" y="291" text-anchor="middle" font-size="10.5" class="pl">행동이 되는 비율</text>
-  <text x="716" y="356" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b03a2e">실측 0건 — 아직 안 줬다</text>
-  <path d="M 628 300 L 276 300" fill="none" stroke="#a9a296" stroke-width="1.8" stroke-dasharray="6 5"/>
-  <path d="M 276 300 l 13 -6 l 0 12 z" fill="#a9a296"/>
-  <text x="452" y="292" text-anchor="middle" font-size="11" class="pl">R — 읽힌 것</text>
-  <path d="M 660 336 C 540 404, 330 410, 206 390" fill="none" stroke="#a9a296" stroke-width="1.8" stroke-dasharray="6 5"/>
-  <path d="M 206 390 l 14 -4 l -3 13 z" fill="#a9a296"/>
-  <text x="452" y="416" text-anchor="middle" font-size="11" class="pl">F — 행동이 되어 재고로 가라앉는다</text>
-  <rect x="836" y="196" width="84" height="94" rx="10" fill="#FFD53A" stroke="#C08A17" stroke-width="2"/>
-  <text x="878" y="238" text-anchor="middle" font-size="21" font-weight="700" class="gd">A*</text>
-  <text x="878" y="258" text-anchor="middle" font-size="10.5" class="gd">원하는</text>
-  <text x="878" y="272" text-anchor="middle" font-size="10.5" class="gd">행동</text>
-  <line x1="46" y1="426" x2="914" y2="426" stroke="#b9b1a2" stroke-width="1"/>
-  <line x1="792" y1="452" x2="560" y2="452" stroke="#2b2620" stroke-width="1.8" stroke-dasharray="7 5"/>
-  <path d="M 560 452 l 14 -6 l 0 12 z" fill="#2b2620"/>
-  <line x1="470" y1="452" x2="250" y2="452" stroke="#2b2620" stroke-width="1.8" stroke-dasharray="7 5"/>
-  <path d="M 250 452 l 14 -6 l 0 12 z" fill="#2b2620"/>
-  <text x="878" y="457" text-anchor="middle" font-size="14" font-weight="700" class="gd">A*</text>
-  <text x="515" y="457" text-anchor="middle" font-size="13" font-weight="700" class="t">R*, F*</text>
-  <text x="150" y="457" text-anchor="middle" font-size="13" font-weight="700" class="t">W, T, K</text>
-  <text x="480" y="444" text-anchor="middle" font-size="12.5" font-weight="700" class="t">결정은 반대로 온다 — 원하는 행동이 셋을 정한다</text>
-  <text x="46" y="490" font-size="10" class="gy">W/K &gt; 1/8 → 스테인굴레스 · T → 0 → 훈장 · 너무 빼면 → 망원경 · 셋 다 통과 → 주사기</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+  <style>text{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif}</style>
+  <rect width="1000" height="560" fill="#F3EEE3"/>
+  <text x="500" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#2b2620">쓰는 것은 오른쪽으로 가고, 정하는 것은 왼쪽으로 온다</text>
+  <rect x="40" y="258" width="590" height="214" fill="#dde6ea" opacity="0.6"/>
+  <line x1="40" y1="258" x2="630" y2="258" stroke="#2b2620" stroke-width="1.6"/>
+  <text x="46" y="249" font-size="10.5" fill="#6a6355">수면 — 여기 위만 독자에게 보인다</text>
+  <polygon points="232,150 178,258 286,258" fill="#fff" stroke="#2b2620" stroke-width="2"/>
+  <text x="232" y="136" text-anchor="middle" font-size="25" font-weight="700" fill="순서를 바꾼다">T</text>
+  <text x="232" y="156" text-anchor="middle" font-size="13" font-weight="700" fill="순서를 바꾼다">배열</text>
+  <text x="232" y="173" text-anchor="middle" font-size="10.5" fill="#6a6355">#2b2620</text>
+  <polygon points="136,258 328,258 232,442" fill="#fff" stroke="#2b2620" stroke-width="2"/>
+  <text x="232" y="332" text-anchor="middle" font-size="30" font-weight="700" fill="안 보이는 7/8">K</text>
+  <text x="232" y="352" text-anchor="middle" font-size="13" font-weight="700" fill="안 보이는 7/8">재고</text>
+  <text x="232" y="369" text-anchor="middle" font-size="10.5" fill="#6a6355">#2b2620</text>
+  <line x1="68" y1="258" x2="68" y2="442" stroke="#6a6355" stroke-width="1"/>
+  <line x1="62" y1="258" x2="74" y2="258" stroke="#6a6355" stroke-width="1"/>
+  <line x1="62" y1="442" x2="74" y2="442" stroke="#6a6355" stroke-width="1"/>
+  <text x="56" y="354" text-anchor="end" font-size="13" font-weight="700" fill="#6a6355">8</text>
+  <rect x="328" y="235.0" width="272" height="23.0" fill="#FFD53A" stroke="#B8860B" stroke-width="1.5"/>
+  <path d="M 600 235.0 l 36 11.5 l -36 23.0 z" fill="#B8860B"/>
+  <text x="455" y="209.0" text-anchor="middle" font-size="25" font-weight="700" fill="None">W</text>
+  <text x="455" y="229.0" text-anchor="middle" font-size="13" font-weight="700" fill="None">내보낸 글</text>
+  <text x="455" y="246.0" text-anchor="middle" font-size="10.5" fill="#6a6355">#8a6a12</text>
+  <line x1="346" y1="235.0" x2="346" y2="258" stroke="#8a6a12" stroke-width="1"/>
+  <text x="354" y="252" font-size="12" font-weight="700" fill="#8a6a12">1 <tspan font-size="10" font-weight="400" fill="#6a6355">— 깊이의 8분의 1</tspan></text>
+  <circle cx="712" cy="196" r="25" fill="#fff" stroke="#9c968b" stroke-width="2" stroke-dasharray="6 5"/>
+  <path d="M 668 268 a 44 50 0 0 1 88 0" fill="#fff" stroke="#9c968b" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="712" y="290" text-anchor="middle" font-size="13" font-weight="700" fill="#9c968b">읽는 사람</text>
+  <text x="712" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="#b03a2e">아직 아무도 없다</text>
+  <path d="M 664 340 L 336 340" fill="none" stroke="#9c968b" stroke-width="2" stroke-dasharray="7 5"/>
+  <path d="M 336 340 l 15 -7 l 0 14 z" fill="#9c968b"/>
+  <text x="490" y="332" text-anchor="middle" font-size="23" font-weight="700" fill="None">R</text>
+  <text x="490" y="352" text-anchor="middle" font-size="13" font-weight="700" fill="None">읽힌 것</text>
+  <text x="490" y="369" text-anchor="middle" font-size="10.5" fill="#6a6355">#9c968b</text>
+  <path d="M 700 318 C 600 430, 400 448, 264 424" fill="none" stroke="#9c968b" stroke-width="2" stroke-dasharray="7 5"/>
+  <path d="M 264 424 l 16 -3 l -5 14 z" fill="#9c968b"/>
+  <text x="520" y="440" text-anchor="middle" font-size="23" font-weight="700" fill="None">F</text>
+  <text x="520" y="460" text-anchor="middle" font-size="13" font-weight="700" fill="None">행동이 된 몫</text>
+  <text x="520" y="477" text-anchor="middle" font-size="10.5" fill="#6a6355">#9c968b</text>
+  <rect x="852" y="176" width="104" height="124" rx="12" fill="#FFD53A" stroke="#B8860B" stroke-width="2.4"/>
+  <text x="904" y="230" text-anchor="middle" font-size="34" font-weight="700" fill="None">A</text>
+  <text x="904" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="None">원하는 행동</text>
+  <text x="904" y="267" text-anchor="middle" font-size="10.5" fill="#6a6355">#7a5c0a</text>
+  <text x="904" y="268" text-anchor="middle" font-size="10.5" fill="#7a5c0a">이 글을 읽고</text>
+  <text x="904" y="283" text-anchor="middle" font-size="10.5" fill="#7a5c0a">일어났으면 하는 일</text>
+  <line x1="40" y1="466" x2="960" y2="466" stroke="#b9b1a2" stroke-width="1"/>
+  <text x="500" y="485" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2620">결정은 반대로 온다 — 원하는 행동이 나머지를 정한다</text>
+  <line x1="836" y1="500" x2="668" y2="500" stroke="#2b2620" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <path d="M 668 500 l 15 -6 l 0 12 z" fill="#2b2620"/>
+  <line x1="560" y1="500" x2="352" y2="500" stroke="#2b2620" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <path d="M 352 500 l 15 -6 l 0 12 z" fill="#2b2620"/>
+  <text x="196" y="505" text-anchor="middle" font-size="16" font-weight="700" fill="#2b2620">W · T · K</text>
+  <text x="196" y="522" text-anchor="middle" font-size="10.5" fill="#6a6355">작가가 쥔다</text>
+  <text x="614" y="505" text-anchor="middle" font-size="16" font-weight="700" fill="#9c968b">R · F</text>
+  <text x="614" y="522" text-anchor="middle" font-size="10.5" fill="#6a6355">따라 나온다</text>
+  <text x="904" y="505" text-anchor="middle" font-size="16" font-weight="700" fill="#7a5c0a">A</text>
+  <text x="904" y="522" text-anchor="middle" font-size="10.5" fill="#6a6355">먼저 정해진다</text>
+  <text x="40" y="550" font-size="10" fill="#6a6355">W/K &gt; 1/8 → 스테인굴레스 · T → 0 → 훈장 · 너무 빼면 → 망원경 · 셋 다 통과 → 주사기</text>
+  <text x="960" y="550" text-anchor="end" font-size="10" fill="#6a6355">(R*, F*) = argmax F(R) · W/K ≤ 1/8 · W+T+K ≤ B</text>
 </svg>
