@@ -4,14 +4,19 @@
     .t{fill:#2b2620} .gy{fill:#6a6355} .gd{fill:#8a6a12}
   </style>
   <rect width="960" height="440" fill="#F3EEE3"/>
-  <text x="480" y="34" text-anchor="middle" font-size="19" font-weight="700" class="t">앞에 놓은 것은 셌다. 되받은 것은 없다.</text>
+  <text x="480" y="34" text-anchor="middle" font-size="19" font-weight="700" class="t">앞에 놓은 것은 셌다. 아직 아무에게도 안 줬다.</text>
   <text x="480" y="55" text-anchor="middle" font-size="11" class="gy" letter-spacing="1">calibration = 앞에 놓은 물건으로 읽는 사람이 끝을 뒤집는지 재서, 어긋난 만큼 앞을 고치는 고리</text>
-  <path d="M 892 268 C 720 120, 300 120, 118 262" fill="none" stroke="#b9b1a2" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="104" y="104" font-size="12.5" font-weight="700" class="t">끊긴 데는 돌아오는 선이 아니라 내보내는 문이다</text>
+  <line x1="892" y1="270" x2="892" y2="212" stroke="#2b2620" stroke-width="2"/>
+  <line x1="892" y1="212" x2="894" y2="212" stroke="#2b2620" stroke-width="2"/>
+  <path d="M 879 206 l 26 12 M 879 218 l 26 -12" stroke="#b03a2e" stroke-width="2.6"/>
+  <rect x="596" y="150" width="296" height="48" rx="8" fill="#F3EEE3" stroke="#b03a2e" stroke-width="1.4"/>
+  <text x="744" y="170" text-anchor="middle" font-size="12.5" class="t">원고를 밖으로 건넨 적</text>
+  <text x="744" y="188" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b03a2e">0건</text>
+  <text x="892" y="238" text-anchor="end" font-size="10" class="gy">첫고객 대장 0행 · 9/30 공유 밀림 · 덱 117.4MB</text>
+  <path d="M 596 174 C 440 118, 250 118, 118 262" fill="none" stroke="#b9b1a2" stroke-width="2" stroke-dasharray="7 6"/>
   <path d="M 118 262 l 11 -12 l -1 16 z" fill="#b9b1a2"/>
-  <rect x="356" y="128" width="248" height="46" rx="8" fill="#F3EEE3" stroke="#b9b1a2" stroke-width="1.4" stroke-dasharray="5 5"/>
-  <text x="480" y="148" text-anchor="middle" font-size="12.5" class="gy">읽은 사람이 되받아 준 값</text>
-  <text x="480" y="166" text-anchor="middle" font-size="14" font-weight="700" class="gy">0건</text>
-  <text x="892" y="250" text-anchor="end" font-size="11" class="gy">끝을 읽고 돌아와야 하는 선</text>
+  <text x="330" y="128" text-anchor="middle" font-size="11.5" class="gy">되받을 것도 없다 — 분모가 0이라 0/0</text>
   <line x1="104" y1="300" x2="892" y2="300" stroke="#2b2620" stroke-width="2"/>
   <line x1="104.0" y1="295" x2="104.0" y2="305" stroke="#2b2620" stroke-width="2"/>
   <text x="104.0" y="320" text-anchor="start" font-size="10.5" class="gy">1단락</text>
@@ -41,7 +46,7 @@
   <rect x="104" y="377" width="40.4" height="18" rx="3" fill="#FFD53A" stroke="#C08A17" stroke-width="1.4"/>
   <text x="153.4" y="391" font-size="12" font-weight="700" class="t">23단락</text>
   <text x="104" y="408" font-size="11" class="gy">끝 얘기가 처음 나오기까지 — 못 넷을 박기 전과 후</text>
-  <text x="892" y="408" text-anchor="end" font-size="11" class="gy">아래 = 내가 내 원고를 센 값 · 위 = 밖에서 와야 하는 값</text>
+  <text x="892" y="408" text-anchor="end" font-size="11" class="gy">내보내는 문이 닫혀 있어 돌아오는 선이 빈 것이다</text>
   <line x1="104" y1="398" x2="892" y2="398" stroke="#b9b1a2" stroke-width="1"/>
-  <text x="480" y="418" text-anchor="middle" font-size="12.5" class="t">아래 선엔 눈금과 점이 있고, 위로 돌아오는 호는 비어 있다.</text>
+  <text x="480" y="418" text-anchor="middle" font-size="12.5" class="t">아래는 내가 내 원고를 센 값이다. 그 값이 밖으로 나간 적이 없다.</text>
 </svg>
