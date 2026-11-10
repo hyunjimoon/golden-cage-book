@@ -104,8 +104,9 @@
   <circle cx="984" cy="566" r="7.5" fill="#1F4E79"/>
   <text x="984" y="586" text-anchor="middle" font-size="9.5" fill="#1F4E79">〃</text>
   <circle cx="1094" cy="566" r="7.5" fill="none" stroke="#b03a2e" stroke-width="1.6" stroke-dasharray="3 3"/>
-  <text x="1076" y="533" text-anchor="end" font-size="10.5" font-weight="700" fill="#b03a2e">10장 — 둘 다 0</text>
-  <text x="1076" y="548" text-anchor="end" font-size="9.5" fill="#6a6355">「나에게 하세요. 다 말고, 나에게」는 설계 메모에만 있다</text>
+  <circle cx="1094" cy="566" r="3" fill="#b03a2e" opacity="0.55"/>
+  <text x="1076" y="533" text-anchor="end" font-size="10.5" font-weight="700" fill="#b03a2e">10장 — 대사 줄 0</text>
+  <text x="1076" y="548" text-anchor="end" font-size="9.5" fill="#6a6355">「나에게 하세요. 다 말고, 나에게」는 §6 서술 안에 있다 — 대사 줄은 아니다</text>
   <line x1="544" y1="466" x2="544" y2="596" stroke="#9c968b" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="554" y="610" font-size="9.5" fill="#6a6355">5장 — 다는 쏘고, 세는 쏘인다(선택 아님)</text>
   <rect x="56" y="648" width="1084" height="186" rx="10" fill="#ffffff" fill-opacity="0.62" stroke="#b9b1a2" stroke-width="1"/>
@@ -120,8 +121,8 @@
   <text x="104" y="770" font-size="12" font-weight="700" fill="#b03a2e">합쳐진 것은 내용뿐이다.</text>
   <text x="268" y="770" font-size="11" fill="#6a6355">「벗을 수 있는 것 안에서 고른다」(6장)·「반쯤 열렸을 때가 가장 넓다」(8장)는 다의 옵션 논리인데, 말하는 양식은 전부 세의 것이다.</text>
   <text x="78" y="803" font-size="13">⚓</text>
-  <text x="104" y="803" font-size="12" font-weight="700" fill="#2b2620">두 판정이 한 칸에 걸려 있다 — 10장.</text>
-  <text x="394" y="803" font-size="11" fill="#6a6355">「나에게 하세요. 다 말고, 나에게」는 단문·명령형, 곧 다의 양식이다. 지금 설계 메모에만 있고 본문 착지 0건.</text>
+  <text x="104" y="803" font-size="12" font-weight="700" fill="#2b2620">두 판정이 한 칸에 걸려 있다 — 10장 §6.</text>
+  <text x="432" y="803" font-size="11" fill="#6a6355">세의 「나에게 하세요. 다 말고, 나에게」는 단문·명령형, 곧 다의 양식이다. 서술 안의 인용으로 서 있고 대사 줄로는 아직 없다.</text>
   <text x="56" y="866" font-size="10" fill="#6a6355">양식이 탁월함의 질문이라면, 내용만 합쳐진 합은 두 질문의 합이 아니라 <tspan font-weight="700" fill="#2b2620">한 질문의 승리</tspan>다.</text>
   <text x="1140" y="866" text-anchor="end" font-size="10" fill="#6a6355">5장 거울 — 「세」 절은 어미가 ~다로, 「다」 절은 ~세로 닫힌다</text>
 </svg>
