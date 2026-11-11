@@ -8,7 +8,7 @@
 
 | 무엇 | SSOT | 규칙 |
 |:--|:--|:--|
-| **코드 전부** (`.py` 본문과 그 머리말) | `tolzul/.claude/<원본>.py` — 각 파일 띠의 「원본」 줄이 가리킨다 | 🚫 여기서 고치지 마라. 원본을 고치고 `python3 .claude/publish_scripts.py` 로 다시 찍는다 |
+| **코드 전부** (`.py` 본문과 그 머리말) | `<저자 vault>/.claude/<원본>.py` — 각 파일 띠의 「원본」 줄이 가리킨다 | 🚫 여기서 고치지 마라. 원본을 고치고 `python3 .claude/publish_scripts.py` 로 다시 찍는다 |
 | **맨 위 넉 줄 띠** | 찍힌 것 — `publish_scripts.py` 의 manifest | 번호·물음·주소만. **안 늙는 것만 적는다** |
 | **이 글** (`README.md`) | 이 파일 | 여기서 고친다. 다시 찍어도 안 덮인다 |
 | `sbc_analyze.py` 하나는 예외 | **이 폴더가 원본** | `.github/workflows/sbc_emotion.yml` 이 직접 돌린다 |

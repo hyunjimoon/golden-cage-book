@@ -9,7 +9,7 @@
 #  🌉 갈색다리 — 「끝 못이 뒤쪽 절반에만 박혀 있다」
 # ──────────────────────────────────────────────────────────────────────────
 #  입력    4차소통/원고 열 장 (1🪞 … 10🧫) · 10장 끝 못(저자가 박았다)
-#  출력    /Users/hyunjimoon/golden-cage-book/interactive/bridge_crossing.html
+#  출력    interactive/bridge_crossing.html
 #  돌리기  python3 .claude/gen_bridge_crossing.py
 #
 #  ⚠️ 2026-11-02 — 기능 일곱을 하나로 줄였다 (자장 지시)
@@ -48,8 +48,8 @@ import statistics as st
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC  = os.path.join(os.path.dirname(HERE),
-                    "시공간멜로디/On/me_문현지/제품/소설/4차소통/원고")
-OUT  = "/Users/hyunjimoon/golden-cage-book/interactive/bridge_crossing.html"
+                    "<vault>/4차소통/원고")
+OUT  = "interactive/bridge_crossing.html"
 
 CHAPTERS = [
     (1,  "1🪞_거울새장.md",        "🪞", "거울"),

@@ -805,14 +805,12 @@
 
     // sidebar nav — appendices (한 무리, 2026-11-03)
     //   무리 셋(읽을거리·도구·참고)이 각 2~3개뿐이라 머리말이 항목보다 많았다. 하나로 접는다.
-    //   app2(의심3부작)는 app1에 합쳐 「낭만의심 3부작」이 되었다 — _archive/ 로 내렸고 ALIASES가 옛 URL을 받는다.
+    //   app2(의심3부작)는 app1에 합쳐 「낭만의심 3부작」이 되었다 — 공개면에서 내렸고 ALIASES가 옛 URL을 받는다.
     //   생각 빚 장부는 references.html(자동생성 SSOT)이 정본 — app4_references.md는 stale 사본이라 2026-07-27 삭제
     const APPENDICES = [
       { group: '부록', items: [
         { id: 'app1_romantic_trilogy',     label: '낭만의심 3부작' },
         { id: 'app3_craft_of_startup_novel', label: '한글같은 삶소설' },
-        { id: 'app5_prompting',            label: '프롬프팅 예시' },
-        { id: 'app6_industry_debt',        label: '산업별 빚' },
         { href: 'glossary.html',           label: '이 책의 말 (용어)' }
       ] }
     ];
@@ -891,7 +889,7 @@
       md = md.replace(/^---\r?\n[\s\S]*?\r?\n---[ \t]*\r?\n/, '');
       md = md.replace(/!\[\[([^\]]+)\]\]/g, '');
       // 🐛 2026-11-04 — 원고의 도판 경로는 **vault 루트 기준**이라(Obsidian 이 그렇게 읽는다)
-      //    게시면에서 /interactive/시공간멜로디/… 로 풀려 404 가 난다. 실측: ch0_roadmap 두 장 다 깨져 있었다.
+      //    게시면에서 /interactive/<vault 경로>/… 로 풀려 404 가 난다. 실측: ch0_roadmap 두 장 다 깨져 있었다.
       //    원고를 고치지 않고 여기서 바꾼다 — 원고는 Obsidian 이 읽는 면이기도 하다.
       //    sync 가 도판을 interactive/diagrams/ 한 곳에 모으므로 파일 이름만 남기면 맞는다.
       md = md.replace(/(!\[[^\]]*\]\()[^)]*\/diagrams\/([^)]+\))/g, '$1diagrams/$2');
