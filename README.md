@@ -9,7 +9,28 @@
 
 ---
 
-## 한 비교 — 지를까, 말까
+## 당신은 지금 어디 서 있습니까
+
+| | 묻는 것 | 이런 말이 나올 때 | 읽을 장 |
+|:--:|:--|:--|:--|
+| **1** | 이 원함이 내 것인가, 빌린 것인가 | *"저도 이게 필요해서 만들었어요"* | [1·6장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch1_mirror_cage) |
+| **2** | 다 알겠는데 왜 시작을 못 하나 | *"우리 시장은 원래…"* | [2·7장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch2_telescope_cage) |
+| **3** | 돈을 받아도 내 것으로 남나 | **—** | [3·8장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_glass_cage) |
+| **4** | 누구의 자로, 누구와 재나 | *"제 대시보드는 초록인데요"* | [4·9장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch4_clock_cage) |
+| **5** | 멈춰서 잃은 시간이 갚아지나 | *"제가 그렇게 말해버렸으니 어떻게든 해야죠"* | [5·10장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_mirror_nest) |
+
+3번 칸은 아직 못 들어서 비워 뒀습니다. 들으신 말이 있으면 알려주세요.
+
+## 세 갈래
+
+- **30초** — 위에서 당신 줄 하나
+- **5분** — 그 줄의 장 하나
+- **두 줄** — 그 말을 하고 무엇을 했는지 → [여기](https://github.com/hyunjimoon/golden-cage-book/issues/new)
+
+<details>
+<summary><b>여덟 마디 — 상대와 부딪힐 때 (위 다섯이 밖으로 나타나는 꼴)</b></summary>
+
+#### 한 비교 — 지를까, 말까
 
 창업에서 묻는 건 늘 하나다. **지른다**인가 **멈춘다**인가. 어려운 건 고르는 게 아니라 **비교할 값**이다.
 
@@ -35,6 +56,7 @@
 | "지른 나, 막는 나" | 둘이 같다 | 지른 약속을 **장부에 적고 한 번 멈춘다** | **5장 ↔ 10장** |
 
 > **괴로움은 마지막 줄에서 가장 크다.** 한쪽이 분명히 나으면 안 갈등한다. 저울이 안 기울 때 찢긴다 — 그 자리가 101호이고, 5장의 지침이 「밀리기 전에 뛰어내려라」인 이유다.
+</details>
 
 ## 한 문장
 
