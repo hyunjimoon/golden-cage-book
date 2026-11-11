@@ -1,6 +1,6 @@
 # ──────────────────────────────────────────────────────────────────────────
 #  2. 「중간에 길을 잃었어요」   ·   🧠 갈색다리 — 건넘판
-#  원본  tolzul/.claude/gen_bridge_crossing.py   —   손으로 고치지 마라 — .claude/publish_scripts.py 가 찍는다
+#  원본  <저자 vault>/.claude/gen_bridge_crossing.py   —   손으로 고치지 마라 — .claude/publish_scripts.py 가 찍는다
 # ──────────────────────────────────────────────────────────────────────────
 
 #!/usr/bin/env python3
