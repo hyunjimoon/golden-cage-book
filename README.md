@@ -5,8 +5,7 @@
 > 왜 이른 자원이 창업을 가두는가 — 그리고 어떻게 그 새장을 *둥지*로 여는가.
 
 
-<!-- 중심 상징 그림이 들어오면 아래 한 줄을 연다 (img/og_center.png · 1200x630)
-<p align="center"><img src="img/og_center.png" width="860" alt="거울짝 다섯이 101호를 지나 마주본다"></p> -->
+<p align="center"><img src="img/og_center.png" width="860" alt="거울짝 다섯이 101호를 지나 마주본다"></p>
 
 ---
 
