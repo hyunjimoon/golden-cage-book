@@ -13,11 +13,13 @@
 
 | | 묻는 것 | 이런 말이 나올 때 | 읽을 장 |
 |:--:|:--|:--|:--|
-| **1** | 이 원함이 내 것인가, 빌린 것인가 | *"저도 이게 필요해서 만들었어요"* | [1·6장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch1_mirror_cage) |
-| **2** | 다 알겠는데 왜 시작을 못 하나 | *"우리 시장은 원래…"* | [2·7장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch2_telescope_cage) |
-| **3** | 돈을 받아도 내 것으로 남나 | **—** | [3·8장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_glass_cage) |
-| **4** | 누구의 자로, 누구와 재나 | *"제 대시보드는 초록인데요"* | [4·9장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch4_clock_cage) |
-| **5** | 멈춰서 잃은 시간이 갚아지나 | *"제가 그렇게 말해버렸으니 어떻게든 해야죠"* | [5·10장](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_mirror_nest) |
+| **1** | 이 원함이 내 것인가, 빌린 것인가 | *"저도 이게 필요해서 만들었어요"* | [1 거울 → 6 나비](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch1_mirror_cage) |
+| **2** | 다 알겠는데 왜 시작을 못 하나 | *"우리 시장은 원래…"* | [2 망원경 → 7 튤립구근](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch2_telescope_cage) |
+| **3** | 돈을 받아도 내 것으로 남나 | **—** | [3 스테인굴레스 → 8 안개](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_glass_cage) |
+| **4** | 누구의 자로, 누구와 재나 | *"제 대시보드는 초록인데요"* | [4 시계 → 9 까마귀](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch4_clock_cage) |
+| **5** | 멈춰서 잃은 시간이 갚아지나 | *"제가 그렇게 말해버렸으니 어떻게든 해야죠"* | [5 101호 → 10 101호](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_mirror_nest) |
+
+화살표 앞이 갇히는 장, 뒤가 여는 장입니다. 아홉 편의 소설이 먼저 갇혔습니다 — 마담 보바리 · 표범 · 페스트 · 방드르디 · 1984 · M. Butterfly · 검은 튤립 · 안개 · 삼국유사.
 
 3번 칸은 아직 못 들어서 비워 뒀습니다. 들으신 말이 있으면 알려주세요.
 
@@ -73,7 +75,10 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 
 방향전환(R)이 성장(G)을 만들지만, 자원(F)이 방향전환 억압. 미국 벤처 168,011건 실증 — 방향 바꾼 자(Movers)가 머문 자(Stayers)보다 **2.60배** 성장.
 
-## 열 장 — 비교를 고치는 복도
+<details>
+<summary><b>열 장 복도 — 어떤 소설이 어떻게 갇혔나 (작품·극·되재는 자)</b></summary>
+
+#### 열 장 — 비교를 고치는 복도
 
 『투향』은 한 장마다 **문학의 은유**로 갇힘을 진단하고 **운영의 수(數)**로 그 진단을 보정한다. 위 표가 **입구**(내가 들은 말로 나를 찾는 곳)라면, 아래 표는 **복도**다 — 무엇을 빌렸고 누가 그것을 되재는가.
 
@@ -94,6 +99,7 @@ dG/dF = (dG/dR) × (dR/dF) = (+) × (−) = (−)
 > **극이 곧 거울짝이다** — **D** 1↔6 🦋 · **B** 2↔7 🧅 · **A** 3↔8 🌫️ · **M** 4↔9 🐦‍⬛ · 회전축 5↔10. 1부는 네 극을 **쌓고**(D → +B → +A → +M), 2부가 거기에 짝을 하나씩 붙여 **축**을 세운다. 그래서 짝의 앞쪽은 *나에게* 묻고, 뒤쪽은 같은 물음을 *이해관계자에게* 되묻는다 — 이해관계자는 2부의 산출물이라 1~4장 행에는 서지 않는다. ⚠️ **둘째 칸은 쌓는 순서이고 넷째 칸은 그 장의 소재다** — 1행만 낱말이 같고(욕망→욕망) 2·3·4행은 다르다(믿음→품위 · 행동→확신 · 자→질서).
 
 > **핵심 이동 — 과거의 고통을 미래의 연료로.** 1–4장에서 *나에게* 한 진단(모르고 빌린 욕망·접어버린 가능성·그어버린 선·훔친 불)이, 6–9장에서 *이해관계자에게* 되쓰인다. 남을 이해하는 유일한 길은, 내가 먼저 그 새장에 갇혀봤다는 것. **상처가 렌즈가 된다.**
+</details>
 
 <details>
 <summary><b>근거 — 저자 · 출판 · 논문 셋</b></summary>
