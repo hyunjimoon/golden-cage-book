@@ -1,24 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 800" width="1060" height="800" role="img" aria-label="다섯 방 평면도. 짝 넷이 네 모서리에 한 방씩 들고, 가운데 기억 방을 두 번 지난다." font-family="Noto Sans KR, Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 800" width="1060" height="800" role="img" aria-label="다섯 방 평면도. 짝 넷이 네 모서리에 한 방씩 들고, 가운데 기억 방을 두 번 지난다. 문은 다섯이고 같은 문을 두 번 지나 걸음이 열이다 — 복도 셋은 한 무리 안, 가운데 문 둘은 고정점." font-family="Noto Sans KR, Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
 <rect width="1060" height="800" fill="#FFFFFF"/>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#14130F"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#9A938A"/></marker></defs>
 <style> a.room{cursor:pointer} a.room .hit{fill:#14130F;fill-opacity:0;pointer-events:all} a.room:hover .hit,a.room:focus .hit{fill-opacity:0.045} a.room:hover .seatname,a.room:focus .seatname{text-decoration:underline} a.room:focus{outline:none}</style>
 <text x="56" y="56" font-size="20" font-weight="700" fill="#14130F">다섯 방 — 열 장이 사는 집</text>
 <text x="56" y="82" font-size="12.5" fill="#5E584E">자리는 여덟인데 방은 다섯이다. 짝이 둘씩 한 방에 산다 — <tspan font-weight="700">짝을 떼면 사슬이 끊긴다.</tspan> 안쪽에 사는 넷(1~4)이 빚을 쓰고, 바깥에서 돌아온 넷(6~9)이 갚는다.</text>
-<text x="56" y="104" font-size="12.5" fill="#5E584E">문은 고리 차례다 — 위 두 방이 <tspan font-weight="700">수축</tspan>하면 아래 두 방이 <tspan font-weight="700">박동</tspan>한다. 심장 한 바퀴다.</text>
+<text x="56" y="104" font-size="12.5" fill="#5E584E"><tspan font-weight="700">문은 다섯인데 걸음은 열이다</tspan> — 같은 문을 두 번 지난다. 위 두 방이 <tspan font-weight="700">수축</tspan>하면 아래 두 방이 <tspan font-weight="700">박동</tspan>한다. 심장 한 바퀴다.</text>
 <text x="104" y="128" font-size="11" font-weight="700" fill="#9A938A" letter-spacing="0.14em">못 잰다 · 사용가치 · 수축</text>
-<text x="104" y="488" font-size="11" font-weight="700" fill="#9A938A" letter-spacing="0.14em">잰다 · 교환가치 · 박동 · $ · 시간 · 확률</text>
-<line x1="464" y1="238" x2="596" y2="238" stroke="#14130F" stroke-width="2.2"/>
-<text x="530" y="229" font-size="11.5" fill="#5E584E" text-anchor="middle">한 무리</text>
-<line x1="596" y1="598" x2="464" y2="598" stroke="#14130F" stroke-width="2.2"/>
-<text x="530" y="589" font-size="11.5" fill="#5E584E" text-anchor="middle">한 무리</text>
-<path d="M956,330 L1002,330 L1002,500 L956,500" fill="none" stroke="#14130F" stroke-width="2.2" marker-end="url(#ar)"/>
-<text x="998" y="354" font-size="11.5" fill="#5E584E" text-anchor="end">수축이 박동을 부른다</text>
-<path d="M104,500 L58,500 L58,330 L104,330" fill="none" stroke="#14130F" stroke-width="2.2" marker-end="url(#ar)"/>
-<text x="60" y="354" font-size="11.5" fill="#5E584E">폭파의 잔재가 먹이가 된다</text>
+<text x="856" y="476" font-size="11" font-weight="700" fill="#9A938A" text-anchor="end" letter-spacing="0.14em">잰다 · 교환가치 · 박동 · $ · 시간 · 확률</text>
+<line x1="464" y1="238" x2="596" y2="238" stroke="#14130F" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="530" y="232" font-size="10.5" fill="#9A938A" text-anchor="middle" letter-spacing="0.1em">한 무리</text>
+<circle cx="478" cy="194" r="9.5" fill="#FFFFFF" stroke="#14130F" stroke-width="1.6"/><text x="478" y="197.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#14130F">1</text><text x="493" y="198" font-size="11.5" fill="#5E584E">망원경</text><text x="493" y="213" font-size="11.5" font-weight="700" fill="#14130F">밑줄 친 것 하나</text>
+<circle cx="478" cy="276" r="9.5" fill="#14130F" stroke="#14130F" stroke-width="1.6"/><text x="478" y="279.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#FFFFFF">6</text><text x="493" y="280" font-size="11.5" fill="#5E584E">검은 구근 한 알</text>
+<line x1="886" y1="337" x2="886" y2="493" stroke="#14130F" stroke-width="2.2" marker-end="url(#ar)"/>
+<circle cx="790" cy="366" r="9.5" fill="#FFFFFF" stroke="#14130F" stroke-width="1.6"/><text x="790" y="369.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#14130F">2</text><text x="805" y="370" font-size="11.5" fill="#5E584E">색유리</text>
+<circle cx="790" cy="394" r="9.5" fill="#14130F" stroke="#14130F" stroke-width="1.6"/><text x="790" y="397.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#FFFFFF">7</text><text x="805" y="398" font-size="11.5" fill="#5E584E">흐린 창</text>
+<text x="902" y="400" font-size="10.5" fill="#9A938A" letter-spacing="0.1em">한 무리</text>
+<text x="902" y="424" font-size="11.5" fill="#5E584E">수축이 박동을 부른다</text>
+<line x1="596" y1="598" x2="464" y2="598" stroke="#14130F" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="530" y="590" font-size="10.5" fill="#9A938A" text-anchor="middle" letter-spacing="0.1em">한 무리</text>
+<circle cx="478" cy="560" r="9.5" fill="#FFFFFF" stroke="#14130F" stroke-width="1.6"/><text x="478" y="563.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#14130F">3</text><text x="493" y="564" font-size="11.5" fill="#5E584E">파도</text>
+<circle cx="478" cy="636" r="9.5" fill="#14130F" stroke="#14130F" stroke-width="1.6"/><text x="478" y="639.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#FFFFFF">8</text><text x="493" y="640" font-size="11.5" fill="#5E584E">바늘구멍 빛</text>
 <rect x="104" y="140" width="360" height="190" fill="none" stroke="#14130F" stroke-width="4"/>
 <rect x="104" y="140" width="360" height="7" fill="#0026FB"/>
-<rect x="368.0" y="325" width="52" height="10" fill="#FFFFFF"/><path d="M368.0,330 A52,52 0 0 1 368.0,382" fill="none" stroke="#9A938A" stroke-width="1"/>
 <rect x="459" y="214.0" width="10" height="48" fill="#FFFFFF"/><path d="M464,214.0 A48,48 0 0 1 512,214.0" fill="none" stroke="#9A938A" stroke-width="1"/>
+<rect x="368.0" y="325" width="52" height="10" fill="#FFFFFF"/><path d="M368.0,330 A52,52 0 0 1 368.0,382" fill="none" stroke="#9A938A" stroke-width="1"/>
 <text x="128" y="174" font-size="11" font-weight="700" fill="#0026FB" letter-spacing="0.12em">파랑 방 · 무엇을 원하는가</text>
 <a class="room" href="reader.html?file=ch1_mirror_cage" aria-label="1장 거울새장 — 욕망 읽기">
 <rect class="hit" x="112" y="182" width="344" height="48" rx="6"/>
@@ -34,8 +39,8 @@
 </a>
 <rect x="596" y="140" width="360" height="190" fill="none" stroke="#14130F" stroke-width="4"/>
 <rect x="596" y="140" width="360" height="7" fill="#491786"/>
-<rect x="640.0" y="325" width="52" height="10" fill="#FFFFFF"/><path d="M640.0,330 A52,52 0 0 1 640.0,382" fill="none" stroke="#9A938A" stroke-width="1"/>
 <rect x="591" y="214.0" width="10" height="48" fill="#FFFFFF"/><path d="M596,214.0 A48,48 0 0 0 548,214.0" fill="none" stroke="#9A938A" stroke-width="1"/>
+<rect x="860.0" y="325" width="52" height="10" fill="#FFFFFF"/><path d="M860.0,330 A52,52 0 0 1 860.0,382" fill="none" stroke="#9A938A" stroke-width="1"/>
 <text x="620" y="174" font-size="11" font-weight="700" fill="#491786" letter-spacing="0.12em">보라 방 · 무엇을 믿는가</text>
 <a class="room" href="reader.html?file=ch2_telescope_cage" aria-label="2장 망원경새장 — 상상 읽기">
 <rect class="hit" x="604" y="182" width="344" height="48" rx="6"/>
@@ -51,7 +56,7 @@
 </a>
 <rect x="596" y="500" width="360" height="190" fill="none" stroke="#14130F" stroke-width="4"/>
 <rect x="596" y="500" width="360" height="7" fill="#F82218"/>
-<rect x="640.0" y="495" width="52" height="10" fill="#FFFFFF"/><path d="M640.0,500 A52,52 0 0 0 640.0,448" fill="none" stroke="#9A938A" stroke-width="1"/>
+<rect x="860.0" y="495" width="52" height="10" fill="#FFFFFF"/><path d="M860.0,500 A52,52 0 0 0 860.0,448" fill="none" stroke="#9A938A" stroke-width="1"/>
 <rect x="591" y="574.0" width="10" height="48" fill="#FFFFFF"/><path d="M596,574.0 A48,48 0 0 0 548,574.0" fill="none" stroke="#9A938A" stroke-width="1"/>
 <text x="620" y="534" font-size="11" font-weight="700" fill="#F82218" letter-spacing="0.12em">빨강 방 · 무엇을 하는가</text>
 <a class="room" href="reader.html?file=ch3_glass_cage" aria-label="3장 스테인굴레스새장 — 설득 읽기">
@@ -88,8 +93,19 @@
 <text x="530" y="425" font-size="12.5" fill="#5E584E" text-anchor="middle">101호</text>
 <a class="room" href="reader.html?file=ch5_mirror_nest" aria-label="5장 101₂호 읽기"><rect class="hit" x="456" y="435" width="68" height="22" rx="5"/><text class="seatname" x="490" y="451" font-size="11.5" fill="#5E584E" text-anchor="middle">5장 단기 ›</text></a>
 <a class="room" href="reader.html?file=ch10_mirror_close" aria-label="10장 101₃호 읽기"><rect class="hit" x="536" y="435" width="68" height="22" rx="5"/><text class="seatname" x="570" y="451" font-size="11.5" fill="#5E584E" text-anchor="middle">10장 장기 ›</text></a>
-<line x1="466" y1="351" x2="380" y2="307" stroke="#9A938A" stroke-width="1.6" stroke-dasharray="5 5" marker-end="url(#arf)"/>
-<line x1="594" y1="479" x2="680" y2="523" stroke="#9A938A" stroke-width="1.6" stroke-dasharray="5 5" marker-end="url(#arf)"/>
-<text x="56" y="736" font-size="12" fill="#5E584E">가운데 방은 <tspan font-weight="700">두 번 지난다</tspan> — 5장에서 돌아서고(단기), 10장에서 닫는다(장기). 그래서 이 집에 들어왔다 나가는 길은 열 번이 아니라 <tspan font-weight="700">다섯 방 × 두 번</tspan>이다.</text>
-<text x="56" y="758" font-size="11.5" fill="#9A938A">띠 색 = 짝색(1↔6 파랑 · 2↔7 보라 · 3↔8 빨강 · 4↔9 초록 · 5↔10 노랑). 이 그림은 <tspan font-style="italic">잰 값이 아니라 배치</tspan>다 — 숫자는 들어 있지 않다. <tspan font-weight="700">방 안의 이름을 누르면 그 장으로 간다.</tspan></text>
+<path d="M394,493 L394,468 L470,468" fill="none" stroke="#14130F" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="120" y="436" font-size="10.5" fill="#9A938A" letter-spacing="0.1em">고정점으로 든다 · 폭파의 잔재가 먹이가 된다</text>
+<circle cx="134" cy="462" r="9.5" fill="#FFFFFF" stroke="#14130F" stroke-width="1.6"/><text x="134" y="465.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#14130F">4</text><text x="149" y="466" font-size="11.5" fill="#5E584E">빈 의자</text>
+<circle cx="134" cy="488" r="9.5" fill="#14130F" stroke="#14130F" stroke-width="1.6"/><text x="134" y="491.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#FFFFFF">9</text><text x="149" y="492" font-size="11.5" fill="#5E584E">전등과 거울 · <tspan font-weight="700" fill="#14130F">던진 빛</tspan></text>
+<path d="M470,363 L394,363 L394,337" fill="none" stroke="#14130F" stroke-width="3.2" marker-end="url(#ar)"/>
+<text x="120" y="346" font-size="10.5" fill="#9A938A" letter-spacing="0.1em">이음새 둘 — 고정점에서 나온다. 두 번 다 이 문이다</text>
+<circle cx="134" cy="372" r="9.5" fill="#FFFFFF" stroke="#14130F" stroke-width="1.6"/><text x="134" y="375.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#14130F">5</text><text x="149" y="376" font-size="11.5" fill="#5E584E">가면 · <tspan font-weight="700" fill="#14130F">붉은 일기장</tspan></text>
+<circle cx="134" cy="398" r="9.5" fill="#14130F" stroke="#14130F" stroke-width="1.6"/><text x="134" y="401.6" font-size="9.5" font-weight="700" text-anchor="middle" fill="#FFFFFF">10</text><text x="149" y="402" font-size="11.5" fill="#5E584E">꺼진 샹들리에 · <tspan font-weight="700" fill="#14130F">빈 손 · 닫는다</tspan></text>
+<circle cx="604" cy="124" r="9.5" fill="#FFFFFF" stroke="#14130F" stroke-width="1.6"/><text x="604" y="127.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#14130F"></text>
+<text x="619" y="128" font-size="11" fill="#9A938A">첫 바퀴 · 다 · 쓴다</text>
+<circle cx="740" cy="124" r="9.5" fill="#14130F" stroke="#14130F" stroke-width="1.6"/><text x="740" y="127.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="#FFFFFF"></text>
+<text x="755" y="128" font-size="11" fill="#9A938A">둘째 바퀴 · 세 · 갚는다</text>
+<text x="56" y="716" font-size="12" fill="#5E584E">문 다섯을 두 번 지나 <tspan font-weight="700">걸음이 열</tspan>이다 — 모서리 열 = 가로 여덟 + <tspan font-weight="700">이음새 둘</tspan>. 가운데 방도 두 번 지난다 — 5장에서 돌아서고(단기), 10장에서 닫는다(장기).</text>
+<text x="56" y="738" font-size="12" fill="#5E584E">복도 셋은 <tspan font-weight="700">한 무리 안</tspan>(1~4 · 6~9)이라 순서를 바꿔도 되고, 가운데 문 둘은 <tspan font-weight="700">고정점</tspan>(5🐀 · 10🧫)에 닿아 못 바꾼다 — 4+4+2. 굵은 글자 = 손에 들려 가는 물건. <tspan font-weight="700">여섯 모서리는 비어 있다 — 비운 채로 둔다.</tspan></text>
+<text x="56" y="760" font-size="11.5" fill="#9A938A">거울짝 다섯은 둘레가 아니라 <tspan font-style="italic">한 방에 겹친 두 자리</tspan>다(점 반전) — 띠 색 = 짝색(1↔6 파랑 · 2↔7 보라 · 3↔8 빨강 · 4↔9 초록 · 5↔10 노랑). 이 그림은 잰 값이 아니라 배치다. <tspan font-weight="700">방 안의 이름을 누르면 그 장으로 간다.</tspan></text>
 </svg>
