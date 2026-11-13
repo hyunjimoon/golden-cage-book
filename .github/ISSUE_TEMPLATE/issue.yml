@@ -1,10 +1,11 @@
-name: 이슈 — 어느 장, 어느 자리
-description: 장과 자리를 고르고 연다. 둘 다 적혀야 지도 위 한 칸이 선다.
+name: 이슈 — 한 자리 × 한 어긋남
+description: 다섯 칸을 다 채워야 열린다. 못 채우면 아직 이슈가 아니다.
 body:
   - type: markdown
     attributes:
       value: |
-        네 자리는 몸의 순서다 — **눈으로 보고 · 뇌로 궁리하고 · 심장이 뛰고 · 손이 움직인다.**
+        **이슈 하나 = 한 자리 × 한 어긋남.** 끝났다는 조건을 한 문장으로 못 쓰면 **둘로 쪼개라.**
+        네 자리는 몸의 순서다 — 눈으로 보고 · 뇌로 궁리하고 · 심장이 뛰고 · 손이 움직인다.
 
   - type: dropdown
     id: chapter
@@ -30,18 +31,64 @@ body:
     attributes:
       label: 자리 — 무엇에 관한 글인가
       options:
-        - 👁️ 눈 — 무엇을 봤나 (사실·자료·레퍼런스·실측)
+        - 👁️ 눈 — 무엇을 봤나 (사실·자료·인용·실측)
         - 🧠 뇌 — 무엇을 궁리했나 (왜·방향·가치)
-        - 🫀 심장 — 무엇이 뛰었나 (어떻게·도구·실험)
+        - 🫀 심장 — 무엇이 뛰었나 (감정·대사·쓰는 이와 읽는 이의 고리)
         - 🤚 손 — 무엇이 움직였나 (그래서·남는 것·실천)
     validations:
       required: true
 
   - type: textarea
-    id: body
+    id: done
     attributes:
-      label: 내용
-      description: 역설로 열고, 숫자나 표 하나로 받치고, 한 줄로 닫는다.
+      label: 끝났다는 조건
+      description: 한 문장. 그리고 셀 수 있어야 한다. 조건은 나중에 고쳐도 되지만, 고친 기록을 코멘트로 남긴다.
+      placeholder: |
+        ✅ 빈 모서리 4 → 0
+        ✅ 1~9장 본문 `명주` 0건 → 2건 이상
+        ❌ 10장이 좋아진다   ← 못 센다. 이건 조건이 아니다
+    validations:
+      required: true
+
+  - type: textarea
+    id: now
+    attributes:
+      label: 지금 상태
+      description: 숫자. 「안 쟀다」도 정당한 값이고, 그러면 첫 할 일이 「센다」가 된다. 값이 0이면 자를 먼저 의심한다 — 진짜 없나 · 자가 틀렸나 · 안 쟀나.
+      placeholder: |
+        이탤릭 흘끗 10/10 · 넘기는 선언 4/10 (실측 2026-11-13, 정본 4차소통/원고/)
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: 할 일
+      description: 한 줄 = 커밋 하나. 한 줄이 두 커밋을 요구하면 두 줄로 쪼갠다.
+      placeholder: |
+        1. 6🦋 §結에 넘기는 선언 한 줄
+        2. 7🧅 §結에 넘기는 선언 한 줄
+    validations:
+      required: true
+
+  - type: textarea
+    id: negative
+    attributes:
+      label: 🌗 음화 — 이걸로 안 서는 것
+      description: 이 이슈가 풀지 "않는" 것. 수가 안 맞는 자리, 자가 못 재는 자리. 이 칸이 조건을 검문한다 — #168은 자기 음화에 걸려 조건이 아홉에서 열로 고쳐졌다.
+      placeholder: |
+        꼭지점 10 · 모서리 9 · 거울짝 5 — 수가 다르면 칸이 아니라 축이다. 먼저 그 검문을 통과시켜라.
+    validations:
+      required: true
+
+  - type: textarea
+    id: closing
+    attributes:
+      label: 닫는 법
+      description: 무엇이 닫나. 커밋 해시는 반드시 링크로 — 맨 해시 금지(2026-11-13 룰링).
+      placeholder: |
+        원고 본문을 고치므로 공개 sync 커밋이 닫는다. 작업 커밋 메시지 끝에 (#이 번호)를
+        적어 이슈에 자동으로 붙이고, 닫을 때 `gh issue close <번호> --comment "닫은 근거: [링크] — 수 A→B"`.
     validations:
       required: true
 
