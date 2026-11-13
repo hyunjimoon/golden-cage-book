@@ -23,6 +23,7 @@ PRIOR·PRIOR_V1·V1_WHY·FIELD_PRIOR·CRIT·WITNESS 는 사람이 쓴다 — 건
 GitHub Actions에서 자동 실행. chapters/ch*.md 변경 시 트리거.
 """
 
+import datetime
 import json
 import re
 import sys
@@ -199,23 +200,12 @@ def retro_corpus(target: int) -> tuple:
 
 
 def analyze_retro(client, target: int, chapter_name: str) -> dict:
-    hits, srcs = retro_corpus(target)
-    if len(hits) < MIN_RETRO_LINES:
+    built = retro_prompt(target, chapter_name)
+    if built is None:
+        hits, _ = retro_corpus(target)
         print(f"  SKIP {chapter_name} 회고: {len(hits)}줄 — 문턱 {MIN_RETRO_LINES} 미달")
         return None
-
-    def ko(n):
-        return RETRO_SRC_KO.get(n, f"{n}장")
-
-    corpus = "\n".join(f"[{ko(n)}:{i}] {l}" for n, i, l in hits)
-    prompt = RETRO_PROMPT_TEMPLATE.format(
-        chapter_name=chapter_name,
-        src_desc=" · ".join(f"{ko(n)}" for n in srcs),
-        corpus=corpus,
-        axis_gloss=AXIS_GLOSS,
-        field_gloss=FIELD_GLOSS,
-        axis_schema=",".join('"%s":N' % a for a in AXES + FIELD_AXES),
-    )
+    prompt, hits, srcs = built
     response = client.messages.create(
         model=MODEL, max_tokens=2048, messages=[{"role": "user", "content": prompt}]
     )
@@ -223,27 +213,7 @@ def analyze_retro(client, target: int, chapter_name: str) -> dict:
     if not match:
         print(f"  Warning: 회고 JSON 파싱 실패 — {chapter_name}")
         return None
-    data = json.loads(match.group())
-
-    vec = data.get("retro")
-    if not isinstance(vec, dict):
-        print(f"  REJECT {chapter_name} 회고: 벡터 누락")
-        return None
-    for a in AXES + FIELD_AXES:
-        if a not in vec or not isinstance(vec[a], (int, float)) or not (0 <= vec[a] <= 100):
-            print(f"  REJECT {chapter_name} 회고: {a} = {vec.get(a)} (0~100 아님)")
-            return None
-
-    # 인용은 코퍼스 안에 있어야 한다 — 회고 칸은 원고 본문이 아니라 *뒤쪽 장*이 출처다
-    needle = _normalize(data.get("quote", ""))
-    if not needle or not any(needle in _normalize(l) for _, _, l in hits):
-        print(f"  REJECT {chapter_name} 회고: 인용이 코퍼스에 없음")
-        return None
-
-    data["n_lines"] = len(hits)
-    data["srcs"] = [ko(n) for n in srcs]
-    data["by"] = "sbc"
-    return data
+    return finalize_retro(json.loads(match.group()), chapter_name, hits, srcs, by="sbc")
 
 
 # ── 대사 추출 ─────────────────────────────────────────────────────────────
@@ -315,32 +285,76 @@ def verify_axes(data: dict, chapter_name: str, speakers: list) -> bool:
     return True
 
 
-def analyze_chapter(client, stem: str, chapter_name: str, speakers: list) -> dict:
-    path = Path("chapters") / f"{stem}.md"
-    text = path.read_text(encoding="utf-8")
+# ── 프롬프트 조립 — 채점자와 무관 ─────────────────────────────────────────
+# 2026-11-13: **조립**과 **호출**을 뗐다. API 잔액 0으로 자가 27번 연속 죽은 뒤
+#   (10-11 마지막 성공 ~ 11-13), 같은 프롬프트를 파일로 내보내 다른 채점자가 재고
+#   되넣는 길을 열었다(--emit / --ingest). 검문(verify_axes·verify_quotes)과
+#   전량성공 문턱은 두 길이 **공유한다** — 채점자만 바뀌고 자는 그대로다.
+#   🚨 그래서 채점자 이름을 안 적으면 --ingest 가 거부한다. 출처 없는 값은 안 받는다.
 
+def chapter_prompt(stem: str, chapter_name: str, speakers: list) -> tuple:
+    """(prompt, 원고 전문). 채점자가 누구든 같은 글을 읽는다."""
+    text = (Path("chapters") / f"{stem}.md").read_text(encoding="utf-8")
     dialogue = extract_dialogue(text)
     if len(dialogue) < 500:
         dialogue = text  # 5·10장처럼 대사가 없는 장은 전문으로
-
-    speaker_desc = " / ".join(
-        f"{SPEAKER_KO[s]}({s})" for s in speakers
-    )
-    speaker_schema = "\n".join(
-        '  "%s": {%s},' % (s, ",".join('"%s":N' % a for a in AXES + FIELD_AXES)) for s in speakers
-    )
-    quote_schema = ", ".join('"%s": "%s 발화 원문"' % (s, SPEAKER_KO[s]) for s in speakers)
-
     prompt = PROMPT_TEMPLATE.format(
         chapter_name=chapter_name,
         n_speakers=len(speakers),
-        speaker_desc=speaker_desc,
+        speaker_desc=" / ".join(f"{SPEAKER_KO[s]}({s})" for s in speakers),
         axis_gloss=AXIS_GLOSS,
         field_gloss=FIELD_GLOSS,
-        speaker_schema=speaker_schema,
-        quote_schema=quote_schema,
+        speaker_schema="\n".join(
+            '  "%s": {%s},' % (s, ",".join('"%s":N' % a for a in AXES + FIELD_AXES))
+            for s in speakers),
+        quote_schema=", ".join('"%s": "%s 발화 원문"' % (s, SPEAKER_KO[s]) for s in speakers),
         text=dialogue,
     )
+    return prompt, text
+
+
+def retro_prompt(target: int, chapter_name: str):
+    """(prompt, hits, srcs) — 문턱 미달이면 None."""
+    hits, srcs = retro_corpus(target)
+    if len(hits) < MIN_RETRO_LINES:
+        return None
+    def ko(n):
+        return RETRO_SRC_KO.get(n, f"{n}장")
+    prompt = RETRO_PROMPT_TEMPLATE.format(
+        chapter_name=chapter_name,
+        src_desc=" · ".join(ko(n) for n in srcs),
+        corpus="\n".join(f"[{ko(n)}:{i}] {l}" for n, i, l in hits),
+        axis_gloss=AXIS_GLOSS,
+        field_gloss=FIELD_GLOSS,
+        axis_schema=",".join('"%s":N' % a for a in AXES + FIELD_AXES),
+    )
+    return prompt, hits, srcs
+
+
+def finalize_retro(data: dict, chapter_name: str, hits: list, srcs: list, by: str):
+    """회고 채점 검문 — 벡터 16축 0~100 + 인용이 코퍼스 안에 그대로 있을 것."""
+    vec = data.get("retro")
+    if not isinstance(vec, dict):
+        print(f"  REJECT {chapter_name} 회고: 벡터 누락")
+        return None
+    for a in AXES + FIELD_AXES:
+        if a not in vec or not isinstance(vec[a], (int, float)) or not (0 <= vec[a] <= 100):
+            print(f"  REJECT {chapter_name} 회고: {a} = {vec.get(a)} (0~100 아님)")
+            return None
+    needle = _normalize(data.get("quote", ""))
+    if not needle or not any(needle in _normalize(l) for _, _, l in hits):
+        print(f"  REJECT {chapter_name} 회고: 인용이 코퍼스에 없음")
+        return None
+    def ko(n):
+        return RETRO_SRC_KO.get(n, f"{n}장")
+    data["n_lines"] = len(hits)
+    data["srcs"] = [ko(n) for n in srcs]
+    data["by"] = by
+    return data
+
+
+def analyze_chapter(client, stem: str, chapter_name: str, speakers: list) -> dict:
+    prompt, text = chapter_prompt(stem, chapter_name, speakers)
 
     response = client.messages.create(
         model=MODEL,
@@ -449,9 +463,121 @@ def dump_retro():
             print(f"  [{ko(n)}:{i}] {l[:240]}")
 
 
+def emit(outdir: str):
+    """같은 프롬프트를 파일로 내보낸다 — 채점자가 API가 아니어도 된다. API 불필요."""
+    d = Path(outdir)
+    d.mkdir(parents=True, exist_ok=True)
+    man = {"made": datetime.date.today().isoformat(), "model_slot": MODEL,
+           "chapters": [], "retro": []}
+    for ch, stem, name, speakers in CHAPTERS:
+        prompt, text = chapter_prompt(stem, name, speakers)
+        (d / f"ch{ch:02d}.prompt.md").write_text(prompt, encoding="utf-8")
+        man["chapters"].append({"ch": ch, "name": name, "speakers": speakers,
+                                "prompt": f"ch{ch:02d}.prompt.md",
+                                "answer": f"ch{ch:02d}.json",
+                                "읽히는자": len(prompt), "전문": len(text)})
+    for ch, _stem, name, _sp in CHAPTERS:
+        built = retro_prompt(ch, name)
+        if built is None:
+            hits, _ = retro_corpus(ch)
+            man["retro"].append({"ch": ch, "name": name,
+                                 "skip": f"{len(hits)}줄 — 문턱 {MIN_RETRO_LINES} 미달"})
+            continue
+        prompt, hits, _srcs = built
+        (d / f"retro{ch:02d}.prompt.md").write_text(prompt, encoding="utf-8")
+        man["retro"].append({"ch": ch, "name": name, "줄": len(hits),
+                             "prompt": f"retro{ch:02d}.prompt.md",
+                             "answer": f"retro{ch:02d}.json"})
+    (d / "manifest.json").write_text(
+        json.dumps(man, ensure_ascii=False, indent=2), encoding="utf-8")
+    nch = len(man["chapters"])
+    nre = sum(1 for r in man["retro"] if "prompt" in r)
+    print(f"내보냈다 → {d}")
+    print(f"  현장 {nch}장 · 회고 {nre}칸 (문턱 미달 {len(man['retro']) - nre})")
+    print(f"  답은 같은 폴더에 ch01.json … retro01.json … 으로 넣는다")
+    print(f"  되넣기: python3 scripts/sbc_analyze.py --ingest {d} --by <채점자>")
+
+
+def ingest(indir: str, by: str):
+    """밖에서 채점한 JSON 을 **같은 검문**에 걸어 되넣는다. API 불필요."""
+    d = Path(indir)
+    results, rejected = {}, []
+    for ch, stem, name, speakers in CHAPTERS:
+        f = d / f"ch{ch:02d}.json"
+        if not f.exists():
+            rejected.append(f"{name}(답 없음)")
+            continue
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+        except Exception as e:  # noqa: BLE001
+            print(f"  REJECT {name}: JSON 깨짐 — {e}")
+            rejected.append(name)
+            continue
+        text = (Path("chapters") / f"{stem}.md").read_text(encoding="utf-8")
+        if not verify_axes(data, name, speakers) or not verify_quotes(data, text, name, speakers):
+            rejected.append(name)
+            continue
+        results[ch] = data
+        print(f"  OK {name}")
+
+    retro, retro_fail = {}, []
+    for ch, _stem, name, _sp in CHAPTERS:
+        built = retro_prompt(ch, name)
+        if built is None:
+            continue
+        _prompt, hits, srcs = built
+        f = d / f"retro{ch:02d}.json"
+        if not f.exists():
+            retro_fail.append(f"{name}(답 없음)")
+            continue
+        try:
+            dd = finalize_retro(json.loads(f.read_text(encoding="utf-8")),
+                                name, hits, srcs, by)
+        except Exception as e:  # noqa: BLE001
+            print(f"  REJECT {name} 회고: {e}")
+            dd = None
+        if dd:
+            retro[ch] = dd
+            print(f"  OK {name} 회고")
+        else:
+            retro_fail.append(name)
+
+    if rejected:
+        print(f"\n기각 {len(rejected)}장: {', '.join(rejected)}")
+    if not results:
+        print("🚨 측정된 장이 0개 — HTML 미변경")
+        sys.exit(1)
+    if len(results) != len(CHAPTERS):
+        print("전량 성공이 아니므로 HTML을 덮지 않는다 (부분 갱신 = 조용한 drift)")
+        sys.exit(1)
+    if retro_fail:
+        print(f"회고 {len(retro_fail)}칸 실패 — RETRO 미갱신: {', '.join(retro_fail)}")
+        sys.exit(1)
+    update_html(results, retro)
+    print(f"채점자 = {by} (API 아님 — 자는 그대로, 채점자만 갈렸다)")
+
+
 def main():
     if "--dump-retro" in sys.argv:
         dump_retro()
+        return
+    # ── API 없는 두 길 (2026-11-13) — 조립 → 밖에서 채점 → 검문하며 되넣기
+    if "--emit" in sys.argv:
+        i = sys.argv.index("--emit")
+        if len(sys.argv) <= i + 1:
+            print("--emit <폴더> 가 필요하다")
+            sys.exit(2)
+        emit(sys.argv[i + 1])
+        return
+    if "--ingest" in sys.argv:
+        i = sys.argv.index("--ingest")
+        if len(sys.argv) <= i + 1:
+            print("--ingest <폴더> 가 필요하다")
+            sys.exit(2)
+        if "--by" not in sys.argv:
+            print("🚨 --by <채점자> 가 없다 — 출처 없는 값은 받지 않는다")
+            sys.exit(2)
+        ingest(sys.argv[i + 1], sys.argv[sys.argv.index("--by") + 1])
         return
     if anthropic is None:
         print("anthropic package not installed. Run: pip install anthropic")
