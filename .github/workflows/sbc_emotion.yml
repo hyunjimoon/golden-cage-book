@@ -29,7 +29,7 @@ jobs:
       - name: Extract dialogue and analyze emotions
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python scripts/sbc_analyze.py
+        run: python scripts/03_sbc_analyze.py
 
       - name: Commit updated emotion data
         run: |

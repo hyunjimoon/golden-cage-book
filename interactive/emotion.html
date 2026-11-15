@@ -449,7 +449,7 @@
       <div>
         <b>대상</b> — 「투향」 3차소통 원고 10장(<code>chapters/ch1–ch10</code>). Posterior는 각 장 화자의 대사·서술을 읽어 매긴 값.<br>
         <b>인용 규칙</b> — 원고에 원문 그대로 존재하는 문장만 쓴다. 없으면 그 장의 채점은 기각(조용한 drift 차단).<br>
-        <b>생성기</b> — <code>scripts/sbc_analyze.py</code> · <code>.github/workflows/sbc_emotion.yml</code>.
+        <b>생성기</b> — <code>scripts/03_sbc_analyze.py</code> · <code>.github/workflows/sbc_emotion.yml</code>.
         이 파일의 <code>const DATA</code>·<code>const FIELD_DATA</code> 두 블록만 기계가 쓴다. 설계 의도는 사람이 건다.<br>
         <b>색</b> — 범주색은 <code>validate_palette.js</code>(dark, all-pairs)로 검증. 세 번째 화자색을 쓰지 않는 이유는
         deuteranopia에서 보라·초록이 파랑과 붕괴하기 때문이다(ΔE 2.7). 세다는 색이 아니라 <b>네모</b>로 가른다.
@@ -463,11 +463,11 @@
               차원은 3.3축이고 곱은 죄책×절박(+0.22)이 아니라 절박×두려움(+0.92)에 있다.</b></td></tr>
           <tr><td><b>명명 시점 — 13축 미측정</b></td>
               <td>회고 칸(2026-10-02 신설)은 아직 <b>분노·억울·무감 셋만</b> 손으로 쟀다. 나머지 13축은 CI 대기 —
-              <code>scripts/sbc_analyze.py</code>가 다음 <code>chapters/ch*.md</code> push에 16축 전부를 채운다.
+              <code>scripts/03_sbc_analyze.py</code>가 다음 <code>chapters/ch*.md</code> push에 16축 전부를 채운다.
               6·7·10장은 회고 재료가 문턱(3줄) 미달로 <b>기각</b>이다(1·2·1줄). 10장이 0줄인 것은 결함이 아니라
               구조다 — 뒤가 없는 방은 자기 회고가 없다. <b>그러니 「회고가 낮다」와 「회고를 못 쟀다」를 같은 칸에 넣지 마라.</b></td></tr>
           <tr><td><b>채점자가 AI다</b></td>
-              <td>현장 칸 Posterior는 <code>sbc_analyze.py</code>(claude-sonnet)가, 회고 칸 세 축은 또 다른 모델이
+              <td>현장 칸 Posterior는 <code>03_sbc_analyze.py</code>(claude-sonnet)가, 회고 칸 세 축은 또 다른 모델이
               쟀다. 「열 장 지배 감정」 투표 8명도 사람이 아니다. <b>채점자와 피채점자가 같은 종</b>이면
               과반 일치는 독립 증거가 아니다. 표본 편향(아래)은 <i>대상</i>의 편향이고 이것은 <i>자</i>의 편향이라
               서로를 못 가린다.</td></tr>
@@ -583,7 +583,7 @@ const V1_WHY = {
 };
 
 /* ══ DATA — Posterior 실측 (2026-08-22, 3차소통 원고 정독) ══ */
-// ⚠️ 2026-10-29 측정분은 API가 아니라 **이 저장소 밖 세션의 Opus 5**가 쟀다 — sbc_analyze.py 의
+// ⚠️ 2026-10-29 측정분은 API가 아니라 **이 저장소 밖 세션의 Opus 5**가 쟀다 — 03_sbc_analyze.py 의
 //    MODEL(claude-sonnet-5-5)로 돈 값이 아니다. 크레딧 0으로 워크플로가 열 장 전부 400을 받았고
 //    (run 40840247794), 프롬프트 조립·검증·기록은 원본 스크립트를 그대로 쓰되 채점자만 바꿨다.
 //    🚨 다음 자동 실행은 Sonnet 값으로 덮는다 — 그때 생기는 차이는 원고가 아니라 **자가 바뀐** 몫이다.
@@ -697,7 +697,7 @@ const FIELD_DATA = {
 };
 
 /* ══ 명명 시점 ② 회고 — 그 장을 *지나온 뒤* 뒤쪽 장이 되돌아보며 하는 말 ══
-   재료는 거울짝 구조에 이미 있다. 코퍼스 검산: python3 scripts/sbc_analyze.py --dump-retro
+   재료는 거울짝 구조에 이미 있다. 코퍼스 검산: python3 scripts/03_sbc_analyze.py --dump-retro
    ⚠️ 지금은 분노·억울·무감 **세 축만** 손으로 쟀다(2026-10-02). 나머지 13축은 CI 대기 —
    생성기가 돌면 이 블록은 16축 전부로 덮이고 by 가 'sbc'로 바뀐다. */
 const RETRO = {
@@ -970,7 +970,7 @@ function openChapter(c){
 
 /* ══════════ ④ 수렴 — 다↔세 거리 (#9 H3 복원) ══════════
    이 페이지의 나머지는 설계↔원고 거리(빚)를 잰다. 이 절만 화자↔화자 거리를 잰다.
-   🚫 하드코딩 금지 — DATA/PRIOR 에서 매번 계산한다. sbc_analyze.py 가 DATA 를 덮어써도 따라온다.
+   🚫 하드코딩 금지 — DATA/PRIOR 에서 매번 계산한다. 03_sbc_analyze.py 가 DATA 를 덮어써도 따라온다.
    ⚠️ 6장은 da↔se 가 아니라 seda↔da 다(세가 없다). 같은 선에 그리되 라벨로 밝힌다.
    ⚠️ 7~10장은 화자가 하나라 거리가 **정의되지 않는다**. 0 으로 그리지 마라 —
       0 은 「만났다」는 값이고 여긴 「잴 수 없다」다. 처분이 반대다. */
@@ -1061,7 +1061,7 @@ const worstAx = c => { if(!PAIR[c]) return null;
 })();
 
 /* ══════════ ⓿ 결론 — 온도 궤적 ══════════
-   🚫 하드코딩 금지 — DATA 에서 매번 계산한다. sbc_analyze.py 가 DATA 를 덮어써도 따라온다.
+   🚫 하드코딩 금지 — DATA 에서 매번 계산한다. 03_sbc_analyze.py 가 DATA 를 덮어써도 따라온다.
    온도 = 양(+) 여섯 평균 − 음(−) 여섯 평균. 부호를 여기서 새로 정하지 않았다 —
    SEASONS 여섯 짝 중 10연만 둘 다 (+), 8연만 둘 다 (−) 라 양·음이 정확히 6:6 으로 갈린다.
    ⚠️ 화자가 선 장만 잇는다. 다 1~6 · 세 1~5 · 세다 6~10 — 안 선 장을 0 으로 잇지 마라. */
