@@ -6,6 +6,8 @@ type: element
 chapter: "8"
 star: false
 정의: "통제 vs 자본 딜레마"
+출처: "Noam Wasserman, *The Founder’s Dilemmas* (2012)"
+출처근거: "이름만 · 공간화음/…/24_10407_VentureSim/transcript_summary.md:46"
 ---
 
 # Wasserman rich vs king

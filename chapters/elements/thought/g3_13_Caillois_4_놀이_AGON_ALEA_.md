@@ -6,6 +6,8 @@ type: element
 chapter: "5"
 star: false
 정의: "경쟁·우연·모방·현기증"
+출처: "Roger Caillois, *Les Jeux et les Hommes* (1958)"
+출처근거: "공간화음/언어_HOW/🧲투향_어휘집.md:50"
 ---
 
 # Caillois 4 놀이 (AGON·ALEA·MIMICRY·ILINX)

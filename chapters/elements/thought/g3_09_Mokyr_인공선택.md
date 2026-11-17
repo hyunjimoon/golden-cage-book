@@ -6,6 +6,8 @@ type: element
 chapter: "4"
 star: false
 정의: "변이 풀이 생존 조건"
+출처: "Joel Mokyr, *The Gifts of Athena* (2002)"
+출처근거: "🙋‍♀️ vault 는 서평 언급만 · …/23_15357.md:14"
 ---
 
 # Mokyr 인공선택

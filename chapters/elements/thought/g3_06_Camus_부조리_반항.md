@@ -6,6 +6,8 @@ type: element
 chapter: "3"
 star: false
 정의: "침묵 인정하며 매일 행동"
+출처: "Albert Camus, *La Peste* (1947) · 『267 페스트』"
+출처근거: "공간화음/언어_HOW/🧲투향_어휘집.md:58"
 ---
 
 # Camus 부조리/반항

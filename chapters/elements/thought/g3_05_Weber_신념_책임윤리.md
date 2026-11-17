@@ -6,6 +6,8 @@ type: element
 chapter: "3"
 star: false
 정의: "Gesinnungs- vs Verantwortungsethik"
+출처: "Max Weber, *Politik als Beruf* (1919)"
+출처근거: "시간리듬/Weekly_Melody/reading_plan_source_map.md:151"
 ---
 
 # Weber 신념/책임윤리

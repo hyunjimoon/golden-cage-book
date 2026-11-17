@@ -6,6 +6,8 @@ type: element
 chapter: "1"
 star: false
 정의: "타인이 욕망하는 걸 욕망한다"
+출처: "René Girard, *Mensonge romantique et vérité romanesque* (1961)"
+출처근거: "공간화음/철학_WHY/철학자/귀스타브_플로베르.md:18"
 ---
 
 # Girard 모방욕망

@@ -6,6 +6,8 @@ type: element
 chapter: "2"
 star: false
 정의: "사회가 몸에 새긴 구조"
+출처: "Pierre Bourdieu, *Distinction* (1984)"
+출처근거: "공간화음/언어_HOW/단어장/죄의 정의.md:254"
 ---
 
 # Bourdieu Habitus

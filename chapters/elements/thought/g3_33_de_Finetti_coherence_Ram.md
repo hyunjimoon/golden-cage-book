@@ -6,6 +6,8 @@ type: element
 chapter: "Fubini"
 star: true
 정의: "agent=⟨U,p(s)⟩, Dutch book 불가"
+출처: "Bruno de Finetti (1937) · Frank Ramsey (1926)"
+출처근거: "🙋‍♀️ vault 는 *Ten Great Ideas About Chance*(2018) 경유 · 공간화음/과학_WHAT/🎲uncertainty_map.md:35"
 ---
 
 # de Finetti coherence / Ramsey belief×desire

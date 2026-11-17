@@ -6,6 +6,8 @@ type: element
 chapter: "Lex"
 star: true
 정의: "einmalige Erscheinung einer Ferne"
+출처: "Walter Benjamin, 『기술복제시대의 예술작품』 (1935)"
+출처근거: "인용구만 · 공간화음/언어_HOW/🧲투향_어휘집.md:36"
 ---
 
 # Benjamin 아우라

@@ -6,6 +6,8 @@ type: element
 chapter: "6·9"
 star: false
 정의: "경계 사이·재매혹"
+출처: "Lewis Hyde, *Trickster Makes This World* (1998)"
+출처근거: "시공간멜로디/…/charlie_NSS_trickster_bridge_0623.md:60"
 ---
 
 # Hyde Trickster·Land in Between·Phase2

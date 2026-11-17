@@ -6,6 +6,8 @@ type: element
 chapter: "7·8·10"
 star: false
 정의: "무지=힘·예속=자유·전쟁=평화"
+출처: "George Orwell, 『077 1984』 (1949)"
+출처근거: "공간화음/언어_HOW/🧲투향_어휘집.md · 원고 5·10장"
 ---
 
 # Orwell 1984 (3 슬로건·doublethink)

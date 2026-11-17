@@ -6,6 +6,8 @@ type: element
 chapter: "7"
 star: false
 정의: "확률로 국가재정 — 합리 100%"
+출처: "Jan de Witt, *Waardije van Lyf-renten* (1671)"
+출처근거: "시공간멜로디/…/2차소통/🌙〰️달밀당_가치제안.md:867"
 ---
 
 # Jan de Witt 1671 actuarial

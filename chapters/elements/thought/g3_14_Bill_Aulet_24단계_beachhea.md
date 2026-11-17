@@ -6,6 +6,8 @@ type: element
 chapter: "6"
 star: false
 정의: "극소 무대 먼저"
+출처: "Bill Aulet, *Disciplined Entrepreneurship* 24 Steps (MIT)"
+출처근거: "공간화음/…/💜segment.md:9"
 ---
 
 # Bill Aulet 24단계·beachhead

@@ -6,6 +6,8 @@ type: element
 chapter: "Lex"
 star: true
 정의: "압축한계=엔트로피 H (cache warm-up)"
+출처: "Claude Shannon (1948), *A Mathematical Theory of Communication*"
+출처근거: "🙋‍♀️ vault 서지 0건 — 원전 대조 필요"
 ---
 
 # Shannon source coding

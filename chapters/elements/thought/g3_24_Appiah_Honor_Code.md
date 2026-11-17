@@ -6,6 +6,8 @@ type: element
 chapter: "5"
 star: false
 정의: "frame 숨기면 cage"
+출처: "Kwame Anthony Appiah, *The Honor Code: How Moral Revolutions Happen* (2010)"
+출처근거: "(편집자 쪽 주간 기록 — 주소는 이 vault 안에만)"
 ---
 
 # Appiah Honor Code

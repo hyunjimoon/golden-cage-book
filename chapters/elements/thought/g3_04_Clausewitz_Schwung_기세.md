@@ -6,6 +6,8 @@ type: element
 chapter: "2·부2"
 star: false
 정의: "안개 속 움직이는 군대 > 멈춘 군대"
+출처: "Carl von Clausewitz, *Vom Kriege* (1832)"
+출처근거: "🙋‍♀️ vault 서지 0건 — 원전 대조 필요"
 ---
 
 # Clausewitz Schwung(기세)

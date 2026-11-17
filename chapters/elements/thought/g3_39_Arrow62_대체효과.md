@@ -7,6 +7,8 @@ type: element
 chapter: "2"
 star: false
 정의: "기존 기업은 자기를 대체해야 하므로 유인이 작다 — 유인 미분이지 당사자 목록이 아니다"
+출처: "Kenneth Arrow (1962), *Economic Welfare and the Allocation of Resources for Invention*"
+출처근거: "공간화음/납골당/캔버스_회수/📜Arrow62_replacement_eff"
 ---
 [[📜Arrow62_replacement_eff|📜 Arrow62 대체효과]]
 # Arrow 대체효과 (1962)

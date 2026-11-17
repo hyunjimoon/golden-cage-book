@@ -6,6 +6,8 @@ type: element
 chapter: "7"
 star: false
 정의: "시장평가를 분포 표본으로"
+출처: "Jeff Bezos, Amazon 주주서한 「Day 1」 (1997~)"
+출처근거: "🙋‍♀️ vault 서지 0건 — 어느 해 서한인지 대조 필요"
 ---
 
 # Bezos Day 1
