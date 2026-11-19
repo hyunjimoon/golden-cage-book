@@ -15,7 +15,9 @@ import subprocess, os, pathlib
 
 INK="#1a1a1a"; SUB="#555"; CAP="#8a8275"; BG="#fcfbf9"
 # 짝색 다섯 — 색은 장이 아니라 **짝**에 붙는다. 한 짝의 두 장과 그 선이 같은 색이다.
-PAIR=["#2F6FB5","#7B4FA8","#C0392B","#2E8B57","#B8860B"]   # 1-6 2-7 3-8 4-9 5-10
+# SSOT = 어휘집 「짝색 5」. 크림 바탕이라 인쇄용 변형을 쓴다 — 빨강 DF1F16 · 노랑 글자용 856F1E.
+# 검은 바탕 정전(F82218 · FFD53A)을 그대로 쓰면 크림에서 1.37 까지 떨어져 노랑이 사라진다(실측).
+PAIR=["#0026FB","#491786","#DF1F16","#006610","#856F1E"]   # 1-6 2-7 3-8 4-9 5-10
 CAGE=PAIR[0]; NEST=PAIR[4]; MID="#6a6358"   # 머리말 글자용
 EMPTY="#ded9d0"; HOT="#e06a3b"
 W,H=1480,860; LX,RX=300,1180; Y0,DY=250,104
@@ -109,8 +111,11 @@ o.append(f'<line x1="60" y1="{BY-34}" x2="{W-60}" y2="{BY-34}" stroke="{EMPTY}" 
 # 공개 이슈 전수에서 docs/essays 18편끼리 건 링크를 세었다(2026-11-20 · 5건).
 # 「글 → 장」 말고 「글 → 글」이라 이 그림의 선과는 다른 축이다.
 CITE=5
+# 조각 천 편수도 손으로 적지 않는다 — 손으로 적었더니 14 에서 멈췄고 실제는 18 이었다.
+NE=len([f for f in _g.glob(_os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),
+        "docs","essays","*.md"))])
 NL=len(LAID); NB=len(BOTH)
-for j,(n,lab) in enumerate([("14","이렇게 쓴 글"),(str(NL),"대사 밑에 깔린 자리"),
+for j,(n,lab) in enumerate([(str(NE),"이렇게 쓴 글"),(str(NL),"대사 밑에 깔린 자리"),
                             (str(NB),"두 장을 다 떠받친 글"),(str(CITE),"글이 글을 부른 자리")]):
     x=100+j*232
     o.append(t(x,BY+4,n,34,HOT if n=="0" else INK,w="bold"))
