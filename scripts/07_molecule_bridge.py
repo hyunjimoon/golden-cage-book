@@ -105,13 +105,18 @@ for side,i,name in LAID:
 
 BY=Y0+DY*4+120
 o.append(f'<line x1="60" y1="{BY-34}" x2="{W-60}" y2="{BY-34}" stroke="{EMPTY}" stroke-width="1.5"/>')
+# 글이 글을 부른 자리 — 조각 천끼리 서로의 재료가 된 횟수.
+# 공개 이슈 전수에서 docs/essays 18편끼리 건 링크를 세었다(2026-11-20 · 5건).
+# 「글 → 장」 말고 「글 → 글」이라 이 그림의 선과는 다른 축이다.
+CITE=5
 NL=len(LAID); NB=len(BOTH)
-for j,(n,lab) in enumerate([("14","이렇게 쓴 글"),(str(NL),"대사 밑에 깔린 자리"),(str(NB),"두 장을 다 떠받친 글")]):
-    x=120+j*300
+for j,(n,lab) in enumerate([("14","이렇게 쓴 글"),(str(NL),"대사 밑에 깔린 자리"),
+                            (str(NB),"두 장을 다 떠받친 글"),(str(CITE),"글이 글을 부른 자리")]):
+    x=100+j*232
     o.append(t(x,BY+4,n,34,HOT if n=="0" else INK,w="bold"))
-    o.append(t(x+(62 if len(n)>1 else 34),BY+6,lab,13.5,SUB))
-o.append(t(1020,BY-4,"짝 다섯이 전부 꿰매졌다 — 같은 글이 양쪽을 떠받친다.",13.5,SUB))
-o.append(t(1020,BY+18,"한 편이 빌렸던 때와 향할 곳을 함께 담고 있어서 가능한 일이다.",13.5,CAP))
+    o.append(t(x+(58 if len(n)>1 else 32),BY+6,lab,12.5,SUB))
+o.append(t(1040,BY-4,"짝 다섯이 전부 꿰매졌다 — 같은 글이 양쪽을 떠받친다.",13.5,SUB))
+o.append(t(1040,BY+18,"그리고 조각 천끼리도 받친다 — 한 편이 다음 편의 재료가 된다.",13.5,CAP))
 o.append(t(60,H-34,"2026-11-20 실측 · scripts/07_molecule_bridge.py",11.5,CAP,op=.8))
 o.append("</svg>")
 

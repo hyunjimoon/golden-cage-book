@@ -48,4 +48,4 @@ to be: 2 👥
 
 이유: 리어왕은 ⭐의 위치를 모름. 즉 자신의 수열이 어디로 수렴해야하는지 몰라 거리 측정을 통한 자기 통제 불가. 반면에 2 👥 는 다른 세계에서 온 두 자 📏1와 📏2가 상호작용 (inter act)하며 📐를 건축하는 과정. 목적에 필요한 정도의 최소한만 각 자의 형성과정을 밝히는게 효율적. 
 
-두 자의 수렴 과정, 즉 역지사지를 "의식이 있어 돌보는게 아니라, 돌보는 행동이 의식을 나타냄"라 주장한 https://github.com/hyunjimoon/golden-cage-book/issues/114#issuecomment-5435399546 📰9번 "Humanity has the debate about AI consciousness backwards"
+두 자의 수렴 과정, 즉 역지사지를 "의식이 있어 돌보는게 아니라, 돌보는 행동이 의식을 나타냄"라 주장한 https://github.com/hyunjimoon/golden-cage-book/issues/114#issuecomment-5435399546 📰9번 "Humanity has the debate about AI consciousness backwards" 
