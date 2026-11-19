@@ -15,7 +15,7 @@
 |:--:|:--|:--|:--|
 | **1** | 이 원함이 내 것인가, 빌린 것인가 | *"저도 이게 필요해서 만들었어요"* | [1 거울 → 6 나비](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch1_mirror_cage) |
 | **2** | 다 알겠는데 왜 시작을 못 하나 | *"우리 시장은 원래…"* | [2 망원경 → 7 튤립구근](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch2_telescope_cage) |
-| **3** | 돈을 받아도 내 것으로 남나 | **—** | [3 스테인굴레스 → 8 안개](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_glass_cage) |
+| **3** | 내 확신을 되물어 줄 사람이 있나 | **—** | [3 스테인굴레스 → 8 안개](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_glass_cage) |
 | **4** | 누구의 자로, 누구와 재나 | *"제 대시보드는 초록인데요"* | [4 시계 → 9 까마귀](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch4_clock_cage) |
 | **5** | 멈춰서 잃은 시간이 갚아지나 | *"제가 그렇게 말해버렸으니 어떻게든 해야죠"* | [5 101호 → 10 101호](https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_mirror_nest) |
 
