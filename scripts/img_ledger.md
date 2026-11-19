@@ -29,8 +29,8 @@
 | 🚨 | `ch9.svg` | 10 | `interactive/reader.html` | 0 | 0 | **없다** |
 | 🚨 | `epigraph_debt.png` | 205 | **아무도 안 씀** | 0 | 0 | **없다** |
 | 🚨 | `hero.png` | 355 | `index.html` | 0 | 0 | **없다** |
-| ✅ | `molecule_bridge.png` | 110 | `scripts/07_molecule_bridge.py` | 0 | 0 | 07_molecule_bridge.py |
-| ✅ | `molecule_bridge.svg` | 12 | `scripts/07_molecule_bridge.py` | 0 | 0 | 07_molecule_bridge.py |
+| ✅ | `molecule_bridge.png` | 112 | `scripts/07_molecule_bridge.py` | 0 | 0 | 07_molecule_bridge.py |
+| ✅ | `molecule_bridge.svg` | 14 | `scripts/07_molecule_bridge.py` | 0 | 0 | 07_molecule_bridge.py |
 | 🚨 | `og_center.png` | 831 | `README.md` | 0 | 1 | **없다** |
 | 🚨 | `poem_sense.png` | 231 | **아무도 안 씀** | 0 | 0 | **없다** |
 | 🚨 | `product_map_4panels_2026-11-15.png` | 1375 | **아무도 안 씀** | 3 | 0 | **없다** |
