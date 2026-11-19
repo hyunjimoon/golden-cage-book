@@ -24,11 +24,24 @@ L=[("1","거울","빌린 욕망",CAGE),("2","망원경","빌린 한 점",CAGE),(
    ("4","시계","빌린 질서",CAGE),("5","101호","쓴 빚",MID)]
 R=[("10","101호","갚을 빚",MID),("9","까마귀","향할 명명",NEST),("8","안개","향할 협상",NEST),
    ("7","튤립구근","향할 분포",NEST),("6","나비","향할 실험",NEST)]
-# 깔린 자리 — (쪽, 줄index, 글 제목). 2026-11-20 실측 5자리.
-LAID=[("L",0,"꿈꾸는 자"),("L",1,"안 하는 것도 하는 것"),("L",2,"편향 0"),
-      ("L",3,"기억나는 변화"),("L",4,"왜 셋인가"),
-      ("R",4,"꿈꾸는 자"),("R",3,"안 하는 것도 하는 것"),("R",2,"편향 0"),
-      ("R",1,"기억나는 변화"),("R",0,"왜 셋인가")]
+# 깔린 자리 — 손으로 적지 않는다. 동기화된 chapters/ 에서 직접 읽는다.
+#   sync 가 vault 의 <!--글:NN--> 를 docs/essays/NN_*.md 링크로 펴 놓았으므로
+#   여기서 그 링크를 세면 그림이 원고를 따라온다. 손으로 적으면 빠뜨린다(실측).
+CH={"ch1":("L",0),"ch2":("L",1),"ch3":("L",2),"ch4":("L",3),"ch5":("L",4),
+    "ch10":("R",0),"ch9":("R",1),"ch8":("R",2),"ch7":("R",3),"ch6":("R",4)}
+TITLE={"31":"옆 물고기","32":"기억나는 변화","33":"편향 0","34":"약속 갱신","35":"감동 옮겨심기",
+       "36":"여덟 번","38":"착각 판정","39":"왜 셋인가","40":"슬픔은 본질인가","43":"직렬이냐 병렬이냐",
+       "44":"끈끈이 트랩","45":"안 하는 것도 하는 것","48":"양식은 그림자","49":"꿈꾸는 자",
+       "50":"리어왕은 별을 모른다","51":"우연은 없다","52":"코비치는 일곱"}
+import glob as _g, os as _os, re as _re
+LAID=[]
+for f in _g.glob(_os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),"chapters","*.md")):
+    key=_os.path.basename(f).split("_")[0]
+    if key not in CH: continue
+    side,idx=CH[key]
+    for no in sorted(set(_re.findall(r"docs/essays/(\d+)_", open(f,encoding="utf-8").read()))):
+        LAID.append((side,idx,TITLE.get(no,no)))
+LAID=sorted(set(LAID))
 
 def esc(s): return s.replace("&","&amp;").replace("<","&lt;")
 def t(x,y,s,sz=13,f=INK,a="start",w="normal",op=1.0):
@@ -75,8 +88,12 @@ def col(items,x,side):
 col(L,LX,"L"); col(R,RX,"R")
 
 # 깔린 자리 — 기둥 바깥으로 뻗은 짧은 팔. 팔이 하나뿐인 것이 그대로 보인다.
+# 한 장에 여럿이 깔렸으면 위아래로 쌓는다 — 겹쳐 찍으면 둘 다 못 읽는다.
+from collections import Counter as _C
+_seen=_C()
 for side,i,name in LAID:
-    y=Y0+DY*i
+    k=(side,i); _n=sum(1 for x in LAID if (x[0],x[1])==k)
+    y=Y0+DY*i+(_seen[k]-(_n-1)/2)*17; _seen[k]+=1
     if side=="L": x0,x1,c,a=LX-96,LX-122,CAGE,"end"
     else:         x0,x1,c,a=RX+96,RX+122,NEST,"start"
     o.append(f'<line x1="{x0}" y1="{y}" x2="{x1}" y2="{y}" stroke="{c}" stroke-width="1.6"/>')
