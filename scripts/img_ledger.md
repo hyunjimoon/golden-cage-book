@@ -2,7 +2,7 @@
 
 > 생성기 `scripts/06_img_ledger.py` · 2026-11-20 · **손으로 고치지 않는다.**
 
-**34장 중 이 저장소 안에 생성기가 있는 것 0장.** 나머지는 밖의 한 사람이 다시 못 그린다.
+**36장 중 이 저장소 안에 생성기가 있는 것 2장.** 나머지는 밖의 한 사람이 다시 못 그린다.
 
 `✅` 생성기 있음 · `🖐️` 손그림이라 원리상 없음 · `🚨` 그릴 수 있는데 방법이 없음
 
@@ -29,6 +29,8 @@
 | 🚨 | `ch9.svg` | 10 | `interactive/reader.html` | 0 | 0 | **없다** |
 | 🚨 | `epigraph_debt.png` | 205 | **아무도 안 씀** | 0 | 0 | **없다** |
 | 🚨 | `hero.png` | 355 | `index.html` | 0 | 0 | **없다** |
+| ✅ | `molecule_bridge.png` | 110 | `scripts/07_molecule_bridge.py` | 0 | 0 | 07_molecule_bridge.py |
+| ✅ | `molecule_bridge.svg` | 12 | `scripts/07_molecule_bridge.py` | 0 | 0 | 07_molecule_bridge.py |
 | 🚨 | `og_center.png` | 831 | `README.md` | 0 | 1 | **없다** |
 | 🚨 | `poem_sense.png` | 231 | **아무도 안 씀** | 0 | 0 | **없다** |
 | 🚨 | `product_map_4panels_2026-11-15.png` | 1375 | **아무도 안 씀** | 3 | 0 | **없다** |
