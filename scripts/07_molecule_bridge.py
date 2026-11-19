@@ -14,16 +14,16 @@
 import subprocess, os, pathlib
 
 INK="#1a1a1a"; SUB="#555"; CAP="#8a8275"; BG="#fcfbf9"
-CAGE="#3b6b73"      # 겪은 것 — 1~4장
-NEST="#a67c32"      # 궁리한 것 — 6~9장
-MID ="#6a6358"      # 5·10장
+# 짝색 다섯 — 색은 장이 아니라 **짝**에 붙는다. 한 짝의 두 장과 그 선이 같은 색이다.
+PAIR=["#2F6FB5","#7B4FA8","#C0392B","#2E8B57","#B8860B"]   # 1-6 2-7 3-8 4-9 5-10
+CAGE=PAIR[0]; NEST=PAIR[4]; MID="#6a6358"   # 머리말 글자용
 EMPTY="#ded9d0"; HOT="#e06a3b"
 W,H=1480,860; LX,RX=300,1180; Y0,DY=250,104
 
-L=[("1","거울","빌린 욕망",CAGE),("2","망원경","빌린 한 점",CAGE),("3","스테인굴레스","빌린 확신",CAGE),
-   ("4","시계","빌린 질서",CAGE),("5","101호","쓴 빚",MID)]
-R=[("10","101호","갚을 빚",MID),("9","까마귀","향할 명명",NEST),("8","안개","향할 협상",NEST),
-   ("7","튤립구근","향할 분포",NEST),("6","나비","향할 실험",NEST)]
+L=[("1","거울","빌린 욕망",PAIR[0]),("2","망원경","빌린 한 점",PAIR[1]),("3","스테인굴레스","빌린 확신",PAIR[2]),
+   ("4","시계","빌린 질서",PAIR[3]),("5","101호","쓴 빚",PAIR[4])]
+R=[("10","101호","갚을 빚",PAIR[4]),("9","까마귀","향할 명명",PAIR[3]),("8","안개","향할 협상",PAIR[2]),
+   ("7","튤립구근","향할 분포",PAIR[1]),("6","나비","향할 실험",PAIR[0])]
 # 깔린 자리 — 손으로 적지 않는다. 동기화된 chapters/ 에서 직접 읽는다.
 #   sync 가 vault 의 <!--글:NN--> 를 docs/essays/NN_*.md 링크로 펴 놓았으므로
 #   여기서 그 링크를 세면 그림이 원고를 따라온다. 손으로 적으면 빠뜨린다(실측).
@@ -53,16 +53,18 @@ o=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" h
    f'<rect width="{W}" height="{H}" fill="{BG}"/>']
 o.append(t(60,62,"대사 밑에 깔린 글",30,INK,w="bold"))
 o.append(t(60,100,"소설의 한 대사 뒤에는 그 전에 쓴 글이 한 편 있다. 그 글은 겪은 것과 궁리한 것을 함께 담고 있어서, 두 장을 동시에 떠받칠 수 있다.",14.5,SUB))
-o.append(t(LX-52,195,"겪은 것 — 빌렸던 때",14,CAGE,a="end",w="bold"))
-o.append(t(RX+52,195,"궁리한 것 — 향할 곳",14,NEST,w="bold"))
+o.append(t(LX-52,195,"겪은 것 — 빌렸던 때",14,INK,a="end",w="bold"))
+o.append(t(RX+52,195,"궁리한 것 — 향할 곳",14,INK,w="bold"))
 
 # 짝 선 다섯 — 1↔6 … 5↔10. 가운데 한 점에서 만난다.
 for i in range(5):
     y1=Y0+DY*i; y2=Y0+DY*(4-i)
-    o.append(f'<line x1="{LX}" y1="{y1}" x2="{RX}" y2="{y2}" stroke="{EMPTY}" stroke-width="2"/>')
+    o.append(f'<line x1="{LX}" y1="{y1}" x2="{RX}" y2="{y2}" stroke="{PAIR[i]}" '
+             f'stroke-width="2" opacity=".30"/>')
 cx,cy=(LX+RX)/2,Y0+DY*2
-o.append(f'<circle cx="{cx}" cy="{cy}" r="5.5" fill="{HOT}"/>')
-o.append(t(cx,cy+26,"다섯 짝이 여기서 만난다",12,HOT,a="middle",w="bold"))
+o.append(f'<circle cx="{cx}" cy="{cy}" r="5" fill="{BG}" stroke="{INK}" stroke-width="1.6"/>')
+o.append(f'<rect x="{cx-86}" y="{cy+16}" width="172" height="20" rx="4" fill="{BG}"/>')
+o.append(t(cx,cy+26,"다섯 짝이 여기서 만난다",12,INK,a="middle",w="bold"))
 o.append(f'<circle cx="{cx}" cy="{cy}" r="11" fill="none" stroke="{HOT}" stroke-width="1" opacity=".4"/>')
 
 # ── 팔이 둘인 글 — 같은 제목이 양쪽에 있으면 그 선을 실선으로 긋는다. 자동이다. ──
@@ -71,7 +73,7 @@ li={x[2]:x[1] for x in LAID if x[0]=="L"}; ri={x[2]:x[1] for x in LAID if x[0]==
 ey1=ey2=None
 for nm in BOTH:
     ey1,ey2=Y0+DY*li[nm],Y0+DY*ri[nm]
-    o.append(f'<line x1="{LX}" y1="{ey1}" x2="{RX}" y2="{ey2}" stroke="{HOT}" stroke-width="2.6"/>')
+    o.append(f'<line x1="{LX}" y1="{ey1}" x2="{RX}" y2="{ey2}" stroke="{PAIR[li[nm]]}" stroke-width="2.8"/>')
 # 상자는 선 위 왼쪽 1/4 지점에 둔다 — 가운데 교차점을 가리면 이 그림의 요점이 가려진다.
 
 
@@ -94,8 +96,9 @@ _seen=_C()
 for side,i,name in LAID:
     k=(side,i); _n=sum(1 for x in LAID if (x[0],x[1])==k)
     y=Y0+DY*i+(_seen[k]-(_n-1)/2)*17; _seen[k]+=1
-    if side=="L": x0,x1,c,a=LX-96,LX-122,CAGE,"end"
-    else:         x0,x1,c,a=RX+96,RX+122,NEST,"start"
+    pc=PAIR[i] if side=="L" else PAIR[4-i]
+    if side=="L": x0,x1,c,a=LX-96,LX-122,pc,"end"
+    else:         x0,x1,c,a=RX+96,RX+122,pc,"start"
     o.append(f'<line x1="{x0}" y1="{y}" x2="{x1}" y2="{y}" stroke="{c}" stroke-width="1.6"/>')
     o.append(f'<circle cx="{x1}" cy="{y}" r="4" fill="{c}"/>')
     o.append(t(x1+(-12 if side=="L" else 12),y,name,12.5,c,a=a))
