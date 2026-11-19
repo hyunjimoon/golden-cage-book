@@ -11,10 +11,10 @@
 <line x1="300" y1="666" x2="1180" y2="250" stroke="#ded9d0" stroke-width="2"/>
 <circle cx="740.0" cy="458" r="5.5" fill="#e06a3b"/>
 <text x="740" y="484" font-size="12" fill="#e06a3b" text-anchor="middle" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">다섯 짝이 여기서 만난다</text>
-<line x1="300" y1="354" x2="1180" y2="562" stroke="#e06a3b" stroke-width="2.2" stroke-dasharray="7 6" opacity=".85"/>
+<line x1="300" y1="354" x2="1180" y2="562" stroke="#e06a3b" stroke-width="2.6"/>
 <rect x="385.6" y="346.16" width="304" height="50" rx="6" fill="#fcfbf9" stroke="#e06a3b" stroke-width="1.2" stroke-dasharray="4 4"/>
 <line x1="537.6" y1="396.16" x2="537.6" y2="408.16" stroke="#e06a3b" stroke-width="1.2"/>
-<text x="538" y="362" font-size="12.5" fill="#e06a3b" text-anchor="middle" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">이렇게 되면 — 글 한 편이 팔 둘</text>
+<text x="538" y="362" font-size="12.5" fill="#e06a3b" text-anchor="middle" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">팔이 둘인 글 — 짝 하나가 글로 꿰매졌다</text>
 <text x="538" y="382" font-size="12.5" fill="#555" text-anchor="middle" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">「안 하는 것도 하는 것」 겪은 쪽 2장 · 궁리한 쪽 7장</text>
 <circle cx="300" cy="250" r="16" fill="#3b6b73"/>
 <text x="300" y="251" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">1</text>
@@ -71,14 +71,17 @@
 <line x1="1276" y1="250" x2="1302" y2="250" stroke="#a67c32" stroke-width="1.6"/>
 <circle cx="1302" cy="250" r="4" fill="#a67c32"/>
 <text x="1314" y="250" font-size="12.5" fill="#a67c32" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">왜 셋인가</text>
+<line x1="1276" y1="562" x2="1302" y2="562" stroke="#a67c32" stroke-width="1.6"/>
+<circle cx="1302" cy="562" r="4" fill="#a67c32"/>
+<text x="1314" y="562" font-size="12.5" fill="#a67c32" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">안 하는 것도 하는 것</text>
 <line x1="60" y1="752" x2="1420" y2="752" stroke="#ded9d0" stroke-width="1.5"/>
 <text x="120" y="790" font-size="34" fill="#1a1a1a" text-anchor="start" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">14</text>
 <text x="182" y="792" font-size="13.5" fill="#555" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">이렇게 쓴 글</text>
-<text x="420" y="790" font-size="34" fill="#1a1a1a" text-anchor="start" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">5</text>
+<text x="420" y="790" font-size="34" fill="#1a1a1a" text-anchor="start" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">6</text>
 <text x="454" y="792" font-size="13.5" fill="#555" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">대사 밑에 깔린 자리</text>
-<text x="720" y="790" font-size="34" fill="#e06a3b" text-anchor="start" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">0</text>
+<text x="720" y="790" font-size="34" fill="#1a1a1a" text-anchor="start" font-weight="bold" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">1</text>
 <text x="754" y="792" font-size="13.5" fill="#555" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">두 장을 다 떠받친 글</text>
-<text x="1020" y="782" font-size="13.5" fill="#555" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">팔이 둘인 글이 하나라도 생기면 짝이 글로 꿰매진다.</text>
-<text x="1020" y="804" font-size="13.5" fill="#8a8275" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">지금은 다섯 자리 모두 팔이 하나뿐이라, 선 다섯이 비어 있다.</text>
+<text x="1020" y="782" font-size="13.5" fill="#555" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">2↔7 이 처음 꿰매졌다 — 같은 글이 양쪽을 떠받친다.</text>
+<text x="1020" y="804" font-size="13.5" fill="#8a8275" text-anchor="start" font-weight="normal" opacity="1.0" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">남은 네 짝은 아직 비어 있다. 선이 흐린 것이 그 뜻이다.</text>
 <text x="60" y="826" font-size="11.5" fill="#8a8275" text-anchor="start" font-weight="normal" opacity="0.8" font-family="Pretendard,AppleSDGothicNeo,sans-serif" dominant-baseline="middle">2026-11-20 실측 · scripts/07_molecule_bridge.py</text>
 </svg>

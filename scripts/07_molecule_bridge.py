@@ -26,7 +26,7 @@ R=[("10","101호","갚을 빚",MID),("9","까마귀","향할 명명",NEST),("8",
    ("7","튤립구근","향할 분포",NEST),("6","나비","향할 실험",NEST)]
 # 깔린 자리 — (쪽, 줄index, 글 제목). 2026-11-20 실측 5자리.
 LAID=[("L",1,"안 하는 것도 하는 것"),("L",2,"편향 0"),("L",3,"기억나는 변화"),
-      ("R",1,"코비치는 일곱"),("R",0,"왜 셋인가")]
+      ("R",1,"코비치는 일곱"),("R",0,"왜 셋인가"),("R",3,"안 하는 것도 하는 것")]
 
 def esc(s): return s.replace("&","&amp;").replace("<","&lt;")
 def t(x,y,s,sz=13,f=INK,a="start",w="normal",op=1.0):
@@ -49,17 +49,20 @@ cx,cy=(LX+RX)/2,Y0+DY*2
 o.append(f'<circle cx="{cx}" cy="{cy}" r="5.5" fill="{HOT}"/>')
 o.append(t(cx,cy+26,"다섯 짝이 여기서 만난다",12,HOT,a="middle",w="bold"))
 
-# ── 될 모습 하나 — 2↔7 선 위에 점선으로. 아직 아니라는 것이 점선으로 보인다. ──
-ey1,ey2=Y0+DY*1,Y0+DY*3
-o.append(f'<line x1="{LX}" y1="{ey1}" x2="{RX}" y2="{ey2}" stroke="{HOT}" '
-         f'stroke-width="2.2" stroke-dasharray="7 6" opacity=".85"/>')
+# ── 팔이 둘인 글 — 같은 제목이 양쪽에 있으면 그 선을 실선으로 긋는다. 자동이다. ──
+BOTH=[nm for nm in {x[2] for x in LAID if x[0]=="L"} & {x[2] for x in LAID if x[0]=="R"}]
+li={x[2]:x[1] for x in LAID if x[0]=="L"}; ri={x[2]:x[1] for x in LAID if x[0]=="R"}
+ey1=ey2=None
+for nm in BOTH:
+    ey1,ey2=Y0+DY*li[nm],Y0+DY*ri[nm]
+    o.append(f'<line x1="{LX}" y1="{ey1}" x2="{RX}" y2="{ey2}" stroke="{HOT}" stroke-width="2.6"/>')
 # 상자는 선 위 왼쪽 1/4 지점에 둔다 — 가운데 교차점을 가리면 이 그림의 요점이 가려진다.
 mx,my=LX+(RX-LX)*0.27,ey1+(ey2-ey1)*0.27
 o.append(f'<rect x="{mx-152}" y="{my-64}" width="304" height="50" rx="6" fill="{BG}" '
          f'stroke="{HOT}" stroke-width="1.2" stroke-dasharray="4 4"/>')
 o.append(f'<line x1="{mx}" y1="{my-14}" x2="{mx}" y2="{my-2}" stroke="{HOT}" stroke-width="1.2"/>')
-o.append(t(mx,my-48,"이렇게 되면 — 글 한 편이 팔 둘",12.5,HOT,a="middle",w="bold"))
-o.append(t(mx,my-28,"「안 하는 것도 하는 것」 겪은 쪽 2장 · 궁리한 쪽 7장",12.5,SUB,a="middle"))
+o.append(t(mx,my-48,"팔이 둘인 글 — 짝 하나가 글로 꿰매졌다",12.5,HOT,a="middle",w="bold"))
+o.append(t(mx,my-28,f"「{BOTH[0]}」 겪은 쪽 2장 · 궁리한 쪽 7장",12.5,SUB,a="middle"))
 
 def col(items,x,side):
     for i,(no,nm,ph,c) in enumerate(items):
@@ -84,12 +87,13 @@ for side,i,name in LAID:
 
 BY=Y0+DY*4+120
 o.append(f'<line x1="60" y1="{BY-34}" x2="{W-60}" y2="{BY-34}" stroke="{EMPTY}" stroke-width="1.5"/>')
-for j,(n,lab) in enumerate([("14","이렇게 쓴 글"),("5","대사 밑에 깔린 자리"),("0","두 장을 다 떠받친 글")]):
+NL=len(LAID); NB=len(BOTH)
+for j,(n,lab) in enumerate([("14","이렇게 쓴 글"),(str(NL),"대사 밑에 깔린 자리"),(str(NB),"두 장을 다 떠받친 글")]):
     x=120+j*300
     o.append(t(x,BY+4,n,34,HOT if n=="0" else INK,w="bold"))
     o.append(t(x+(62 if len(n)>1 else 34),BY+6,lab,13.5,SUB))
-o.append(t(1020,BY-4,"팔이 둘인 글이 하나라도 생기면 짝이 글로 꿰매진다.",13.5,SUB))
-o.append(t(1020,BY+18,"지금은 다섯 자리 모두 팔이 하나뿐이라, 선 다섯이 비어 있다.",13.5,CAP))
+o.append(t(1020,BY-4,"2↔7 이 처음 꿰매졌다 — 같은 글이 양쪽을 떠받친다.",13.5,SUB))
+o.append(t(1020,BY+18,"남은 네 짝은 아직 비어 있다. 선이 흐린 것이 그 뜻이다.",13.5,CAP))
 o.append(t(60,H-34,"2026-11-20 실측 · scripts/07_molecule_bridge.py",11.5,CAP,op=.8))
 o.append("</svg>")
 
