@@ -17,20 +17,25 @@
 
 🌗 **불림은 고르는 자로 쓰지 않습니다.** 다시 불리는 것은 완성된 글이 아니라 **재료**입니다 — 인용 상위 열 중 일곱이 독서노트·작업표·현황판이었습니다. **벽돌은 자주 쓰이고 집은 한 번 서면 끝입니다.** 불림은 바닥을 거르는 문지기로만 씁니다.
 
-## 본문에 꿰매진 아홉
+## 문지기 — 대사를 한 줄이라도 받치나
+
+조각 천은 **꿰매져야 천**입니다. 이 서랍에 드는 글은 **본문의 어느 말 뒤에 서는지** 적습니다. 못 적으면 아래 「아직 안 꿰맨 조각」으로 내려갑니다 — **빈칸은 숨기지 않습니다.**
 
 | 장 | 본문의 말 | 조각 천 |
 |:--|:--|:--|
 | **1 거울** | 빌린 욕망 — 모르고 입는다 | [꿈꾸는 자만이 믿게 된다](essays/49_dreamer_believes.md) · [양식은 그림자다](essays/48_form_is_shadow.md) · [착각이라 판정하는 자는 누구인가](essays/38_who_judges.md) · [환상 속에서 만든 것이 살아난다](essays/37_inside_fantasy.md) |
 | **2 망원경** | 안 거는 자리가 없다 | [안 하는 것도 하는 것](essays/45_inaction_is_action.md) |
-| **3 스테인굴레스** | 확신이 검증보다 빠르다 | [우연히 되는 일은 없다](essays/51_no_coincidence.md) · [슬픔은 문학의 본질인가](essays/40_sorrow_essence.md) |
-| **4 시계** | 잘 돌수록 못 벗어난다 | [끈끈이 트랩](essays/44_sticky_trap.md) |
+| **3 스테인굴레스** | *「읽다 보니 제가 파늘루였어요」* | [편향 0은 위선이다](essays/33_zero_bias.md) — **내가 첫 데이터가 돼야 하는 이유** · [우연히 되는 일은 없다](essays/51_no_coincidence.md) · [슬픔은 문학의 본질인가](essays/40_sorrow_essence.md) |
+| **4 시계** | *「비용을 알고, 그래도 부수는 것」* | [기억나는 변화는 실패한 변화였다](essays/32_remembered_change.md) — **성공한 착륙은 거의 없다** · [끈끈이 트랩](essays/44_sticky_trap.md) |
+| **6 나비** | 노란 말풍선을 보낸 친구 자리 | [옆 물고기가 물을 비춘다](essays/31_side_fish.md) |
 | **7 튤립구근** | 한 점 아닌 세 자리에 건다 | [직렬이냐 병렬이냐](essays/43_series_parallel.md) |
-| **10 101호** | 두 번 세어야 넷이 넷이 된다 | [리어왕은 별을 모른다](essays/50_lear_knows_no_star.md) |
+| **8 안개** | 되물음은 모욕이 아니라 보호다 | [내 힘이 커지면 약속도 갱신한다](essays/34_renew_promise.md) |
+| **9 까마귀** | *「옆에 하나 더 놓아 달라고 했어요」* | [코비치는 스타인벡에게 일곱이었다](essays/52_covici_was_seven.md) — **일곱 관계가 글을 보편으로 만든다** |
+| **10 101호** | *「두 번 세어야 넷이 넷이 된다」* | [왜 세 명이어야 하나](essays/39_why_three.md) — **2는 쉽고 3은 어렵다** · [리어왕은 별을 모른다](essays/50_lear_knows_no_star.md) · [감동은 옮겨심는 것이다](essays/35_transplant.md) |
 
-## 아직 안 꿰매진 아홉
+## 아직 안 꿰맨 조각 — 하나
 
-[옆 물고기가 물을 비춘다](essays/31_side_fish.md) · [기억나는 변화는 실패한 변화였다](essays/32_remembered_change.md) · [편향 0은 위선이다](essays/33_zero_bias.md) · [내 힘이 커지면 약속도 갱신한다](essays/34_renew_promise.md) · [감동은 옮겨심는 것이다](essays/35_transplant.md) · [여덟 번 움직여 확률을 1로](essays/36_eight_moves.md) · [왜 세 명이어야 하나](essays/39_why_three.md) · [코비치는 스타인벡에게 일곱이었다](essays/52_covici_was_seven.md)
+[여덟 번 움직여 확률을 1로](essays/36_eight_moves.md) — 세미나에 배포한 방법론 글이라 **받칠 대사를 아직 못 찾았습니다.** 지우지 않고 둡니다. 이 한 줄이 **이 서랍의 빈칸**입니다.
 
 ## 비어 있는 자리
 
