@@ -1,0 +1,67 @@
+# 왜 세 명이어야 하나
+
+> 처음 쓴 자리 — [#77](https://github.com/hyunjimoon/golden-cage-book/issues/77#issuecomment-6513633178)
+
+---
+
+<img width="200" height="200" alt="Image" src="https://github.com/user-attachments/assets/7cddf41b-7efc-4a08-825f-d564c7b64b7d" />
+
+고전시가 전공 엄마께 세뇌 brainwash🎟️당한 三人行必有我師에서 왜 세 명인지 궁금. 
+
+https://github.com/hyunjimoon/golden-cage-book/issues/78#issuecomment-5082876391 에 소개된 2체 vs 3체 문제, 
+[2-satisfiability](https://namu.wiki/w/%EC%B6%A9%EC%A1%B1%20%EA%B0%80%EB%8A%A5%EC%84%B1%20%EB%AC%B8%EC%A0%9C#s-4) vs 3-satisfiability문제. 
+
+모두 2는 쉽고, 3은 어렵다. 
+
+https://www.joongang.co.kr/article/9783460 에 따르면 
+
+> 중국인에게 숫자 ‘三’은 철학적 의미가 깊다. 노자의 도덕경은 ‘하나는 둘을 낳고, 둘은 셋을 낳고, 셋은 만물을 낳는다(一生二, 二生三, 三生萬物)’고 했다. 
+> 완성의 시작이 바로 숫자 ‘三’인 것이다. 고대 자전인 설문(說文)은 ‘숫자 삼은 하늘·땅·사람의 도를 뜻한다(三, 天地人之道也)’고 했다. 
+
+
+---
+🎟️
+https://www.metroseoul.co.kr/article/20241111500139
+의 "극심한 혼란 상태나 목숨의 위협을 경험하는 상태에서는 학습된 모든 것을 잃어버린다"가 모델 개선의 불연속적 구간 a.k.a 상변화 구간 인듯. 
+
+베이즈 모델링의 꽃인 계층베이즈 모델 언어로 대충 쓰면,
+ 
+$\phi$가 사회변수 e.g. 평균 연간독서량 (2.5권), 서울국제도서전방문자수 (15만)
+$\theta$가 개인변수 e.g. 개인1과 개인2의 연간독서량 (1권, 5권)
+
+연간독서량이 3권, 4권인 두 명 추가 관측 시 
+
+개인변수 차원의 변화로만 인지하다가
+$p(\theta \mid \phi) \rightarrow p(\theta' \mid \phi)$로 갱신하다가
+
+i) 사회변수 갱신 주기에 해당하는 시간이 지나거나 (1년에 한번씩 평균독서량 조사), 
+ii)  변화속도가 인지문턱 넘으면 (e.g. 바이럴, 텍스트힙, 갑자기 연간독서량 100권인 사람 100명 발견), 
+
+사회변수의 갱신의 필요를 인지하고, 사회 변수를 갱신
+$p(\phi \mid \theta') \rightarrow p(\phi' \mid \theta')$
+
+즉, (개인변수, 사회변수)의 결합분포를  -> (개인', 사회')를 두 번에 나눠 갱신하는 과정
+https://github.com/hyunjimoon/golden-cage-book/issues/146#issuecomment-6182256266 에서 느린 맥락 먼저 고정하는게 유리하므로 (개인변수, 사회변수)-> (개인변수', 사회변수) -> (개인변수', 사회변수') 순서가 더 효율적
+
+> 🫀🤚실천: 느리게 변하는 📍맥락고정. 그 장 위에서 여러 쌍의 {행위자, 평가자} 모델 움직임 관찰. 현실성있는 움직임의 상상일수록 효율적. 문턱 넘어 양질전환되면 효과적. 해당 장의 수렴을 상호작용시켜 안정적일 결합분포를 관찰. 즉, 시간 벌고, 또 전파되는 동안 번 시간으로 앞선 빚 (📍맥락 고정) 상환
+e.g. 길이 1000인 4개 탐색체인 돌려서, 각 체인마다 앞 500개는 지형탐색 warmup단계에 쓴 후 버리고 (오염됨), 그 후 500 * 4= 2000개
+각 체인마다 1000개씩 뽑으면 수렴할 확률이 높은데, 이 비교적 안정적일 미래 수렴점 제안으로 번 시간에 다음 수렴점 찾는 행위 반복 🧬 
+
+---
+위 bit기반 독서현상과 cell기반 e.g. 코로나 비교
+
+
+  | bit | cell
+-- | -- | --
+φ 사회 | 평균 연간독서량 2.5권 | R₀ (한 감염자당 2차 감염자 수) 2.5
+θ 개인 | 개인 독서량 1권, 5권 | 개인 감염 여부 음성, 양성
+θ' 추가 관측 | 3권, 4권 | 확진 2명 추가
+φ' 갱신 계기 | 100권 100명 | R₀이 8인 변이 발견
+
+
+
+---
+tbc
+<img width="300" height="100" alt="Image" src="https://github.com/user-attachments/assets/2b1abda3-7423-4276-b81f-a94c2ffe5148" />
+
+<img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/7ab6f5d7-5b2c-4988-a294-a879a475d54e" />
