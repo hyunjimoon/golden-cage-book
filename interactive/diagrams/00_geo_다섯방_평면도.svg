@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 820" width="1060" height="820" role="img" aria-label="다섯 방 평면도. 짝 넷이 네 모서리에 한 방씩 들고, 가운데 기억 방을 두 번 지난다. 문은 다섯이고 같은 문을 두 번 지나 걸음이 열이다 — 복도 셋은 한 무리 안, 가운데 문 둘은 고정점." font-family="Noto Sans KR, Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
 <rect width="1060" height="820" fill="var(--paper)"/>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="var(--wall)"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="var(--faint)"/></marker></defs>
-<style> @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap'); svg{--paper:#FBFAF7;--ink:#14130F;--dim:#5E584E;--faint:#9A938A;--wall:#14130F;--c1:#0026FB;--c2:#491786;--c3:#F82218;--c4:#006610;--c5:#B08400} @media (prefers-color-scheme: dark){ svg{--paper:#121311;--ink:#ECEAE4;--dim:#A8A399;--faint:#7D786F;--wall:#CFC9BF;--c1:#5A74FF;--c2:#A77BE0;--c3:#FF6B5E;--c4:#3FBF5A;--c5:#FFD53A} } .ttl{font-family:"Noto Serif KR",ui-serif,Georgia,serif} a.room{cursor:pointer} a.room .hit{fill:var(--ink);fill-opacity:0;pointer-events:all} a.room:hover .hit,a.room:focus .hit{fill-opacity:0.06} a.room:hover .seatname,a.room:focus .seatname{text-decoration:underline;text-underline-offset:4px} a.room:focus .hit{fill-opacity:0.06;stroke:var(--ink);stroke-width:1.5} a.room:focus{outline:none}</style>
+<style> @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap'); svg{--paper:#FBFAF7;--ink:#14130F;--dim:#5E584E;--faint:#9A938A;--wall:#14130F;--c1:#0026FB;--c2:#491786;--c3:#F82218;--c4:#006610;--c5:#856F1E} @media (prefers-color-scheme: dark){ svg{--paper:#121311;--ink:#ECEAE4;--dim:#A8A399;--faint:#7D786F;--wall:#CFC9BF;--c1:#5A74FF;--c2:#A77BE0;--c3:#FF6B5E;--c4:#3FBF5A;--c5:#FFD53A} } .ttl{font-family:"Noto Serif KR",ui-serif,Georgia,serif} a.room{cursor:pointer} a.room .hit{fill:var(--ink);fill-opacity:0;pointer-events:all} a.room:hover .hit,a.room:focus .hit{fill-opacity:0.06} a.room:hover .seatname,a.room:focus .seatname{text-decoration:underline;text-underline-offset:4px} a.room:focus .hit{fill-opacity:0.06;stroke:var(--ink);stroke-width:1.5} a.room:focus{outline:none}</style>
 <text class="ttl" x="56" y="58" font-size="27" font-weight="700" fill="var(--ink)">다섯 방 — 열 장이 사는 집</text>
 <text x="56" y="82" font-size="12.5" fill="var(--dim)">자리는 여덟인데 방은 다섯이다. 짝이 둘씩 한 방에 산다 — <tspan font-weight="700">짝을 떼면 사슬이 끊긴다.</tspan> 안쪽에 사는 넷(1~4)이 빚을 쓰고, 바깥에서 돌아온 넷(6~9)이 갚는다.</text>
 <text x="56" y="104" font-size="12.5" fill="var(--dim)"><tspan font-weight="700">문은 다섯인데 걸음은 열이다</tspan> — 같은 문을 두 번 지난다. 위 두 방이 <tspan font-weight="700">수축</tspan>하면 아래 두 방이 <tspan font-weight="700">박동</tspan>한다. 심장 한 바퀴다.</text>
@@ -18,12 +18,12 @@
 <text x="902" y="424" font-size="11.5" fill="var(--dim)">수축이 박동을 부른다</text>
 <line x1="596" y1="598" x2="464" y2="598" stroke="var(--wall)" stroke-width="2.2" marker-end="url(#ar)"/>
 <text x="530" y="590" font-size="10.5" fill="var(--faint)" text-anchor="middle" letter-spacing="0.1em">한 무리</text>
-<circle cx="478" cy="552" r="9.5" fill="var(--paper)" stroke="var(--c3)" stroke-width="1.8"/><text x="478" y="555.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--c3)">3</text><text x="493" y="556" font-size="11.5" fill="var(--dim)">파도</text><text x="493" y="571" font-size="11.5" font-weight="700" fill="var(--ink)">4장 이월 문장</text>
+<circle cx="478" cy="552" r="9.5" fill="var(--paper)" stroke="var(--c3)" stroke-width="1.8"/><text x="478" y="555.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--c3)">3</text><text x="493" y="556" font-size="11.5" fill="var(--dim)">파도</text><text x="493" y="571" font-size="11.5" font-weight="700" fill="var(--ink)">이월 문장</text>
 <circle cx="478" cy="632" r="9.5" fill="var(--c3)" stroke="var(--c3)" stroke-width="1.8"/><text x="478" y="635.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--paper)">8</text><text x="493" y="636" font-size="11.5" fill="var(--dim)">바늘구멍 빛</text><rect x="493" y="642" width="46" height="16" rx="3" fill="none" stroke="var(--faint)" stroke-width="1" stroke-dasharray="3 3"/><text x="516" y="654" font-size="10" fill="var(--faint)" text-anchor="middle">비었다</text>
 <rect x="104" y="140" width="360" height="190" fill="var(--c1)" fill-opacity="0.055" stroke="var(--wall)" stroke-width="4"/>
 <rect x="104" y="140" width="360" height="9" fill="var(--c1)"/>
-<rect x="459" y="214.0" width="10" height="48" fill="#FFFFFF"/><path d="M464,214.0 A48,48 0 0 1 512,214.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
-<rect x="368.0" y="325" width="52" height="10" fill="#FFFFFF"/><path d="M368.0,330 A52,52 0 0 1 368.0,382" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="459" y="214.0" width="10" height="48" fill="var(--paper)"/><path d="M464,214.0 A48,48 0 0 1 512,214.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="368.0" y="325" width="52" height="10" fill="var(--paper)"/><path d="M368.0,330 A52,52 0 0 1 368.0,382" fill="none" stroke="var(--faint)" stroke-width="1"/>
 <text x="128" y="174" font-size="11" font-weight="700" fill="var(--c1)" letter-spacing="0.12em">파랑 방 · 무엇을 원하는가</text>
 <a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch1_mirror_cage" aria-label="1장 거울새장 — 욕망 읽기">
 <rect class="hit" x="112" y="182" width="344" height="48" rx="6"/>
@@ -39,8 +39,8 @@
 </a>
 <rect x="596" y="140" width="360" height="190" fill="var(--c2)" fill-opacity="0.055" stroke="var(--wall)" stroke-width="4"/>
 <rect x="596" y="140" width="360" height="9" fill="var(--c2)"/>
-<rect x="591" y="214.0" width="10" height="48" fill="#FFFFFF"/><path d="M596,214.0 A48,48 0 0 0 548,214.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
-<rect x="860.0" y="325" width="52" height="10" fill="#FFFFFF"/><path d="M860.0,330 A52,52 0 0 1 860.0,382" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="591" y="214.0" width="10" height="48" fill="var(--paper)"/><path d="M596,214.0 A48,48 0 0 0 548,214.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="860.0" y="325" width="52" height="10" fill="var(--paper)"/><path d="M860.0,330 A52,52 0 0 1 860.0,382" fill="none" stroke="var(--faint)" stroke-width="1"/>
 <text x="620" y="174" font-size="11" font-weight="700" fill="var(--c2)" letter-spacing="0.12em">보라 방 · 무엇을 믿는가</text>
 <a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch2_telescope_cage" aria-label="2장 망원경새장 — 상상 읽기">
 <rect class="hit" x="604" y="182" width="344" height="48" rx="6"/>
@@ -56,8 +56,8 @@
 </a>
 <rect x="596" y="500" width="360" height="190" fill="var(--c3)" fill-opacity="0.055" stroke="var(--wall)" stroke-width="4"/>
 <rect x="596" y="500" width="360" height="9" fill="var(--c3)"/>
-<rect x="860.0" y="495" width="52" height="10" fill="#FFFFFF"/><path d="M860.0,500 A52,52 0 0 0 860.0,448" fill="none" stroke="var(--faint)" stroke-width="1"/>
-<rect x="591" y="574.0" width="10" height="48" fill="#FFFFFF"/><path d="M596,574.0 A48,48 0 0 0 548,574.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="860.0" y="495" width="52" height="10" fill="var(--paper)"/><path d="M860.0,500 A52,52 0 0 0 860.0,448" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="591" y="574.0" width="10" height="48" fill="var(--paper)"/><path d="M596,574.0 A48,48 0 0 0 548,574.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
 <text x="620" y="534" font-size="11" font-weight="700" fill="var(--c3)" letter-spacing="0.12em">빨강 방 · 무엇을 하는가</text>
 <a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch3_glass_cage" aria-label="3장 스테인굴레스새장 — 설득 읽기">
 <rect class="hit" x="604" y="542" width="344" height="48" rx="6"/>
@@ -73,8 +73,8 @@
 </a>
 <rect x="104" y="500" width="360" height="190" fill="var(--c4)" fill-opacity="0.055" stroke="var(--wall)" stroke-width="4"/>
 <rect x="104" y="500" width="360" height="9" fill="var(--c4)"/>
-<rect x="368.0" y="495" width="52" height="10" fill="#FFFFFF"/><path d="M368.0,500 A52,52 0 0 0 368.0,448" fill="none" stroke="var(--faint)" stroke-width="1"/>
-<rect x="459" y="574.0" width="10" height="48" fill="#FFFFFF"/><path d="M464,574.0 A48,48 0 0 1 512,574.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="368.0" y="495" width="52" height="10" fill="var(--paper)"/><path d="M368.0,500 A52,52 0 0 0 368.0,448" fill="none" stroke="var(--faint)" stroke-width="1"/>
+<rect x="459" y="574.0" width="10" height="48" fill="var(--paper)"/><path d="M464,574.0 A48,48 0 0 1 512,574.0" fill="none" stroke="var(--faint)" stroke-width="1"/>
 <text x="128" y="534" font-size="11" font-weight="700" fill="var(--c4)" letter-spacing="0.12em">초록 방 · 무엇을 깨는가</text>
 <a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch4_clock_cage" aria-label="4장 시계새장 — 폭파 읽기">
 <rect class="hit" x="112" y="542" width="344" height="48" rx="6"/>
@@ -90,9 +90,9 @@
 </a>
 <polygon points="604.2,445.0 561.3,488.6 500.0,489.2 456.4,446.3 455.8,385.0 498.7,341.4 560.0,340.8 603.6,383.7" fill="var(--c5)" fill-opacity="0.16" stroke="var(--wall)" stroke-width="4"/>
 <text x="530" y="399" font-size="26" font-weight="700" fill="var(--ink)" text-anchor="middle">기억</text>
-<text x="530" y="425" font-size="12.5" fill="var(--dim)" text-anchor="middle">101호</text>
-<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_mirror_nest" aria-label="5장 101₂호 읽기"><rect class="hit" x="456" y="435" width="68" height="22" rx="5"/><text class="seatname" x="490" y="451" font-size="11.5" fill="var(--dim)" text-anchor="middle">5장 단기 ›</text></a>
-<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch10_mirror_close" aria-label="10장 101₃호 읽기"><rect class="hit" x="536" y="435" width="68" height="22" rx="5"/><text class="seatname" x="570" y="451" font-size="11.5" fill="var(--dim)" text-anchor="middle">10장 장기 ›</text></a>
+<text x="530" y="425" font-size="12" fill="var(--dim)" text-anchor="middle">101호</text>
+<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch5_mirror_nest" aria-label="5장 101₂호 읽기"><rect class="hit" x="456" y="435" width="68" height="22" rx="5"/><text class="seatname" x="490" y="451" font-size="12" fill="var(--dim)" text-anchor="middle">5장 단기 ›</text></a>
+<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch10_mirror_close" aria-label="10장 101₃호 읽기"><rect class="hit" x="536" y="435" width="68" height="22" rx="5"/><text class="seatname" x="570" y="451" font-size="12" fill="var(--dim)" text-anchor="middle">10장 장기 ›</text></a>
 <path d="M394,493 L394,468 L470,468" fill="none" stroke="var(--wall)" stroke-width="2.2" marker-end="url(#ar)"/>
 <text x="120" y="436" font-size="10.5" fill="var(--faint)" letter-spacing="0.1em">고정점으로 든다 · 폭파의 잔재가 먹이가 된다</text>
 <circle cx="134" cy="450" r="9.5" fill="var(--paper)" stroke="var(--c4)" stroke-width="1.8"/><text x="134" y="453.6" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--c4)">4</text><text x="149" y="454" font-size="11.5" fill="var(--dim)">빈 의자</text><text x="149" y="469" font-size="11.5" font-weight="700" fill="var(--ink)">질문 하나를 들고 가세요</text>
