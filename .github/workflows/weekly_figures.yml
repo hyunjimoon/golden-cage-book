@@ -1,0 +1,78 @@
+name: 주간 그림 갱신
+
+# 왜 주 1회인가 — 그림의 입력이 chapters/ 다. 원고가 바뀌면 그림이 묵는데,
+# 묵은 줄은 아무도 안 알려 준다(실측 2026-11-21: rotor_stator 가 하루 만에 1~3장에서 틀어졌다).
+# 그래서 ⑴ 원고가 바뀌면 바로 ⑵ 안 바뀌어도 주에 한 번 다시 그린다.
+
+on:
+  schedule:
+    - cron: '0 20 * * 0'        # 일 20:00 UTC = 월 05:00 KST
+  push:
+    paths:
+      - 'chapters/ch*.md'
+      - 'scripts/0*.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-figures-main
+  cancel-in-progress: true
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # rsvg-convert = SVG→PNG · noto-cjk 가 없으면 한글이 전부 네모로 찍힌다
+      - name: 도구와 한글 글꼴
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin fonts-noto-cjk
+
+      - name: 그림 다시 그리기
+        run: python3 scripts/09_rotor_stator.py
+
+      # 짝 규약을 글이 아니라 검사로 세운다 —
+      # README: 「01_x.py 의 그림은 01_x.png 다. 번호 없는 .py 는 의존이라 그림이 없다」
+      - name: 짝 점검 (번호 붙은 자에 그림이 있나)
+        run: |
+          echo "| 자 | 그림 |"; echo "|:--|:--|"
+          miss=0
+          for f in scripts/[0-9][0-9]_*.py; do
+            b="${f%.py}"
+            if [ -f "$b.png" ]; then
+              echo "| $(basename $f) | O |"
+            else
+              echo "| $(basename $f) | X 없다 |"; miss=$((miss+1))
+            fi
+          done
+          echo "그림 없는 자 $miss 개"
+          # 지금은 막지 않는다. 넷(01·05·06·08)이 그림이 아니라 자료를 뱉는 자라
+          # 규약을 먼저 갈라야 한다 — 그 룰링 전까지 세기만 한다.
+
+      - name: 바뀐 그림만 커밋
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A scripts/09_rotor_stator.png scripts/09_rotor_stator.svg
+          if git diff --cached --quiet; then
+            echo "그림이 그대로다 — 커밋 없음"
+            exit 0
+          fi
+          git commit -m "auto: 로터와 스테이터 다시 그림 — $(date +%Y-%m-%d)"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "밀었다 ($i 번째)"
+              exit 0
+            fi
+            sleep $((i * 5))
+          done
+          echo "세 번 다 실패"
+          exit 1
