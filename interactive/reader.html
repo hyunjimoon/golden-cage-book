@@ -662,8 +662,7 @@
       { id: 'ch7_tulip_nest', label: '🧅 7장 튤립둥지' },
       { id: 'ch8_mist_nest', label: '🌫️ 8장 안개둥지' },
       { id: 'ch9_raven_nest', label: '🐦‍⬛ 9장 까마귀둥지' },
-      { id: 'ch10_mirror_close', label: '🧫 10장 101₃호' },
-      { id: 'ch10_epilogue', label: '답과 질문' }
+      { id: 'ch10_mirror_close', label: '🧫 10장 101₃호' }
     ];
 
     // 짝색 다섯 — 거울짝은 **같은 색**을 쓴다 (CLAUDE.md §1 · #45 「거울짝 다섯」).
@@ -690,8 +689,9 @@
     const ALIASES = {
       'ch7_mist_nest': 'ch8_mist_nest',   // 7·8 swap(2026-06-13): 옛 7안개 → 8안개
       'ch8_tulip_nest': 'ch7_tulip_nest',  // 옛 8튤립 → 7튤립
-      'ch5_epilogue': 'ch10_epilogue',       // 5-8장 추가 후 epilogue 위치 이동
-      'ch9_epilogue': 'ch10_epilogue',       // 9→10 (hub 신설, 2026-05-18)
+      'ch5_epilogue': 'ch10_mirror_close',   // 5-8장 추가 후 epilogue 위치 이동
+      'ch9_epilogue': 'ch10_mirror_close',   // 9→10 (hub 신설, 2026-05-18)
+      'ch10_epilogue': 'ch10_mirror_close',  // 2026-11-23: 「답과 질문」은 2차소통(여덟 장) 판이라 내렸다 — 10장 §結이 책을 닫는다
       'ch6_author_nest': 'ch8_mist_nest',    // 작가둥지 → 안개둥지 (2026-05-02)
       'ch5_play_nest': 'ch6_butterfly_nest',  // 놀이→연극→나비 + 6장 (2026-05-17, hub 신설)
       'ch6_play_nest': 'ch6_butterfly_nest',  // 연극→나비 (2026-07-04)
@@ -748,7 +748,7 @@
       { group: '1부. 새장 (Cages)', items: ['ch1_mirror_cage', 'ch2_telescope_cage', 'ch3_glass_cage', 'ch4_clock_cage'] },
       { group: '회전축 (The Pivot)', items: ['ch5_mirror_nest'] },
       { group: '2부. 둥지 (Nests)', items: ['ch6_butterfly_nest', 'ch7_tulip_nest', 'ch8_mist_nest', 'ch9_raven_nest'] },
-      { group: '결말 (Close)', items: ['ch10_mirror_close', 'ch10_epilogue'] }
+      { group: '결말 (Close)', items: ['ch10_mirror_close'] }
     ];
 
     CHAPTER_GROUPS.forEach(g => {
@@ -1148,10 +1148,10 @@
       .then(md => {
         // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
         // 2026-11-08 (#174) — 5~10장 배너 추가. _원판/ 에 열 장이 다 있었는데 1~4만 올라가 있었다.
-        // ch6_play_nest 는 butterfly 의 구 주소 별칭, ch10_epilogue 는 10장 뒷자락이라 같은 판을 쓴다.
+        // ch6_play_nest 는 butterfly 의 구 주소 별칭.
         const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png',
                           ch5_mirror_nest: '../img/ch5.svg', ch6_butterfly_nest: '../img/ch6.svg', ch6_play_nest: '../img/ch6.svg', ch7_tulip_nest: '../img/ch7.svg',
-                          ch8_mist_nest: '../img/ch8.svg', ch9_raven_nest: '../img/ch9.svg', ch10_mirror_close: '../img/ch10.svg', ch10_epilogue: '../img/ch10.svg' };
+                          ch8_mist_nest: '../img/ch8.svg', ch9_raven_nest: '../img/ch9.svg', ch10_mirror_close: '../img/ch10.svg' };
         const banner = banners[file] ? `<img class="ch-banner${banners[file].endsWith('.svg') ? ' panel' : ''}" src="${banners[file]}" alt="">` : '';
         document.getElementById('content').innerHTML = banner + md2html(md);
         window.scrollTo(0, 0);
@@ -1214,7 +1214,6 @@
         "9🐦‍⬛_까마귀협력자": "ch9_raven_nest",
         "9🐦‍⬛_까마귀둥지": "ch9_raven_nest",
         "🤨_질문과답": "ch0_prologue",
-        "🤨_답과질문": "ch10_epilogue",
         "⚕️머릿말_ouroboros": "ch0_intro",
         "이책의길": "ch0_intro",
         "00_roadmap": "ch0_intro",
