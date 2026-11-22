@@ -43,7 +43,7 @@
 #     ⚠️ 여덟 독자를 여덟 선으로 가르지 못한다 — 짝을 가르는 축(분석/감성)의 감성 계열이
 #        377칸 중 29칸(8%)뿐이라 칸당 적중이 5 미만이다. 한 선에 두 이름을 적고 못 가른다고 쓴다.
 # ──────────────────────────────────────────────────────────────────────────
-import io, os, re, sys, math, random
+import io, os, re, sys, math, random, datetime
 import statistics as st
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -422,7 +422,8 @@ __NAILS__</div>
 
 <p class="foot">막대는 <b>모형</b>, 레일과 못은 <b>실측</b>이다. 모형의 산수는 셋뿐이다 —
 걸음 폭 σ=(축 전체)/√__N__ · 증거는 로그오즈에 그 단락의 실측 밀도를 더한다 · 표본 __NSAMP__명.
-씨앗을 바꿔 다시 재면 __JIT__%p 움직인다.<br>
+씨앗을 바꿔 다시 재면 __JIT__%p 움직인다.
+<b>잰 날 __ASOF__</b> — 원고가 자라면 이 판은 조용히 늙는다. 날이 오래면 다시 돌릴 것.<br>
 🌗 <b>이 __NSAMP__명은 내가 지어낸 독자다.</b> 줄어든 것은 「내 가정 위에서의 침묵」이지
 사람의 오해가 아니다 — 밖에서 온 값은 아직 0건이다
 (<a href="https://github.com/hyunjimoon/golden-cage-book/issues/158#issuecomment-6784064785">#158</a>:
@@ -451,7 +452,8 @@ def build(book, rail_a, rail_b, dv_a, dv_b, n):
                  ("__PB__", str(im_a * 100 // NSAMP)),
                  ("__PA__", str(im_b * 100 // NSAMP)),
                  ("__RAILB__", str(sum(rail_b))),
-                 ("__JIT__", str(jit))):
+                 ("__JIT__", str(jit)),
+                 ("__ASOF__", datetime.date.today().isoformat())):
         html = html.replace(k, v)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     io.open(OUT, "w", encoding="utf-8").write(html)
