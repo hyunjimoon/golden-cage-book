@@ -1149,7 +1149,7 @@
         // 키는 ALIASES 통과 *후*의 정규 id여야 한다 (구 id ch3_stained_glass_cage를 쓰면 3장만 배너가 누락됨, 2026-08-07)
         // 2026-11-08 (#174) — 5~10장 배너 추가. _원판/ 에 열 장이 다 있었는데 1~4만 올라가 있었다.
         // ch6_play_nest 는 butterfly 의 구 주소 별칭.
-        const banners = { ch1_mirror_cage: '../img/ch1.png', ch2_telescope_cage: '../img/ch2.png', ch3_glass_cage: '../img/ch3.png', ch4_clock_cage: '../img/ch4.png',
+        const banners = { ch1_mirror_cage: '../img/ch1.svg', ch2_telescope_cage: '../img/ch2.svg', ch3_glass_cage: '../img/ch3.svg', ch4_clock_cage: '../img/ch4.svg',
                           ch5_mirror_nest: '../img/ch5.svg', ch6_butterfly_nest: '../img/ch6.svg', ch6_play_nest: '../img/ch6.svg', ch7_tulip_nest: '../img/ch7.svg',
                           ch8_mist_nest: '../img/ch8.svg', ch9_raven_nest: '../img/ch9.svg', ch10_mirror_close: '../img/ch10.svg' };
         const banner = banners[file] ? `<img class="ch-banner${banners[file].endsWith('.svg') ? ' panel' : ''}" src="${banners[file]}" alt="">` : '';
