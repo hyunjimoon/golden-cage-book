@@ -64,6 +64,50 @@
 
 **여덟 시간 십일 분.** 돌아온 것은 거절도 승낙도 아니었다. **만날 시간이었다.**
 
+## 📎 그 문서
+
+아래는 **한 글자도 안 바꾼 원문**이다. 줄머리 `>`와 굵게·기울임 표시만 옮기면서 붙었고, 낱말은 손대지 않았다. 내가 위에서 읽어 낸 것이 맞는지는 여기서 직접 세면 된다.
+
+**Upon Reflection Re: Let Me Finish** · 2026-01-23 10:10 EST · 첨부 `MobilityVentures_ValueProposition.pdf`
+
+<!-- 📎원문:mail-2026-01-23 시작 — 손대지 않는다 · docs/sources/원문대장.tsv -->
+> Dear Charlie (cc: Scott and Sarah),
+>
+> Reflecting on your December feedback, especially the identification of bottlenecks, has been very helpful. I apologize if my earlier tone came across as abrupt.
+>
+> I'm writing to share what has changed since December and to ask whether a feasible path forward might exist.
+>
+> **What Has Changed**
+>
+> You raised four valid concerns.
+>
+> 1. *Academic progress*: You said I had "a long way to go" and my thesis was "far from journal-ready." Journal readiness still needs your and Scott's guidance. But my thesis has now been reviewed by both of you, and feedback from over ten scholars and practitioners was positive: the findings surprised them, but the logic convinced them. I believe I have grown quickly, and I want to challenge myself to submit a journal article.
+>
+> 2. *Program fit*: You said Transportation felt like "an awkward place" for my interests. I took this seriously and strengthened my research's contribution to the mobility venture context. As a result, you shared you are "more convinced entrepreneurship's intersection with transportation is a rich enough playground."
+>
+> 3. *Career path*: You noted MIT trains PhDs to "devote their lives to academic research." But Transportation PhDs pursue diverse paths: industry, agencies, and academia. Sarah's description of our program as "boutique" anchored me here.
+>
+> 4. *Restart process*: You weren't sure "how or with whom we would restart." I'm proposing you, Scott, and Jinhua. The next section explains the value this creates.
+>
+> **Why This Committee Creates Value**
+>
+> Having analyzed Jinhua's Mobility Ventures (11.029) across three years, I identified two curricular gaps. The attached one-pager maps how Jinhua's platform, Charlie's operational framework, and Scott's strategic framework complement each other.
+>
+> **What I'm Asking**
+>
+> High failure in mobility is a known problem and my thesis explains why. I aspire to systematize the escape route with this committee.
+>
+> **What Remains**
+>
+> The General Exam hurdle and a realistic timeline still need discussion. I'd value your honest read on whether these can be addressed.
+>
+> With the updated belief and new value proposition, I hope a feasible path exists and that you can help me find it.
+>
+> Warmly,
+>
+> Angie
+<!-- 📎원문:mail-2026-01-23 끝 -->
+
 ## 세는 것
 
 | | 날수 | 그 안에서 한 일 | 답 |
