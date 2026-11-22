@@ -9,7 +9,7 @@
 
   <!-- ① 제목줄 -->
   <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">8장 안개 — 투자자</text>
-  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">Vbl 버팀 | 되물음을 보호로 받아라 | 안개 × MercadoLibre</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">버팀 | 되물음을 보호로 받아라 | 안개 × MercadoLibre</text>
   <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 3 ↔ 8. 짝색은 면으로만 쓴다 -->
   <g>
     <rect x="792" y="16" width="144" height="20" rx="10" fill="#F82218" opacity="0.18"/>

@@ -10,7 +10,7 @@
 
   <!-- ① 제목줄 -->
   <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">6장 나비 — 사용자</text>
-  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">S 원함 | 벗을 조항을 지우지 마라 | M. 버터플라이 × 텐센트</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">원함 | 벗을 조항을 지우지 마라 | M. 버터플라이 × 텐센트</text>
   <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 1 ↔ 6. 짝색은 면으로만 쓴다 -->
   <g>
     <rect x="799" y="16" width="137" height="20" rx="10" fill="#0026FB" opacity="0.18"/>
