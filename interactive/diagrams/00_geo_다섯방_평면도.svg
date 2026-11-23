@@ -31,9 +31,9 @@
 <text x="128" y="230" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c1)">1장</tspan> 거울새장 ›</text>
 <text x="442" y="206" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">다 · 쓴다</text>
 </a>
-<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch6_butterfly_nest" aria-label="6장 나비 — 고통 읽기">
+<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch6_butterfly_nest" aria-label="6장 나비 — 실험 읽기">
 <rect class="hit" x="112" y="238" width="344" height="48" rx="6"/>
-<text class="seatname ttl" x="128" y="266" font-size="26" font-weight="700" fill="var(--ink)">🦋 고통</text>
+<text class="seatname ttl" x="128" y="266" font-size="26" font-weight="700" fill="var(--ink)">🦋 실험</text>
 <text x="128" y="286" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c1)">6장</tspan> 나비 ›</text>
 <text x="442" y="262" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">세 · 갚는다</text>
 </a>
@@ -48,9 +48,9 @@
 <text x="620" y="230" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c2)">2장</tspan> 망원경새장 ›</text>
 <text x="934" y="206" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">다 · 쓴다</text>
 </a>
-<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch7_tulip_nest" aria-label="7장 튤립 — 지식 읽기">
+<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch7_tulip_nest" aria-label="7장 튤립 — 분포 읽기">
 <rect class="hit" x="604" y="238" width="344" height="48" rx="6"/>
-<text class="seatname ttl" x="620" y="266" font-size="26" font-weight="700" fill="var(--ink)">🧅 지식</text>
+<text class="seatname ttl" x="620" y="266" font-size="26" font-weight="700" fill="var(--ink)">🧅 분포</text>
 <text x="620" y="286" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c2)">7장</tspan> 튤립 ›</text>
 <text x="934" y="262" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">세 · 갚는다</text>
 </a>
@@ -65,9 +65,9 @@
 <text x="620" y="590" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c3)">3장</tspan> 스테인굴레스새장 ›</text>
 <text x="934" y="566" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">다 · 쓴다</text>
 </a>
-<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch8_mist_nest" aria-label="8장 안개 — 손익 읽기">
+<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch8_mist_nest" aria-label="8장 안개 — 협상 읽기">
 <rect class="hit" x="604" y="598" width="344" height="48" rx="6"/>
-<text class="seatname ttl" x="620" y="626" font-size="26" font-weight="700" fill="var(--ink)">🌫️ 손익</text>
+<text class="seatname ttl" x="620" y="626" font-size="26" font-weight="700" fill="var(--ink)">🌫️ 협상</text>
 <text x="620" y="646" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c3)">8장</tspan> 안개 ›</text>
 <text x="934" y="622" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">세 · 갚는다</text>
 </a>
@@ -82,9 +82,9 @@
 <text x="128" y="590" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c4)">4장</tspan> 시계새장 ›</text>
 <text x="442" y="566" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">다 · 쓴다</text>
 </a>
-<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch9_raven_nest" aria-label="9장 까마귀 — 기준 읽기">
+<a class="room" href="https://hyunjimoon.github.io/golden-cage-book/interactive/reader.html?file=ch9_raven_nest" aria-label="9장 까마귀 — 명명 읽기">
 <rect class="hit" x="112" y="598" width="344" height="48" rx="6"/>
-<text class="seatname ttl" x="128" y="626" font-size="26" font-weight="700" fill="var(--ink)">🐦‍⬛ 기준</text>
+<text class="seatname ttl" x="128" y="626" font-size="26" font-weight="700" fill="var(--ink)">🐦‍⬛ 명명</text>
 <text x="128" y="646" font-size="12" fill="var(--dim)"><tspan font-weight="700" fill="var(--c4)">9장</tspan> 까마귀 ›</text>
 <text x="442" y="622" font-size="11" fill="var(--faint)" text-anchor="end" letter-spacing="0.1em">세 · 갚는다</text>
 </a>
