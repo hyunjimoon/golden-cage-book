@@ -13,7 +13,7 @@ gen_graph_data.py — Build 3-Layer Galaxy Knowledge Graph Data:
   
 Generates JSON for golden-cage-book/interactive/reference_graph.html
 """
-import os, re, json, sys
+import os, re, json, sys, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import molt_map as _molt          # 🐍 탈피 코일의 자(尺) — SSOT
@@ -512,7 +512,65 @@ if _PUBLIC:
     for _n in nodes: _n.pop("vpath", None)
     print("   🔒 공개판 출력 — vpath 제거(로컬 경로 비공개)")
 
-data_json = json.dumps({"nodes": nodes, "edges": edges, "center": "황금새장을열다"}, ensure_ascii=False)
+# ── 📏 원고가 이 이름을 부르나 (2026-11-23 신설) ────────────────────────────
+#    이 그래프의 덮개는 **frontmatter 의 `chapter`** 로 장을 덮는다. 그래서 한 노드가
+#    「3·5·7장」이라 적어 두기만 하면, 원고가 그 이름을 **한 번도 안 불러도** 살아남는다.
+#
+#    ⚠️ 이 자가 답하는 것은 **이름을 부르나** 하나뿐이다. 「쓸모가 있나」가 아니다.
+#       생각원소(g…)는 원고가 이름이 아니라 **산문으로** 나르므로 이 자에 안 건다 —
+#       걸면 전부 0 이 나오고, 0 은 발견이 아니라 자가 틀린 신호다(#117).
+#       📜 간접경험만 잰다. 책은 이름으로 불리는 것이 정상이기 때문이다.
+#
+#    실측 11-23 — 📜 넷 중 둘이 이름 0 이다.
+#       caillois 『Les Jeux et les Hommes』 : 카유아·카이와·Caillois·놀이와 인간 전부 0
+#       hyde 『Trickster Makes This World』 : 하이드·Hyde·Trickster 0 — 다만 「트릭스터」는 4회.
+#       그래서 꼬리표를 「안 쓴다」가 아니라 **「이름 안 부름」**으로 적는다. 생각은 설 수 있다.
+#    🌗 지우지 않고 찍는다. 내릴지 이름을 적을지는 룰링이다.
+_PAGE_DIR = os.path.join(TOLZUL_DIR, "4차소통/원고")
+_PAGE_FILES = ["0_여는물음","0_머릿말","0_인물소개","1🪞_거울새장","2🔭_망원경새장",
+               "3💒_스테인굴레스새장","4⏱️_시계새장","5🐀_101","6🦋_나비사용자",
+               "7🌷_튤립기술자","8🌫️_안개투자자","9🐦‍⬛_까마귀협력자","10🧫_101"]
+_page = ""
+for _f in _PAGE_FILES:
+    try: _page += unicodedata.normalize("NFC", open(os.path.join(_PAGE_DIR, _f + ".md"), encoding="utf-8").read())
+    except Exception: pass
+
+def _name_probes(fm, nid):
+    """원고가 이 책을 부를 만한 **이름**. 원고의 인용 규약이 「번호 + 한국어 제목」이고
+       저자는 성만 적히므로, ⑴ 한국어 이름의 각 토막 ⑵ 파일명의 한국어 토막
+       ⑶ 원제 ⑷ 번역 제목 을 다 넣는다. 두 글자 이하는 버린다 — 아무 데나 걸린다."""
+    out = []
+    out += [t for t in re.split(r"\s+", fm.get("author_ko", "")) if t]
+    out += [t for t in re.split(r"[_\s]+", nid.replace("📜", "")) if re.search(r"[가-힣]", t)]
+    for k in ("work", "work_ko", "title_ko"):
+        v = fm.get(k, "")
+        if v: out.append(re.sub(r"^\d{3}\s*", "", v).strip())
+    seen, keep = set(), []
+    for t in out:
+        t = t.strip(" 『』「」\"'")
+        # ⚠️ 길이 문턱이 둘이다 — 한국어 이름은 두 글자가 보통이다(「오웰」·「표범」).
+        #    라틴 글자에만 >3 을 건다. 처음에 >2 하나로 재서 오웰·람페두사를 잃었다.
+        _ok = len(t) >= 2 if re.search(r"[가-힣]", t) else len(t) > 3
+        if _ok and t not in seen:
+            seen.add(t); keep.append(t)
+    return keep
+
+_mute = []
+for _n in nodes:
+    if _n["layer"] != "god": continue
+    try: _fm = parse_fm(os.path.join(GODS_DIR, _n["id"] + ".md")) or {}
+    except Exception: _fm = {}
+    _ps = _name_probes(_fm, _n["id"])
+    _hit = [p for p in _ps if p in _page]
+    _n["named"] = bool(_hit)
+    if not _hit: _mute.append((_n["id"], _ps))
+print("   📏 원고가 이름을 부르나 — 📜 %d 중 **안 부르는 것 %d**"
+      % (sum(1 for n in nodes if n["layer"] == "god"), len(_mute)))
+for _i, _p in _mute:
+    print("      🚨 %-44s 찾아본 이름 %s" % (_i, _p))
+
+data_json = json.dumps({"nodes": nodes, "edges": edges, "center": "황금새장을열다",
+                        "asof": datetime.date.today().isoformat()}, ensure_ascii=False)
 
 if os.path.exists(GRAPH_HTML):
     html_txt = open(GRAPH_HTML, encoding="utf-8").read()
