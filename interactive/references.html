@@ -41,7 +41,9 @@
   .chap-link{color:var(--text);text-decoration:none;border-bottom:1px solid rgba(197,165,90,0.3);}
   .chap-link:hover{color:var(--gold);}
   .work{color:var(--dim);font-size:12px;font-style:italic;}
-  .st-ok{color:var(--done);} .st-warn{color:var(--warn);}
+  .st-ok{color:var(--done);white-space:nowrap;} .st-warn{color:var(--warn);white-space:nowrap;}
+  /* 전집 칸이 늘면서 상태가 두 줄로 접혔다 — 칸을 세로로 안 쪼갠다 */
+  tbody td:last-child{white-space:nowrap;}
   .appx{color:var(--dim);font-size:12px;}
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
   .pcard{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--text);transition:all .18s;}
