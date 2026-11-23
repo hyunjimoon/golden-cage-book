@@ -336,6 +336,47 @@
       margin-left: 14px;
     }
 
+    /* 대사 일곱째 꼴 — 인용은 여섯으로 갈라 칠하면서 대사는 서술과 똑같이 그려지고 있었다.
+       원고가 이미 쓰는 `**화자:**` 만 읽는다(bqKind 와 같은 규칙 — 새 마커를 원고에 요구하지 않는다).
+       열두 장 전수 2026-11-23: 머리표 337건 전부 화자 · 오탐 0 · 지문만 있는 줄 18건. */
+    .content p.say {
+      padding-left: 5.4em;
+      text-indent: -5.4em;
+      line-height: 1.85;
+    }
+
+    .content p.say .who {
+      display: inline-block;
+      width: 4.6em;
+      margin-right: 0.8em;
+      text-indent: 0;
+      text-align: right;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.88em;
+      letter-spacing: 0.02em;
+    }
+
+    /* 같은 입이 이어지면 이름을 눌러 둔다 — 턴이 끊긴 자리가 눈에 보이게 */
+    .content p.say.same .who {
+      opacity: 0.34;
+      font-weight: 400;
+    }
+
+    .content p.say em {
+      color: var(--dim);
+      font-style: italic;
+    }
+
+    /* 무대 지시 — 대사와 서술 사이 */
+    .content p.stage {
+      margin: 1.15em 0;
+      text-align: center;
+      color: var(--dim);
+      font-size: 0.92em;
+      letter-spacing: 0.04em;
+    }
+
     .content strong {
       color: #fff;
     }
@@ -930,9 +971,12 @@
       md = md.split(DOLLAR_MASK).join('$');
 
       let lines = md.split('\n'), html = '', inCode = false, inTable = false, inBQ = false, tRows = [], codeLines = [];
+      let lastWho = null;  // 같은 입이 이어지는지
       let currentLevel = 3;
       for (let i = 0; i < lines.length; i++) {
         let L = lines[i];
+        // 표·인용·머리말이 끼면 같은 입이라도 묶음이 끊긴다. 빈 줄은 안 끊는다(원고가 대사 사이를 빈 줄로 띄운다).
+        if (L.trim() !== '' && !/^\*\*[^:*]{1,12}[:：]\*\*/.test(L)) lastWho = null;
         let lvlMatch = L.match(/<!--\s*level\s*(\d+)\s*-->/);
         if (lvlMatch) {
           currentLevel = parseInt(lvlMatch[1]);
@@ -1005,6 +1049,18 @@
           else if (L.includes('katex-block-wrapper')) {
             blockHtml = L;
             if (!hasLevelComments) itemLevel = 1;
+          }
+          else if (/^\*\*[^:*]{1,12}[:：]\*\*/.test(L)) {
+            const sm = L.match(/^\*\*([^:*]{1,12})[:：]\*\*\s*([\s\S]*)$/);
+            const who = sm[1].trim();
+            const same = (who === lastWho);
+            lastWho = who;
+            blockHtml = '<p class="say' + (same ? ' same' : '') + '"><span class="who">' + who + '</span>' + inl(sm[2]) + '</p>';
+            if (!hasLevelComments) itemLevel = 2;   // 지금과 같은 칸 — 밀도 슬라이더를 건드리지 않는다
+          }
+          else if (/^\*\([^)]*\)\*$/.test(L.trim())) {
+            blockHtml = '<p class="stage">' + inl(L.trim()) + '</p>';
+            if (!hasLevelComments) itemLevel = 2;
           }
           else {
             blockHtml = '<p>' + inl(L) + '</p>';
