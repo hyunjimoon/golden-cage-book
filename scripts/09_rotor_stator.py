@@ -34,6 +34,7 @@ ROOT = os.path.dirname(HERE)
 SRC = os.path.join(ROOT, "chapters")
 OUT_SVG = os.path.join(HERE, "09_rotor_stator.svg")
 PUB_PNG = os.path.join(HERE, "09_rotor_stator.png")
+LEDGER  = os.path.join(HERE, "09_rotor_stator_장부.tsv")
 DREW = os.environ.get("DREW") or __import__("datetime").date.today().isoformat()
 
 BG, INK, GRID, HI = "#0B0B0C", "#EDE7DC", "#242422", "#E8BC5C"
@@ -109,7 +110,59 @@ def measure():
     return per, prof, ev
 
 
-def build(per, prof, ev):
+def signature(per, prof):
+    """판에서 눈에 보이는 사실만 적는다 — 이 넷이 그대로면 그림도 그대로다.
+
+    수가 15 에서 16 으로 가는 것은 눈에 안 보인다. 그래서 안 센다.
+    보이는 것은 넷뿐이다 — 칸이 서나 · 장마다 누가 1위인가 ·
+    인물마다 어느 묶음이 꼭대기인가 · 어느 묶음이 판에 올라와 있나.
+    """
+    def top(pairs):
+        hi = max(pairs, key=lambda kv: kv[0])
+        return hi[1] if hi[0] else "—"
+    L = []
+    for ch, _ in CHS:
+        L.append("칸\t%s\t%s" % (ch, "\t".join("O" if per[(ch, w)] else "-" for w, _ in CAST)))
+    for ch, _ in CHS:
+        L.append("1위\t%s\t%s" % (ch, top([(per[(ch, w)], w) for w, _ in CAST])))
+    for w, _ in CAST:
+        L.append("꼭대기\t%s\t%s" % (w, top([(prof.get((w, n), 0), n) for n, _s, _x in CLUSTERS])))
+    L.append("선 묶음\t" + " · ".join(n for n, _s, _x in CLUSTERS
+                                   if any(prof.get((w, n), 0) for w, _ in CAST)))
+    return L
+
+
+def story(old, new):
+    """장부 두 벌을 견주어 「유의미한 감정변화」 한 줄을 짓는다."""
+    if old is None:
+        return "처음 그린다"
+    if len(old) != len(new):
+        return "자가 바뀌었다 — 묶음이나 장의 수가 달라졌다"
+    said = []
+    for a, b in zip(old, new):
+        if a == b:
+            continue
+        pa, pb = a.split("\t"), b.split("\t")
+        if pb[0] == "칸":
+            for (w, _), x, y in zip(CAST, pa[2:], pb[2:]):
+                if x != y:
+                    said.append("%s장 %s의 감정이 %s" % (pb[1], w,
+                                "선다" if y == "O" else "사라진다"))
+        elif pb[0] == "1위":
+            said.append("%s장 1위가 %s에서 %s로" % (pb[1], pa[2], pb[2]))
+        elif pb[0] == "꼭대기":
+            said.append("%s의 꼭대기가 %s에서 %s로" % (pb[1], pa[2], pb[2]))
+        else:
+            o, n = set(pa[1].split(" · ")), set(pb[1].split(" · "))
+            for x in sorted(n - o): said.append("묶음 「%s」가 판에 올라온다" % x)
+            for x in sorted(o - n): said.append("묶음 「%s」가 판에서 내려간다" % x)
+    if not said:
+        return "변화 없음"
+    head = " · ".join(said[:2])
+    return head + ("" if len(said) <= 2 else " 외 %d건" % (len(said) - 2))
+
+
+def build(per, prof, ev, why=""):
     # ── 셋째 표의 줄 수를 먼저 세어 캔버스 높이를 정한다 (넘침 방지)
     blocks = []
     for ch, name in CHS:
@@ -121,6 +174,8 @@ def build(per, prof, ev):
     o = []   # 높이는 끝에서 정해 머리에 끼운다
 
     o.append(t(LX, 54, "로터와 스테이터 — 감정 낱말로 센 열 장", 27, INK, bold=True))
+    o.append(t(W - LX, 50, "이번에 다시 그린 까닭", 11, INK, anc="end", op=.45))
+    o.append(t(W - LX, 70, why or "처음 그린다", 14, HI, anc="end", bold=True))
     o.append(t(LX, 86, "로터(다)는 몸으로 느끼고 스테이터(세)는 거리 둬 본다. 둘은 손잡이의 양 끝이 아니라 "
                        "동시에 있어야 도는 두 부품이다.", 15, INK, op=.78))
     o.append(t(LX, 110, "말수가 아니라 감정 낱말을 세었다 — 적은 말로 더 세게 당길 수 있다. "
@@ -295,8 +350,28 @@ def build(per, prof, ev):
 
 if __name__ == "__main__":
     per, prof, ev = measure()
-    open(OUT_SVG, "w", encoding="utf-8").write(build(per, prof, ev))
+    new = signature(per, prof)
+    old = None
+    if os.path.exists(LEDGER):
+        old = [l for l in N(open(LEDGER, encoding="utf-8").read()).splitlines()
+               if l and not l.startswith("#")]
+    drawn = os.path.exists(PUB_PNG) and os.path.exists(OUT_SVG)
+    if old == new and drawn and not os.environ.get("FORCE"):
+        # 날짜가 바닥글에 찍히므로, 다시 그리면 뜻이 안 바뀌어도 바이트가 바뀐다.
+        # 그래서 「안 그리는 것」이 곧 「안 미는 것」이다.
+        print("감정 변화 없음 — 다시 안 그린다")
+        print("REASON=")
+        raise SystemExit(0)
+    why = story(old, new)
+    if why == "변화 없음":
+        why = "손으로 돌렸다 — 감정은 그대로다"
+    open(OUT_SVG, "w", encoding="utf-8").write(build(per, prof, ev, why))
     subprocess.run(["rsvg-convert", "-w", str(W), OUT_SVG, "-o", PUB_PNG], check=True)
+    open(LEDGER, "w", encoding="utf-8").write(
+        "# 로터·스테이터 감정 장부 — 생성기가 쓴다. 손으로 고치지 마라.\n"
+        "# 이 넷이 그대로면 다시 안 그린다(09_rotor_stator.py signature).\n"
+        f"# {DREW} — {why}\n" + "\n".join(new) + "\n")
+    print(f"REASON={why}")
     print(f"PNG {PUB_PNG} ({os.path.getsize(PUB_PNG)/1024:.0f} kB)")
     print("장   " + "".join(f"{w:>6s}" for w, _ in CAST))
     for ch, name in CHS:

@@ -2,7 +2,13 @@ name: 주간 그림 갱신
 
 # 왜 주 1회인가 — 그림의 입력이 chapters/ 다. 원고가 바뀌면 그림이 묵는데,
 # 묵은 줄은 아무도 안 알려 준다(실측 2026-11-21: rotor_stator 가 하루 만에 1~3장에서 틀어졌다).
-# 그래서 ⑴ 원고가 바뀌면 바로 ⑵ 안 바뀌어도 주에 한 번 다시 그린다.
+# 그래서 ⑴ 원고가 바뀌면 바로 ⑵ 안 바뀌어도 주에 한 번 돌린다.
+#
+# 2026-11-23 — 돌리는 것과 다시 그리는 것을 갈랐다. 전에는 돌 때마다 그렸고,
+# 바닥글에 그린 날짜가 찍히므로 **뜻이 안 바뀌어도 바이트가 바뀌어** 날마다 커밋이 났다.
+# 이제 생성기가 감정 장부를 견주어 **눈에 보이는 변화가 있을 때만** 다시 그린다
+# (칸이 서나 · 장마다 1위가 누구인가 · 인물의 꼭대기 묶음 · 판에 오른 묶음).
+# 변화가 있으면 그 까닭 한 줄이 **그림 바닥과 커밋 제목에 같이** 적힌다.
 
 on:
   schedule:
@@ -36,8 +42,13 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq librsvg2-bin fonts-noto-cjk
 
-      - name: 그림 다시 그리기
-        run: python3 scripts/09_rotor_stator.py
+      - name: 감정 장부를 견주고, 바뀌었을 때만 다시 그린다
+        id: draw
+        env:
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+        run: |
+          python3 scripts/09_rotor_stator.py | tee /tmp/draw.log
+          echo "reason=$(sed -n 's/^REASON=//p' /tmp/draw.log | head -1)" >> "$GITHUB_OUTPUT"
 
       # 짝 규약을 글이 아니라 검사로 세운다 —
       # README: 「01_x.py 의 그림은 01_x.png 다. 번호 없는 .py 는 의존이라 그림이 없다」
@@ -61,12 +72,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A scripts/09_rotor_stator.png scripts/09_rotor_stator.svg
+          git add -- scripts/09_rotor_stator.png scripts/09_rotor_stator.svg \
+                     "scripts/09_rotor_stator_장부.tsv"
           if git diff --cached --quiet; then
-            echo "그림이 그대로다 — 커밋 없음"
+            echo "감정이 그대로다 — 커밋 없음"
             exit 0
           fi
-          git commit -m "auto: 로터와 스테이터 다시 그림 — $(date +%Y-%m-%d)"
+          git commit -m "auto: 로터와 스테이터 다시 그림 — ${{ steps.draw.outputs.reason }}"
           for i in 1 2 3; do
             if git pull --rebase origin main && git push; then
               echo "밀었다 ($i 번째)"
