@@ -900,6 +900,10 @@
         return `<span class="wiki-link" onclick="handleWikiLink('${target.replace(/'/g, "\\'")}', '${target.replace(/'/g, "\\'")}')">${target}</span>`;
       });
 
+      // 2026-11-23: \$ (escaped dollar) is money, not math — mask it before KaTeX sees it.
+      const DOLLAR_MASK = '\u0000DOLLAR\u0000';
+      md = md.replace(/\\\$/g, DOLLAR_MASK);
+
       // Render block math $$ ... $$ via KaTeX synchronously
       if (window.katex) {
         md = md.replace(/\$\$([\s\S]*?)\$\$/g, function (match, tex) {
@@ -910,8 +914,11 @@
           }
         });
 
-        // Render inline math $ ... $ via KaTeX synchronously
+        // Render inline math $ ... $ via KaTeX synchronously.
+        // 2026-11-23: a lone $ in prose is a price ($135 ... $100), not a delimiter.
+        // Only treat it as math when the span carries TeX markers and no Hangul.
         md = md.replace(/\$([^$\n]+)\$/g, function (match, tex) {
+          if (!/[\\^_{}]/.test(tex) || /[\uAC00-\uD7A3]/.test(tex)) return match;
           try {
             return katex.renderToString(tex.trim(), { displayMode: false, throwOnError: false });
           } catch (e) {
@@ -919,6 +926,8 @@
           }
         });
       }
+
+      md = md.split(DOLLAR_MASK).join('$');
 
       let lines = md.split('\n'), html = '', inCode = false, inTable = false, inBQ = false, tRows = [], codeLines = [];
       let currentLevel = 3;
@@ -1075,7 +1084,6 @@
         renderMathInElement(document.getElementById('content'), {
           delimiters: [
             { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
             { left: '\\(', right: '\\)', display: false },
             { left: '\\[', right: '\\]', display: true }
           ],
