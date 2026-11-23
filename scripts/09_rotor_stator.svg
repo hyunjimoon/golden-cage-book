@@ -29,12 +29,11 @@
 <circle cx="947.1" cy="418.0" r="4.6" fill="#F08A3C"/>
 <circle cx="1065.6" cy="435.0" r="4.6" fill="#F08A3C"/>
 <text x="1080.6" y="451.0" font-size="15" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다  34</text>
-<polyline points="118.0,401.0 236.4,333.0 354.9,350.0 473.3,418.0" fill="none" stroke="#C9B99A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="118.0,401.0 236.4,333.0 354.9,350.0" fill="none" stroke="#C9B99A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="118.0" cy="401.0" r="4.6" fill="#C9B99A"/>
 <circle cx="236.4" cy="333.0" r="4.6" fill="#C9B99A"/>
 <circle cx="354.9" cy="350.0" r="4.6" fill="#C9B99A"/>
-<circle cx="473.3" cy="418.0" r="4.6" fill="#C9B99A"/>
-<text x="488.3" y="423.0" font-size="15" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세  18</text>
+<text x="369.9" y="355.0" font-size="15" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세  16</text>
 <polyline points="710.2,418.0 828.7,316.0 947.1,384.0 1065.6,418.0" fill="none" stroke="#E07AC8" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="710.2" cy="418.0" r="4.6" fill="#E07AC8"/>
 <circle cx="828.7" cy="316.0" r="4.6" fill="#E07AC8"/>
@@ -104,8 +103,6 @@
 <text x="787.2" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">분노</text>
 <rect x="871.4" y="718.9" width="28.9" height="7.1" fill="#F08A3C" rx="2"/>
 <text x="885.9" y="712.9" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<rect x="904.3" y="711.9" width="28.9" height="14.1" fill="#C9B99A" rx="2"/>
-<text x="918.8" y="705.9" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
 <text x="918.8" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">장난</text>
 <rect x="1002.9" y="718.9" width="28.9" height="7.1" fill="#F08A3C" rx="2"/>
 <text x="1017.4" y="712.9" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
@@ -143,41 +140,38 @@
 <text x="84.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
 <text x="136.0" y="1080.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 공포 · 무서운 · 미워하던 · 숨이 트이더라고 · 해방</text>
 <text x="710.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
-<text x="84.0" y="1102.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
-<text x="136.0" y="1102.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">장난 · 장난은</text>
-<text x="710.0" y="1102.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
-<text x="64.0" y="1124.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">5 101</text>
-<text x="136.0" y="1124.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
-<text x="740.0" y="860.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">6 나비</text>
-<text x="760.0" y="882.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="882.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">체한</text>
-<text x="1386.0" y="882.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">1</text>
-<text x="760.0" y="904.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="904.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×2</text>
-<text x="1386.0" y="904.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
-<text x="740.0" y="926.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">7 튤립</text>
-<text x="760.0" y="948.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="948.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요 · 서늘했어요</text>
-<text x="1386.0" y="948.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
-<text x="760.0" y="970.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="970.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 수치가 · 수치를 · 안도해요 · 안도했어요 · 의심을</text>
-<text x="1386.0" y="970.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
-<text x="740.0" y="992.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">8 안개</text>
-<text x="760.0" y="1014.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="1014.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요 · 뜨끔했어요</text>
-<text x="1386.0" y="1014.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
-<text x="760.0" y="1036.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="1036.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×2 · 겁이 · 경계를</text>
-<text x="1386.0" y="1036.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">4</text>
-<text x="740.0" y="1058.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">9 까마귀</text>
-<text x="760.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="1080.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">숨이 막혀요</text>
-<text x="1386.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">1</text>
-<text x="760.0" y="1102.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="1102.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">감사하는 · 고마워요</text>
-<text x="1386.0" y="1102.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
-<text x="740.0" y="1124.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">10 투향</text>
-<text x="812.0" y="1124.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
+<text x="64.0" y="1102.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">5 101</text>
+<text x="136.0" y="1102.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
+<text x="64.0" y="1124.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">6 나비</text>
+<text x="760.0" y="860.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="860.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">체한</text>
+<text x="1386.0" y="860.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">1</text>
+<text x="760.0" y="882.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="882.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×2</text>
+<text x="1386.0" y="882.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
+<text x="740.0" y="904.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">7 튤립</text>
+<text x="760.0" y="926.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="926.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요 · 서늘했어요</text>
+<text x="1386.0" y="926.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
+<text x="760.0" y="948.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="948.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 수치가 · 수치를 · 안도해요 · 안도했어요 · 의심을</text>
+<text x="1386.0" y="948.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
+<text x="740.0" y="970.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">8 안개</text>
+<text x="760.0" y="992.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="992.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요 · 뜨끔했어요</text>
+<text x="1386.0" y="992.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
+<text x="760.0" y="1014.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="1014.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×2 · 겁이 · 경계를</text>
+<text x="1386.0" y="1014.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">4</text>
+<text x="740.0" y="1036.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">9 까마귀</text>
+<text x="760.0" y="1058.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="1058.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">숨이 막혀요</text>
+<text x="1386.0" y="1058.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">1</text>
+<text x="760.0" y="1080.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="1080.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">감사하는 · 고마워요</text>
+<text x="1386.0" y="1080.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">2</text>
+<text x="740.0" y="1102.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">10 투향</text>
+<text x="812.0" y="1102.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
 <text x="64.0" y="1180.0" font-size="11" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">씨앗은 손으로 지었다 — 두려움·압도 · 평온 · 연민·고마움 · 경계·의심 · 절망·수치 · 분노 · 장난 · 해방 · 소진·물러남 · 환희 · 자긍   |   오탐 교정: 「화가 」 「화를 」 적중 14건이 전부 대화·최적화·실화·변화였다. 씨앗을 좁혔다.</text>
 <text x="64.0" y="1206.0" font-size="15" fill="#E8BC5C" fill-opacity="0.9" text-anchor="start">로터와 스테이터는 한 손잡이의 두 눈금이 아니다. 둘 다 있어야 돈다.</text>
 <text x="1416.0" y="1206.0" font-size="11" fill="#EDE7DC" fill-opacity="0.38" text-anchor="end">자 = chapters/ 전수 · 10 cluster(gcb #9 2026-05-02) · 생성기 scripts/09_rotor_stator.py · 2026-11-23</text>
