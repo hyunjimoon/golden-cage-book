@@ -65,6 +65,11 @@
   .note b{color:var(--text);}
   .note ul{margin:6px 0 0 16px;} .note li{margin:3px 0;}
   .kind{font-family:'DM Mono',monospace;font-size:11px;}
+  /* 위 `td:last-child{nowrap}` 는 받치는 자료 표의 「상태」 칸을 위한 것이다.
+     여기 표들은 마지막 칸이 긴 글이라 그대로 두면 칸이 부풀어 「장」이 세로로 접힌다. */
+  .sect td:last-child{white-space:normal;}
+  .sect td:first-child{white-space:nowrap;}
+  .sect td:nth-child(2){white-space:nowrap;}
   /* 장 색상 */
   .c1{background:rgba(200,104,138,.18);color:#e89ab3;} .c2{background:rgba(196,176,106,.18);color:#d9c884;}
   .c3{background:rgba(92,196,167,.18);color:#86d9c0;} .c4{background:rgba(108,196,200,.18);color:#96d9dc;}
