@@ -183,8 +183,22 @@ POLES = {"🦋":"user", "🧅":"tech", "🌫️":"investor", "🐦‍⬛":"colla
 POS_SELF, POS_OBS, POS_VOTE, POS_NONE = "self", "obs", "vote", "none"
 
 # ── 장(章) 스파인 — 네 층이 공통으로 붙는 축 (2026-09-06 신설) ──────────────
-CHAP = {1:"🪞1 거울",2:"🔭2 망원경",3:"💒3 스테인굴레스",4:"⏱️4 시계",5:"🐀5 101₂호",
-        6:"🦋6 나비",7:"🧅7 튤립",8:"🌫️8 안개",9:"🐦‍⬛9 까마귀",10:"🧫10 투향"}
+# ── 짝색 다섯 (SSOT = .claude/CLAUDE.md §거울짝) ─────────────────────────
+#   1↔6 파랑 · 2↔7 보라 · 3↔8 빨강 · 4↔9 초록 · 5↔10 노랑(중앙 101).
+#   색이 극이 아니라 **거울짝**을 뜻한다(재해소 2026-09-21 ⚓ 룰링).
+PAIR_COLOR = {1:"#0026FB", 6:"#0026FB", 2:"#491786", 7:"#491786",
+              3:"#F82218", 8:"#F82218", 4:"#006610", 9:"#006610",
+              5:"#FFD53A", 10:"#FFD53A", 0:"#9a8f7a"}
+# 📕·다·세·세다는 **짝이 없다** — 공간 열이 짝색 다섯을 나눠 갖고, 시간 하나와 인물 셋은
+#   그 위를 가로지른다. 짝색을 주면 제 것 아닌 짝을 입는다. 그래서 따로 둔다.
+NOPAIR = {"📕":"#B4443A", "🔫":"#cfc6b4", "🧫":"#cfc6b4"}
+# 띠로 그리는 넷 — 상징 줄에는 안 세운다(아래 「인물 띠 넷」). 세다는 파일이 없어 띠에서만 산다.
+BAND_SYMS = {"📕", "🔫", "🧫"}
+
+# 장 이름도 글자로 쓴다 (룰링 2026-11-25 — 상징과 같은 까닭). 이모지가 제 색을 들고 와
+#   짝색 다섯과 부딪혔고, 🧫이 10장과 세를 겹쳐 가리켰다. 주소는 안 바꾼다 — 라벨만 간다.
+CHAP = {1:"1 거울",2:"2 망원경",3:"3 스테인굴레스",4:"4 시계",5:"5 101₂호",
+        6:"6 나비",7:"7 튤립",8:"8 안개",9:"9 까마귀",10:"10 투향"}
 def _chaps(*fields):
     """'5·7·부2' · '7·9장' · '1-4' · '전' · 9 → {장번호}. 부록·전반은 0(전반) 으로."""
     out=set()
@@ -216,7 +230,8 @@ CHAP_EMO = {5:("불안","영감",0), 6:("절박","놀람",None), 7:("사랑","�
 CHAP_POLE = {6:"🦋", 7:"🧅", 8:"🌫️", 9:"🐦‍⬛"}   # 둥지 네 장 = 네 극
 for c,lab in CHAP.items():
     _e = CHAP_EMO.get(c)
-    nodes.append({"id":f"ch{c}","label":lab,"depth":1,"marr_layer":9,"layer":"chapter","r":13,"chap":c,
+    nodes.append({"id":f"ch{c}","label":lab,"pc":PAIR_COLOR.get(c,PAIR_COLOR[0]),
+                  "depth":1,"marr_layer":9,"layer":"chapter","r":13,"chap":c,
                   "emo":(_e[0]+"·"+_e[1]) if _e else "", "emov":(_e[2] if _e else None),
                   "pole":CHAP_POLE.get(c,""), "pos":"spine",
                   "vpath":_vp(os.path.join(MANUSCRIPT_DIR, _CH_FILE[c]+".md"))})
@@ -245,6 +260,17 @@ META_SYMBOLS = {"🔫", "🧫"}
 #   주소는 안 바꾼다 — 상징 파일 이름 `🌷.md`도, 원고 `7🌷_튤립기술자.md`도 그대로다.
 #   id 는 주소(sid)로 두고 **label 만** 갈아 끼운다. 공개 그래프가 아직 🌷를 띄우고 있었다.
 GLYPH = {"🌷": "🧅"}
+# ── 상징 열넷 = 글자로 쓴다 (룰링 2026-11-25) ─────────────────────────
+#   까닭 둘. ⑴ **색** — 짝색 다섯(1↔6 파랑 · 2↔7 보라 · 3↔8 빨강 · 4↔9 초록 · 5↔10 노랑)이
+#   배정을 끝냈는데 이모지가 제 색을 들고 와 짝색과 부딪힌다. 글자는 색을 안 들고 온다.
+#   ⑵ **글리프 충돌** — 7장이 🌷/🧅 둘, 5장이 🐀/🚪 둘, 🧫이 세이면서 10장 주소였다.
+#   글자로 쓰면 셋 다 사라진다. **주소(파일 이름)는 안 바꾼다 — 라벨만 간다.**
+#   gcb #81 「상징 명부 — 책에 남는 열넷」이 SSOT다. 여기 없는 글자는 vault 주소일 뿐이다.
+SYM14 = {"🪞":"거울", "🔭":"망원경", "💒":"스테인굴레스", "⏱️":"시계", "🐀":"쥐",
+         "🦋":"나비", "🌷":"구근", "🌫️":"안개", "🐦‍⬛":"까마귀",
+         "📕":"붉은 일기장", "🔫":"다", "🧫":"세"}
+#   빠진 둘 — 10장 상징은 설계도에 **빈칸**이고(빈칸이 다음 책), 세다는 **파일이 없다**.
+#   0으로 적지 않는다. 생기면 여기 한 줄.
 _is_symbol = lambda f: bool(re.match(r"^[\U0001F000-\U0001FAFF\u2190-\u2BFF\uFE0F\u200D]+\.md$", f))
 symbol_links = []
 symbol_files = [f for f in os.listdir(SYMBOLS_DIR) if f.endswith(".md") and _is_symbol(f) and not _private(f)] if os.path.exists(SYMBOLS_DIR) else []
@@ -265,7 +291,13 @@ for sf in symbol_files:
             _d = re.match(r"(\d+)", _l.split("|")[0].strip().split("/")[-1])
             if _d: _cs |= _chaps(_d.group(1))
     _first = min(_cs) if _cs else 0
-    nodes.append({"id": sid, "label": GLYPH.get(sid, sid), "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12,
+    if sid not in SYM14: continue          # 열넷 밖은 vault 주소일 뿐 — 책에도 그래프에도 안 간다
+    # ⚠️ 2026-11-25 — **띠로 가는 넷은 줄에서 뺀다.** 둘 다 그리면 1장에서 📕이 거울을
+    #   덮고, 전반 칸의 다·세가 화면 오른쪽 끝에 잘린다. 공간 열은 줄에 서고(한 장에 하나)
+    #   시간 하나와 인물 셋은 **구간**이라 띠로 간다 — 같은 것을 두 꼴로 그리지 않는다.
+    if sid in BAND_SYMS: continue
+    nodes.append({"id": sid, "label": SYM14[sid], "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12,
+                  "pc": NOPAIR.get(sid, PAIR_COLOR.get(_first, PAIR_COLOR[0])),
                   "chap": _first, "pos": (POS_SELF if _cs else POS_NONE),
                   "pole": (sid if sid in POLES else ""),
                   "vpath": _vp(os.path.join(SYMBOLS_DIR, sf))})
@@ -456,8 +488,12 @@ if PRUNE:
     _fires = set(range(1, 11))
     _keep_god, _god_rem = _b._greedy_cover(
         {i: c for i, c in _claim.items() if _lay[i] == "god"}, _fires)
-    _keep_sym, _sym_rem = _b._greedy_cover(
-        {i: c for i, c in _claim.items() if _lay[i] == "symbol"}, _fires)
+    # ⚠️ 2026-11-25 — **명부에는 덮개를 안 돌린다.** 돌렸더니 🪞가 1·5·9 를 덮어
+    #   🐦‍⬛까마귀가 「이미 덮였다」로 떨어졌고, 📕(열 장)을 넣자 나머지 여덟이 통째로
+    #   잉여가 됐다. 덮개는 **많은 것 중 고르는 자**고 열넷은 **고를 것이 아니라 명부**다.
+    #   자가 틀린 게 아니라 댄 자리가 틀렸다.
+    _keep_sym = [i for i, l in _lay.items() if l == "symbol"]
+    _sym_rem = []
 
     _keep = ({"황금새장을열다"} | {n["id"] for n in nodes if n["layer"] == "chapter"}
              | _keep_ep | _keep_el | set(_keep_god) | set(_keep_sym))
@@ -569,7 +605,54 @@ print("   📏 원고가 이름을 부르나 — 📜 %d 중 **안 부르는 것
 for _i, _p in _mute:
     print("      🚨 %-44s 찾아본 이름 %s" % (_i, _p))
 
-data_json = json.dumps({"nodes": nodes, "edges": edges, "center": "황금새장을열다",
+# ── 인물 띠 넷 (2026-11-25 · /reader 8:0) ──────────────────────────────────
+#   인물은 **점이 아니라 구간**이다. 다·세·세다는 한 장에 사는 게 아니라 몇 장에
+#   걸쳐 있다가 교대한다 — 점으로 찍으면 그 교대가 안 보이고 띠로 그으면 그게 전부다.
+#   노드로 세우면 장 줄을 가로지르는 선이 10 → 26 이 되어 거미줄이 된다(/reader 실측).
+#   ⚠️ 자를 두 벌 만들지 않는다 — 감정은 `scripts/09_rotor_stator.py` 가 지고
+#   여기서는 그 **장부를 읽기만** 한다. 장부가 없으면 lead 를 비운다(0 이 아니라 빈칸).
+_CHDIR = os.path.join(TOLZUL_DIR, "4차소통/원고")
+_CHF = {1:"1🪞_거울새장",2:"2🔭_망원경새장",3:"3💒_스테인굴레스새장",4:"4⏱️_시계새장",
+        5:"5🐀_101",6:"6🦋_나비사용자",7:"7🌷_튤립기술자",8:"8🌫️_안개투자자",
+        9:"9🐦‍⬛_까마귀협력자",10:"10🧫_101"}
+_SPK = re.compile(r'^\*\*(다|세|세다):\*\*', re.M)
+_say = {c: {"다":0,"세":0,"세다":0} for c in _CHF}
+_book = {}
+for _c, _f in _CHF.items():
+    _fp = os.path.join(_CHDIR, _f + ".md")
+    if not os.path.exists(_fp): continue
+    _t = open(_fp, encoding="utf-8").read()
+    for _m in _SPK.finditer(_t): _say[_c][_m.group(1)] += 1
+    _book[_c] = _t.count("📕") > 0 or ("일기장" in _t)
+
+# 장부에서 장별 1위 화자를 읽는다 (없으면 빈칸)
+_lead = {}
+_ledger = os.path.join(os.path.dirname(GRAPH_HTML), "..", "scripts", "09_rotor_stator_장부.tsv")
+if os.path.exists(_ledger):
+    for _ln in open(_ledger, encoding="utf-8"):
+        _p = _ln.rstrip("\n").split("\t")
+        if len(_p) >= 3 and _p[0] == "1위" and _p[2] in ("다","세","세다"):
+            _lead[int(_p[1])] = _p[2]
+
+_PCOL = {"다":"#F08A3C", "세":"#C9B99A", "세다":"#E07AC8"}   # 09_rotor_stator 와 같은 색
+bands = []
+for _who in ("세", "다", "세다"):
+    _ch = sorted(c for c in _CHF if _say[c][_who] > 0)
+    bands.append({"id": _who, "label": _who, "color": _PCOL[_who], "chaps": _ch,
+                  "say": {str(c): _say[c][_who] for c in _ch},
+                  "lead": sorted(c for c, w in _lead.items() if w == _who)})
+bands.append({"id": "📕", "label": "붉은 일기장", "color": "#B4443A",
+              "chaps": sorted(c for c in _CHF if _book.get(c)),
+              "say": {}, "lead": [],
+              "mark": [5, 10],      # 대사가 아니라 물건으로 서는 두 장 = 주탑
+              "note": "5·10 은 물건으로 선다 — 실로 묶인 채 품고 나가고, 거기서 실이 갈린다"})
+SILENT = {"5": "대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다",
+          "10": "대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다"}
+print("   🎭 인물 띠 — " + " · ".join(
+    f"{b['label']} {len(b['chaps'])}장" + (f"(1위 {len(b['lead'])})" if b['lead'] else "")
+    for b in bands))
+
+data_json = json.dumps({"nodes": nodes, "edges": edges, "bands": bands, "silent": SILENT, "center": "황금새장을열다",
                         "asof": datetime.date.today().isoformat()}, ensure_ascii=False)
 
 if os.path.exists(GRAPH_HTML):
