@@ -4,12 +4,21 @@
     .t  { fill: #2D5FA8; }
     .ink{ fill: #2b2620; }
     .gy { fill: #6a6355; }
+    .h  { fill: #8A6A12; }
   </style>
   <rect width="960" height="440" fill="#F3EEE3"/>
 
   <!-- ① 제목줄 -->
   <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">1장 거울새장 — 욕망해</text>
-  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">욕망 | 볼 사람을 빼봐라 | 마담 보바리 × Quibi</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">욕망 | 볼 사람을 빼봐라 | 마담 보바리 × Quibi × Juicero</text>
+
+  <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 1 ↔ 6. 짝색은 면으로만 쓴다 -->
+  <g>
+    <rect x="799" y="16" width="137" height="20" rx="10" fill="#0026FB" opacity="0.18"/>
+    <rect x="799" y="16" width="137" height="20" rx="10" fill="none" stroke="#0026FB" stroke-width="1" opacity="0.55"/>
+    <text x="811" y="30" font-size="9" class="gy" letter-spacing="1">1 ↔ 6</text>
+    <text x="924" y="30" text-anchor="end" font-size="10" font-weight="700" class="ink">내가 1호 고객입니다</text>
+  </g>
 
   <!-- ② 좌측 표제 카드 -->
   <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#2D5FA8" stroke-width="2.5"/>
@@ -44,16 +53,16 @@
   </defs>
 
   <circle cx="520" cy="95" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
-  <text x="520" y="92" text-anchor="middle" font-size="10.5" font-weight="700" class="t">매개자</text>
-  <text x="520" y="105" text-anchor="middle" font-size="8" class="gy">소설 · 할리우드 · 회의실</text>
+  <text x="520" y="92" text-anchor="middle" font-size="10.5" font-weight="700" class="t">중개자</text>
+  <text x="520" y="105" text-anchor="middle" font-size="8" class="gy">연애소설 · 귀족 세계 · 그 회의실</text>
 
   <circle cx="420" cy="235" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
   <text x="420" y="232" text-anchor="middle" font-size="10.5" font-weight="700" class="t">주체</text>
-  <text x="420" y="245" text-anchor="middle" font-size="8" class="gy">엠마 / 카첸버그</text>
+  <text x="420" y="245" text-anchor="middle" font-size="8" class="gy">엠마 / 방 안의 모두</text>
 
   <circle cx="620" cy="235" r="29" fill="none" stroke="#2D5FA8" stroke-width="1.5"/>
   <text x="620" y="232" text-anchor="middle" font-size="10.5" font-weight="700" class="t">대상</text>
-  <text x="620" y="245" text-anchor="middle" font-size="8" class="gy">파리 / 프리미엄 모바일</text>
+  <text x="620" y="245" text-anchor="middle" font-size="8" class="gy">소설이 말해준 삶 / 짧은 동영상</text>
 
   <line x1="497" y1="114" x2="443" y2="209" stroke="#2D5FA8" stroke-width="1.2" marker-start="url(#ar)"/>
   <line x1="543" y1="114" x2="597" y2="209" stroke="#2D5FA8" stroke-width="1.2" marker-end="url(#ar)"/>
@@ -68,26 +77,26 @@
 
   <path d="M 506 291 C 468 300, 444 306, 434 314" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arg)"/>
   <rect x="366" y="322" width="132" height="52" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
-  <text x="432" y="339" text-anchor="middle" font-size="10" font-weight="700" class="gy">무모 — 질주</text>
-  <text x="432" y="353" text-anchor="middle" font-size="8" class="gy">장부를 안 펴고 달린다</text>
-  <text x="432" y="367" text-anchor="middle" font-size="8" class="gy">Quibi 17.5억 달러 → 6개월</text>
+  <text x="432" y="339" text-anchor="middle" font-size="10" font-weight="700" class="gy">Quibi — 합의</text>
+  <text x="432" y="353" text-anchor="middle" font-size="8" class="gy">고개가 일제히 끄덕인 그날 창이 닫힌다</text>
+  <text x="432" y="367" text-anchor="middle" font-size="8" class="gy">17.5억 달러 → 6개월</text>
 
   <path d="M 534 291 C 572 300, 596 306, 606 314" fill="none" stroke="#2D5FA8" stroke-width="2.2" marker-end="url(#ar)"/>
   <rect x="544" y="322" width="136" height="52" rx="3" fill="#2D5FA8" fill-opacity="0.06" stroke="#2D5FA8" stroke-width="1.2"/>
-  <text x="612" y="339" text-anchor="middle" font-size="10" font-weight="700" class="t">용기 — 검증</text>
-  <text x="612" y="353" text-anchor="middle" font-size="8" class="ink">장부를 펴고, 확인 후 뛴다</text>
-  <text x="612" y="367" text-anchor="middle" font-size="8" class="ink">아래를 보고 뛴 것 = 용기</text>
+  <text x="612" y="339" text-anchor="middle" font-size="10" font-weight="700" class="t">Juicero — 실재</text>
+  <text x="612" y="353" text-anchor="middle" font-size="8" class="ink">만질 수 있고 작동했다. 400달러</text>
+  <text x="612" y="367" text-anchor="middle" font-size="8" class="ink">기자 한 명이 짜봤고, 산 사람은 아무도</text>
 
   <!-- ⑤ 우측 앵커 카드 -->
   <rect x="740" y="90" width="185" height="108" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">삼각형 바깥에 서라</text>
-  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">Thiel — 모방 바깥이 독점</text>
-  <text x="832" y="145" text-anchor="middle" font-size="8.5" class="ink">Maples — 합의 바깥, 그리고 옳아야</text>
+  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">대상이 바뀌어도 중개자가 남는다</text>
+  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">René Girard, 『낭만적 거짓과 소설적 진실』</text>
+  <text x="832" y="144" text-anchor="middle" font-size="8.5" class="ink">(1961) 1장 「삼각형적 욕망」</text>
   <line x1="758" y1="157" x2="906" y2="157" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="173" text-anchor="middle" font-size="8.5" class="gy">반례 · 오메 — 꿈 없이 살아남았다</text>
-  <text x="832" y="188" text-anchor="middle" font-size="8.5" class="gy">→ 살아남았으나 풍자로 끝났다</text>
+  <text x="832" y="173" text-anchor="middle" font-size="8.5" class="gy">"타인이 욕망하는 것을 욕망한다"는</text>
+  <text x="832" y="188" text-anchor="middle" font-size="8.5" class="gy">지은이의 압축 의역 · 직접 인용 아님</text>
 
-  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <!-- ⑥ 하단 결론 = 「🤚 네 자리」 원문 -->
   <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
   <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">빌린 옷은 벗는 순간이 아니라 알아채는 순간에 가벼워진다</text>
 

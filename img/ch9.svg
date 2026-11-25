@@ -80,6 +80,7 @@
   <path d="M 660 174 C 664 216, 520 226, 416 202" fill="none" stroke="#1B1B1E" stroke-width="1.4" stroke-dasharray="6,3" marker-end="url(#ak)"/>
   <text x="540" y="236" text-anchor="middle" font-size="8.5" font-weight="700" class="t">9 → 5 → 1 — 끝이 시작을 문다</text>
   <text x="540" y="248" text-anchor="middle" font-size="7.5" class="gy">꼭짓점에서 책이 닫히지 않는다</text>
+  <text x="540" y="260" text-anchor="middle" font-size="7.5" class="gy">붉은 일기장은 아직 실로 묶여 있다 — 세다가 안 편다</text>
 
   <text x="516" y="274" text-anchor="middle" font-size="9.5" class="ink">부수는 손과 이름 짓는 손은 같은 손이다 — 다른 것은 던지느냐 쥐느냐다</text>
 

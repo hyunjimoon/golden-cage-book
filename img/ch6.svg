@@ -51,10 +51,10 @@
     </marker>
   </defs>
 
-  <!-- ③ 중앙 개념도 — 세 시점의 사용자, 회전축은 ★멈춤 -->
+  <!-- ③ 중앙 개념도 — 세 시점의 사용자, 가운데는 ★멈춤. 「회전」으로 쓰지 않는다(CLAUDE.md 점 반전) -->
   <circle cx="516" cy="170" r="10" fill="#E0A526"/>
   <circle cx="516" cy="170" r="18" fill="none" stroke="#8A6A12" stroke-width="1.3" stroke-dasharray="4,2"/>
-  <text x="516" y="196" text-anchor="middle" font-size="8" font-weight="700" class="h">★멈춤 = 회전축</text>
+  <text x="516" y="196" text-anchor="middle" font-size="8" font-weight="700" class="h">★멈춤 = 자를 다시 거는 자리</text>
 
   <line x1="500" y1="160" x2="456" y2="139" stroke="#2D5FA8" stroke-width="1.3"/>
   <line x1="532" y1="160" x2="586" y2="132" stroke="#2D5FA8" stroke-width="1.3"/>
@@ -100,21 +100,21 @@
   <text x="832" y="200" text-anchor="middle" font-size="8.5" class="gy">반례 · 짐작은 반쯤 틀렸다</text>
   <text x="832" y="214" text-anchor="middle" font-size="8.5" class="gy">→ 기능이 아니라 관계가 자리를 쥐고 있었다</text>
 
-  <!-- ⑤b tracking 앵커 카드 — issue #106 반영 (2026-09-24) -->
+  <!-- ⑤b 인용 카드 — 이 장의 유일한 인용 (원고 §3) -->
   <rect x="740" y="236" width="185" height="146" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="256" text-anchor="middle" font-size="10.5" font-weight="700" class="t">역인과 — 결과부터 푼다</text>
-  <text x="832" y="274" text-anchor="middle" font-size="8.5" class="ink">I.J. Good 1950 · 설득당할 결과를</text>
-  <text x="832" y="286" text-anchor="middle" font-size="8.5" class="ink">상상하고 prior를 거꾸로 푼다</text>
-  <text x="832" y="298" text-anchor="middle" font-size="8" class="gy">드랍박스 — 안 돌아가는 영상으로 7만 5천</text>
-  <text x="832" y="310" text-anchor="middle" font-size="8" class="gy">샤오미 — 남의 폰에 ROM부터, 1년 뒤 폰</text>
+  <text x="832" y="256" text-anchor="middle" font-size="10.5" font-weight="700" class="t">사용자 = 켜고 끄는 손</text>
+  <text x="832" y="274" text-anchor="middle" font-size="8.5" class="ink">돈을 내는 자가 아니라</text>
+  <text x="832" y="286" text-anchor="middle" font-size="8.5" class="ink">매일 켜고 끄는 자</text>
+  <text x="832" y="298" text-anchor="middle" font-size="8" class="gy">텐센트가 읽은 것도, LeEco가 지운 것도</text>
+  <text x="832" y="310" text-anchor="middle" font-size="8" class="gy">그 손이었다</text>
   <line x1="758" y1="318" x2="906" y2="318" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="331" text-anchor="middle" font-size="9" font-weight="700" class="t">수(手) — Ashby 1956</text>
-  <text x="832" y="344" text-anchor="middle" font-size="8" class="ink">세상이 여덟 수, 내가 셋이면</text>
-  <text x="832" y="355" text-anchor="middle" font-size="8" class="ink">막히는 셋에 새는 다섯이다</text>
-  <text x="832" y="366" text-anchor="middle" font-size="8" class="gy">좋은 조절기는 그 계의 모형이다</text>
-  <text x="832" y="377" text-anchor="middle" font-size="8" class="gy">넷의 자리에서 아파 본 사람만 넷을 안다</text>
+  <text x="832" y="331" text-anchor="middle" font-size="9" font-weight="700" class="t">앞서 겪는 손 — von Hippel 1986</text>
+  <text x="832" y="344" text-anchor="middle" font-size="8" class="ink">"Lead Users," Management Science 32(7)</text>
+  <text x="832" y="355" text-anchor="middle" font-size="8" class="ink">시장보다 먼저 겪고, 해결의 이익을 쥔 자</text>
+  <text x="832" y="366" text-anchor="middle" font-size="8" class="gy">피톤은 이 계열 문헌의 품목이나,</text>
+  <text x="832" y="377" text-anchor="middle" font-size="8" class="gy">쉬나드를 이름으로 든 것은 확인 못했다</text>
 
-  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
+  <!-- ⑥ 하단 결론 = 「🤚 네 자리」 원문 -->
   <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
   <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">빌린 옷을 입되, 언제 벗을지 고르는 조항을 계약서에서 지우지 마라</text>
 

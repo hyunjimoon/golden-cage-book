@@ -11,6 +11,14 @@
   <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">4장 시계새장 — 폭파해</text>
   <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">합류 1+2+3 | 세면서 부숴라 | 방드르디 × 두산</text>
 
+  <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 4 ↔ 9. 짝색은 면으로만 쓴다 -->
+  <g>
+    <rect x="828" y="16" width="108" height="20" rx="10" fill="#006610" opacity="0.18"/>
+    <rect x="828" y="16" width="108" height="20" rx="10" fill="none" stroke="#006610" stroke-width="1" opacity="0.55"/>
+    <text x="840" y="30" font-size="9" class="gy" letter-spacing="1">4 ↔ 9</text>
+    <text x="924" y="30" text-anchor="end" font-size="10" font-weight="700" class="ink">눈금이 다르다</text>
+  </g>
+
   <!-- ② 좌측 표제 카드 -->
   <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
   <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#1B1B1E" stroke-width="2.5"/>
@@ -62,7 +70,7 @@
   <text x="587" y="139" text-anchor="middle" font-size="7.5" class="gy">인공선택</text>
 
   <rect x="616" y="126" width="82" height="40" rx="3" fill="none" stroke="#6a6355" stroke-width="0.8" stroke-dasharray="5,4"/>
-  <text x="657" y="143" text-anchor="middle" font-size="10" font-weight="700" class="gy">변이 사멸</text>
+  <text x="657" y="143" text-anchor="middle" font-size="10" font-weight="700" class="gy">변이를 죽인다</text>
   <text x="657" y="157" text-anchor="middle" font-size="8" class="gy">고를 재료가 없다</text>
 
   <!-- 빚의 원천 상승 -->
@@ -112,6 +120,13 @@
   <line x1="758" y1="171" x2="906" y2="171" stroke="#d8cfbc" stroke-width="1"/>
   <text x="832" y="187" text-anchor="middle" font-size="8.5" class="gy">반례 · 시계가 없었으면 미쳐 죽었다</text>
   <text x="832" y="202" text-anchor="middle" font-size="8.5" class="gy">→ 빌린 질서가 먼저 그를 살렸다</text>
+
+  <!-- ⑤b 네 번째 동작 — §結 마지막 줄. 담뱃대 셋과 달리 불이 아니다 (2026-11-25 추가) -->
+  <rect x="740" y="232" width="185" height="86" rx="4" fill="none" stroke="#1B1B1E" stroke-width="1.2"/>
+  <text x="832" y="253" text-anchor="middle" font-size="10.5" font-weight="700" class="t">네 번째 — 이건 불이 아니다</text>
+  <text x="832" y="275" text-anchor="middle" font-size="10" class="ink" font-style="italic">배를 보고도 안 타는 것</text>
+  <text x="832" y="295" text-anchor="middle" font-size="8" class="gy">배가 오기 전에 섬에 있는 건 갇힌 것이고,</text>
+  <text x="832" y="307" text-anchor="middle" font-size="8" class="gy">온 후에 남는 것이 선택이 된다</text>
 
   <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
   <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>

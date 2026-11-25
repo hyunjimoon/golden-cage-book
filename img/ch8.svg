@@ -107,19 +107,18 @@
   <text x="832" y="200" text-anchor="middle" font-size="8.5" class="gy">반례 · 그를 죽여 존엄을 지켰다 믿었으나</text>
   <text x="832" y="215" text-anchor="middle" font-size="8.5" class="gy">→ 지배하려 드는 자가 지배당한다</text>
 
-  <!-- ⑤b tracking 앵커 카드 — issue #108 반영 (2026-09-24) -->
+  <!-- ⑤b §2 되짚는 세 번째 방 — 3S + F (원고 §2 다의 대사. 범위는 가운데 그림이 이미 진다) -->
   <rect x="740" y="236" width="185" height="146" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="256" text-anchor="middle" font-size="10.5" font-weight="700" class="t">여왕개미 반례 — 버티는 단위</text>
-  <text x="832" y="274" text-anchor="middle" font-size="8.5" class="ink">짱구개미 Messor · 일개미는 전부 잡종</text>
-  <text x="832" y="286" text-anchor="middle" font-size="8" class="gy">버티는 것은 개체가 아니라 군체다</text>
-  <text x="832" y="298" text-anchor="middle" font-size="8" class="gy">종(種)이 흔들려도 진화론은 고쳐 쓰였다</text>
-  <text x="832" y="310" text-anchor="middle" font-size="8" class="gy">반례는 끝이 아니라 다음 판의 시작이다</text>
-  <line x1="758" y1="318" x2="906" y2="318" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="331" text-anchor="middle" font-size="9" font-weight="700" class="t">끈적한 인지 — 끈끈이 트랩</text>
-  <text x="832" y="344" text-anchor="middle" font-size="8" class="ink">굳은 인지가 적응을 막는다 (관성·관료)</text>
-  <text x="832" y="355" text-anchor="middle" font-size="8" class="ink">푸는 법은 경험의 지속적 재구성</text>
-  <text x="832" y="366" text-anchor="middle" font-size="8" class="gy">굴절적응 = 있는 것을 딴 데 쓴다</text>
-  <text x="832" y="377" text-anchor="middle" font-size="8" class="gy">지식이 끈적할 때 병렬 탐색이 이긴다</text>
+  <text x="832" y="256" text-anchor="middle" font-size="10.5" font-weight="700" class="t">되짚는 세 번째 방 — 3S + F</text>
+  <text x="832" y="274" text-anchor="middle" font-size="8.5" class="ink">순서 — 병목부터. 옵션을 일찍 닫지 마라</text>
+  <text x="832" y="286" text-anchor="middle" font-size="8" class="gy">첫 투자자를 너무 좁은 thesis로 두지 마라</text>
+  <text x="832" y="300" text-anchor="middle" font-size="8.5" class="ink">정합 — 대각선을 타라. 더해지지 않고 곱해진다</text>
+  <text x="832" y="312" text-anchor="middle" font-size="8" class="gy">각각 40%면 16% · 각각 90%면 81%</text>
+  <line x1="758" y1="320" x2="906" y2="320" stroke="#d8cfbc" stroke-width="1"/>
+  <text x="832" y="333" text-anchor="middle" font-size="9" font-weight="700" class="t">Fubini — 이름만 빌렸다</text>
+  <text x="832" y="346" text-anchor="middle" font-size="8" class="ink">욕망과 상태의 적분 순서를 바꿔도 값이 같다</text>
+  <text x="832" y="357" text-anchor="middle" font-size="8" class="gy">정리를 적용하지 않는다 · 3S 가르기는 이 책 것</text>
+  <text x="832" y="371" text-anchor="middle" font-size="8" class="gy">범위는 가운데 그림이 진다 — 반쯤 열린 폭</text>
 
   <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
   <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>

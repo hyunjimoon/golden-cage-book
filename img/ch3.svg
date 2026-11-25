@@ -9,7 +9,16 @@
 
   <!-- ① 제목줄 -->
   <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">3장 스테인굴레스새장 — 설득해</text>
-  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">행동 | 혈청을 바꿔라, 손으로 | 페스트 × Theranos</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">행동 | 혈청을 바꿔라, 손으로 | 페스트 × 세그웨이</text>
+
+  <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 3 ↔ 8. 짝색은 면으로만 쓴다 -->
+  <!-- 이름은 짝의 것이다 (gcb README §여덟 마디 — 「좋은데, 지금은 아니고」 3장 → 8장). 08 판과 같은 꼴·같은 자리 -->
+  <g>
+    <rect x="792" y="16" width="144" height="20" rx="10" fill="#F82218" opacity="0.18"/>
+    <rect x="792" y="16" width="144" height="20" rx="10" fill="none" stroke="#F82218" stroke-width="1" opacity="0.55"/>
+    <text x="804" y="30" font-size="9" class="gy" letter-spacing="1">3 ↔ 8</text>
+    <text x="924" y="30" text-anchor="end" font-size="10" font-weight="700" class="ink">좋은데, 지금은 아니고</text>
+  </g>
 
   <!-- ② 좌측 표제 카드 -->
   <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#C8102E" stroke-width="2.5"/>

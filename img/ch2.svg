@@ -11,6 +11,17 @@
   <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">2장 망원경새장 — 상상해</text>
   <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">믿음 | 출시 버튼을 눌러라 | 표범 × 필름·소재 산업</text>
 
+  <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 2 ↔ 7. 짝색은 면으로만 쓴다 -->
+  <g>
+    <rect x="828" y="16" width="108" height="20" rx="10" fill="#491786" opacity="0.18"/>
+    <rect x="828" y="16" width="108" height="20" rx="10" fill="none" stroke="#491786" stroke-width="1" opacity="0.55"/>
+    <text x="840" y="30" font-size="9" class="gy" letter-spacing="1">2 ↔ 7</text>
+    <text x="924" y="30" text-anchor="end" font-size="10" font-weight="700" class="ink">데모는 돌았다</text>
+  </g>
+
+  <!-- ②′ 받는 선 — 1장이 넘긴 문장이 여기서 열린다 (2장 대사, 고리 축) -->
+  <text x="480" y="61" text-anchor="middle" font-size="9.5" class="gy">← 1장에서 받는다 · "잘 보는 눈은, 움직이지 않을 이유도 잘 본다"</text>
+
   <!-- ② 좌측 표제 카드 -->
   <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#B0821F" stroke-width="2.5"/>
   <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#B0821F" stroke-width="2.5"/>

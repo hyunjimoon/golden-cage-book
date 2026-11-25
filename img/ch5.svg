@@ -1,19 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440">
+  <!-- 5장 배너 · 개고 2026-11-25 🟡5res
+       CSS 변수 금지 — 밖에서 열면 통째로 까맣게 나온다(00_geo 평면도가 그 병에 걸려 있다, 158건).
+       적는 말은 전부 5장 원고에 있는 말이다(2026-11-25 실측 · 코퍼스 4차소통/원고/*.md 16파일).
+         뺀 것 — 지렛대(책 전체 0건) · 다운라운드 이사회(8장 :174 것) · 줄리아(10장 :48 것)
+                 · 한 박자 · 빈손 · 비명 · 되짚 · 0.9 (전부 5장 0건)
+         넣은 것 — 유리 8 · 벽 8 · 가면 6 · 반 발짝 3 · 스무 배 2 · 하늘 2 · 천막 2 · 일기장 2
+       짝 10장과 점 반전. 같은 자리에 뒤집힌 말이 선다 — 「같이 가 세」↔「같이 세 세」 (한 글자). -->
   <style>
     text { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
-    .t  { fill: #8A6A12; }
-    .ink{ fill: #2b2620; }
-    .gy { fill: #6a6355; }
-    .d  { fill: #2D5FA8; }
-    .b  { fill: #B0821F; }
-    .a  { fill: #C8102E; }
+    .t  { fill: #8A6A12; }  .ink{ fill: #2b2620; }  .gy { fill: #6a6355; }
+    .d  { fill: #2D5FA8; }  .b  { fill: #B0821F; }  .a  { fill: #C8102E; }
+    .fade { fill: #9a9690; }
   </style>
   <rect width="960" height="440" fill="#F3EEE3"/>
 
   <!-- ① 제목줄 -->
-  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">5장 101₂호 — 회전축멈춤</text>
-  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">이음새 | 한 박자를 벌어라 | 1984 × 다운라운드 이사회</text>
-  <!-- 갈등 이름 여덟 (룰링 2026-10-11) — 거울짝 5 ↔ 10. 짝색은 면으로만 쓴다 -->
+  <text x="480" y="28" text-anchor="middle" font-size="17" font-weight="700" class="t">5장 101₂호 — ★멈춤</text>
+  <text x="480" y="46" text-anchor="middle" font-size="10" class="gy" letter-spacing="2">이음새 | 빚을 쓴다 | 두 자리가 셋이 되는 방</text>
   <g>
     <rect x="806" y="16" width="130" height="20" rx="10" fill="#FFD53A" opacity="0.18"/>
     <rect x="806" y="16" width="130" height="20" rx="10" fill="none" stroke="#FFD53A" stroke-width="1" opacity="0.55"/>
@@ -21,102 +24,91 @@
     <text x="924" y="30" text-anchor="end" font-size="10" font-weight="700" class="ink">지른 나, 막는 나</text>
   </g>
 
-  <!-- ② 좌측 표제 카드 -->
-  <rect x="50" y="68" width="210" height="295" rx="5" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
-  <path d="M 50,68 Q 155,42 260,68" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
-  <!-- 전등 하나와 빈 의자 -->
+  <!-- ② 좌측 방 카드 -->
+  <rect x="44" y="68" width="206" height="300" rx="5" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
+  <path d="M 44,68 Q 147,42 250,68" fill="none" stroke="#8A6A12" stroke-width="2.5"/>
   <g stroke="#8A6A12" fill="none">
-    <line x1="155" y1="86" x2="155" y2="118" stroke-width="1.4"/>
-    <path d="M 138 132 L 172 132 L 164 118 L 146 118 Z" stroke-width="1.6"/>
-    <circle cx="155" cy="139" r="4" fill="#E0A526" stroke="none"/>
-    <line x1="132" y1="196" x2="178" y2="196" stroke-width="1.8"/>
-    <line x1="132" y1="196" x2="132" y2="224" stroke-width="1.6"/>
-    <line x1="178" y1="196" x2="178" y2="224" stroke-width="1.6"/>
-    <line x1="178" y1="196" x2="178" y2="164" stroke-width="1.8"/>
-    <line x1="178" y1="164" x2="196" y2="164" stroke-width="1.4"/>
+    <line x1="147" y1="84" x2="147" y2="112" stroke-width="1.4"/>
+    <path d="M 131 126 L 163 126 L 156 112 L 138 112 Z" stroke-width="1.6"/>
+    <circle cx="147" cy="133" r="4" fill="#E0A526" stroke="none"/>
   </g>
-  <text x="155" y="252" text-anchor="middle" font-size="15" font-weight="700" class="t" letter-spacing="2">101₂호</text>
-  <text x="155" y="273" text-anchor="middle" font-size="10.5" class="ink">빚을 쓰는 방 — 차갑게</text>
-  <text x="155" y="298" text-anchor="middle" font-size="9" class="gy">윈스턴 — "줄리아에게 하세요"</text>
-  <text x="155" y="313" text-anchor="middle" font-size="9" class="gy">다운라운드 이사회 — 되려던 것을 먼저 판다</text>
-  <text x="155" y="341" text-anchor="middle" font-size="10" class="t" font-style="italic">"지렛대에 누구 손이</text>
-  <text x="155" y="354" text-anchor="middle" font-size="10" class="t" font-style="italic">얹혀 있는가?"</text>
+  <!-- 벽 하나가 유리다 — 5장 유리 8건·벽 8건 -->
+  <rect x="96" y="158" width="102" height="60" fill="#FFFFFF" opacity="0.45" stroke="#8A6A12" stroke-width="1.2"/>
+  <line x1="96" y1="188" x2="198" y2="188" stroke="#8A6A12" stroke-width="0.6" opacity="0.5"/>
+  <text x="147" y="183" text-anchor="middle" font-size="8.5" class="gy">유리 뒤쪽에서</text>
+  <text x="147" y="205" text-anchor="middle" font-size="8.5" class="gy">목소리가 난다</text>
+  <text x="147" y="252" text-anchor="middle" font-size="16" font-weight="700" class="t" letter-spacing="2">101₂호</text>
+  <text x="147" y="273" text-anchor="middle" font-size="10.5" class="ink">빚을 쓰는 방 — 차갑게</text>
+  <line x1="74" y1="288" x2="220" y2="288" stroke="#8A6A12" stroke-width="0.6" opacity="0.4"/>
+  <text x="147" y="310" text-anchor="middle" font-size="9.5" class="ink" font-style="italic">"네가 옳다는 믿음과</text>
+  <text x="147" y="326" text-anchor="middle" font-size="9.5" class="ink" font-style="italic">네가 옳기를 바라는 내 마음 중,</text>
+  <text x="147" y="342" text-anchor="middle" font-size="9.5" class="ink" font-style="italic">어느 쪽이 먼저 왔나."</text>
+  <text x="147" y="358" text-anchor="middle" font-size="8" class="gy">— 다</text>
 
-  <line x1="300" y1="58" x2="300" y2="395" stroke="#d8cfbc" stroke-width="1"/>
+  <!-- ③ 가운데 — 자리가 둘에서 셋이 된다 -->
+  <text x="300" y="92" font-size="10" font-weight="700" class="gy" letter-spacing="1">자리가 둘이다 — 0 이나 1 이나</text>
+  <g stroke="#8A6A12" fill="none" stroke-width="1.8">
+    <rect x="300" y="106" width="86" height="56" rx="3" fill="#FFFFFF" opacity="0.5"/>
+    <rect x="300" y="106" width="86" height="56" rx="3"/>
+    <rect x="398" y="106" width="86" height="56" rx="3" fill="#FFFFFF" opacity="0.5"/>
+    <rect x="398" y="106" width="86" height="56" rx="3"/>
+  </g>
+  <text x="343" y="131" text-anchor="middle" font-size="15" font-weight="700" class="d">다</text>
+  <text x="343" y="150" text-anchor="middle" font-size="8.5" class="gy">원함 · 앞서 달린다</text>
+  <text x="441" y="131" text-anchor="middle" font-size="15" font-weight="700" class="t">세</text>
+  <text x="441" y="150" text-anchor="middle" font-size="8.5" class="gy">믿음 · 지켜본다</text>
 
-  <defs>
-    <marker id="md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D5FA8"/>
-    </marker>
-    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0821F"/>
-    </marker>
-    <marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8102E"/>
-    </marker>
-    <marker id="mh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8A6A12"/>
-    </marker>
-    <marker id="mgy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a6355"/>
-    </marker>
-  </defs>
+  <!-- 쏜다 -->
+  <defs><marker id="ah5" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 Z" fill="#C8102E"/></marker></defs>
+  <path d="M 348 174 L 436 174" stroke="#C8102E" stroke-width="2" fill="none" marker-end="url(#ah5)"/>
+  <text x="392" y="192" text-anchor="middle" font-size="9.5" font-weight="700" class="a">다가 세를 쏜다</text>
+  <path d="M 441 182 Q 452 212 400 212" stroke="#C8102E" stroke-width="1.5" fill="none"
+        stroke-dasharray="3 2" marker-end="url(#ah5)"/>
+  <text x="392" y="228" text-anchor="middle" font-size="8.5" class="a">탄피가 되돌아와 한 눈을 가른다</text>
 
-  <!-- ③ 중앙 개념도 — 05_geo 흡수: 다가 세를 쏜다 (10장과 점대칭) -->
-  <line x1="360" y1="176" x2="672" y2="176" stroke="#d8cfbc" stroke-width="0.6" stroke-dasharray="4,4"/>
-  <line x1="516" y1="96" x2="516" y2="256" stroke="#d8cfbc" stroke-width="0.6" stroke-dasharray="4,4"/>
+  <!-- 셋째 자리가 생긴다 -->
+  <rect x="330" y="244" width="124" height="48" rx="3" fill="#FFD53A" fill-opacity="0.14"
+        stroke="#8A6A12" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <text x="392" y="266" text-anchor="middle" font-size="14" font-weight="700" class="t">세다</text>
+  <text x="392" y="283" text-anchor="middle" font-size="8.5" class="gy">셋째 자리 · 품이되 임시다</text>
 
-  <line x1="534" y1="176" x2="654" y2="176" stroke="#2D5FA8" stroke-width="1.8" marker-end="url(#md)"/>
-  <text x="660" y="180" font-size="9.5" font-weight="700" class="d">다 — 원함</text>
-  <text x="660" y="193" font-size="7.5" class="gy">앞서 달리는 자</text>
+  <text x="300" y="316" font-size="9" class="ink">갈래를 둘로 만들려고 쏘았는데, <tspan font-weight="700">갈래가 하나 남았다.</tspan></text>
 
-  <line x1="516" y1="158" x2="516" y2="112" stroke="#B0821F" stroke-width="1.8" marker-end="url(#mb)"/>
-  <text x="516" y="104" text-anchor="middle" font-size="9.5" font-weight="700" class="b">세 — 믿음</text>
+  <!-- ④ 우측 — ★멈춤 한 칸 -->
+  <rect x="520" y="86" width="180" height="222" rx="5" fill="#FFFFFF" opacity="0.4"/>
+  <rect x="520" y="86" width="180" height="222" rx="5" fill="none" stroke="#8A6A12" stroke-width="1" opacity="0.5"/>
+  <text x="610" y="110" text-anchor="middle" font-size="11" font-weight="700" class="t">★멈춤 — 이 장의 동사</text>
+  <line x1="542" y1="120" x2="678" y2="120" stroke="#8A6A12" stroke-width="0.6" opacity="0.4"/>
+  <text x="610" y="142" text-anchor="middle" font-size="9.5" class="ink">떠날 수 있는데도 남는 것만</text>
+  <text x="610" y="158" text-anchor="middle" font-size="9.5" class="ink">사랑이다</text>
+  <text x="610" y="180" text-anchor="middle" font-size="9" class="gy">가르려면 문이 하나 있어야 한다</text>
+  <line x1="542" y1="198" x2="678" y2="198" stroke="#8A6A12" stroke-width="0.6" opacity="0.4"/>
+  <text x="610" y="220" text-anchor="middle" font-size="9.5" class="ink">왼손을 든다. 떨린다.</text>
+  <text x="610" y="238" text-anchor="middle" font-size="12" font-weight="700" class="a">당긴다.</text>
+  <text x="610" y="258" text-anchor="middle" font-size="8.5" class="gy">— 당기는 것은 방아쇠다</text>
+  <text x="610" y="286" text-anchor="middle" font-size="8.5" class="gy" font-style="italic">10장에서 같은 손이</text>
+  <text x="610" y="300" text-anchor="middle" font-size="8.5" class="gy" font-style="italic">실을 당긴다</text>
 
-  <path d="M 540 168 Q 622 130 556 116" fill="none" stroke="#C8102E" stroke-width="2.4" stroke-dasharray="2,2" marker-end="url(#ma)"/>
-  <text x="604" y="152" font-size="9" font-weight="700" class="a">오염</text>
-  <text x="604" y="164" font-size="7.5" class="gy">원함이 믿음을 덮어쓴다</text>
+  <!-- ⑤ 들고 나가는 것 -->
+  <rect x="722" y="86" width="196" height="222" rx="5" fill="none" stroke="#8A6A12" stroke-width="1" opacity="0.5"/>
+  <text x="820" y="110" text-anchor="middle" font-size="11" font-weight="700" class="t">방에서 들고 나가는 것</text>
+  <line x1="744" y1="120" x2="896" y2="120" stroke="#8A6A12" stroke-width="0.6" opacity="0.4"/>
+  <g transform="translate(790,136)">
+    <rect x="0" y="0" width="60" height="44" rx="2" fill="#C8102E" fill-opacity="0.16" stroke="#C8102E" stroke-width="1.4"/>
+    <line x1="0" y1="11" x2="60" y2="11" stroke="#C8102E" stroke-width="0.9" stroke-dasharray="3 3"/>
+    <line x1="0" y1="22" x2="60" y2="22" stroke="#C8102E" stroke-width="0.9" stroke-dasharray="3 3"/>
+    <line x1="0" y1="33" x2="60" y2="33" stroke="#C8102E" stroke-width="0.9" stroke-dasharray="3 3"/>
+  </g>
+  <text x="820" y="198" text-anchor="middle" font-size="10" font-weight="700" class="ink">붉은 일기장</text>
+  <text x="820" y="216" text-anchor="middle" font-size="9.5" class="ink">실로 묶여 있다.</text>
+  <text x="820" y="234" text-anchor="middle" font-size="11" font-weight="700" class="t">펴지 않는다.</text>
+  <text x="820" y="252" text-anchor="middle" font-size="8.5" class="gy">지금 펴면 견딜 수 없을 것 같다</text>
+  <line x1="744" y1="268" x2="896" y2="268" stroke="#8A6A12" stroke-width="0.6" opacity="0.4"/>
+  <text x="820" y="290" text-anchor="middle" font-size="8.5" class="gy">다섯 방 뒤에 열린다 → 10장</text>
 
-  <circle cx="516" cy="176" r="9" fill="#E0A526"/>
-  <circle cx="516" cy="176" r="17" fill="none" stroke="#8A6A12" stroke-width="1.4" stroke-dasharray="4,2"/>
-  <text x="462" y="211" text-anchor="middle" font-size="9.5" font-weight="700" class="t">★멈춤</text>
-  <text x="462" y="223" text-anchor="middle" font-size="7.5" class="gy">빈손으로 자를 다시 건다</text>
-
-  <text x="516" y="248" text-anchor="middle" font-size="8" class="gy">두 자리의 방 — 다냐 세냐, 0이냐 1이냐</text>
-
-  <text x="516" y="276" text-anchor="middle" font-size="9.5" class="ink">멈춤을 건너뛴 행동은 어디에도 안 착지한다 — 곧장 1장으로 돌아간다</text>
-
-  <!-- ④ 분기 -->
-  <circle cx="516" cy="302" r="12" fill="none" stroke="#8A6A12" stroke-width="1.2"/>
-  <text x="516" y="306" text-anchor="middle" font-size="8.5" font-weight="700" class="t">분기</text>
-
-  <path d="M 503 306 C 466 312, 442 316, 432 322" fill="none" stroke="#6a6355" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#mgy)"/>
-  <rect x="362" y="330" width="132" height="48" rx="3" fill="none" stroke="#6a6355" stroke-width="0.7" stroke-dasharray="5,4"/>
-  <text x="428" y="346" text-anchor="middle" font-size="10" font-weight="700" class="gy">비명 — 멈춤 0</text>
-  <text x="428" y="359" text-anchor="middle" font-size="8" class="gy">배운 것이 하나도 안 얹힌다</text>
-  <text x="428" y="372" text-anchor="middle" font-size="8" class="gy">되돌아간 자리 = 1장</text>
-
-  <path d="M 529 306 C 566 312, 590 316, 600 322" fill="none" stroke="#8A6A12" stroke-width="2.2" marker-end="url(#mh)"/>
-  <rect x="540" y="330" width="140" height="48" rx="3" fill="none" stroke="#8A6A12" stroke-width="1.6"/>
-  <text x="610" y="346" text-anchor="middle" font-size="10" font-weight="700" class="t">한 박자 — 네 방 되짚기</text>
-  <text x="610" y="359" text-anchor="middle" font-size="8" class="ink">원함·됨·책임·척도를 내 눈금으로</text>
-  <text x="610" y="372" text-anchor="middle" font-size="8" class="ink">지어짐 × 팔림 — 0.4² 16% → 0.9² 81%</text>
-
-  <!-- ⑤ 우측 앵커 카드 -->
-  <rect x="740" y="90" width="185" height="136" rx="4" fill="none" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="111" text-anchor="middle" font-size="10.5" font-weight="700" class="t">내 자를 짓는 두 규칙</text>
-  <text x="832" y="130" text-anchor="middle" font-size="8.5" class="ink">알아서 얻을 것이 알아보는 값을</text>
-  <text x="832" y="143" text-anchor="middle" font-size="8.5" class="ink">확실히 웃돌기 전엔 갈래를 지우지 마라</text>
-  <text x="832" y="160" text-anchor="middle" font-size="8.5" class="ink">유연하게 걸되 물러서지 않는 손</text>
-  <text x="832" y="174" text-anchor="middle" font-size="8" class="gy">떠날 문을 열어 둔 채 머무는 것이 자유</text>
-  <line x1="758" y1="185" x2="906" y2="185" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="832" y="201" text-anchor="middle" font-size="8.5" class="gy">반례 · 멈춤에도 값이 있다</text>
-  <text x="832" y="216" text-anchor="middle" font-size="8.5" class="gy">→ 웃도는데도 멈춰 있으면 그 망설임이 빚</text>
-
-  <!-- ⑥ 하단 결론 = 「⭐️ 네 자리」 원문 -->
-  <line x1="50" y1="393" x2="910" y2="393" stroke="#d8cfbc" stroke-width="1"/>
-  <text x="480" y="414" text-anchor="middle" font-size="12.5" font-weight="700" class="ink">같은 모방이라도, 멈춤 하나로 새장이 둥지가 된다</text>
-
-  <!-- ⑦ 이월 화살 -->
-  <text x="480" y="433" text-anchor="middle" font-size="9.5" class="gy">→ 이월 · "이번엔 자기가 가면을 쓰고 있다는 걸 안다" → 6장</text>
+  <!-- ⑥ 꼬리 — 짝과 한 글자만 다르다 -->
+  <line x1="44" y1="384" x2="916" y2="384" stroke="#8A6A12" stroke-width="0.8" opacity="0.4"/>
+  <text x="480" y="408" text-anchor="middle" font-size="15" font-weight="700" class="ink">문을 민다. 같이 <tspan class="a">가</tspan> 세.</text>
+  <text x="480" y="428" text-anchor="middle" font-size="9" class="gy">→ 6장 이월 · <tspan font-style="italic">"이번엔 자기가 가면을 쓰고 있다는 걸 안다"</tspan></text>
 </svg>
