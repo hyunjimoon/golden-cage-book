@@ -240,7 +240,7 @@ const BY={}; BAND.forEach((b,i)=>BY[b.k]={...b,i});
     const got=E.filter(n=>n.inpage===true);
     return E.length ? '  |  <b>겪은 것 '+got.length+'/'+E.length+'</b> — 원고가 <b>글자째</b> 지고 있는 것'
       + (got.length? '('+got.map(n=>n.label.replace(/^🎞️\s*/,'')).join(' · ')+')' : '')
-      + '. 나머지는 자리를 <b>투표</b>로 받았다 — 「원고가 진 것만」을 끄면 보인다. 장면으로 다시 쓴 것은 이 자에 안 걸린다.' : '';};
+      + '. 나머지 '+(E.length-got.length)+'편은 <b>제 입으로 장을 적었지만</b> 원고가 아직 글자째 지지 않았다 — 장면으로 다시 쓴 것은 이 자에 안 걸리니 「안 썼다」가 아니다. 「원고가 진 것만」을 켜면 그 다섯만 선다.' : '';};
   el.innerHTML = mute.length
     ? '<b style="color:#e8b84b">노란 점선 '+mute.length+'</b> — 원고가 그 <b>이름</b>을 한 번도 안 부른다('
       + mute.map(n=>n.label.replace(/^📜\s*/,'')).join(' · ')
