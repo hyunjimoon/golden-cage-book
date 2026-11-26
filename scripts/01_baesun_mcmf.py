@@ -999,6 +999,25 @@ def whatif(spec):
     print("    ② 그 일화가 자리를 잃게 한다 (주제장·방출을 고치는 다른 자)")
 
 
+def seats():
+    """자리 받은 원소만 → {번호: 장}. 생성기들이 frontmatter 대신 **이걸** 읽는다.
+
+    까닭 (2026-11-26 실측) — `투향장:` frontmatter 는 이 파일의 생성물인데
+    **디스크에 30편이 값을 들고 있었다**(자리는 스물뿐이다). 옛 판 열이 지워지지
+    않고 쌓인 것이라, frontmatter 를 읽는 쪽은 자리 20 을 30 으로 센다.
+    여기서 셈을 한 번만 하고 읽는 쪽이 그 답을 쓰면 그 어긋남이 생길 자리가 없다.
+    main() 의 두 단계(① 화력 선발 → ② 조준 배정)를 그대로 되풀이한다.
+    """
+    global 조준값, COHORT
+    eps = read_eps()
+    if 분리:
+        keep, 조준값 = 조준값, 0
+        sel, _, _, _ = solve(eps)
+        조준값, COHORT = keep, {eps[i]["번호"] for i in sel}
+    assign, _, _, _ = solve(eps)
+    return {eps[i]["번호"]: assign[i][0] for i in assign}
+
+
 def main():
     if "--recount" in sys.argv:
         recount()

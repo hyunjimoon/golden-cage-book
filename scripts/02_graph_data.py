@@ -421,13 +421,41 @@ for _pid, _t in episode_links:
     _t = _t.split("/")[-1]
     if _t in _elem_chap and _elem_chap[_t]:
         _ep_votes.setdefault(_pid, []).append(_elem_chap[_t])
+def _declared_chap(eid):
+    """일화가 **제 입으로** 신고한 장 = frontmatter `투향장:`.
+
+    ⚠️ 2026-11-26 — 아래 옛 주석의 전제가 깨졌다. 「일화 파일엔 장이 아예 없다」고
+       적혀 있었고 그래서 자리를 전부 투표로 줬는데, 실측하니 **67편 중 30편이
+       `투향장:` 을 신고한다.** 신고가 있는데 투표로 덮으면 자리가 틀린다 —
+       ep27 은 9장을 신고했는데 8장에 앉았고, ep35 는 10장을 신고했는데 2장에 앉았다.
+       자리 출처의 서열(self > obs > vote)은 이미 이 파일에 적혀 있다. 그걸 지킨다.
+       값 뒤에 「# … 실측 …」 주석이 붙는 일이 있어 앞 숫자만 끊어 읽는다.
+    """
+    for d in (EPISODES_DIR,):
+        p = os.path.join(d, eid + ".md")
+        if not os.path.exists(p): continue
+        try: t = open(p, encoding="utf-8").read()
+        except Exception: continue
+        m = re.search(r"^투향장:\s*(\d{1,2})\b", t, flags=re.M)
+        if m and 0 < int(m.group(1)) <= 10: return int(m.group(1))
+    return None
+
+_self_seat = 0
 for n in nodes:
     if n["layer"] == "episode":
+        _d = _declared_chap(n["id"])
         v = _ep_votes.get(n["id"], [])
-        n["chap"] = max(set(v), key=v.count) if v else 0
-        # 일화 파일엔 장이 **아예 없다**. 자리는 전부 남이 투표해 준 것이다 —
-        # 신고한 점과 같은 모양으로 그리면 그림이 추정을 관측이라 말하게 된다.
-        n["pos"] = POS_VOTE if v else POS_NONE
+        if _d:
+            n["chap"], n["pos"] = _d, POS_SELF; _self_seat += 1
+        else:
+            # 신고가 없으면 자리는 남이 투표해 준 것이다 — 신고한 점과 같은 모양으로
+            # 그리면 그림이 추정을 관측이라 말하게 된다. 그래서 도넛으로 남긴다.
+            n["chap"] = max(set(v), key=v.count) if v else 0
+            n["pos"] = POS_VOTE if v else POS_NONE
+print("   🪑 일화 자리 — 제 입으로 신고 %d · 이웃 투표 %d · 없음 %d"
+      % (_self_seat,
+         sum(1 for n in nodes if n["layer"] == "episode" and n["pos"] == POS_VOTE),
+         sum(1 for n in nodes if n["layer"] == "episode" and n["pos"] == POS_NONE)))
 
 dynamo_ids = {n['id'] for n in nodes if n.get('dynamo')}
 # 일화 → 생각원소 엣지는 모든 노드가 등록된 뒤 정확 일치로 연결
@@ -475,6 +503,18 @@ if PRUNE:
     import baesun_mcmf as _b
     _S = _b.survivors()
     _keep_ep, _keep_el = set(_S["seated"]), set(_S["chosen"])
+    # ⚠️ 2026-11-26 — baesun 은 **배선으로 앉힌 것**만 안다. 오늘 생긴 일화는 배선이
+    #   아직 없어 자리를 못 받고, 그래서 `투향장:` 을 제 입으로 적어 두어도 깎인다
+    #   (ep68 — 8장을 제 입으로 신고했는데 그래프엔 0건이었다. 제목은 여기 안 적는다:
+    #   이 주석은 publish_scripts.py 가 공개면 scripts/ 로 찍어 내가고, ep68 은 공개 판정 전이다).
+    #   자리 출처 서열이 self > obs > vote 이므로, **신고한 자리는 투표가 못 깎는다.**
+    _declared = {n["id"] for n in nodes
+                 if n["layer"] == "episode" and n.get("pos") == POS_SELF}
+    _rescued = sorted(_declared - _keep_ep)
+    _keep_ep |= _declared
+    if _rescued:
+        print("   🪑 배선은 없지만 제 입으로 장을 적어 살린 일화 %d — %s"
+              % (len(_rescued), " · ".join(_rescued)))
 
     # 📜🪞 의 불 = 장 열. 같은 탐욕 덮개를 장 위에서 돌린다.
     _claim = {n["id"]: ({n["chap"]} if n.get("chap") else set())
@@ -566,10 +606,11 @@ _PAGE_DIR = os.path.join(TOLZUL_DIR, "4차소통/원고")
 _PAGE_FILES = ["0_여는물음","0_머릿말","0_인물소개","1🪞_거울새장","2🔭_망원경새장",
                "3💒_스테인굴레스새장","4⏱️_시계새장","5🐀_101","6🦋_나비사용자",
                "7🌷_튤립기술자","8🌫️_안개투자자","9🐦‍⬛_까마귀협력자","10🧫_101"]
-_page = ""
+_pages = {}
 for _f in _PAGE_FILES:
-    try: _page += unicodedata.normalize("NFC", open(os.path.join(_PAGE_DIR, _f + ".md"), encoding="utf-8").read())
+    try: _pages[_f] = unicodedata.normalize("NFC", open(os.path.join(_PAGE_DIR, _f + ".md"), encoding="utf-8").read())
     except Exception: pass
+_page = "".join(_pages.values())
 
 def _name_probes(fm, nid):
     """원고가 이 책을 부를 만한 **이름**. 원고의 인용 규약이 「번호 + 한국어 제목」이고
@@ -604,6 +645,52 @@ print("   📏 원고가 이름을 부르나 — 📜 %d 중 **안 부르는 것
       % (sum(1 for n in nodes if n["layer"] == "god"), len(_mute)))
 for _i, _p in _mute:
     print("      🚨 %-44s 찾아본 이름 %s" % (_i, _p))
+
+# ── 📏 원고가 이 일화를 **지고 있나** (2026-11-26 신설) ───────────────────────
+#    자리(chap)는 배선 투표가 준다 — 원고가 그 일화를 한 줄도 안 써도 앉는다.
+#    실측: 20편 전부 `pos:"vote"` 였고, 그중 ep35「스무 해 만의 눈물」은 2장에 앉았는데
+#    2장은커녕 열 장 어디에도 그 일화의 토막이 없다(눈물·엄마·아빠·모부 전부 0).
+#
+#    자 = **글자째 인용**. 일화 본문에서 14~90자 한국어 토막을 뽑아 원고에 그대로
+#    박혀 있는지 본다. 되도록 좁게 — 변형해 녹인 것까지 세려 들면 아무 말이나 걸린다.
+#    ⚠️ 이 자는 「썼나」가 아니라 「글자째 베꼈나」에만 답한다. 장면으로 **다시 쓴**
+#       일화는 여기서 false 로 나온다. 그래서 지우지 않고 **표시만** 한다(빈 점).
+#    보조 자 — 일화 frontmatter 의 `투향장:` 뒤에 붙은 「…실측 … 인용 중」 메모.
+#       둘이 겹치는 것은 ep01 하나뿐이라 둘 다 반쪽이다. 합집합을 쓴다.
+def _verbatim(path):
+    try: t = unicodedata.normalize("NFC", open(path, encoding="utf-8").read())
+    except Exception: return None
+    if re.search(r"^투향장:.*실측.*인용 중", t, flags=re.M):
+        return "frontmatter 실측"
+    t = re.sub(r"^---.*?\n---\n", "", t, flags=re.S)
+    t = re.sub(r"\[\[[^\]]*\]\]", "", t)
+    t = re.sub(r"[*`>#|]", "", t)
+    frags = {s.strip() for s in re.split(r"(?<=[.?!」”\"])\s+|\n", t)
+             if 14 <= len(s.strip()) <= 90 and re.search(r"[가-힣]", s)}
+    for _f, _txt in _pages.items():
+        for s in frags:
+            if s in _txt: return _f
+    return None
+
+_born = 0
+for _n in nodes:
+    if _n["layer"] == "god":
+        _n["inpage"] = bool(_n.get("named"))
+    elif _n["layer"] == "episode":
+        _w = _verbatim(os.path.join(EPISODES_DIR, _n["id"] + ".md"))
+        _n["inpage"] = bool(_w)
+        if _w: _n["carried"] = _w; _born += 1
+    elif _n["layer"] == "element":
+        # 생각원소는 이름이 아니라 **산문으로** 실린다 — 글자째 자로 재면 전부 0 이 나오고
+        # 0 은 발견이 아니라 자가 틀린 신호다(#117). 그래서 못 잰 것으로 남긴다.
+        _n["inpage"] = None
+print("   📏 원고가 글자째 지고 있나 — 🎞️ %d 중 **%d**  ·  📜 %d 중 %d  ·  🍇 못 잼"
+      % (sum(1 for n in nodes if n["layer"] == "episode"), _born,
+         sum(1 for n in nodes if n["layer"] == "god"),
+         sum(1 for n in nodes if n["layer"] == "god" and n.get("named"))))
+for _n in nodes:
+    if _n["layer"] == "episode" and _n.get("carried"):
+        print("      ✅ %-40s ← %s" % (_n["id"], _n["carried"]))
 
 # ── 인물 띠 넷 (2026-11-25 · /reader 8:0) ──────────────────────────────────
 #   인물은 **점이 아니라 구간**이다. 다·세·세다는 한 장에 사는 게 아니라 몇 장에
@@ -645,7 +732,16 @@ bands.append({"id": "📕", "label": "붉은 일기장", "color": "#B4443A",
               "chaps": sorted(c for c in _CHF if _book.get(c)),
               "say": {}, "lead": [],
               "mark": [5, 10],      # 대사가 아니라 물건으로 서는 두 장 = 주탑
-              "note": "5·10 은 물건으로 선다 — 실로 묶인 채 품고 나가고, 거기서 실이 갈린다"})
+              # 📕 은 **넷째 인물이 아니라 셋을 꿰는 실**이다 (룰링 2026-11-26).
+              #   세가 쓰고(1~4) → 다가 품고 나가고(5) → 세다의 몸이 되고(6~9) → 10 에서 갈린다.
+              #   세·다·세다 옆에 나란한 레인으로 깔면 「넷째 입」으로 읽힌다. 실은 층을 **건너간다**.
+              #   그래서 띠가 아니라 레인을 옮겨 다니는 한 줄로 그린다(그리기는 reference_graph.html).
+              "thread": {**{c: "세" for c in (1, 2, 3, 4)}, 5: "다",
+                         **{c: "세다" for c in (6, 7, 8, 9)}, 10: "찢"},
+              # 「제본선」은 열다섯째 상징이 아니라 📕 의 **마지막 몸**이다 (gcb #81 열넷 유지).
+              #   종이(1~4) → 품은 것(5) → 살(6~9) → 갈린 제본선(10). 그 낱말이 띠에 없어
+              #   공개면에서 찾는 사람이 「아직 안 들어갔다」고 읽었다 (2026-11-26).
+              "note": "5·10 은 물건으로 선다 — 실로 묶인 채 품고 나가고, 거기서 제본선이 갈린다"})
 SILENT = {"5": "대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다",
           "10": "대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다"}
 print("   🎭 인물 띠 — " + " · ".join(
