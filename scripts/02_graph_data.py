@@ -218,29 +218,24 @@ def _chaps(*fields):
 nodes = []
 edges = []
 node_ids = set()
-# 장별 감정 — 「세는세다로싹튼다」 /reader 8인 수렴(2026-09-02) 채택안. SSOT=🧠LEXICON §12감정×6연.
-#   ⚠️ 물밑 설계용이다. 시행(詩行)이나 본문 낱말이 되지 않는다 — 지도에서만 읽는다.
-#   궤적: 5 혼재 → 8 바닥(둘 다 −) → 10 꼭대기(둘 다 +). 자긍은 죄책을 통과해야 도착한다.
-#   ⚠️ 높이(세 번째 값)는 **문서가 못 박은 세 점만** 쓴다 — 5 혼재(0) · 8 바닥(−2) · 10 꼭대기(+2).
-#      6·7·9 는 문서에 값이 없다. 2026-09-06 첫 판에서 내가 −1·0·+1 로 지어 넣었는데
-#      그건 실측이 아니라 보간이었고 그림은 그 사실을 안 밝혔다 → None 으로 되돌리고
-#      화면이 점선으로 「이 사이는 이어 그린 것」이라 말하게 한다.
-CHAP_EMO = {5:("불안","영감",0), 6:("절박","놀람",None), 7:("사랑","두려움",None),
-            8:("분노","슬픔",-2), 9:("죄책","기쁨",None), 10:("평온","자긍",2)}
+# 🪓 2026-11-27 가지치기 — DATA 에서 **화면이 안 읽는 밭**을 뺐다.
+#   · depth · marr_layer · r : reference_graph.html 이 한 번도 안 읽는다(반지름은 RAD 가 센다).
+#   · emo · emov (구 CHAP_EMO) : 감정 궤적 겹을 거두면서 읽는 눈이 사라졌다.
+#     열 장 중 값이 있던 것은 **셋뿐**(5 혼재 0 · 8 바닥 −2 · 10 꼭대기 +2)이고
+#     6·7·9 는 그림이 제 손으로 이어 그린 점이었다. 3/10 은 궤적이 아니다.
+#     배정 자체는 살아 있다 — SSOT 는 🧠LEXICON §12감정×6연이고, 여기 싣지 않을 뿐이다.
 CHAP_POLE = {6:"🦋", 7:"🧅", 8:"🌫️", 9:"🐦‍⬛"}   # 둥지 네 장 = 네 극
 for c,lab in CHAP.items():
-    _e = CHAP_EMO.get(c)
     nodes.append({"id":f"ch{c}","label":lab,"pc":PAIR_COLOR.get(c,PAIR_COLOR[0]),
-                  "depth":1,"marr_layer":9,"layer":"chapter","r":13,"chap":c,
-                  "emo":(_e[0]+"·"+_e[1]) if _e else "", "emov":(_e[2] if _e else None),
+                  "layer":"chapter","chap":c,
                   "pole":CHAP_POLE.get(c,""), "pos":"spine",
                   "vpath":_vp(os.path.join(MANUSCRIPT_DIR, _CH_FILE[c]+".md"))})
     node_ids.add(f"ch{c}")
-nodes.append({"id":"ch0","label":"전반·부록","depth":1,"marr_layer":9,"layer":"chapter","r":11,"chap":0,"pos":"spine"})
+nodes.append({"id":"ch0","label":"전반·부록","layer":"chapter","chap":0,"pos":"spine"})
 node_ids.add("ch0")
 
 # 1. Root Node
-nodes.append({"id": "황금새장을열다", "label": "🪞 투향", "depth": 0, "marr_layer": 0, "layer": "root", "r": 18, "chap": 0})
+nodes.append({"id": "황금새장을열다", "label": "🪞 투향", "layer": "root", "chap": 0})
 node_ids.add("황금새장을열다")
 for c in list(CHAP)+[0]: edges.append({"s": "황금새장을열다", "t": f"ch{c}"})
 
@@ -248,7 +243,6 @@ for c in list(CHAP)+[0]: edges.append({"s": "황금새장을열다", "t": f"ch{c
 # L1 상징 = **이모지 파일만** (2026-09-06). 폴더에 상징 아닌 것이 섞여 있었다 —
 #   세는세다로싹튼다(5~10연 감정 배정 설계) · 선악상변화(그 짝, 생리 축)
 #   · claude_emotions · 감정교육 ⏱️.  넷 다 물밑 설계라 L1 노드로 서면 안 된다.
-#   세는세다로싹튼다의 감정은 아래 CHAP_EMO 로 **장 노드의 속성**이 된다.
 # ⑶ 🔫(多)·🧫(世) 는 키가 `**자리**` 라 위 정규식에 애초에 안 걸리지만, 걸리게 고치지 않는다.
 #   두 파일이 **스스로** 「챕터 상징 아님 — 책 전체를 관통하는 메타 상징」이라 적어 두었다
 #   (룰링 2026-07-28). 거기 적힌 5·10장 링크로 장을 붙이면 관측이 아니라 **파생**이고,
@@ -296,7 +290,7 @@ for sf in symbol_files:
     #   덮고, 전반 칸의 다·세가 화면 오른쪽 끝에 잘린다. 공간 열은 줄에 서고(한 장에 하나)
     #   시간 하나와 인물 셋은 **구간**이라 띠로 간다 — 같은 것을 두 꼴로 그리지 않는다.
     if sid in BAND_SYMS: continue
-    nodes.append({"id": sid, "label": SYM14[sid], "depth": 1, "marr_layer": 1, "layer": "symbol", "r": 12,
+    nodes.append({"id": sid, "label": SYM14[sid], "layer": "symbol",
                   "pc": NOPAIR.get(sid, PAIR_COLOR.get(_first, PAIR_COLOR[0])),
                   "chap": _first, "pos": (POS_SELF if _cs else POS_NONE),
                   "pole": (sid if sid in POLES else ""),
@@ -321,7 +315,7 @@ for gf in god_files:
     if not label or label == gid:
         label = gid.replace("📜", "")
     _cs = _chaps(fm.get("chapter_label",""), fm.get("chapter",""))
-    nodes.append({"id": gid, "label": "📜 " + label, "depth": 3, "marr_layer": 3, "layer": "god", "r": 10,
+    nodes.append({"id": gid, "label": "📜 " + label, "layer": "god",
                   "chap": (min(_cs) if _cs else 0),
                   "pos": (POS_SELF if _cs else POS_NONE),
                   "vpath": _vp(os.path.join(GODS_DIR, gf))})
@@ -357,7 +351,7 @@ for ef in elem_files:
     if _cs:    _chap, _pos, _claim = min(_cs), POS_SELF, _cs
     elif _obs: _chap, _pos, _claim = min(_obs), POS_OBS, set()
     else:      _chap, _pos, _claim = 0, POS_NONE, {0}
-    nodes.append({"id": eid, "label": eid, "depth": 2, "marr_layer": 2, "layer": "element", "r": 6,
+    nodes.append({"id": eid, "label": eid, "layer": "element",
                   "chap": _chap, "pos": _pos,
                   "vpath": _vp(os.path.join(ELEMENTS_DIR, ef))})
     node_ids.add(eid)
@@ -397,8 +391,8 @@ for pf in episode_files:
     _pole = next((e for e in POLES if e in fm.get("극","")), "")
     # 🐍 탈피 코일 — 자(尺)는 molt_map 하나뿐이다. 날짜 파서를 여기서 또 쓰지 않는다.
     _ym, _prec = _molt.to_ym(fm.get("날짜", ""))
-    nodes.append({"id": pid, "label": label, "depth": 3, "marr_layer": 3,
-                  "layer": "episode", "r": 11, "friction": fric, "dynamo": bool(fric), "pole": _pole,
+    nodes.append({"id": pid, "label": label,
+                  "layer": "episode", "friction": fric, "dynamo": bool(fric), "pole": _pole,
                   "coil": _molt.coil_of(_ym, _prec) or "",
                   "vpath": _vp(os.path.join(EPISODES_DIR, pf))})
     node_ids.add(pid)
@@ -550,8 +544,8 @@ if CORNER:
             _in = _nm in _txt
             _case_hit += bool(_in)
             _cid = "case_%02d_%s" % (_ch, re.sub(r"\s+", "_", _nm))
-            nodes.append({"id": _cid, "label": _nm, "depth": 2, "marr_layer": 2,
-                          "layer": "case", "r": 7, "chap": _ch,
+            nodes.append({"id": _cid, "label": _nm,
+                          "layer": "case", "chap": _ch,
                           "pos": POS_SELF if _in else POS_NONE, "inpage": _in,
                           "corner": True, "pole": ""})
             node_ids.add(_cid)
