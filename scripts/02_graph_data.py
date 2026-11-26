@@ -494,6 +494,74 @@ def _fold(edges):
             n = dict(e); n["w"] = 1; seen[k] = n
     return list(seen.values())
 
+# 원고 전문 — 아래 자 둘(주춧돌 실측 · 이름 부르나)이 같이 쓴다. 한 번만 읽는다.
+_PAGE_DIR = os.path.join(TOLZUL_DIR, "4차소통/원고")
+_PAGE_FILES = ["0_여는물음","0_머릿말","0_인물소개","1🪞_거울새장","2🔭_망원경새장",
+               "3💒_스테인굴레스새장","4⏱️_시계새장","5🐀_101","6🦋_나비사용자",
+               "7🌷_튤립기술자","8🌫️_안개투자자","9🐦‍⬛_까마귀협력자","10🧫_101"]
+_pages = {}
+for _f in _PAGE_FILES:
+    try: _pages[_f] = unicodedata.normalize("NFC", open(os.path.join(_PAGE_DIR, _f + ".md"), encoding="utf-8").read())
+    except Exception: pass
+_page = "".join(_pages.values())
+
+# ── 🧱 주춧돌 셋 — 장마다 무엇이 **최종으로** 앉았나 (2026-11-27 신설) ──────────
+#    원본 = 원고 폴더의 `주춧돌_셋_장마다.md` 한 표. 발행본은 gcb #166 이다.
+#
+#    왜 필요한가 — 자리를 일화 frontmatter 의 `투향장:` 으로 주면 **신고한 것이 전부**
+#    들어온다(30편). 그런데 장마다 앉는 것은 그중 **고른 둘**이다. 표가 코멘트에만
+#    있어서 생성기가 못 읽었고, 그래서 그래프와 표가 열 편 어긋나 있었다.
+#    ⚠️ 표를 여기 베끼지 않는다 — 읽는다. 베끼면 SSOT 가 둘이 된다.
+_CORNER_MD = os.path.join(_PAGE_DIR, "주춧돌_셋_장마다.md")
+CORNER = {}
+try:
+    _rows = [l for l in open(_CORNER_MD, encoding="utf-8").read().split("\n")
+             if re.match(r"^\|\s*\d{1,2}\s*\|", l)]
+    for _l in _rows:
+        _c = [x.strip() for x in _l.strip().strip("|").split("|")]
+        _ch = int(_c[0])
+        _split = lambda t: [x.strip() for x in t.split("·")
+                            if x.strip() and x.strip() not in ("—", "(빈칸)", "**(빈칸)**")]
+        CORNER[_ch] = {"ep": [x.strip("*") for x in _split(_c[1])],
+                       "g":  [x.strip("*") for x in _split(_c[2])],
+                       "case": [x.strip("*") for x in _split(_c[3])]}
+except Exception as _e:
+    print("   🚨 주춧돌 표를 못 읽었다 — 자리를 신고(투향장)로 둔다:", _e)
+
+if CORNER:
+    _ep_seat = {e: c for c, v in CORNER.items() for e in v["ep"]}
+    _g_seat  = {g: c for c, v in CORNER.items() for g in v["g"]}
+    for n in nodes:
+        if n["layer"] == "episode":
+            _k = n["id"].split("_")[0]
+            if _k in _ep_seat:
+                n["chap"], n["pos"], n["corner"] = _ep_seat[_k], POS_SELF, True
+        elif n["layer"] == "element":
+            n["corner"] = any(n["id"].startswith(g) for g in _g_seat)
+    # 🏭 사례 — 원고가 쥔 이름. **신고가 아니라 실측이다**: 그 장 원고에 글자째 있나.
+    #    열 방 중 5·10 은 마디면이라 사례가 0 이고, 그 빈칸은 결손이 아니라 산출물이다.
+    _CHFILE = {1:"1🪞_거울새장", 2:"2🔭_망원경새장", 3:"3💒_스테인굴레스새장",
+               4:"4⏱️_시계새장", 5:"5🐀_101", 6:"6🦋_나비사용자", 7:"7🌷_튤립기술자",
+               8:"8🌫️_안개투자자", 9:"9🐦‍⬛_까마귀협력자", 10:"10🧫_101"}
+    _case_hit = 0
+    for _ch, _v in sorted(CORNER.items()):
+        for _nm in _v["case"]:
+            _txt = _pages.get(_CHFILE.get(_ch, ""), "")
+            _in = _nm in _txt
+            _case_hit += bool(_in)
+            _cid = "case_%02d_%s" % (_ch, re.sub(r"\s+", "_", _nm))
+            nodes.append({"id": _cid, "label": _nm, "depth": 2, "marr_layer": 2,
+                          "layer": "case", "r": 7, "chap": _ch,
+                          "pos": POS_SELF if _in else POS_NONE, "inpage": _in,
+                          "corner": True, "pole": ""})
+            node_ids.add(_cid)
+            edges.append({"s": _cid, "t": "ch%d" % _ch, "w": 1})
+    _ncase = sum(len(v["case"]) for v in CORNER.values())
+    _nep   = sum(len(v["ep"]) for v in CORNER.values())
+    print("   🧱 주춧돌 표 — 경험 %d · 지식 %d · 사례 %d(원고가 쥔 것 %d) · 1장 빈칸 %d"
+          % (_nep, len({g for v in CORNER.values() for g in v["g"]}),
+             _ncase, _case_hit, 2 - len(CORNER.get(1, {}).get("ep", []))))
+
 _before = len(edges)
 edges = _fold(edges)
 print(f"   🔗 겹선 접기: {_before} → {len(edges)} (겹 {_before - len(edges)})")
@@ -508,13 +576,17 @@ if PRUNE:
     #   (ep68 — 8장을 제 입으로 신고했는데 그래프엔 0건이었다. 제목은 여기 안 적는다:
     #   이 주석은 publish_scripts.py 가 공개면 scripts/ 로 찍어 내가고, ep68 은 공개 판정 전이다).
     #   자리 출처 서열이 self > obs > vote 이므로, **신고한 자리는 투표가 못 깎는다.**
-    _declared = {n["id"] for n in nodes
-                 if n["layer"] == "episode" and n.get("pos") == POS_SELF}
-    _rescued = sorted(_declared - _keep_ep)
-    _keep_ep |= _declared
-    if _rescued:
-        print("   🪑 배선은 없지만 제 입으로 장을 적어 살린 일화 %d — %s"
-              % (len(_rescued), " · ".join(_rescued)))
+    # 🧱 표가 있으면 **표가 명부다** — baesun 의 자리도, 제 신고도 표를 못 이긴다.
+    #    표에 없는 것은 아직 채석장이다(지우는 게 아니라 안 올리는 것).
+    if CORNER:
+        _keep_ep = {n["id"] for n in nodes
+                    if n["layer"] == "episode" and n.get("corner")}
+        _keep_el = {n["id"] for n in nodes
+                    if n["layer"] == "element" and n.get("corner")}
+    else:
+        _declared = {n["id"] for n in nodes
+                     if n["layer"] == "episode" and n.get("pos") == POS_SELF}
+        _keep_ep |= _declared
 
     # 📜🪞 의 불 = 장 열. 같은 탐욕 덮개를 장 위에서 돌린다.
     _claim = {n["id"]: ({n["chap"]} if n.get("chap") else set())
@@ -536,7 +608,8 @@ if PRUNE:
     _sym_rem = []
 
     _keep = ({"황금새장을열다"} | {n["id"] for n in nodes if n["layer"] == "chapter"}
-             | _keep_ep | _keep_el | set(_keep_god) | set(_keep_sym))
+             | _keep_ep | _keep_el | set(_keep_god) | set(_keep_sym)
+             | {n["id"] for n in nodes if n["layer"] == "case"})
     _n0, _e0 = len(nodes), len(edges)
     nodes = [n for n in nodes if n["id"] in _keep]
     edges = [e for e in edges if e["s"] in _keep and e["t"] in _keep]
@@ -602,15 +675,6 @@ if _PUBLIC:
 #       hyde 『Trickster Makes This World』 : 하이드·Hyde·Trickster 0 — 다만 「트릭스터」는 4회.
 #       그래서 꼬리표를 「안 쓴다」가 아니라 **「이름 안 부름」**으로 적는다. 생각은 설 수 있다.
 #    🌗 지우지 않고 찍는다. 내릴지 이름을 적을지는 룰링이다.
-_PAGE_DIR = os.path.join(TOLZUL_DIR, "4차소통/원고")
-_PAGE_FILES = ["0_여는물음","0_머릿말","0_인물소개","1🪞_거울새장","2🔭_망원경새장",
-               "3💒_스테인굴레스새장","4⏱️_시계새장","5🐀_101","6🦋_나비사용자",
-               "7🌷_튤립기술자","8🌫️_안개투자자","9🐦‍⬛_까마귀협력자","10🧫_101"]
-_pages = {}
-for _f in _PAGE_FILES:
-    try: _pages[_f] = unicodedata.normalize("NFC", open(os.path.join(_PAGE_DIR, _f + ".md"), encoding="utf-8").read())
-    except Exception: pass
-_page = "".join(_pages.values())
 
 def _name_probes(fm, nid):
     """원고가 이 책을 부를 만한 **이름**. 원고의 인용 규약이 「번호 + 한국어 제목」이고
