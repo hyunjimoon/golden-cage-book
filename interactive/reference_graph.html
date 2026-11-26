@@ -234,10 +234,17 @@ const BY={}; BAND.forEach((b,i)=>BY[b.k]={...b,i});
   const el=document.getElementById('muted'); if(!el) return;
   const mute=(DATA.nodes||[]).filter(n=>n.named===false);
   const asof=DATA.asof? ' · 잰 날 '+DATA.asof : '';
+  /* 📏 일화는 「이름을 부르나」가 아니라 「글자째 베꼈나」로 잰다 — 자리는 투표가 주므로
+     원고가 한 줄도 안 쓴 일화도 앉는다. 끌 수 있는 겹이라 지우지 않는다. */
+  const ep=()=>{const E=(DATA.nodes||[]).filter(n=>n.layer==="episode");
+    const got=E.filter(n=>n.inpage===true);
+    return E.length ? '  |  <b>겪은 것 '+got.length+'/'+E.length+'</b> — 원고가 <b>글자째</b> 지고 있는 것'
+      + (got.length? '('+got.map(n=>n.label.replace(/^🎞️\s*/,'')).join(' · ')+')' : '')
+      + '. 나머지는 자리를 <b>투표</b>로 받았다 — 「원고가 진 것만」을 끄면 보인다. 장면으로 다시 쓴 것은 이 자에 안 걸린다.' : '';};
   el.innerHTML = mute.length
     ? '<b style="color:#e8b84b">노란 점선 '+mute.length+'</b> — 원고가 그 <b>이름</b>을 한 번도 안 부른다('
       + mute.map(n=>n.label.replace(/^📜\s*/,'')).join(' · ')
-      + '). 생각은 설 수 있다 — 지우지 않고 찍어 둔다.' + asof
+      + '). 생각은 설 수 있다 — 지우지 않고 찍어 둔다.' + ep() + asof
     : '원고가 모든 이름을 부른다.' + asof;
 })();
 /* 다이아몬드 4축 색 — 🦋BLUE · 🌷PURPLE · 🌫️RED · 🐦‍⬛GREEN.
