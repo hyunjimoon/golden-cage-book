@@ -261,14 +261,10 @@ const STACK=["🐦‍⬛","🦋","🧅","🌫️"];   // 빨강과 초록이 맞
 const WRITTEN=n=>n.pos==="self"||n.pos==="obs";
 const POSNM={self:"파일이 제 장을 적었다",obs:"원고가 문다",vote:"이웃이 투표해 준 자리",
              none:"적힌 데 없음",spine:"장 스파인"};
-/* 보이는 이름 — `g5_13_evaluate_재는_손` 은 주소지 이름이 아니다.
-   앞머리 번호만 떼고 밑줄을 푼다. 뜻을 지어내지 않는다(파일 이름 그대로다). */
-const SHORT=n=>{
-  if(n.layer==="element") return n.id.replace(/^g\d+_\d+_/,"").replace(/_/g," ");
-  if(n.layer==="god")     return n.label.replace(/^📜\s*/,"");
-  if(n.layer==="episode") return n.id.replace(/^ep\d+_/,"").replace(/_/g," ");
-  return n.label;
-};
+/* 보이는 이름 — 표가 label 을 지으므로 **label 만 쓴다** (2026-11-27).
+   전에는 id 에서 번호를 떼 만들었는데, 표가 짓는 새 id(`kn_1_…`·`ex_6_ep08`)에는
+   그 정규식이 안 맞아 화면에 주소가 그대로 떴다. 앞머리 글자만 턴다. */
+const SHORT=n=> (n.label||n.id).replace(/^(📜|🎞️)\s*/,"");
 const TOP=16;
 const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
 let W=0,H=0,DPR=1, view={x:0,y:0,k:1}, N=[], E=[], byId={}, hot=null, sel=null, on={}, q="";
