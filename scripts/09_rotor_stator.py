@@ -78,7 +78,7 @@ def measure():
         if ch == "10": c = [p for p in c if "epilogue" not in p]
         assert len(c) == 1, f"ch{ch} 가 하나로 안 잡힌다: {c}"
         return c[0]
-    per, prof, ev = {}, {}, {}
+    per, prof, ev, vec = {}, {}, {}, {}
     for ch, _ in CHS:
         cur, buf = None, {}
         for ln in N(open(pick(ch), encoding="utf-8").read()).splitlines():
@@ -105,9 +105,11 @@ def measure():
                         w = (sd + TAIL.match(txt[m.end():]).group(0)).strip()
                         words[w] = words.get(w, 0) + 1
             per[(ch, who)] = tot
+            vec[(ch, who)] = [sum(txt.count(s) for s in seeds)
+                              for _n, seeds, _x in CLUSTERS]
             if words:
                 ev[(ch, who)] = sorted(words.items(), key=lambda kv: (-kv[1], kv[0]))
-    return per, prof, ev
+    return per, prof, ev, vec
 
 
 def signature(per, prof):
@@ -162,7 +164,36 @@ def story(old, new):
     return head + ("" if len(said) <= 2 else " 외 %d건" % (len(said) - 2))
 
 
-def build(per, prof, ev, why=""):
+# ⚓ 고통 — 자장 룰링 2026-11-27.
+#    「양심을 위해 고통을 느껴야 하며, 고통은 내 안의 충돌하는 가치관으로
+#     다른 두 가치관(U1,U2) 하의 최적행동 a1*, a2* 는 행위자 내부의 양가감정이다.」
+#
+#    그래서 고통은 **높이가 아니라 차이**다. 지금까지 이 판은 「누가 얼마나 느끼나」만
+#    그렸고 선 사이를 안 읽었다 — 다와 세가 같은 높이에 있어도 그게 화해인지
+#    무관심인지 구별이 없었다.
+#
+#    ⚠️ 새 자를 안 만든다. 이미 센 **군집 열하나**를 두 인물 사이에서 견줄 뿐이다.
+#       감정에 순서를 매기지 않는다(그건 새 자다) — 순서 없이 재는 코사인을 쓴다.
+#    짝 — 1~4장은 다↔세, 6~9장은 다↔세다. 5·10장은 둘 다 입을 닫아 **못 잰다.**
+PAIR = {**{c: "세" for c in "1234"}, **{c: "세다" for c in ("6", "7", "8", "9")}}
+
+def pain(vec, per, ch):
+    """(고통, 기울기, 짝) — 못 재면 (None, 0, None). 고통 = 1 − 두 군집벡터의 겹침."""
+    other = PAIR.get(ch)
+    if not other:
+        return None, 0, None
+    a, b = vec.get((ch, "다"), []), vec.get((ch, other), [])
+    na = sum(x * x for x in a) ** .5
+    nb = sum(x * x for x in b) ** .5
+    if not na or not nb:
+        return None, 0, other
+    g = 1 - sum(x * y for x, y in zip(a, b)) / (na * nb)
+    da, db = per[(ch, "다")], per[(ch, other)]
+    tilt = (da - db) / (da + db) if (da + db) else 0     # + 면 다가 가져갔다
+    return g, tilt, other
+
+
+def build(per, prof, ev, vec, why=""):
     # ── 셋째 표의 줄 수를 먼저 세어 캔버스 높이를 정한다 (넘침 방지)
     blocks = []
     for ch, name in CHS:
@@ -193,8 +224,53 @@ def build(per, prof, ev, why=""):
                              "(한심·서늘·뜨끔·숨이 막·참담·울었다). 넷을 1~3장에 다시 넣었다. 4장은 안 깎여 안 건드렸다.",
                13, NO, op=.85))
 
+    # ══ 판 영 — 고통 (폭 · 기울기 · 침묵)  2026-11-27
+    #    ① 폭 = 두 인물의 감정이 갈린 정도. 겹치면 실오라기, 벌어지면 두껍다.
+    #    ② 기울기 = 그 장의 행동을 누가 가져갔나. 다면 위로, 상대면 아래로.
+    #    ③ 5·10 은 0 이 아니라 **끊어진 자리**다 — 둘 다 입을 닫아 못 잰 것이지
+    #       갈등이 없는 것이 아니다. 0 으로 그리면 가장 중요한 두 장이 사라진다.
+    PCY, PH = 232, 26
+    ppx0, ppx1 = LX + 54, W - LX - 232
+    pxs = {c: ppx0 + (ppx1 - ppx0) * i / (len(CHS) - 1) for i, (c, _) in enumerate(CHS)}
+    o.append(t(ppx0 - 24, PCY - 2, "고통", 12.5, HI, anc="end", bold=True))
+    o.append(t(ppx0 - 24, PCY + 13, "폭 = 갈림", 10.5, INK, anc="end", op=.42))
+    o.append(t(ppx0 - 24, PCY + 26, "기울기 = 이긴 쪽", 10.5, INK, anc="end", op=.42))
+    o.append(f'<line x1="{ppx0-16}" y1="{PCY}" x2="{ppx1+16}" y2="{PCY}" '
+             f'stroke="{GRID}" stroke-width="1"/>')
+    runs, cur = [], []
+    for ch, _ in CHS:
+        g, tilt, _o2 = pain(vec, per, ch)
+        if g is None:
+            if cur: runs.append(cur)
+            cur = []
+        else:
+            cur.append((pxs[ch], PCY - tilt * 7, max(1.6, PH * g)))
+    if cur: runs.append(cur)
+    for rn in runs:
+        up = " ".join(f"{x:.1f},{(y-h/2):.1f}" for x, y, h in rn)
+        dn = " ".join(f"{x:.1f},{(y+h/2):.1f}" for x, y, h in reversed(rn))
+        o.append(f'<polygon points="{up} {dn}" fill="{HI}" fill-opacity=".30" '
+                 f'stroke="{HI}" stroke-opacity=".65" stroke-width="1"/>')
+    for ch, _ in CHS:
+        g, tilt, _o2 = pain(vec, per, ch)
+        if g is None:                       # ③ 끊어진 자리 — 찢긴 금으로 적는다
+            x = pxs[ch]
+            o.append(f'<path d="M {x-7:.1f} {PCY-16} l 5 7 l -5 7 l 5 7" fill="none" '
+                     f'stroke="{NO}" stroke-width="1.6" stroke-opacity=".9"/>')
+            o.append(f'<path d="M {x+7:.1f} {PCY-16} l -5 7 l 5 7 l -5 7" fill="none" '
+                     f'stroke="{NO}" stroke-width="1.6" stroke-opacity=".9"/>')
+            o.append(t(x, PCY + 30, "못 잼", 10.5, NO, anc="middle", op=.9))
+            continue
+        o.append(t(pxs[ch], PCY - tilt * 7 - max(1.6, PH * g) / 2 - 6,
+                   f"{g:.2f}", 10.5, HI, anc="middle", op=.92))
+    _pk = max((c for c, _ in CHS if pain(vec, per, c)[0] is not None),
+              key=lambda c: pain(vec, per, c)[0])
+    o.append(t(ppx1 + 18, PCY - 2, f"가장 갈린 장 — {_pk}", 11.5, HI, bold=True))
+    o.append(t(ppx1 + 18, PCY + 14, "위로 솟으면 다가,", 10.5, INK, op=.45))
+    o.append(t(ppx1 + 18, PCY + 27, "아래로 처지면 상대가 가져갔다", 10.5, INK, op=.45))
+
     # ══ 판 하나 — 인물 셋
-    TOP, BOT = 248, 452
+    TOP, BOT = 312, 516   # 고통 칸에 자리를 내주며 64 내렸다 (아래는 전부 BOT 기준)
     px0, px1 = LX + 54, W - LX - 232
     mx = max(per[(c, w)] for c, _ in CHS for w, _ in CAST)
     step = 4 if mx <= 12 else 5
@@ -210,6 +286,7 @@ def build(per, prof, ev, why=""):
         o.append(f'<rect x="{xs[c]-24:.1f}" y="{TOP-20}" width="48" height="{BOT-TOP+20}" '
                  f'fill="{HI}" fill-opacity=".11"/>')
         o.append(t(xs[c], TOP - 28, "셋 다 입을 닫는다", 12, HI, anc="middle", bold=True))
+        # 0 과 「못 잼」은 다르다 — 위 고통 칸에서 끊어 그린 까닭이 여기다.
 
     for who, col in CAST:
         seg, pts = [], []
@@ -349,7 +426,7 @@ def build(per, prof, ev, why=""):
 
 
 if __name__ == "__main__":
-    per, prof, ev = measure()
+    per, prof, ev, vec = measure()
     new = signature(per, prof)
     old = None
     if os.path.exists(LEDGER):
@@ -365,7 +442,7 @@ if __name__ == "__main__":
     why = story(old, new)
     if why == "변화 없음":
         why = "손으로 돌렸다 — 감정은 그대로다"
-    open(OUT_SVG, "w", encoding="utf-8").write(build(per, prof, ev, why))
+    open(OUT_SVG, "w", encoding="utf-8").write(build(per, prof, ev, vec, why))
     subprocess.run(["rsvg-convert", "-w", str(W), OUT_SVG, "-o", PUB_PNG], check=True)
     open(LEDGER, "w", encoding="utf-8").write(
         "# 로터·스테이터 감정 장부 — 생성기가 쓴다. 손으로 고치지 마라.\n"

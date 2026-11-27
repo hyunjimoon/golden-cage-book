@@ -1,195 +1,218 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1232" viewBox="0 0 1480 1232" font-family="Apple SD Gothic Neo, Noto Sans CJK KR, Noto Sans KR, Helvetica Neue, Helvetica, Arial, sans-serif">
-<rect width="1480" height="1232" fill="#0B0B0C"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1296" viewBox="0 0 1480 1296" font-family="Apple SD Gothic Neo, Noto Sans CJK KR, Noto Sans KR, Helvetica Neue, Helvetica, Arial, sans-serif">
+<rect width="1480" height="1296" fill="#0B0B0C"/>
 <text x="64.0" y="54.0" font-size="27" fill="#EDE7DC" fill-opacity="1.0" text-anchor="start" font-weight="700">로터와 스테이터 — 감정 낱말로 센 열 장</text>
 <text x="1416.0" y="50.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">이번에 다시 그린 까닭</text>
-<text x="1416.0" y="70.0" font-size="14" fill="#E8BC5C" fill-opacity="1.0" text-anchor="end" font-weight="700">묶음 「자긍」가 판에 올라온다</text>
+<text x="1416.0" y="70.0" font-size="14" fill="#E8BC5C" fill-opacity="1.0" text-anchor="end" font-weight="700">손으로 돌렸다 — 감정은 그대로다</text>
 <text x="64.0" y="86.0" font-size="15" fill="#EDE7DC" fill-opacity="0.78" text-anchor="start">로터(다)는 몸으로 느끼고 스테이터(세)는 거리 둬 본다. 둘은 손잡이의 양 끝이 아니라 동시에 있어야 도는 두 부품이다.</text>
 <text x="64.0" y="110.0" font-size="13.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">말수가 아니라 감정 낱말을 세었다 — 적은 말로 더 세게 당길 수 있다. 5·10장엔 대사가 없다. 그 장의 감정은 임자가 안 적힌 1인칭 문장에 있고, 여기 셋에는 안 센다.</text>
 <rect x="64" y="130" width="1352" height="58" rx="5" fill="#F0605A" fill-opacity=".10" stroke="#F0605A" stroke-opacity=".40"/>
 <text x="80.0" y="152.0" font-size="16" fill="#F0605A" fill-opacity="1.0" text-anchor="start" font-weight="700">로터가 식었다 — 둥지 넷에서 다 57 대 세다 46. 1~4장의 다는 38 이었다.</text>
 <text x="80.0" y="176.0" font-size="13" fill="#F0605A" fill-opacity="0.85" text-anchor="start">그 1~4장도 깎여 있었고 오늘 되돌렸다 — 05-02 가 적어 둔 다의 몸 어휘 중 여섯이 0 이었다(한심·서늘·뜨끔·숨이 막·참담·울었다). 넷을 1~3장에 다시 넣었다. 4장은 안 깎여 안 건드렸다.</text>
-<line x1="102" y1="452.0" x2="1200" y2="452.0" stroke="#242422" stroke-width="1"/>
-<text x="94.0" y="456.0" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">0</text>
-<line x1="102" y1="403.4" x2="1200" y2="403.4" stroke="#242422" stroke-width="1"/>
-<text x="94.0" y="407.4" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">5</text>
-<line x1="102" y1="354.9" x2="1200" y2="354.9" stroke="#242422" stroke-width="1"/>
-<text x="94.0" y="358.9" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">10</text>
-<line x1="102" y1="306.3" x2="1200" y2="306.3" stroke="#242422" stroke-width="1"/>
-<text x="94.0" y="310.3" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">15</text>
-<line x1="102" y1="257.7" x2="1200" y2="257.7" stroke="#242422" stroke-width="1"/>
-<text x="94.0" y="261.7" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">20</text>
-<rect x="567.8" y="228" width="48" height="224" fill="#E8BC5C" fill-opacity=".11"/>
-<text x="591.8" y="220.0" font-size="12" fill="#E8BC5C" fill-opacity="1.0" text-anchor="middle" font-weight="700">셋 다 입을 닫는다</text>
-<rect x="1160.0" y="228" width="48" height="224" fill="#E8BC5C" fill-opacity=".11"/>
-<text x="1184.0" y="220.0" font-size="12" fill="#E8BC5C" fill-opacity="1.0" text-anchor="middle" font-weight="700">셋 다 입을 닫는다</text>
-<polyline points="118.0,374.3 236.4,403.4 354.9,345.1 473.3,316.0" fill="none" stroke="#F08A3C" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="710.2,257.7 828.7,354.9 947.1,286.9 1065.6,354.9" fill="none" stroke="#F08A3C" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="118.0" cy="374.3" r="4.6" fill="#F08A3C"/>
-<circle cx="236.4" cy="403.4" r="4.6" fill="#F08A3C"/>
-<circle cx="354.9" cy="345.1" r="4.6" fill="#F08A3C"/>
-<circle cx="473.3" cy="316.0" r="4.6" fill="#F08A3C"/>
-<circle cx="710.2" cy="257.7" r="4.6" fill="#F08A3C"/>
-<circle cx="828.7" cy="354.9" r="4.6" fill="#F08A3C"/>
-<circle cx="947.1" cy="286.9" r="4.6" fill="#F08A3C"/>
-<circle cx="1065.6" cy="354.9" r="4.6" fill="#F08A3C"/>
-<text x="1080.6" y="370.9" font-size="15" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다  95</text>
-<polyline points="118.0,374.3 236.4,374.3 354.9,374.3 473.3,442.3" fill="none" stroke="#C9B99A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="118.0" cy="374.3" r="4.6" fill="#C9B99A"/>
-<circle cx="236.4" cy="374.3" r="4.6" fill="#C9B99A"/>
-<circle cx="354.9" cy="374.3" r="4.6" fill="#C9B99A"/>
-<circle cx="473.3" cy="442.3" r="4.6" fill="#C9B99A"/>
-<text x="488.3" y="447.3" font-size="15" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세  25</text>
-<polyline points="710.2,384.0 828.7,335.4 947.1,354.9 1065.6,286.9" fill="none" stroke="#E07AC8" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="710.2" cy="384.0" r="4.6" fill="#E07AC8"/>
-<circle cx="828.7" cy="335.4" r="4.6" fill="#E07AC8"/>
-<circle cx="947.1" cy="354.9" r="4.6" fill="#E07AC8"/>
-<circle cx="1065.6" cy="286.9" r="4.6" fill="#E07AC8"/>
-<text x="1080.6" y="276.9" font-size="15" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다  46</text>
-<text x="94.0" y="218.0" font-size="12" fill="#EDE7DC" fill-opacity="0.5" text-anchor="end">감정</text>
-<text x="94.0" y="232.0" font-size="12" fill="#EDE7DC" fill-opacity="0.5" text-anchor="end">낱말 수</text>
-<text x="710.2" y="241.7" font-size="11.5" fill="#F08A3C" fill-opacity="0.95" text-anchor="middle">고요 · 무서운 · 감사합니다</text>
-<text x="118.0" y="358.3" font-size="11.5" fill="#C9B99A" fill-opacity="0.95" text-anchor="middle">고요 · 무서운 · 체한</text>
-<text x="1065.6" y="270.9" font-size="11.5" fill="#E07AC8" fill-opacity="0.95" text-anchor="middle">고요 · 감사하는 · 수치</text>
-<circle cx="947.1" cy="286.9" r="10" fill="none" stroke="#F08A3C" stroke-width="1.6" stroke-opacity=".85"/>
-<text x="947.1" y="316.9" font-size="11" fill="#F08A3C" fill-opacity="0.9" text-anchor="middle">오늘 몸을 돌려준 자리</text>
-<path d="M 591.8 496 L 591.8 504 L 1065.6 504 L 1065.6 496" fill="none" stroke="#F0605A" stroke-width="1" stroke-opacity=".45"/>
-<text x="828.7" y="522.0" font-size="11.5" fill="#F0605A" fill-opacity="0.8" text-anchor="middle">Prior 를 원고 읽은 뒤에 건 다섯 — 빚이 작게 나와도 정합의 증거가 아니다</text>
-<text x="828.7" y="540.0" font-size="11" fill="#EDE7DC" fill-opacity="0.42" text-anchor="middle">1·2·3·4·10 장은 원고보다 먼저 걸었다(반증 가능). 자 = 감정.html 12축 2026-08-22 · /sbc 6축은 3·4장 둘만 돌았다</text>
-<text x="118.0" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">1 거울</text>
-<text x="236.4" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">2 망원경</text>
-<text x="354.9" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">3 스테인굴레스</text>
-<text x="473.3" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">4 시계</text>
-<text x="591.8" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">5 101</text>
-<text x="710.2" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">6 나비</text>
-<text x="828.7" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">7 튤립</text>
-<text x="947.1" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">8 안개</text>
-<text x="1065.6" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">9 까마귀</text>
-<text x="1184.0" y="478.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">10 투향</text>
-<text x="64.0" y="576.0" font-size="18" fill="#EDE7DC" fill-opacity="1.0" text-anchor="start" font-weight="700">열 칸에 누가 사나 — 세의 전유가 세다로 옮겨 갔다</text>
-<line x1="64" y1="726.0" x2="1116.0" y2="726.0" stroke="#242422" stroke-width="1"/>
-<text x="56.0" y="730.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">0</text>
-<line x1="64" y1="716.0" x2="1116.0" y2="716.0" stroke="#242422" stroke-width="1"/>
-<text x="56.0" y="720.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">5</text>
-<line x1="64" y1="706.0" x2="1116.0" y2="706.0" stroke="#242422" stroke-width="1"/>
-<text x="56.0" y="710.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">10</text>
-<rect x="80.4" y="670.0" width="25.7" height="56.0" fill="#F08A3C" rx="2"/>
-<text x="93.2" y="664.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">28</text>
-<rect x="109.6" y="714.0" width="25.7" height="12.0" fill="#C9B99A" rx="2"/>
-<text x="122.4" y="708.0" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">6</text>
-<rect x="138.8" y="720.0" width="25.7" height="6.0" fill="#E07AC8" rx="2"/>
-<text x="151.7" y="714.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">3</text>
-<text x="122.4" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">두려움·압도</text>
-<rect x="197.3" y="620.0" width="25.7" height="106.0" fill="#F08A3C" rx="2"/>
-<text x="210.1" y="614.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">53</text>
-<rect x="226.5" y="692.0" width="25.7" height="34.0" fill="#C9B99A" rx="2"/>
-<text x="239.3" y="686.0" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">17</text>
-<rect x="255.7" y="664.0" width="25.7" height="62.0" fill="#E07AC8" rx="2"/>
-<text x="268.6" y="658.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">31</text>
-<text x="239.3" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">평온</text>
-<rect x="314.1" y="722.0" width="25.7" height="4.0" fill="#F08A3C" rx="2"/>
-<text x="327.0" y="716.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
-<rect x="372.6" y="720.0" width="25.7" height="6.0" fill="#E07AC8" rx="2"/>
-<text x="385.4" y="714.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">3</text>
-<text x="356.2" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">연민·고마움</text>
-<text x="356.2" y="764.0" font-size="10.5" fill="#F0605A" fill-opacity="0.9" text-anchor="middle">05-02 둘 다 가졌다</text>
-<rect x="431.0" y="722.0" width="25.7" height="4.0" fill="#F08A3C" rx="2"/>
-<text x="443.9" y="716.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
-<rect x="460.3" y="724.0" width="25.7" height="2.5" fill="#C9B99A" rx="2"/>
-<text x="473.1" y="717.5" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<rect x="489.5" y="718.0" width="25.7" height="8.0" fill="#E07AC8" rx="2"/>
-<text x="502.3" y="712.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">4</text>
-<text x="473.1" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">경계·의심</text>
-<text x="473.1" y="764.0" font-size="10.5" fill="#F0605A" fill-opacity="0.9" text-anchor="middle">05-02 세 전유</text>
-<rect x="547.9" y="716.0" width="25.7" height="10.0" fill="#F08A3C" rx="2"/>
-<text x="560.8" y="710.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">5</text>
-<rect x="606.4" y="718.0" width="25.7" height="8.0" fill="#E07AC8" rx="2"/>
-<text x="619.2" y="712.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">4</text>
-<text x="590.0" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">절망·수치</text>
-<rect x="664.8" y="722.0" width="25.7" height="4.0" fill="#F08A3C" rx="2"/>
-<text x="677.7" y="716.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
-<rect x="694.0" y="724.0" width="25.7" height="2.5" fill="#C9B99A" rx="2"/>
-<text x="706.9" y="717.5" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<rect x="723.3" y="724.0" width="25.7" height="2.5" fill="#E07AC8" rx="2"/>
-<text x="736.1" y="717.5" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<text x="706.9" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">분노</text>
-<rect x="781.7" y="724.0" width="25.7" height="2.5" fill="#F08A3C" rx="2"/>
-<text x="794.6" y="717.5" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<text x="823.8" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">장난</text>
-<rect x="898.6" y="724.0" width="25.7" height="2.5" fill="#F08A3C" rx="2"/>
-<text x="911.4" y="717.5" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<text x="940.7" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">해방</text>
-<rect x="1015.5" y="724.0" width="25.7" height="2.5" fill="#F08A3C" rx="2"/>
-<text x="1028.3" y="717.5" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
-<text x="1057.6" y="746.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">자긍</text>
-<line x1="64" y1="726" x2="1116.0" y2="726" stroke="#242422" stroke-width="1.5"/>
-<text x="1152.0" y="622.0" font-size="12.5" fill="#F0605A" fill-opacity="0.9" text-anchor="start">소진·물러남 — 05-02 에 세의 가장 센 칸. 지금 0.</text>
-<text x="1152.0" y="652.0" font-size="12.5" fill="#F0605A" fill-opacity="0.9" text-anchor="start">경계·의심 · 연민·고마움 — 세의 것이 세다로 갔다.</text>
-<text x="1152.0" y="682.0" font-size="12.5" fill="#F08A3C" fill-opacity="0.9" text-anchor="start">장난 — 05-02 에 둘 다 0 이었는데 세에게 생겼다.</text>
-<text x="1152.0" y="712.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">0 인 칸 2 — 소진·물러남 · 환희</text>
-<text x="1152.0" y="742.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">05-02 도 0 이라 구멍이 아니라 경계다.</text>
-<text x="64.0" y="802.0" font-size="18" fill="#EDE7DC" fill-opacity="1.0" text-anchor="start" font-weight="700">무슨 낱말이 이 수를 만들었나 — 원고에서 그대로 뽑았다</text>
-<text x="64.0" y="824.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">× 는 같은 장에서 거듭 나온 횟수. 아래 낱말 말고 센 것은 없다.</text>
-<text x="64.0" y="860.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">1 거울</text>
-<text x="84.0" y="882.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="136.0" y="882.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×4 · 뜨끔했어요 · 서늘해요 · 체한 · 한심해서요</text>
-<text x="710.0" y="882.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
-<text x="84.0" y="904.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
-<text x="136.0" y="904.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×5 · 무서운×2 · 체한</text>
-<text x="710.0" y="904.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
-<text x="64.0" y="926.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">2 망원경</text>
-<text x="84.0" y="948.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="136.0" y="948.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요 · 눈물이 · 억울한 · 울었어요 · 장난</text>
-<text x="710.0" y="948.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">5</text>
-<text x="84.0" y="970.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
-<text x="136.0" y="970.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×6 · 무서운 · 무서워요</text>
-<text x="710.0" y="970.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
-<text x="64.0" y="992.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">3 스테인굴레스</text>
-<text x="84.0" y="1014.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="136.0" y="1014.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">무서웠어요×2 · 고요 · 공포에 · 무서운 · 무서워요 · 부끄러움 · 숨이 막혔어요 · 안도시키면서 · 안도한</text>
-<text x="710.0" y="1014.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">11</text>
-<text x="84.0" y="1036.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
-<text x="136.0" y="1036.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 공포에서 · 미워할 · 안도 · 안도로 · 의심을</text>
-<text x="710.0" y="1036.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
-<text x="64.0" y="1058.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">4 시계</text>
-<text x="84.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="136.0" y="1080.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×8 · 공포 · 무서운 · 미워하던 · 숨이 트이더라고 · 의심하는 · 해방</text>
-<text x="710.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">14</text>
-<text x="84.0" y="1102.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
-<text x="136.0" y="1102.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요</text>
-<text x="710.0" y="1102.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">1</text>
-<text x="64.0" y="1124.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">5 101</text>
-<text x="136.0" y="1124.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
-<text x="740.0" y="860.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">6 나비</text>
-<text x="760.0" y="882.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="882.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×13 · 무서운×2 · 감사합니다 · 겁이 · 공포를 · 불안이에요 · 체한</text>
-<text x="1386.0" y="882.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">20</text>
-<text x="760.0" y="904.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="904.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×7</text>
-<text x="1386.0" y="904.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">7</text>
-<text x="740.0" y="926.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">7 튤립</text>
-<text x="760.0" y="948.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="948.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×7 · 두려움의 · 무서웠습니다 · 서늘했어요</text>
-<text x="1386.0" y="948.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">10</text>
-<text x="760.0" y="970.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="970.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 수치를×2 · 경계한 · 무서워하는 · 미워하지 · 수치가 · 안도해요 · 안도했어요 · 의심을</text>
-<text x="1386.0" y="970.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">12</text>
-<text x="740.0" y="992.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">8 안개</text>
-<text x="760.0" y="1014.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="1014.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×10 · 경계를 · 뜨끔해진다 · 뜨끔했어요 · 불안을 · 불안의 · 불안이 · 불안이다</text>
-<text x="1386.0" y="1014.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">17</text>
-<text x="760.0" y="1036.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="1036.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×6 · 경계를×2 · 겁이 · 무서워</text>
-<text x="1386.0" y="1036.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">10</text>
-<text x="740.0" y="1058.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">9 까마귀</text>
-<text x="760.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
-<text x="812.0" y="1080.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×6 · 고마워요 · 무서워서였는 · 숨이 막혀요 · 자긍을</text>
-<text x="1386.0" y="1080.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">10</text>
-<text x="760.0" y="1102.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
-<text x="812.0" y="1102.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×13 · 감사하는×3 · 수치</text>
-<text x="1386.0" y="1102.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">17</text>
-<text x="740.0" y="1124.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">10 투향</text>
-<text x="812.0" y="1124.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
-<text x="64.0" y="1180.0" font-size="11" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">씨앗은 손으로 지었다 — 두려움·압도 · 평온 · 연민·고마움 · 경계·의심 · 절망·수치 · 분노 · 장난 · 해방 · 소진·물러남 · 환희 · 자긍   |   오탐 교정: 「화가 」 「화를 」 적중 14건이 전부 대화·최적화·실화·변화였다. 씨앗을 좁혔다.</text>
-<text x="64.0" y="1206.0" font-size="15" fill="#E8BC5C" fill-opacity="0.9" text-anchor="start">로터와 스테이터는 한 손잡이의 두 눈금이 아니다. 둘 다 있어야 돈다.</text>
-<text x="1416.0" y="1206.0" font-size="11" fill="#EDE7DC" fill-opacity="0.38" text-anchor="end">자 = chapters/ 전수 · 10 cluster(gcb #9 2026-05-02) · 생성기 scripts/09_rotor_stator.py · 2026-11-27</text>
+<text x="94.0" y="230.0" font-size="12.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="end" font-weight="700">고통</text>
+<text x="94.0" y="245.0" font-size="10.5" fill="#EDE7DC" fill-opacity="0.42" text-anchor="end">폭 = 갈림</text>
+<text x="94.0" y="258.0" font-size="10.5" fill="#EDE7DC" fill-opacity="0.42" text-anchor="end">기울기 = 이긴 쪽</text>
+<line x1="102" y1="232" x2="1200" y2="232" stroke="#242422" stroke-width="1"/>
+<polygon points="118.0,231.2 236.4,225.3 354.9,225.3 473.3,225.1 473.3,226.7 354.9,236.5 236.4,242.0 118.0,232.8" fill="#E8BC5C" fill-opacity=".30" stroke="#E8BC5C" stroke-opacity=".65" stroke-width="1"/>
+<polygon points="710.2,227.4 828.7,229.9 947.1,229.4 1065.6,233.0 1065.6,234.7 947.1,231.0 828.7,235.4 710.2,229.9" fill="#E8BC5C" fill-opacity=".30" stroke="#E8BC5C" stroke-opacity=".65" stroke-width="1"/>
+<text x="118.0" y="225.2" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.02</text>
+<text x="236.4" y="219.3" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.64</text>
+<text x="354.9" y="219.3" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.43</text>
+<text x="473.3" y="219.1" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.04</text>
+<path d="M 584.8 216 l 5 7 l -5 7 l 5 7" fill="none" stroke="#F0605A" stroke-width="1.6" stroke-opacity=".9"/>
+<path d="M 598.8 216 l -5 7 l 5 7 l -5 7" fill="none" stroke="#F0605A" stroke-width="1.6" stroke-opacity=".9"/>
+<text x="591.8" y="262.0" font-size="10.5" fill="#F0605A" fill-opacity="0.9" text-anchor="middle">못 잼</text>
+<text x="710.2" y="221.4" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.09</text>
+<text x="828.7" y="223.9" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.21</text>
+<text x="947.1" y="223.4" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.05</text>
+<text x="1065.6" y="227.0" font-size="10.5" fill="#E8BC5C" fill-opacity="0.92" text-anchor="middle">0.07</text>
+<path d="M 1177.0 216 l 5 7 l -5 7 l 5 7" fill="none" stroke="#F0605A" stroke-width="1.6" stroke-opacity=".9"/>
+<path d="M 1191.0 216 l -5 7 l 5 7 l -5 7" fill="none" stroke="#F0605A" stroke-width="1.6" stroke-opacity=".9"/>
+<text x="1184.0" y="262.0" font-size="10.5" fill="#F0605A" fill-opacity="0.9" text-anchor="middle">못 잼</text>
+<text x="1202.0" y="230.0" font-size="11.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">가장 갈린 장 — 2</text>
+<text x="1202.0" y="246.0" font-size="10.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="start">위로 솟으면 다가,</text>
+<text x="1202.0" y="259.0" font-size="10.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="start">아래로 처지면 상대가 가져갔다</text>
+<line x1="102" y1="516.0" x2="1200" y2="516.0" stroke="#242422" stroke-width="1"/>
+<text x="94.0" y="520.0" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">0</text>
+<line x1="102" y1="467.4" x2="1200" y2="467.4" stroke="#242422" stroke-width="1"/>
+<text x="94.0" y="471.4" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">5</text>
+<line x1="102" y1="418.9" x2="1200" y2="418.9" stroke="#242422" stroke-width="1"/>
+<text x="94.0" y="422.9" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">10</text>
+<line x1="102" y1="370.3" x2="1200" y2="370.3" stroke="#242422" stroke-width="1"/>
+<text x="94.0" y="374.3" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">15</text>
+<line x1="102" y1="321.7" x2="1200" y2="321.7" stroke="#242422" stroke-width="1"/>
+<text x="94.0" y="325.7" font-size="11.5" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">20</text>
+<rect x="567.8" y="292" width="48" height="224" fill="#E8BC5C" fill-opacity=".11"/>
+<text x="591.8" y="284.0" font-size="12" fill="#E8BC5C" fill-opacity="1.0" text-anchor="middle" font-weight="700">셋 다 입을 닫는다</text>
+<rect x="1160.0" y="292" width="48" height="224" fill="#E8BC5C" fill-opacity=".11"/>
+<text x="1184.0" y="284.0" font-size="12" fill="#E8BC5C" fill-opacity="1.0" text-anchor="middle" font-weight="700">셋 다 입을 닫는다</text>
+<polyline points="118.0,438.3 236.4,467.4 354.9,409.1 473.3,380.0" fill="none" stroke="#F08A3C" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="710.2,321.7 828.7,418.9 947.1,350.9 1065.6,418.9" fill="none" stroke="#F08A3C" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="118.0" cy="438.3" r="4.6" fill="#F08A3C"/>
+<circle cx="236.4" cy="467.4" r="4.6" fill="#F08A3C"/>
+<circle cx="354.9" cy="409.1" r="4.6" fill="#F08A3C"/>
+<circle cx="473.3" cy="380.0" r="4.6" fill="#F08A3C"/>
+<circle cx="710.2" cy="321.7" r="4.6" fill="#F08A3C"/>
+<circle cx="828.7" cy="418.9" r="4.6" fill="#F08A3C"/>
+<circle cx="947.1" cy="350.9" r="4.6" fill="#F08A3C"/>
+<circle cx="1065.6" cy="418.9" r="4.6" fill="#F08A3C"/>
+<text x="1080.6" y="434.9" font-size="15" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다  95</text>
+<polyline points="118.0,438.3 236.4,438.3 354.9,438.3 473.3,506.3" fill="none" stroke="#C9B99A" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="118.0" cy="438.3" r="4.6" fill="#C9B99A"/>
+<circle cx="236.4" cy="438.3" r="4.6" fill="#C9B99A"/>
+<circle cx="354.9" cy="438.3" r="4.6" fill="#C9B99A"/>
+<circle cx="473.3" cy="506.3" r="4.6" fill="#C9B99A"/>
+<text x="488.3" y="511.3" font-size="15" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세  25</text>
+<polyline points="710.2,448.0 828.7,399.4 947.1,418.9 1065.6,350.9" fill="none" stroke="#E07AC8" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="710.2" cy="448.0" r="4.6" fill="#E07AC8"/>
+<circle cx="828.7" cy="399.4" r="4.6" fill="#E07AC8"/>
+<circle cx="947.1" cy="418.9" r="4.6" fill="#E07AC8"/>
+<circle cx="1065.6" cy="350.9" r="4.6" fill="#E07AC8"/>
+<text x="1080.6" y="340.9" font-size="15" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다  46</text>
+<text x="94.0" y="282.0" font-size="12" fill="#EDE7DC" fill-opacity="0.5" text-anchor="end">감정</text>
+<text x="94.0" y="296.0" font-size="12" fill="#EDE7DC" fill-opacity="0.5" text-anchor="end">낱말 수</text>
+<text x="710.2" y="305.7" font-size="11.5" fill="#F08A3C" fill-opacity="0.95" text-anchor="middle">고요 · 무서운 · 감사합니다</text>
+<text x="118.0" y="422.3" font-size="11.5" fill="#C9B99A" fill-opacity="0.95" text-anchor="middle">고요 · 무서운 · 체한</text>
+<text x="1065.6" y="334.9" font-size="11.5" fill="#E07AC8" fill-opacity="0.95" text-anchor="middle">고요 · 감사하는 · 수치</text>
+<circle cx="947.1" cy="350.9" r="10" fill="none" stroke="#F08A3C" stroke-width="1.6" stroke-opacity=".85"/>
+<text x="947.1" y="380.9" font-size="11" fill="#F08A3C" fill-opacity="0.9" text-anchor="middle">오늘 몸을 돌려준 자리</text>
+<path d="M 591.8 560 L 591.8 568 L 1065.6 568 L 1065.6 560" fill="none" stroke="#F0605A" stroke-width="1" stroke-opacity=".45"/>
+<text x="828.7" y="586.0" font-size="11.5" fill="#F0605A" fill-opacity="0.8" text-anchor="middle">Prior 를 원고 읽은 뒤에 건 다섯 — 빚이 작게 나와도 정합의 증거가 아니다</text>
+<text x="828.7" y="604.0" font-size="11" fill="#EDE7DC" fill-opacity="0.42" text-anchor="middle">1·2·3·4·10 장은 원고보다 먼저 걸었다(반증 가능). 자 = 감정.html 12축 2026-08-22 · /sbc 6축은 3·4장 둘만 돌았다</text>
+<text x="118.0" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">1 거울</text>
+<text x="236.4" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">2 망원경</text>
+<text x="354.9" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">3 스테인굴레스</text>
+<text x="473.3" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">4 시계</text>
+<text x="591.8" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">5 101</text>
+<text x="710.2" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">6 나비</text>
+<text x="828.7" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">7 튤립</text>
+<text x="947.1" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">8 안개</text>
+<text x="1065.6" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">9 까마귀</text>
+<text x="1184.0" y="542.0" font-size="13" fill="#EDE7DC" fill-opacity="0.72" text-anchor="middle">10 투향</text>
+<text x="64.0" y="640.0" font-size="18" fill="#EDE7DC" fill-opacity="1.0" text-anchor="start" font-weight="700">열 칸에 누가 사나 — 세의 전유가 세다로 옮겨 갔다</text>
+<line x1="64" y1="790.0" x2="1116.0" y2="790.0" stroke="#242422" stroke-width="1"/>
+<text x="56.0" y="794.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">0</text>
+<line x1="64" y1="780.0" x2="1116.0" y2="780.0" stroke="#242422" stroke-width="1"/>
+<text x="56.0" y="784.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">5</text>
+<line x1="64" y1="770.0" x2="1116.0" y2="770.0" stroke="#242422" stroke-width="1"/>
+<text x="56.0" y="774.0" font-size="11" fill="#EDE7DC" fill-opacity="0.45" text-anchor="end">10</text>
+<rect x="80.4" y="734.0" width="25.7" height="56.0" fill="#F08A3C" rx="2"/>
+<text x="93.2" y="728.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">28</text>
+<rect x="109.6" y="778.0" width="25.7" height="12.0" fill="#C9B99A" rx="2"/>
+<text x="122.4" y="772.0" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">6</text>
+<rect x="138.8" y="784.0" width="25.7" height="6.0" fill="#E07AC8" rx="2"/>
+<text x="151.7" y="778.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">3</text>
+<text x="122.4" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">두려움·압도</text>
+<rect x="197.3" y="684.0" width="25.7" height="106.0" fill="#F08A3C" rx="2"/>
+<text x="210.1" y="678.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">53</text>
+<rect x="226.5" y="756.0" width="25.7" height="34.0" fill="#C9B99A" rx="2"/>
+<text x="239.3" y="750.0" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">17</text>
+<rect x="255.7" y="728.0" width="25.7" height="62.0" fill="#E07AC8" rx="2"/>
+<text x="268.6" y="722.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">31</text>
+<text x="239.3" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">평온</text>
+<rect x="314.1" y="786.0" width="25.7" height="4.0" fill="#F08A3C" rx="2"/>
+<text x="327.0" y="780.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
+<rect x="372.6" y="784.0" width="25.7" height="6.0" fill="#E07AC8" rx="2"/>
+<text x="385.4" y="778.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">3</text>
+<text x="356.2" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">연민·고마움</text>
+<text x="356.2" y="828.0" font-size="10.5" fill="#F0605A" fill-opacity="0.9" text-anchor="middle">05-02 둘 다 가졌다</text>
+<rect x="431.0" y="786.0" width="25.7" height="4.0" fill="#F08A3C" rx="2"/>
+<text x="443.9" y="780.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
+<rect x="460.3" y="788.0" width="25.7" height="2.5" fill="#C9B99A" rx="2"/>
+<text x="473.1" y="781.5" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
+<rect x="489.5" y="782.0" width="25.7" height="8.0" fill="#E07AC8" rx="2"/>
+<text x="502.3" y="776.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">4</text>
+<text x="473.1" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">경계·의심</text>
+<text x="473.1" y="828.0" font-size="10.5" fill="#F0605A" fill-opacity="0.9" text-anchor="middle">05-02 세 전유</text>
+<rect x="547.9" y="780.0" width="25.7" height="10.0" fill="#F08A3C" rx="2"/>
+<text x="560.8" y="774.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">5</text>
+<rect x="606.4" y="782.0" width="25.7" height="8.0" fill="#E07AC8" rx="2"/>
+<text x="619.2" y="776.0" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">4</text>
+<text x="590.0" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">절망·수치</text>
+<rect x="664.8" y="786.0" width="25.7" height="4.0" fill="#F08A3C" rx="2"/>
+<text x="677.7" y="780.0" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">2</text>
+<rect x="694.0" y="788.0" width="25.7" height="2.5" fill="#C9B99A" rx="2"/>
+<text x="706.9" y="781.5" font-size="11.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
+<rect x="723.3" y="788.0" width="25.7" height="2.5" fill="#E07AC8" rx="2"/>
+<text x="736.1" y="781.5" font-size="11.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
+<text x="706.9" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">분노</text>
+<rect x="781.7" y="788.0" width="25.7" height="2.5" fill="#F08A3C" rx="2"/>
+<text x="794.6" y="781.5" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
+<text x="823.8" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">장난</text>
+<rect x="898.6" y="788.0" width="25.7" height="2.5" fill="#F08A3C" rx="2"/>
+<text x="911.4" y="781.5" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
+<text x="940.7" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">해방</text>
+<rect x="1015.5" y="788.0" width="25.7" height="2.5" fill="#F08A3C" rx="2"/>
+<text x="1028.3" y="781.5" font-size="11.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="middle" font-weight="700">1</text>
+<text x="1057.6" y="810.0" font-size="12" fill="#EDE7DC" fill-opacity="0.78" text-anchor="middle">자긍</text>
+<line x1="64" y1="790" x2="1116.0" y2="790" stroke="#242422" stroke-width="1.5"/>
+<text x="1152.0" y="686.0" font-size="12.5" fill="#F0605A" fill-opacity="0.9" text-anchor="start">소진·물러남 — 05-02 에 세의 가장 센 칸. 지금 0.</text>
+<text x="1152.0" y="716.0" font-size="12.5" fill="#F0605A" fill-opacity="0.9" text-anchor="start">경계·의심 · 연민·고마움 — 세의 것이 세다로 갔다.</text>
+<text x="1152.0" y="746.0" font-size="12.5" fill="#F08A3C" fill-opacity="0.9" text-anchor="start">장난 — 05-02 에 둘 다 0 이었는데 세에게 생겼다.</text>
+<text x="1152.0" y="776.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">0 인 칸 2 — 소진·물러남 · 환희</text>
+<text x="1152.0" y="806.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">05-02 도 0 이라 구멍이 아니라 경계다.</text>
+<text x="64.0" y="866.0" font-size="18" fill="#EDE7DC" fill-opacity="1.0" text-anchor="start" font-weight="700">무슨 낱말이 이 수를 만들었나 — 원고에서 그대로 뽑았다</text>
+<text x="64.0" y="888.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.5" text-anchor="start">× 는 같은 장에서 거듭 나온 횟수. 아래 낱말 말고 센 것은 없다.</text>
+<text x="64.0" y="924.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">1 거울</text>
+<text x="84.0" y="946.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="136.0" y="946.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×4 · 뜨끔했어요 · 서늘해요 · 체한 · 한심해서요</text>
+<text x="710.0" y="946.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
+<text x="84.0" y="968.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
+<text x="136.0" y="968.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×5 · 무서운×2 · 체한</text>
+<text x="710.0" y="968.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
+<text x="64.0" y="990.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">2 망원경</text>
+<text x="84.0" y="1012.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="136.0" y="1012.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요 · 눈물이 · 억울한 · 울었어요 · 장난</text>
+<text x="710.0" y="1012.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">5</text>
+<text x="84.0" y="1034.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
+<text x="136.0" y="1034.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×6 · 무서운 · 무서워요</text>
+<text x="710.0" y="1034.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
+<text x="64.0" y="1056.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">3 스테인굴레스</text>
+<text x="84.0" y="1078.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="136.0" y="1078.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">무서웠어요×2 · 고요 · 공포에 · 무서운 · 무서워요 · 부끄러움 · 숨이 막혔어요 · 안도시키면서 · 안도한</text>
+<text x="710.0" y="1078.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">11</text>
+<text x="84.0" y="1100.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
+<text x="136.0" y="1100.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 공포에서 · 미워할 · 안도 · 안도로 · 의심을</text>
+<text x="710.0" y="1100.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">8</text>
+<text x="64.0" y="1122.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">4 시계</text>
+<text x="84.0" y="1144.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="136.0" y="1144.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×8 · 공포 · 무서운 · 미워하던 · 숨이 트이더라고 · 의심하는 · 해방</text>
+<text x="710.0" y="1144.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">14</text>
+<text x="84.0" y="1166.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="start" font-weight="700">세</text>
+<text x="136.0" y="1166.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요</text>
+<text x="710.0" y="1166.0" font-size="12.5" fill="#C9B99A" fill-opacity="1.0" text-anchor="end" font-weight="700">1</text>
+<text x="64.0" y="1188.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">5 101</text>
+<text x="136.0" y="1188.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
+<text x="740.0" y="924.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">6 나비</text>
+<text x="760.0" y="946.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="946.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×13 · 무서운×2 · 감사합니다 · 겁이 · 공포를 · 불안이에요 · 체한</text>
+<text x="1386.0" y="946.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">20</text>
+<text x="760.0" y="968.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="968.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×7</text>
+<text x="1386.0" y="968.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">7</text>
+<text x="740.0" y="990.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">7 튤립</text>
+<text x="760.0" y="1012.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="1012.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×7 · 두려움의 · 무서웠습니다 · 서늘했어요</text>
+<text x="1386.0" y="1012.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">10</text>
+<text x="760.0" y="1034.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="1034.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×3 · 수치를×2 · 경계한 · 무서워하는 · 미워하지 · 수치가 · 안도해요 · 안도했어요 · 의심을</text>
+<text x="1386.0" y="1034.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">12</text>
+<text x="740.0" y="1056.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">8 안개</text>
+<text x="760.0" y="1078.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="1078.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×10 · 경계를 · 뜨끔해진다 · 뜨끔했어요 · 불안을 · 불안의 · 불안이 · 불안이다</text>
+<text x="1386.0" y="1078.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">17</text>
+<text x="760.0" y="1100.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="1100.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×6 · 경계를×2 · 겁이 · 무서워</text>
+<text x="1386.0" y="1100.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">10</text>
+<text x="740.0" y="1122.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">9 까마귀</text>
+<text x="760.0" y="1144.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="start" font-weight="700">다</text>
+<text x="812.0" y="1144.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×6 · 고마워요 · 무서워서였는 · 숨이 막혀요 · 자긍을</text>
+<text x="1386.0" y="1144.0" font-size="12.5" fill="#F08A3C" fill-opacity="1.0" text-anchor="end" font-weight="700">10</text>
+<text x="760.0" y="1166.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="start" font-weight="700">세다</text>
+<text x="812.0" y="1166.0" font-size="12.5" fill="#EDE7DC" fill-opacity="0.82" text-anchor="start">고요×13 · 감사하는×3 · 수치</text>
+<text x="1386.0" y="1166.0" font-size="12.5" fill="#E07AC8" fill-opacity="1.0" text-anchor="end" font-weight="700">17</text>
+<text x="740.0" y="1188.0" font-size="13.5" fill="#E8BC5C" fill-opacity="1.0" text-anchor="start" font-weight="700">10 투향</text>
+<text x="812.0" y="1188.0" font-size="12" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">대사 없음 — 이 장의 감정은 임자가 안 적힌 1인칭 문장에 있다</text>
+<text x="64.0" y="1244.0" font-size="11" fill="#EDE7DC" fill-opacity="0.42" text-anchor="start">씨앗은 손으로 지었다 — 두려움·압도 · 평온 · 연민·고마움 · 경계·의심 · 절망·수치 · 분노 · 장난 · 해방 · 소진·물러남 · 환희 · 자긍   |   오탐 교정: 「화가 」 「화를 」 적중 14건이 전부 대화·최적화·실화·변화였다. 씨앗을 좁혔다.</text>
+<text x="64.0" y="1270.0" font-size="15" fill="#E8BC5C" fill-opacity="0.9" text-anchor="start">로터와 스테이터는 한 손잡이의 두 눈금이 아니다. 둘 다 있어야 돈다.</text>
+<text x="1416.0" y="1270.0" font-size="11" fill="#EDE7DC" fill-opacity="0.38" text-anchor="end">자 = chapters/ 전수 · 10 cluster(gcb #9 2026-05-02) · 생성기 scripts/09_rotor_stator.py · 2026-11-27</text>
 </svg>
