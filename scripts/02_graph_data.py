@@ -748,49 +748,58 @@ def _longest_shared(src, page, lo=14, hi=70):
             i += 1
     return best
 
+# ⚓ 룰링 2026-11-27 (둘째) — **닻은 노드가 아니라 선이 쥔다.**
+#    까닭(실측) — 노드와 장은 1:다다. 📜『The Lever of Riches』는 4장과 9장 둘에 서고,
+#    『三國遺事』는 넷에 선다. 노드에 닻을 하나 달면 **나머지가 못 닿는다** —
+#    1:다 노드 아홉이 선 서른을 쥐는데 노드 클릭으로 닿는 곳은 아홉뿐이었다.
+#    선 하나 = (재료, 장) 한 쌍이고, 그 쌍에는 갈 자리가 **딱 하나**다.
+#    ⇒ 닻을 선마다 그 **선이 가리키는 장**에서 잰다. 같은 책도 장마다 다른 구절에 선다.
+
+def _anchor(node, chap, pg):
+    """그 노드가 **그 장** 원고에서 서는 자리. 못 찾으면 빈 글자."""
+    lay = node["layer"]
+    if lay in ("case", "element", "symbol"):
+        cand = node.get("label", "")
+        if cand and cand in pg: return cand
+        if cand and lay == "element":
+            tok = [w for w in re.split(r"\s+", cand)
+                   if len(w) > 2 and w in pg
+                   and (_cite_ok(lay) or not any(b in w for b in _FORBIDDEN))]
+            if tok: return max(tok, key=len)
+    elif lay == "god":
+        try: f2 = parse_fm(os.path.join(GODS_DIR, node["id"] + ".md")) or {}
+        except Exception: f2 = {}
+        c2 = [p for p in _name_probes(f2, node["id"]) if p in pg]
+        if c2: return min(c2, key=lambda p: (pg.count(p), -len(p)))
+    elif lay == "episode":
+        epf = None
+        for f3 in os.listdir(EPISODES_DIR):
+            if unicodedata.normalize("NFC", f3).startswith(node.get("ep", "\0") + "_"):
+                epf = os.path.join(EPISODES_DIR, f3); break
+        if epf:
+            src = unicodedata.normalize("NFC", open(epf, encoding="utf-8").read())
+            src = re.sub(r"^---.*?\n---\n", "", src, flags=re.S)
+            src = re.sub(r"\[\[[^\]]*\]\]|[*`>#|\-]", " ", src)
+            return (_longest_shared(src, pg) or "").strip(" .,·\"'\u201c\u201d\u300c\u300d")
+    return ""
+
+_byid = {n["id"]: n for n in nodes}
+for _n in nodes:                      # 장 노드만 제 닻을 쥔다 (그 장 머리)
+    if _n["layer"] == "chapter" and (_n.get("chap") or 0) in _RD:
+        _n["rd"] = _RD[_n["chap"]]
 _rd_hit = _rd_miss = 0
-for _n in nodes:
-    _c = _n.get("chap") or 0
-    if _c not in _RD:
+for _e in edges:
+    _c = None; _mat = None
+    for _a, _b in ((_e["s"], _e["t"]), (_e["t"], _e["s"])):
+        if isinstance(_b, str) and _b.startswith("ch") and _b[2:].isdigit() and int(_b[2:]) in _RD:
+            _c, _mat = int(_b[2:]), _byid.get(_a)
+    if _c is None or _mat is None or _mat["layer"] in ("root", "chapter"):
         continue
-    _pg = _RDPAGE.get(_c, "")
-    _q = ""
-    _lay2 = _n["layer"]
-    if _lay2 in ("case", "element", "symbol"):
-        _cand = _n.get("label", "")
-        if _cand and _cand in _pg:
-            _q = _cand
-        elif _cand and _lay2 == "element":
-            # 지식 이름은 §2 가 통째로 안 쓰기도 한다 — 「부르디외 지체」를 「부르디외」와
-            # 「지체」로 나눠 쓴다. 통째가 없으면 **가장 긴 토막**으로 내려간다.
-            # 두 글자 이하는 안 쓴다 — 아무 데나 걸린다.
-            # 지식은 인용 층이라 이름을 닻으로 써도 된다 — 그 이름이 선 자리가
-            # 바로 그 개념의 출처 줄이다. 인용 층이 아니면 실명은 안 고른다.
-            _tok = [w for w in re.split(r"\s+", _cand)
-                    if len(w) > 2 and w in _pg
-                    and (_cite_ok(_lay2) or not any(b in w for b in _FORBIDDEN))]
-            if _tok: _q = max(_tok, key=len)
-    elif _lay2 == "god":
-        try: _fm2 = parse_fm(os.path.join(GODS_DIR, _n["id"] + ".md")) or {}
-        except Exception: _fm2 = {}
-        # 가장 **드문** 이름을 고른다. 첫 이름을 쓰면 「카뮈」 같은 토막이 잡히고,
-        # 가장 긴 것을 쓰면 「안개」·「표범」처럼 그 장에 흔한 낱말이 걸린다.
-        # 드물수록 그 책을 가리킨 자리다 — 같은 드묾이면 긴 쪽.
-        _cands = [p for p in _name_probes(_fm2, _n["id"]) if p in _pg]
-        if _cands: _q = min(_cands, key=lambda p: (_pg.count(p), -len(p)))
-    elif _lay2 == "episode":
-        _epf = None
-        for _f2 in os.listdir(EPISODES_DIR):
-            if unicodedata.normalize("NFC", _f2).startswith(_n.get("ep", "\0") + "_"):
-                _epf = os.path.join(EPISODES_DIR, _f2); break
-        if _epf:
-            _src = unicodedata.normalize("NFC", open(_epf, encoding="utf-8").read())
-            _src = re.sub(r"^---.*?\n---\n", "", _src, flags=re.S)
-            _src = re.sub(r"\[\[[^\]]*\]\]|[*`>#|\-]", " ", _src)
-            _q = (_longest_shared(_src, _pg) or "").strip(" .,·\"'\u201c\u201d\u300c\u300d")
-    _n["rd"] = _RD[_c] + ("|" + _q if _q else "")
-    _rd_hit += bool(_q); _rd_miss += (not _q) and _lay2 != "symbol"
-print("   🔗 닻 — 구절까지 닿는 노드 %d · 장 머리까지만 %d" % (_rd_hit, _rd_miss))
+    _q = _anchor(_mat, _c, _RDPAGE.get(_c, ""))
+    _e["rd"] = _RD[_c] + ("|" + _q if _q else "")
+    _rd_hit += bool(_q); _rd_miss += (not _q)
+print("   🔗 닻(선마다) — 구절까지 %d · 장 머리까지만 %d / 재료→장 선 %d"
+      % (_rd_hit, _rd_miss, _rd_hit + _rd_miss))
 
 # 🚫 실명 문지기 — 공개 저장소에 쓰기 전에 **낼 것 전부**를 층으로 가려 훑는다.
 #    인용 층(📜읽은 것·🧩지식)은 이름이 서야 빚이 0이라 통과시키고 적어만 둔다.
