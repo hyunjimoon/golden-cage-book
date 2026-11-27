@@ -499,6 +499,40 @@ for _f in _PAGE_FILES:
     except Exception: pass
 _page = "".join(_pages.values())
 
+def _name_probes(fm, nid):
+    """원고가 이 책을 부를 만한 **이름**. 원고의 인용 규약이 「번호 + 한국어 제목」이고
+       저자는 성만 적히므로, ⑴ 한국어 이름의 각 토막 ⑵ 파일명의 한국어 토막
+       ⑶ 원제 ⑷ 번역 제목 을 다 넣는다. 두 글자 이하는 버린다 — 아무 데나 걸린다."""
+    out = []
+    out += [t for t in re.split(r"\s+", fm.get("author_ko", "")) if t]
+    out += [t for t in re.split(r"[_\s]+", nid.replace("📜", "")) if re.search(r"[가-힣]", t)]
+    for k in ("work", "work_ko", "title_ko"):
+        v = fm.get(k, "")
+        if v: out.append(re.sub(r"^\d{3}\s*", "", v).strip())
+    seen, keep = set(), []
+    for t in out:
+        t = t.strip(" 『』「」\"'")
+        # ⚠️ 길이 문턱이 둘이다 — 한국어 이름은 두 글자가 보통이다(「오웰」·「표범」).
+        #    라틴 글자에만 >3 을 건다. 처음에 >2 하나로 재서 오웰·람페두사를 잃었다.
+        _ok = len(t) >= 2 if re.search(r"[가-힣]", t) else len(t) > 3
+        if _ok and t not in seen:
+            seen.add(t); keep.append(t)
+    return keep
+
+_mute = []
+for _n in nodes:
+    if _n["layer"] != "god": continue
+    try: _fm = parse_fm(os.path.join(GODS_DIR, _n["id"] + ".md")) or {}
+    except Exception: _fm = {}
+    _ps = _name_probes(_fm, _n["id"])
+    _hit = [p for p in _ps if p in _page]
+    _n["named"] = bool(_hit)
+    if not _hit: _mute.append((_n["id"], _ps))
+print("   📏 원고가 이름을 부르나 — 📜 %d 중 **안 부르는 것 %d**"
+      % (sum(1 for n in nodes if n["layer"] == "god"), len(_mute)))
+for _i, _p in _mute:
+    print("      🚨 %-44s 찾아본 이름 %s" % (_i, _p))
+
 # ── 🧱 주춧돌 셋 — 장마다 무엇이 **최종으로** 앉았나 (2026-11-27 신설) ──────────
 #    원본 = 원고 폴더의 `주춧돌_셋_장마다.md` 한 표. 발행본은 gcb #166 이다.
 #
@@ -523,15 +557,38 @@ except Exception as _e:
     print("   🚨 주춧돌 표를 못 읽었다 — 자리를 신고(투향장)로 둔다:", _e)
 
 if CORNER:
+    # ── 🧱 표가 세 층을 **통째로** 짓는다 (2026-11-27 단순화 룰링) ─────────────
+    #   전에는 자가 아홉이었다 — 최소비용최대흐름·탐욕 최소덮개·문턱 셋·자리 출처 네 값·
+    #   `투향장:` 신고·글자째 인용·이름 부르나. 그런데 👁️ 눈 셋이 토큰검색·통독·반증
+    #   **서로 다른 방법으로 같은 답에 닿았고**, 판을 가른 자는 하나뿐이었다 —
+    #   *원고를 펴서 그 장에 그게 있나 본다.* 나머지 여덟은 답을 못 바꿨다.
+    #   그래서 그 하나만 남긴다. 종이에 다섯 줄로 되는 것이 이 지도의 자다.
+    #   ⚠️ baesun_mcmf · jisik_cover 는 **지우지 않는다** — 「채석장에서 무엇을 고를까」를
+    #      푸는 기획 도구로 제자리에 둔다. 이 지도는 「책에 무엇이 들어갔나」만 묻는다.
+    #      두 물음이 한 표에 있던 것이 빚이었다.
+    _drop = {n["id"] for n in nodes if n["layer"] in ("episode", "element")}
+    nodes = [n for n in nodes if n["id"] not in _drop]
+    edges = [e for e in edges if e["s"] not in _drop and e["t"] not in _drop]
+    node_ids -= _drop
+
+    _EPT = {}
+    for _f in os.listdir(EPISODES_DIR):
+        _m = re.match(r"^(ep\d+)_(.+)\.md$", _f)
+        if _m: _EPT[_m.group(1)] = _m.group(2).replace("_", " ")
+    for _ch, _v in sorted(CORNER.items()):
+        for _e in _v["ep"]:                       # 경험 — §1 이 쥔 일화
+            _id = "ex_%d_%s" % (_ch, _e)
+            nodes.append({"id": _id, "label": "🎞️ " + _EPT.get(_e, _e), "depth": 3,
+                          "marr_layer": 3, "layer": "episode", "r": 11, "chap": _ch,
+                          "pos": POS_SELF, "pole": "", "ep": _e})
+            node_ids.add(_id); edges.append({"s": _id, "t": "ch%d" % _ch, "w": 1})
+        for _g in _v["g"]:                        # 지식 — §2 가 세운 것 (이름 그대로)
+            _id = "kn_%d_%s" % (_ch, re.sub(r"\s+", "_", _g))
+            nodes.append({"id": _id, "label": _g, "depth": 2, "marr_layer": 2,
+                          "layer": "element", "r": 8, "chap": _ch,
+                          "pos": POS_SELF, "pole": ""})
+            node_ids.add(_id); edges.append({"s": _id, "t": "ch%d" % _ch, "w": 1})
     _ep_seat = {e: c for c, v in CORNER.items() for e in v["ep"]}
-    _g_seat  = {g: c for c, v in CORNER.items() for g in v["g"]}
-    for n in nodes:
-        if n["layer"] == "episode":
-            _k = n["id"].split("_")[0]
-            if _k in _ep_seat:
-                n["chap"], n["pos"], n["corner"] = _ep_seat[_k], POS_SELF, True
-        elif n["layer"] == "element":
-            n["corner"] = any(n["id"].startswith(g) for g in _g_seat)
     # 🏭 사례 — 원고가 쥔 이름. **신고가 아니라 실측이다**: 그 장 원고에 글자째 있나.
     #    열 방 중 5·10 은 마디면이라 사례가 0 이고, 그 빈칸은 결손이 아니라 산출물이다.
     _CHFILE = {1:"1🪞_거울새장", 2:"2🔭_망원경새장", 3:"3💒_스테인굴레스새장",
@@ -546,8 +603,7 @@ if CORNER:
             _cid = "case_%02d_%s" % (_ch, re.sub(r"\s+", "_", _nm))
             nodes.append({"id": _cid, "label": _nm,
                           "layer": "case", "chap": _ch,
-                          "pos": POS_SELF if _in else POS_NONE, "inpage": _in,
-                          "corner": True, "pole": ""})
+                          "pos": POS_SELF if _in else POS_NONE, "pole": ""})
             node_ids.add(_cid)
             edges.append({"s": _cid, "t": "ch%d" % _ch, "w": 1})
     _ncase = sum(len(v["case"]) for v in CORNER.values())
@@ -562,25 +618,19 @@ print(f"   🔗 겹선 접기: {_before} → {len(edges)} (겹 {_before - len(ed
 
 if PRUNE:
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    import baesun_mcmf as _b
-    _S = _b.survivors()
-    _keep_ep, _keep_el = set(_S["seated"]), set(_S["chosen"])
+    if CORNER:
+        # 표가 명부다. 흐름도도 덮개도 안 돌린다 — 깎을 것이 애초에 없다.
+        _keep_ep = {n["id"] for n in nodes if n["layer"] == "episode"}
+        _keep_el = {n["id"] for n in nodes if n["layer"] == "element"}
+    else:
+        import baesun_mcmf as _b
+        _S = _b.survivors()
+        _keep_ep, _keep_el = set(_S["seated"]), set(_S["chosen"])
     # ⚠️ 2026-11-26 — baesun 은 **배선으로 앉힌 것**만 안다. 오늘 생긴 일화는 배선이
     #   아직 없어 자리를 못 받고, 그래서 `투향장:` 을 제 입으로 적어 두어도 깎인다
     #   (ep68 — 8장을 제 입으로 신고했는데 그래프엔 0건이었다. 제목은 여기 안 적는다:
     #   이 주석은 publish_scripts.py 가 공개면 scripts/ 로 찍어 내가고, ep68 은 공개 판정 전이다).
     #   자리 출처 서열이 self > obs > vote 이므로, **신고한 자리는 투표가 못 깎는다.**
-    # 🧱 표가 있으면 **표가 명부다** — baesun 의 자리도, 제 신고도 표를 못 이긴다.
-    #    표에 없는 것은 아직 채석장이다(지우는 게 아니라 안 올리는 것).
-    if CORNER:
-        _keep_ep = {n["id"] for n in nodes
-                    if n["layer"] == "episode" and n.get("corner")}
-        _keep_el = {n["id"] for n in nodes
-                    if n["layer"] == "element" and n.get("corner")}
-    else:
-        _declared = {n["id"] for n in nodes
-                     if n["layer"] == "episode" and n.get("pos") == POS_SELF}
-        _keep_ep |= _declared
 
     # 📜🪞 의 불 = 장 열. 같은 탐욕 덮개를 장 위에서 돌린다.
     _claim = {n["id"]: ({n["chap"]} if n.get("chap") else set())
@@ -592,8 +642,11 @@ if PRUNE:
                     _claim[a].add(int(t[2:]))
     _lay = {n["id"]: n["layer"] for n in nodes}
     _fires = set(range(1, 11))
-    _keep_god, _god_rem = _b._greedy_cover(
-        {i: c for i, c in _claim.items() if _lay[i] == "god"}, _fires)
+    # 📜 도 **같은 자 하나**로 고른다 (2026-11-27) — 덮개를 돌리지 않고 「원고가 그 책
+    #   이름을 부르나」만 본다. 종이로도 된다: 책 이름을 원고에서 찾아보면 끝이다.
+    _named = {n["id"] for n in nodes if n["layer"] == "god" and n.get("named")}
+    _keep_god = sorted(_named)
+    _god_rem = []
     # ⚠️ 2026-11-25 — **명부에는 덮개를 안 돌린다.** 돌렸더니 🪞가 1·5·9 를 덮어
     #   🐦‍⬛까마귀가 「이미 덮였다」로 떨어졌고, 📕(열 장)을 넣자 나머지 여덟이 통째로
     #   잉여가 됐다. 덮개는 **많은 것 중 고르는 자**고 열넷은 **고를 것이 아니라 명부**다.
@@ -611,7 +664,7 @@ if PRUNE:
           % (_n0, len(nodes), _e0, len(edges)))
     print("      🎞️ 일화 %d(자리) · 🍇 생각원소 %d(덮개) · 📜 신의전언 %d(장 덮개) · 🪞 상징 %d(장 덮개)"
           % (len(_keep_ep), len(_keep_el), len(_keep_god), len(_keep_sym)))
-    if _S["uncovered"]:
+    if not CORNER and _S.get("uncovered"):
         print("      🚨 안 덮인 불 %d — 지우지 않는다: %s"
               % (len(_S["uncovered"]), " ".join(sorted(_S["uncovered"]))))
     for _nm, _rem in (("📜 신의전언", _god_rem), ("🪞 상징", _sym_rem)):
@@ -655,6 +708,109 @@ if _PUBLIC:
     for _n in nodes: _n.pop("vpath", None)
     print("   🔒 공개판 출력 — vpath 제거(로컬 경로 비공개)")
 
+# ── 🔗 닻 — 노드마다 **원고의 어느 자리**로 가나 (2026-11-27 신설) ──────────
+#    왜 — 지도는 공간 축이고 원고는 시간 축이다. 둘이 같은 것을 가리키는데 서로를
+#    못 가리켰다. 「이 점이 책의 어디냐」를 사람이 눈으로 찾아야 했다.
+#
+#    reader.html 이 이미 `?file=…&q=…` 로 **구절을 찾아 형광까지** 한다. 그러니
+#    새 기계를 안 만든다 — 노드마다 **그 장 원고에 실제로 있는 구절 하나**를 재서
+#    달아 주면 끝이다. 자가 하나 더 느는 게 아니라, **이미 쓰는 자의 답을 적어 두는** 것.
+#
+#    ⚠️ 닻은 **재서** 단다. 못 재면 장 머리로 보내고 `q` 를 비운다 — 없는 구절을
+#       달면 링크가 조용히 빗나가고, 그게 바로 묵은 표의 병이었다.
+# 🚫 실명 — 목록도 **거는 자리**도 `silmyeong_gate.py` 하나가 쥔다 (룰링 2026-11-27).
+#    자의 단위는 「사람」이 아니라 **「사람 × 층」**이다 — 같은 이름이 일화원소에선 빚이고
+#    인용에선 갚음이다. 📜읽은 것·🧩지식만 이름을 세울 수 있고, 나머지 층은 막는다.
+from silmyeong_gate import NAMES as _FORBIDDEN, scan as _silmyeong, allowed_layer as _cite_ok
+
+_RD = {1:"ch1_mirror_cage", 2:"ch2_telescope_cage", 3:"ch3_glass_cage",
+       4:"ch4_clock_cage", 5:"ch5_mirror_nest", 6:"ch6_butterfly_nest",
+       7:"ch7_tulip_nest", 8:"ch8_mist_nest", 9:"ch9_raven_nest",
+       10:"ch10_mirror_close"}
+_RDPAGE = {c: _pages.get(_CHFILE.get(c, ""), "") for c in _RD} if "_CHFILE" in dir() else {}
+
+def _longest_shared(src, page, lo=14, hi=70):
+    """src 와 page 가 **함께 쥔 가장 긴 토막**. 없으면 None.
+       n-gram 집합으로 걸러서 늘린다 — 원고가 6만 자라 전수 비교는 못 쓴다."""
+    if not src or not page: return None
+    grams = {page[i:i+lo] for i in range(len(page) - lo + 1)}
+    best = None
+    i = 0
+    while i <= len(src) - lo:
+        g = src[i:i+lo]
+        if g in grams:
+            j = lo
+            while i + j < len(src) and j < hi and src[i:i+j+1] in page: j += 1
+            cand = src[i:i+j]
+            if best is None or len(cand) > len(best): best = cand
+            i += 1
+        else:
+            i += 1
+    return best
+
+_rd_hit = _rd_miss = 0
+for _n in nodes:
+    _c = _n.get("chap") or 0
+    if _c not in _RD:
+        continue
+    _pg = _RDPAGE.get(_c, "")
+    _q = ""
+    _lay2 = _n["layer"]
+    if _lay2 in ("case", "element", "symbol"):
+        _cand = _n.get("label", "")
+        if _cand and _cand in _pg:
+            _q = _cand
+        elif _cand and _lay2 == "element":
+            # 지식 이름은 §2 가 통째로 안 쓰기도 한다 — 「부르디외 지체」를 「부르디외」와
+            # 「지체」로 나눠 쓴다. 통째가 없으면 **가장 긴 토막**으로 내려간다.
+            # 두 글자 이하는 안 쓴다 — 아무 데나 걸린다.
+            # 지식은 인용 층이라 이름을 닻으로 써도 된다 — 그 이름이 선 자리가
+            # 바로 그 개념의 출처 줄이다. 인용 층이 아니면 실명은 안 고른다.
+            _tok = [w for w in re.split(r"\s+", _cand)
+                    if len(w) > 2 and w in _pg
+                    and (_cite_ok(_lay2) or not any(b in w for b in _FORBIDDEN))]
+            if _tok: _q = max(_tok, key=len)
+    elif _lay2 == "god":
+        try: _fm2 = parse_fm(os.path.join(GODS_DIR, _n["id"] + ".md")) or {}
+        except Exception: _fm2 = {}
+        # 가장 **드문** 이름을 고른다. 첫 이름을 쓰면 「카뮈」 같은 토막이 잡히고,
+        # 가장 긴 것을 쓰면 「안개」·「표범」처럼 그 장에 흔한 낱말이 걸린다.
+        # 드물수록 그 책을 가리킨 자리다 — 같은 드묾이면 긴 쪽.
+        _cands = [p for p in _name_probes(_fm2, _n["id"]) if p in _pg]
+        if _cands: _q = min(_cands, key=lambda p: (_pg.count(p), -len(p)))
+    elif _lay2 == "episode":
+        _epf = None
+        for _f2 in os.listdir(EPISODES_DIR):
+            if unicodedata.normalize("NFC", _f2).startswith(_n.get("ep", "\0") + "_"):
+                _epf = os.path.join(EPISODES_DIR, _f2); break
+        if _epf:
+            _src = unicodedata.normalize("NFC", open(_epf, encoding="utf-8").read())
+            _src = re.sub(r"^---.*?\n---\n", "", _src, flags=re.S)
+            _src = re.sub(r"\[\[[^\]]*\]\]|[*`>#|\-]", " ", _src)
+            _q = (_longest_shared(_src, _pg) or "").strip(" .,·\"'\u201c\u201d\u300c\u300d")
+    _n["rd"] = _RD[_c] + ("|" + _q if _q else "")
+    _rd_hit += bool(_q); _rd_miss += (not _q) and _lay2 != "symbol"
+print("   🔗 닻 — 구절까지 닿는 노드 %d · 장 머리까지만 %d" % (_rd_hit, _rd_miss))
+
+# 🚫 실명 문지기 — 공개 저장소에 쓰기 전에 **낼 것 전부**를 층으로 가려 훑는다.
+#    인용 층(📜읽은 것·🧩지식)은 이름이 서야 빚이 0이라 통과시키고 적어만 둔다.
+#    나머지 층에 이름이 서면 **안 내고 멈춘다** — 거기 선 이름은 동의받은 적이 없다.
+_block, _cited = [], []
+for _n2 in nodes:
+    _hit2 = _silmyeong(json.dumps(_n2, ensure_ascii=False))
+    if not _hit2: continue
+    (_cited if _cite_ok(_n2["layer"]) else _block).append((_n2, _hit2))
+if _cited:
+    print("   📎 인용 층에 선 이름 %d — 통과시킨다(인용은 이름이 있어야 빚이 0)" % len(_cited))
+    for _n2, _h in _cited:
+        print("      · %-12s %s" % (",".join(_h), _n2.get("label", _n2["id"])[:34]))
+if _block:
+    print("   🚨 실명 문지기 — **안 내고 멈춘다.** 인용 아닌 층에 이름이 섰다:", file=sys.stderr)
+    for _n2, _h in _block:
+        print("      · %-12s %-10s %s" % (",".join(_h), _n2["layer"],
+                                          _n2.get("label", _n2["id"])[:34]), file=sys.stderr)
+    sys.exit(1)
+
 # ── 📏 원고가 이 이름을 부르나 (2026-11-23 신설) ────────────────────────────
 #    이 그래프의 덮개는 **frontmatter 의 `chapter`** 로 장을 덮는다. 그래서 한 노드가
 #    「3·5·7장」이라 적어 두기만 하면, 원고가 그 이름을 **한 번도 안 불러도** 살아남는다.
@@ -670,85 +826,9 @@ if _PUBLIC:
 #       그래서 꼬리표를 「안 쓴다」가 아니라 **「이름 안 부름」**으로 적는다. 생각은 설 수 있다.
 #    🌗 지우지 않고 찍는다. 내릴지 이름을 적을지는 룰링이다.
 
-def _name_probes(fm, nid):
-    """원고가 이 책을 부를 만한 **이름**. 원고의 인용 규약이 「번호 + 한국어 제목」이고
-       저자는 성만 적히므로, ⑴ 한국어 이름의 각 토막 ⑵ 파일명의 한국어 토막
-       ⑶ 원제 ⑷ 번역 제목 을 다 넣는다. 두 글자 이하는 버린다 — 아무 데나 걸린다."""
-    out = []
-    out += [t for t in re.split(r"\s+", fm.get("author_ko", "")) if t]
-    out += [t for t in re.split(r"[_\s]+", nid.replace("📜", "")) if re.search(r"[가-힣]", t)]
-    for k in ("work", "work_ko", "title_ko"):
-        v = fm.get(k, "")
-        if v: out.append(re.sub(r"^\d{3}\s*", "", v).strip())
-    seen, keep = set(), []
-    for t in out:
-        t = t.strip(" 『』「」\"'")
-        # ⚠️ 길이 문턱이 둘이다 — 한국어 이름은 두 글자가 보통이다(「오웰」·「표범」).
-        #    라틴 글자에만 >3 을 건다. 처음에 >2 하나로 재서 오웰·람페두사를 잃었다.
-        _ok = len(t) >= 2 if re.search(r"[가-힣]", t) else len(t) > 3
-        if _ok and t not in seen:
-            seen.add(t); keep.append(t)
-    return keep
 
-_mute = []
-for _n in nodes:
-    if _n["layer"] != "god": continue
-    try: _fm = parse_fm(os.path.join(GODS_DIR, _n["id"] + ".md")) or {}
-    except Exception: _fm = {}
-    _ps = _name_probes(_fm, _n["id"])
-    _hit = [p for p in _ps if p in _page]
-    _n["named"] = bool(_hit)
-    if not _hit: _mute.append((_n["id"], _ps))
-print("   📏 원고가 이름을 부르나 — 📜 %d 중 **안 부르는 것 %d**"
-      % (sum(1 for n in nodes if n["layer"] == "god"), len(_mute)))
-for _i, _p in _mute:
-    print("      🚨 %-44s 찾아본 이름 %s" % (_i, _p))
-
-# ── 📏 원고가 이 일화를 **지고 있나** (2026-11-26 신설) ───────────────────────
-#    자리(chap)는 배선 투표가 준다 — 원고가 그 일화를 한 줄도 안 써도 앉는다.
-#    실측: 20편 전부 `pos:"vote"` 였고, 그중 ep35「스무 해 만의 눈물」은 2장에 앉았는데
-#    2장은커녕 열 장 어디에도 그 일화의 토막이 없다(눈물·엄마·아빠·모부 전부 0).
-#
-#    자 = **글자째 인용**. 일화 본문에서 14~90자 한국어 토막을 뽑아 원고에 그대로
-#    박혀 있는지 본다. 되도록 좁게 — 변형해 녹인 것까지 세려 들면 아무 말이나 걸린다.
-#    ⚠️ 이 자는 「썼나」가 아니라 「글자째 베꼈나」에만 답한다. 장면으로 **다시 쓴**
-#       일화는 여기서 false 로 나온다. 그래서 지우지 않고 **표시만** 한다(빈 점).
-#    보조 자 — 일화 frontmatter 의 `투향장:` 뒤에 붙은 「…실측 … 인용 중」 메모.
-#       둘이 겹치는 것은 ep01 하나뿐이라 둘 다 반쪽이다. 합집합을 쓴다.
-def _verbatim(path):
-    try: t = unicodedata.normalize("NFC", open(path, encoding="utf-8").read())
-    except Exception: return None
-    if re.search(r"^투향장:.*실측.*인용 중", t, flags=re.M):
-        return "frontmatter 실측"
-    t = re.sub(r"^---.*?\n---\n", "", t, flags=re.S)
-    t = re.sub(r"\[\[[^\]]*\]\]", "", t)
-    t = re.sub(r"[*`>#|]", "", t)
-    frags = {s.strip() for s in re.split(r"(?<=[.?!」”\"])\s+|\n", t)
-             if 14 <= len(s.strip()) <= 90 and re.search(r"[가-힣]", s)}
-    for _f, _txt in _pages.items():
-        for s in frags:
-            if s in _txt: return _f
-    return None
-
-_born = 0
-for _n in nodes:
-    if _n["layer"] == "god":
-        _n["inpage"] = bool(_n.get("named"))
-    elif _n["layer"] == "episode":
-        _w = _verbatim(os.path.join(EPISODES_DIR, _n["id"] + ".md"))
-        _n["inpage"] = bool(_w)
-        if _w: _n["carried"] = _w; _born += 1
-    elif _n["layer"] == "element":
-        # 생각원소는 이름이 아니라 **산문으로** 실린다 — 글자째 자로 재면 전부 0 이 나오고
-        # 0 은 발견이 아니라 자가 틀린 신호다(#117). 그래서 못 잰 것으로 남긴다.
-        _n["inpage"] = None
-print("   📏 원고가 글자째 지고 있나 — 🎞️ %d 중 **%d**  ·  📜 %d 중 %d  ·  🍇 못 잼"
-      % (sum(1 for n in nodes if n["layer"] == "episode"), _born,
-         sum(1 for n in nodes if n["layer"] == "god"),
-         sum(1 for n in nodes if n["layer"] == "god" and n.get("named"))))
-for _n in nodes:
-    if _n["layer"] == "episode" and _n.get("carried"):
-        print("      ✅ %-40s ← %s" % (_n["id"], _n["carried"]))
+# 📏 「글자째 인용」 자는 뗐다 (2026-11-27) — 표가 이미 **원고에 든 것만** 담으므로
+#    같은 것을 두 번 재는 일이 된다. 자 하나 원칙.
 
 # ── 인물 띠 넷 (2026-11-25 · /reader 8:0) ──────────────────────────────────
 #   인물은 **점이 아니라 구간**이다. 다·세·세다는 한 장에 사는 게 아니라 몇 장에

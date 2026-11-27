@@ -116,6 +116,36 @@ def reverse_delete(sets, chosen, fires):
     return keep, dropped
 
 
+def exact(sets, fires):
+    """**참최솟값** — 어림이 아니라 답. 덮을 수 있는 불을 다 덮는 최소 돌 수.
+
+    왜 생겼나 (2026-11-27 · gcb #189) — `shuffle_sizes` 가 [6, 7] 로 흔들려 「재료가
+    흔들리나」를 물었는데, 전수로 풀어 보니 **참값은 6**이었다. 7은 greedy 가 순서
+    나쁘게 집었을 때 생기는 **어림의 손실**이지 재료의 성질이 아니다.
+
+    그래서 공표문은 「순서를 흔들어도 안 바뀐다」(greedy 에선 거짓)가 아니라
+    **「참최솟값이 n 이다」**로 적는다 — 참이고, 순서에 안 기대니 더 강하다.
+
+    ⚠️ 불 개수에 지수로 든다. 불이 스물 남짓일 때만 쓴다(지금 20 → 1초).
+       불이 서른을 넘으면 부르지 말고 `greedy` + `shuffle_sizes` 로 남는다.
+    반환 (n, 덮을 수 있는 불의 수).  **`greedy` 는 한 글자도 안 건드린다.**
+    """
+    bit = {f: i for i, f in enumerate(sorted(fires))}
+    masks = {m for m in (sum(1 << bit[f] for f in fs if f in bit)
+                         for fs in sets.values()) if m}
+    reach = 0
+    for m in masks:
+        reach |= m
+    if not reach:
+        return 0, 0
+    seen, cur, step = {0}, {0}, 0
+    while reach not in seen:
+        step += 1
+        cur = {st | m for st in cur for m in masks} - seen
+        seen |= cur
+    return step, bin(reach).count("1")
+
+
 def shuffle_sizes(sets, fires, trials=400, seed=0):
     """순서를 흔들어 **크기만** 본다. 한 점이면 집는 순서와 무관하다 (교환가능성).
 
