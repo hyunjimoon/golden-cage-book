@@ -9,7 +9,7 @@
 gen_graph_data.py — Build 3-Layer Galaxy Knowledge Graph Data:
   Layer 1 (Computational): 상징_감정 (22 Emoji/Emotion Nodes)
   Layer 2 (Algorithmic): 생각원소 (154 Thinking Element Nodes)
-  Layer 3 (Implementational): 경험 두 갈래 — 📜신의전언(간접·읽은 것) · 🎞️일화원소(직접·겪은 것)
+  Layer 3 (Implementational): 경험 두 갈래 — 📜신의전언(간접경험) · 🎞️일화원소(직접경험)
   
 Generates JSON for golden-cage-book/interactive/reference_graph.html
 """
@@ -315,9 +315,16 @@ for gf in god_files:
     if not label or label == gid:
         label = gid.replace("📜", "")
     _cs = _chaps(fm.get("chapter_label",""), fm.get("chapter",""))
+    # 📜 가 「왜 그 장인가」를 적어 둔 유일한 자리 = 본문 첫 줄.
+    #   까닭 칸을 새로 만들지 않는다 — 35편 × 평균 두 장을 손으로 채우게 되고, 자가 하나 는다.
+    #   원고가 이름을 안 부르는 선(신고 선)에서 독자가 읽을 것은 이 한 줄뿐이다.
+    _body = open(os.path.join(GODS_DIR, gf), encoding='utf-8').read().split("---", 2)[-1]
+    _why = next((l.strip() for l in _body.split("\n")
+                 if l.strip() and not l.startswith("#")), "")
     nodes.append({"id": gid, "label": "📜 " + label, "layer": "god",
                   "chap": (min(_cs) if _cs else 0),
                   "pos": (POS_SELF if _cs else POS_NONE),
+                  "why": _why[:90],
                   "vpath": _vp(os.path.join(GODS_DIR, gf))})
     node_ids.add(gid)
     for c in (_cs or {0}): edges.append({"s": gid, "t": f"ch{c}"})
